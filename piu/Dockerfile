@@ -1,7 +1,7 @@
 FROM php:8-apache
 
 # Copy static HTML pages (when building a new image)
-COPY html /var/www/html
+COPY src /var/www/html
 
 # COPY docker_run.sh /docker_run.sh
 # CMD sh /docker_run.sh

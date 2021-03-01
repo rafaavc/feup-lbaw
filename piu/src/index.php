@@ -18,7 +18,7 @@
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">
-                <img class="img-nav-logo" src="tastebuds.png">
+                <img class="img-nav-logo" src="images/tastebuds.png">
             </a>
 
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -75,13 +75,13 @@
                 
                 <div class="carousel-inner">
                     <div class="carousel-item active" data-bs-interval="2500">
-                        <img src="image1.png" class="d-block w-100" alt="...">
+                        <img src="images/image1.png" class="d-block w-100" alt="...">
                     </div>
                     <div class="carousel-item" data-bs-interval="2500">
-                        <img src="image5.png" class="d-block w-100" alt="...">
+                        <img src="images/image5.png" class="d-block w-100" alt="...">
                     </div>
                     <div class="carousel-item" data-bs-interval="2500">
-                        <img src="image4.png" class="d-block w-100" alt="...">
+                        <img src="images/image4.png" class="d-block w-100" alt="...">
                     </div>
                 </div>
             </div>
@@ -97,13 +97,13 @@
                         </div>
                     </div>
                     <div class="col-6">
-                        <img src="image3.png" class="d-block w-100" alt="..." style="height: 250px;">
+                        <img src="images/image3.png" class="d-block w-100" alt="..." style="height: 250px;">
                     </div>
                 </div>
                 <hr class="mt-5">
                 <div class="row mt-5">
                     <div class="col-6 ">
-                        <img src="image3.png" class="d-block w-100" alt="..." style="height: 250px;">
+                        <img src="images/image3.png" class="d-block w-100" alt="..." style="height: 250px;">
                     </div>
                     <div class="col-6">
                         <div class="d-flex flex-column bd-highlight content-align">
@@ -122,7 +122,7 @@
                 <div class="card-group text-center">
                     <div class="col mx-3">
                         <div class="card h-100">
-                            <img src="image1.png" class="card-img-top" alt="...">
+                            <img src="images/image1.png" class="card-img-top" alt="...">
                             <div class="card-body">
                                 <h5 class="card-title">Follow</h5>
                                 <p class="card-text">Follow people to get updates about them and the new recipes they publish!</p>
@@ -131,7 +131,7 @@
                     </div>
                     <div class="col mx-3">
                         <div class="card h-100">
-                            <img src="image1.png" class="card-img-top" alt="...">
+                            <img src="images/image1.png" class="card-img-top" alt="...">
                             <div class="card-body">
                                 <h5 class="card-title">Chat</h5>
                                 <p class="card-text">Need more information? Want to know the person behind the recipe? Send them a message!</p>
@@ -140,7 +140,7 @@
                     </div>
                     <div class="col mx-3">
                         <div class="card h-100">
-                            <img src="image1.png" class="card-img-top" alt="...">
+                            <img src="images/image1.png" class="card-img-top" alt="...">
                             <div class="card-body">
                                 <h5 class="card-title">Group</h5>
                                 <p class="card-text">Create or join private or public groups!</p>

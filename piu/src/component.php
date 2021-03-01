@@ -1,3 +1,6 @@
+<?php
+  $component = isset($_GET['c']) ? $_GET['c'] : null;
+?>
 <!doctype html>
 <html lang="en">
   <head>
@@ -9,12 +12,12 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous" defer></script>
 
-    <title>Hello, world!</title>
+    <title><?= is_null($component) ? ":(" : "Viweing: $component" ?></title>
   </head>
   <body>
     <?php
-    $component = $_GET['c'];
-    include "components/$component.html";
+      if (is_null($component)) echo "<p style='color: red; margin: 2rem'>You didn't give me a component to render! (GET parameter: c)</p>";
+      else include "components/$component.html";
     ?>
   </body>
 </html>
