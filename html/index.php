@@ -120,25 +120,31 @@
             </div>
             <div class="row cards-homepage">
                 <div class="card-group text-center">
-                    <div class="card mx-lg-5">
-                        <img src="image1.png" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">Follow</h5>
-                            <p class="card-text">Follow people to get updates about them and the new recipes they publish!</p>
+                    <div class="col mx-3">
+                        <div class="card h-100">
+                            <img src="image1.png" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title">Follow</h5>
+                                <p class="card-text">Follow people to get updates about them and the new recipes they publish!</p>
+                            </div>
                         </div>
                     </div>
-                    <div class="card mx-lg-5">
-                        <img src="image1.png" class="card-img-top" alt="...">
-                        <div class="card-body">
-                        <h5 class="card-title">Chat</h5>
-                        <p class="card-text">Need more information? Want to know the person behind the recipe? Send them a message!</p>
+                    <div class="col mx-3">
+                        <div class="card h-100">
+                            <img src="image1.png" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title">Chat</h5>
+                                <p class="card-text">Need more information? Want to know the person behind the recipe? Send them a message!</p>
+                            </div>
                         </div>
                     </div>
-                    <div class="card mx-lg-5">
-                        <img src="image1.png" class="card-img-top" alt="...">
-                        <div class="card-body">
-                        <h5 class="card-title">Group</h5>
-                        <p class="card-text">Create or join private or public groups!</p>
+                    <div class="col mx-3">
+                        <div class="card h-100">
+                            <img src="image1.png" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title">Group</h5>
+                                <p class="card-text">Create or join private or public groups!</p>
+                            </div>
                         </div>
                     </div>
                 </div>
