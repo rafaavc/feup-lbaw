@@ -1,0 +1,50 @@
+.img-nav-logo {
+    width: 6em;
+}
+
+.fas.fa-search {
+    line-height: 2.375rem;
+    position: relative;
+    right: 2.375rem;
+    pointer-events: none;
+}
+
+.form-control {
+    padding-right: 2.375rem;
+}
+
+div.content-align {
+    padding: 40px;
+}
+
+div.text-description {
+    line-height: 0.35rem;
+}
+
+div.cards-homepage {
+    width: 75%;
+    margin: auto;
+}
+
+div.content-red {
+    background-color: #BE252B;
+}
+
+button.btn-dark-large {
+    width: 10rem;
+}
+
+footer {
+    position: relative;
+    color: gray;
+}
+
+span.footer-tastebuds {
+    position: absolute;
+    right: 0;
+}
+
+a.a-footer {
+    color: gray;
+    text-decoration: none;
+}
