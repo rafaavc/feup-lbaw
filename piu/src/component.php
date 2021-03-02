@@ -31,7 +31,7 @@ $component = isset($_GET['c']) ? $_GET['c'] : null;
                     <?php
                         $files = scandir("components");
                         foreach ($files as $key => $value) {
-                            if (preg_match("/(.*).html$/", $value, $match)) { ?>
+                            if (preg_match("/(.*).php$/", $value, $match)) { ?>
                                 <option value="<?=$match[1]?>"><?=$match[1]?></option>
                     <?php }
                         } ?>
