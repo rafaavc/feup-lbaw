@@ -1,5 +1,10 @@
 <?php
 
+// TODO:
+// add hrefs in list
+// add popover to notifications and messages
+// solve data-bs-parent problem
+
 $menu = "member";
 
 $visitor = [
@@ -55,8 +60,7 @@ function printPopover($name, $icon, $content)
     <li class="nav-item">
         <a class="nav-link" href="#">
             <i class="fas fa-<?= $icon ?> d-none d-lg-inline"></i>
-            <?= $name ?>
-            <i class="fas fa-caret-down"></i>
+            <span class="legend"><?= $name ?></span>
         </a>
     </li>
 <?php }
@@ -66,7 +70,7 @@ function printDropdown($name, $icon, $submenu)
     <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             <i class="fas fa-<?= $icon ?> d-none d-lg-inline"></i>
-            <?= $name ?>
+            <span class="legend"><?= $name ?></span>
             <i class="fas fa-caret-down"></i>
         </a>
         <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
@@ -80,7 +84,7 @@ function printItem($name, $icon, $dropdown = false)
     <li class="<?= $dropdown ? "" : "nav-item" ?>">
         <a class="<?= $dropdown ? "dropdown-item" : "nav-link" ?>" href="#">
             <i class="fas fa-<?= $icon ?> d-none d-lg-inline"></i>
-            <?= $name ?>
+            <span class="legend"><?= $name ?></span>
         </a>
     </li>
 <?php }
@@ -93,10 +97,10 @@ function printItem($name, $icon, $dropdown = false)
         <a class="navbar-brand flex-lg-grow-1 normalize" href="#">TasteBuds</a>
 
         <!-- Togglers -->
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSearch" data-parent="#navbarContainer" aria-controls="navbarSearch" aria-expanded="false" aria-label="Toggle searchbox">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSearch" data-bs-parent="#navbarContainer" aria-controls="navbarSearch" aria-expanded="false" aria-label="Toggle searchbox">
             <i class="fas fa-search"></i>
         </button>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" data-parent="#navbarContainer" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" data-bs-parent="#navbarContainer" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
             <i class="fas fa-bars"></i>
         </button>
 
