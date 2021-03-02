@@ -21,7 +21,7 @@ $component = isset($_GET['c']) ? $_GET['c'] : null;
   <?php
   if (is_null($component)) {?>
     <p style='color: red; margin: 2rem'>You didn't give me a component to render! Choose one:</p>
-    <form>
+    <form style='margin: 2rem'>
     <select name="c" id="c">
       <?
     $files = scandir("components");
