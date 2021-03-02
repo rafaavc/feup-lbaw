@@ -54,13 +54,13 @@
                 
                 <div class="carousel-inner">
                     <div class="carousel-item active" data-bs-interval="2500">
-                        <img src="images/image1.png" class="d-block w-100" alt="...">
+                        <img src="images/image10.png" class="d-block w-100" alt="...">
                     </div>
                     <div class="carousel-item" data-bs-interval="2500">
-                        <img src="images/image5.png" class="d-block w-100" alt="...">
+                        <img src="images/image11.png" class="d-block w-100" alt="...">
                     </div>
                     <div class="carousel-item" data-bs-interval="2500">
-                        <img src="images/image4.png" class="d-block w-100" alt="...">
+                        <img src="images/image12.png" class="d-block w-100" alt="...">
                     </div>
                 </div>
             </div>
@@ -70,23 +70,23 @@
                 <div class="row mt-5">
                     <div class="col-6">
                         <div class="d-flex flex-column bd-highlight align-items-end content-align">
-                            <h3>Find awesome new recipes</h3>
+                            <h2><strong>Find awesome new recipes</strong></h2>
                             <div class="bd-highlight">Impress your peers with your</div>
                             <div class="bd-highlight">awesome new dishes!</div>
                         </div>
                     </div>
-                    <div class="col-6">
-                        <img src="images/image3.png" class="d-block w-100" alt="..." style="height: 250px;">
+                    <div class="col-lg-6">
+                        <img src="images/findRecipes.jpg" class="d-block ms-5 w-75 h-100" alt="...">
                     </div>
                 </div>
                 <hr class="mt-5">
                 <div class="row mt-5">
-                    <div class="col-6 ">
-                        <img src="images/image3.png" class="d-block w-100" alt="..." style="height: 250px;">
+                    <div class="col-lg-6">
+                        <img src="images/shareRecipes.jpg" class="float-end w-75 h-100" alt="...">
                     </div>
                     <div class="col-6">
                         <div class="d-flex flex-column bd-highlight content-align">
-                            <h3>Share your recipes</h3>
+                            <h2><strong>Share your recipes</strong></h2>
                             <div class="bd-highlight">Share your favourite</div>
                             <div class="bd-highlight">recipes with the world!</div>
                         </div>
@@ -94,14 +94,14 @@
                 </div>
             </div>
             <div class="row mt-5 text-center">
-                <h3>Find New Friends</h3>
+                <h1><strong>Find New Friends<strong></h3>
                 <p>Connect with new people!</p>
             </div>
             <div class="row cards-homepage">
                 <div class="card-group text-center">
                     <div class="col mx-3">
                         <div class="card h-100">
-                            <img src="images/image1.png" class="card-img-top" alt="...">
+                            <img src="images/follow.jpg" class="card-img-top" alt="...">
                             <div class="card-body">
                                 <h5 class="card-title">Follow</h5>
                                 <p class="card-text">Follow people to get updates about them and the new recipes they publish!</p>
@@ -110,7 +110,7 @@
                     </div>
                     <div class="col mx-3">
                         <div class="card h-100">
-                            <img src="images/image1.png" class="card-img-top" alt="...">
+                            <img src="images/chat.jpg" class="card-img-top" alt="...">
                             <div class="card-body">
                                 <h5 class="card-title">Chat</h5>
                                 <p class="card-text">Need more information? Want to know the person behind the recipe? Send them a message!</p>
@@ -119,7 +119,7 @@
                     </div>
                     <div class="col mx-3">
                         <div class="card h-100">
-                            <img src="images/image1.png" class="card-img-top" alt="...">
+                            <img src="images/group.jpg" class="card-img-top" alt="...">
                             <div class="card-body">
                                 <h5 class="card-title">Group</h5>
                                 <p class="card-text">Create or join private or public groups!</p>
