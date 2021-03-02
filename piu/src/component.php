@@ -21,7 +21,7 @@
   <body>
     <?php
       if (is_null($component)) echo "<p style='color: red; margin: 2rem'>You didn't give me a component to render! (GET parameter: c)</p>";
-      else include "components/$component.html";
+      else include "components/$component.php";
     ?>
   </body>
 </html>
