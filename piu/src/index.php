@@ -13,6 +13,7 @@
     <link href="https://use.fontawesome.com/releases/v5.0.4/css/all.css" rel="stylesheet">
     
     <link href="styles.css" rel="stylesheet">
+    <link href="components/footer.css" rel="stylesheet">
     <title>Homepage</title>
 </head>
 <body>
@@ -139,6 +140,6 @@
                 </div>
         </section>
     </main>
-    <?php include_once "components/footer.html"; ?>
+    <?php include_once "components/footer.php"; ?>
 </body>
 </html>
