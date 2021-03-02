@@ -5,3 +5,7 @@ body {
 .navbar .collapse .normalize {
     flex: 1 1 0px;
 }
+
+.navbar .nav-search input {
+    width: 20em;
+}
