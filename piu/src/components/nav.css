@@ -6,13 +6,13 @@ body {
     .navbar .normalize {
         flex-basis: 0px;
     }
+
+    .navbar li .legend {
+        font-size: 0.7em;
+        margin-left: 0.1em;
+    }
 }
 
 .dropdown-toggle::after {
     display: none;
-}
-
-.navbar li .legend {
-    font-size: 0.7em;
-    margin-left: 0.1em;
 }
