@@ -1,7 +1,6 @@
 <?php
 
 // TODO:
-// add hrefs in list
 // add popover to notifications and messages
 
 $menu = "member";
@@ -31,11 +30,13 @@ $dropdown = [
 $member = [
     "notifications" => [
         "icon" => "bell",
-        "popover" => "test"
+        "popover" => "test",
+        "content" => "This is the content of the first popover"
     ],
     "messages" => [
         "icon" => "comments",
-        "popover" => "test2"
+        "popover" => "test2",
+        "content" => "This is the content of the second popover"
     ],
     "john doe" => [
         "icon" => "user-circle",
@@ -65,7 +66,7 @@ function printMenu()
     foreach ($$menu as $name => $attributes) {
         $name = ucwords($name);
         if (key_exists("popover", $attributes)) {
-            printPopover($name, $attributes["icon"], $attributes["popover"]);
+            printPopover($name, $attributes["icon"], $attributes["popover"], $attributes["content"]);
         } elseif (key_exists("drop", $attributes)) {
             printDropdown($name, $attributes["icon"], $attributes["drop"]);
         } else {
