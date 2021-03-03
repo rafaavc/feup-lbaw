@@ -3,7 +3,6 @@
 // TODO:
 // add hrefs in list
 // add popover to notifications and messages
-// solve data-bs-parent problem
 
 $menu = "member";
 
@@ -105,14 +104,14 @@ function printItem($name, $icon, $dropdown = false)
         </button>
 
         <!-- Search box -->
-        <div class="collapse navbar-collapse justify-content-center flex-grow-1 normalize" id="navbarSearch">
+        <div class="collapse navbar-collapse justify-content-center flex-grow-1 normalize" id="navbarSearch" data-bs-parent="#navbarContainer">
             <form>
                 <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
             </form>
         </div>
 
         <!-- Right buttons -->
-        <div class="collapse navbar-collapse justify-content-end flex-grow-1 normalize" id="navbarText">
+        <div class="collapse navbar-collapse justify-content-end flex-grow-1 normalize" id="navbarText" data-bs-parent="#navbarContainer">
             <ul class="navbar-nav mb-2 mb-lg-0">
                 <?php printMenu() ?>
             </ul>
