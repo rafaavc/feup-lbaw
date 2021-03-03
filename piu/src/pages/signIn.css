@@ -2,16 +2,26 @@ html, body, .container, .row.mt-5 {
     height: 98%;
 }
 
+.welcome-msg {
+    color: black;
+    margin: auto;
+    background-color: white;
+    padding: 2em;
+    border-radius: 1em;
+}
+
 div.signIn-img {
     background-image: url("../images/signIn.jpg");
     background-size: cover;
+    background-repeat: no-repeat;
     position: relative;
+    border-radius: 2em;
 }
 
-button.home {
+div.signIn-left-text {
     width: 15em;
     position: absolute;
-    top: 60%;
+    top: 35%;
     left: 50%;
     transform: translate(-50%, -50%);
 }
@@ -49,7 +59,16 @@ div.signIn-form {
     margin-left: .75em;
 }
 
-  
 .g-signin2 > div{
     margin: 1em auto;
+}
+
+@media (max-width: 1199.98px) {
+    div.signIn-img {
+        height: 50%;
+    }
+
+    div.signIn-form {
+        padding: 0em 2em;  
+    }
 }
