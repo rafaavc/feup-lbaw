@@ -1,0 +1,55 @@
+html, body, .container, .row.mt-5 {
+    height: 98%;
+}
+
+div.signIn-img {
+    background-image: url("../images/signIn.jpg");
+    background-size: cover;
+    position: relative;
+}
+
+button.home {
+    width: 15em;
+    position: absolute;
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+div.signIn-form {
+    padding-top: 10em;
+    padding-left: 5em;
+}
+
+.signUp-a {
+    text-decoration: none;
+}
+
+/* hr */
+
+.separator {
+    color: gray;
+    display: flex;
+    align-items: center;
+    text-align: center;
+}
+
+.separator::before,
+.separator::after {
+    content: '';
+    flex: 1;
+    border-bottom: 1px solid gray;
+}
+
+.separator:not(:empty)::before {
+    margin-right: .75em;
+}
+
+.separator:not(:empty)::after {
+    margin-left: .75em;
+}
+
+  
+.g-signin2 > div{
+    margin: 1em auto;
+}
