@@ -68,7 +68,7 @@
         <section>
             <div class="container">
                 <div class="row mt-5">
-                    <div class="col-6">
+                    <div class="col-lg-6">
                         <div class="d-flex flex-column bd-highlight align-items-end content-align">
                             <h2><strong>Find awesome new recipes</strong></h2>
                             <div class="bd-highlight">Impress your peers with your</div>
@@ -84,7 +84,7 @@
                     <div class="col-lg-6">
                         <img src="images/shareRecipes.jpg" class="float-end w-75 h-100" alt="...">
                     </div>
-                    <div class="col-6">
+                    <div class="col-lg-6">
                         <div class="d-flex flex-column bd-highlight content-align">
                             <h2><strong>Share your recipes</strong></h2>
                             <div class="bd-highlight">Share your favourite</div>
@@ -99,7 +99,7 @@
             </div>
             <div class="row cards-homepage">
                 <div class="card-group text-center">
-                    <div class="col mx-3">
+                    <div class="col my-3 mx-3">
                         <div class="card h-100">
                             <img src="images/follow.jpg" class="card-img-top" alt="...">
                             <div class="card-body">
@@ -108,7 +108,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col mx-3">
+                    <div class="col my-3 mx-3">
                         <div class="card h-100">
                             <img src="images/chat.jpg" class="card-img-top" alt="...">
                             <div class="card-body">
@@ -117,7 +117,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col mx-3">
+                    <div class="col my-3 mx-3">
                         <div class="card h-100">
                             <img src="images/group.jpg" class="card-img-top" alt="...">
                             <div class="card-body">
@@ -129,13 +129,13 @@
                 </div>
             </div>
             <div class="row mt-5 content-red">
-                <div class="col-6">
+                <div class="col-lg-6">
                     <div class="d-flex flex-column bd-highlight align-items-end p-4">
                             <strong class="fs-1">Sign Up</strong>
                             <div class="bd-highlight fs-4">Start connecting now</div>   
                     </div>
                 </div>
-                <div class="col-6 content-align p-5">
+                <div class="col-lg-6 content-align p-5">
                     <button type="button" class="btn btn-dark btn-dark-large">Let's do it!</button>     
                 </div>
         </section>
