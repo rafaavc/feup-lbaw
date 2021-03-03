@@ -1,0 +1,22 @@
+.fa-icon-right {
+    line-height: 2.375rem;
+    position: relative;
+    right: 2.375rem;
+    pointer-events: none;
+}
+
+.fa-icon-left {
+    line-height: 2.375rem;
+    position: relative;
+    left: 0.75rem;
+    pointer-events: none;
+}
+
+.icon-right {
+    padding-right: 2.375rem;
+}
+
+.icon-left {
+    padding-left: 2.375rem;
+    margin-left: -1rem;
+}
