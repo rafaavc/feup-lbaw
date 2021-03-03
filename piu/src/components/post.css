@@ -1,0 +1,32 @@
+.recipe-post {
+    margin: 2em;
+    padding: 2em;
+    max-width: 65em;
+    border: 5px solid grey;
+}
+
+.name-and-date {
+    margin-bottom: 1em;
+    padding: 1em;
+    /* background-color: red; */
+}
+
+.name-and-date img {
+    width: 7em;
+}
+
+
+
+.card-text {
+    height: 170px;
+}
+
+.text-muted {
+    margin-top: 2em;
+}
+
+.post-footer {
+    /* background-color: red; */
+    padding: 1em;
+}
+
