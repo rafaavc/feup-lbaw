@@ -69,20 +69,20 @@
             <div class="container">
                 <div class="row mt-5">
                     <div class="col-lg-6">
-                        <div class="d-flex flex-column bd-highlight align-items-end content-align">
+                        <div class="d-flex flex-column bd-highlight align-items-lg-end content-align">
                             <h2><strong>Find awesome new recipes</strong></h2>
                             <div class="bd-highlight">Impress your peers with your</div>
                             <div class="bd-highlight">awesome new dishes!</div>
                         </div>
                     </div>
                     <div class="col-lg-6">
-                        <img src="images/findRecipes.jpg" class="d-block ms-5 w-75 h-100" alt="...">
+                        <img src="images/findRecipes.jpg" class="d-block w-75 h-100" alt="...">
                     </div>
                 </div>
                 <hr class="mt-5">
                 <div class="row mt-5">
                     <div class="col-lg-6">
-                        <img src="images/shareRecipes.jpg" class="float-end w-75 h-100" alt="...">
+                        <img src="images/shareRecipes.jpg" class="d-block float-end w-75 h-100" alt="...">
                     </div>
                     <div class="col-lg-6">
                         <div class="d-flex flex-column bd-highlight content-align">
@@ -110,15 +110,6 @@
                     </div>
                     <div class="col my-3 mx-3">
                         <div class="card h-100">
-                            <img src="images/chat.jpg" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title">Chat</h5>
-                                <p class="card-text">Need more information? Want to know the person behind the recipe? Send them a message!</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col my-3 mx-3">
-                        <div class="card h-100">
                             <img src="images/group.jpg" class="card-img-top" alt="...">
                             <div class="card-body">
                                 <h5 class="card-title">Group</h5>
@@ -126,17 +117,26 @@
                             </div>
                         </div>
                     </div>
+                    <div class="col my-3 mx-3">
+                        <div class="card h-100">
+                            <img src="images/chat.jpg" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title">Chat</h5>
+                                <p class="card-text">Need more information? Want to know the person behind the recipe? Send them a message!</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="row mt-5 content-red">
                 <div class="col-lg-6">
-                    <div class="d-flex flex-column bd-highlight align-items-end p-4">
+                    <div class="d-flex flex-column bd-highlight align-items-lg-end p-4">
                             <strong class="fs-1">Sign Up</strong>
                             <div class="bd-highlight fs-4">Start connecting now</div>   
                     </div>
                 </div>
                 <div class="col-lg-6 content-align p-5">
-                    <button type="button" class="btn btn-dark btn-dark-large">Let's do it!</button>     
+                    <button type="button" class="btn btn-dark btn-dark-large d-block">Let's do it!</button>     
                 </div>
         </section>
     </main>
