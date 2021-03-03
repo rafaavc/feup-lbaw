@@ -123,9 +123,11 @@ function printPopover($name, $icon, $content)
         <!-- Togglers -->
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSearch" data-bs-parent="#navbarContainer" aria-controls="navbarSearch" aria-expanded="false" aria-label="Toggle searchbox">
             <i class="fas fa-search"></i>
+            <span class="legend">Search</span>
         </button>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" data-bs-parent="#navbarContainer" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
             <i class="fas fa-bars"></i>
+            <span class="legend">Menu</span>
         </button>
 
         <!-- Search box -->
