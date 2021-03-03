@@ -14,10 +14,14 @@
     
     <link href="styles.css" rel="stylesheet">
     <link href="components/footer.css" rel="stylesheet">
+    <link href="components/nav.css" rel="stylesheet">
     <title>Homepage</title>
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <?php
+        include_once "components/nav.php";
+    ?>
+    <!-- <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">
                 <img class="img-nav-logo" src="images/tastebuds.png">
@@ -42,7 +46,7 @@
                 </ul>
             </div>
         </div>
-    </nav>
+    </nav> -->
     <main>
         <section>
             <div id="carouselExampleDark" class="carousel carousel-dark slide carousel-fade"  data-bs-ride="carousel">
