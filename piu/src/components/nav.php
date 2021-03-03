@@ -7,37 +7,54 @@
 $menu = "member";
 
 $visitor = [
-    "sign in" => "sign-in-alt",
-    "sign up" => "user-plus",
+    "sign in" => [
+        "icon" => "sign-in-alt",
+        "href" => "signin"
+    ],
+    "sign up" => [
+        "icon" => "user-plus",
+        "href" => "signup"
+    ]
+];
+
+$dropdown = [
+    "my profile" => [
+        "icon" => "address-card",
+        "href" => "profile"
+    ],
+    "sign out" => [
+        "icon" => "sign-out-alt",
+        "href" => "signout"
+    ]
 ];
 
 $member = [
     "notifications" => [
-        "bell",
+        "icon" => "bell",
         "popover" => "test"
     ],
     "messages" => [
-        "comments",
+        "icon" => "comments",
         "popover" => "test2"
     ],
     "john doe" => [
-        "user-circle",
-        [
-            "my profile" => "address-card",
-            "sign out" => "sign-out-alt"
-        ]
+        "icon" => "user-circle",
+        "drop" => $dropdown
     ]
 ];
 
 $admin = [
-    "reports" => "exclamation-triangle",
-    "users" => "users",
+    "reports" => [
+        "icon" => "exclamation-triangle",
+        "href" => "reports"
+    ],
+    "users" => [
+        "icon" => "users",
+        "href" => "users"
+    ],
     "john doe" => [
-        "user-circle",
-        [
-            "my profile" => "address-card",
-            "sign out" => "sign-out-alt"
-        ]
+        "icon" => "user-circle",
+        "drop" => $dropdown
     ]
 ];
 
@@ -45,45 +62,54 @@ function printMenu()
 {
     global $menu;
     global $$menu;
-    foreach ($$menu as $name => $icon) {
+    foreach ($$menu as $name => $attributes) {
         $name = ucwords($name);
-        if (is_array($icon))
-            key_exists("popover", $icon) ? printPopover($name, $icon[0], $icon["popover"]) : printDropdown($name, $icon[0], $icon[1]);
-        else
-            printItem($name, $icon);
+        if (key_exists("popover", $attributes)) {
+            printPopover($name, $attributes["icon"], $attributes["popover"]);
+        } elseif (key_exists("drop", $attributes)) {
+            printDropdown($name, $attributes["icon"], $attributes["drop"]);
+        } else {
+            printItem($name, $attributes["icon"], $attributes["href"]);
+        }
     }
 }
 
-function printPopover($name, $icon, $content)
+function printIconText($icon, $text, $caret = false)
 { ?>
-    <li class="nav-item">
-        <a class="nav-link" href="#">
-            <i class="fas fa-<?= $icon ?> d-none d-lg-inline"></i>
-            <span class="legend"><?= $name ?></span>
-        </a>
-    </li>
-<?php }
+    <i class="fas fa-<?= $icon ?> d-none d-lg-inline"></i>
+    <span class="legend"><?= $text ?></span>
+    <?php
+    if ($caret) { ?>
+        <i class="fas fa-caret-down"></i>
+    <?php }
+}
 
 function printDropdown($name, $icon, $submenu)
 { ?>
     <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            <i class="fas fa-<?= $icon ?> d-none d-lg-inline"></i>
-            <span class="legend"><?= $name ?></span>
-            <i class="fas fa-caret-down"></i>
+            <?php printIconText($icon, $name, true) ?>
         </a>
         <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-            <?php foreach ($submenu as $name => $icon) printItem(ucwords($name), $icon, true) ?>
+            <?php foreach ($submenu as $name => $attributes) printItem(ucwords($name), $attributes["icon"], $attributes["href"], true) ?>
         </ul>
     </li>
 <?php }
 
-function printItem($name, $icon, $dropdown = false)
+function printItem($name, $icon, $link, $dropdown = false)
 { ?>
     <li class="<?= $dropdown ? "" : "nav-item" ?>">
-        <a class="<?= $dropdown ? "dropdown-item" : "nav-link" ?>" href="#">
-            <i class="fas fa-<?= $icon ?> d-none d-lg-inline"></i>
-            <span class="legend"><?= $name ?></span>
+        <a class="<?= $dropdown ? "dropdown-item" : "nav-link" ?>" href="<?= $link ?>">
+            <?php printIconText($icon, $name) ?>
+        </a>
+    </li>
+<?php }
+
+function printPopover($name, $icon, $content)
+{ ?>
+    <li class="nav-item">
+        <a class="nav-link" href="#">
+            <?php printIconText($icon, $name) ?>
         </a>
     </li>
 <?php }
