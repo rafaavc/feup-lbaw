@@ -47,7 +47,7 @@
             </div>
         </div>
     </nav> -->
-    <main>
+    <main class="mt-5">
         <section>
             <div id="carouselExampleDark" class="carousel carousel-dark slide carousel-fade"  data-bs-ride="carousel">
                 <div class="carousel-indicators">
