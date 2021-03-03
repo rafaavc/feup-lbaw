@@ -1,6 +1,6 @@
 .recipe-post {
     margin: 2em;
-    padding: 2em;
+    padding: 1em;
     max-width: 65em;
     border: 5px solid grey;
 }
@@ -15,7 +15,13 @@
     width: 7em;
 }
 
+.avatar-image {
+    max-width: 8.5em;
+}
 
+.publication-date {
+    color: #6c757d!important;
+}
 
 .card-text {
     height: 170px;
