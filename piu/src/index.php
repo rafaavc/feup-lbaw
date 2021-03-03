@@ -99,7 +99,7 @@
             </div>
             <div class="row cards-homepage">
                 <div class="card-group text-center">
-                    <div class="col my-3 mx-3">
+                    <div class="col-md my-3 mx-3">
                         <div class="card h-100">
                             <img src="images/follow.jpg" class="card-img-top" alt="...">
                             <div class="card-body">
@@ -108,7 +108,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col my-3 mx-3">
+                    <div class="col-md my-3 mx-3">
                         <div class="card h-100">
                             <img src="images/group.jpg" class="card-img-top" alt="...">
                             <div class="card-body">
@@ -117,7 +117,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col my-3 mx-3">
+                    <div class="col-md my-3 mx-3">
                         <div class="card h-100">
                             <img src="images/chat.jpg" class="card-img-top" alt="...">
                             <div class="card-body">
