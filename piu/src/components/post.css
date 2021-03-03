@@ -8,7 +8,6 @@
 .name-and-date {
     margin-bottom: 1em;
     padding: 1em;
-    /* background-color: red; */
 }
 
 .name-and-date img {
@@ -23,8 +22,13 @@
     color: #6c757d!important;
 }
 
-.card-text {
+.post-description {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
     height: 170px;
+    -webkit-line-clamp: 7; /* number of lines to show */
+    -webkit-box-orient: vertical;
 }
 
 .text-muted {
@@ -32,7 +36,10 @@
 }
 
 .post-footer {
-    /* background-color: red; */
-    padding: 1em;
+    /* background-color: rgb(181, 255, 112); */
 }
 
+.post-button {
+    width: 15.5em;
+    border: 1px solid #6c757d!important;
+}
