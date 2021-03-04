@@ -8,7 +8,15 @@
 .user-info {
     margin-bottom: 0em;
     padding: 1em;
-    width: 25em;
+    width: 50em;
+}
+
+.username {
+    width: 6.2em;
+}
+
+.action {
+    width: 7em;
 }
 
 .user-info img {
@@ -76,4 +84,8 @@
     .button-caption {
         display: none;
     }
+}
+
+.rating {
+    font-size: 1.2em;
 }
