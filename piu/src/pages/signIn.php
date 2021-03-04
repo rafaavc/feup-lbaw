@@ -16,47 +16,53 @@
     <!-- Font Awesome -->
     <link href="https://use.fontawesome.com/releases/v5.0.4/css/all.css" rel="stylesheet">
     
+    <!-- Scripts -->
+    <script src="../scripts/signIn.js" defer></script>
+
     <link href="signIn.css" rel="stylesheet">
     <link href="../components/inputIcon.css" rel="stylesheet">
     <link href="../components/footer.css" rel="stylesheet">
     <link href="../components/nav.css" rel="stylesheet">
     <title>Sign In</title>
+
 </head>
 <body>
     <?php include_once "../components/nav.php"; ?>
-    <div class="container py-5 h-100">
-        <div class="row mt-3">
-            <div class="col-xl-6 signIn-img">
-                <div class="d-grid gap-2 col-6 mx-auto mt-5 signIn-left-text w-100 text-center">
-                    <div class="welcome-msg">
-                        <h1><strong>Welcome Back,</strong></h1>
-                        <h3>Sign in to continue</h3>
-                        <button type="button" class="btn btn-dark w-100 mx-auto mt-4">Go Home</button>     
+    <main>
+        <div class="container py-5">
+            <div class="row mt-3">
+                <div class="col-xl-6 signIn-img">
+                    <div class="d-grid gap-2 col-6 mx-auto mt-5 signIn-left-text w-100 text-center">
+                        <div class="welcome-msg">
+                            <h1><strong>Welcome Back,</strong></h1>
+                            <h3>Sign in to continue</h3>
+                            <button type="button" class="btn btn-dark w-100 mx-auto mt-4">Go Home</button>     
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-xl-6 signIn-form mt-5">
-                <h1>Sign In</h1>
-                <h3>Please enter your account details.</h3>
-                
-                <?php
-                    include_once "../components/inputIcon.php";
-                    echo "<span class='d-block mt-4'>Email Address</span>";
-                    inputIconLeft('envelope'); 
-                    echo "<span class='d-block mt-4'>Password</span>";
-                    inputIconLeft('lock'); 
-                ?>
+                <div class="col-xl-6 signIn-form mt-5">
+                    <h1>Sign In</h1>
+                    <h3>Please enter your account details.</h3>
+                    
+                    <?php
+                        include_once "../components/inputIcon.php";
+                        echo "<span class='d-block mt-4'>Email Address</span>";
+                        inputIconLeft('envelope'); 
+                        echo "<span class='d-block mt-4'>Password</span>";
+                        inputIconLeft('lock'); 
+                    ?>
 
-                <div class="d-grid gap-2 col-6 mx-auto">
-                    <button type="button" class="btn btn-dark d-block">Sign In</button>     
+                    <div class="d-grid gap-2 col-6 mx-auto">
+                        <button type="button" class="btn btn-dark d-block">Sign In</button>     
+                    </div>
+                    <span class="d-block text-center mt-3">Don't have an account? &nbsp;<a href="#" class="signUp-a">Sign Up</a></span>
+                    <div class="separator mt-3">or</div>
+                    
+                    <div class="g-signin2" data-width="200"></div>  
                 </div>
-                <span class="d-block text-center mt-3">Don't have an account? &nbsp;<a href="#" class="signUp-a">Sign Up</a></span>
-                <div class="separator mt-3">or</div>
-                
-                <div class="g-signin2" data-width="200"></div>  
             </div>
         </div>
-    </div>
+    </main>
     <?php include_once "../components/footer.php"; ?>              
 
 </body>

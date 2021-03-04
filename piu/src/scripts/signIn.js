@@ -1,0 +1,1 @@
+document.querySelector('main').style.minHeight = screen.height + "px";
