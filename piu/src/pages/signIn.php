@@ -18,10 +18,11 @@
     
     <link href="signIn.css" rel="stylesheet">
     <link href="../components/inputIcon.css" rel="stylesheet">
+    <link href="../components/footer.css" rel="stylesheet">
     <title>Sign In</title>
 </head>
 <body>
-    <div class="container">
+    <div class="container mb-2">
         <div class="row mt-5">
             <div class="col-xl-6 signIn-img">
                 <div class="d-grid gap-2 col-6 mx-auto mt-5 signIn-left-text w-100 text-center">
@@ -55,4 +56,5 @@
             </div>
         </div>
     </div>
+    <?php include_once "../components/footer.php"; ?>
 </body>
