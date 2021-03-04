@@ -6,8 +6,13 @@
     margin-right: 0.5em;
 }
 
+h2 {
+    padding: 1rem;
+}
+
 .instruction h3 {
     font-size: 1.5em;
+    margin-bottom: 0;
 }
 
 .instruction h3 i {
@@ -17,4 +22,8 @@
 
 .instruction h3.collapsed {
     color: green;
+}
+
+.instruction .card {
+    border: 0;
 }
