@@ -30,3 +30,7 @@
     border: none;
     opacity: 1;
 }
+
+#create-recipe-stepper button[active] {
+    transform: scale(1.2);
+}

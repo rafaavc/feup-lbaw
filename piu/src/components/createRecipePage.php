@@ -6,7 +6,7 @@
             </div>
             <ul class="nav nav-pills" id="pills-tab" role="tablist">
                 <li class="nav-item position-absolute top-0 start-0 translate-middle" role="presentation">
-                    <button active class="btn btn-primary active rounded-pill" onClick="this.parentNode.parentNode.previousElementSibling.firstElementChild.style.width = '0%'" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true">1</button>
+                    <button active class="btn btn-primary active rounded-pill" onClick="this.parentNode.parentNode.previousElementSibling.firstElementChild.style.width = '0%'; this.active = true;" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true">1</button>
                 </li>
                 <li class="nav-item position-absolute top-0 start-50 translate-middle" role="presentation">
                     <button class="btn btn-primary rounded-pill" onClick="this.parentNode.parentNode.previousElementSibling.firstElementChild.style.width = '50%'" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false">2</button>
@@ -53,7 +53,7 @@
                     <textarea class="form-control" placeholder="Your awesome description here..." id="floatingTextarea2" style="height: 5rem"></textarea>
                     <label for="floatingTextarea2">Description</label>
                 </div>
-                <div class="row g-3">
+                <div class="row g-3 mb-3">
                     <div class="col-lg">
                         <div class="form-floating">
                             <input type="text" class="form-control" id="floatingInput" placeholder="Baked Potatoes">
@@ -79,13 +79,31 @@
                     </div>
 
                 </div>
+                <button type="button" class="btn btn-primary" style="float: right;">Next</button>
             </div>
             <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
-                Content 2
+                <h3 class="mb-4">Ingredients</h3>
+
+                <?php include(__DIR__.'/createRecipeIngredientRow.html'); ?>
+
+                <button type="button" class="btn btn-secondary" id="addIngredientButton"><i class="fas fa-plus"></i> Add Ingredient</button>
+                <button type="button" class="btn btn-primary" style="float: right;">Next</button>
             </div>
             <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
-                Content 3
+                <h3 class="mb-3">Method</h3>
             </div>
         </div>
     </div>
 </div>
+
+<script>
+    const addIngredientButton = document.querySelector('#addIngredientButton');
+    addIngredientButton.addEventListener('click', () => {
+        const elem = document.createElement('div');
+        elem.classList.add('row', 'g-3', 'mb-3');
+        elem.innerHTML = `<?php include(__DIR__.'/createRecipeIngredientRow.html'); ?>`;
+        addIngredientButton.parentNode.insertBefore(elem, addIngredientButton);
+    })
+</script>
+
+
