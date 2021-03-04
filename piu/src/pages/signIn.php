@@ -19,11 +19,13 @@
     <link href="signIn.css" rel="stylesheet">
     <link href="../components/inputIcon.css" rel="stylesheet">
     <link href="../components/footer.css" rel="stylesheet">
+    <link href="../components/nav.css" rel="stylesheet">
     <title>Sign In</title>
 </head>
 <body>
-    <div class="container mb-2">
-        <div class="row mt-5">
+    <?php include_once "../components/nav.php"; ?>
+    <div class="container py-5 h-100">
+        <div class="row mt-3">
             <div class="col-xl-6 signIn-img">
                 <div class="d-grid gap-2 col-6 mx-auto mt-5 signIn-left-text w-100 text-center">
                     <div class="welcome-msg">
@@ -33,7 +35,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-xl-6 signIn-form mt-3">
+            <div class="col-xl-6 signIn-form mt-5">
                 <h1>Sign In</h1>
                 <h3>Please enter your account details.</h3>
                 
@@ -51,10 +53,11 @@
                 <span class="d-block text-center mt-3">Don't have an account? &nbsp;<a href="#" class="signUp-a">Sign Up</a></span>
                 <div class="separator mt-3">or</div>
                 
-                <div class="g-signin2" data-width="200"></div>                
-
+                <div class="g-signin2" data-width="200"></div>  
             </div>
         </div>
     </div>
-    <?php include_once "../components/footer.php"; ?>
+    <?php include_once "../components/footer.php"; ?>              
+
 </body>
+</html>

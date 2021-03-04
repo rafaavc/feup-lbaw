@@ -1,9 +1,5 @@
 @import url('inputIcon.css');
 
-body {
-    height: 2000px;
-}
-
 @media (min-width: 992px) {
     .navbar .normalize {
         flex-basis: 0px;
