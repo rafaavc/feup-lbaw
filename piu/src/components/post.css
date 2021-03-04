@@ -89,3 +89,9 @@
 .rating {
     font-size: 1.2em;
 }
+
+.recipe-post-inner-in-review {
+    margin-left: 10%;
+    margin-right: 10%;
+    margin-bottom: 2.5em;
+}
