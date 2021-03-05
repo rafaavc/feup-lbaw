@@ -23,12 +23,96 @@
                 </span>
             </div>
         </div>
-        <div class="card shadow p-2 w-auto h-auto search-area searched-recipes mx-5 p-4 my-4">
+        <div class="card shadow p-2 w-auto h-auto search-area searched-recipes mx-5 p-4 my-5">
             <h3 class="section-title">Recipes</h3>
             <div class="row d-flex justify-content-around items mx-0">
                 <?php for ($i = 0; $i < 6; $i++) { ?>
                     <div class="col-lg-1 col-md-6 mx-4 my-4 w-auto">
                         <?php getRecipeCard(); ?>
+                    </div>
+                <?php }
+                ?>
+            </div>
+            <nav aria-label="Page navigation">
+                <ul class="pagination justify-content-center mt-4">
+                    <li class="page-item disabled">
+                        <a class="page-link" href="#" aria-label="Previous">
+                            <span aria-hidden="true">&laquo;</span>
+                            <span class="sr-only">Previous</span>
+                        </a>
+                    </li>
+                    <li class="page-item"><a class="page-link" href="#">Page 1 of 12</a></li>
+                    <li class="page-item">
+                        <a class="page-link" href="#" aria-label="Next">
+                            <span aria-hidden="true">&raquo;</span>
+                            <span class="sr-only">Next</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+        <div class="card shadow p-2 w-auto h-auto search-area searched-recipes mx-5 p-4 my-5">
+            <h3 class="section-title">Groups</h3>
+            <div class="row d-flex justify-content-around items mx-0">
+                <?php for ($i = 0; $i < 6; $i++) { ?>
+                    <div class="col-lg-1 col-md-6 mx-4 my-4 w-auto">
+                        <?php getGroupCard(); ?>
+                    </div>
+                <?php }
+                ?>
+            </div>
+            <nav aria-label="Page navigation">
+                <ul class="pagination justify-content-center mt-4">
+                    <li class="page-item disabled">
+                        <a class="page-link" href="#" aria-label="Previous">
+                            <span aria-hidden="true">&laquo;</span>
+                            <span class="sr-only">Previous</span>
+                        </a>
+                    </li>
+                    <li class="page-item"><a class="page-link" href="#">Page 1 of 12</a></li>
+                    <li class="page-item">
+                        <a class="page-link" href="#" aria-label="Next">
+                            <span aria-hidden="true">&raquo;</span>
+                            <span class="sr-only">Next</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+        <div class="card shadow p-2 w-auto h-auto search-area searched-recipes mx-5 p-4 my-5">
+            <h3 class="section-title">People</h3>
+            <div class="row d-flex justify-content-around items mx-0">
+                <?php for ($i = 0; $i < 6; $i++) { ?>
+                    <div class="col-lg-1 col-md-6 mx-4 my-4 w-auto">
+                        <?php getUserCard(); ?>
+                    </div>
+                <?php }
+                ?>
+            </div>
+            <nav aria-label="Page navigation">
+                <ul class="pagination justify-content-center mt-4">
+                    <li class="page-item disabled">
+                        <a class="page-link" href="#" aria-label="Previous">
+                            <span aria-hidden="true">&laquo;</span>
+                            <span class="sr-only">Previous</span>
+                        </a>
+                    </li>
+                    <li class="page-item"><a class="page-link" href="#">Page 1 of 12</a></li>
+                    <li class="page-item">
+                        <a class="page-link" href="#" aria-label="Next">
+                            <span aria-hidden="true">&raquo;</span>
+                            <span class="sr-only">Next</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+        <div class="card shadow p-2 w-auto h-auto search-area searched-recipes mx-5 p-4 my-5">
+            <h3 class="section-title">Categories</h3>
+            <div class="row d-flex justify-content-around items mx-0">
+                <?php for ($i = 0; $i < 6; $i++) { ?>
+                    <div class="col-lg-1 col-md-6 mx-4 my-4 w-auto">
+                        <?php getCategoryCard(); ?>
                     </div>
                 <?php }
                 ?>
