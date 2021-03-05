@@ -39,7 +39,6 @@ body {
 }
 
 .new-notification-indicator {
-    background-color: var(--bs-blue);
     border-radius: 50%;
     position: absolute;
     right: 0.5rem;

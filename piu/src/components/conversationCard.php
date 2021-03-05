@@ -8,7 +8,7 @@
             <p><?=$new ? '<strong>' : ''?><?=$name?><?=$new ? '</strong>' : ''?></p>
             <p><small><?=$content?></small></p>
             <?php if($new) { ?>
-                <div class="new-notification-indicator"></div>
+                <div class="new-notification-indicator bg-primary"></div>
             <?php } ?>
         </div>
     </div>

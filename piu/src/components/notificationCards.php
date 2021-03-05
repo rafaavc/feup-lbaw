@@ -31,7 +31,7 @@
         <div class="col-9">
             <p><?=$new ? '<strong>' : ''?><?=$name?> reviewed your recipe.<?=$new ? '</strong>' : ''?></p>
             <?php if($new) { ?>
-                <div class="new-notification-indicator"></div>
+                <div class="new-notification-indicator bg-primary"></div>
             <?php } ?>
         </div>
     </div>
