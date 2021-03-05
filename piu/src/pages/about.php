@@ -28,11 +28,11 @@
         Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
     </div>
     <div class="w-75 mx-auto text-end">
-        <i class="fas fa-plus pe-1"></i><a href="#" class="add-content-img text-decoration-none">Add</a>
-        <i class="fas fa-edit pe-1 ms-2"></i><a href="#" class="edit-content-img text-decoration-none">Edit</a>
+        <i class="fas fa-plus pe-1 d-none add-images"></i><a href="#" class="add-content-img text-decoration-none d-none add-images">Add</a>
+        <i class="fas fa-edit pe-1 ms-2"></i><a href="#" class="edit-content-img text-decoration-none ">Edit</a>
     </div>
 
-    <div class="text-center user-profiles w-75 mx-auto shadow-lg px-3">
+    <div class="text-center user-profiles w-75 mx-auto shadow-lg px-3 d-none admin-images-settings">
         <p class="fs-4 text-start ps-4 pt-4">Our Team</p>
             <div class="row d-flex justify-content-around img-row">
                 <div class="col-lg-2 col-md-6">
@@ -144,7 +144,7 @@
     </div>
 
     <!-- ----- -->
-    <!-- <div class="text-center user-profiles w-75 mx-auto shadow-lg">
+    <div class="text-center user-profiles w-75 mx-auto shadow-lg user-images-settings">
         <p class="fs-4 text-start ps-4 pt-4">Our Team</p>
                 <div class="row d-flex justify-content-around">
                     <div class="col-lg-2 col-md-6">
@@ -181,7 +181,7 @@
                     </div>
                     
                 </div>
-    </div> -->
+    </div>
 
 
     

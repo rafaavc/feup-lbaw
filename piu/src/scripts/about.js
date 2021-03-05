@@ -1,3 +1,5 @@
+// Text Part
+
 let aboutText = document.querySelector('a.edit-content-text');
 aboutText.addEventListener('click', editTextHandler);
 
@@ -30,10 +32,30 @@ function createSubmitBtn() {
     return subBtn;
 }
 
-let removeBoxes = document.querySelectorAll('a.remove-box');
-removeBoxes.forEach((removeBox) => {
-    removeBox.addEventListener('click', removeBoxHandler);
-});
+// Switch views 
+
+let editImages = document.querySelector('a.edit-content-img');
+editImages.addEventListener('click', editImagesHandler);
+
+function editImagesHandler() {
+    console.log(document.querySelector('div.admin-images-settings'));
+    document.querySelector('div.admin-images-settings').classList.remove('d-none');
+    document.querySelector('div.user-images-settings').classList.add('d-none');
+    document.querySelectorAll('.add-images').forEach((elem) => {
+        elem.classList.remove('d-none');
+    });
+}
+
+// Remove Box
+
+removeBoxListeners();
+
+function removeBoxListeners() {
+    let removeBoxes = document.querySelectorAll('a.remove-box');
+        removeBoxes.forEach((removeBox) => {
+        removeBox.addEventListener('click', removeBoxHandler);
+    });
+}
 
 function removeBoxHandler(event) {
     let target = event.target;
@@ -45,31 +67,38 @@ function removeBoxHandler(event) {
 let addImage = document.querySelector('a.add-content-img');
 addImage.addEventListener('click', addImageBoxHandler);
 
-function addImageBoxHandler(event) {
-    console.log('Entered');
+function addImageBoxHandler() {
     let newPerson = document.querySelector("div.col-lg-2").cloneNode(true);
     newPerson.querySelector('input[type="text"]').value = "";
     newPerson.querySelector('img').src="../images/noImage.png";
     let row = document.querySelector('div.img-row');
     row.appendChild(newPerson);
+
+    removeBoxListeners();
+    fileUploadListeners();
+    clearImageListeners();
 }
 
 // File Upload
 
-let fileUploads = document.querySelectorAll('a.file-input');
-fileUploads.forEach((fileUpload) => {
-    fileUpload.addEventListener('click', fileUploadHandler);
-});
+fileUploadListeners();
+
+function fileUploadListeners() {
+    let fileUploads = document.querySelectorAll('a.file-input');
+    fileUploads.forEach((fileUpload) => {
+        fileUpload.addEventListener('click', fileUploadHandler);
+    });
+
+    let fileInputs = document.querySelectorAll("input[name='myfile']");
+    fileInputs.forEach((fileInput) => {
+        fileInput.addEventListener('change', fileInputHandler);
+    })
+}
 
 function fileUploadHandler(event) {
     let target = event.target;
     target.nextElementSibling.click();
 }
-
-let fileInputs = document.querySelectorAll("input[name='myfile']");
-fileInputs.forEach((fileInput) => {
-    fileInput.addEventListener('change', fileInputHandler);
-})
 
 function fileInputHandler(event) {
     let target = event.target;
@@ -82,10 +111,14 @@ function fileInputHandler(event) {
 
 // Clear Image 
 
-let fileDeletes = document.querySelectorAll('a.file-delete');
-fileDeletes.forEach((fileDelete) => {
-    fileDelete.addEventListener('click', fileDeleteHandler);
-});
+clearImageListeners();
+
+function clearImageListeners() {
+    let fileDeletes = document.querySelectorAll('a.file-delete');
+    fileDeletes.forEach((fileDelete) => {
+        fileDelete.addEventListener('click', fileDeleteHandler);
+    });
+}
 
 function fileDeleteHandler(event) {
     let target = event.target;
