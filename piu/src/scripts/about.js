@@ -1,3 +1,4 @@
+document.querySelector('main').style.minHeight = screen.height + "px";
 // Text Part
 
 let aboutText = document.querySelector('a.edit-content-text');
