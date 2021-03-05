@@ -19,8 +19,21 @@
         <div class="card-img-top"></div>
         <div class="card-body">
             <h4 class="card-title">Restaurante O Prego</h4>
-            <p class="text-muted m-0 group-info"><span class="group-info-number">237</span> recipes</p>
-            <p class="text-muted m-0 mt-2 group-info"><span class="group-info-number">57</span>  members</p>
+            <p class="text-muted m-0 group-info"><span class="info-number">237</span> recipes</p>
+            <p class="text-muted m-0 mt-2 group-info"><span class="info-number">57</span>  members</p>
+        </div>
+    </div>
+</div>
+
+<hr>
+
+<!-- Category card -->
+<div class="container">
+    <div class="card">
+        <div class="card-img-top"></div>
+        <div class="card-body">
+            <h4 class="card-title mt-3">Vegetarian</h4>
+            <p class="text-muted m-0 group-info"><span class="info-number">237</span> recipes</p>
         </div>
     </div>
 </div>
