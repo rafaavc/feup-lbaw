@@ -1,0 +1,22 @@
+@import url('inputIcon.css');
+
+@media (min-width: 992px) {
+    .navbar .normalize {
+        flex-basis: 0px;
+    }
+}
+
+.dropdown-toggle::after {
+    display: none;
+}
+
+.navbar .legend {
+    display: inline-block;
+    margin-left: 0.1em;
+    margin-bottom: 0.25em;
+    font-size: 0.8em;
+}
+
+.navbar-light .navbar-toggler {
+    border: 0;
+}
