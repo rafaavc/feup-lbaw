@@ -31,7 +31,7 @@
             <i class="fas fa-edit pe-1"></i><a href="#" class="edit-content-text text-decoration-none">Edit</a>
         </div>
         <div class="shadow p-3 mb-3 bg-body rounded w-75 mx-auto edit-content-text overflow-auto">
-            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+            TasteBuds is a new concept of a social network that enables people to share cooking recipes with the world, gain visibility, and possibly attracting new people to their business or any other ventures. Technology is always evolving to improve and facilitate people's lives. Cooking is one of the things we do every day, and TasteBuds is the best tool to ease the task of remembering all the cooking recipes while helping people diversify and improve their eating habits. Created by four young FEUP entrepreneurs, TasteBuds' main goal is to build a community where people can help each other create even better recipes every day!
         </div>
         <div class="w-75 mx-auto text-end">
             <i class="fas fa-plus pe-1 d-none add-images"></i><a href="#" class="add-content-img text-decoration-none d-none add-images">Add</a>
