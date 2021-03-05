@@ -155,7 +155,7 @@
                 <div class="row d-flex justify-content-around">
                     <div class="col-lg-2 col-md-6">
                         <div class="card border-0">
-                            <img src="../images/signIn.jpg" class="card-img-top rounded-circle" alt="...">
+                            <img src="../images/2dukes.jpeg" class="card-img-top rounded-circle" alt="...">
                             <div class="card-body">
                                 <p class="card-text">Rui Pinto</p>
                             </div>

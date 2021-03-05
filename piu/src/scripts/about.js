@@ -7,9 +7,9 @@ aboutText.addEventListener('click', editTextHandler);
 function editTextHandler(event) {
     aboutText.removeEventListener("click", editTextHandler);
     let textBox = document.querySelector('div.edit-content-text');
-    textBox.firstChild.remove();
     let textArea = createTextBox();
     let subBtn = createSubmitBtn();
+    textBox.firstChild.remove();
     textBox.appendChild(textArea);
     textBox.appendChild(subBtn);
 }
@@ -20,6 +20,7 @@ function createTextBox() {
     let textArea = document.createElement('textarea');
     textArea.className = "form-control";
     textArea.setAttribute('rows', 10);
+    textArea.value = document.querySelector('div.edit-content-text').firstChild.textContent.trim();
     textArea.style.height = "100%";
     div.appendChild(textArea);
     return div;
