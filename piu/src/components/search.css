@@ -1,7 +1,7 @@
-.container {
+.search-page {
     padding: 0em;
     max-width: 100em;
-    border: 5px solid #6c757d!important;
+    /* border: 5px solid #6c757d!important; */
 }
 
 .dropdown-title,
@@ -16,4 +16,24 @@
 .searched-text,
 .number-of-results {
     font-weight: 600;
+}
+
+.search-area {
+    text-align: center;
+    justify-content: center;
+    justify-self: center;
+    justify-items: center;
+}
+
+.section-title {
+    text-align: start;
+}
+
+.items {
+    width: 100%;
+}
+
+.page-link {
+    color: black;
+    font-size: 1.1em;
 }

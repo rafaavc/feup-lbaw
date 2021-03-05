@@ -1,5 +1,5 @@
-
 <?php
+
     // Recipe card
     function getRecipeCard() { ?> 
         <div class="container">
