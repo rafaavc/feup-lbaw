@@ -1,3 +1,61 @@
-#messagesPopupButton {
-    margin: 10rem;
+body {
+    padding: 2rem 5rem;
+}
+
+.nav-popover {
+    margin-right: 1rem;
+}
+
+.popover-body {
+    padding: 0.5rem;
+}
+
+.small-profile-photo {
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 50%;
+    background-image: url('https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fimages.pexels.com%2Fphotos%2F372042%2Fpexels-photo-372042.jpeg%3Fcs%3Dsrgb%26dl%3Dfashion-person-people-372042.jpg%26fm%3Djpg&f=1&nofb=1');
+    background-size: cover;
+    background-position: 50%;
+}
+
+.follow-request-button {
+    border-radius: 50%;
+    width: 2rem;
+    height: 2rem;
+    padding: 0rem;
+}
+
+.follow-request-button:not(:last-of-type) {
+    margin-bottom: 0.5rem;
+}
+
+.notification-card {
+    margin-right: 0.5rem;
+}
+
+.notification-card p {
+    margin-bottom: 0;
+}
+
+.new-notification-indicator {
+    background-color: var(--bs-blue);
+    border-radius: 50%;
+    position: absolute;
+    right: 0.5rem;
+    top: 0.5rem;
+    height: 0.7rem;
+    width: 0.7rem;
+}
+
+.notif-quantity-indicator {
+    background-color: var(--bs-dark);
+    color: var(--bs-light);
+    border-radius: 50%;
+    position: absolute;
+    right: -0.8rem;
+    top: -0.8rem;
+    height: 1.5rem;
+    width: 1.5rem;
+
 }
