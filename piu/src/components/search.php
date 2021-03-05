@@ -7,7 +7,6 @@
         </div>
         <div class="col sort-by">
            <span class="sort-by-text">Sort by</span>
-
            <span class="dropdown ms-2">
                 <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                     <span class="dropdown-title">Relevance</span>
@@ -20,7 +19,6 @@
                     <li><a class="dropdown-item" href="#">Duration</a></li>
                 </ul>
             </span>
-
         </div>
     </div>
 </div>
