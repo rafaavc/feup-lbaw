@@ -21,32 +21,6 @@
     <?php
         include_once "components/nav.php";
     ?>
-    <!-- <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="#">
-                <img class="img-nav-logo" src="images/tastebuds.png">
-            </a>
-
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <form class="d-flex mx-auto">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                    <i class="fas fa-search"></i>
-                    <button class="btn btn-outline-dark" type="submit">Search</button>
-                </form>
-                <ul class="navbar-nav mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <button type="button" class="btn btn-dark">Sign In</button>
-                    </li>
-                    <li class="nav-item ms-3">
-                        <button type="button" class="btn btn-outline-dark">Sign Up</button>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav> -->
     <main class="mt-5">
         <section>
             <div id="carouselExampleDark" class="carousel carousel-dark slide carousel-fade"  data-bs-ride="carousel">

@@ -3,7 +3,7 @@
 // TODO:
 // add popover to notifications and messages
 
-$menu = "member";
+$menu = "visitor";
 
 $visitor = [
     "sign in" => [
