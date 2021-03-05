@@ -171,7 +171,7 @@
         <div class="card mb-4 mx-4 shadow p-2" style="max-width: 800px; max-height: 150px; border: 0;">
             <div class="row" style="min-height: 130px;">
                 <div class="col-4 post-image">
-                    <img src="https://blog.myfitnesspal.com/wp-content/uploads/2017/12/Essential-Guide-to-Healthy-Eating-2-752x472.png" class="bd-placeholder-img" height="150px">
+                    <img src="https://blog.myfitnesspal.com/wp-content/uploads/2017/12/Essential-Guide-to-Healthy-Eating-2-752x472.png" class="bd-placeholder-img" height="130px">
                 </div>
                 <div class="col-8">
                     <div class="card-body ">
@@ -221,7 +221,7 @@
     </div>
     <div class="row user-info">
         <div class="col-sm avatar-image mb-2">
-            <img class="rounded-circle z-depth-2" src="https://mdbootstrap.com/img/Photos/Avatars/img%20(31).jpg">
+            <img class="rounded-circle z-depth-2" src="https://i.pinimg.com/originals/ee/de/01/eede01fef609345aead078fe5f3d207b.jpg">
         </div>
         <div class="col mr-4 name-and-date">
             <div class="row mb-1 username-and-action">
@@ -239,7 +239,7 @@
         <div class="card mb-4 mx-4 shadow p-2" style="max-width: 800px; max-height: 150px; border: 0;">
             <div class="row" style="min-height: 130px;">
                 <div class="col-4 post-image">
-                    <img src="https://blog.myfitnesspal.com/wp-content/uploads/2017/12/Essential-Guide-to-Healthy-Eating-2-752x472.png" class="bd-placeholder-img" height="150px">
+                    <img src="https://blog.myfitnesspal.com/wp-content/uploads/2017/12/Essential-Guide-to-Healthy-Eating-2-752x472.png" class="bd-placeholder-img" height="130px">
                 </div>
                 <div class="col-8">
                     <div class="card-body ">

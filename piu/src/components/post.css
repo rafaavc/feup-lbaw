@@ -20,7 +20,8 @@
 }
 
 .user-info img {
-    width: 7em;
+    width: 100px;
+    height: 100px;
 }
 
 .avatar-image {
