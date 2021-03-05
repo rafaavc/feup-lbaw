@@ -1,0 +1,19 @@
+.container {
+    padding: 0em;
+    max-width: 100em;
+    border: 5px solid #6c757d!important;
+}
+
+.dropdown-title,
+.search-header {
+    font-size: 1.2em;
+}
+
+.sort-by {
+    text-align: end;
+}
+
+.searched-text,
+.number-of-results {
+    font-weight: 600;
+}
