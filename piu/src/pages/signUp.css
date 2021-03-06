@@ -1,0 +1,22 @@
+div.progress {
+    height: 2px;
+}
+
+ul:last-of-type > li {
+    bottom: -6rem;
+    color: grey;
+}
+
+div.progress + ul > li > button {
+    height: 2.5rem;
+    width: 2.5rem;
+}
+
+div.progress + ul > li > button[active] {
+    transform: scale(1.2);
+} 
+
+div.sign-form {
+    padding-top: 5em;
+    /* padding-left: 5em; */
+}

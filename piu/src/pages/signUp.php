@@ -43,25 +43,61 @@
                     </div>
                 </div>
                 <div class="col-xl-6 sign-form mt-5">
-                    <h1>Sign Up</h1>
-                    <h3>Please enter your account details.</h3>
-                    
-                    <?php
-                        include_once "../components/inputIcon.php";
-                        echo "<span class='d-block mt-4'>Username</span>";
-                        inputIconLeft('user'); 
-                        echo "<span class='d-block mt-4'>Email Address</span>";
-                        inputIconLeft('envelope'); 
-                        echo "<span class='d-block mt-4'>Password</span>";
-                        inputIconLeft('lock'); 
-                        echo "<span class='d-block mt-4'>Repeat Password</span>";
-                        inputIconLeft('lock'); 
-                    ?>
-
-                    <div class="d-grid gap-2 col-6 mx-auto">
-                        <button type="button" class="btn btn-dark d-block">Sign Up</button>     
+                    <div class="position-relative mb-5">
+                        <div class="progress">
+                            <div class="progress-bar" role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                        <ul class="nav nav-pills" id="pills-tab" role="tablist">
+                            <li class="nav-item position-absolute top-0 start-0 translate-middle" role="presentation">
+                                <button active class="btn btn-primary active rounded-pill" onClick="this.parentNode.parentNode.previousElementSibling.firstElementChild.style.width = '0%'; this.active = true;" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true">1</button>
+                            </li>
+                            <li class="nav-item position-absolute top-0 start-50 translate-middle" role="presentation">
+                                <button class="btn btn-primary rounded-pill" onClick="this.parentNode.parentNode.previousElementSibling.firstElementChild.style.width = '50%'" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false">2</button>
+                            </li>
+                            <li class="nav-item position-absolute top-0 start-100 translate-middle" role="presentation">
+                                <button class="btn btn-primary rounded-pill" onClick="this.parentNode.parentNode.previousElementSibling.firstElementChild.style.width = '100%'" id="pills-contact-tab" data-bs-toggle="pill" data-bs-target="#pills-contact" type="button" role="tab" aria-controls="pills-contact" aria-selected="false">3</button>
+                            </li>
+                        </ul>
+                        <ul class="nav nav-pills position-relative" id="pills-tab" role="tablist">
+                            <li class="position-absolute start-0 translate-middle" style="display: none">
+                                <p>Recipe Information</p>
+                            </li>
+                            <li class="position-absolute start-50 translate-middle">
+                                <p>Ingredients</p>
+                            </li>
+                            <li class="position-absolute start-100 translate-middle">
+                                <p>Method</p>
+                            </li>
+                        </ul>
                     </div>
-                    <span class="d-block text-center mt-3">Already have an account? &nbsp;<a href="#" class="signUp-a">Sign In</a></span>
+                    <div class="tab-content" id="pills-tabContent">
+                        <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+                            <h1>Sign Up</h1>
+                            <h3>Please enter your account details.</h3>
+                            
+                            <?php
+                                include_once "../components/inputIcon.php";
+                                echo "<span class='d-block mt-4'>Username</span>";
+                                inputIconLeft('user'); 
+                                echo "<span class='d-block mt-4'>Email Address</span>";
+                                inputIconLeft('envelope'); 
+                                echo "<span class='d-block mt-4'>Password</span>";
+                                inputIconLeft('lock'); 
+                                echo "<span class='d-block mt-4'>Repeat Password</span>";
+                                inputIconLeft('lock'); 
+                            ?>
+
+                            <div class="d-grid gap-2 col-6 mx-auto">
+                                <button type="button" class="btn btn-dark d-block">Sign Up</button>     
+                            </div>
+                            <span class="d-block text-center mt-3">Already have an account? &nbsp;<a href="#" class="signUp-a">Sign In</a></span>
+                        </div>
+                    <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+                        <h1>Second Tab</h1>
+                    </div>
+                    <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
+                        <h1>Third Tab</h1>
+                    </div>
                 </div>
             </div>
         </div>
