@@ -42,36 +42,46 @@ function progressStepsListeners() {
     });
 }
 
+// Adjust Progress Bar Width
+
 function progressStepClick(width) {
     progressBar.style.width = `${width}%`;    
 }
 
 let nextStepBtns = Array.from(document.querySelectorAll('button.next-step'));
 
-nextStepBtns.forEach((nextStepBtn) => {
-    nextStepBtn.addEventListener('click', nextStepHandler);
-});
+nextStepBtnsListeners();
+
+function nextStepBtnsListeners() {
+    nextStepBtns.forEach((nextStepBtn) => {
+        nextStepBtn.addEventListener('click', nextStepHandler);
+    });
+}
 
 let nextStepLabels = Array.from(document.querySelectorAll('li.next-step'))
+
+// Handle Progress Labels and Buttons
 
 function nextStepHandler(event) {
     let target = event.target;
     let btnIndex = nextStepBtns.indexOf(target);
 
+    // Buttons
     for(let i = 0; i <= btnIndex + 1; i++) {
         progressSteps[i].removeAttribute('disabled');
         progressSteps[i].removeAttribute('active');
     }
 
+    progressSteps[btnIndex + 1].setAttribute('active', 'true');
+    progressSteps[btnIndex + 1].click();
+
+    // Labels 
     nextStepLabels[btnIndex].classList.remove('d-none');
     if(btnIndex + 1 == progressSteps.length - 1)
         nextStepLabels[btnIndex + 1].classList.remove('d-none');
-
-    progressSteps[btnIndex + 1].setAttribute('active', 'true');
-    progressSteps[btnIndex + 1].click();
 }
 
-// Display Progress Bar after filling first form
+// Display Progress Stepper after filling first form
 
 document.querySelector('#first-step').addEventListener('click', function() {
     document.querySelector('div.progress').parentNode.classList.remove('d-none');
