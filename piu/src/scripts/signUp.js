@@ -45,10 +45,8 @@ function progressStepsListeners() {
 
 function progressStepClick(width) {
     progressBar.style.width = `${width}%`;
-    // let itemIndex = progressSteps.indexOf(this);
-    // progressSteps.splice(0, itemIndex).forEach((step) => {
-    //     step.setAttribute('active', 'true');
-    // });
+    
+    let btnIndex = progressSteps.indexOf(this);
 }
 
 let nextStepBtns = Array.from(document.querySelectorAll('button.next-step'));
@@ -57,15 +55,21 @@ nextStepBtns.forEach((nextStepBtn) => {
     nextStepBtn.addEventListener('click', nextStepHandler);
 });
 
+let nextStepLabels = Array.from(document.querySelectorAll('li.next-step'))
+
 function nextStepHandler(event) {
     let target = event.target;
-    let btnIndex = nextStepBtns.indexOf(target) + 1;
+    let btnIndex = nextStepBtns.indexOf(target);
 
-    for(let i = 0; i <= btnIndex; i++) {
+    for(let i = 0; i <= btnIndex + 1; i++) {
         progressSteps[i].removeAttribute('disabled');
         progressSteps[i].removeAttribute('active');
     }
 
-    progressSteps[btnIndex].setAttribute('active', 'true');
-    progressSteps[btnIndex].click();
+    nextStepLabels[btnIndex].classList.remove('d-none');
+    if(btnIndex + 1 == progressSteps.length - 1)
+        nextStepLabels[btnIndex + 1].classList.remove('d-none');
+
+    progressSteps[btnIndex + 1].setAttribute('active', 'true');
+    progressSteps[btnIndex + 1].click();
 }

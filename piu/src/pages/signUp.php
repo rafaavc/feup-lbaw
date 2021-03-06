@@ -60,14 +60,14 @@
                             </li>
                         </ul>
                         <ul class="nav nav-pills position-relative" id="pills-tab" role="tablist">
-                            <li class="position-absolute start-0 translate-middle" style="display: none">
-                                <p>Recipe Information</p>
+                            <li class="position-absolute start-0 translate-middle d-none next-step">
+                                <p>Account Info</p>
                             </li>
-                            <li class="position-absolute start-50 translate-middle">
-                                <p>Ingredients</p>
+                            <li class="position-absolute start-50 translate-middle d-none next-step">
+                                <p>Personal Info</p>
                             </li>
-                            <li class="position-absolute start-100 translate-middle">
-                                <p>Method</p>
+                            <li class="position-absolute start-100 translate-middle d-none next-step">
+                                <p>Finish!</p>
                             </li>
                         </ul>
                     </div>
