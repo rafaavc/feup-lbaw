@@ -61,13 +61,13 @@
                         </ul>
                         <ul class="nav nav-pills position-relative" id="pills-tab" role="tablist">
                             <li class="position-absolute start-0 translate-middle d-none next-step">
-                                <p>Account Info</p>
+                                <p class="progress-caption text-center">Account Info</p>
                             </li>
                             <li class="position-absolute start-50 translate-middle d-none next-step">
-                                <p>Personal Info</p>
+                                <p class="progress-caption text-center">Personal Info</p>
                             </li>
                             <li class="position-absolute start-100 translate-middle d-none next-step">
-                                <p>Finish!</p>
+                                <p class="progress-caption text-center">Finish!</p>
                             </li>
                         </ul>
                     </div>

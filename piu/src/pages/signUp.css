@@ -26,7 +26,6 @@ div.progress + ul > li > button[disabled] {
 
 div.sign-form {
     padding-top: 5em;
-    /* padding-left: 5em; */
 }
 
 img.file-input {
@@ -41,8 +40,17 @@ strong.finish-msg {
 }
 
 @media (max-width: 991.98px) {
-    img {
+    img.file-input {
         height: 25vw !important;
         width: 25vw !important;
+    }
+
+    div.sign-form {
+        padding-top: 3em;
+    }
+
+    p.progress-caption {
+        width: 75px;
+        height: 30px;
     }
 }
