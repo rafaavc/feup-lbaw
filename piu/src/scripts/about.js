@@ -69,8 +69,9 @@ function removeBoxHandler(event) {
 let addImage = document.querySelector('a.add-content-img');
 addImage.addEventListener('click', addImageBoxHandler);
 
+let newPerson = document.querySelector("div.col-lg-2").cloneNode(true);
+
 function addImageBoxHandler() {
-    let newPerson = document.querySelector("div.col-lg-2").cloneNode(true);
     newPerson.querySelector('input[type="text"]').value = "";
     newPerson.querySelector('img').src="../images/noImage.png";
     let row = document.querySelector('div.img-row');
@@ -79,6 +80,8 @@ function addImageBoxHandler() {
     removeBoxListeners();
     fileUploadListeners();
     clearImageListeners();
+
+    newPerson = document.querySelector("div.col-lg-2").cloneNode(true);
 }
 
 // File Upload
