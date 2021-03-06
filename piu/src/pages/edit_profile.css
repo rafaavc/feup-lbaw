@@ -17,6 +17,13 @@
     margin-bottom: 1em;
 }
 
+.profile-image {
+    height: 15em !important;
+    width: 15em !important;
+    object-fit: cover;
+    margin: auto;
+}
+
 .cover-photo-area {
     overflow: hidden;
     min-width: 19em;
@@ -32,9 +39,12 @@
     }
 }
 
+input[name="myfile"] {
+    display: none;
+}
+
 .edit-profile-text-input {
     max-width: 80em;
-/*     border: 1px solid black; */
     border-radius: 15px;
 }
 

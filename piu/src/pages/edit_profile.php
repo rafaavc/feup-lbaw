@@ -11,6 +11,9 @@
     
     <!-- Font Awesome -->
     <link href="https://use.fontawesome.com/releases/v5.0.4/css/all.css" rel="stylesheet">
+
+    <!-- Scripts -->
+    <script src="../scripts/edit_profile.js" defer></script>
     
     <link href="edit_profile.css" rel="stylesheet">
     <link href="../components/inputIcon.css" rel="stylesheet">
@@ -31,23 +34,49 @@
         <div class="card shadow p-2 w-auto h-auto edit-profile-area mx-5 p-5 my-5">
             <div class="row">
                 <div class="col profile-photo-area mx-2">
-                    <div class="row">
+                    <div class="row row-with-image">
                         <div class="col area-title-col">
                             <h4 class="area-title">Profile Photo</h4>
                         </div>   
-                        <div class="col">
-                            <i class="fas fa-edit pe-1"></i><a href="#" class="edit-content-text text-decoration-none">Edit</a>
+                        <div class="col">                     
+                            <div class="btn-group dropdown w-20 ms-auto">
+                                <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i class="fas fa-cog"></i>
+                                </button>
+                                <ul class="dropdown-menu w-100">
+                                    <li>
+                                        <a class="dropdown-item file-input"><i class="fas fa-upload me-2"></i>Upload Image</a>
+                                        <input type="file" name="myfile"></input>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item file-delete"><i class="fas fa-eraser me-2"></i>Clear Image</a>
+                                    </li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
-                    <img class="rounded-circle z-depth-2" src="https://mdbootstrap.com/img/Photos/Avatars/img%20(31).jpg">
+                    <img class="rounded-circle z-depth-2 profile-image" src="https://mdbootstrap.com/img/Photos/Avatars/img%20(31).jpg">
                 </div>
                 <div class="col cover-photo-area mx-2">
-                    <div class="row area-title-row">
+                    <div class="row area-title-row row-with-image">
                         <div class="col area-title-col">
                             <h4 class="area-title">Cover Photo</h4>
                         </div>
                         <div class="col">
-                            <i class="fas fa-edit pe-1"></i><a href="#" class="edit-content-text text-decoration-none">Edit</a>
+                            <div class="btn-group dropdown w-20 ms-auto">
+                                <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i class="fas fa-cog"></i>
+                                </button>
+                                <ul class="dropdown-menu w-100">
+                                    <li>
+                                        <a class="dropdown-item file-input"><i class="fas fa-upload me-2"></i>Upload Image</a>
+                                        <input type="file" name="myfile"></input>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item file-delete"><i class="fas fa-eraser me-2"></i>Clear Image</a>
+                                    </li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
                     <img src="https://res.cloudinary.com/sanitarium/image/fetch/q_auto/https://www.sanitarium.com.au/getmedia%2Fae51f174-984f-4a70-ad3d-3f6b517b6da1%2Ffruits-vegetables-healthy-fats.jpg%3Fwidth%3D1180%26height%3D524%26ext%3D.jpg" class="bd-placeholder-img">

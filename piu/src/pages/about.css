@@ -7,8 +7,8 @@ input[name="myfile"] {
 }
 
 img {
-    height: 10vw !important;
-    width: 10vw !important;
+    height: 15vw !important;
+    width: 15vw !important;
     object-fit: cover;
     margin: auto;
 }
