@@ -40,11 +40,6 @@ strong.finish-msg {
 }
 
 @media (max-width: 991.98px) {
-    img.file-input {
-        height: 25vw !important;
-        width: 25vw !important;
-    }
-
     div.sign-form {
         padding-top: 3em;
     }
@@ -53,4 +48,12 @@ strong.finish-msg {
         width: 75px;
         height: 30px;
     }
+}
+
+@media (max-width: 1199.98px) {
+    img.file-input {
+        height: 20vw !important;
+        width: 20vw !important;
+    }
+
 }
