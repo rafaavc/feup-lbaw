@@ -46,6 +46,10 @@ function progressStepsListeners() {
 
 function progressStepClick(width) {
     progressBar.style.width = `${width}%`;    
+    progressSteps.forEach((step) => {
+        step.removeAttribute('active');
+    });
+    this.setAttribute('active', 'true');
 }
 
 let nextStepBtns = Array.from(document.querySelectorAll('button.next-step'));
