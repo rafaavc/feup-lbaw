@@ -11,8 +11,9 @@
     
     <!-- Font Awesome -->
     <link href="https://use.fontawesome.com/releases/v5.0.4/css/all.css" rel="stylesheet">
-
+    
     <link href="edit_profile.css" rel="stylesheet">
+    <link href="../components/inputIcon.css" rel="stylesheet">
     <link href="../components/footer.css" rel="stylesheet">
     <link href="../components/nav.css" rel="stylesheet">
 
@@ -51,6 +52,42 @@
                     </div>
                     <img src="https://res.cloudinary.com/sanitarium/image/fetch/q_auto/https://www.sanitarium.com.au/getmedia%2Fae51f174-984f-4a70-ad3d-3f6b517b6da1%2Ffruits-vegetables-healthy-fats.jpg%3Fwidth%3D1180%26height%3D524%26ext%3D.jpg" class="bd-placeholder-img">
                 </div>
+            </div>
+
+            <h4 class="area-title mt-4">Biography</h4>
+            <div class="form-group">
+                <textarea class="form-control mb-4 p-3 edit-profile-text-input" id="exampleFormControlTextarea1" rows="3">User's biography</textarea>
+            </div>
+
+            <h4 class="area-title">Name</h4>
+            <div class="form-group">
+                <textarea class="form-control mb-4 p-3 edit-profile-text-input" id="exampleFormControlTextarea1" rows="1">User's name</textarea>
+            </div>
+
+            <h4 class="area-title">Country</h4>
+            <div class="form-group">
+                <textarea class="form-control mb-4 p-3 edit-profile-text-input" id="exampleFormControlTextarea1" rows="1">User's country</textarea>
+            </div>
+
+            <h4 class="area-title">City</h4>
+            <div class="form-group">
+                <textarea class="form-control mb-5 mt-1 p-3 edit-profile-text-input" id="exampleFormControlTextarea1" rows="1">User's city</textarea>
+            </div>
+            <h4 class="area-title">Profile Visibility</h4>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" checked>
+                <label class="form-check-label" for="flexRadioDefault1">
+                    Public
+                </label>
+            </div>
+            <div class="form-check mt-2">
+                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
+                <label class="form-check-label" for="flexRadioDefault2">
+                    Private
+                </label>
+            </div>
+            <div class="text-center mt-5 mb-3">
+                <button class="btn btn-primary submit-button">Submit</button>
             </div>
             
         </div>

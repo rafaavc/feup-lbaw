@@ -19,7 +19,7 @@
 
 .cover-photo-area {
     overflow: hidden;
-    min-width: 20em;
+    min-width: 19em;
 }
 
 .cover-photo-area img {
@@ -30,4 +30,15 @@
     div.row div.col:not(:first-child) .area-title-row  {
         margin-top: 2em;
     }
+}
+
+.edit-profile-text-input {
+    max-width: 80em;
+/*     border: 1px solid black; */
+    border-radius: 15px;
+}
+
+.submit-button {
+    width: 12em;
+    padding: 0.5em;
 }
