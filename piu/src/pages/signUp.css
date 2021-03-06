@@ -20,3 +20,21 @@ div.sign-form {
     padding-top: 5em;
     /* padding-left: 5em; */
 }
+
+img.file-input {
+    height: 6vw !important;
+    width: 6vw !important;
+    object-fit: cover;    
+}
+
+strong.finish-msg {
+    font-size: 5em;
+    color: var(--bs-secondary);
+}
+
+@media (max-width: 991.98px) {
+    img {
+        height: 25vw !important;
+        width: 25vw !important;
+    }
+}

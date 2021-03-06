@@ -18,6 +18,7 @@
     
     <!-- Scripts -->
     <script src="../scripts/signIn.js" defer></script>
+    <script src="../scripts/signUp.js" defer></script>
 
     <link href="signIn.css" rel="stylesheet">
     <link href="signUp.css" rel="stylesheet">
@@ -49,13 +50,13 @@
                         </div>
                         <ul class="nav nav-pills" id="pills-tab" role="tablist">
                             <li class="nav-item position-absolute top-0 start-0 translate-middle" role="presentation">
-                                <button active class="btn btn-primary active rounded-pill" onClick="this.parentNode.parentNode.previousElementSibling.firstElementChild.style.width = '0%'; this.active = true;" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true">1</button>
+                                <button active class="btn btn-secondary active rounded-pill" onClick="this.parentNode.parentNode.previousElementSibling.firstElementChild.style.width = '0%'; this.active = true;" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true">1</button>
                             </li>
                             <li class="nav-item position-absolute top-0 start-50 translate-middle" role="presentation">
-                                <button class="btn btn-primary rounded-pill" onClick="this.parentNode.parentNode.previousElementSibling.firstElementChild.style.width = '50%'" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false">2</button>
+                                <button class="btn btn-secondary rounded-pill" onClick="this.parentNode.parentNode.previousElementSibling.firstElementChild.style.width = '50%'" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false">2</button>
                             </li>
                             <li class="nav-item position-absolute top-0 start-100 translate-middle" role="presentation">
-                                <button class="btn btn-primary rounded-pill" onClick="this.parentNode.parentNode.previousElementSibling.firstElementChild.style.width = '100%'" id="pills-contact-tab" data-bs-toggle="pill" data-bs-target="#pills-contact" type="button" role="tab" aria-controls="pills-contact" aria-selected="false">3</button>
+                                <button class="btn btn-secondary rounded-pill" onClick="this.parentNode.parentNode.previousElementSibling.firstElementChild.style.width = '100%'" id="pills-contact-tab" data-bs-toggle="pill" data-bs-target="#pills-contact" type="button" role="tab" aria-controls="pills-contact" aria-selected="false">3</button>
                             </li>
                         </ul>
                         <ul class="nav nav-pills position-relative" id="pills-tab" role="tablist">
@@ -92,12 +93,36 @@
                             </div>
                             <span class="d-block text-center mt-3">Already have an account? &nbsp;<a href="#" class="signUp-a">Sign In</a></span>
                         </div>
-                    <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
-                        <h1>Second Tab</h1>
-                    </div>
-                    <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
-                        <h1>Third Tab</h1>
-                    </div>
+                        <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+                            <h1>Sign Up</h1>
+                            <h3>Please enter your personal details.</h3>
+                            <?php
+                                echo "<span class='d-block mt-4'>Name</span>";
+                                inputIconLeft('user'); 
+                                echo "<span class='d-block mt-4'>Country</span>";
+                                inputIconLeft('flag'); 
+                                echo "<span class='d-block mt-4'>City</span>";
+                                inputIconLeft('map-marker-alt'); 
+                                echo "<span class='d-block mt-4'>Repeat Password</span>";
+                                inputIconLeft('lock'); 
+                            ?>
+                            <span class='d-block mt-4'>Profile Photo</span>
+                            <img src="../images/noImage.png" class="rounded-circle mx-auto d-block file-input" alt="...">
+                            <input type="file" name="myfile" class="d-none"></input>
+                            <div class="d-grid gap-2 col-6 mx-auto my-2">
+                                <button type="button" class="btn btn-dark d-block">Next</button>     
+                            </div>
+                        </div>
+                        <div class="tab-pane fade pt-5" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
+                            <div class="text-center">
+                                <p><strong class="finish-msg">YOU'RE</strong></p>
+                                <p><strong class="finish-msg">IN!</strong></p>
+                                <img src="https://thumbs.gfycat.com/ShyCautiousAfricanpiedkingfisher-max-1mb.gif" alt="...">
+                                <div class="d-grid gap-2 col-6 mx-auto mt-5">
+                                    <button type="button" class="btn btn-dark d-block">Finish</button>     
+                                </div>
+                            </div>
+                        </div>
                 </div>
             </div>
         </div>
