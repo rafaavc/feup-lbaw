@@ -10,7 +10,7 @@ html, body, main, .container, .row{
     border-radius: 1em;
 }
 
-div.signIn-img {
+div.sign-img {
     background-image: url("../images/signIn.jpg");
     background-size: cover;
     background-repeat: no-repeat;
@@ -19,7 +19,7 @@ div.signIn-img {
     height: 85%;
 }
 
-div.signIn-left-text {
+div.sign-left-text {
     width: 15em;
     position: absolute;
     top: 35%;
@@ -27,7 +27,7 @@ div.signIn-left-text {
     transform: translate(-50%, -50%);
 }
 
-div.signIn-form {
+div.sign-form {
     padding-top: 10em;
     padding-left: 5em;
 
@@ -66,12 +66,12 @@ div.signIn-form {
 }
 
 @media (max-width: 1199.98px) {
-    div.signIn-form {
+    div.sign-form {
         padding: 0em 2em;  
     }
 
-    div.signIn-img {
-        height: 275px;
+    div.sign-img {
+        height: 325px;
     }
 
     html, body {
