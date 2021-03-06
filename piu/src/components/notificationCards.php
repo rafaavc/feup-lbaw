@@ -8,12 +8,12 @@
             <?php if ($new) { ?>
                 <div class="row g-2">
                     <div class="col-11"><?php } ?>
-                        <p><?=$new ? '<strong>' : ''?><?=$name?> <?= $new ? "wants to follow you." : "started following you." ?><?=$new ? '</strong>' : ''?></p>
+                        <p class="m-0"><?=$new ? '<strong>' : ''?><?=$name?> <?= $new ? "wants to follow you." : "started following you." ?><?=$new ? '</strong>' : ''?></p>
             <?php if ($new) { ?>
                     </div>
                     <div class="col-1">
-                        <button class="btn btn-outline-secondary follow-request-button"><small><i class="fa fa-check"></i></small></button>
-                        <button class="btn btn-outline-secondary follow-request-button"><small><i class="fa fa-times"></i></small></button>
+                        <button class="btn btn-outline-secondary follow-request-button"><small><i class="fas fa-check"></i></small></button>
+                        <button class="btn btn-outline-secondary follow-request-button"><small><i class="fas fa-times"></i></small></button>
                     </div>
                 </div>
             <?php } ?>
