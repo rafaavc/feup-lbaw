@@ -14,6 +14,8 @@ $component = isset($_GET['c']) ? $_GET['c'] : null;
     <link href="/components/<?= $component ?>.css" rel="stylesheet">
 
     <link href="/components/search_results_cards.css" rel="stylesheet">
+    <link href="/components/nav.css" rel="stylesheet">
+    <link href="/components/footer.css" rel="stylesheet">
 
     <!-- Font Awesome -->
     <link href="https://use.fontawesome.com/releases/v5.0.4/css/all.css" rel="stylesheet">
