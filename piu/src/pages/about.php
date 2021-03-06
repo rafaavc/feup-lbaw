@@ -33,12 +33,18 @@
         </div>
         <div class="shadow p-3 mb-3 bg-body rounded w-75 mx-auto edit-content-text overflow-auto">
             TasteBuds is a new concept of a social network that enables people to share cooking recipes with the world, gain visibility, and possibly attracting new people to their business or any other ventures. Technology is always evolving to improve and facilitate people's lives. Cooking is one of the things we do every day, and TasteBuds is the best tool to ease the task of remembering all the cooking recipes while helping people diversify and improve their eating habits. Created by four young FEUP entrepreneurs, TasteBuds' main goal is to build a community where people can help each other create even better recipes every day!
+            <div class="form-floating d-none">
+                <textarea class="form-control h-100" rows="10"></textarea>
+                <button class="btn btn-secondary mt-3 float-end">Submit</button>
+            </div>
         </div>
         <div class="w-75 mx-auto text-end">
             <i class="fas fa-plus pe-1 d-none add-images"></i><a href="#" class="add-content-img text-decoration-none d-none add-images">Add</a>
             <i class="fas fa-edit pe-1 ms-2"></i><a href="#" class="edit-content-img text-decoration-none ">Edit</a>
         </div>
 
+        <!-- Admin Display -->
+        
         <div class="text-center user-profiles w-75 mx-auto shadow-lg px-3 d-none admin-images-settings mb-3">
             <p class="fs-4 text-start ps-4 pt-4">Our Team</p>
                 <div class="row d-flex justify-content-around img-row">
@@ -51,7 +57,8 @@
                 </div> 
         </div>
 
-        <!-- ----- -->
+        <!-- User Display -->
+
         <div class="text-center user-profiles w-75 mx-auto shadow-lg user-images-settings mb-3">
             <p class="fs-4 text-start ps-4 pt-4">Our Team</p>
                 <div class="row d-flex justify-content-around">

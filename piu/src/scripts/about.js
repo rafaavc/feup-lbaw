@@ -1,4 +1,5 @@
 document.querySelector('main').style.minHeight = screen.height + "px";
+
 // Text Part
 
 let aboutText = document.querySelector('a.edit-content-text');
@@ -7,31 +8,9 @@ aboutText.addEventListener('click', editTextHandler);
 function editTextHandler(event) {
     aboutText.removeEventListener("click", editTextHandler);
     let textBox = document.querySelector('div.edit-content-text');
-    let textArea = createTextBox();
-    let subBtn = createSubmitBtn();
+    document.querySelector('div.form-floating').classList.remove('d-none');
+    textBox.querySelector("textarea").value = document.querySelector('div.edit-content-text').firstChild.textContent.trim();
     textBox.firstChild.remove();
-    textBox.appendChild(textArea);
-    textBox.appendChild(subBtn);
-}
-
-function createTextBox() {
-    let div = document.createElement('div');
-    div.className = "form-floating";
-    let textArea = document.createElement('textarea');
-    textArea.className = "form-control";
-    textArea.setAttribute('rows', 10);
-    textArea.value = document.querySelector('div.edit-content-text').firstChild.textContent.trim();
-    textArea.style.height = "100%";
-    div.appendChild(textArea);
-    return div;
-}
-
-function createSubmitBtn() {
-    let subBtn = document.createElement('button');
-    subBtn.classList = ["btn btn-primary mt-3"];
-    subBtn.style.float = "right";
-    subBtn.textContent = "Submit";
-    return subBtn;
 }
 
 // Switch views 
@@ -40,7 +19,6 @@ let editImages = document.querySelector('a.edit-content-img');
 editImages.addEventListener('click', editImagesHandler);
 
 function editImagesHandler() {
-    console.log(document.querySelector('div.admin-images-settings'));
     document.querySelector('div.admin-images-settings').classList.remove('d-none');
     document.querySelector('div.user-images-settings').classList.add('d-none');
     document.querySelectorAll('.add-images').forEach((elem) => {

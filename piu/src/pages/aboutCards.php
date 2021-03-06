@@ -38,10 +38,3 @@
             </div>
         </div>
     <?php }
-
-
-
-// displayTeamUser_AdminSettings("Alexandre Abreu", "../images/a3brx.jpeg");
-// displayTeamUser_AdminSettings("Tiago Gomes", "../images/tiagoogomess.jpeg");
-// displayTeamUser_AdminSettings("Rafael Cristino", "../images/rafaavc.jpeg");
-// displayTeamUser_AdminSettings("Rui Pinto", "../images/2dukes.jpeg");
