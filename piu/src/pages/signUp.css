@@ -16,6 +16,14 @@ div.progress + ul > li > button[active] {
     transform: scale(1.2);
 } 
 
+div.progress + ul > li > button[disabled] {
+    opacity: 1;
+}
+
+div.progress + ul > li > button[disabled] {
+    background-color: var(--bs-secondary);
+} 
+
 div.sign-form {
     padding-top: 5em;
     /* padding-left: 5em; */
