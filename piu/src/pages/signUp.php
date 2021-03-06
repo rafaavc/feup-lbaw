@@ -32,7 +32,7 @@
     <?php include_once "../components/nav.php"; ?>
     <main>
         <div class="container py-5">
-            <div class="row mt-3">
+            <div class="row mt-5">
                 <div class="col-xl-6 sign-img">
                     <div class="d-grid gap-2 col-6 mx-auto mt-5 sign-left-text w-100 text-center">
                         <div class="welcome-msg text-start">
@@ -43,8 +43,8 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-xl-6 sign-form mt-5">
-                    <div class="position-relative mb-5">
+                <div class="col-xl-6 sign-form">
+                    <div class="position-relative mb-5 d-none">
                         <div class="progress">
                             <div class="progress-bar" role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
                         </div>
@@ -71,7 +71,7 @@
                             </li>
                         </ul>
                     </div>
-                    <div class="tab-content" id="pills-tabContent">
+                    <div class="tab-content pt-5" id="pills-tabContent">
                         <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
                             <h1>Sign Up</h1>
                             <h3>Please enter your account details.</h3>
@@ -89,7 +89,7 @@
                             ?>
 
                             <div class="d-grid gap-2 col-6 mx-auto">
-                                <button type="button" class="btn btn-dark d-block next-step">Sign Up</button>     
+                                <button type="button" class="btn btn-dark d-block next-step" id="first-step">Sign Up</button>     
                             </div>
                             <span class="d-block text-center mt-3">Already have an account? &nbsp;<a href="#" class="signUp-a">Sign In</a></span>
                         </div>
@@ -110,7 +110,7 @@
                             <img src="../images/noImage.png" class="rounded-circle mx-auto d-block file-input" alt="...">
                             <input type="file" name="myfile" class="d-none"></input>
                             <div class="d-grid gap-2 col-6 mx-auto my-2">
-                                <button type="button" class="btn btn-dark d-block next-step">Next</button>     
+                                <button type="button" class="btn btn-dark d-block mt-3 next-step">Next</button>     
                             </div>
                         </div>
                         <div class="tab-pane fade pt-5" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">

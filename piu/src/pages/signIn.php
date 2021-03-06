@@ -30,7 +30,7 @@
     <?php include_once "../components/nav.php"; ?>
     <main>
         <div class="container py-5">
-            <div class="row mt-3">
+            <div class="row mt-5">
                 <div class="col-xl-6 sign-img">
                     <div class="d-grid gap-2 col-6 mx-auto mt-5 sign-left-text w-100 text-center">
                         <div class="welcome-msg">

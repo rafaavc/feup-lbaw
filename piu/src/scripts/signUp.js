@@ -36,7 +36,6 @@ let stepWidth = 0;
 progressStepsListeners();
 
 function progressStepsListeners() {
-
     progressSteps.forEach((step) => {
         step.addEventListener('click', progressStepClick.bind(step, stepWidth));
         stepWidth += 100 / (progressSteps.length - 1);
@@ -44,9 +43,7 @@ function progressStepsListeners() {
 }
 
 function progressStepClick(width) {
-    progressBar.style.width = `${width}%`;
-    
-    let btnIndex = progressSteps.indexOf(this);
+    progressBar.style.width = `${width}%`;    
 }
 
 let nextStepBtns = Array.from(document.querySelectorAll('button.next-step'));
@@ -73,3 +70,9 @@ function nextStepHandler(event) {
     progressSteps[btnIndex + 1].setAttribute('active', 'true');
     progressSteps[btnIndex + 1].click();
 }
+
+// Display Progress Bar after filling first form
+
+document.querySelector('#first-step').addEventListener('click', function() {
+    document.querySelector('div.progress').parentNode.classList.remove('d-none');
+});
