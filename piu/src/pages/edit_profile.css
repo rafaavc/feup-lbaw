@@ -1,0 +1,30 @@
+
+.edit_profile_page {
+    padding: 3em 0 0 0;
+    max-width: 100em;
+    text-align: center;
+}
+
+.edit-profile-area {
+    text-align: start;
+}
+
+.area-title {
+    margin-bottom: 1em;
+}
+
+.cover-photo-area {
+    overflow: hidden;
+    min-width: 25em;
+}
+
+.cover-photo-area img {
+    height: 250px;
+    min-width: 25em;
+}
+
+/* @media (max-width: 791.98px) {
+    .cover-photo-area img {
+        width: 80%;
+    }
+} */
