@@ -19,6 +19,7 @@
     <!-- Scripts -->
     <script src="../scripts/signIn.js" defer></script>
     <script src="../scripts/signUp.js" defer></script>
+    <script src="../scripts/progressBar.js" defer></script>
 
     <link href="signIn.css" rel="stylesheet">
     <link href="signUp.css" rel="stylesheet">
