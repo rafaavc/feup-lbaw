@@ -29,12 +29,26 @@
 
         <div class="card shadow p-2 w-auto h-auto edit-profile-area mx-5 p-5 my-5">
             <div class="row">
-                <div class="col profile-photo-area">
-                    <h4 class="area-title">Profile Photo</h4>
+                <div class="col profile-photo-area mx-2">
+                    <div class="row">
+                        <div class="col area-title-col">
+                            <h4 class="area-title">Profile Photo</h4>
+                        </div>   
+                        <div class="col">
+                            <i class="fas fa-edit pe-1"></i><a href="#" class="edit-content-text text-decoration-none">Edit</a>
+                        </div>
+                    </div>
                     <img class="rounded-circle z-depth-2" src="https://mdbootstrap.com/img/Photos/Avatars/img%20(31).jpg">
                 </div>
-                <div class="col cover-photo-area">
-                    <h4 class="area-title">Cover Photo</h4>
+                <div class="col cover-photo-area mx-2">
+                    <div class="row area-title-row">
+                        <div class="col area-title-col">
+                            <h4 class="area-title">Cover Photo</h4>
+                        </div>
+                        <div class="col">
+                            <i class="fas fa-edit pe-1"></i><a href="#" class="edit-content-text text-decoration-none">Edit</a>
+                        </div>
+                    </div>
                     <img src="https://res.cloudinary.com/sanitarium/image/fetch/q_auto/https://www.sanitarium.com.au/getmedia%2Fae51f174-984f-4a70-ad3d-3f6b517b6da1%2Ffruits-vegetables-healthy-fats.jpg%3Fwidth%3D1180%26height%3D524%26ext%3D.jpg" class="bd-placeholder-img">
                 </div>
             </div>

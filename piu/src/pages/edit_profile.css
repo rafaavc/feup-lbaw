@@ -9,22 +9,25 @@
     text-align: start;
 }
 
+.area-title-col {
+    min-width: 12em;
+}
+
 .area-title {
     margin-bottom: 1em;
 }
 
 .cover-photo-area {
     overflow: hidden;
-    min-width: 25em;
+    min-width: 20em;
 }
 
 .cover-photo-area img {
     height: 250px;
-    min-width: 25em;
 }
 
-/* @media (max-width: 791.98px) {
-    .cover-photo-area img {
-        width: 80%;
+@media (max-width: 800px) {
+    div.row div.col:not(:first-child) .area-title-row  {
+        margin-top: 2em;
     }
-} */
+}
