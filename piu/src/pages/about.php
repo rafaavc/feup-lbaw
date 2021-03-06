@@ -38,7 +38,7 @@
             <i class="fas fa-edit pe-1 ms-2"></i><a href="#" class="edit-content-img text-decoration-none ">Edit</a>
         </div>
 
-        <div class="text-center user-profiles w-75 mx-auto shadow-lg px-3 d-none admin-images-settings">
+        <div class="text-center user-profiles w-75 mx-auto shadow-lg px-3 d-none admin-images-settings mb-3">
             <p class="fs-4 text-start ps-4 pt-4">Our Team</p>
                 <div class="row d-flex justify-content-around img-row">
                     <div class="col-lg-2 col-md-6">
@@ -150,7 +150,7 @@
         </div>
 
         <!-- ----- -->
-        <div class="text-center user-profiles w-75 mx-auto shadow-lg user-images-settings">
+        <div class="text-center user-profiles w-75 mx-auto shadow-lg user-images-settings mb-3">
             <p class="fs-4 text-start ps-4 pt-4">Our Team</p>
                 <div class="row d-flex justify-content-around">
                     <div class="col-lg-2 col-md-6">
@@ -185,7 +185,6 @@
                             </div>
                         </div>
                     </div>
-                    
                 </div>
         </div>
     </main>
