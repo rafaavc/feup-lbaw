@@ -1,16 +1,13 @@
 <?php
 
     // displayRecipe(true); // Recipe - Visitor 
-    // echo "<br><hr><br>";
     // displayRecipe(false); // Recipe - Owner
-    // echo "<br><hr><br>";
     // displayReview(true); // Review - Visitor
-    // echo "<br><hr><br>";
     // displayReview(false); // Review - Owner
     
 
     function displayRecipe($isVisitor = true) { ?>
-        <div class="container recipe-post">
+        <div class="container recipe-post mt-5">
             <div class="col-sm post-options">
                 <div class="dropdown">
                     <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
