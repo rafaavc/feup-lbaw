@@ -12,7 +12,10 @@
     <!-- Font Awesome -->
     <link href="https://use.fontawesome.com/releases/v5.0.4/css/all.css" rel="stylesheet">
 
-    <!-- <link href="search.css" rel="stylesheet"> -->
+    <!-- Script -->
+    <script src="../components/filterSortBar.js" defer></script>
+    
+    <link href="category.css" rel="stylesheet">
     <link href="../components/filterSortBar.css" rel="stylesheet">
     <link href="../components/post.css" rel="stylesheet">
     <link href="../components/footer.css" rel="stylesheet">
@@ -27,6 +30,7 @@
     ?>
     <div class="container">
         <div class="row w-75 mx-auto pt-5">
+            <h1 class="text-center mt-2 mb-4">Category</h1>
             <?php
                 include_once "../components/filterSortBar.php";
             ?>

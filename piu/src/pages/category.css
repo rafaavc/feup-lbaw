@@ -1,0 +1,3 @@
+select.form-select.clickable[aria-label="Category"] {
+    display: none;
+}
