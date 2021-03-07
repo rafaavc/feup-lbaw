@@ -1,9 +1,9 @@
 <?php
 
-    // displayRecipe(true); // Recipe - Visitor 
-    // displayRecipe(false); // Recipe - Owner
-    // displayReview(true); // Review - Visitor
-    // displayReview(false); // Review - Owner
+    displayRecipe(true); // Recipe - Visitor 
+    displayRecipe(false); // Recipe - Owner
+    displayReview(true); // Review - Visitor
+    displayReview(false); // Review - Owner
     
 
     function displayRecipe($isVisitor = true) { ?>
@@ -39,7 +39,7 @@
                 <div class="card mb-4 mx-4 shadow p-2" style="max-width: 1000px; border: 0;">
                     <div class="row" style="min-height: 300px;">
                         <div class="col-md-4 post-image">
-                            <img src="https://blog.myfitnesspal.com/wp-content/uploads/2017/12/Essential-Guide-to-Healthy-Eating-2-752x472.png" class="bd-placeholder-img" height="300px" width="100%">
+                            <img src="https://blog.myfitnesspal.com/wp-content/uploads/2017/12/Essential-Guide-to-Healthy-Eating-2-752x472.png" class="bd-placeholder-img recipe-image-big" height="300px" width="100%">
                         </div>
                         <div class="col-md-8 w-50 text-recipe">
                             <div class="card-body text-recipe">

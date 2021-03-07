@@ -84,18 +84,21 @@
     object-fit: cover;
 }
 
-@media (max-width: 776px) {
+@media (max-width: 992px) {
     .button-caption {
         display: none;
     }
 
     .post-image {
         width: 100% !important;
-        object-fit: cover;
     }
 
     .name-and-date {
         margin-left: 1em;
+    }
+
+    .recipe-image-big {
+        object-fit: cover;
     }
 
     .text-recipe {
