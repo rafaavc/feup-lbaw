@@ -38,14 +38,36 @@ function printMethod($method)
             $i++,
             $name,
             $text,
-            $i % 2 == 0 ? "https://www.thespruceeats.com/thmb/OCytFbckS2guE73MmUTAGLw6D9k=/960x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/cubes-of-tofu-168621031-588670e23df78c2ccdef8c7d.jpg" : null
+            $i % 3 != 0 ? "https://www.thespruceeats.com/thmb/OCytFbckS2guE73MmUTAGLw6D9k=/960x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/cubes-of-tofu-168621031-588670e23df78c2ccdef8c7d.jpg" : null
         );
     }
 }
 
 ?>
 
-<div id="method" class="col-8">
-    <h2>Method</h2>
-    <?php printMethod($recipe["method"]); ?>
-</div>
+
+<article class="col-8">
+    <section id="ingredients">
+        <h2>Ingredients</h2>
+    </section>
+    <section id="method">
+        <h2>Method</h2>
+        <?php //printMethod($recipe["method"]); ?>
+    </section>
+    <section id="comments">
+        <div class="card mb-3" style="max-width: 540px;">
+            <div class="row g-0">
+                <div class="col-md-4" class="card-img">
+                    <img src="https://secure.gravatar.com/avatar/3db7794a1658eadc176c88e50ea399c9?s=800&d=identicon" alt="...">
+                </div>
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <h5 class="card-title">The Master Critic of Foods says:</h5>
+                        <p class="card-text">Needs more salt.</p>
+                        <p class="card-text"><small class="text-muted">Edited 3 mins ago</small></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</article>
