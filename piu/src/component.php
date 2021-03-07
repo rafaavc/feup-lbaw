@@ -20,6 +20,7 @@ $component = isset($_GET['c']) ? $_GET['c'] : null;
     <!-- Font Awesome -->
     <link href="https://use.fontawesome.com/releases/v5.0.4/css/all.css" rel="stylesheet">
 
+    <!-- Component CSS -->
     <link href="components/<?=$component?>.css" rel="stylesheet">
     <title><?= is_null($component) ? ":(" : "Viewing: $component" ?></title>
 </head>

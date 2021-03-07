@@ -1,0 +1,36 @@
+#create-recipe-stepper {
+    width: 50%;
+    margin-left: 25%;
+    margin-top: 10rem;
+}
+
+#create-recipe-stepper > div.card-body > div:first-child {
+    width: 87%;
+    left: 6.5%;
+    margin-bottom: 6rem;
+}
+
+#create-recipe-stepper div.progress {
+    height: 2px;
+}
+
+#create-recipe-stepper div.progress + ul > li > button {
+    height: 2.5rem;
+    width: 2.5rem;
+}
+
+#create-recipe-stepper ul:last-of-type > li {
+    bottom: -6rem;
+    color: grey;
+}
+
+#create-recipe-stepper button[disabled] {
+    color: grey;
+    background-color: var(--bs-light);
+    border: none;
+    opacity: 1;
+}
+
+#create-recipe-stepper button[active] {
+    transform: scale(1.2);
+}
