@@ -30,7 +30,7 @@
                 <div class="col-sm avatar-image mb-2">
                     <img class="rounded-circle z-depth-2" src="https://mdbootstrap.com/img/Photos/Avatars/img%20(31).jpg">
                 </div>
-                <div class="col mr-4 name-and-date">
+                <div class="col-lg col-sm name-and-date">
                     <div class="row mb-1 username">Jamie Oliver</div>
                     <div class="row publication-date">11 September, 2020</div>
                 </div>
@@ -38,7 +38,7 @@
             <div class="recipe-post-inner">
                 <div class="card mb-4 mx-4 shadow p-2" style="max-width: 1000px; border: 0;">
                     <div class="row" style="min-height: 300px;">
-                        <div class="col-md-4 post-image w-25">
+                        <div class="col-md-4 post-image">
                             <img src="https://blog.myfitnesspal.com/wp-content/uploads/2017/12/Essential-Guide-to-Healthy-Eating-2-752x472.png" class="bd-placeholder-img" height="300px" width="100%" style="object-fit: cover;">
                         </div>
                         <div class="col-md-8">
@@ -116,7 +116,7 @@
             <div class="recipe-post-inner-in-review">
                 <div class="card mb-4 mx-4 shadow p-2" style="max-width: 800px; max-height: 150px; border: 0;">
                     <div class="row" style="min-height: 130px;">
-                        <div class="col-4 post-image">
+                        <div class="col-4">
                             <img src="https://blog.myfitnesspal.com/wp-content/uploads/2017/12/Essential-Guide-to-Healthy-Eating-2-752x472.png" class="bd-placeholder-img" height="130px">
                         </div>
                         <div class="col-8">

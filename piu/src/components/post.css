@@ -76,6 +76,10 @@
     border-right: 4px solid #6c757d!important;
 }
 
+.post-image {
+    width: 30% !important;
+}
+
 @media (max-width: 776px) {
     .button-caption {
         display: none;
@@ -83,6 +87,10 @@
 
     .post-image {
         width: 100% !important;
+    }
+
+    .name-and-date {
+        margin-left: 1em;
     }
 }
 
