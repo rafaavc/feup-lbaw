@@ -10,8 +10,6 @@ COPY src /var/www/html
 # FOR NGINX
 # docker run -it -p 8000:80 -v $PWD/html:/usr/share/nginx/html 2dukes/lbaw2135
 
-
 # FOR PHP (NOW)
 # docker build -t 2dukes/lbaw2135 .
-# docker run -p 80:80 -it --rm --name lbaw -v $PWD/html:/var/www/html lbaw2135
-    
+# docker run -p 80:80 -it --rm --name lbaw -v $PWD/src:/var/www/html lbaw2135

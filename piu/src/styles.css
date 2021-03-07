@@ -2,19 +2,12 @@
     width: 6em;
 }
 
-.fas.fa-search {
-    line-height: 2.375rem;
-    position: relative;
-    right: 2.375rem;
-    pointer-events: none;
-}
-
 .form-control {
     padding-right: 2.375rem;
 }
 
 div.content-align {
-    padding: 40px;
+    padding: 5rem 0px;
 }
 
 div.text-description {
@@ -34,17 +27,22 @@ button.btn-dark-large {
     width: 10rem;
 }
 
-footer {
-    position: relative;
-    color: gray;
-}
+@media (max-width: 991.98px) {
+    div.fs-4, strong.fs-1 {
+        text-align: center;
+    }
+    
+    button.btn-dark-large {
+        margin: auto;
+    } 
 
-span.footer-tastebuds {
-    position: absolute;
-    right: 0;
-}
+    div.content-align {
+        padding: 10px 10px !important;
+        text-align: center;
+    }
 
-a.a-footer {
-    color: gray;
-    text-decoration: none;
+    div img.w-75 {
+        margin: auto;
+        float: none !important;
+    }    
 }
