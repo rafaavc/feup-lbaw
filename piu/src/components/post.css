@@ -115,3 +115,7 @@
     margin-right: 10%;
     margin-bottom: 2.5em;
 }
+
+.review-text {
+    color: var(--bs-gray);
+}

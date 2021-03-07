@@ -76,7 +76,7 @@
     <?php }
 
     function displayReview($isVisitor) { ?>
-        <div class="container recipe-post">
+        <div class="container recipe-post mt-5">
             <div class="col-sm post-options">
                 <div class="dropdown">
                     <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
@@ -101,13 +101,18 @@
                 <div class="col-sm avatar-image mb-2">
                     <img class="rounded-circle z-depth-2" src="https://mdbootstrap.com/img/Photos/Avatars/img%20(31).jpg">
                 </div>
-                <div class="col mr-4 name-and-date">
-                    <div class="row mb-1 username-and-action">
+                <div class="col-lg col-sm name-and-date">
+                    <div class="row username w-100"><span class="d-inline w-auto p-0 me-2">Jamie Oliver</span><span class="d-inline w-auto text-start p-0 review-text">wrote a review</span></div>
+                    <!-- <div class="row mt-0 text-muted">wrote a review</span> -->
+                    <div class="row publication-date">11 September, 2020</div>
+                </div>
+                <!-- <div class="col name-and-date">
+                    <div class="row mb-1 name-and-date">
                         <span class="m-0 p-0 username">Jamie Oliver</span>
                         <span class="m-0 p-0 action text-muted">wrote a review</span>
                     </div>
                     <div class="row publication-date">11 September, 2020</div>
-                </div>
+                </div> -->
             </div>
             <blockquote class="blockquote mt-2 card-body shadow p-3 mb-5 mx-5 p-4 bg-white rounded">
                 <div class="row rating ms-1 mb-2">⭐⭐⭐⭐⭐</div>
