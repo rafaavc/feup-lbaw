@@ -53,7 +53,7 @@
                     <textarea class="form-control" placeholder="Your awesome description here..." id="floatingTextarea2" style="height: 5rem"></textarea>
                     <label for="floatingTextarea2">Description</label>
                 </div>
-                <div class="row g-3 mb-3">
+                <div class="row g-3 mb-4">
                     <div class="col-lg">
                         <div class="form-floating">
                             <input type="text" class="form-control" id="floatingInput" placeholder="Baked Potatoes">
@@ -77,8 +77,11 @@
                             <label for="floatingInput">Number of servings</label>
                         </div>
                     </div>
-
                 </div>
+
+                <h6 class="mb-3">End Product Photos</h6>
+                <input type="file" class="form-control mb-3">
+
                 <button type="button" class="btn btn-primary" style="float: right;">Next</button>
             </div>
             <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
@@ -90,20 +93,40 @@
                 <button type="button" class="btn btn-primary" style="float: right;">Next</button>
             </div>
             <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
-                <h3 class="mb-3">Method</h3>
-            </div>
+                <h3 class="mb-4">Method</h3>
+
+                <span class="d-block mb-3"><h5 class="d-inline">Duration</h6> <small>(in minutes)</small></span>
+                <div class="row g-3">
+                    <div class="col-lg">
+                        <div class="form-floating">
+                            <input type="number" class="form-control" id="preparationTime" placeholder="Preparation Time">
+                            <label for="preparationTime">Preparation</label>
+                        </div>
+                    </div>
+                    <div class="col-lg">
+                        <div class="form-floating">
+                            <input type="number" class="form-control" id="cookingTime" placeholder="Cooking Time">
+                            <label for="cookingTime">Cooking</label>
+                        </div>
+                    </div>
+                    <div class="col-lg">
+                        <div class="form-floating">
+                            <input type="number" class="form-control" id="additionalTime" placeholder="Additional Time">
+                            <label for="additionalTime">Additional</label>
+                        </div>
+                    </div>
+                </div>
+
+                <h4 class="mt-5 mb-4">Steps</h4>
+                
+                <h5 class="mb-3">Step 1</h5>                
+                <?php include(__DIR__ . '/createRecipeMethodStep.html'); ?>
+
+                <button type="button" class="btn btn-secondary" id="addStepButton"><i class="fas fa-plus"></i> Add Step</button>
+                <button type="button" class="btn btn-primary" style="float: right;">Create Recipe</button>
+
+            </div>  
         </div>
     </div>
 </div>
-
-<script>
-    const addIngredientButton = document.querySelector('#addIngredientButton');
-    addIngredientButton.addEventListener('click', () => {
-        const elem = document.createElement('div');
-        elem.classList.add('row', 'g-3', 'mb-3');
-        elem.innerHTML = `<?php include(__DIR__.'/createRecipeIngredientRow.html'); ?>`;
-        addIngredientButton.parentNode.insertBefore(elem, addIngredientButton);
-    })
-</script>
-
 
