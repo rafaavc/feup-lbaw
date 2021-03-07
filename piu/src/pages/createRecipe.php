@@ -24,7 +24,7 @@
     <link href="../components/footer.css" rel="stylesheet">
     <link href="../components/nav.css" rel="stylesheet">
 
-    <title>Sign Up</title>
+    <title>Create Recipe</title>
 
 </head>
 <body>
@@ -49,7 +49,7 @@
                 </ul>
                 <ul class="nav nav-pills position-relative" id="pills-tab" role="tablist">
                     <li class="position-absolute start-0 translate-middle d-none next-step">
-                        <p class="progress-caption text-center">Recipe Information</p>
+                        <p class="progress-caption text-center">Information</p>
                     </li>
                     <li class="position-absolute start-50 translate-middle d-none next-step">
                         <p class="progress-caption text-center">Ingredients</p>
