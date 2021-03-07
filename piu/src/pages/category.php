@@ -30,7 +30,7 @@
     ?>
     <div class="container">
         <div class="row w-75 mx-auto pt-5">
-            <h1 class="text-center mt-2 mb-4">Category</h1>
+            <h1 class="text-center mt-2 mb-4">Vegetarian</h1>
             <?php
                 include_once "../components/filterSortBar.php";
             ?>
