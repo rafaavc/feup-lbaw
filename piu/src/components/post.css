@@ -8,7 +8,6 @@
 .user-info {
     margin-bottom: 0em;
     padding: 1em;
-    width: 50em;
 }
 
 .username {
@@ -53,10 +52,6 @@
     justify-items: end;
 }
 
-.post-image {
-    overflow: hidden;
-}
-
 .post-description {
     overflow: hidden;
     text-overflow: ellipsis;
@@ -84,6 +79,10 @@
 @media (max-width: 776px) {
     .button-caption {
         display: none;
+    }
+
+    .post-image {
+        width: 100% !important;
     }
 }
 
