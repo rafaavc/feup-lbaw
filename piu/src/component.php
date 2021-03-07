@@ -14,16 +14,6 @@ $component = isset($_GET['c']) ? $_GET['c'] : null;
     <link href="components/<?= $component ?>.css" rel="stylesheet">
 
     <title><?= is_null($component) ? ":(" : "Viewing: $component" ?></title>
-
-    <style>
-      body {
-        padding: 0 10rem;
-      }
-
-      body > * {
-        margin: 1rem 0;
-      }
-    </style>
 </head>
 <body>
     <?php if (is_null($component)) { ?>

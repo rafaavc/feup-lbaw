@@ -1,3 +1,12 @@
+
+body {
+    padding: 0 10rem;
+}
+
+body > * {
+    margin: 1rem 0;
+}
+
 .clickable {
     cursor: pointer;
 }
