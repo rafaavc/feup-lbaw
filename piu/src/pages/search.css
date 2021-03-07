@@ -1,0 +1,39 @@
+.search-page {
+    padding: 3em 0 0 0;
+    max-width: 100em;
+}
+
+.dropdown-title,
+.search-header {
+    font-size: 1.2em;
+}
+
+.sort-by {
+    text-align: end;
+}
+
+.searched-text,
+.number-of-results {
+    font-weight: 600;
+}
+
+.search-area {
+    text-align: center;
+    justify-content: center;
+    justify-self: center;
+    justify-items: center;
+    min-width: 24em;
+}
+
+.section-title {
+    text-align: start;
+}
+
+.items {
+    width: 100%;
+}
+
+.page-link {
+    color: black;
+    font-size: 1.1em;
+}

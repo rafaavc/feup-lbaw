@@ -1,0 +1,79 @@
+html, body, main, .container, .row{
+    height: 100%;
+}
+
+.welcome-msg {
+    color: black;
+    margin: auto;
+    background-color: white;
+    padding: 2em;
+    border-radius: 1em;
+}
+
+div.sign-img {
+    background-image: url("../images/signIn.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: relative;
+    border-radius: 2em;
+    height: 85%;
+}
+
+div.sign-left-text {
+    width: 15em;
+    position: absolute;
+    top: 35%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+div.sign-form {
+    padding-top: 10em;
+    padding-left: 5em;
+}
+
+.signUp-a {
+    text-decoration: none;
+}
+
+/* hr */
+
+.separator {
+    color: gray;
+    display: flex;
+    align-items: center;
+    text-align: center;
+}
+
+.separator::before,
+.separator::after {
+    content: '';
+    flex: 1;
+    border-bottom: 1px solid gray;
+}
+
+.separator:not(:empty)::before {
+    margin-right: .75em;
+}
+
+.separator:not(:empty)::after {
+    margin-left: .75em;
+}
+
+.g-signin2 > div{
+    margin: 1em auto;
+}
+
+@media (max-width: 1199.98px) {
+    div.sign-form {
+        padding: 0em 2em;  
+    }
+
+    div.sign-img {
+        height: 325px;
+    }
+
+    html, body {
+        height: auto;
+    }
+}

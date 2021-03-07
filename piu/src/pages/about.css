@@ -1,0 +1,21 @@
+h1 {
+    margin-top: 2.5em;
+}
+
+input[name="myfile"] {
+    display: none;
+}
+
+img {
+    height: 10vw !important;
+    width: 10vw !important;
+    object-fit: cover;
+    margin: auto;
+}
+
+@media (max-width: 991.98px) {
+    img {
+        height: 25vw !important;
+        width: 25vw !important;
+    }
+}
