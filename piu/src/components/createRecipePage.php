@@ -1,0 +1,109 @@
+<div id="create-recipe-stepper" class="card p-4">
+    <div class="card-body">
+        <div class="position-relative mt-4">
+            <div class="progress">
+                <div class="progress-bar" role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
+            <ul class="nav nav-pills" id="pills-tab" role="tablist">
+                <li class="nav-item position-absolute top-0 start-0 translate-middle" role="presentation">
+                    <button active class="btn btn-primary active rounded-pill" onClick="this.parentNode.parentNode.previousElementSibling.firstElementChild.style.width = '0%'; this.active = true;" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true">1</button>
+                </li>
+                <li class="nav-item position-absolute top-0 start-50 translate-middle" role="presentation">
+                    <button class="btn btn-primary rounded-pill" onClick="this.parentNode.parentNode.previousElementSibling.firstElementChild.style.width = '50%'" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false">2</button>
+                </li>
+                <li class="nav-item position-absolute top-0 start-100 translate-middle" role="presentation">
+                    <button class="btn btn-primary rounded-pill" onClick="this.parentNode.parentNode.previousElementSibling.firstElementChild.style.width = '100%'" id="pills-contact-tab" data-bs-toggle="pill" data-bs-target="#pills-contact" type="button" role="tab" aria-controls="pills-contact" aria-selected="false">3</button>
+                </li>
+            </ul>
+            <ul class="nav nav-pills position-relative" id="pills-tab" role="tablist">
+                <li class="position-absolute start-0 translate-middle" style="display: none">
+                    <p>Recipe Information</p>
+                </li>
+                <li class="position-absolute start-50 translate-middle">
+                    <p>Ingredients</p>
+                </li>
+                <li class="position-absolute start-100 translate-middle">
+                    <p>Method</p>
+                </li>
+            </ul>
+        </div>
+        <div class="tab-content" id="pills-tabContent">
+            <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+                <h3 class="mb-4">Recipe Information</h3>
+                <div class="row g-3 mb-3">
+                    <div class="col-lg">
+                        <div class="form-floating">
+                            <input type="text" class="form-control" id="floatingInput" placeholder="Baked Potatoes">
+                            <label for="floatingInput">Recipe title</label>
+                        </div>
+                    </div>
+                    <div class="col-md">
+                        <div class="form-floating">
+                            <select class="form-select" id="floatingSelectGrid" aria-label="Main category">
+                                <option selected>-</option>
+                                <option value="1">One</option>
+                                <option value="2">Two</option>
+                                <option value="3">Three</option>
+                            </select>
+                            <label for="floatingSelectGrid">Main category</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-floating mb-3">
+                    <textarea class="form-control" placeholder="Your awesome description here..." id="floatingTextarea2" style="height: 5rem"></textarea>
+                    <label for="floatingTextarea2">Description</label>
+                </div>
+                <div class="row g-3 mb-3">
+                    <div class="col-lg">
+                        <div class="form-floating">
+                            <input type="text" class="form-control" id="floatingInput" placeholder="Baked Potatoes">
+                            <label for="floatingInput">Tags</label>
+                        </div>
+                    </div>
+                    <div class="col-sm">
+                        <div class="form-floating">
+                            <select class="form-select" id="floatingSelectGrid" aria-label="Difficulty">
+                                <option selected>-</option>
+                                <option value="1">Easy</option>
+                                <option value="2">Medium</option>
+                                <option value="3">Hard</option>
+                            </select>
+                            <label for="floatingSelectGrid">Difficulty</label>
+                        </div>
+                    </div>
+                    <div class="col-lg">
+                        <div class="form-floating">
+                            <input type="number" class="form-control" id="floatingInput" placeholder="Baked Potatoes">
+                            <label for="floatingInput">Number of servings</label>
+                        </div>
+                    </div>
+
+                </div>
+                <button type="button" class="btn btn-primary" style="float: right;">Next</button>
+            </div>
+            <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+                <h3 class="mb-4">Ingredients</h3>
+
+                <?php include(__DIR__.'/createRecipeIngredientRow.html'); ?>
+
+                <button type="button" class="btn btn-secondary" id="addIngredientButton"><i class="fas fa-plus"></i> Add Ingredient</button>
+                <button type="button" class="btn btn-primary" style="float: right;">Next</button>
+            </div>
+            <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
+                <h3 class="mb-3">Method</h3>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    const addIngredientButton = document.querySelector('#addIngredientButton');
+    addIngredientButton.addEventListener('click', () => {
+        const elem = document.createElement('div');
+        elem.classList.add('row', 'g-3', 'mb-3');
+        elem.innerHTML = `<?php include(__DIR__.'/createRecipeIngredientRow.html'); ?>`;
+        addIngredientButton.parentNode.insertBefore(elem, addIngredientButton);
+    })
+</script>
+
+
