@@ -1,4 +1,4 @@
 <?php
     include_once "./feed.php";
-    getFeedPage(true);
+    getFeedPage(false);
 ?>
