@@ -1,0 +1,42 @@
+
+body {    /* this is just for testing how they look */
+    padding: 0 10vw;
+    padding-top: 10vw;
+}
+
+.clickable {
+    cursor: pointer;
+}
+
+.text-left-align {
+    text-align: left;
+}
+
+#sortBar {
+    width: 10vw;
+    min-width: 25rem;
+    float: right;
+}
+
+#sortBar, #filterBar {
+    display: none;
+}
+
+#filterBarMobileHeading[aria-expanded=true], #sortBarMobileHeading[aria-expanded=true] {
+    background-color: var(--bs-dark);
+    transition: background-color .2s;
+}
+
+button.accordion-button::after {
+   display: none;
+}
+
+
+@media (min-width: 1200px) {  /* this value may need to be adjusted */
+    #sortBar, #filterBar {
+        display: flex;
+    } 
+    #sortBarMobile, #sortBarMobileHeading, #filterBarMobile, #filterBarMobileHeading {
+        display: none;
+    }
+}

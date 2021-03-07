@@ -1,0 +1,54 @@
+
+.edit_profile_page {
+    padding: 3em 0 0 0;
+    max-width: 100em;
+    text-align: center;
+}
+
+.edit-profile-area {
+    text-align: start;
+}
+
+.area-title-col {
+    min-width: 12em;
+}
+
+.area-title {
+    margin-bottom: 1em;
+}
+
+.profile-image {
+    height: 15em !important;
+    width: 15em !important;
+    object-fit: cover;
+    margin: auto;
+}
+
+.cover-photo-area {
+    overflow: hidden;
+    min-width: 19em;
+}
+
+.cover-photo-area img {
+    height: 250px;
+}
+
+@media (max-width: 800px) {
+    div.row div.col:not(:first-child) .area-title-row  {
+        margin-top: 2em;
+    }
+}
+
+input[name="myfile"] {
+    display: none;
+}
+
+.edit-profile-text-input {
+    max-width: 80em;
+    border-radius: 15px;
+}
+
+.submit-button {
+    width: 12em;
+    padding: 0.5em;
+}
