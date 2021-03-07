@@ -1,0 +1,57 @@
+:root {
+    --bs-light-darker: rgb(238, 241, 245);
+}
+
+#privateMessages {
+    width: 75%; 
+    margin: 7rem 12.5%;
+}
+
+#privateMessages .send {
+    right: .5rem;
+    bottom: .5rem;
+}
+
+#privateMessages .conversation-card {
+    position: relative;
+    cursor: pointer;
+}
+
+#privateMessages .square-button {
+    width: 2rem;
+    height: 2rem;
+    padding: 0rem;
+}
+
+#privateMessages .conversation-card:hover {
+    background-color: var(--bs-light);
+}
+
+#privateMessages .conversation-card[active] {
+    background-color: var(--bs-light-darker);
+}
+
+#privateMessages .small-profile-photo {
+    width: 3rem;
+    height: 3rem;
+}
+
+#privateMessages .row:not(:first-of-type) {
+    height: 60vh;
+}
+
+#privateMessages .col {
+    border: 1px solid lightgrey;
+}
+
+#messageTextarea {
+    width: calc(100% - 2rem);
+    left: 1rem;
+    position: absolute;
+    bottom: 1rem;
+}
+
+#messageTextarea > textarea {
+    height: 7rem;
+}
+
