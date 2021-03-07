@@ -8,7 +8,6 @@
 .user-info {
     margin-bottom: 0em;
     padding: 1em;
-    width: 50em;
 }
 
 .username {
@@ -53,10 +52,6 @@
     justify-items: end;
 }
 
-.post-image {
-    overflow: hidden;
-}
-
 .post-description {
     overflow: hidden;
     text-overflow: ellipsis;
@@ -81,9 +76,33 @@
     border-right: 4px solid #6c757d!important;
 }
 
-@media (max-width: 776px) {
+.post-image {
+    width: 50% !important;    
+}
+
+.recipe-image {
+    object-fit: cover;
+}
+
+@media (max-width: 992px) {
     .button-caption {
         display: none;
+    }
+
+    .post-image {
+        width: 100% !important;
+    }
+
+    .name-and-date {
+        margin-left: 1em;
+    }
+
+    .recipe-image-big {
+        object-fit: cover;
+    }
+
+    .text-recipe {
+        width: 100% !important;
     }
 }
 
@@ -95,4 +114,8 @@
     margin-left: 10%;
     margin-right: 10%;
     margin-bottom: 2.5em;
+}
+
+.review-text {
+    color: var(--bs-gray);
 }
