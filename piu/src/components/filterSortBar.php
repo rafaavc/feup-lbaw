@@ -44,13 +44,6 @@
             <button type="submit" class="btn btn-primary mt-3">Filter</button>
         </form>
     </ul>
-    <select class="form-select clickable" aria-label="Difficulty">
-        <option selected>Difficulty</option>
-        <option value="1">Beginner</option>
-        <option value="2">Pro</option>
-        <option value="3">Trivial</option>
-        <option value="4">Intermediate</option>
-    </select>
     <button class="form-select text-left-align" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Rating">Rating</button>
     <ul class="dropdown-menu">
         <form class="px-3 py-2">
@@ -120,11 +113,18 @@
             <div class="mb-3">
                 <label for="filterDurationMaxInputDesktop" class="form-label visually-hidden">To</label>
                 <div>To <span>5h</span></div>
-                <input type="range" class="form-range time-in-mins filter-duration-max-input" min="5" max="300" value="600" step="5" class="form-control" id="filterDurationMaxInputDesktop">
+                <input type="range" class="form-range time-in-mins filter-duration-max-input" min="5" max="300" value="600" step="5" id="filterDurationMaxInputDesktop">
             </div>
             <button type="submit" class="btn btn-primary">Filter</button>
         </form>
     </ul> 
+    <select class="form-select clickable" aria-label="Difficulty">
+        <option selected>Difficulty</option>
+        <option value="1">Beginner</option>
+        <option value="2">Pro</option>
+        <option value="3">Trivial</option>
+        <option value="4">Intermediate</option>
+    </select>
 </div>
 
 <div id="sortBar" class="input-group mt-3">

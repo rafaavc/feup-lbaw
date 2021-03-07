@@ -29,13 +29,13 @@
         include_once "../components/nav.php";
     ?>
     <div class="container">
-        <div class="row w-75 mx-auto pt-5">
-            <h1 class="text-center mt-2 mb-4">Vegetarian</h1>
+        <div class="mt-5 category-header">
+            <h1 class="mt-2 mb-5 text-center">Vegetarian</h1>
             <?php
                 include_once "../components/filterSortBar.php";
             ?>
         </div>
-        <div class="card shadow w-auto h-auto search-area searched-recipes mx-auto p-4 my-5">
+        <div class="card shadow w-100 h-auto search-area searched-recipes mx-auto p-4 my-5">
             <?php 
                 displayRecipe(true);
                 displayRecipe(true);
