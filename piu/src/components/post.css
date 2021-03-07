@@ -77,7 +77,11 @@
 }
 
 .post-image {
-    width: 30% !important;
+    width: 50% !important;    
+}
+
+.recipe-image {
+    object-fit: cover;
 }
 
 @media (max-width: 776px) {
@@ -87,10 +91,15 @@
 
     .post-image {
         width: 100% !important;
+        object-fit: cover;
     }
 
     .name-and-date {
         margin-left: 1em;
+    }
+
+    .text-recipe {
+        width: 100% !important;
     }
 }
 

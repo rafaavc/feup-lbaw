@@ -1,9 +1,9 @@
 <?php
 
-    // displayRecipe(true); // Recipe - Visitor 
-    // displayRecipe(false); // Recipe - Owner
-    // displayReview(true); // Review - Visitor
-    // displayReview(false); // Review - Owner
+    displayRecipe(true); // Recipe - Visitor 
+    displayRecipe(false); // Recipe - Owner
+    displayReview(true); // Review - Visitor
+    displayReview(false); // Review - Owner
     
 
     function displayRecipe($isVisitor = true) { ?>
@@ -39,10 +39,10 @@
                 <div class="card mb-4 mx-4 shadow p-2" style="max-width: 1000px; border: 0;">
                     <div class="row" style="min-height: 300px;">
                         <div class="col-md-4 post-image">
-                            <img src="https://blog.myfitnesspal.com/wp-content/uploads/2017/12/Essential-Guide-to-Healthy-Eating-2-752x472.png" class="bd-placeholder-img" height="300px" width="100%" style="object-fit: cover;">
+                            <img src="https://blog.myfitnesspal.com/wp-content/uploads/2017/12/Essential-Guide-to-Healthy-Eating-2-752x472.png" class="bd-placeholder-img" height="300px" width="100%">
                         </div>
-                        <div class="col-md-8">
-                            <div class="card-body ">
+                        <div class="col-md-8 w-50 text-recipe">
+                            <div class="card-body text-recipe">
                                 <h2 class="card-title">Cozido à Portuguesa</h2>
                                 <p class="card-text post-description">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</p>
                                 <p><small class="text-muted">4.6 ⭐⭐⭐⭐⭐ | 563 reviews</small></p>
@@ -117,10 +117,10 @@
                 <div class="card mb-4 mx-4 shadow p-2" style="max-width: 800px; max-height: 150px; border: 0;">
                     <div class="row" style="min-height: 130px;">
                         <div class="col-4">
-                            <img src="https://blog.myfitnesspal.com/wp-content/uploads/2017/12/Essential-Guide-to-Healthy-Eating-2-752x472.png" class="bd-placeholder-img" height="130px">
+                            <img src="https://blog.myfitnesspal.com/wp-content/uploads/2017/12/Essential-Guide-to-Healthy-Eating-2-752x472.png" class="bd-placeholder-img recipe-image" height="130px" width="100%">
                         </div>
                         <div class="col-8">
-                            <div class="card-body ">
+                            <div class="card-body">
                                 <h2 class="card-title">Cozido à Portuguesa</h2>
                                 <p><small class="text-muted">4.6 ⭐⭐⭐⭐⭐ | 563 reviews</small></p>
                             </div>
