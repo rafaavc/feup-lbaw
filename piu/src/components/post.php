@@ -1,9 +1,9 @@
 <?php
 
-    displayRecipe(true); // Recipe - Visitor 
-    displayRecipe(false); // Recipe - Owner
-    displayReview(true); // Review - Visitor
-    displayReview(false); // Review - Owner
+    // displayRecipe(true); // Recipe - Visitor 
+    // displayRecipe(false); // Recipe - Owner
+    // displayReview(true); // Review - Visitor
+    // displayReview(false); // Review - Owner
     
 
     function displayRecipe($isVisitor = true) { ?>
