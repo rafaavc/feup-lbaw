@@ -41,7 +41,7 @@ $recipe = [
                         [
                             "user" => "The Master Critic of Foods",
                             "comment" => "How dare you question the Master Critic! I know better!",
-                            "post" => "now"
+                            "post" => "now",
                         ]
                     ]
                 ]
@@ -88,12 +88,12 @@ function printMethod($method)
     }
 }
 
-function printComment($comment, $subcomment = false)
+function printComment($comment, $depth = 0)
 { ?>
-    <div class="card comment <?= $subcomment ? "subcomment" : "" ?>">
+    <div class="card comment <?= $depth !== 0 ? "subcomment" : "" ?>">
         <div class=" row g-0 p-3 d-flex">
             <img class="d-none d-md-inline-block rounded-circle" src="../images/people/<?= $comment["user"] ?>.jpg" alt="...">
-            <div class="col-md-9 card-body">
+            <div class="col-md-<?= 9 - round($depth / 2) ?> card-body">
                 <h5 class="card-title"><a href="#"><?= $comment["user"] ?></a> <?= key_exists("rate", $comment) ? "reviewed" : "commented" ?>:</h5>
                 <?php if (key_exists("rate", $comment)) { ?>
                     <div class="rating">
@@ -112,7 +112,7 @@ function printComment($comment, $subcomment = false)
                 </p>
             </div>
         </div>
-        <?php if (key_exists("replies", $comment)) printComment($comment["replies"][0], true) ?>
+        <?php if (key_exists("replies", $comment)) printComment($comment["replies"][0], $depth + 1) ?>
     </div>
 <?php }
 
@@ -124,9 +124,15 @@ include "../components/breadcrumb.php";
 ?>
 
 <main class="row content-general-margin">
+    <ul id="tags">
+        <li class="badge rounded-pill bg-secondary">Vegan</li>
+        <li class="badge rounded-pill bg-secondary">French Cuisine</li>
+        <li class="badge rounded-pill bg-secondary">Low Calorie</li>
+    </ul>
     <article id="recipe" class="col-8">
         <header>
             <h1>Tiramisu</h1>
+            <p>54 Ratings ⭐⭐⭐⭐⭐</p>
         </header>
         <section id="ingredients">
             <h2>Ingredients</h2>
