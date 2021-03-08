@@ -38,10 +38,10 @@
                         <div class="col area-title-col">
                             <h4 class="area-title">Profile Photo</h4>
                         </div>   
-                        <div class="col">                     
-                            <div class="btn-group dropdown w-20 ms-auto">
-                                <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                                    <i class="fas fa-cog"></i>
+                        <div class="col text-end profile-photo-button-col p-0">                     
+                            <div class="dropdown w-20 ms-auto">
+                                <button type="button" class="btn edit-photo-button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i class="fas fa-ellipsis-h"></i>
                                 </button>
                                 <ul class="dropdown-menu w-100">
                                     <li>
@@ -62,10 +62,10 @@
                         <div class="col area-title-col">
                             <h4 class="area-title">Cover Photo</h4>
                         </div>
-                        <div class="col">
-                            <div class="btn-group dropdown w-20 ms-auto">
-                                <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                                    <i class="fas fa-cog"></i>
+                        <div class="col text-end p-0">
+                            <div class="dropdown w-20 ms-auto">
+                                <button type="button" class="btn edit-photo-button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i class="fas fa-ellipsis-h"></i>
                                 </button>
                                 <ul class="dropdown-menu w-100">
                                     <li>
@@ -116,10 +116,10 @@
                 </label>
             </div>
             <div class="row">
-                <div class="col text-start mt-5 mb-3 mx-4 edit-profile-button-col">
+                <div class="col text-start mt-5 mb-3 edit-profile-button-col">
                     <button class="btn btn-primary submit-button">Submit</button>
                 </div>
-                <div class="col text-end mt-5 mb-3 mx-4 edit-profile-button-col">
+                <div class="col text-end mt-5 mb-3 edit-profile-button-col">
                     <button class="btn btn-danger submit-button">Delete Profile</button>
                 </div>
             </div>
