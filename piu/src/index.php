@@ -44,7 +44,7 @@
             </div>
         </section>
         <section>
-            <div class="container">
+            <div class="content-general-margin">
                 <div class="row mt-5">
                     <div class="col-lg-6">
                         <div class="d-flex flex-column bd-highlight align-items-lg-end content-align">
@@ -57,7 +57,7 @@
                         <img src="images/findRecipes.jpg" class="d-block w-75 h-100" alt="...">
                     </div>
                 </div>
-                <hr class="mt-5">
+                <hr class="mt-5 w-100">
                 <div class="row mt-5">
                     <div class="col-lg-6">
                         <img src="images/shareRecipes.jpg" class="d-block float-end w-75 h-100" alt="...">
@@ -71,13 +71,24 @@
                     </div>
                 </div>
             </div>
-            <div class="row mt-5 text-center">
-                <h1><strong>Find New Friends<strong></h3>
-                <p>Connect with new people!</p>
+            <div class="row content-red sign-up-call-to-action">
+                <div class="col-lg-6">
+                    <div class="d-flex flex-column bd-highlight align-items-lg-end p-4 text-white">
+                            <strong class="fs-1">Sign Up</strong>
+                            <div class="bd-highlight fs-4">Start connecting now</div>   
+                    </div>
+                </div>
+                <div class="col-lg-6 content-align p-5">
+                    <button type="button" class="btn btn-dark btn-dark-large d-block">Let's do it!</button>     
+                </div>
             </div>
-            <div class="row cards-homepage">
+            <div class="row cards-homepage content-general-margin">
+                <div class="row mt-5 text-center">
+                    <h1><strong>Find New Friends<strong></h3>
+                    <p>Connect with new people!</p>
+                </div>
                 <div class="card-group text-center">
-                    <div class="col-md my-3 mx-3">
+                    <div class="col-md my-3 me-3">
                         <div class="card h-100">
                             <img src="images/follow.jpg" class="card-img-top" alt="...">
                             <div class="card-body">
@@ -86,7 +97,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-md my-3 mx-3">
+                    <div class="col-md my-3 me-3">
                         <div class="card h-100">
                             <img src="images/group.jpg" class="card-img-top" alt="...">
                             <div class="card-body">
@@ -95,7 +106,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-md my-3 mx-3">
+                    <div class="col-md my-3">
                         <div class="card h-100">
                             <img src="images/chat.jpg" class="card-img-top" alt="...">
                             <div class="card-body">
@@ -106,16 +117,6 @@
                     </div>
                 </div>
             </div>
-            <div class="row mt-5 content-red">
-                <div class="col-lg-6">
-                    <div class="d-flex flex-column bd-highlight align-items-lg-end p-4">
-                            <strong class="fs-1">Sign Up</strong>
-                            <div class="bd-highlight fs-4">Start connecting now</div>   
-                    </div>
-                </div>
-                <div class="col-lg-6 content-align p-5">
-                    <button type="button" class="btn btn-dark btn-dark-large d-block">Let's do it!</button>     
-                </div>
         </section>
     </main>
     <?php include_once "components/footer.php"; ?>

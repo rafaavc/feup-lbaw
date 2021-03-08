@@ -8,18 +8,20 @@ $component = isset($_GET['c']) ? $_GET['c'] : null;
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!-- CSS -->
+    <!-- Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
-    <link href="components/<?= $component ?>.css" rel="stylesheet">
-
-    <!-- JS -->
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.6.0/dist/umd/popper.min.js" defer></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.6.0/dist/umd/popper.min.js" defer></script>
+    
+    <!-- Component CSS & JS -->
+    <link href="components/<?= $component ?>.css" rel="stylesheet">
+    <script src="components/<?=$component?>.js" defer></script>
 
     <!-- Font Awesome -->
     <link href="https://use.fontawesome.com/releases/v5.0.4/css/all.css" rel="stylesheet">
 
     <!-- Component CSS -->
+    <link href="components/navPopups.css" rel="stylesheet">
     <link href="components/<?=$component?>.css" rel="stylesheet">
     <script src="components/<?=$component?>.js" defer></script>
     <title><?= is_null($component) ? ":(" : "Viewing: $component" ?></title>

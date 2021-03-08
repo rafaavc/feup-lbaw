@@ -1,3 +1,52 @@
+:root {
+    --content-width-desktop: 70vw;
+    --content-margin-desktop: calc((100vw - var(--content-width-desktop))/2);
+    
+    --content-width-tablet: 80vw;
+    --content-margin-tablet: calc((100vw - var(--content-width-tablet))/2);
+
+    --content-width-phone: 90vw;
+    --content-margin-phone: calc((100vw - var(--content-width-phone))/2);
+}
+
+.content-general-margin {
+    width: var(--content-width-desktop);
+    margin-left: var(--content-margin-desktop);
+}
+
+.content-general-padding {
+    padding-left: var(--content-margin-desktop);
+    padding-right: var(--content-margin-desktop);
+}
+
+@media (max-width: 1500px) {
+    .content-general-margin {
+        width: var(--content-width-tablet);
+        margin-left: var(--content-margin-tablet);
+    }
+
+    .content-general-padding {
+        padding-left: var(--content-margin-tablet);
+        padding-right: var(--content-margin-tablet);
+    }
+}
+
+@media (max-width: 1000px) {
+    .content-general-margin {
+        width: var(--content-width-phone);
+        margin-left: var(--content-margin-phone);
+    }
+
+    .content-general-padding {
+        padding-left: var(--content-margin-phone);
+        padding-right: var(--content-margin-phone);
+    }
+}
+
+body {
+    overflow-x: hidden;
+}
+
 .img-nav-logo {
     width: 6em;
 }
@@ -14,9 +63,13 @@ div.text-description {
     line-height: 0.35rem;
 }
 
+div.sign-up-call-to-action {
+    margin-top: 5rem;
+}
+
 div.cards-homepage {
-    width: 75%;
-    margin: auto;
+    margin-top: 2rem;
+    margin-bottom: 6rem;
 }
 
 div.content-red {

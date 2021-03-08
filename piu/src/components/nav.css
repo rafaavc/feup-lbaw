@@ -6,7 +6,7 @@
     }
 }
 
-.dropdown-toggle::after {
+a.dropdown-toggle::after {
     display: none;
 }
 
