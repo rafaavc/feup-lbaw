@@ -6,7 +6,6 @@
 
 .image-container {
     position: relative;
-    width: 12em;
 }
 
 .image-container:after {
