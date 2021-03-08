@@ -6,15 +6,20 @@ h2 {
     padding: 1rem;
 }
 
+
+/* Box with icon at the top component */
+
 .icon-box {
     margin-top: 0.5em;
     padding: 0px;
+    padding-top: -0.5em;
     line-height: 1em;
     text-align: center;
     border: 1px solid black;
 }
 
-.icon-box i {
+.icon-box>i {
+    font-size: 2em;
     margin: 0px;
     position: relative;
     top: -0.5em;
@@ -39,6 +44,10 @@ h2 {
 
 .instruction .card {
     border: 0;
+}
+
+#recipe>section {
+    margin: 1em;
 }
 
 #comments .card {
@@ -71,4 +80,8 @@ h2 {
 
 #comments .text-area-with-button {
     margin: 1em;
+}
+
+#ingredients table {
+    border: 1px solid black;
 }

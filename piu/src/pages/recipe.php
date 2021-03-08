@@ -14,6 +14,7 @@
     <!-- JS -->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.6.0/dist/umd/popper.min.js" defer></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous" defer></script>
+    <script src="../scripts/recipeYields.js" defer></script>
 
     <!-- Font Awesome -->
     <link href="https://use.fontawesome.com/releases/v5.0.4/css/all.css" rel="stylesheet">
@@ -23,6 +24,16 @@
 
 $recipe = [
     "name" => "Classic Tiramisu",
+    "ingredients" => [
+        "egg yolks" => "<span class=\"number\">6</span>",
+        "white sugar" => "<span class=\"number\">1.25</span> cups",
+        "mascarpone cheese" => "<span class=\"number\">1.25</span> cups",
+        "heavy whipping cream" => "<span class=\"number\">1.75</span> cups",
+        "coffee flavored liqueur" => "<span class=\"number\">0.33</span> cup",
+        "ladyfingers" => "<span class=\"number\">12</span> ounce",
+        "unsweetened cocoa powder" => "<span class=\"number\">1</span> teaspoon",
+        "square semisweet chocolate" => "<span class=\"number\">1</span> ounce",
+    ],
     "method" => [
         "Step 1" => "Combine egg yolks and sugar in the top of a double boiler, over boiling water. Reduce heat to low, and cook for about 10 minutes, stirring constantly. Remove from heat and whip yolks until thick and lemon colored.",
         "Step 2" => "Add mascarpone to whipped yolks. Beat until combined. In a separate bowl, whip cream to stiff peaks. Gently fold into yolk mixture and set aside.",
@@ -122,23 +133,60 @@ function printComment($comment, $subcomment = false)
 
 ?>
 
-
-<article class="col-8">
-    <section id="ingredients">
-        <h2>Ingredients</h2>
-    </section>
-    <section id="method">
-        <h2>Method</h2>
-        <?php //printMethod($recipe["method"]); 
-        ?>
-    </section>
-    <section class="icon-box" id="comments">
-        <i class="fas fa-comments"></i>
-        <h2>Comments</h2>
-        <?php
-        foreach ($recipe["comments"] as $i => $comment)
-            printComment($comment);
-        include "../components/textareaWithButton.php";
-        ?>
-    </section>
-</article>
+<body>
+    <main class="row">
+        <article id="recipe" class="col-8">
+            <section id="ingredients">
+                <h2>Ingredients</h2>
+                <table class="table table-striped p-3">
+                    <?php
+                    foreach ($recipe["ingredients"] as $ingredient => $quantity) { ?>
+                        <tr>
+                            <td class="quantity"><?= $quantity ?></td>
+                            <td><?= $ingredient ?></td>
+                        </tr>
+                    <?php } ?>
+                </table>
+            </section>
+            <section id="method">
+                <h2>Method</h2>
+                <?php printMethod($recipe["method"]);
+                ?>
+            </section>
+            <section class="icon-box" id="comments">
+                <i class="fas fa-comments"></i>
+                <?php
+                foreach ($recipe["comments"] as $i => $comment)
+                    printComment($comment);
+                include "../components/textareaWithButton.php";
+                ?>
+            </section>
+        </article>
+        <aside class="col-4 row">
+            <div class="col-6">
+                <section class="icon-box">
+                    <i class="fas fa-clock"></i>
+                    <p>
+                        Duration 45 mins
+                        Preparation 15 mins
+                        Cooking 30 mins
+                        Additional -
+                    </p>
+                </section>
+                <section class="icon-box">
+                    <i class="fas fa-chart-bar"></i>
+                    <form>
+                        <label for="yieldsInput" class="form-label">Yields <span class="number">3</span> servings</label>
+                        <input type="range" class="form-range" min="1" max="10" id="yieldsInput" value="3">
+                        <input type="reset" onclick="calculateQuantities()">
+                    </form>
+                </section>
+            </div>
+            <div class="col-6">
+                <section class="icon-box">
+                    <i class="fas fa-list"></i>
+                </section>
+            </div>
+        </aside>
+    </main>
+</body>
