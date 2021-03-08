@@ -9,6 +9,8 @@
     <!-- CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
     <link href="recipe.css" rel="stylesheet">
+    <link href="../components/nav.css" rel="stylesheet">
+    <link href="../components/breadcrumb.css" rel="stylesheet">
     <link href="../components/textareaWithButton.css" rel="stylesheet">
 
     <!-- JS -->
@@ -134,8 +136,15 @@ function printComment($comment, $subcomment = false)
 ?>
 
 <body>
-    <main class="row">
+    <?php
+    include "../components/nav.php";
+    include "../components/breadcrumb.php";
+    ?>
+    <main class="row m-0">
         <article id="recipe" class="col-8">
+            <header>
+                <h1>Tiramisu</h1>
+            </header>
             <section id="ingredients">
                 <h2>Ingredients</h2>
                 <table class="table table-striped p-3">
@@ -162,74 +171,76 @@ function printComment($comment, $subcomment = false)
                 ?>
             </section>
         </article>
-        <aside class="col-4 row">
+        <aside class="col-4">
             <div class="media">
-                <iframe class="main" src='//players.brightcove.net/1033249144001/HyUr5pA17_default/index.html?videoId=1729060960001' allowfullscreen frameborder=0></iframe>
-                <img src="">
-                <img src="">
-                <img src="">
-                <img src="">
+                <img class="img-fluid main" src="https://dpv87w1mllzh1.cloudfront.net/alitalia_discover/attachments/data/000/002/587/original/la-ricetta-classica-del-tiramisu-con-uova-savoiardi-e-mascarpone-1920x1080.jpg?1567093636">
+                <div class="small-img d-flex">
+                    <img class="col-3" src="https://dpv87w1mllzh1.cloudfront.net/alitalia_discover/attachments/data/000/002/587/original/la-ricetta-classica-del-tiramisu-con-uova-savoiardi-e-mascarpone-1920x1080.jpg?1567093636">
+                    <img class="col-3" src="https://dpv87w1mllzh1.cloudfront.net/alitalia_discover/attachments/data/000/002/587/original/la-ricetta-classica-del-tiramisu-con-uova-savoiardi-e-mascarpone-1920x1080.jpg?1567093636">
+                    <img class="col-3" src="https://dpv87w1mllzh1.cloudfront.net/alitalia_discover/attachments/data/000/002/587/original/la-ricetta-classica-del-tiramisu-con-uova-savoiardi-e-mascarpone-1920x1080.jpg?1567093636">
+                    <img class="col-3" src="https://dpv87w1mllzh1.cloudfront.net/alitalia_discover/attachments/data/000/002/587/original/la-ricetta-classica-del-tiramisu-con-uova-savoiardi-e-mascarpone-1920x1080.jpg?1567093636">
+                </div>
             </div>
-            <div class="col-6">
-                <section class="icon-box">
-                    <i class="fas fa-clock"></i>
-                    <table class="table table-borderless">
-                        <tr>
-                            <td>Duration</td>
-                            <td>45 mins</td>
-                        </tr>
-                        <tr>
-                            <td>Preparation</td>
-                            <td>15 mins</td>
-                        </tr>
-                        <tr>
-                            <td>Cooking</td>
-                            <td>30 mins</td>
-                        </tr>
-                        <tr>
-                            <td>Additional</td>
-                            <td>-</td>
-                        </tr>
-                    </table>
-                </section>
-                <section class="icon-box">
-                    <i class="fas fa-chart-bar"></i>
-                    <form>
+            <div class="row">
+                <div class="col-6">
+                    <section class="icon-box">
+                        <i class="fas fa-clock"></i>
                         <table class="table table-borderless">
                             <tr>
-                                <td>
-                                    <label for="yieldsInput" class="form-label">Yields</label>
-                                </td>
-                                <td>
-                                    <span class="number">3</span> servings
-                                </td>
+                                <td>Duration</td>
+                                <td>45 mins</td>
+                            </tr>
+                            <tr>
+                                <td>Preparation</td>
+                                <td>15 mins</td>
+                            </tr>
+                            <tr>
+                                <td>Cooking</td>
+                                <td>30 mins</td>
+                            </tr>
+                            <tr>
+                                <td>Additional</td>
+                                <td>-</td>
                             </tr>
                         </table>
-                        <input type="range" class="form-range" min="1" max="10" id="yieldsInput" value="3">
-                        <input type="reset" onclick="calculateQuantities()" value="Reset to 3 servings">
-                    </form>
-                </section>
-            </div>
-            <div class="col-6">
-                <section class="icon-box">
-                    <i class="fas fa-list"></i>
-                    <table class="table table-borderless">
-                        <tr>
-                            <td>Energy</td>
-                            <td>579 cal</td>
-                        </tr>
-                        <tr>
-                            <td>Sugars</td>
-                            <td>52.7 g</td>
-                        </tr>
-                        <tr>
-                            <td>Fat</td>
-                            <td>39.6 g</td>
-                        </tr>
-                    </table>
-                </section>
-            </div>
-            <div class="flex-grow-1">
+                    </section>
+                    <section class="icon-box">
+                        <i class="fas fa-chart-bar"></i>
+                        <form>
+                            <table class="table table-borderless">
+                                <tr>
+                                    <td>
+                                        <label for="yieldsInput" class="form-label">Yields</label>
+                                    </td>
+                                    <td>
+                                        <span class="number">3</span> servings
+                                    </td>
+                                </tr>
+                            </table>
+                            <input type="range" class="form-range" min="1" max="10" id="yieldsInput" value="3">
+                            <input type="reset" onclick="calculateQuantities()" value="Reset to 3 servings">
+                        </form>
+                    </section>
+                </div>
+                <div class="col-6">
+                    <section class="icon-box">
+                        <i class="fas fa-list"></i>
+                        <table class="table table-borderless">
+                            <tr>
+                                <td>Energy</td>
+                                <td>579 cal</td>
+                            </tr>
+                            <tr>
+                                <td>Sugars</td>
+                                <td>52.7 g</td>
+                            </tr>
+                            <tr>
+                                <td>Fat</td>
+                                <td>39.6 g</td>
+                            </tr>
+                        </table>
+                    </section>
+                </div>
             </div>
         </aside>
     </main>
