@@ -1,8 +1,11 @@
 <?php
 
-$extraStyles = ["recipe.css"];
+$extraStyles = ["recipe.css", "../components/search_results_cards.css"];
+
+$extraScripts = ["../scripts/recipeYields.js"];
 
 include "../components/docHeader.php";
+include "../components/search_results_cards.php";
 
 $recipe = [
     "name" => "Classic Tiramisu",
@@ -184,10 +187,10 @@ function printComment($comment, $subcomment = false)
                             </tr>
                         </table>
                     </section>
-                    <section class="icon-box">
+                    <section class="icon-box p-2">
                         <i class="fas fa-chart-bar"></i>
                         <form>
-                            <table class="table table-borderless">
+                            <table class="table table-borderless mb-0">
                                 <tr>
                                     <td>
                                         <label for="yieldsInput" class="form-label">Yields</label>
@@ -198,7 +201,7 @@ function printComment($comment, $subcomment = false)
                                 </tr>
                             </table>
                             <input type="range" class="form-range" min="1" max="10" id="yieldsInput" value="3">
-                            <input type="reset" onclick="calculateQuantities()" value="Reset to 3 servings">
+                            <input class="p-1" type="reset" onclick="calculateQuantities()" value="Reset servings">
                         </form>
                     </section>
                 </div>
@@ -221,6 +224,13 @@ function printComment($comment, $subcomment = false)
                         </table>
                     </section>
                 </div>
+            </div>
+            <div class="suggested">
+                <h2 class="text-center">Suggested</h2>
+                <?php
+                for ($i = 0; $i < 4; $i++)
+                    getRecipeCard()
+                ?>
             </div>
         </aside>
     </main>

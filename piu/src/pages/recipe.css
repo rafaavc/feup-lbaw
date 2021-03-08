@@ -88,6 +88,10 @@ h2 {
     border: 1px solid black;
 }
 
+aside {
+    font-size: 0.8em;
+}
+
 aside .icon-box {
     margin: 2em 0;
 }
@@ -101,4 +105,8 @@ aside .media .main {
 
 aside .media .small-img img {
     padding: 0.1em;
+}
+
+aside .search-card {
+    margin: 3em 0;
 }
