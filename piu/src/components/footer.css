@@ -3,11 +3,6 @@ footer {
     background-color: whitesmoke;
 }
 
-span.footer-tastebuds {
-    position: absolute;
-    right: 1em;
-}
-
 a.a-footer {
     color: gray;
     text-decoration: none;

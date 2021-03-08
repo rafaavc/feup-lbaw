@@ -9,11 +9,14 @@
     --content-margin-phone: calc((100vw - var(--content-width-phone))/2);
 }
 
-.content-container {
-    margin-top: 7rem;
-    margin-bottom: 8rem;
+.content-general-margin {
     width: var(--content-width-desktop);
     margin-left: var(--content-margin-desktop);
+}
+
+.content-general-padding {
+    padding-left: var(--content-margin-desktop);
+    padding-right: var(--content-margin-desktop);
 }
 
 @media (max-width: 1500px) {
@@ -28,6 +31,10 @@
         width: var(--content-width-phone);
         margin-left: var(--content-margin-phone);
     }
+}
+
+body {
+    overflow-x: hidden;
 }
 
 .img-nav-logo {
@@ -46,9 +53,13 @@ div.text-description {
     line-height: 0.35rem;
 }
 
+div.sign-up-call-to-action {
+    margin-top: 5rem;
+}
+
 div.cards-homepage {
-    width: 75%;
-    margin: auto;
+    margin-top: 2rem;
+    margin-bottom: 6rem;
 }
 
 div.content-red {
