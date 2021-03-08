@@ -10,7 +10,7 @@
         <button type="button" class="btn btn-danger has-tooltip" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Delete user permanently"><i class="fas fa-trash"></i></button>
 <?php } ?>
 
-<div class="content-container">
+<div class="content-general-margin margin-from-nav margin-to-footer">
     <h1 class="mb-4">Users Management</h1>
     <div class="d-flex admin-search-input">
         <input type="text" class="form-control icon-right mb-3" placeholder="Search" aria-label="User Search Query">
