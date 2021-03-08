@@ -1,0 +1,98 @@
+.recipe-post {
+    padding: 0em;
+    max-width: 65em;
+    border: 5px solid #6c757d!important;
+    position: relative;
+}
+
+.user-info {
+    margin-bottom: 0em;
+    padding: 1em;
+    width: 50em;
+}
+
+.username {
+    width: 6.2em;
+}
+
+.action {
+    width: 7em;
+}
+
+.user-info img {
+    width: 100px;
+    height: 100px;
+}
+
+.avatar-image {
+    max-width: 8.5em;
+}
+
+.name-and-date {
+    font-size: 1.2em;
+}
+
+.publication-date {
+    color: #6c757d!important;
+}
+
+.post-options {
+    background-color: aliceblue;
+    justify-content: end;
+    justify-self: end;
+    justify-items: end;
+    width: 3em;
+    position: absolute;
+    right: 1.5em;
+}
+
+.dropdown {
+    width: 3em;
+    justify-content: end;
+    justify-self: end;
+    justify-items: end;
+}
+
+.post-image {
+    overflow: hidden;
+}
+
+.post-description {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    height: 170px;
+    -webkit-line-clamp: 6;
+    -webkit-box-orient: vertical;
+    font-size: 1.2em;
+}
+
+.text-muted {
+    margin-top: 2em;
+}
+
+.post-button {
+    width: 33.3%;
+    border-top: 3px solid #6c757d!important;
+    padding: 0.5em;
+}
+
+.post-button:not(:last-child) {
+    border-right: 4px solid #6c757d!important;
+}
+
+@media (max-width: 776px) {
+    .button-caption {
+        display: none;
+    }
+}
+
+.rating {
+    font-size: 1.2em;
+}
+
+.recipe-post-inner-in-review {
+    margin-left: 10%;
+    margin-right: 10%;
+    margin-bottom: 2.5em;
+}
