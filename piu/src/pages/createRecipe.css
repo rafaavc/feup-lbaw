@@ -1,10 +1,17 @@
 #create-recipe-stepper {
-    width: 50%;
-    margin-left: 25%;
-    margin-top: 10rem;
+    width: 75%;
+    margin-left: 12.5%;
+    margin-top: 2rem;
+    margin-bottom: 8rem;
 }
 
-#create-recipe-stepper > div.card-body > div:first-child {
+#pageTitle {
+    margin-top: 8rem;
+    width: 75%;
+    margin-left: 12.5%;
+}
+
+#create-recipe-stepper > div.card-body > div:first-of-type {
     width: 87%;
     left: 6.5%;
     margin-bottom: 6rem;
@@ -33,4 +40,5 @@
 
 #create-recipe-stepper button[active] {
     transform: scale(1.2);
+    transition: transform .2s;
 }

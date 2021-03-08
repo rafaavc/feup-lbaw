@@ -51,13 +51,13 @@
                         </div>
                         <ul class="nav nav-pills" id="pills-tab" role="tablist">
                             <li class="nav-item position-absolute top-0 start-0 translate-middle" role="presentation">
-                                <button active class="btn btn-secondary active rounded-pill" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true">1</button>
+                                <button active class="btn btn-secondary active rounded-pill" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true">1</button>
                             </li>
                             <li class="nav-item position-absolute top-0 start-50 translate-middle" role="presentation">
-                                <button disabled class="btn btn-secondary rounded-pill" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false">2</button>
+                                <button disabled class="btn btn-secondary rounded-pill" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false">2</button>
                             </li>
                             <li class="nav-item position-absolute top-0 start-100 translate-middle" role="presentation">
-                                <button disabled class="btn btn-secondary rounded-pill" id="pills-contact-tab" data-bs-toggle="pill" data-bs-target="#pills-contact" type="button" role="tab" aria-controls="pills-contact" aria-selected="false">3</button>
+                                <button disabled class="btn btn-secondary rounded-pill" data-bs-toggle="pill" data-bs-target="#pills-contact" type="button" role="tab" aria-controls="pills-contact" aria-selected="false">3</button>
                             </li>
                         </ul>
                         <ul class="nav nav-pills position-relative" id="pills-tab" role="tablist">
