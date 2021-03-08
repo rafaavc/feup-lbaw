@@ -29,15 +29,15 @@
     margin-top: 1rem;
 }
 
-#conversationsCollapse .container {
+#conversationsCollapse .conversation-card {
     cursor: pointer;
 }
 
-#conversationsCollapse .container:hover {
+#conversationsCollapse .conversation-card:hover {
     background-color: var(--bs-light);
 }
 
-#conversationsCollapse .container[active] {
+#conversationsCollapse .conversation-card[active] {
     background-color: var(--bs-light-darker);
 }
 
@@ -91,6 +91,10 @@
     padding: 0rem;
 }
 
+#privateMessages .notification-card > div:first-of-type {
+    width: 4rem;
+}
+
 #privateMessages .conversation-card:hover {
     background-color: var(--bs-light);
 }
@@ -108,8 +112,18 @@
     height: 60vh;
 }
 
-#privateMessages .col {
-    border: 1px solid lightgrey;
+#privateMessages > .row:first-of-type > div:first-of-type {
+    border-bottom: 1px solid lightgrey;
+    border-right: 1px solid lightgrey;
+}
+
+
+#privateMessages > .row:first-of-type > div:nth-child(2) {
+    border-bottom: 1px solid lightgrey;
+}
+
+#privateMessages > .row:nth-child(2) > div:first-of-type {
+    border-right: 1px solid lightgrey;
 }
 
 #messageTextarea {
@@ -128,7 +142,7 @@
 }
 
 
-@media (max-width: 1000px) {
+@media (max-width: 1200px) {
     #privateMessages .disappear {
         display: none;
     }

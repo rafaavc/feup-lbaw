@@ -39,23 +39,23 @@
             <i class="fas fa-pencil-alt"></i>
         </button>
         <div class="collapse" id="conversationsCollapse">
-            <div class="card card-body">
-                <div active class="container p-3 conversation-card" active>
+            <div class="card card-body p-0">
+                <div active class="p-3 conversation-card m-0" active>
                     <?= displayConversationCard("Sarah Colbert", "Sarah: That's nice!", "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fimages.pexels.com%2Fphotos%2F372042%2Fpexels-photo-372042.jpeg%3Fcs%3Dsrgb%26dl%3Dfashion-person-people-372042.jpg%26fm%3Djpg&f=1&nofb=1", true); ?>
                 </div>
                 <hr class="dropdown-divider m-0">
-                <div class="container p-3 conversation-card">
+                <div class="p-3 conversation-card m-0">
                     <?= displayConversationCard("John Guy", "You: Okay bro.", "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fmedia.istockphoto.com%2Fphotos%2Fyoung-man-picture-id155602235%3Fk%3D6%26m%3D155602235%26s%3D612x612%26w%3D0%26h%3DpWOQoAJ5p8xzfTWuHMfwj6jCgwH393t2jVbdDeoLKwM%3D&f=1&nofb=1"); ?>
                 </div>
                 <hr class="dropdown-divider m-0">
-                <div class="container p-3 conversation-card">
+                <div class="p-3 conversation-card m-0">
                     <?= displayConversationCard("Alexa Nixon", "Alexa: That sounds delicious!", "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fimage.freepik.com%2Ffree-photo%2Fthoughtful-girl-cooking-with-cookbook_1398-3595.jpg&f=1&nofb=1", false); ?>
                 </div>
             </div>
         </div>
 
     </div>
-    <div class="container" id="privateMessages">
+    <div class="card" id="privateMessages">
         <div class="row g-0">
             <div class="col col-lg-4 p-3 disappear">
                 <h5 class="m-0 d-inline-block mt-1">Conversations</h5>
