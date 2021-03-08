@@ -1,21 +1,32 @@
+:root {
+    --content-width-desktop: 70vw;
+    --content-margin-desktop: calc((100vw - var(--content-width-desktop))/2);
+    
+    --content-width-tablet: 80vw;
+    --content-margin-tablet: calc((100vw - var(--content-width-tablet))/2);
+
+    --content-width-phone: 90vw;
+    --content-margin-phone: calc((100vw - var(--content-width-phone))/2);
+}
+
 .content-container {
     margin-top: 7rem;
     margin-bottom: 8rem;
-    width: 70vw;
-    margin-left: 15vw;
+    width: var(--content-width-desktop);
+    margin-left: var(--content-margin-desktop);
 }
 
 @media (max-width: 1500px) {
     .content-container {
-        width: 80vw;
-        margin-left: 10vw;
+        width: var(--content-width-tablet);
+        margin-left: var(--content-margin-tablet);
     }
 }
 
 @media (max-width: 1000px) {
     .content-container {
-        width: 90vw;
-        margin-left: 5vw;
+        width: var(--content-width-phone);
+        margin-left: var(--content-margin-phone);
     }
 }
 
