@@ -23,7 +23,7 @@ div.cards-homepage {
 }
 
 div.content-red {
-    background-color: #BE252B;
+    background-color: var(--accent-color);
 }
 
 button.btn-dark-large {

@@ -10,6 +10,17 @@
 
     --margin-from-nav: 3rem;
     --margin-to-footer: 6rem;
+
+    --accent-color: #009245;
+    --accent-color-darker: #006837;
+}
+
+.bg-primary {
+    background-color: var(--accent-color) !important;
+}
+
+.btn-primary {
+    background-color: var(--accent-color) !important;
 }
 
 .margin-from-nav {
@@ -60,4 +71,3 @@
 body {
     overflow-x: hidden;
 }
-
