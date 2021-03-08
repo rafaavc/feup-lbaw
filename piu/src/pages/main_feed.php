@@ -1,4 +1,4 @@
 <?php
-    $isCategory = true;
+    $isCategory = false;
     include_once "./feed.php";
 ?>
