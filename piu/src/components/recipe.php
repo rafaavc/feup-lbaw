@@ -52,20 +52,21 @@ function printMethod($method)
     </section>
     <section id="method">
         <h2>Method</h2>
-        <?php //printMethod($recipe["method"]); ?>
+        <?php //printMethod($recipe["method"]); 
+        ?>
     </section>
-    <section id="comments">
+    <section class="icon-box" id="comments">
+        <i class="fas fa-comments"></i>
+        <h2>Comments</h2>
         <div class="card mb-3" style="max-width: 540px;">
             <div class="row g-0">
                 <div class="col-md-4" class="card-img">
-                    <img src="https://secure.gravatar.com/avatar/3db7794a1658eadc176c88e50ea399c9?s=800&d=identicon" alt="...">
+                    <img class="col-12 rounded-circle" src="https://secure.gravatar.com/avatar/3db7794a1658eadc176c88e50ea399c9?s=800&d=identicon" alt="...">
                 </div>
-                <div class="col-md-8">
-                    <div class="card-body">
-                        <h5 class="card-title">The Master Critic of Foods says:</h5>
-                        <p class="card-text">Needs more salt.</p>
-                        <p class="card-text"><small class="text-muted">Edited 3 mins ago</small></p>
-                    </div>
+                <div class="col-md-8 card-body">
+                    <h5 class="card-title">The Master Critic of Foods says:</h5>
+                    <p class="card-text">Needs more salt.</p>
+                    <p class="card-text"><small class="text-muted">Edited 3 mins ago</small></p>
                 </div>
             </div>
         </div>
