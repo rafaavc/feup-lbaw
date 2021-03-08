@@ -118,120 +118,124 @@ function printComment($comment, $subcomment = false)
 
 ?>
 
-<body>
-    <?php
-    include "../components/nav.php";
-    include "../components/breadcrumb.php";
-    ?>
-    <main class="row content-general-margin">
-        <article id="recipe" class="col-8">
-            <header>
-                <h1>Tiramisu</h1>
-            </header>
-            <section id="ingredients">
-                <h2>Ingredients</h2>
-                <table class="table table-striped p-3">
-                    <?php
-                    foreach ($recipe["ingredients"] as $ingredient => $quantity) { ?>
+<?php
+include "../components/nav.php";
+include "../components/breadcrumb.php";
+?>
+
+<main class="row content-general-margin">
+    <article id="recipe" class="col-8">
+        <header>
+            <h1>Tiramisu</h1>
+        </header>
+        <section id="ingredients">
+            <h2>Ingredients</h2>
+            <table class="table table-striped p-3">
+                <?php
+                foreach ($recipe["ingredients"] as $ingredient => $quantity) { ?>
+                    <tr>
+                        <td class="quantity"><?= $quantity ?></td>
+                        <td><?= $ingredient ?></td>
+                    </tr>
+                <?php } ?>
+            </table>
+        </section>
+        <section id="method">
+            <h2>Method</h2>
+            <?php printMethod($recipe["method"]);
+            ?>
+        </section>
+        <section class="icon-box" id="comments">
+            <i class="fas fa-comments"></i>
+            <?php
+            foreach ($recipe["comments"] as $i => $comment)
+                printComment($comment);
+            include "../components/textareaWithButton.php";
+            ?>
+        </section>
+    </article>
+    <aside class="col-4">
+        <div class="media">
+            <img class="img-fluid main" src="https://dpv87w1mllzh1.cloudfront.net/alitalia_discover/attachments/data/000/002/587/original/la-ricetta-classica-del-tiramisu-con-uova-savoiardi-e-mascarpone-1920x1080.jpg?1567093636">
+            <div class="small-img d-flex">
+                <img class="col-3" src="https://dpv87w1mllzh1.cloudfront.net/alitalia_discover/attachments/data/000/002/587/original/la-ricetta-classica-del-tiramisu-con-uova-savoiardi-e-mascarpone-1920x1080.jpg?1567093636">
+                <img class="col-3" src="https://dpv87w1mllzh1.cloudfront.net/alitalia_discover/attachments/data/000/002/587/original/la-ricetta-classica-del-tiramisu-con-uova-savoiardi-e-mascarpone-1920x1080.jpg?1567093636">
+                <img class="col-3" src="https://dpv87w1mllzh1.cloudfront.net/alitalia_discover/attachments/data/000/002/587/original/la-ricetta-classica-del-tiramisu-con-uova-savoiardi-e-mascarpone-1920x1080.jpg?1567093636">
+                <img class="col-3" src="https://dpv87w1mllzh1.cloudfront.net/alitalia_discover/attachments/data/000/002/587/original/la-ricetta-classica-del-tiramisu-con-uova-savoiardi-e-mascarpone-1920x1080.jpg?1567093636">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-6">
+                <section class="icon-box">
+                    <i class="fas fa-clock"></i>
+                    <table class="table table-borderless">
                         <tr>
-                            <td class="quantity"><?= $quantity ?></td>
-                            <td><?= $ingredient ?></td>
+                            <td>Duration</td>
+                            <td>45 mins</td>
                         </tr>
-                    <?php } ?>
-                </table>
-            </section>
-            <section id="method">
-                <h2>Method</h2>
-                <?php printMethod($recipe["method"]);
-                ?>
-            </section>
-            <section class="icon-box" id="comments">
-                <i class="fas fa-comments"></i>
-                <?php
-                foreach ($recipe["comments"] as $i => $comment)
-                    printComment($comment);
-                include "../components/textareaWithButton.php";
-                ?>
-            </section>
-        </article>
-        <aside class="col-4">
-            <div class="media">
-                <img class="img-fluid main" src="https://dpv87w1mllzh1.cloudfront.net/alitalia_discover/attachments/data/000/002/587/original/la-ricetta-classica-del-tiramisu-con-uova-savoiardi-e-mascarpone-1920x1080.jpg?1567093636">
-                <div class="small-img d-flex">
-                    <img class="col-3" src="https://dpv87w1mllzh1.cloudfront.net/alitalia_discover/attachments/data/000/002/587/original/la-ricetta-classica-del-tiramisu-con-uova-savoiardi-e-mascarpone-1920x1080.jpg?1567093636">
-                    <img class="col-3" src="https://dpv87w1mllzh1.cloudfront.net/alitalia_discover/attachments/data/000/002/587/original/la-ricetta-classica-del-tiramisu-con-uova-savoiardi-e-mascarpone-1920x1080.jpg?1567093636">
-                    <img class="col-3" src="https://dpv87w1mllzh1.cloudfront.net/alitalia_discover/attachments/data/000/002/587/original/la-ricetta-classica-del-tiramisu-con-uova-savoiardi-e-mascarpone-1920x1080.jpg?1567093636">
-                    <img class="col-3" src="https://dpv87w1mllzh1.cloudfront.net/alitalia_discover/attachments/data/000/002/587/original/la-ricetta-classica-del-tiramisu-con-uova-savoiardi-e-mascarpone-1920x1080.jpg?1567093636">
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-6">
-                    <section class="icon-box">
-                        <i class="fas fa-clock"></i>
-                        <table class="table table-borderless">
+                        <tr>
+                            <td>Preparation</td>
+                            <td>15 mins</td>
+                        </tr>
+                        <tr>
+                            <td>Cooking</td>
+                            <td>30 mins</td>
+                        </tr>
+                        <tr>
+                            <td>Additional</td>
+                            <td>-</td>
+                        </tr>
+                    </table>
+                </section>
+                <section class="icon-box p-2">
+                    <i class="fas fa-chart-bar"></i>
+                    <form>
+                        <table class="table table-borderless mb-0">
                             <tr>
-                                <td>Duration</td>
-                                <td>45 mins</td>
-                            </tr>
-                            <tr>
-                                <td>Preparation</td>
-                                <td>15 mins</td>
-                            </tr>
-                            <tr>
-                                <td>Cooking</td>
-                                <td>30 mins</td>
-                            </tr>
-                            <tr>
-                                <td>Additional</td>
-                                <td>-</td>
+                                <td>
+                                    <label for="yieldsInput" class="form-label">Yields</label>
+                                </td>
+                                <td>
+                                    <span class="number">3</span> servings
+                                </td>
                             </tr>
                         </table>
-                    </section>
-                    <section class="icon-box p-2">
-                        <i class="fas fa-chart-bar"></i>
-                        <form>
-                            <table class="table table-borderless mb-0">
-                                <tr>
-                                    <td>
-                                        <label for="yieldsInput" class="form-label">Yields</label>
-                                    </td>
-                                    <td>
-                                        <span class="number">3</span> servings
-                                    </td>
-                                </tr>
-                            </table>
-                            <input type="range" class="form-range" min="1" max="10" id="yieldsInput" value="3">
-                            <input class="p-1" type="reset" onclick="calculateQuantities()" value="Reset servings">
-                        </form>
-                    </section>
-                </div>
-                <div class="col-6">
-                    <section class="icon-box">
-                        <i class="fas fa-list"></i>
-                        <table class="table table-borderless">
-                            <tr>
-                                <td>Energy</td>
-                                <td>579 cal</td>
-                            </tr>
-                            <tr>
-                                <td>Sugars</td>
-                                <td>52.7 g</td>
-                            </tr>
-                            <tr>
-                                <td>Fat</td>
-                                <td>39.6 g</td>
-                            </tr>
-                        </table>
-                    </section>
-                </div>
+                        <input type="range" class="form-range" min="1" max="10" id="yieldsInput" value="3">
+                        <input class="p-1" type="reset" onclick="calculateQuantities()" value="Reset servings">
+                    </form>
+                </section>
             </div>
-            <div class="suggested">
-                <h2 class="text-center">Suggested</h2>
-                <?php
-                for ($i = 0; $i < 4; $i++)
-                    getRecipeCard()
-                ?>
+            <div class="col-6">
+                <section class="icon-box">
+                    <i class="fas fa-list"></i>
+                    <table class="table table-borderless">
+                        <tr>
+                            <td>Energy</td>
+                            <td>579 cal</td>
+                        </tr>
+                        <tr>
+                            <td>Sugars</td>
+                            <td>52.7 g</td>
+                        </tr>
+                        <tr>
+                            <td>Fat</td>
+                            <td>39.6 g</td>
+                        </tr>
+                    </table>
+                </section>
             </div>
-        </aside>
-    </main>
-</body>
+        </div>
+        <div class="suggested">
+            <h2 class="text-center">Suggested</h2>
+            <?php
+            for ($i = 0; $i < 4; $i++)
+                getRecipeCard()
+            ?>
+        </div>
+    </aside>
+</main>
+
+<?php
+include "../components/footer.php";
+include "../components/docFooter.php";
+?>
