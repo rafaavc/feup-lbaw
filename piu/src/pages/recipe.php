@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="en">
+
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -8,6 +9,7 @@
     <!-- CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
     <link href="recipe.css" rel="stylesheet">
+    <link href="../components/textareaWithButton.css" rel="stylesheet">
 
     <!-- JS -->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.6.0/dist/umd/popper.min.js" defer></script>
@@ -26,6 +28,34 @@ $recipe = [
         "Step 2" => "Add mascarpone to whipped yolks. Beat until combined. In a separate bowl, whip cream to stiff peaks. Gently fold into yolk mixture and set aside.",
         "Step 3" => "Split the lady fingers in half, and line the bottom and sides of a large glass bowl. Brush with coffee liqueur. Spoon half of the cream filling over the lady fingers. Repeat ladyfingers, coffee liqueur and filling layers. Garnish with cocoa and chocolate curls. Refrigerate several hours or overnight.",
         "Step 4" => "To make the chocolate curls, use a vegetable peeler and run it down the edge of the chocolate bar."
+    ],
+    "comments" => [
+        [
+            "user" => "The Master Critic of Foods",
+            "comment" => "Needs more salt!",
+            "rate" => 3,
+            "post" => "2 days ago",
+            "edit" => "3 mins ago",
+            "replies" => [
+                [
+                    "user" => "High Cholesterol Man",
+                    "comment" => "I think it has more salt than needed.",
+                    "post" => "2 hours ago",
+                    "replies" => [
+                        [
+                            "user" => "The Master Critic of Foods",
+                            "comment" => "How dare you question the Master Critic! I know better!",
+                            "post" => "now"
+                        ]
+                    ]
+                ]
+            ]
+        ],
+        [
+            "user" => "The Food Lover",
+            "comment" => "I loved it!",
+            "post" => "5 days ago",
+        ]
     ]
 ];
 
@@ -62,6 +92,34 @@ function printMethod($method)
     }
 }
 
+function printComment($comment, $subcomment = false)
+{ ?>
+    <div class="card comment <?= $subcomment ? "subcomment" : "" ?>">
+        <div class=" row g-0 p-3 d-flex">
+            <img class="d-none d-md-inline-block rounded-circle" src="../images/people/<?= $comment["user"] ?>.jpg" alt="...">
+            <div class="col-md-9 card-body">
+                <h5 class="card-title"><a href="#"><?= $comment["user"] ?></a> <?= key_exists("rate", $comment) ? "reviewed" : "commented" ?>:</h5>
+                <?php if (key_exists("rate", $comment)) { ?>
+                    <div class="rating">
+                        <i class="fas fa-star checked"></i>
+                        <i class="fas fa-star checked"></i>
+                        <i class="fas fa-star checked"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                <?php } ?>
+                <p class="card-text"><?= $comment["comment"] ?></p>
+                <p class="card-text">
+                    <small class="text-muted">
+                        <?= key_exists("edit", $comment) ? "Edited " . $comment["edit"] : $comment["post"] ?>
+                    </small>
+                </p>
+            </div>
+        </div>
+        <?php if (key_exists("replies", $comment)) printComment($comment["replies"][0], true) ?>
+    </div>
+<?php }
+
 ?>
 
 
@@ -77,17 +135,10 @@ function printMethod($method)
     <section class="icon-box" id="comments">
         <i class="fas fa-comments"></i>
         <h2>Comments</h2>
-        <div class="card mb-3" style="max-width: 540px;">
-            <div class="row g-0">
-                <div class="col-md-4" class="card-img">
-                    <img class="col-12 rounded-circle" src="https://secure.gravatar.com/avatar/3db7794a1658eadc176c88e50ea399c9?s=800&d=identicon" alt="...">
-                </div>
-                <div class="col-md-8 card-body">
-                    <h5 class="card-title">The Master Critic of Foods says:</h5>
-                    <p class="card-text">Needs more salt.</p>
-                    <p class="card-text"><small class="text-muted">Edited 3 mins ago</small></p>
-                </div>
-            </div>
-        </div>
+        <?php
+        foreach ($recipe["comments"] as $i => $comment)
+            printComment($comment);
+        include "../components/textareaWithButton.php";
+        ?>
     </section>
 </article>

@@ -6,6 +6,23 @@ h2 {
     padding: 1rem;
 }
 
+.icon-box {
+    margin-top: 0.5em;
+    padding: 0px;
+    line-height: 1em;
+    text-align: center;
+    border: 1px solid black;
+}
+
+.icon-box i {
+    margin: 0px;
+    position: relative;
+    top: -0.5em;
+    display: inline-block;
+    background-color: var(--default-background-color);
+    padding: 0 0.2em;
+}
+
 .instruction h3 {
     font-size: 1.5em;
     margin-bottom: 0;
@@ -27,21 +44,31 @@ h2 {
 #comments .card {
     border: 0px;
     text-align: left;
+    border-radius: 0px;
 }
 
-.icon-box {
-    margin-top: 0.5em;
-    padding: 0px;
-    line-height: 1em;
-    text-align: center;
+#comments .checked {
+    color: rgb(255, 217, 0);
+}
+
+.comment img {
     border: 1px solid black;
+    width: 8em;
 }
 
-.icon-box i {
-    margin: 0px;
-    position: relative;
-    top: -0.5em;
-    display: inline-block;
-    background-color: var(--default-background-color);
-    padding: 0 0.2em;
+.comment .card-body {
+    margin-left: 1em;
+}
+
+.comment .rating {
+    font-size: 0.8em;
+}
+
+#comments .subcomment {
+    border-left: 1px solid black;
+    margin-left: 3em;
+}
+
+#comments .text-area-with-button {
+    margin: 1em;
 }
