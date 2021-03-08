@@ -118,7 +118,9 @@ function printPopover($name, $icon, $content)
 <nav class="navbar navbar-expand-lg fixed-top navbar-light bg-light content-general-padding">
     <div id="navbarContainer" class="container-fluid justify-content-between">
         <!-- Logo -->
-        <a class="navbar-brand flex-lg-grow-1 normalize" href="#">TasteBuds</a>
+        <a class="navbar-brand flex-lg-grow-1 normalize" href="#">
+            <img src="<?=isset($index) ? "." : ".." ?>/images/tastebuds-dark.png" height="50px" />
+        </a>
 
         <!-- Togglers -->
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSearch" data-bs-parent="#navbarContainer" aria-controls="navbarSearch" aria-expanded="false" aria-label="Toggle searchbox">

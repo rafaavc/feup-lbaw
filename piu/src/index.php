@@ -1,6 +1,7 @@
 <?php
     $pageTitle = "TasteBuds";
     $extraStyles = [ "pages/index.css" ];
+    $index = true;
     include_once "components/docHeader.php";
     include_once "components/nav.php";
 ?>
@@ -62,7 +63,7 @@
                 </div>
             </div>
             <div class="col-lg-6 content-align p-5">
-                <button type="button" class="btn btn-dark btn-dark-large d-block">Let's do it!</button>     
+                <button type="button" class="btn btn-light btn-dark-large d-block">Let's do it!</button>     
             </div>
         </div>
         <div class="row cards-homepage content-general-margin">

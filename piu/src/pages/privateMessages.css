@@ -51,10 +51,6 @@
     display: inline-block;
 }
 
-#privateMessages .message-other {
-    background-color: var(--bs-gray); 
-}
-
 #privateMessages .date-time-display {
     color: var(--bs-gray);
     text-align: center;
@@ -65,7 +61,6 @@
 }
 
 #privateMessages .message-own {
-    background-color: var(--bs-blue); 
     right: 1rem;
     position: absolute;
 }
