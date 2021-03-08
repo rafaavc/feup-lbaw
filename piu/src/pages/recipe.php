@@ -1,30 +1,8 @@
-<!doctype html>
-<html lang="en">
-
-<head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <!-- CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
-    <link href="recipe.css" rel="stylesheet">
-
-    <!-- JS -->
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.6.0/dist/umd/popper.min.js" defer></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous" defer></script>
-    <script src="../scripts/recipeYields.js" defer></script>
-
-    <!-- Font Awesome -->
-    <link href="https://use.fontawesome.com/releases/v5.0.4/css/all.css" rel="stylesheet">
-
-    <!-- Components CSS -->
-    <link href="../components/nav.css" rel="stylesheet">
-    <link href="../components/breadcrumb.css" rel="stylesheet">
-    <link href="../components/textareaWithButton.css" rel="stylesheet">
-</head>
-
 <?php
+
+$extraStyles = ["recipe.css"];
+
+include "../components/docHeader.php";
 
 $recipe = [
     "name" => "Classic Tiramisu",
@@ -142,7 +120,7 @@ function printComment($comment, $subcomment = false)
     include "../components/nav.php";
     include "../components/breadcrumb.php";
     ?>
-    <main class="row m-0">
+    <main class="row content-general-margin">
         <article id="recipe" class="col-8">
             <header>
                 <h1>Tiramisu</h1>
