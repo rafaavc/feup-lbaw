@@ -115,10 +115,14 @@
                     Private
                 </label>
             </div>
-            <div class="text-center mt-5 mb-3">
-                <button class="btn btn-primary submit-button">Submit</button>
+            <div class="row">
+                <div class="col text-start mt-5 mb-3 mx-4 edit-profile-button-col">
+                    <button class="btn btn-primary submit-button">Submit</button>
+                </div>
+                <div class="col text-end mt-5 mb-3 mx-4 edit-profile-button-col">
+                    <button class="btn btn-danger submit-button">Delete Profile</button>
+                </div>
             </div>
-            
         </div>
 
     </div>

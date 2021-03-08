@@ -1,7 +1,6 @@
 
 .edit_profile_page {
     padding: 3em 0 0 0;
-    max-width: 100em;
     text-align: center;
 }
 
@@ -37,6 +36,9 @@
     div.row div.col:not(:first-child) .area-title-row  {
         margin-top: 2em;
     }
+    .edit-profile-button-col {
+        text-align: center!important;
+    }
 }
 
 input[name="myfile"] {
@@ -44,7 +46,6 @@ input[name="myfile"] {
 }
 
 .edit-profile-text-input {
-    max-width: 80em;
     border-radius: 15px;
 }
 
