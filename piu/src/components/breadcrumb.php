@@ -1,5 +1,5 @@
-<?php function drawBreadcrumb($pages) { ?>
-    <nav style="--bs-breadcrumb-divider: '>';" class="content-general-margin margin-from-nav" aria-label="breadcrumb">
+<?php function drawBreadcrumb($pages, $withoutMargin = false) { ?>
+    <nav style="--bs-breadcrumb-divider: '>';" class="<?php if ($withoutMargin) echo ''; else echo 'content-general-margin'; ?> margin-from-nav" aria-label="breadcrumb">
         <ol class="breadcrumb p-2"> 
             <i class="fas fa-home"></i>
             <li class="breadcrumb-item"><a href="#">Home</a></li>
