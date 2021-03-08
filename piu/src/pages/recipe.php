@@ -1,6 +1,6 @@
 <?php
 
-$extraStyles = ["recipe.css", "../components/search_results_cards.css"];
+$extraStyles = ["recipe.css", "../components/search_results_cards.css", "../components/cover.css"];
 
 $extraScripts = ["../scripts/recipeYields.js"];
 
@@ -132,7 +132,33 @@ include "../components/breadcrumb.php";
     <article id="recipe" class="col-8">
         <header>
             <h1>Tiramisu</h1>
-            <p>54 Ratings ⭐⭐⭐⭐⭐</p>
+            <div class="col-9">
+                <div class="rating px-3">
+                    <span class="small">34 ratings</span>
+                    <i class="fas fa-star checked"></i>
+                    <i class="fas fa-star checked"></i>
+                    <i class="fas fa-star checked"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                </div>
+                <div class="row g-0 p-3 text-center text-md-start">
+                    <table>
+                        <tbody>
+                            <tr>
+                                <td class="col-md-1 image-container">
+                                    <img class="rounded-circle" src="https://thispersondoesnotexist.com/image" alt="...">
+                                </td>
+                                <td class="align-middle">
+                                    <div class="col-md-5 card-body p-0 m-0 ms-2">
+                                        by <a href="#">Alex Johnson</a>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <p class="px-3">These vegan meringues use the liquid from a tin of chickpeas as the substitute for egg whites - genius! Use these vegan meringues wherever you would use egg white meringue such as summer fruit pavlova and Eton mess.</p>
+            </div>
         </header>
         <section id="ingredients">
             <h2>Ingredients</h2>

@@ -2,12 +2,14 @@
     --default-background-color: white;
 }
 
-h1,
 h2 {
     padding: 1rem;
     padding-top: 0;
 }
 
+h1 {
+    padding-left: 1rem;
+}
 
 /* Box with icon at the top component */
 
