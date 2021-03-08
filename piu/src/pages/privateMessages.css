@@ -3,8 +3,76 @@
 }
 
 #privateMessages {
-    width: 75%; 
-    margin: 7rem 12.5%;
+    width: 70%; 
+    min-width: 70%; 
+    margin: 7rem 0;
+    padding: 0;
+    margin-left: 15%;
+    border-radius: 0.3rem;
+}
+
+#privateMessages .message-container {
+    height: calc(100% - 9rem);
+    width: 100%;
+}
+
+#privateMessages .message-line {
+    min-width: 18rem;
+    max-width: 70%;
+    height: auto;
+    align-items: center;
+    margin: 0;
+    position: relative;
+}
+
+#conversationsCollapse {
+    margin-top: 1rem;
+}
+
+#conversationsCollapse .container {
+    cursor: pointer;
+}
+
+#conversationsCollapse .container:hover {
+    background-color: var(--bs-light);
+}
+
+#conversationsCollapse .container[active] {
+    background-color: var(--bs-light-darker);
+}
+
+#conversationsCollapse .notification-card > div:first-of-type {
+    width: 4rem;
+}
+
+#conversationsCollapse > .card-body {
+    padding: 0;
+}
+
+#privateMessages .message-line-content {
+    color: var(--bs-light);
+    padding: 0.25rem 1rem 0.25rem 0.7rem;
+    border-radius: 0.25rem;
+    display: inline-block;
+}
+
+#privateMessages .message-other {
+    background-color: var(--bs-gray); 
+}
+
+#privateMessages .date-time-display {
+    color: var(--bs-gray);
+    text-align: center;
+    position: absolute;
+    width: 10rem;
+    bottom: 22rem;
+    left: calc(50% - 5rem);
+}
+
+#privateMessages .message-own {
+    background-color: var(--bs-blue); 
+    right: 1rem;
+    position: absolute;
 }
 
 #privateMessages .send {
@@ -36,7 +104,7 @@
     height: 3rem;
 }
 
-#privateMessages .row:not(:first-of-type) {
+#privateMessages > .row:not(:first-of-type) {
     height: 60vh;
 }
 
@@ -53,5 +121,30 @@
 
 #messageTextarea > textarea {
     height: 7rem;
+}
+
+#messagesMobile {
+    display: none;
+}
+
+
+@media (max-width: 1000px) {
+    #privateMessages .disappear {
+        display: none;
+    }
+
+    #privateMessages {
+        width: 90%;
+        min-width: 90%;
+        margin-left: 5%;
+        margin-top: 1.5rem;
+    }
+
+    #messagesMobile {
+        display: block;
+        margin-top: 6rem;
+        width: 90%;
+        margin-left: 5%;
+    }
 }
 
