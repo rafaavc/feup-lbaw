@@ -1,3 +1,24 @@
+.content-container {
+    margin-top: 7rem;
+    margin-bottom: 8rem;
+    width: 70vw;
+    margin-left: 15vw;
+}
+
+@media (max-width: 1500px) {
+    .content-container {
+        width: 80vw;
+        margin-left: 10vw;
+    }
+}
+
+@media (max-width: 1000px) {
+    .content-container {
+        width: 90vw;
+        margin-left: 5vw;
+    }
+}
+
 .img-nav-logo {
     width: 6em;
 }
