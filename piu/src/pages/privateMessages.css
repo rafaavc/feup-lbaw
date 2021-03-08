@@ -4,8 +4,6 @@
 
 #privateMessages {
     padding: 0;
-    margin-top: var(--margin-from-nav);
-    margin-bottom: var(--margin-to-footer);
 }
 
 #privateMessages .message-container {

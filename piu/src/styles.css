@@ -8,7 +8,7 @@
     --content-width-phone: 90vw;
     --content-margin-phone: calc((100vw - var(--content-width-phone))/2);
 
-    --margin-from-nav: 5rem;
+    --margin-from-nav: 3rem;
     --margin-to-footer: 6rem;
 }
 

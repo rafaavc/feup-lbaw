@@ -1,13 +1,14 @@
 <?php 
     $pageTitle = "Sign In | TasteBuds";
-    $extraStyles = [ "../components/inputIcon.css", "signIn.css" ];
-    $extraScripts = [ "../scripts/signIn.js" ];
+    $extraStyles = [ "../components/inputIcon.css", "signIn.css", "../components/breadcrumb.css" ];
+    include_once "../components/breadcrumb.php";
     include_once "../components/docHeader.php";
     include_once "../components/nav.php"; 
 ?>
 <main>
-    <div class="container content-general-margin margin-from-nav margin-to-footer">
-        <div class="row mt-5">
+    <?php drawBreadcrumb([ "Sign In" ]); ?>
+    <div class="container content-general-margin mt-2 margin-to-footer">
+        <div class="row">
             <div class="col-xl-6 sign-img">
                 <div class="d-grid gap-2 col-6 mx-auto mt-5 sign-left-text w-100 text-center">
                     <div class="welcome-msg">

@@ -1,11 +1,15 @@
 <?php 
     $pageTitle = "Create Recipe / TasteBuds";
-    $extraStyles = [ "createRecipe.css" ];
+    $extraStyles = [ "createRecipe.css", "../components/breadcrumb.css" ];
     $extraScripts = [ "../scripts/progressBar.js", "../scripts/createRecipe.js" ];
+    include_once "../components/breadcrumb.php"; 
     include_once "../components/docHeader.php"; 
+    include_once "../components/breadcrumb.php"; 
     include_once "../components/nav.php"; 
 ?>
-<h1 id="pageTitle" class="content-general-margin margin-from-nav">Create Recipe</h1>
+
+<?php drawBreadcrumb(["Create Recipe"]); ?>
+<h1 id="pageTitle" class="content-general-margin mt-5">Create Recipe</h1>
 <div id="create-recipe-stepper" class="content-general-margin mt-4 margin-to-footer card p-4">
     <div class="card-body">
         <div class="position-relative mt-4">

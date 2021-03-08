@@ -1,13 +1,16 @@
 <?php
     $pageTitle = "Edit Profile | TasteBuds";
-    $extraStyles = [ "edit_profile.css", "../components/inputIcon.css" ];
+    $extraStyles = [ "edit_profile.css", "../components/inputIcon.css", "../components/breadcrumb.css" ];
     $extraScripts = [ "../scripts/edit_profile.js" ];
     include_once "../components/search_results_cards.php";
+    include_once "../components/breadcrumb.php";
     include_once "../components/docHeader.php";
     include_once "../components/nav.php";
 ?>
 
-<div class="container edit_profile_page content-general-margin margin-from-nav margin-to-footer">
+
+<?php drawBreadcrumb(["My Profile", "Edit Profile"]); ?>
+<div class="container edit_profile_page content-general-margin mt-5 margin-to-footer">
     <h1 class="mb-5">Edit Profile</h1>
 
     <div class="card shadow p-2 w-auto h-auto edit-profile-area p-5 mt-4">

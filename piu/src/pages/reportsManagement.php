@@ -1,8 +1,9 @@
 <?php 
     $pageTitle = "Reports Management";
-    $extraStyles = [ "adminArea.css" ];
+    $extraStyles = [ "adminArea.css", "../components/breadcrumb.css" ];
     include_once '../components/docHeader.php';
     include_once "../components/nav.php"; 
+    include_once "../components/breadcrumb.php"; 
 
     function displayActions($comment=true) { ?>
         <button type="button" class="btn btn-secondary me-2 has-tooltip" data-bs-toggle="tooltip" data-bs-placement="bottom" title="View <?= $comment ? "comment" : "recipe" ?>"><i class="fas fa-eye"></i></button>
@@ -10,8 +11,8 @@
         <button type="button" class="btn btn-danger has-tooltip me-2" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Delete the offensive <?= $comment ? "comment" : "recipe" ?>"><i class="fas fa-trash"></i></button>
         <button type="button" class="btn btn-secondary has-tooltip" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Dismiss report"><i class="fas fa-times"></i></button>
 <?php } ?>
-
-<div class="content-general-margin margin-from-nav margin-to-footer">
+<?php drawBreadcrumb([ "Reports Management" ]); ?>
+<div class="content-general-margin mt-5 margin-to-footer">
     <h1 class="mb-4">Reports Management</h1>
     <div class="d-flex admin-search-input">
         <input type="text" class="form-control icon-right mb-3" placeholder="Search" aria-label="Report Search Query">

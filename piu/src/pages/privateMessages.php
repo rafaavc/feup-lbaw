@@ -1,13 +1,16 @@
 <?php 
     $pageTitle = "Private Messages | TasteBuds";
-    $extraStyles = [ "../components/navPopups.css", "privateMessages.css" ];
+    $extraStyles = [ "../components/navPopups.css", "privateMessages.css", "../components/breadcrumb.css" ];
     include_once "../components/conversationCard.php";
     include_once "../components/messageLine.php"; 
+    include_once "../components/breadcrumb.php"; 
+
 
     include_once "../components/docHeader.php"; 
     include_once "../components/nav.php"; 
 ?>
-<div id="messagesMobile" class="mt-5">
+<?php drawBreadcrumb([ "Private Messages" ]); ?>
+<div id="messagesMobile" class="mt-2">
     <button type="button" class="btn btn-outline-secondary" data-bs-toggle="collapse" data-bs-target="#conversationsCollapse" aria-expanded="false" aria-controls="conversationsCollapse">
         <i class="fas fa-comments me-2"></i> Conversations
     </button>
@@ -31,7 +34,7 @@
     </div>
 
 </div>
-<div class="card content-general-margin" id="privateMessages">
+<div class="card content-general-margin margin-to-footer mt-2" id="privateMessages">
     <div class="row g-0">
         <div class="col col-lg-4 p-3 disappear">
             <h5 class="m-0 d-inline-block mt-1">Conversations</h5>

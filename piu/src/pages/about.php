@@ -1,13 +1,15 @@
     <?php
         $pageTitle = "About | TasteBuds";
-        $extraStyles = [ "about.css" ];
+        $extraStyles = [ "about.css", "../components/breadcrumb.css" ];
         $extraScripts = [ "../scripts/about.js" ];
         include_once "../components/docHeader.php";
         include_once "../components/nav.php";
+        include_once "../components/breadcrumb.php";
         include_once __DIR__ . "/aboutCards.php";
     ?>
     <main>
-        <h1 class="content-general-margin">About Us</h1>
+        <?php drawBreadcrumb(["About Us"]); ?>
+        <h1 class="content-general-margin mt-5">About Us</h1>
         <div class="content-general-margin text-end">
             <i class="fas fa-edit pe-1"></i><a href="#" class="edit-content-text text-decoration-none">Edit</a>
         </div>
