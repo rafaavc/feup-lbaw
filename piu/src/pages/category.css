@@ -5,3 +5,9 @@ select.form-select[aria-label="Category"] {
 .category-header {
     margin-bottom: 7rem;
 }
+
+@media (max-width: 991.98px) { 
+   div.category-header {
+       margin-bottom: 0;
+   } 
+}
