@@ -1,7 +1,7 @@
 <?php 
     $pageTitle = "Users Management";
-    $extraStyles = [ "usersManagement.css" ];
-    include_once '../components/docHeader.php';
+    $extraStyles = [ "adminArea.css" ];
+    include_once "../components/docHeader.php";
     include_once "../components/nav.php"; 
 
     function displayActions() { ?>
