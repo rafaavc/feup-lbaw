@@ -5,7 +5,7 @@
             <div class="col-2 image-container">
                 <img class="d-none d-md-inline-block rounded-circle" src="https://thispersondoesnotexist.com/image" alt="...">
             </div>
-            <div class="col-5 card-body">
+            <div class="col-6 card-body m-0">
                 <h1 class="card-title">Alex Johnson</h1>
                 <p class="card-text">Sushi chef | Sushisan</p>
                 <table class="table table-borderless lh-1">
@@ -21,10 +21,34 @@
                     </tr>
                 </table>
             </div>
-            <div class="col-4 card-body text-end">
-                <div class="btn-group" role="group" aria-label="Basic outlined example">
-                    <button type="button" class="btn btn-outline-dark"><i class="fas fa-user-plus"></i> Follow</button>
-                    <button type="button" class="btn btn-outline-dark"><i class="fas fa-comments"></i> Chat</button>
+            <div class="col-4 card-body text-end m-0">
+                <div class="btn-group" role="group" aria-label="">
+                    <button type="button" class="btn btn-outline-dark"><i class="fas fa-user-plus"></i>Follow</button>
+                    <button type="button" class="btn btn-outline-dark"><i class="fas fa-comments"></i>Chat</button>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <ul class="nav nav-tabs col-10 ps-3">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#">Activity</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Reviews</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Favourites</a>
+                </li>
+            </ul>
+            <div class="col-2 text-center" style="margin-top: -1em;">
+                <span class="small d-block">Average rating</span>
+                <div class="rating">
+                    <span class="value me-1">3.3</span>
+                    <i class="fas fa-star checked"></i>
+                    <i class="fas fa-star checked"></i>
+                    <i class="fas fa-star checked"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
                 </div>
             </div>
         </div>
