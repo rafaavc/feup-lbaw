@@ -115,7 +115,7 @@ function printPopover($name, $icon, $content)
 
 ?>
 
-<nav class="navbar navbar-expand-lg fixed-top navbar-light bg-light">
+<nav class="navbar navbar-expand-lg fixed-top navbar-light bg-light content-general-padding">
     <div id="navbarContainer" class="container-fluid justify-content-between">
         <!-- Logo -->
         <a class="navbar-brand flex-lg-grow-1 normalize" href="#">TasteBuds</a>

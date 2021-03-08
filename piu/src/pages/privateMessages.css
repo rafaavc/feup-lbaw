@@ -3,12 +3,9 @@
 }
 
 #privateMessages {
-    width: 70%; 
-    min-width: 70%; 
-    margin: 7rem 0;
     padding: 0;
-    margin-left: 15%;
-    border-radius: 0.3rem;
+    margin-top: var(--margin-from-nav);
+    margin-bottom: var(--margin-to-footer);
 }
 
 #privateMessages .message-container {
@@ -156,7 +153,6 @@
 
     #messagesMobile {
         display: block;
-        margin-top: 6rem;
         width: 90%;
         margin-left: 5%;
     }
