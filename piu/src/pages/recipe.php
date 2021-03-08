@@ -9,9 +9,6 @@
     <!-- CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
     <link href="recipe.css" rel="stylesheet">
-    <link href="../components/nav.css" rel="stylesheet">
-    <link href="../components/breadcrumb.css" rel="stylesheet">
-    <link href="../components/textareaWithButton.css" rel="stylesheet">
 
     <!-- JS -->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.6.0/dist/umd/popper.min.js" defer></script>
@@ -20,6 +17,11 @@
 
     <!-- Font Awesome -->
     <link href="https://use.fontawesome.com/releases/v5.0.4/css/all.css" rel="stylesheet">
+
+    <!-- Components CSS -->
+    <link href="../components/nav.css" rel="stylesheet">
+    <link href="../components/breadcrumb.css" rel="stylesheet">
+    <link href="../components/textareaWithButton.css" rel="stylesheet">
 </head>
 
 <?php
