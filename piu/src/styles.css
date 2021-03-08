@@ -1,7 +1,7 @@
 :root {
     --content-width-desktop: 70vw;
     --content-margin-desktop: calc((100vw - var(--content-width-desktop))/2);
-    
+
     --content-width-tablet: 80vw;
     --content-margin-tablet: calc((100vw - var(--content-width-tablet))/2);
 
@@ -81,13 +81,15 @@ button.btn-dark-large {
 }
 
 @media (max-width: 991.98px) {
-    div.fs-4, strong.fs-1 {
+
+    div.fs-4,
+    strong.fs-1 {
         text-align: center;
     }
-    
+
     button.btn-dark-large {
         margin: auto;
-    } 
+    }
 
     div.content-align {
         padding: 10px 10px !important;
@@ -97,5 +99,5 @@ button.btn-dark-large {
     div img.w-75 {
         margin: auto;
         float: none !important;
-    }    
+    }
 }
