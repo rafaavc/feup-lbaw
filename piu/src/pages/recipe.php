@@ -7,6 +7,8 @@ $extraScripts = ["../scripts/recipeYields.js"];
 include "../components/docHeader.php";
 include "../components/search_results_cards.php";
 
+$author = false;
+
 $recipe = [
     "name" => "Classic Tiramisu",
     "ingredients" => [
@@ -130,10 +132,10 @@ include "../components/breadcrumb.php";
         <li class="badge rounded-pill bg-secondary">Low Calorie</li>
     </ul>
     <article id="recipe" class="col-8">
-        <header>
-            <h1>Tiramisu</h1>
+        <header class="row text-left pt-3">
+            <h1 class="col-11">Classic Tiramisu</h1>
             <div class="col-9">
-                <div class="rating px-3">
+                <div class="rating">
                     <span class="small">34 ratings</span>
                     <i class="fas fa-star checked"></i>
                     <i class="fas fa-star checked"></i>
@@ -141,7 +143,7 @@ include "../components/breadcrumb.php";
                     <i class="fas fa-star"></i>
                     <i class="fas fa-star"></i>
                 </div>
-                <div class="row g-0 p-3 text-center text-md-start">
+                <div class="row g-0 py-2 text-center text-md-start">
                     <table>
                         <tbody>
                             <tr>
@@ -157,8 +159,31 @@ include "../components/breadcrumb.php";
                         </tbody>
                     </table>
                 </div>
-                <p class="px-3">These vegan meringues use the liquid from a tin of chickpeas as the substitute for egg whites - genius! Use these vegan meringues wherever you would use egg white meringue such as summer fruit pavlova and Eton mess.</p>
+                <p>These vegan meringues use the liquid from a tin of chickpeas as the substitute for egg whites - genius! Use these vegan meringues wherever you would use egg white meringue such as summer fruit pavlova and Eton mess.</p>
             </div>
+            <ul class="col-3 text-end">
+                <li class="list-group-item">
+                    <a href="#">
+                        <span class="legend">Print</span><i class="fas fa-print"></i>
+                    </a>
+                </li>
+                <li class="list-group-item">
+                    <a href="#">
+                        <span class="legend">Share</span><i class="fas fa-share-alt"></i>
+                    </a>
+                </li>
+                <li class="list-group-item">
+                    <?php if ($author) { ?>
+                        <a href="#">
+                            <span class="legend">Edit</span><i class="fas fa-edit"></i>
+                        </a>
+                    <?php } else { ?>
+                        <a href="#">
+                            <span class="legend">Favourite</span><i class="fas fa-heart"></i>
+                        </a>
+                    <?php } ?>
+                </li>
+            </ul>
         </header>
         <section id="ingredients">
             <h2>Ingredients</h2>

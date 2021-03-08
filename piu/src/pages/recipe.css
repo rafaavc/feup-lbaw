@@ -19,7 +19,8 @@ h1 {
     padding-top: -0.5em;
     line-height: 1em;
     text-align: center;
-    border: 1px solid black;
+    border: 1px solid rgba(0, 0, 0, .125);
+    border-radius: .25rem;
 }
 
 .icon-box>i {
@@ -57,7 +58,8 @@ h1 {
 
 #recipe>header {
     margin-top: 0;
-    border: 1px solid black;
+    border: 1px solid rgba(0, 0, 0, .125);
+    border-radius: .25rem;
 }
 
 #comments .card {
@@ -71,7 +73,6 @@ h1 {
 }
 
 .comment img {
-    border: 1px solid black;
     width: 8em;
     height: 8em;
 }
@@ -85,7 +86,7 @@ h1 {
 }
 
 #comments .subcomment {
-    border-left: 1px solid black;
+    border-left: 1px solid rgba(0, 0, 0, .125) !important;
     margin-left: 3em;
 }
 
@@ -94,7 +95,8 @@ h1 {
 }
 
 #ingredients table {
-    border: 1px solid black;
+    border: 1px solid rgba(0, 0, 0, .125);
+    border-radius: .25rem;
 }
 
 aside {
@@ -118,4 +120,21 @@ aside .media .small-img img {
 
 aside .search-card {
     margin: 3em 0;
+}
+
+#recipe header {
+    align-items: end;
+}
+
+#recipe header ul .legend {
+    font-size: 0.7em;
+    margin-right: 1em;
+}
+
+#recipe header ul li {
+    border: 0;
+}
+
+#recipe header a {
+    text-decoration: none;
 }
