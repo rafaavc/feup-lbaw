@@ -1,6 +1,8 @@
 <?php 
     $pageTitle = "Users Management";
-    $extraStyles = [ "adminArea.css" ];
+    $extraStyles = [ "adminArea.css", "../components/breadcrumb.css" ];
+
+    include_once "../components/breadcrumb.php";
     include_once "../components/docHeader.php";
     include_once "../components/nav.php"; 
 
@@ -9,8 +11,8 @@
         <button type="button" class="btn btn-warning text-white me-2 has-tooltip" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Ban user"><i class="fas fa-ban"></i></button>
         <button type="button" class="btn btn-danger has-tooltip" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Delete user permanently"><i class="fas fa-trash"></i></button>
 <?php } ?>
-
-<div class="content-general-margin margin-from-nav margin-to-footer">
+<?php drawBreadcrumb([ "Users Management" ]); ?>
+<div class="content-general-margin mt-5 margin-to-footer">
     <h1 class="mb-4">Users Management</h1>
     <div class="d-flex admin-search-input">
         <input type="text" class="form-control icon-right mb-3" placeholder="Search" aria-label="User Search Query">

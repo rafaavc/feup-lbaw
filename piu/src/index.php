@@ -67,7 +67,7 @@
         </div>
         <div class="row cards-homepage content-general-margin">
             <div class="row mt-5 text-center">
-                <h1><strong>Find New Friends<strong></h3>
+                <h1><strong>Find New Friends</strong></h3>
                 <p>Connect with new people!</p>
             </div>
             <div class="card-group text-center">

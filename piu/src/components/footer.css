@@ -1,6 +1,14 @@
+body {
+    position: relative;
+    padding-bottom: 6rem;
+}
+
 footer {
     color: gray;
     background-color: whitesmoke;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
 }
 
 a.a-footer {

@@ -8,7 +8,7 @@
     --content-width-phone: 90vw;
     --content-margin-phone: calc((100vw - var(--content-width-phone))/2);
 
-    --margin-from-nav: 5rem;
+    --margin-from-nav: 3rem;
     --margin-to-footer: 6rem;
 }
 
@@ -22,6 +22,7 @@
 
 .content-general-margin {
     width: var(--content-width-desktop);
+    min-width: var(--content-width-desktop);
     margin-left: var(--content-margin-desktop);
 }
 
@@ -33,6 +34,7 @@
 @media (max-width: 1500px) {
     .content-general-margin {
         width: var(--content-width-tablet);
+        min-width: var(--content-width-tablet);
         margin-left: var(--content-margin-tablet);
     }
 
@@ -45,6 +47,7 @@
 @media (max-width: 1000px) {
     .content-general-margin {
         width: var(--content-width-phone);
+        min-width: var(--content-width-phone);
         margin-left: var(--content-margin-phone);
     }
 
