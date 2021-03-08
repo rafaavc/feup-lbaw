@@ -20,16 +20,26 @@
 }
 
 @media (max-width: 1500px) {
-    .content-container {
+    .content-general-margin {
         width: var(--content-width-tablet);
         margin-left: var(--content-margin-tablet);
+    }
+
+    .content-general-padding {
+        padding-left: var(--content-margin-tablet);
+        padding-right: var(--content-margin-tablet);
     }
 }
 
 @media (max-width: 1000px) {
-    .content-container {
+    .content-general-margin {
         width: var(--content-width-phone);
         margin-left: var(--content-margin-phone);
+    }
+
+    .content-general-padding {
+        padding-left: var(--content-margin-phone);
+        padding-right: var(--content-margin-phone);
     }
 }
 
