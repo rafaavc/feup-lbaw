@@ -1,0 +1,13 @@
+select.form-select[aria-label="Category"] {
+    display: none;
+}
+
+.category-header {
+    margin-bottom: 7rem;
+}
+
+@media (max-width: 991.98px) { 
+   div.category-header {
+       margin-bottom: 0;
+   } 
+}
