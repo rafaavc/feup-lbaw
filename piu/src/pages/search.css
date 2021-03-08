@@ -1,20 +1,9 @@
 .search-page {
-    padding: 3em 0 0 0;
     max-width: 100em;
-}
-
-.dropdown-title,
-.search-header {
-    font-size: 1.2em;
 }
 
 .sort-by {
     text-align: end;
-}
-
-.searched-text,
-.number-of-results {
-    font-weight: 600;
 }
 
 .search-area {
