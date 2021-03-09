@@ -1,12 +1,6 @@
 :root {
-    --content-width-desktop: 70vw;
-    --content-margin-desktop: calc((100vw - var(--content-width-desktop))/2);
-    
-    --content-width-tablet: 80vw;
-    --content-margin-tablet: calc((100vw - var(--content-width-tablet))/2);
-
-    --content-width-phone: 90vw;
-    --content-margin-phone: calc((100vw - var(--content-width-phone))/2);
+    --content-width: 70vw;
+    --content-margin: calc((100vw - var(--content-width))/2);
 
     --margin-from-nav: 3rem;
     --margin-to-footer: 6rem;
@@ -14,6 +8,41 @@
     --accent-color: #009245;
     --accent-color-darker: #006837;
     --accent-color-lighter: #a8d6c0;
+}
+
+a:hover {
+    color: var(--accent-color-darker);
+}
+
+.margin-from-nav {
+    margin-top: var(--margin-from-nav);
+}
+
+.margin-to-footer {
+    margin-bottom: var(--margin-to-footer);
+}
+
+.content-general-margin {
+    width: var(--content-width);
+    min-width: var(--content-width);
+    margin-left: var(--content-margin);
+}
+
+.content-general-padding {
+    padding-left: var(--content-margin);
+    padding-right: var(--content-margin);
+}
+
+@media (max-width: 1500px) {
+    :root {
+        --content-width: 80vw;
+    }
+}
+
+@media (max-width: 1000px) {
+    :root {
+        --content-width: 90vw;
+    }
 }
 
 .progress-bar {
@@ -56,55 +85,6 @@
 a {
     color: var(--accent-color);
     transition: color .2s;
-}
-
-a:hover {
-    color: var(--accent-color-darker);
-}
-
-.margin-from-nav {
-    margin-top: var(--margin-from-nav);
-}
-
-.margin-to-footer {
-    margin-bottom: var(--margin-to-footer);
-}
-
-.content-general-margin {
-    width: var(--content-width-desktop);
-    min-width: var(--content-width-desktop);
-    margin-left: var(--content-margin-desktop);
-}
-
-.content-general-padding {
-    padding-left: var(--content-margin-desktop);
-    padding-right: var(--content-margin-desktop);
-}
-
-@media (max-width: 1500px) {
-    .content-general-margin {
-        width: var(--content-width-tablet);
-        min-width: var(--content-width-tablet);
-        margin-left: var(--content-margin-tablet);
-    }
-
-    .content-general-padding {
-        padding-left: var(--content-margin-tablet);
-        padding-right: var(--content-margin-tablet);
-    }
-}
-
-@media (max-width: 1000px) {
-    .content-general-margin {
-        width: var(--content-width-phone);
-        min-width: var(--content-width-phone);
-        margin-left: var(--content-margin-phone);
-    }
-
-    .content-general-padding {
-        padding-left: var(--content-margin-phone);
-        padding-right: var(--content-margin-phone);
-    }
 }
 
 body {

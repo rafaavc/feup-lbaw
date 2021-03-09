@@ -2,6 +2,43 @@
     width: 6em;
 }
 
+.home-slide {
+    background-size: cover;
+    background-position: 50%;
+    height: 50vh;
+    padding-top: 6rem;
+    padding-bottom: 6rem;
+    text-align: right;
+}
+
+.home-slide > h2 {
+    float: right;
+    clear: right;
+}
+
+.home-slide > h2:first-child {
+    clear: left;
+}
+
+.home-slide > h2 > div {
+    display: inline-block;
+}
+
+.home-slide .display-4 {
+    background-color: var(--bs-light);
+    padding: 0 1rem;
+    border-radius: 0.5rem;
+}
+
+.home-slide .display-2 {
+    background-color: var(--accent-color); 
+    color: var(--bs-light);
+    padding: 0 1rem;
+    margin-right: 2vw;
+    border-radius: 0.5rem;
+}
+
+
 .form-control {
     padding-right: 2.375rem;
 }
