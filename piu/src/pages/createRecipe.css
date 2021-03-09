@@ -1,4 +1,4 @@
-#create-recipe-stepper {
+/* #create-recipe-stepper {
     width: 75%;
     margin-left: 12.5%;
     margin-top: 2rem;
@@ -9,7 +9,7 @@
     margin-top: 8rem;
     width: 75%;
     margin-left: 12.5%;
-}
+} */
 
 #create-recipe-stepper > div.card-body > div:first-of-type {
     width: 87%;

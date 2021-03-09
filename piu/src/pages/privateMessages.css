@@ -3,12 +3,7 @@
 }
 
 #privateMessages {
-    width: 70%; 
-    min-width: 70%; 
-    margin: 7rem 0;
     padding: 0;
-    margin-left: 15%;
-    border-radius: 0.3rem;
 }
 
 #privateMessages .message-container {
@@ -56,10 +51,6 @@
     display: inline-block;
 }
 
-#privateMessages .message-other {
-    background-color: var(--bs-gray); 
-}
-
 #privateMessages .date-time-display {
     color: var(--bs-gray);
     text-align: center;
@@ -70,7 +61,6 @@
 }
 
 #privateMessages .message-own {
-    background-color: var(--bs-blue); 
     right: 1rem;
     position: absolute;
 }
@@ -156,7 +146,6 @@
 
     #messagesMobile {
         display: block;
-        margin-top: 6rem;
         width: 90%;
         margin-left: 5%;
     }

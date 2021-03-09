@@ -2,6 +2,11 @@ div.progress {
     height: 2px;
 }
 
+.sign-up-stepper {
+    margin: 0 2rem;
+    margin-bottom: 6rem;
+}
+
 ul:last-of-type > li {
     bottom: -6rem;
     color: grey;
@@ -25,10 +30,6 @@ div.progress + ul > li > button[disabled] {
     background-color: var(--bs-secondary);
 } 
 
-div.sign-form {
-    padding-top: 5em;
-}
-
 img.file-input {
     height: 6vw !important;
     width: 6vw !important;
@@ -36,8 +37,7 @@ img.file-input {
 }
 
 strong.finish-msg {
-    font-size: 5em;
-    color: var(--bs-secondary);
+    font-size: 3em;
 }
 
 @media (max-width: 991.98px) {

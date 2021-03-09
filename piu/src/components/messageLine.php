@@ -6,12 +6,12 @@
                 <div class="small-profile-photo" style="background-image: url('<?=$photo?>')"></div>
             </div>
             <div class="col-9">
-                <p class="m-0 message-other message-line-content"><?=$msg?></p>
+                <p class="m-0 bg-secondary message-line-content"><?=$msg?></p>
             </div>
         </div>
     <?php } else { ?>
         <div class="position-absolute message-line" style="right: 0; bottom: <?= $n."rem" ?>">
-            <p class="m-0 message-line-content message-own"><?=$msg?></p>
+            <p class="m-0 message-line-content message-own bg-primary"><?=$msg?></p>
         </div>
     <?php }
     } ?>

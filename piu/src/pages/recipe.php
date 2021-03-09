@@ -189,6 +189,9 @@ function printBoxes($mobile = false)
 <?php
 include "../components/nav.php";
 include "../components/breadcrumb.php";
+
+drawBreadcrumb(["Recipes", "Desserts", "Classic Tiramisu"])
+
 ?>
 
 <main class="row content-general-margin">
