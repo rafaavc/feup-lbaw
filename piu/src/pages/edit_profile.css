@@ -1,14 +1,4 @@
 
-.edit_profile_page {
-    padding: 3em 0 0 0;
-    max-width: 100em;
-    text-align: center;
-}
-
-.edit-profile-area {
-    text-align: start;
-}
-
 .area-title-col {
     min-width: 12em;
 }
@@ -33,9 +23,33 @@
     height: 250px;
 }
 
+.edit-photo-button {
+    font-size: 1.3em;
+    margin: 0;
+    padding: 0;
+}
+
+@keyframes edit-photo-button-anim {
+    from {transform: rotate(0deg);}
+    to {transform: rotate(180deg);}
+}
+
+.edit-photo-button:hover {
+    animation: edit-photo-button-anim 0.5s;
+}
+
 @media (max-width: 800px) {
     div.row div.col:not(:first-child) .area-title-row  {
         margin-top: 2em;
+    }
+    .edit-profile-button-col {
+        text-align: center!important;
+    }
+}
+
+@media (min-width: 970px) {
+    .profile-photo-button-col {
+        text-align: start!important;
     }
 }
 
@@ -44,7 +58,6 @@ input[name="myfile"] {
 }
 
 .edit-profile-text-input {
-    max-width: 80em;
     border-radius: 15px;
 }
 
