@@ -18,6 +18,7 @@
     include_once "../components/nav.php";
     include_once "../components/post.php";
     include_once "../components/breadcrumb.php";
+    include_once "../components/membersFollowingBoxes.php";
 
 ?>
 
@@ -32,7 +33,7 @@
                     <?php drawBreadcrumb(["Groups", "Group Name"], true); ?>
                 </div>
                 <div class="row members-box m-0">
-                    <?php include_once "../components/membersFollowingBoxes.php"; ?>
+                    <?php displayPeopleBox("Members"); ?>
                 </div>
             </div>
             

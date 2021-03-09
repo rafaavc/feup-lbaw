@@ -40,6 +40,4 @@
             </button>
         </div>
     </div>
-<?php } 
-
-displayPeopleBox("Members");?>
+<?php } ?>
