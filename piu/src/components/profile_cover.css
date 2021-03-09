@@ -4,6 +4,20 @@
     object-fit: cover;
 }
 
+.card img {
+    border: 1px solid black;
+}
+
+.card .card-body {
+    margin-left: 1em;
+}
+
+#comments .card {
+    border: 0px;
+    text-align: left;
+    border-radius: 0px;
+}
+
 .image-container {
     position: relative;
 }
@@ -24,20 +38,6 @@
     max-height: 100%;
     object-fit: cover;
     object-position: center;
-}
-
-.card img {
-    border: 1px solid black;
-}
-
-.card .card-body {
-    margin-left: 1em;
-}
-
-#comments .card {
-    border: 0px;
-    text-align: left;
-    border-radius: 0px;
 }
 
 @media (min-width: 768px) {

@@ -3,7 +3,7 @@
     <div class="container card">
         <div class="row g-0 p-3 text-center text-md-start">
             <div class="col-md-2 image-container">
-                <img class="rounded-circle" src="https://mdbootstrap.com/img/Photos/Avatars/img%20(31).jpg" alt="...">
+                <img class="rounded-circle mx-auto" src="https://mdbootstrap.com/img/Photos/Avatars/img%20(31).jpg" alt="...">
             </div>
             <div class="col-md-6 card-body m-0">
                 <h1 class="card-title">Jamie Oliver</h1>
@@ -33,7 +33,7 @@
             </div>
         </div>
         <div class="row">
-            <ul class="nav nav-tabs col-md-10 ps-3">
+            <ul class="nav nav-tabs col-md-10 ps-md-3">
                 <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="#">Activity</a>
                 </li>
