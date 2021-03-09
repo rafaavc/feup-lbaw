@@ -18,7 +18,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-xl-6 sign-form mt-5">
+            <div class="col-xl-6 sign-form">
                 <h1>Sign In</h1>
                 <h3>Please enter your account details.</h3>
                 

@@ -21,7 +21,7 @@
                 </div>
             </div>
             <div class="col-xl-6 sign-form">
-                <div class="position-relative mb-5 d-none">
+                <div class="position-relative d-none sign-up-stepper">
                     <div class="progress">
                         <div class="progress-bar" role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
                     </div>
@@ -92,8 +92,7 @@
                     </div>
                     <div class="tab-pane fade pt-5" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
                         <div class="text-center">
-                            <p><strong class="finish-msg">YOU'RE</strong></p>
-                            <p><strong class="finish-msg">IN!</strong></p>
+                            <p class="mb-5"><strong class="finish-msg">YOU'RE IN!</strong></p>
                             <img src="https://thumbs.gfycat.com/ShyCautiousAfricanpiedkingfisher-max-1mb.gif" alt="...">
                             <div class="d-grid gap-2 col-6 mx-auto mt-5">
                                 <a href="<?=getRootUrl()."/pages/feed.php"?>" role="button" class="btn btn-primary d-block">Finish</a>     
