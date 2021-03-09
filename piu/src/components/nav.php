@@ -1,5 +1,9 @@
 <?php
 
+function getRootUrl() {
+    return "http://".$_SERVER['HTTP_HOST'];
+}
+
 // TODO:
 // add popover to notifications and messages
 
@@ -8,22 +12,22 @@ $menu = "visitor";
 $visitor = [
     "sign in" => [
         "icon" => "sign-in-alt",
-        "href" => "signin"
+        "href" => getRootUrl()."/pages/signIn.php"
     ],
     "sign up" => [
         "icon" => "user-plus",
-        "href" => "signup"
+        "href" => getRootUrl()."/pages/signUp.php"
     ]
 ];
 
 $dropdown = [
     "my profile" => [
         "icon" => "address-card",
-        "href" => "profile"
+        "href" => getRootUrl()."/pages/profile.php"
     ],
     "sign out" => [
         "icon" => "sign-out-alt",
-        "href" => "signout"
+        "href" => "#"
     ]
 ];
 
@@ -45,11 +49,11 @@ $member = [
 $admin = [
     "reports" => [
         "icon" => "exclamation-triangle",
-        "href" => "reports"
+        "href" => getRootUrl()."/pages/reportsManagement.php"
     ],
     "users" => [
         "icon" => "users",
-        "href" => "users"
+        "href" => getRootUrl()."/pages/usersManagement.php"
     ],
     "john doe" => [
         "icon" => "user-circle",
@@ -118,7 +122,7 @@ function printPopover($name, $icon, $content)
 <nav class="navbar navbar-expand-lg fixed-top navbar-light bg-light content-general-padding">
     <div id="navbarContainer" class="container-fluid justify-content-between">
         <!-- Logo -->
-        <a class="navbar-brand flex-lg-grow-1 normalize" href="#">
+        <a class="navbar-brand flex-lg-grow-1 normalize" href="<?=getRootUrl()?>">
             <img class="logo" src="<?=isset($index) ? "." : ".." ?>/images/tastebuds-dark.png" height="50px" />
         </a>
 
@@ -132,7 +136,7 @@ function printPopover($name, $icon, $content)
 
         <!-- Search box -->
         <div class="collapse navbar-collapse justify-content-center flex-grow-1 normalize" id="navbarSearch" data-bs-parent="#navbarContainer">
-            <form>
+            <form action="<?=getRootUrl()."/pages/search.php"?>">
                 <div class="d-flex">
                     <input type="text" class="form-control icon-right" placeholder="Search" aria-label="Recipient's username" aria-describedby="basic-addon2">
                     <i class="fas fa-search fa-icon-right"></i>

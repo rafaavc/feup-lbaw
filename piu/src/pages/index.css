@@ -63,8 +63,8 @@ div.content-red {
     background-color: var(--accent-color);
 }
 
-button.btn-dark-large {
-    width: 10rem;
+a.btn-large {
+    width: 13rem;
 }
 
 @media (max-width: 991.98px) {

@@ -66,7 +66,7 @@
                 </div>
             </div>
             <div class="col-lg-6 content-align p-5">
-                <button type="button" class="btn btn-light btn-dark-large d-block">Let's do it!</button>     
+                <a href="<?=getRootUrl()."/pages/signUp.php"?>" role="button" class="btn btn-light btn-lg btn-large d-inline-block">Let's do it!</a>     
             </div>
         </div>
         <div class="row cards-homepage content-general-margin">
