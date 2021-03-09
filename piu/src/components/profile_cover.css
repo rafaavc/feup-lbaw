@@ -60,6 +60,10 @@
     }
 }
 
+header .rating {
+    font-size: 0.9em;
+}
+
 .rating .checked {
     color: rgb(255, 217, 0);
 }
