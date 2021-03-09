@@ -1,43 +1,24 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- Bootstrap -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous" defer></script>
-    
-    <!-- Font Awesome -->
-    <link href="https://use.fontawesome.com/releases/v5.0.4/css/all.css" rel="stylesheet">
-
-    <!-- Scripts -->
-    <script src="../scripts/edit_profile.js" defer></script>
-    
-    <link href="edit_profile.css" rel="stylesheet">
-    <link href="../components/inputIcon.css" rel="stylesheet">
-    <link href="../components/footer.css" rel="stylesheet">
-    <link href="../components/nav.css" rel="stylesheet">
-
-    <title>Edit Profile</title>
-</head>
-<body>
     <?php
         $role = "member";
+        $pageTitle = "Edit Profile | TasteBuds";
+        $extraStyles = [ "edit_profile.css", "../components/breadcrumb.css" ];
+        $extraScripts = [ "../scripts/edit_profile.js" ];
         include_once "../components/search_results_cards.php";
+        include_once "../components/docHeader.php";
         include_once "../components/nav.php";
+        include_once "../components/breadcrumb.php";
     ?>
+    <?php drawBreadcrumb([ "Profile", "Edit Profile" ]); ?>
+    <div class="container content-general-margin margin-to-footer">
+        <h1 class="mt-5">Edit Profile</h1>
 
-    <div class="container edit_profile_page">
-        <h1 class="m-5">Edit Profile</h1>
-
-        <div class="card shadow p-2 w-auto h-auto edit-profile-area mx-5 p-5 my-5">
+        <div class="card shadow p-2 w-auto h-auto p-5 mt-4">
             <div class="row">
                 <div class="col profile-photo-area mx-2">
                     <div class="row row-with-image">
                         <div class="col area-title-col">
-                            <h4 class="area-title">Profile Photo</h4>
+                            <h5 class="area-title">Profile Photo</h5>
                         </div>   
                         <div class="col text-end profile-photo-button-col p-0">                     
                             <div class="dropdown w-20 ms-auto">
@@ -61,7 +42,7 @@
                 <div class="col cover-photo-area mx-2">
                     <div class="row area-title-row row-with-image">
                         <div class="col area-title-col">
-                            <h4 class="area-title">Cover Photo</h4>
+                            <h5 class="area-title">Cover Photo</h5>
                         </div>
                         <div class="col text-end p-0">
                             <div class="dropdown w-20 ms-auto">
@@ -84,26 +65,26 @@
                 </div>
             </div>
 
-            <h4 class="area-title mt-4">Biography</h4>
+            <h5 class="area-title mt-4">Biography</h5>
             <div class="form-group">
                 <textarea class="form-control mb-4 p-3 edit-profile-text-input" id="exampleFormControlTextarea1" rows="3">User's biography</textarea>
             </div>
 
-            <h4 class="area-title">Name</h4>
+            <h5 class="area-title">Name</h5>
             <div class="form-group">
                 <textarea class="form-control mb-4 p-3 edit-profile-text-input" id="exampleFormControlTextarea1" rows="1">User's name</textarea>
             </div>
 
-            <h4 class="area-title">Country</h4>
+            <h5 class="area-title">Country</h5>
             <div class="form-group">
                 <textarea class="form-control mb-4 p-3 edit-profile-text-input" id="exampleFormControlTextarea1" rows="1">User's country</textarea>
             </div>
 
-            <h4 class="area-title">City</h4>
+            <h5 class="area-title">City</h5>
             <div class="form-group">
                 <textarea class="form-control mb-5 mt-1 p-3 edit-profile-text-input" id="exampleFormControlTextarea1" rows="1">User's city</textarea>
             </div>
-            <h4 class="area-title">Profile Visibility</h4>
+            <h5 class="area-title">Profile Visibility</h5>
             <div class="form-check">
                 <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" checked>
                 <label class="form-check-label" for="flexRadioDefault1">
@@ -121,12 +102,17 @@
                     <button class="btn btn-primary submit-button">Submit</button>
                 </div>
                 <div class="col text-end mt-5 mb-3 edit-profile-button-col">
-                    <button class="btn btn-danger submit-button">Delete Profile</button>
+                    <button class="btn btn-danger submit-button">
+                        <i class="fas fa-trash me-3"></i>
+                        Delete Profile
+                    </button>
                 </div>
             </div>
         </div>
 
     </div>
     
-    <?php include_once "../components/footer.php"; ?>
-</body>
+    <?php 
+        include_once "../components/footer.php"; 
+        include_once "../components/docFooter.php"; 
+    ?>
