@@ -35,7 +35,7 @@ function printFAQ($id, $name, $text)
 <body>
     <?php
     include "../components/nav.php";
-    drawBreadcrumb(["Home", "FAQ"]);
+    drawBreadcrumb(["FAQ"]);
     ?>
     <div class="accordion content-general-margin" id="accordionExample">
         <?php
