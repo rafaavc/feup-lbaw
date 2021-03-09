@@ -1,4 +1,5 @@
     <?php
+        $role = "member";
         $pageTitle = "Search Results | TasteBuds";
         $extraStyles = [ "search.css", "../components/search_results_cards.css", "../components/filterSortBar.css", "../components/breadcrumb.css" ];
         $extraScripts = [ "../components/filterSortBar.js" ];

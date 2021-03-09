@@ -1,4 +1,5 @@
 <?php 
+    $role = "admin";
     $pageTitle = "Users Management";
     $extraStyles = [ "adminArea.css", "../components/breadcrumb.css" ];
 

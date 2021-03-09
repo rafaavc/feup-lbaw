@@ -14,7 +14,7 @@
                     <div class="welcome-msg">
                         <h1><strong>Welcome Back,</strong></h1>
                         <h3>Sign in to continue</h3>
-                        <button type="button" class="btn btn-dark w-100 mx-auto mt-4">Go Home</button>     
+                        <a href="<?=getRootUrl()?>" role="button" class="btn btn-dark w-100 mx-auto mt-4">Go Home</a>     
                     </div>
                 </div>
             </div>
@@ -31,9 +31,9 @@
                 ?>
 
                 <div class="d-grid gap-2 col-6 mx-auto">
-                    <button type="button" class="btn btn-primary d-block">Sign In</button>     
+                    <a href="<?=getRootUrl()."/pages/feed.php"?>" role="button" class="btn btn-primary d-block">Sign In</a>     
                 </div>
-                <span class="d-block text-center mt-3">Don't have an account? &nbsp;<a href="#" class="signUp-a">Sign Up</a></span>
+                <span class="d-block text-center mt-3">Don't have an account? &nbsp;<a href="<?=getRootUrl()."/pages/signUp.php"?>" class="signUp-a">Sign Up</a></span>
                 <div class="separator mt-3">or</div>
                 
                 <div class="g-signin2" data-width="200"></div>  

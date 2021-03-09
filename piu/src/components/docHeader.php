@@ -20,8 +20,10 @@
     <link href="../styles.css" rel="stylesheet">
     <link href="../components/footer.css" rel="stylesheet">
     <link href="../components/nav.css" rel="stylesheet">
+    <link href="../components/navPopups.css" rel="stylesheet">
 
     <script src="../scripts/general.js" defer></script>
+    <script src="../components/navPopups.js" defer></script>
 
     <?php 
         if (isset($extraStyles)) { 

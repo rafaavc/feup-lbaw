@@ -1,4 +1,5 @@
 <?php 
+    $role = "member";
     $pageTitle = "Create Recipe / TasteBuds";
     $extraStyles = [ "createRecipe.css", "../components/breadcrumb.css" ];
     $extraScripts = [ "../scripts/progressBar.js", "../scripts/createRecipe.js" ];

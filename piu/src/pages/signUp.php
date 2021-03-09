@@ -16,7 +16,7 @@
                         <h1><strong>You're </strong>about to</h1>
                         <h1 class="text-center">be part of this</h1>
                         <h1 class="fw-bolder text-center">COMMUNITY</h1>
-                        <button type="button" class="btn btn-dark w-100 mx-auto mt-4">Go Home</button>     
+                        <a href="<?=getRootUrl()?>" role="button" class="btn btn-dark w-100 mx-auto mt-4">Go Home</a>     
                     </div>
                 </div>
             </div>
@@ -96,7 +96,7 @@
                             <p><strong class="finish-msg">IN!</strong></p>
                             <img src="https://thumbs.gfycat.com/ShyCautiousAfricanpiedkingfisher-max-1mb.gif" alt="...">
                             <div class="d-grid gap-2 col-6 mx-auto mt-5">
-                                <button type="button" class="btn btn-primary d-block">Finish</button>     
+                                <a href="<?=getRootUrl()."/pages/feed.php"?>" role="button" class="btn btn-primary d-block">Finish</a>     
                             </div>
                         </div>
                     </div>

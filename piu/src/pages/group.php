@@ -1,5 +1,6 @@
 <?php 
 
+$role = "member";
 $pageTitle = "Group Name | TasteBuds";
 $extraStyles = [ "../components/navPopups.css",
     "../components/group_cover.css",

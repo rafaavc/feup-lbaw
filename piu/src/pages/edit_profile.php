@@ -24,8 +24,9 @@
 </head>
 <body>
     <?php
-    include_once "../components/search_results_cards.php";
-    include_once "../components/nav.php";
+        $role = "member";
+        include_once "../components/search_results_cards.php";
+        include_once "../components/nav.php";
     ?>
 
     <div class="container edit_profile_page">

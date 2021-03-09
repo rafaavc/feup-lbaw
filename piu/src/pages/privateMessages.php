@@ -1,4 +1,5 @@
 <?php 
+    $role = "member";
     $pageTitle = "Private Messages | TasteBuds";
     $extraStyles = [ "../components/navPopups.css", "privateMessages.css", "../components/breadcrumb.css" ];
     include_once "../components/conversationCard.php";

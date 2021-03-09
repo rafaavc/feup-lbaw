@@ -1,4 +1,5 @@
 <?php 
+    $role = "admin";
     $pageTitle = "Reports Management";
     $extraStyles = [ "adminArea.css", "../components/breadcrumb.css" ];
     include_once '../components/docHeader.php';
