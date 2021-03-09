@@ -1,7 +1,6 @@
 .recipe-post {
     padding: 0em;
     max-width: 65em;
-    /* border: 1px solid; */
     position: relative;
 }
 
@@ -12,7 +11,7 @@
 
 .user-info {
     margin-bottom: 0em;
-    /* padding: 1em; */
+    /* align-items: center; */
 }
 
 .username {
@@ -48,6 +47,15 @@
     width: 3em;
     position: absolute;
     right: 0;
+}
+
+@keyframes edit-photo-button-anim {
+    from {transform: rotate(0deg);}
+    to {transform: rotate(180deg);}
+}
+
+.edit-photo-button:hover {
+    animation: edit-photo-button-anim 0.5s;
 }
 
 .edit-photo-button {
@@ -117,6 +125,15 @@
     .text-recipe {
         width: 100% !important;
     }
+
+    .recipe-post-inner-in-review {
+        width: 100%;
+        margin: 0!important;
+    }
+
+    .recipe-post-inner-in-review .card .card-body {
+        padding-top: 0!important;
+    }
 }
 
 .rating {
@@ -134,7 +151,6 @@
 }
 
 .btn-light {
-    /* background-color: white!important; */
     color: black;
 }
 

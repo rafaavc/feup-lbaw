@@ -12,6 +12,8 @@
     include_once "../components/trending.php"; 
 ?>
 
+<?php displayReview(false); ?>
+
 <h1 class="margin-from-nav content-general-margin">
     <?php 
         if ($isCategory) echo "Vegetarian";
