@@ -7,8 +7,8 @@
     include_once "../components/nav.php"; 
 ?>
 <main>
-    <?php drawBreadcrumb([ "Sign In" ]); ?>
-    <div class="container content-general-margin mt-2 margin-to-footer">
+    <?php drawBreadcrumb([ "Sign Up" ]); ?>
+    <div class="container content-general-margin mt-2">
         <div class="row">
             <div class="col-xl-6 sign-img">
                 <div class="d-grid gap-2 col-6 mx-auto mt-5 sign-left-text w-100 text-center">
@@ -27,13 +27,13 @@
                     </div>
                     <ul class="nav nav-pills" id="pills-tab" role="tablist">
                         <li class="nav-item position-absolute top-0 start-0 translate-middle" role="presentation">
-                            <button active class="btn btn-secondary active rounded-pill" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true">1</button>
+                            <button active class="btn btn-primary active rounded-pill" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true">1</button>
                         </li>
                         <li class="nav-item position-absolute top-0 start-50 translate-middle" role="presentation">
-                            <button disabled class="btn btn-secondary rounded-pill" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false">2</button>
+                            <button disabled class="btn btn-primary rounded-pill" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false">2</button>
                         </li>
                         <li class="nav-item position-absolute top-0 start-100 translate-middle" role="presentation">
-                            <button disabled class="btn btn-secondary rounded-pill" data-bs-toggle="pill" data-bs-target="#pills-contact" type="button" role="tab" aria-controls="pills-contact" aria-selected="false">3</button>
+                            <button disabled class="btn btn-primary rounded-pill" data-bs-toggle="pill" data-bs-target="#pills-contact" type="button" role="tab" aria-controls="pills-contact" aria-selected="false">3</button>
                         </li>
                     </ul>
                     <ul class="nav nav-pills position-relative" id="pills-tab" role="tablist">
@@ -48,7 +48,7 @@
                         </li>
                     </ul>
                 </div>
-                <div class="tab-content pt-5" id="pills-tabContent">
+                <div class="tab-content" id="pills-tabContent">
                     <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
                         <h1>Sign Up</h1>
                         <h3>Please enter your account details.</h3>
@@ -66,7 +66,7 @@
                         ?>
 
                         <div class="d-grid gap-2 col-6 mx-auto">
-                            <button type="button" class="btn btn-dark d-block next-step" id="first-step">Sign Up</button>     
+                            <button type="button" class="btn btn-primary d-block next-step" id="first-step">Sign Up</button>     
                         </div>
                         <span class="d-block text-center mt-3">Already have an account? &nbsp;<a href="#" class="signUp-a">Sign In</a></span>
                     </div>
@@ -87,7 +87,7 @@
                         <img src="../images/noImage.png" class="rounded-circle mx-auto d-block file-input" alt="...">
                         <input type="file" name="myfile" class="d-none"></input>
                         <div class="d-grid gap-2 col-6 mx-auto my-2">
-                            <button type="button" class="btn btn-dark d-block mt-3 next-step">Next</button>     
+                            <button type="button" class="btn btn-primary d-block mt-3 next-step">Next</button>     
                         </div>
                     </div>
                     <div class="tab-pane fade pt-5" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
@@ -96,7 +96,7 @@
                             <p><strong class="finish-msg">IN!</strong></p>
                             <img src="https://thumbs.gfycat.com/ShyCautiousAfricanpiedkingfisher-max-1mb.gif" alt="...">
                             <div class="d-grid gap-2 col-6 mx-auto mt-5">
-                                <button type="button" class="btn btn-dark d-block">Finish</button>     
+                                <button type="button" class="btn btn-primary d-block">Finish</button>     
                             </div>
                         </div>
                     </div>

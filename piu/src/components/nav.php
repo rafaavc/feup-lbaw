@@ -119,7 +119,7 @@ function printPopover($name, $icon, $content)
     <div id="navbarContainer" class="container-fluid justify-content-between">
         <!-- Logo -->
         <a class="navbar-brand flex-lg-grow-1 normalize" href="#">
-            <img src="<?=isset($index) ? "." : ".." ?>/images/tastebuds-dark.png" height="50px" />
+            <img class="logo" src="<?=isset($index) ? "." : ".." ?>/images/tastebuds-dark.png" height="50px" />
         </a>
 
         <!-- Togglers -->

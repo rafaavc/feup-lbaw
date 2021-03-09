@@ -25,10 +25,6 @@ div.progress + ul > li > button[disabled] {
     background-color: var(--bs-secondary);
 } 
 
-div.sign-form {
-    padding-top: 5em;
-}
-
 img.file-input {
     height: 6vw !important;
     width: 6vw !important;

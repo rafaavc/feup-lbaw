@@ -16,7 +16,7 @@ div.sign-img {
     background-repeat: no-repeat;
     position: relative;
     border-radius: 2em;
-    height: 75vh;
+    height: 65vh;
 }
 
 div.sign-left-text {
@@ -28,7 +28,7 @@ div.sign-left-text {
 }
 
 div.sign-form {
-    padding-top: 10em;
+    padding-top: 2em;
     padding-left: 5em;
 }
 
@@ -52,6 +52,10 @@ div.sign-form {
     border-bottom: 1px solid gray;
 }
 
+.sign-form-mb {
+    margin-bottom: 20rem;
+}
+
 .separator:not(:empty)::before {
     margin-right: .75em;
 }
@@ -66,7 +70,7 @@ div.sign-form {
 
 @media (max-width: 1199.98px) {
     div.sign-form {
-        padding: 0em 2em;  
+        padding: 4em 2em;  
     }
 
     div.sign-img {

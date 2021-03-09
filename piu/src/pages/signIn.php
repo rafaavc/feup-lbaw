@@ -31,7 +31,7 @@
                 ?>
 
                 <div class="d-grid gap-2 col-6 mx-auto">
-                    <button type="button" class="btn btn-dark d-block">Sign In</button>     
+                    <button type="button" class="btn btn-primary d-block">Sign In</button>     
                 </div>
                 <span class="d-block text-center mt-3">Don't have an account? &nbsp;<a href="#" class="signUp-a">Sign Up</a></span>
                 <div class="separator mt-3">or</div>

@@ -13,14 +13,53 @@
 
     --accent-color: #009245;
     --accent-color-darker: #006837;
+    --accent-color-lighter: #a8d6c0;
+}
+
+.progress-bar {
+    background-color: var(--accent-color-lighter) !important;
 }
 
 .bg-primary {
     background-color: var(--accent-color) !important;
 }
 
+.form-control:focus {
+    box-shadow: 0 0 0 0.25rem var(--accent-color-lighter) !important;
+    border-color: var(--accent-color);
+}
+
+.form-select:focus {
+    box-shadow: 0 0 0 0.25rem var(--accent-color-lighter) !important;
+    border-color: var(--accent-color);
+}
+
 .btn-primary {
     background-color: var(--accent-color) !important;
+    border-color: var(--accent-color-darker) !important;
+    transition: all .2s !important;
+}
+
+.btn-primary[disabled] {
+    color: white !important;
+    background-color: var(--accent-color-lighter) !important;
+}
+
+.btn:focus, .btn-primary.active:focus, .btn-primary:active:focus {
+    box-shadow: 0 0 0 0.25rem var(--accent-color-lighter) !important;
+}
+
+.btn-primary:hover {
+    background-color: var(--accent-color-darker) !important;
+} 
+
+a {
+    color: var(--accent-color);
+    transition: color .2s;
+}
+
+a:hover {
+    color: var(--accent-color-darker);
 }
 
 .margin-from-nav {

@@ -3,7 +3,7 @@ input[name="myfile"] {
     display: none;
 }
 
-img {
+img:not(.logo) {
     height: 10vw !important;
     width: 10vw !important;
     object-fit: cover;
@@ -11,7 +11,7 @@ img {
 }
 
 @media (max-width: 991.98px) {
-    img {
+    img:not(.logo) {
         height: 25vw !important;
         width: 25vw !important;
     }
