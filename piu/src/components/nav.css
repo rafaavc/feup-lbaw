@@ -20,7 +20,3 @@ a.dropdown-toggle::after {
 .navbar-light .navbar-toggler {
     border: 0;
 }
-
-body {
-    margin-top: 4em;
-}
