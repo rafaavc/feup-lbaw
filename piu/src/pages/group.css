@@ -1,9 +1,12 @@
-
 .members-box {
     max-width: 25em;
-    margin-top: 1.6em!important;
+    margin-top: 1.6em !important;
 }
 
 .button-area button {
     width: 12em;
+}
+
+.personal-info i {
+    margin-right: 0.5em;
 }

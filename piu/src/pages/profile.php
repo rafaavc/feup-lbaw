@@ -33,6 +33,15 @@ include_once "../components/membersFollowingBoxes.php";
                 <div class="row m-0 text-start">
                     <?php drawBreadcrumb(["Profile", "Jamie Oliver"], true); ?>
                 </div>
+                <div class="card m-0 text-center p-3 personal-info">
+                    <h4>Personal Info</h4>
+                    <div class="text-start m-auto d-inline">
+                        <span><i class="fas fa-map-marker-alt"></i>Ruílhe, Portugal</span>
+                        <br>
+                        <span><i class="fas fa-birthday-cake"></i>Joined in Jul 2020</span>
+                    </div>
+                    <a class="btn btn-primary mt-2" href="<?= getRootUrl() . "/pages/createRecipe.php" ?>">Create Recipe</a>
+                </div>
                 <div class="row members-box m-0">
                     <?php displayPeopleBox("Following"); ?>
                 </div>
