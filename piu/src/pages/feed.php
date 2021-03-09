@@ -4,8 +4,8 @@
 <?php
     $role = "member";
     $pageTitle = ($isCategory ? "Category" : "Feed") . " | TasteBuds";
-    $extraStyles = [ "../components/filterSortBar.css", "../components/post.css", "category.css", "../components/trending.css" ];
-    $extraScripts = [ "../components/filterSortBar.js", "../components/trending.js" ];
+    $extraStyles = [ "../components/filterSortBar.css", "../components/post.css", "category.css"];
+    $extraScripts = [ "../components/filterSortBar.js"   ];
     include_once "../components/post.php";
     include_once "../components/docHeader.php"; 
     include_once "../components/nav.php"; 
