@@ -1,6 +1,6 @@
 <?php
 
-$extraStyles = ["recipe.css", "../components/search_results_cards.css", "../components/cover.css"];
+$extraStyles = ["recipe.css", "../components/search_results_cards.css", "../components/cover.css", "../components/textareaWithButton.css"];
 
 $extraScripts = ["../scripts/recipeYields.js"];
 
@@ -65,12 +65,12 @@ function printInstruction($number, $name, $text, $image = null)
             <span class="d-inline-block align-middle"><?= $number ?>. <?= $name ?></span>
         </h3>
         <div class="collapse show" id="instruction<?= $number ?>">
-            <div class="d-flex">
-                <div class="col-<?= $image === null ? "12" : "8" ?> card card-body d-inline-block">
+            <div class="d-md-flex">
+                <div class="col-md-<?= $image === null ? "12" : "8" ?> card card-body d-inline-block">
                     <?= $text ?>
                 </div>
                 <?php if ($image !== null) { ?>
-                    <img class="col-3 d-inline-block" src="<?= $image ?>">
+                    <img class="col-12 col-md-3 d-inline-block" src="<?= $image ?>">
                 <?php } ?>
             </div>
         </div>
@@ -118,7 +118,73 @@ function printComment($comment, $depth = 0)
     </div>
 <?php }
 
-?>
+function printBoxContent($array)
+{ ?>
+    <table class="table table-borderless">
+        <?php foreach ($array as $item => $value) { ?>
+            <tr>
+                <td><?= $item ?></td>
+                <td><?= $value ?></td>
+            </tr>
+        <?php } ?>
+    </table>
+<?php }
+
+function printBoxes($mobile = false)
+{ ?>
+    <div class="<?= $mobile ? "d-block d-md-none" : "d-none d-md-block" ?>">
+        <div class="media my-4 my-md-0">
+            <img class="img-fluid main" src="https://dpv87w1mllzh1.cloudfront.net/alitalia_discover/attachments/data/000/002/587/original/la-ricetta-classica-del-tiramisu-con-uova-savoiardi-e-mascarpone-1920x1080.jpg?1567093636">
+            <div class="small-img d-flex">
+                <img class="col-3" src="https://dpv87w1mllzh1.cloudfront.net/alitalia_discover/attachments/data/000/002/587/original/la-ricetta-classica-del-tiramisu-con-uova-savoiardi-e-mascarpone-1920x1080.jpg?1567093636">
+                <img class="col-3" src="https://dpv87w1mllzh1.cloudfront.net/alitalia_discover/attachments/data/000/002/587/original/la-ricetta-classica-del-tiramisu-con-uova-savoiardi-e-mascarpone-1920x1080.jpg?1567093636">
+                <img class="col-3" src="https://dpv87w1mllzh1.cloudfront.net/alitalia_discover/attachments/data/000/002/587/original/la-ricetta-classica-del-tiramisu-con-uova-savoiardi-e-mascarpone-1920x1080.jpg?1567093636">
+                <img class="col-3" src="https://dpv87w1mllzh1.cloudfront.net/alitalia_discover/attachments/data/000/002/587/original/la-ricetta-classica-del-tiramisu-con-uova-savoiardi-e-mascarpone-1920x1080.jpg?1567093636">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <section class="icon-box">
+                    <i class="fas fa-clock"></i>
+                    <? printBoxContent([
+                        "Duration" => "45 mins",
+                        "Preparation" => "15 mins",
+                        "Cooking" => "30 mins",
+                        "Additional" => "-"
+                    ]) ?>
+                </section>
+                <section class="icon-box p-2 mt-4 mt-md-0">
+                    <i class="fas fa-chart-bar"></i>
+                    <form>
+                        <table class="table table-borderless mb-0">
+                            <tr>
+                                <td>
+                                    <label for="yieldsInput" class="form-label">Yields</label>
+                                </td>
+                                <td>
+                                    <span class="number">3</span> servings
+                                </td>
+                            </tr>
+                        </table>
+                        <input type="range" class="form-range" min="1" max="10" id="yieldsInput" value="3">
+                        <input class="p-1" type="reset" onclick="calculateQuantities()" value="Reset servings">
+                    </form>
+                </section>
+            </div>
+            <div class="col-md-6 mt-4 mt-md-0">
+                <section class="icon-box pb-2">
+                    <i class="fas fa-list"></i>
+                    <? printBoxContent([
+                        "Energy" => "579 cal",
+                        "Sugars" => "52.7 g",
+                        "Fat" => "39.6 g"
+                    ]) ?>
+                    <input class="p-1" type="reset" onclick="showNutritionModal()" value="See all">
+                </section>
+            </div>
+        </div>
+    </div>
+<?php } ?>
 
 <?php
 include "../components/nav.php";
@@ -131,8 +197,8 @@ include "../components/breadcrumb.php";
         <li class="badge rounded-pill bg-secondary">French Cuisine</li>
         <li class="badge rounded-pill bg-secondary">Low Calorie</li>
     </ul>
-    <article id="recipe" class="col-8">
-        <header class="row text-left pt-3">
+    <article id="recipe" class="col-md-8">
+        <header class="row text-left pt-3 m-md-3">
             <h1 class="col-11">Classic Tiramisu</h1>
             <div class="col-9">
                 <div class="rating">
@@ -147,11 +213,11 @@ include "../components/breadcrumb.php";
                     <table>
                         <tbody>
                             <tr>
-                                <td class="col-md-1 image-container">
+                                <td class="col-2 col-md-1 image-container">
                                     <img class="rounded-circle" src="https://thispersondoesnotexist.com/image" alt="...">
                                 </td>
                                 <td class="align-middle">
-                                    <div class="col-md-5 card-body p-0 m-0 ms-2">
+                                    <div class="col-md-5 card-body p-0 m-0 ms-2 text-start">
                                         by <a href="#">Alex Johnson</a>
                                     </div>
                                 </td>
@@ -185,6 +251,7 @@ include "../components/breadcrumb.php";
                 </li>
             </ul>
         </header>
+        <?php printBoxes(true) ?>
         <section id="ingredients">
             <h2>Ingredients</h2>
             <table class="table table-striped p-3">
@@ -202,7 +269,7 @@ include "../components/breadcrumb.php";
             <?php printMethod($recipe["method"]);
             ?>
         </section>
-        <section class="icon-box" id="comments">
+        <section class="icon-box mt-4 mt-md-0" id="comments">
             <i class="fas fa-comments"></i>
             <?php
             foreach ($recipe["comments"] as $i => $comment)
@@ -211,77 +278,8 @@ include "../components/breadcrumb.php";
             ?>
         </section>
     </article>
-    <aside class="col-4">
-        <div class="media">
-            <img class="img-fluid main" src="https://dpv87w1mllzh1.cloudfront.net/alitalia_discover/attachments/data/000/002/587/original/la-ricetta-classica-del-tiramisu-con-uova-savoiardi-e-mascarpone-1920x1080.jpg?1567093636">
-            <div class="small-img d-flex">
-                <img class="col-3" src="https://dpv87w1mllzh1.cloudfront.net/alitalia_discover/attachments/data/000/002/587/original/la-ricetta-classica-del-tiramisu-con-uova-savoiardi-e-mascarpone-1920x1080.jpg?1567093636">
-                <img class="col-3" src="https://dpv87w1mllzh1.cloudfront.net/alitalia_discover/attachments/data/000/002/587/original/la-ricetta-classica-del-tiramisu-con-uova-savoiardi-e-mascarpone-1920x1080.jpg?1567093636">
-                <img class="col-3" src="https://dpv87w1mllzh1.cloudfront.net/alitalia_discover/attachments/data/000/002/587/original/la-ricetta-classica-del-tiramisu-con-uova-savoiardi-e-mascarpone-1920x1080.jpg?1567093636">
-                <img class="col-3" src="https://dpv87w1mllzh1.cloudfront.net/alitalia_discover/attachments/data/000/002/587/original/la-ricetta-classica-del-tiramisu-con-uova-savoiardi-e-mascarpone-1920x1080.jpg?1567093636">
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-6">
-                <section class="icon-box">
-                    <i class="fas fa-clock"></i>
-                    <table class="table table-borderless">
-                        <tr>
-                            <td>Duration</td>
-                            <td>45 mins</td>
-                        </tr>
-                        <tr>
-                            <td>Preparation</td>
-                            <td>15 mins</td>
-                        </tr>
-                        <tr>
-                            <td>Cooking</td>
-                            <td>30 mins</td>
-                        </tr>
-                        <tr>
-                            <td>Additional</td>
-                            <td>-</td>
-                        </tr>
-                    </table>
-                </section>
-                <section class="icon-box p-2">
-                    <i class="fas fa-chart-bar"></i>
-                    <form>
-                        <table class="table table-borderless mb-0">
-                            <tr>
-                                <td>
-                                    <label for="yieldsInput" class="form-label">Yields</label>
-                                </td>
-                                <td>
-                                    <span class="number">3</span> servings
-                                </td>
-                            </tr>
-                        </table>
-                        <input type="range" class="form-range" min="1" max="10" id="yieldsInput" value="3">
-                        <input class="p-1" type="reset" onclick="calculateQuantities()" value="Reset servings">
-                    </form>
-                </section>
-            </div>
-            <div class="col-6">
-                <section class="icon-box">
-                    <i class="fas fa-list"></i>
-                    <table class="table table-borderless">
-                        <tr>
-                            <td>Energy</td>
-                            <td>579 cal</td>
-                        </tr>
-                        <tr>
-                            <td>Sugars</td>
-                            <td>52.7 g</td>
-                        </tr>
-                        <tr>
-                            <td>Fat</td>
-                            <td>39.6 g</td>
-                        </tr>
-                    </table>
-                </section>
-            </div>
-        </div>
+    <aside class="col-md-4">
+        <?php printBoxes() ?>
         <div class="suggested">
             <h2 class="text-center">Suggested</h2>
             <?php

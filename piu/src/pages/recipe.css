@@ -51,11 +51,6 @@ h1 {
     border: 0;
 }
 
-#recipe>section,
-#recipe>header {
-    margin: 1em;
-}
-
 #recipe>header {
     margin-top: 0;
     border: 1px solid rgba(0, 0, 0, .125);
@@ -137,4 +132,21 @@ aside .search-card {
 
 #recipe header a {
     text-decoration: none;
+}
+
+@media (max-width: 991.98px) {
+    .legend {
+        display: none;
+    }
+
+    h1,
+    h2 {
+        padding-left: 0;
+    }
+}
+
+@media (min-width: 768px) {
+    #recipe>section {
+        margin: 1em;
+    }
 }
