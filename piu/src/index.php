@@ -7,25 +7,19 @@
 ?>
 <main class="margin-to-footer">
     <section>
-        <div id="carouselExampleDark" class="carousel carousel-light slide carousel-fade"  data-bs-ride="carousel">
-            <div class="carousel-indicators">
-                <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2" aria-label="Slide 3"></button>
-            </div>
-            
+        <div id="carouselExampleDark" class="carousel carousel-light slide carousel-fade"  data-bs-ride="carousel">           
             <div class="carousel-inner">
                 <div class="carousel-item home-slide content-general-padding active" style="background-image: url('images/image22.jpg')" data-bs-interval="2500">
                     <h2 class="display-4 mb-3 shadow"><strong>TasteBuds helps people build a community of</strong></h2>
-                    <h2><div class="display-2 shadow-lg"><strong>healthy</strong></div><div class="display-4 shadow"><strong>eating habits</strong></div></h2>
+                    <h2><div class="display-2 shadow-lg my-1"><strong>healthy</strong></div><div class="display-4 shadow"><strong>eating habits</strong></div></h2>
                 </div>
                 <div class="carousel-item home-slide content-general-padding" style="background-image: url('images/image21.jpg')" data-bs-interval="2500">
                     <h2 class="display-4 mb-3 shadow"><strong>TasteBuds helps people build a community of</strong></h2>
-                    <h2><div class="display-2 shadow-lg"><strong>diverse</strong></div><div class="display-4 shadow"><strong>eating habits</strong></div></h2>
+                    <h2><div class="display-2 shadow-lg my-1"><strong>diverse</strong></div><div class="display-4 shadow"><strong>eating habits</strong></div></h2>
                 </div>
                 <div class="carousel-item home-slide content-general-padding" style="background-image: url('images/image20.jpg'); background-position: 100% 70%" data-bs-interval="2500">
                     <h2 class="display-4 mb-3 shadow"><strong>TasteBuds helps people build a community of</strong></h2>
-                    <h2><div class="display-2 shadow-lg"><strong>tasty</strong></div><div class="display-4 shadow"><strong>eating habits</strong></div></h2>
+                    <h2><div class="display-2 shadow-lg my-1"><strong>tasty</strong></div><div class="display-4 shadow"><strong>eating habits</strong></div></h2>
                 </div>
             </div>
         </div>

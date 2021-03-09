@@ -80,8 +80,6 @@
                             inputIconLeft('flag'); 
                             echo "<span class='d-block mt-4'>City</span>";
                             inputIconLeft('map-marker-alt'); 
-                            echo "<span class='d-block mt-4'>Repeat Password</span>";
-                            inputIconLeft('lock'); 
                         ?>
                         <span class='d-block mt-4'>Profile Photo</span>
                         <img src="../images/noImage.png" class="rounded-circle mx-auto d-block file-input" alt="...">
