@@ -1,6 +1,6 @@
 <?php
 
-$extraStyles = ["recipe.css", "../components/search_results_cards.css", "../components/cover.css", "../components/textareaWithButton.css"];
+$extraStyles = ["recipe.css", "../components/search_results_cards.css", "../components/profile_cover.css", "../components/textareaWithButton.css"];
 
 $extraScripts = ["../scripts/recipeYields.js"];
 
