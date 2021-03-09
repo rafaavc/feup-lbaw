@@ -1,13 +1,18 @@
 .recipe-post {
     padding: 0em;
     max-width: 65em;
-    border: 5px solid #6c757d!important;
+    /* border: 1px solid; */
     position: relative;
+}
+
+.card-body {
+    padding: 2em 2em 2.5em 2em;
+    margin-left: 0!important;
 }
 
 .user-info {
     margin-bottom: 0em;
-    padding: 1em;
+    /* padding: 1em; */
 }
 
 .username {
@@ -21,6 +26,7 @@
 .user-info img {
     width: 100px;
     height: 100px;
+    border: 0;
 }
 
 .avatar-image {
@@ -36,13 +42,16 @@
 }
 
 .post-options {
-    background-color: aliceblue;
     justify-content: end;
     justify-self: end;
     justify-items: end;
     width: 3em;
     position: absolute;
-    right: 1.5em;
+    right: 0;
+}
+
+.edit-photo-button {
+    font-size: 1.5em;
 }
 
 .dropdown {
@@ -56,7 +65,7 @@
     overflow: hidden;
     text-overflow: ellipsis;
     display: -webkit-box;
-    height: 170px;
+    height: 130px;
     -webkit-line-clamp: 6;
     -webkit-box-orient: vertical;
     font-size: 1.2em;
@@ -68,16 +77,20 @@
 
 .post-button {
     width: 33.3%;
-    border-top: 3px solid #6c757d!important;
+    border-top: 2px solid rgba(0,0,0,0.125);
     padding: 0.5em;
 }
 
 .post-button:not(:last-child) {
-    border-right: 4px solid #6c757d!important;
+    border-right: 2px solid rgba(0,0,0,0.125);
 }
 
 .post-image {
     width: 50% !important;    
+}
+
+.post-image img {
+    border: 0;
 }
 
 .recipe-image {
@@ -118,4 +131,15 @@
 
 .review-text {
     color: var(--bs-gray);
+}
+
+.btn-light {
+    /* background-color: white!important; */
+    color: black;
+}
+
+.btn-light:hover {
+    background-color: white!important;
+    border-top: 2px solid rgba(0,0,0,0.125)!important;
+    
 }
