@@ -17,15 +17,15 @@
             <div class="carousel-inner">
                 <div class="carousel-item home-slide content-general-padding active" style="background-image: url('images/image22.jpg')" data-bs-interval="2500">
                     <h2 class="display-4 mb-3 shadow"><strong>TasteBuds helps people build a community of</strong></h2>
-                    <h2><div class="display-2 shadow"><strong>healthy</strong></div><div class="display-4 shadow"><strong>eating habits</strong></div></h2>
+                    <h2><div class="display-2 shadow-lg"><strong>healthy</strong></div><div class="display-4 shadow"><strong>eating habits</strong></div></h2>
                 </div>
                 <div class="carousel-item home-slide content-general-padding" style="background-image: url('images/image21.jpg')" data-bs-interval="2500">
                     <h2 class="display-4 mb-3 shadow"><strong>TasteBuds helps people build a community of</strong></h2>
-                    <h2><div class="display-2 shadow"><strong>diverse</strong></div><div class="display-4 shadow"><strong>eating habits</strong></div></h2>
+                    <h2><div class="display-2 shadow-lg"><strong>diverse</strong></div><div class="display-4 shadow"><strong>eating habits</strong></div></h2>
                 </div>
                 <div class="carousel-item home-slide content-general-padding" style="background-image: url('images/image20.jpg'); background-position: 100% 70%" data-bs-interval="2500">
                     <h2 class="display-4 mb-3 shadow"><strong>TasteBuds helps people build a community of</strong></h2>
-                    <h2><div class="display-2 shadow"><strong>tasty</strong></div><div class="display-4 shadow"><strong>eating habits</strong></div></h2>
+                    <h2><div class="display-2 shadow-lg"><strong>tasty</strong></div><div class="display-4 shadow"><strong>eating habits</strong></div></h2>
                 </div>
             </div>
         </div>
