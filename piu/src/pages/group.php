@@ -1,28 +1,28 @@
 <?php 
 
-$role = "member";
-$pageTitle = "Group Name | TasteBuds";
-$extraStyles = [ "../components/navPopups.css",
-    "../components/group_cover.css",
-    "../components/post.css",
-    "../components/membersFollowingBoxes.css",
-    "../components/breadcrumb.css",
-    "group.css"
-];
-$extraScripts = [
-    "../components/membersFollowingBoxes.js",
-    "../components/navPopups.js"
-];
+    $role = "member";
+    $pageTitle = "Group Name | TasteBuds";
+    $extraStyles = [ "../components/navPopups.css",
+        "../components/group_cover.css",
+        "../components/post.css",
+        "../components/membersFollowingBoxes.css",
+        "../components/breadcrumb.css",
+        "group.css"
+    ];
+    $extraScripts = [
+        "../components/membersFollowingBoxes.js",
+        "../components/navPopups.js"
+    ];
 
-include_once "../components/docHeader.php";
-include_once "../components/nav.php";
-include_once "../components/post.php";
-include_once "../components/breadcrumb.php";
+    include_once "../components/docHeader.php";
+    include_once "../components/nav.php";
+    include_once "../components/post.php";
+    include_once "../components/breadcrumb.php";
 
 ?>
 
 <main>
-    <div class="container">
+    <div class="container content-general-margin">
         <div class="cover">
             <?php include_once "../components/group_cover.php"; ?>
         </div>

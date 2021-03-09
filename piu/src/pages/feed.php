@@ -11,7 +11,7 @@
     include_once "../components/nav.php"; 
 ?>
 <div class="container content-general-margin margin-to-footer">
-    <div class="mt-5 category-header">
+    <div class="mt-5<?= $isCategory ? " category-header" : " mb-3" ?>">
         <h1 class="mt-2 mb-5">
             <?php 
                 if ($isCategory) echo "Vegetarian";
@@ -22,7 +22,7 @@
             include_once "../components/filterSortBar.php";
         ?>
     </div>
-    <a href="<?=getRootUrl()."/pages/createRecipe.php"?>" role="button" class="btn btn-primary"><i class="fas fa-plus me-2"></i>Create Recipe</a>
+    <?php if (!$isCategory) { ?><a href="<?=getRootUrl()."/pages/createRecipe.php"?>" role="button" class="btn btn-primary"><i class="fas fa-plus me-2"></i>Create Recipe</a><?php } ?>
     <div class="card shadow search-area searched-recipes p-4 my-5">
         <?php 
             displayRecipe(true);
