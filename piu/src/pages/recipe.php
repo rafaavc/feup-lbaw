@@ -106,7 +106,8 @@ function printComment($comment, $depth = 0)
                         <i class="fas fa-star"></i>
                     </div>
                 <?php } ?>
-                <p class="card-text"><?= $comment["comment"] ?></p>
+                <p class="card-text d-inline"><?= $comment["comment"] ?></p>
+                <button class="btn btn-outline-primary p-1 m-1"><i class="fas fa-reply me-1"></i>Reply</button>
                 <p class="card-text">
                     <small class="text-muted">
                         <?= key_exists("edit", $comment) ? "Edited " . $comment["edit"] : $comment["post"] ?>
