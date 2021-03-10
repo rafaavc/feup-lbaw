@@ -84,4 +84,16 @@ a.btn-large {
         margin: auto;
         float: none !important;
     }    
+
+    h2.display-4 {
+        width: 85%;
+    }
+
+    .home-slide > h2 {
+        float: none;
+    }
+
+    .home-slide {
+        height: 65vh;
+    }
 }
