@@ -1,7 +1,3 @@
-select.form-select[aria-label="Category"] {
-    display: none;
-}
-
 .category-header {
     margin-bottom: 7rem;
 }

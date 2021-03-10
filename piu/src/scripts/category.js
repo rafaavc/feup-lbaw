@@ -1,0 +1,1 @@
+document.querySelector('select.form-select[aria-label="Category"]').style.display = "none";

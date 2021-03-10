@@ -5,7 +5,8 @@
     $role = "member";
     $pageTitle = ($isCategory ? "Category" : "Feed") . " | TasteBuds";
     $extraStyles = [ "../components/filterSortBar.css", "../components/post.css", "category.css"];
-    $extraScripts = [ "../components/filterSortBar.js"   ];
+    $mainScript = "../components/filterSortBar.js";
+    $extraScripts = $isCategory ?  [$mainScript, "../scripts/category.js"] : [$mainScript];
     include_once "../components/post.php";
     include_once "../components/docHeader.php"; 
     include_once "../components/nav.php"; 
