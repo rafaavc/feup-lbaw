@@ -19,7 +19,7 @@
     ?>
 </h1>
 <div class="row g-5 content-general-margin margin-to-footer">
-    <div class="col-lg-9 ps-0">
+    <div class="col-lg-9 px-0">
         <div class="mt-4<?= $isCategory ? " category-header" : " mb-3" ?>">
             <?php
                 include_once "../components/filterSortBar.php";
@@ -34,7 +34,7 @@
             <button type="button" class="btn btn-dark load-more w-25 mt-5 mx-auto">Load More</button>
         </div>
     </div>
-    <div class="col-md-3 pe-0">
+    <div class="col-md-3 pe-0 trending-topics-recipes">
         <?php displayTrendingTopics(); ?>
         <?php displayTrendingRecipes(); ?>
     </div>

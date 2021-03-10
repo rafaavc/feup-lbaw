@@ -10,4 +10,9 @@ select.form-select[aria-label="Category"] {
    div.category-header {
        margin-bottom: 0;
    } 
+
+   .trending-topics-recipes {
+       padding-left: 0;
+       padding-right: 0;
+   }
 }
