@@ -32,10 +32,10 @@
                 </div>
             </div>
         </div>
-        <div class="row">
+        <div class="row" style="position: relative; bottom: -1px">
             <ul class="nav nav-tabs col-md-10 ps-md-3">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">Activity</a>
+                    <a class="nav-link active" aria-current="page" href="#">Recipes</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Reviews</a>
