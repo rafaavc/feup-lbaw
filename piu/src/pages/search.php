@@ -37,7 +37,7 @@
                 </span>
             </div> -->
         </div>
-        <div class="card shadow w-auto h-auto search-area searched-recipes p-4 mb-5 mt-3">
+        <div class="card shadow-sm w-auto h-auto search-area searched-recipes p-4 mb-5 mt-3">
             <h3 class="section-title">Recipes</h3>
             <div class="row d-flex justify-content-around items mx-0">
                 <?php for ($i = 0; $i < 6; $i++) { ?>
@@ -65,7 +65,7 @@
                 </ul>
             </nav>
         </div>
-        <div class="card shadow p-2 w-auto h-auto search-area searched-recipes p-4 my-5">
+        <div class="card shadow-sm p-2 w-auto h-auto search-area searched-recipes p-4 my-5">
             <h3 class="section-title">Groups</h3>
             <div class="row d-flex justify-content-around items mx-0">
                 <?php for ($i = 0; $i < 6; $i++) { ?>
@@ -93,7 +93,7 @@
                 </ul>
             </nav>
         </div>
-        <div class="card shadow p-2 w-auto h-auto search-area searched-recipes p-4 my-5">
+        <div class="card shadow-sm p-2 w-auto h-auto search-area searched-recipes p-4 my-5">
             <h3 class="section-title">People</h3>
             <div class="row d-flex justify-content-around items mx-0">
                 <?php for ($i = 0; $i < 6; $i++) { ?>
@@ -121,7 +121,7 @@
                 </ul>
             </nav>
         </div>
-        <div class="card shadow p-2 w-auto h-auto search-area searched-recipes p-4 my-5">
+        <div class="card shadow-sm p-2 w-auto h-auto search-area searched-recipes p-4 my-5">
             <h3 class="section-title">Categories</h3>
             <div class="row d-flex justify-content-around items mx-0">
                 <?php for ($i = 0; $i < 6; $i++) { ?>

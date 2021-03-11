@@ -137,7 +137,8 @@
 .recipe-post-review {
     max-width: 50rem;
     cursor: pointer;
-    transition: background-color .2s;
+    transition: background-color outline .2s;
+    text-align: left;
 }
 
 .recipe-post-review:hover {
@@ -146,7 +147,8 @@
 
 .recipe-preview {
     cursor: pointer;
-    transition: background-color .2s;
+    transition: background-color outline .2s;
+    text-align: left;
 }
 
 .recipe-preview:hover {

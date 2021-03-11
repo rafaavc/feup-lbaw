@@ -2,7 +2,13 @@
     width: 18rem;
     height: 20rem;
     text-align: center;
+    cursor: pointer;
+    transition: background-color outline .2s;
 }
+.search-card .card:hover {
+    background-color: whitesmoke;
+}
+
 
 .search-card .card-img-top {
     height: 12rem;
@@ -28,6 +34,7 @@
 
 .search-card .username {
     font-weight: 500;
+    text-decoration: none;
 }
 
 .search-card .card-body {

@@ -36,7 +36,7 @@
                     </div>
                 </div>
 
-                <div class="card p-2 shadow-sm recipe-preview mt-4">
+                <a type="button" href="<?=getRootUrl()?>/pages/recipe.php" class="btn card p-2 shadow-sm recipe-preview mt-4">
                     <div class="row" style="min-height: 300px;">
                         <div class="col-md-4 post-image">
                             <img src="https://blog.myfitnesspal.com/wp-content/uploads/2017/12/Essential-Guide-to-Healthy-Eating-2-752x472.png" class="bd-placeholder-img recipe-image-big" height="300px" width="100%">
@@ -49,7 +49,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </a>
 
                 <div class="container mt-4 p-0 ">
                     <a role="button" class="btn btn-sm btn-secondary d-inline-block me-3 mb-2" href="<?=getRootUrl(). "/pages/category.php"?>">
@@ -68,10 +68,10 @@
                     <i class="fas fa-heart me-2"></i>
                     <span class="button-caption">Add to Favourites</span>
                 </button>
-                <button type="button" class="btn post-button">
+                <a type="button" href="<?=getRootUrl()?>/pages/recipe.php" class="btn post-button">
                     <i class="fas fa-eye me-2"></i>
                     <span class="button-caption">View Recipe</span>
-                </button>
+                </a>
                 <button type="button" class="btn post-button">
                     <i class="fas fa-share-alt me-2"></i>
                     <span class="button-caption">Share</span>
@@ -107,7 +107,7 @@
                     <div><strong>Rating:</strong> <i class="fas fa-star active ms-2"></i> <i class="fas fa-star active"></i> <i class="fas fa-star active"></i> <i class="fas fa-star active"></i> <i class="fas fa-star"></i></div>
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
                 </div>
-                <div class="card mb-2 mt-4 shadow-sm p-2 recipe-post-review">
+                <a type="button" href="<?=getRootUrl()?>/pages/recipe.php" class="btn card mb-2 mt-4 shadow-sm p-2 recipe-post-review">
                     <div class="row">
                         <div class="col-md-4">
                             <img src="https://blog.myfitnesspal.com/wp-content/uploads/2017/12/Essential-Guide-to-Healthy-Eating-2-752x472.png" class="bd-placeholder-img recipe-image" width="100%">
@@ -117,13 +117,13 @@
                             <p class="m-0 p-0"><small class="text-muted">4.6 <i class="fas fa-star active ms-2"></i> <i class="fas fa-star active"></i> <i class="fas fa-star active"></i> <i class="fas fa-star active"></i> <i class="fas fa-star active"></i> | 563 reviews</small></p>
                         </div>
                     </div>
-                </div>
+                </a>
             </div>
             <div class="btn-group col-sm d-flex justify-content-center text-center">
-                <button type="button" class="btn post-button">
+                <a type="button" href="<?=getRootUrl()?>/pages/recipe.php" class="btn post-button">
                     <i class="fas fa-eye me-2"></i>
                     <span class="button-caption">View Recipe</span>
-                </button>
+                </a>
                 <button type="button" class="btn post-button">
                     <i class="fas fa-share-alt me-2"></i>
                     <span class="button-caption">Share</span>

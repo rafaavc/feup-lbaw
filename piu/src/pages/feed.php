@@ -35,7 +35,8 @@
         <div class="search-area searched-recipes my-5">
             <?php 
                 displayRecipe(true);
-                displayReview(true);
+                if (!$isCategory) displayReview(true);
+                else displayRecipe(true);
             ?>
             <button type="button" class="btn btn-dark load-more w-25 mt-5 mx-auto"><i class="fas fa-plus me-2"></i> Load More</button>
         </div>

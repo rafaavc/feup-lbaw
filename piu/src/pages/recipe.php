@@ -207,7 +207,7 @@ drawBreadcrumb(["Recipes", "Desserts", "Classic Tiramisu"])
 
 <main class="row content-general-margin margin-to-footer">
     <article id="recipe" class="col-md-8 p-0 pe-md-4">
-        <header class="row text-left pt-3 mb-md-3 shadow-sm">
+        <header class="row text-left pt-3 pb-3 mb-md-3 shadow-sm">
             <h1 class="col-11">Classic Tiramisu</h1>
             <div class="col-9">
                 <div class="rating">
@@ -293,9 +293,13 @@ drawBreadcrumb(["Recipes", "Desserts", "Classic Tiramisu"])
             foreach ($recipe["comments"] as $i => $comment)
                 printComment($comment);
             ?>
-            <div class="form-floating m-3">
+            <div class="form-floating m-3 position-relative">
                 <textarea class="form-control" placeholder="Leave a comment here" id="commentTextarea" style="height: 6rem"></textarea>
-                <label for="floatingTextarea2">Comment</label>
+                <label for="floatingTextarea2">Your comment</label>
+                <button type="button" class="btn btn-primary position-absolute py-1 send">
+                    <small><i class="fas fa-paper-plane me-2"></i>
+                    Comment</small>
+                </button>
             </div>
         </section>
     </article>
