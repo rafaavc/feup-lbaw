@@ -13,7 +13,7 @@
     <div class="container content-general-margin margin-to-footer">
         <h1 class="mt-5">Edit Profile</h1>
 
-        <div class="card shadow p-2 w-auto h-auto p-5 mt-4">
+        <div class="card shadow-sm p-2 w-auto h-auto p-5 mt-4">
             <div class="row">
                 <div class="col profile-photo-area mx-2">
                     <div class="row row-with-image">

@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap');
 
 :root {
-    --content-width: 70vw;
+    --content-width: 65vw;
     --content-margin: calc((100vw - var(--content-width))/2);
 
     --margin-from-nav: 3rem;
