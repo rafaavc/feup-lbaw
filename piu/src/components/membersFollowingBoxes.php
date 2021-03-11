@@ -36,7 +36,7 @@
                 </div>
             </div>
             <button type="button" class="btn btn-outline-secondary">
-                <small><i class="fas fa-plus me-2"></i> See all members</small>
+                <small><i class="fas fa-plus me-2"></i> See all <?= strtolower($title) ?></small>
             </button>
         </div>
     </div>
