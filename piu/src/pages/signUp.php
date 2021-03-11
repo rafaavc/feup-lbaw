@@ -8,7 +8,7 @@
 ?>
 <main>
     <?php drawBreadcrumb([ "Sign Up" ]); ?>
-    <div class="container content-general-margin mt-2">
+    <div class="container content-general-margin mt-2 margin-to-footer">
         <div class="row">
             <div class="col-xl-6 sign-img">
                 <div class="d-grid gap-2 col-6 mx-auto mt-5 sign-left-text w-100 text-center">

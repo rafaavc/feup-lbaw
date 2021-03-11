@@ -68,9 +68,9 @@
                 <h1><strong>Find New Friends</strong></h3>
                 <p>Connect with new people!</p>
             </div>
-            <div class="card-group text-center">
-                <div class="col-md my-3 me-3">
-                    <div class="card h-100">
+            <div class="card-group g-5 text-center p-0">
+                <div class="col-md my-3">
+                    <div class="card h-100 me-md-3">
                         <img src="images/follow.jpg" class="card-img-top" alt="...">
                         <div class="card-body">
                             <h5 class="card-title">Follow</h5>
@@ -78,8 +78,8 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md my-3 me-3">
-                    <div class="card h-100">
+                <div class="col-md my-3">
+                    <div class="card h-100 me-md-3">
                         <img src="images/group.jpg" class="card-img-top" alt="...">
                         <div class="card-body">
                             <h5 class="card-title">Group</h5>
