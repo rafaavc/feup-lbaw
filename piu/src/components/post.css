@@ -9,6 +9,10 @@
     margin-left: 0!important;
 }
 
+.filter-bar-container {
+    max-width: 60rem;
+}
+
 .user-info {
     margin-bottom: 0em;
     align-items: center;

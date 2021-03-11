@@ -16,6 +16,10 @@
     display: none;
 }
 
+#sortBar *, #filterBar * {
+    font-size: .85rem;
+}
+
 #filterBarMobileHeading[aria-expanded=true], #sortBarMobileHeading[aria-expanded=true] {
     background-color: var(--bs-dark);
     transition: background-color .2s;
