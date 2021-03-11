@@ -27,7 +27,7 @@
             ?>
         </div>
         <?php if (!$isCategory) { ?><a href="<?=getRootUrl()."/pages/createRecipe.php"?>" role="button" class="btn btn-primary"><i class="fas fa-plus me-2"></i>Create Recipe</a><?php } ?>
-        <div class="card shadow-sm search-area searched-recipes p-4 my-5">
+        <div class="search-area searched-recipes my-5">
             <?php 
                 displayRecipe(true);
                 displayRecipe(true);

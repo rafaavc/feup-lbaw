@@ -169,7 +169,7 @@ function printNotificationsPopover()
 ?>
 
 <nav class="navbar navbar-expand-lg fixed-top navbar-light bg-light content-general-padding">
-    <div id="navbarContainer" class="container-fluid justify-content-between">
+    <div id="navbarContainer" class="container-fluid justify-content-between p-0">
         <!-- Logo -->
         <a class="navbar-brand flex-lg-grow-1 normalize" href="<?=getRootUrl() . ($role == "visitor" ? "" : ($role == "admin" ? "/pages/reportsManagement.php" : "/pages/feed.php" ))?>">
             <img class="logo" src="<?=isset($index) ? "." : ".." ?>/images/tastebuds-dark.png" height="50px" />

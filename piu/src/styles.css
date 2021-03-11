@@ -36,6 +36,10 @@ a:hover {
     padding-right: var(--content-margin);
 }
 
+.fa-star.active {
+    color: var(--accent-color);
+}
+
 @media (max-width: 1500px) {
     :root {
         --content-width: 80vw;
