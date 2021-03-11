@@ -5,6 +5,7 @@
     cursor: pointer;
     transition: background-color outline .2s;
 }
+
 .search-card .card:hover {
     background-color: whitesmoke;
 }
@@ -13,6 +14,7 @@
 .search-card .card-img-top {
     height: 12rem;
     background-size: cover;
+    background-position: 50%;
 }
 
 .search-card .recipe-card-img-top {

@@ -21,7 +21,7 @@
 
     // Group card
     function getGroupCard() { ?>
-        <div class="container search-card">
+        <div class="search-card">
             <a type="button" href="<?=getRootUrl()?>/pages/group.php" class="btn card shadow-sm p-2">
                 <div class="card-img-top group-card-img-top"></div>
                 <div class="card-body">
@@ -35,7 +35,7 @@
 
     // Category card
     function getCategoryCard() { ?>
-        <div class="container search-card">
+        <div class="search-card">
             <a type="button" href="<?=getRootUrl()?>/pages/category.php" class="btn card shadow-sm p-2">
                 <div class="card-img-top category-card-img-top"></div>
                 <div class="card-body">
@@ -48,7 +48,7 @@
 
     // User card
     function getUserCard() { ?>
-        <div class="container search-card">
+        <div class="search-card">
             <a href="<?=getRootUrl()?>/pages/profile.php" class="btn card shadow-sm p-2">
                 <div class="user-card-img-top">
                     <img class="rounded-circle z-depth-2" src="https://mdbootstrap.com/img/Photos/Avatars/img%20(31).jpg">
