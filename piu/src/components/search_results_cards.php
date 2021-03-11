@@ -2,7 +2,7 @@
 
     // Recipe card
     function getRecipeCard() { ?> 
-        <div class="container">
+        <div class="container search-card">
             <div class="card shadow p-2">
                 <div class="card-img-top recipe-card-img-top"></div>
                 <div class="card-body">
@@ -16,7 +16,7 @@
 
     // Group card
     function getGroupCard() { ?>
-        <div class="container">
+        <div class="container search-card">
             <div class="card shadow p-2">
                 <div class="card-img-top group-card-img-top"></div>
                 <div class="card-body">
@@ -30,7 +30,7 @@
 
     // Category card
     function getCategoryCard() { ?>
-        <div class="container">
+        <div class="container search-card">
             <div class="card shadow p-2">
                 <div class="card-img-top category-card-img-top"></div>
                 <div class="card-body">
@@ -43,7 +43,7 @@
 
     // User card
     function getUserCard() { ?>
-        <div class="container">
+        <div class="container search-card">
             <div class="card shadow p-2">
                 <div class="user-card-img-top">
                     <img class="rounded-circle z-depth-2" src="https://mdbootstrap.com/img/Photos/Avatars/img%20(31).jpg">
