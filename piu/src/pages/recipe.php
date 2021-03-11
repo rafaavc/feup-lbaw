@@ -5,6 +5,7 @@ $extraStyles = ["recipe.css", "../components/search_results_cards.css", "../comp
 $extraScripts = ["../scripts/recipeYields.js"];
 
 $pageTitle = "Classic Tiramisu | TasteBuds";
+$role = "member";
 
 include "../components/docHeader.php";
 include "../components/search_results_cards.php";
@@ -206,7 +207,7 @@ drawBreadcrumb(["Recipes", "Desserts", "Classic Tiramisu"])
 ?>
 
 <main class="row content-general-margin margin-to-footer">
-    <article id="recipe" class="col-md-8 p-0 pe-md-4">
+    <article id="recipe" class="col-xl-8 p-0 pe-xl-4">
         <header class="row text-left pt-3 pb-3 mb-md-3 shadow-sm">
             <h1 class="col-11">Classic Tiramisu</h1>
             <div class="col-9">
@@ -303,10 +304,10 @@ drawBreadcrumb(["Recipes", "Desserts", "Classic Tiramisu"])
             </div>
         </section>
     </article>
-    <aside class="col-md-4 p-0 ps-md-4">
+    <aside class="col-xl-4 p-0 ps-xl-4 mt-5 mt-xl-0">
         <?php printBoxes() ?>
         <div class="suggested mt-5">
-            <h4 class="text-center">Suggested</h4>
+            <h4>Suggested</h4>
             <?php
             for ($i = 0; $i < 4; $i++)
                 getRecipeCard()

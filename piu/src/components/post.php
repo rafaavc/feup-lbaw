@@ -31,7 +31,7 @@
                         <img class="rounded-circle z-depth-2" src="https://mdbootstrap.com/img/Photos/Avatars/img%20(31).jpg">
                     </div>
                     <div class="col name-and-date ms-4">
-                        <div><strong>Jamie Oliver</strong></div>
+                        <div><a href="<?=getRootUrl()?>/pages/profile.php" style="text-decoration: none"><strong>Jamie Oliver</strong></a></div>
                         <div class="publication-date">11 September, 2020</div>
                     </div>
                 </div>
@@ -99,7 +99,7 @@
                         <img class="rounded-circle z-depth-2" src="https://mdbootstrap.com/img/Photos/Avatars/img%20(31).jpg">
                     </div>
                     <div class="col-lg col-sm name-and-date ms-4">
-                        <div><strong>Jamie Oliver</strong> <span class="review-text">wrote a review</span></div>
+                        <div><a href="<?=getRootUrl()?>/pages/profile.php" style="text-decoration: none"><strong>Jamie Oliver</strong></a> <span class="review-text">wrote a review</span></div>
                         <div class="publication-date">11 September, 2020</div>
                     </div>
                 </div>

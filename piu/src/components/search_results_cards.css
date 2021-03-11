@@ -1,6 +1,6 @@
 .search-card .card {
-    width: 18rem;
-    height: 20rem;
+    max-width: 18rem;
+    max-height: 20rem;
     text-align: center;
     cursor: pointer;
     transition: background-color outline .2s;

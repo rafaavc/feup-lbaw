@@ -2,10 +2,10 @@
 
     // Recipe card
     function getRecipeCard() { ?> 
-        <div class="container search-card">
+        <div class="search-card">
             <a type="button" href="<?=getRootUrl()?>/pages/recipe.php" class="btn card shadow-sm p-2">
                 <div class="card-img-top recipe-card-img-top"></div>
-                <div class="card-body">
+                <div class="card-body m-0">
                     <h4 class="card-title">Cozido à portuguesa</h4>
                     <p class="text-muted m-0" style="font-size: .8rem">4.6 
                         <i class="fas fa-star active"></i>
