@@ -66,7 +66,7 @@
             </div>
             <hr class="dropdown-divider m-0">
         </div>
-        <div class="col p-3 position-relative">
+        <div class="col p-3 position-relative conversation-area">
             <div class="row-6 g-0 message-container position-relative">
                 <div class="date-time-display">
                     <small>19 Feb 2021, 16:19</small>
