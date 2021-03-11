@@ -36,6 +36,7 @@ h1 {
 .instruction h3 {
     font-size: 1.5em;
     margin-bottom: 0;
+    transition: color .2s;
 }
 
 .instruction h3 i {
@@ -43,18 +44,24 @@ h1 {
     margin-right: 0.5em;
 }
 
+.instruction h3:hover {
+    color: var(--bs-gray);
+}
+
 .instruction h3.collapsed {
-    color: green;
+    color: var(--accent-color);
 }
 
 .instruction .card {
     border: 0;
 }
 
-#recipe>header {
+#recipe > header {
     margin-top: 0;
     border: 1px solid rgba(0, 0, 0, .125);
     border-radius: .25rem;
+    max-width: 100%;
+    margin: 0;
 }
 
 #comments .card {
@@ -68,8 +75,40 @@ h1 {
 }
 
 .comment img {
-    width: 8em;
-    height: 8em;
+    max-width: 6rem;
+    max-height: 6rem;
+    min-height: 2rem;
+    min-width: 2rem;
+}
+
+.comment .col:first-of-type {
+    max-width: 6rem
+}
+
+.comment p {
+    line-height: 1.5;
+}
+
+@media (max-width: 768px) {
+    .comment img {
+        max-width: 5rem;
+        max-height: 5rem;
+    }
+
+    .comment .col:first-of-type {
+        max-width: 5rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .comment img {
+        max-width: 3rem;
+        max-height: 3rem;
+    }
+
+    .comment .col:first-of-type {
+        max-width: 2rem;
+    }
 }
 
 .comment .card-body {
@@ -82,7 +121,7 @@ h1 {
 
 #comments .subcomment {
     border-left: 1px solid rgba(0, 0, 0, .125) !important;
-    margin-left: 3em;
+    margin-left: 2em;
 }
 
 #comments .text-area-with-button {
@@ -142,11 +181,5 @@ aside .search-card {
     h1,
     h2 {
         padding-left: 0;
-    }
-}
-
-@media (min-width: 768px) {
-    #recipe>section {
-        margin: 1em;
     }
 }

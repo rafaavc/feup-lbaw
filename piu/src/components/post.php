@@ -52,17 +52,14 @@
                 </div>
 
                 <div class="container mt-4 p-0 ">
+                    <a role="button" class="btn btn-sm btn-secondary d-inline-block me-3 mb-2" href="<?=getRootUrl(). "/pages/category.php"?>">
+                        Main dish
+                    </a>
+                    <a role="button" class="btn btn-sm btn-outline-secondary d-inline-block me-3 mb-2" href="<?=getRootUrl(). "/pages/category.php"?>">
+                        Low carb
+                    </a>
                     <a role="button" class="btn btn-sm btn-outline-secondary d-inline-block me-3 mb-2" href="<?=getRootUrl(). "/pages/category.php"?>">
                         Vegetarian
-                    </a>
-                    <a role="button" class="btn btn-sm btn-outline-secondary d-inline-block me-3 mb-2" href="<?=getRootUrl(). "/pages/category.php"?>">
-                        Low carb
-                    </a>
-                    <a role="button" class="btn btn-sm btn-outline-secondary d-inline-block me-3 mb-2" href="<?=getRootUrl(). "/pages/category.php"?>">
-                        Low carb
-                    </a>
-                    <a role="button" class="btn btn-sm btn-outline-secondary d-inline-block me-3 mb-2" href="<?=getRootUrl(). "/pages/category.php"?>">
-                        Low carb
                     </a>
                 </div>
             </div>

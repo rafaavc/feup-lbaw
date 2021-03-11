@@ -1,8 +1,10 @@
 <?php
 
-$extraStyles = ["recipe.css", "../components/search_results_cards.css", "../components/profile_cover.css", "../components/textareaWithButton.css"];
+$extraStyles = ["recipe.css", "../components/search_results_cards.css", "../components/profile_cover.css", "../components/textareaWithButton.css", "../components/breadcrumb.css"];
 
 $extraScripts = ["../scripts/recipeYields.js"];
+
+$pageTitle = "Classic Tiramisu | TasteBuds";
 
 include "../components/docHeader.php";
 include "../components/search_results_cards.php";
@@ -59,18 +61,18 @@ $recipe = [
 
 function printInstruction($number, $name, $text, $image = null)
 { ?>
-    <section class="instruction d-inline-block col-12">
-        <h3 class="btn" data-bs-toggle="collapse" href="#instruction<?= $number ?>" role="button" aria-expanded="false" aria-controls="instruction<?= $number ?>">
+    <section class="instruction d-inline-block col-12 mt-4">
+        <h3 class="btn p-0" data-bs-toggle="collapse" href="#instruction<?= $number ?>" role="button" aria-expanded="false" aria-controls="instruction<?= $number ?>">
             <i class="fas fa-check-circle d-inline-block align-middle"></i>
             <span class="d-inline-block align-middle"><?= $number ?>. <?= $name ?></span>
         </h3>
         <div class="collapse show" id="instruction<?= $number ?>">
             <div class="d-md-flex">
-                <div class="col-md-<?= $image === null ? "12" : "8" ?> card card-body d-inline-block">
+                <div class="col-md-<?= $image === null ? "12" : "8" ?> card card-body d-inline-block p-0 mt-3">
                     <?= $text ?>
                 </div>
                 <?php if ($image !== null) { ?>
-                    <img class="col-12 col-md-3 d-inline-block" src="<?= $image ?>">
+                    <img class="col-12 col-md-3 d-inline-block mt-3 mt-md-0 ms-md-3" src="<?= $image ?>">
                 <?php } ?>
             </div>
         </div>
@@ -93,26 +95,30 @@ function printMethod($method)
 function printComment($comment, $depth = 0)
 { ?>
     <div class="card comment <?= $depth !== 0 ? "subcomment" : "" ?>">
-        <div class=" row g-0 p-3 d-flex">
-            <img class="d-none d-md-inline-block rounded-circle" src="../images/people/<?= $comment["user"] ?>.jpg" alt="...">
-            <div class="col-md-<?= 9 - round($depth / 2) ?> card-body">
-                <h5 class="card-title"><a href="#"><?= $comment["user"] ?></a> <?= key_exists("rate", $comment) ? "reviewed" : "commented" ?>:</h5>
+        <div class="row g-0 p-3">
+            <div class="col">
+                <img class="d-inline-block rounded-circle" src="../images/people/<?= $comment["user"] ?>.jpg" alt="...">
+            </div>
+            <div class="col-5 card-body">
+                <h6 class="card-title"><a href="<?=getRootUrl()?>/pages/profile.php"><?= $comment["user"] ?></a> <?= key_exists("rate", $comment) ? "reviewed" : "commented" ?>:</h6>
                 <?php if (key_exists("rate", $comment)) { ?>
-                    <div class="rating">
-                        <i class="fas fa-star checked"></i>
-                        <i class="fas fa-star checked"></i>
-                        <i class="fas fa-star checked"></i>
+                    <div class="rating mb-3">
+                        <i class="fas fa-star active"></i>
+                        <i class="fas fa-star active"></i>
+                        <i class="fas fa-star active"></i>
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star"></i>
                     </div>
                 <?php } ?>
-                <p class="card-text d-inline"><?= $comment["comment"] ?></p>
-                <button class="btn btn-outline-primary p-1 m-1"><i class="fas fa-reply me-1"></i>Reply</button>
-                <p class="card-text">
+                <p class="card-text mt-3"><?= $comment["comment"] ?></p>
+                <p class="card-text mt-3">
                     <small class="text-muted">
                         <?= key_exists("edit", $comment) ? "Edited " . $comment["edit"] : $comment["post"] ?>
                     </small>
                 </p>
+            </div>
+            <div class="col-md text-end position-relative">
+                <button class="btn btn-sm btn-outline-secondary p-1 m-1"><i class="fas fa-reply me-1"></i>Reply</button>
             </div>
         </div>
         <?php if (key_exists("replies", $comment)) printComment($comment["replies"][0], $depth + 1) ?>
@@ -168,7 +174,9 @@ function printBoxes($mobile = false)
                             </tr>
                         </table>
                         <input type="range" class="form-range" min="1" max="10" id="yieldsInput" value="3">
-                        <input class="p-1" type="reset" onclick="calculateQuantities()" value="Reset servings">
+                        <button type="button" class="btn btn-sm btn-outline-secondary mt-3" onclick="calculateQuantities()">
+                            Reset servings
+                        </button>
                     </form>
                 </section>
             </div>
@@ -180,7 +188,9 @@ function printBoxes($mobile = false)
                         "Sugars" => "52.7 g",
                         "Fat" => "39.6 g"
                     ]) ?>
-                    <input class="p-1" type="reset" onclick="showNutritionModal()" value="See all">
+                    <button type="button" class="btn btn-sm btn-outline-secondary" onclick="showNutritionModal()">
+                        See all
+                    </button>
                 </section>
             </div>
         </div>
@@ -195,21 +205,16 @@ drawBreadcrumb(["Recipes", "Desserts", "Classic Tiramisu"])
 
 ?>
 
-<main class="row content-general-margin">
-    <ul id="tags">
-        <li class="badge rounded-pill bg-secondary">Vegan</li>
-        <li class="badge rounded-pill bg-secondary">French Cuisine</li>
-        <li class="badge rounded-pill bg-secondary">Low Calorie</li>
-    </ul>
-    <article id="recipe" class="col-md-8">
-        <header class="row text-left pt-3 m-md-3">
+<main class="row content-general-margin margin-to-footer">
+    <article id="recipe" class="col-md-8 p-0 pe-md-4">
+        <header class="row text-left pt-3 mb-md-3 shadow-sm">
             <h1 class="col-11">Classic Tiramisu</h1>
             <div class="col-9">
                 <div class="rating">
                     <span class="small">34 ratings</span>
-                    <i class="fas fa-star checked"></i>
-                    <i class="fas fa-star checked"></i>
-                    <i class="fas fa-star checked"></i>
+                    <i class="fas fa-star active"></i>
+                    <i class="fas fa-star active"></i>
+                    <i class="fas fa-star active"></i>
                     <i class="fas fa-star"></i>
                     <i class="fas fa-star"></i>
                 </div>
@@ -222,7 +227,7 @@ drawBreadcrumb(["Recipes", "Desserts", "Classic Tiramisu"])
                                 </td>
                                 <td class="align-middle">
                                     <div class="col-md-5 card-body p-0 m-0 ms-2 text-start">
-                                        by <a href="#">Alex Johnson</a>
+                                        by <a href="<?=getRootUrl()?>/pages/profile.php">Alex Johnson</a>
                                     </div>
                                 </td>
                             </tr>
@@ -230,6 +235,16 @@ drawBreadcrumb(["Recipes", "Desserts", "Classic Tiramisu"])
                     </table>
                 </div>
                 <p>These vegan meringues use the liquid from a tin of chickpeas as the substitute for egg whites - genius! Use these vegan meringues wherever you would use egg white meringue such as summer fruit pavlova and Eton mess.</p>
+                <span class="d-inline-block me-3">Tags: </span>
+                <a role="button" class="btn btn-sm btn-secondary d-inline-block me-2 mb-2" href="<?=getRootUrl(). "/pages/category.php"?>">
+                    Main dish
+                </a>
+                <a role="button" class="btn btn-sm btn-outline-secondary d-inline-block me-2 mb-2" href="<?=getRootUrl(). "/pages/category.php"?>">
+                    Low carb
+                </a>
+                <a role="button" class="btn btn-sm btn-outline-secondary d-inline-block me-2 mb-2" href="<?=getRootUrl(). "/pages/category.php"?>">
+                    Vegetarian
+                </a>
             </div>
             <ul class="col-3 text-end">
                 <li class="list-group-item">
@@ -256,8 +271,8 @@ drawBreadcrumb(["Recipes", "Desserts", "Classic Tiramisu"])
             </ul>
         </header>
         <?php printBoxes(true) ?>
-        <section id="ingredients">
-            <h2>Ingredients</h2>
+        <section id="ingredients" class="mt-5">
+            <h2 class="p-0 mb-4">Ingredients</h2>
             <table class="table table-striped p-3">
                 <?php
                 foreach ($recipe["ingredients"] as $ingredient => $quantity) { ?>
@@ -268,24 +283,26 @@ drawBreadcrumb(["Recipes", "Desserts", "Classic Tiramisu"])
                 <?php } ?>
             </table>
         </section>
-        <section id="method">
-            <h2>Method</h2>
-            <?php printMethod($recipe["method"]);
-            ?>
+        <section id="method" class="mt-5">
+            <h2 class="p-0">Method</h2>
+            <?php printMethod($recipe["method"]); ?>
         </section>
-        <section class="icon-box mt-4 mt-md-0" id="comments">
+        <section class="icon-box mt-5 shadow-sm" id="comments">
             <i class="fas fa-comments"></i>
             <?php
             foreach ($recipe["comments"] as $i => $comment)
                 printComment($comment);
-            include "../components/textareaWithButton.php";
             ?>
+            <div class="form-floating m-3">
+                <textarea class="form-control" placeholder="Leave a comment here" id="commentTextarea" style="height: 6rem"></textarea>
+                <label for="floatingTextarea2">Comment</label>
+            </div>
         </section>
     </article>
-    <aside class="col-md-4">
+    <aside class="col-md-4 p-0 ps-md-4">
         <?php printBoxes() ?>
-        <div class="suggested">
-            <h2 class="text-center">Suggested</h2>
+        <div class="suggested mt-5">
+            <h4 class="text-center">Suggested</h4>
             <?php
             for ($i = 0; $i < 4; $i++)
                 getRecipeCard()

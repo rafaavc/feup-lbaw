@@ -24,7 +24,7 @@ include_once "../components/membersFollowingBoxes.php";
 ?>
 
 <main class="content-general-padding margin-to-footer">
-    <?php drawBreadcrumb(["Jamie Oliver's Profile"], true); ?>
+    <?php drawBreadcrumb(["Profiles", "Jamie Oliver's Profile"], true); ?>
     <div>
         <div class="cover">
             <?php include_once "../components/profile_cover.php"; ?>

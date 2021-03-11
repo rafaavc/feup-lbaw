@@ -9,7 +9,7 @@
         include_once "../components/nav.php";
         include_once "../components/breadcrumb.php";
     ?>
-    <?php drawBreadcrumb([ "Profile", "Edit Profile" ]); ?>
+    <?php drawBreadcrumb(["Profiles", "Jamie Oliver's Profile", "Edit Profile"]); ?>
     <div class="container content-general-margin margin-to-footer">
         <h1 class="mt-5">Edit Profile</h1>
 

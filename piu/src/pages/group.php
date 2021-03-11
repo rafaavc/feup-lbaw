@@ -24,7 +24,7 @@
 ?>
 
 <main class="content-general-margin margin-to-footer">
-        <?php drawBreadcrumb(["Groups", "Group Name"], true); ?>
+        <?php drawBreadcrumb(["Groups", "Vegetarianos do Porto"], true); ?>
         <div class="cover">
             <?php include_once "../components/group_cover.php"; ?>
         </div>
