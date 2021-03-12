@@ -18,7 +18,7 @@
                 <div class="col profile-photo-area mx-2">
                     <div class="row row-with-image">
                         <div class="col area-title-col">
-                            <h5 class="area-title">Profile Photo</h5>
+                            <h6 class="area-title d-inline-block">Profile Photo</h6> <span class='form-required'></span>
                         </div>   
                         <div class="col text-end profile-photo-button-col p-0">                     
                             <div class="dropdown w-20 ms-auto">
@@ -42,7 +42,7 @@
                 <div class="col cover-photo-area mx-2">
                     <div class="row area-title-row row-with-image">
                         <div class="col area-title-col">
-                            <h5 class="area-title">Cover Photo</h5>
+                            <h6 class="area-title">Cover Photo</h6>
                         </div>
                         <div class="col text-end p-0">
                             <div class="dropdown w-20 ms-auto">
@@ -65,26 +65,26 @@
                 </div>
             </div>
 
-            <h5 class="area-title mt-4">Biography</h5>
+            <h6 class="area-title mt-4">Biography <span class='form-required'></span></h6>
             <div class="form-group">
                 <textarea class="form-control mb-4 p-3 edit-profile-text-input" id="exampleFormControlTextarea1" rows="3">User's biography</textarea>
             </div>
 
-            <h5 class="area-title">Name</h5>
+            <h6 class="area-title">Name <span class='form-required'></span></h6>
             <div class="form-group">
                 <textarea class="form-control mb-4 p-3 edit-profile-text-input" id="exampleFormControlTextarea1" rows="1">User's name</textarea>
             </div>
 
-            <h5 class="area-title">Country</h5>
+            <h6 class="area-title">Country <span class='form-required'></span></h6> 
             <div class="form-group">
                 <textarea class="form-control mb-4 p-3 edit-profile-text-input" id="exampleFormControlTextarea1" rows="1">User's country</textarea>
             </div>
 
-            <h5 class="area-title">City</h5>
+            <h6 class="area-title">City</h6>
             <div class="form-group">
                 <textarea class="form-control mb-5 mt-1 p-3 edit-profile-text-input" id="exampleFormControlTextarea1" rows="1">User's city</textarea>
             </div>
-            <h5 class="area-title">Profile Visibility</h5>
+            <h6 class="area-title">Profile Visibility <span class='form-required'></span></h6>
             <div class="form-check">
                 <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" checked>
                 <label class="form-check-label" for="flexRadioDefault1">

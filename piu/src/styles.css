@@ -52,6 +52,11 @@ a:hover {
     }
 }
 
+.form-required:before {
+    content: "*";
+    color: gray;
+}
+
 .progress-bar {
     background-color: var(--accent-color-lighter) !important;
 }

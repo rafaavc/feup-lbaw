@@ -6,7 +6,7 @@ addIngredientButton.addEventListener('click', () => {
     addIngredientButton.parentNode.insertBefore(elem.content.firstElementChild, addIngredientButton);
 })
 
-let counter = 1;
+let stepCounter = 1;
 
 const addStepButton = document.querySelector('#addStepButton');
 addStepButton.addEventListener('click', () => {
@@ -16,8 +16,8 @@ addStepButton.addEventListener('click', () => {
 
     const header = document.createElement('h5');
     header.classList.add('mb-3');
-    counter++;
-    header.innerText = 'Step ' + counter;
+    stepCounter++;
+    header.innerText = 'Step ' + stepCounter;
 
     addStepButton.parentNode.insertBefore(header, addStepButton);
     addStepButton.parentNode.insertBefore(elem.content.firstElementChild, addStepButton);

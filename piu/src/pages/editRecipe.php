@@ -1,6 +1,6 @@
 <?php 
     $role = "member";
-    $pageTitle = "Create Recipe / TasteBuds";
+    $pageTitle = "Edit Recipe / TasteBuds";
     $extraStyles = [ "createRecipe.css", "../components/breadcrumb.css" ];
     $extraScripts = [ "../scripts/progressBar.js", "../scripts/createRecipe.js" ];
     include_once "../components/breadcrumb.php"; 
@@ -9,8 +9,8 @@
     include_once "../components/nav.php"; 
 ?>
 
-<?php drawBreadcrumb(["Create Recipe"]); ?>
-<h1 id="pageTitle" class="content-general-margin mt-3">Create Recipe</h1>
+<?php drawBreadcrumb(["Recipes", "Desserts", "Classic Tiramisu", "Edit Recipe"]); ?>
+<h1 id="pageTitle" class="content-general-margin mt-3">Edit Recipe</h1>
 <div id="create-recipe-stepper" class="content-general-margin mt-4 margin-to-footer card p-4">
     <div class="card-body">
         <div class="position-relative mt-4">
@@ -46,15 +46,15 @@
                 <div class="row g-3 mb-3">
                     <div class="col-lg">
                         <div class="form-floating">
-                            <input type="text" class="form-control" id="floatingInput" placeholder="Baked Potatoes">
+                            <input type="text" class="form-control" id="floatingInput" placeholder="Baked Potatoes" value="Classic Tiramisu">
                             <label for="floatingInput">Recipe title <span class='form-required'></span></label>
                         </div>
                     </div>
                     <div class="col-md">
                         <div class="form-floating">
                             <select class="form-select" id="floatingSelectGrid" aria-label="Main category">
-                                <option selected>-</option>
-                                <option value="1">Dessert</option>
+                                <option>-</option>
+                                <option selected value="1">Dessert</option>
                                 <option value="2">Main Dish</option>
                                 <option value="3">Snack</option>
                             </select>
@@ -63,22 +63,22 @@
                     </div>
                 </div>
                 <div class="form-floating mb-3">
-                    <textarea class="form-control" placeholder="Your awesome description here..." id="floatingTextarea2" style="height: 5rem"></textarea>
+                    <textarea class="form-control" placeholder="Your awesome description here..." id="floatingTextarea2" style="height: 7rem">Classic Italian dessert made with ladyfingers and mascarpone cheese. It can be made in a trifle bowl or a springform pan.</textarea>
                     <label for="floatingTextarea2">Description <span class='form-required'></span></label>
                 </div>
                 <div class="row g-3 mb-4">
                     <div class="col-lg">
                         <div class="form-floating">
-                            <input type="text" class="form-control" id="floatingInput" placeholder="Baked Potatoes">
+                            <input type="text" class="form-control" id="floatingInput" placeholder="Baked Potatoes" value="Low carb, Vegetarian">
                             <label for="floatingInput">Tags <span class='form-required'></span></label>
                         </div>
                     </div>
                     <div class="col-sm">
                         <div class="form-floating">
                             <select class="form-select" id="floatingSelectGrid" aria-label="Difficulty">
-                                <option selected>-</option>
+                                <option>-</option>
                                 <option value="1">Easy</option>
-                                <option value="2">Medium</option>
+                                <option selected value="2">Medium</option>
                                 <option value="3">Hard</option>
                             </select>
                             <label for="floatingSelectGrid">Difficulty <span class='form-required'></span></label>
@@ -86,13 +86,13 @@
                     </div>
                     <div class="col-lg">
                         <div class="form-floating">
-                            <input type="number" class="form-control" id="floatingInput" placeholder="Baked Potatoes">
+                            <input type="number" class="form-control" id="floatingInput" placeholder="Baked Potatoes" value="3">
                             <label for="floatingInput">Number of servings <span class='form-required'></span></label>
                         </div>
                     </div>
                 </div>
 
-                <h6 class="mb-3 d-inline-block">End Product Photos</h6>  <span class='form-required'></span>
+                <h6 class="mb-3 d-inline-block">End Product Photos</h6> <span class='form-required'></span>
                 <input type="file" class="form-control mb-3">
 
                 <h6 class="mb-3 d-inline-block">Visibility</h6> <span class='form-required'></span>
@@ -109,13 +109,29 @@
                     </label>
                 </div>
 
-
                 <button type="button" class="btn btn-primary next-step" style="float: right;">Next</button>
             </div>
             <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
                 <h3 class="mb-4">Ingredients</h3>
-
-                <?php include(__DIR__.'/../components/createRecipeIngredientRow.php'); ?>
+                
+                <?php 
+                    $quantity = 6; $name = "egg yolks";
+                    include(__DIR__.'/../components/createRecipeIngredientRow.php'); 
+                    $quantity = 1.25; $unit = 2; $name = "white sugar";
+                    include(__DIR__.'/../components/createRecipeIngredientRow.php');
+                    $quantity = 1.25; $unit = 2; $name = "mascarpone cheese";
+                    include(__DIR__.'/../components/createRecipeIngredientRow.php');
+                    $quantity = 1.75; $unit = 2; $name = "heavy whipping cream";
+                    include(__DIR__.'/../components/createRecipeIngredientRow.php');
+                    $quantity = 0.33; $unit = 2; $name = "coffee flavored liqueur";
+                    include(__DIR__.'/../components/createRecipeIngredientRow.php');
+                    $quantity = 12; $unit = 3; $name = "ladyfingers";
+                    include(__DIR__.'/../components/createRecipeIngredientRow.php');
+                    $quantity = 1; $unit = 1; $name = "unsweetened cocoa powder";
+                    include(__DIR__.'/../components/createRecipeIngredientRow.php');
+                    $quantity = 1; $unit = 3; $name = "square semisweet chocolate";
+                    include(__DIR__.'/../components/createRecipeIngredientRow.php');
+                ?>
 
                 <button type="button" class="btn btn-secondary" id="addIngredientButton"><i class="fas fa-plus"></i> Add Ingredient</button>
                 <button type="button" class="btn btn-primary next-step" style="float: right;">Next</button>
@@ -127,19 +143,19 @@
                 <div class="row g-3">
                     <div class="col-lg">
                         <div class="form-floating">
-                            <input type="number" class="form-control" id="preparationTime" placeholder="Preparation Time">
+                            <input type="number" class="form-control" id="preparationTime" placeholder="Preparation Time" value="15">
                             <label for="preparationTime">Preparation <span class='form-required'></span></label>
                         </div>
                     </div>
                     <div class="col-lg">
                         <div class="form-floating">
-                            <input type="number" class="form-control" id="cookingTime" placeholder="Cooking Time">
+                            <input type="number" class="form-control" id="cookingTime" placeholder="Cooking Time" value="30">
                             <label for="cookingTime">Cooking <span class='form-required'></span></label>
                         </div>
                     </div>
                     <div class="col-lg">
                         <div class="form-floating">
-                            <input type="number" class="form-control" id="additionalTime" placeholder="Additional Time">
+                            <input type="number" class="form-control" id="additionalTime" placeholder="Additional Time" value="0">
                             <label for="additionalTime">Additional</label>
                         </div>
                     </div>
@@ -148,10 +164,28 @@
                 <h4 class="mt-5 mb-4">Steps</h4>
                 
                 <h5 class="mb-3">Step 1</h5>                
-                <?php include(__DIR__ . '/../components/createRecipeMethodStep.php'); ?>
+                <?php 
+                    $name = "Step 1"; $description = "Combine egg yolks and sugar in the top of a double boiler, over boiling water. Reduce heat to low, and cook for about 10 minutes, stirring constantly. Remove from heat and whip yolks until thick and lemon colored.";
+                    include(__DIR__ . '/../components/createRecipeMethodStep.php'); 
+                ?>
+                <h5 class="mb-3">Step 2</h5>                
+                <?php 
+                    $name = "Step 2"; $description = "Add mascarpone to whipped yolks. Beat until combined. In a separate bowl, whip cream to stiff peaks. Gently fold into yolk mixture and set aside.";
+                    include(__DIR__ . '/../components/createRecipeMethodStep.php'); 
+                ?>
+                <h5 class="mb-3">Step 3</h5>                
+                <?php 
+                    $name = "Step 3"; $description = "Split the lady fingers in half, and line the bottom and sides of a large glass bowl. Brush with coffee liqueur. Spoon half of the cream filling over the lady fingers. Repeat ladyfingers, coffee liqueur and filling layers. Garnish with cocoa and chocolate curls. Refrigerate several hours or overnight.";
+                    include(__DIR__ . '/../components/createRecipeMethodStep.php'); 
+                ?>
+                <h5 class="mb-3">Step 4</h5>                
+                <?php 
+                    $name = "Step 4"; $description = "To make the chocolate curls, use a vegetable peeler and run it down the edge of the chocolate bar.";
+                    include(__DIR__ . '/../components/createRecipeMethodStep.php'); 
+                ?>
 
                 <button type="button" class="btn btn-secondary" id="addStepButton"><i class="fas fa-plus"></i> Add Step</button>
-                <button type="button" class="btn btn-primary next-step" style="float: right;">Create Recipe</button>
+                <button type="button" class="btn btn-primary next-step" style="float: right;">Edit Recipe</button>
 
             </div>  
         </div>

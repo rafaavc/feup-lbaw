@@ -55,13 +55,13 @@
                         
                         <?php
                             include_once "../components/inputIcon.php";
-                            echo "<span class='d-block mt-4'>Username</span>";
+                            echo "<span class='d-block mt-4'>Username <span class='form-required'></span></span>";
                             inputIconLeft('user'); 
-                            echo "<span class='d-block mt-4'>Email Address</span>";
+                            echo "<span class='d-block mt-4'>Email Address <span class='form-required'></span></span>";
                             inputIconLeft('envelope'); 
-                            echo "<span class='d-block mt-4'>Password</span>";
+                            echo "<span class='d-block mt-4'>Password <span class='form-required'></span></span>";
                             inputIconLeft('lock'); 
-                            echo "<span class='d-block mt-4'>Repeat Password</span>";
+                            echo "<span class='d-block mt-4'>Repeat Password <span class='form-required'></span></span>";
                             inputIconLeft('lock'); 
                         ?>
 
@@ -74,14 +74,14 @@
                         <h1>Sign Up</h1>
                         <h3>Please enter your personal details.</h3>
                         <?php
-                            echo "<span class='d-block mt-4'>Name</span>";
+                            echo "<span class='d-block mt-4'>Name <span class='form-required'></span></span>";
                             inputIconLeft('user'); 
-                            echo "<span class='d-block mt-4'>Country</span>";
+                            echo "<span class='d-block mt-4'>Country <span class='form-required'></span></span>";
                             inputIconLeft('flag'); 
                             echo "<span class='d-block mt-4'>City</span>";
                             inputIconLeft('map-marker-alt'); 
                         ?>
-                        <span class='d-block mt-4'>Profile Photo</span>
+                        <span class='d-block mt-4'>Profile Photo <span class='form-required'></span></span>
                         <img src="../images/noImage.png" class="rounded-circle mx-auto d-block file-input" alt="...">
                         <input type="file" name="myfile" class="d-none"></input>
                         <div class="d-grid gap-2 col-6 mx-auto my-2">

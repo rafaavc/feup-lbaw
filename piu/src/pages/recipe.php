@@ -235,10 +235,13 @@ drawBreadcrumb(["Recipes", "Desserts", "Classic Tiramisu"])
                         </tbody>
                     </table>
                 </div>
-                <p>These vegan meringues use the liquid from a tin of chickpeas as the substitute for egg whites - genius! Use these vegan meringues wherever you would use egg white meringue such as summer fruit pavlova and Eton mess.</p>
+                <p>Classic Italian dessert made with ladyfingers and mascarpone cheese. It can be made in a trifle bowl or a springform pan.</p>
+                
+                
+                <span class="d-block mb-3"><small>Difficulty: medium</small></span>
                 <span class="d-inline-block me-3">Tags: </span>
                 <a role="button" class="btn btn-sm btn-secondary d-inline-block me-2 mb-2" href="<?=getRootUrl(). "/pages/category.php"?>">
-                    Main dish
+                    Dessert
                 </a>
                 <a role="button" class="btn btn-sm btn-outline-secondary d-inline-block me-2 mb-2" href="<?=getRootUrl(). "/pages/category.php"?>">
                     Low carb
@@ -248,6 +251,11 @@ drawBreadcrumb(["Recipes", "Desserts", "Classic Tiramisu"])
                 </a>
             </div>
             <ul class="col-3 text-end">
+                <li class="list-group-item bg-light" style="border-radius: .5rem">
+                    <a href="<?=getRootUrl()?>/pages/editRecipe.php">
+                        Edit Recipe <i class="fas fa-edit ms-2"></i>
+                    </a>
+                </li>
                 <li class="list-group-item">
                     <a href="#">
                         <span class="legend">Print</span><i class="fas fa-print"></i>
