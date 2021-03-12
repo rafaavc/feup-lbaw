@@ -253,7 +253,7 @@ drawBreadcrumb(["Recipes", "Desserts", "Classic Tiramisu"])
             <ul class="col-3 text-end">
                 <li class="list-group-item bg-light" style="border-radius: .5rem">
                     <a href="<?=getRootUrl()?>/pages/editRecipe.php">
-                        Edit Recipe <i class="fas fa-edit ms-2"></i>
+                        <span class="legend">Edit Recipe</span><i class="fas fa-edit ms-2"></i>
                     </a>
                 </li>
                 <li class="list-group-item">

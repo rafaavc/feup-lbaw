@@ -13,7 +13,7 @@
                     <button type="button" class="btn edit-photo-button float-end me-2 mt-2 btn-no-shadow" data-bs-toggle="dropdown" aria-expanded="false">
                         <i class="fas fa-ellipsis-h"></i>
                     </button>
-                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1"> 
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton1"> 
                         <?php if($isVisitor) { ?>
                             <li><a class="dropdown-item" href="#">Report Post</a></li>
                         <?php } else { ?>
@@ -85,7 +85,7 @@
                     <button type="button" class="btn edit-photo-button float-end me-2 mt-2 btn-no-shadow" data-bs-toggle="dropdown" aria-expanded="false">
                         <i class="fas fa-ellipsis-h"></i>
                     </button>
-                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1"> 
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton1"> 
                         <?php if($isVisitor) { ?>
                             <li><a class="dropdown-item" href="#">Report Review</a></li>
                         <?php } else { ?>

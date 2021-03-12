@@ -33,18 +33,7 @@
             </div>
         </div>
         <div class="row" style="position: relative; bottom: -1px">
-            <ul class="nav nav-tabs col-md-10 ps-md-3">
-                <li class="nav-item">
-                    <a class="nav-link <?=!isset($section) ? "active" : "" ?>" aria-current="page" href="<?=getRootUrl()?>/pages/profile.php">Recipes</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link <?=isset($section) && $section == 2 ? "active" : ""?>" href="<?=getRootUrl()?>/pages/profile_reviews.php">Reviews</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link <?=isset($section) && $section == 3 ? "active" : ""?>" href="<?=getRootUrl()?>/pages/profile_favourites.php">Favourites</a>
-                </li>
-            </ul>
-            <div class="rating-box col-md-2 text-center d-none d-md-block">
+            <div class="rating-box col-md-3 order-md-2 text-center mb-3 mb-md-0">
                 <span class="small d-block">Average rating</span>
                 <div class="rating">
                     <span class="value me-1">3.3</span>
@@ -55,6 +44,17 @@
                     <i class="fas fa-star"></i>
                 </div>
             </div>
+            <ul class="nav nav-tabs col-md-9 ps-md-3">
+                <li class="nav-item">
+                    <a class="nav-link <?=!isset($section) ? "active" : "" ?>" aria-current="page" href="<?=getRootUrl()?>/pages/profile.php">Recipes</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link <?=isset($section) && $section == 2 ? "active" : ""?>" href="<?=getRootUrl()?>/pages/profile_reviews.php">Reviews</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link <?=isset($section) && $section == 3 ? "active" : ""?>" href="<?=getRootUrl()?>/pages/profile_favourites.php">Favourites</a>
+                </li>
+            </ul>
         </div>
     </div>
 </header>

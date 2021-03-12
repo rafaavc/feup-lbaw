@@ -48,7 +48,7 @@ $member = [
         "icon" => "comments",
         "popover" => "This is the content of the second popover"
     ],
-    "john doe" => [
+    "jamie oliver" => [
         "icon" => "user-circle",
         "drop" => $dropdown
     ]
@@ -63,7 +63,7 @@ $admin = [
         "icon" => "users",
         "href" => getRootUrl()."/pages/usersManagement.php"
     ],
-    "john doe" => [
+    "jamie oliver" => [
         "icon" => "user-circle",
         "drop" => $dropdown
     ]
