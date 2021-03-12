@@ -1,6 +1,6 @@
 <?php 
     $role = "admin";
-    $pageTitle = "Reports Management";
+    $pageTitle = "Reports Management | TasteBuds";
     $extraStyles = [ "adminArea.css", "../components/breadcrumb.css" ];
     include_once '../components/docHeader.php';
     include_once "../components/nav.php"; 

@@ -1,6 +1,6 @@
 <?php 
     $role = "admin";
-    $pageTitle = "Users Management";
+    $pageTitle = "Users Management | TasteBuds";
     $extraStyles = [ "adminArea.css", "../components/breadcrumb.css" ];
 
     include_once "../components/breadcrumb.php";

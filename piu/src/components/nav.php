@@ -87,10 +87,9 @@ function printMenu()
 
 function printIconText($icon, $text, $caret = false)
 { ?>
-    <i class="fas fa-<?= $icon ?> d-none d-lg-inline ms-3"></i>
+    <i class="fas fa-<?= $icon ?> mx-2"></i>
     <span class="legend"><?= $text ?></span>
-    <?php
-    if ($caret) { ?>
+    <?php if ($caret) { ?>
         <i class="fas fa-caret-down"></i>
     <?php }
 }
@@ -119,10 +118,14 @@ function printItem($name, $icon, $link, $dropdown = false)
 function printMessagesPopover()
 { ?>
     <li class="nav-item">
-        <button data-popover-content="#messagesPopupContent" class="btn btn-primary btn-sm mt-2 nav-popover position-relative" role="button" data-bs-placement="bottom" data-bs-toggle="popover">
+        <button data-popover-content="#messagesPopupContent" class="btn btn-primary btn-sm mt-2 nav-popover position-relative d-none d-lg-block" role="button" data-bs-placement="bottom" data-bs-toggle="popover">
             <i class="fas fa-envelope"></i> 
             <div class="notif-quantity-indicator"><small>1</small></div>
         </button>
+        <a class="nav-link d-inline-block d-lg-none" href="<?=getRootUrl()?>/pages/privateMessages.php">
+            <?php printIconText("envelope", "Messages") ?>
+        </a>
+        <div class="notif-quantity-indicator-inline d-inline-block d-lg-none"><small>1</small></div>
         <div id="messagesPopupContent" class="d-none">
             <ul class="p-0 m-0">
                 <li class="card p-2 mb-2">
@@ -142,11 +145,15 @@ function printMessagesPopover()
 function printNotificationsPopover()
 { ?>
     <li class="nav-item">
-        <button data-popover-content="#notificationsPopupContent" class="btn btn-primary btn-sm mt-2 me-4 nav-popover position-relative" role="button" data-bs-placement="bottom" data-bs-toggle="popover">
+        <button data-popover-content="#notificationsPopupContent" class="btn btn-primary btn-sm mt-2 me-4 nav-popover position-relative d-none d-lg-block" role="button" data-bs-placement="bottom" data-bs-toggle="popover">
             <i class="fas fa-bell"></i>
             <div class="notif-quantity-indicator"><small>3</small></div>
         </button>
-        <div id="notificationsPopupContent" class="d-none">
+        <button type="button" class="btn no-btn nav-link d-block d-lg-none position-relative" data-bs-toggle="collapse" aria-expanded="false" aria-controls="notificationsPopupContent" data-bs-target="#notificationsPopupContent">
+            <?php printIconText("bell", "Notifications") ?>
+            <div class="notif-quantity-indicator-mobile"><small>3</small></div>
+        </button>
+        <div id="notificationsPopupContent" class="collapse p-2 d-lg-none">
             <ul class="p-0 m-0">
                 <li class="card p-2 mb-2">
                     <?= displayFollowRequestCard("Ludwig Nascimento", "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fimages.pexels.com%2Fphotos%2F33614%2Fcooking-eat-cut-food.jpg%3Fauto%3Dcompress%26cs%3Dtinysrgb%26dpr%3D1%26w%3D500&f=1&nofb=1", true); ?>
