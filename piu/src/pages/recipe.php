@@ -140,7 +140,7 @@ function printBoxContent($array)
 
 function printBoxes($mobile = false)
 { ?>
-    <div class="<?= $mobile ? "d-block d-md-none" : "d-none d-md-block" ?>">
+    <div class="<?= $mobile ? "d-block d-xl-none" : "d-none d-xl-block" ?>">
         <div class="media my-4 my-md-0">
             <img class="img-fluid main" src="https://dpv87w1mllzh1.cloudfront.net/alitalia_discover/attachments/data/000/002/587/original/la-ricetta-classica-del-tiramisu-con-uova-savoiardi-e-mascarpone-1920x1080.jpg?1567093636">
             <div class="small-img d-flex">
@@ -150,9 +150,9 @@ function printBoxes($mobile = false)
                 <img class="col-3" src="https://dpv87w1mllzh1.cloudfront.net/alitalia_discover/attachments/data/000/002/587/original/la-ricetta-classica-del-tiramisu-con-uova-savoiardi-e-mascarpone-1920x1080.jpg?1567093636">
             </div>
         </div>
-        <div class="row">
+        <div class="row mt-5">
             <div class="col-md-6">
-                <section class="icon-box">
+                <section class="icon-box mb-4">
                     <i class="fas fa-clock"></i>
                     <? printBoxContent([
                         "Duration" => "45 mins",
@@ -161,7 +161,7 @@ function printBoxes($mobile = false)
                         "Additional" => "-"
                     ]) ?>
                 </section>
-                <section class="icon-box p-2 mt-4 mt-md-0">
+                <section class="icon-box p-2 mt-md-0">
                     <i class="fas fa-chart-bar"></i>
                     <form>
                         <table class="table table-borderless mb-0">
@@ -208,7 +208,7 @@ drawBreadcrumb(["Recipes", "Desserts", "Classic Tiramisu"])
 
 <main class="row content-general-margin margin-to-footer">
     <article id="recipe" class="col-xl-8 p-0 pe-xl-4">
-        <header class="row text-left pt-3 pb-3 mb-md-3 shadow-sm">
+        <header class="row text-left pt-3 pb-3 mb-md-3 shadow-sm mt-5 mt-xl-0">
             <h1 class="col-11">Classic Tiramisu</h1>
             <div class="col-9">
                 <div class="rating">
@@ -313,13 +313,25 @@ drawBreadcrumb(["Recipes", "Desserts", "Classic Tiramisu"])
         </section>
     </article>
     <aside class="col-xl-4 p-0 ps-xl-4 mt-5 mt-xl-0">
-        <?php printBoxes() ?>
+        <div class="d-none d-xl-block">
+            <?php printBoxes() ?>
+        </div>
         <div class="suggested mt-5">
             <h4>Suggested</h4>
-            <?php
-            for ($i = 0; $i < 4; $i++)
-                getRecipeCard()
-            ?>
+            <div class="row">
+                <div class="col">
+                    <?php getRecipeCard() ?>
+                </div>
+                <div class="col">
+                    <?php getRecipeCard() ?>
+                </div>
+                <div class="col">
+                    <?php getRecipeCard() ?>
+                </div>
+                <div class="col">
+                    <?php getRecipeCard() ?>
+                </div>
+            </div>
         </div>
     </aside>
 </main>
