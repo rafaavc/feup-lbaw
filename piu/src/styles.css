@@ -94,6 +94,13 @@ a:hover {
     background-color: var(--accent-color-darker) !important;
 } 
 
+.btn.btn-no-shadow {
+    box-shadow: none !important;
+}
+.btn.btn-no-shadow:focus {
+    color: gray;
+}
+
 a {
     color: var(--accent-color);
     transition: color .2s;

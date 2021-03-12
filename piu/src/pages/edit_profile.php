@@ -22,7 +22,7 @@
                         </div>   
                         <div class="col text-end profile-photo-button-col p-0">                     
                             <div class="dropdown w-20 ms-auto">
-                                <button type="button" class="btn edit-photo-button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <button type="button" class="btn edit-photo-button btn-no-shadow" data-bs-toggle="dropdown" aria-expanded="false">
                                     <i class="fas fa-ellipsis-h"></i>
                                 </button>
                                 <ul class="dropdown-menu w-100">
@@ -46,7 +46,7 @@
                         </div>
                         <div class="col text-end p-0">
                             <div class="dropdown w-20 ms-auto">
-                                <button type="button" class="btn edit-photo-button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <button type="button" class="btn edit-photo-button btn-no-shadow" data-bs-toggle="dropdown" aria-expanded="false">
                                     <i class="fas fa-ellipsis-h"></i>
                                 </button>
                                 <ul class="dropdown-menu w-100">

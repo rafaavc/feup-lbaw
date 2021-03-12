@@ -45,9 +45,10 @@ include_once "../components/membersFollowingBoxes.php";
 
             <div class="col-md-8 posts-area ps-md-4">
                 <div class="row">
-                    <?php for ($i = 0; $i < 2; $i++) {
-                        displayRecipe(true);
-                    } ?>
+                    <?php 
+                        displayRecipe(true); 
+                        displayRecipe(true); 
+                    ?>
                 </div>
                 <div class="row">
                     <button type="button" class="btn btn-dark load-more w-25 mt-5">Load More</button>

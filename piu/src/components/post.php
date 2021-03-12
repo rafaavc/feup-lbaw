@@ -10,7 +10,7 @@
         <div class="card shadow-sm recipe-post mt-5">
             <div class="col-sm post-options">
                 <div class="dropdown">
-                    <button type="button" class="btn edit-photo-button float-end me-2 mt-2" data-bs-toggle="dropdown" aria-expanded="false">
+                    <button type="button" class="btn edit-photo-button float-end me-2 mt-2 btn-no-shadow" data-bs-toggle="dropdown" aria-expanded="false">
                         <i class="fas fa-ellipsis-h"></i>
                     </button>
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1"> 
@@ -82,7 +82,7 @@
         <div class="card shadow-sm recipe-post mt-5">
             <div class="col-sm post-options">
                 <div class="dropdown">
-                    <button type="button" class="btn edit-photo-button float-end me-2 mt-2" data-bs-toggle="dropdown" aria-expanded="false">
+                    <button type="button" class="btn edit-photo-button float-end me-2 mt-2 btn-no-shadow" data-bs-toggle="dropdown" aria-expanded="false">
                         <i class="fas fa-ellipsis-h"></i>
                     </button>
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1"> 
