@@ -24,6 +24,22 @@
     display: inline-block;
 }
 
+.home-slide > a {
+    float: right;
+    margin-top: 1rem;
+    transition: background-color color border-color .2s;
+}
+
+.home-slide > a:hover {
+    background-color: var(--bs-dark);
+    color: var(--bs-light);
+    border-color: black;
+}
+
+.home-slide > a:first-of-type {
+    clear: right;
+}
+
 .home-slide .display-4 {
     background-color: var(--bs-light);
     padding: 0 1rem;
@@ -90,8 +106,13 @@ a.btn-large {
         width: 85%;
     }
 
-    .home-slide > h2 {
-        float: none;
+    .home-slide > * {
+        float: none !important;
+    }
+
+
+    .home-slide > a:first-of-type {
+        margin-right: 1rem;
     }
 
     .home-slide {
