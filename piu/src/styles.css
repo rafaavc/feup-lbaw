@@ -101,3 +101,8 @@ body {
 * {
     font-family: 'Ubuntu', sans-serif;
 }
+
+/* important because events in descendants were causing tooltips bugs */
+.has-tooltip * {
+    pointer-events: none !important;
+}

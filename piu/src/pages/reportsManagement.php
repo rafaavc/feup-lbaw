@@ -21,7 +21,7 @@
     </div>
     <div class="card">
         <div class="card-body table-responsive">
-        <table class="table align-middle table-striped table-hover">
+        <table class="table align-middle table-striped">
             <thead>
                 <th>Type</th>
                 <th>Content</th>

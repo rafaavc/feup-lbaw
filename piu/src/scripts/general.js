@@ -7,7 +7,7 @@ window.addEventListener('resize', () => {
 });
 
 const tooltips = Array.from(document.querySelectorAll('.has-tooltip'));
-tooltips.forEach(elem => new bootstrap.Tooltip(elem));
+tooltips.forEach(elem => new bootstrap.Tooltip(elem, { container: 'body', placement: 'bottom', boundary: 'window' }));
 
 
 
@@ -20,5 +20,4 @@ const interval = setInterval(() => {
     console.log("hey")
     if (counter > 7) clearInterval(interval)
 }, 200);  // sometimes there was problems in the calculation
-
 
