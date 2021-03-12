@@ -6,7 +6,7 @@
     // displayReview(false); // Review - Owner
     
 
-    function displayRecipe($isVisitor = true, $title="Classic Tiramisu", $poster="Alex Johnson", $description="Classic Italian dessert made with ladyfingers and mascarpone cheese. It can be made in a trifle bowl or a springform pan.", $img="https://dpv87w1mllzh1.cloudfront.net/alitalia_discover/attachments/data/000/002/587/original/la-ricetta-classica-del-tiramisu-con-uova-savoiardi-e-mascarpone-1920x1080.jpg?1567093636", $userImg="https://www.thispersondoesnotexist.com/image", $date="11 September, 2020") { ?>
+    function displayRecipe($isVisitor = true, $title="Classic Tiramisu", $poster="Jamie Oliver", $description="Classic Italian dessert made with ladyfingers and mascarpone cheese. It can be made in a trifle bowl or a springform pan.", $img="https://dpv87w1mllzh1.cloudfront.net/alitalia_discover/attachments/data/000/002/587/original/la-ricetta-classica-del-tiramisu-con-uova-savoiardi-e-mascarpone-1920x1080.jpg?1567093636", $userImg="https://mdbootstrap.com/img/Photos/Avatars/img%20(31).jpg", $date="11 September, 2020") { ?>
         <div class="card shadow-sm recipe-post mt-5">
             <div class="col-sm post-options">
                 <div class="dropdown">
@@ -78,7 +78,7 @@
         </div>
     <?php }
 
-    function displayReview($isVisitor) { ?>
+    function displayReview($isVisitor, $reviewContent="I cooked it and it was awesome. Although I don't think you'll get the same results (do you really think you are at my level?), I think you should try it!", $reviewer="Ellie Costa", $reviewerImage="https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fwww.lensmen.ie%2Fwp-content%2Fuploads%2F2015%2F02%2FProfile-Portrait-Photographer-in-Dublin-Ireland..jpg&f=1&nofb=1", $reviewDate="11 September, 2020", $recipeTitle="Classic Tiramisu", $recipeImage="https://dpv87w1mllzh1.cloudfront.net/alitalia_discover/attachments/data/000/002/587/original/la-ricetta-classica-del-tiramisu-con-uova-savoiardi-e-mascarpone-1920x1080.jpg?1567093636") { ?>
         <div class="card shadow-sm recipe-post mt-5">
             <div class="col-sm post-options">
                 <div class="dropdown">
@@ -87,10 +87,10 @@
                     </button>
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1"> 
                         <?php if($isVisitor) { ?>
-                            <li><a class="dropdown-item" href="#">Report Post</a></li>
+                            <li><a class="dropdown-item" href="#">Report Review</a></li>
                         <?php } else { ?>
-                            <li><a class="dropdown-item" href="#">Edit Post</a></li>
-                            <li><a class="dropdown-item" href="#">Delete Post</a></li>
+                            <li><a class="dropdown-item" href="#">Edit Review</a></li>
+                            <li><a class="dropdown-item" href="#">Delete Review</a></li>
                         <?php } ?>
                     </ul>
                 </div>
@@ -99,24 +99,24 @@
             <div class="card-body">
                 <div class="row user-info">
                     <div class="col avatar-image mb-2">
-                        <img class="rounded-circle z-depth-2" src="https://mdbootstrap.com/img/Photos/Avatars/img%20(31).jpg">
+                        <img class="rounded-circle z-depth-2" src="<?=$reviewerImage?>">
                     </div>
                     <div class="col col-sm name-and-date ms-4">
-                        <div><a href="<?=getRootUrl()?>/pages/profile.php" style="text-decoration: none"><strong>Jamie Oliver</strong></a> <span class="review-text">wrote a review</span></div>
-                        <div class="publication-date">11 September, 2020</div>
+                        <div><a href="<?=getRootUrl()?>/pages/profile.php" style="text-decoration: none"><strong><?=$reviewer?></strong></a> <span class="review-text">wrote a review</span></div>
+                        <div class="publication-date"><?=$reviewDate?></div>
                     </div>
                 </div>
                 <div class="mt-4">
                     <div><strong>Rating:</strong> <i class="fas fa-star active ms-2"></i> <i class="fas fa-star active"></i> <i class="fas fa-star active"></i> <i class="fas fa-star active"></i> <i class="fas fa-star"></i></div>
-                    <p>I cooked it and it was awesome. Although I don't think you'll get the same results (do you really think you are at my level?), I think you should try it!</p>
+                    <p><?=$reviewContent?></p>
                 </div>
                 <a type="button" href="<?=getRootUrl()?>/pages/recipe.php" class="btn card mb-2 mt-4 shadow-sm p-2 recipe-post-review">
                     <div class="row">
                         <div class="col-md-4">
-                            <img src="https://dpv87w1mllzh1.cloudfront.net/alitalia_discover/attachments/data/000/002/587/original/la-ricetta-classica-del-tiramisu-con-uova-savoiardi-e-mascarpone-1920x1080.jpg?1567093636" class="bd-placeholder-img recipe-image" width="100%">
+                            <img src="<?=$recipeImage?>" class="bd-placeholder-img recipe-image" width="100%">
                         </div>
                         <div class="col-md-8 p-3">
-                            <h4 class="m-0 p-0 card-title">Classic Tiramisu</h4>
+                            <h4 class="m-0 p-0 card-title"><?=$recipeTitle?></h4>
                             <p class="m-0 p-0"><small class="text-muted">4.6 <i class="fas fa-star active ms-2"></i> <i class="fas fa-star active"></i> <i class="fas fa-star active"></i> <i class="fas fa-star active"></i> <i class="fas fa-star active"></i> | 563 reviews</small></p>
                         </div>
                     </div>

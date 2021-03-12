@@ -35,13 +35,13 @@
         <div class="row" style="position: relative; bottom: -1px">
             <ul class="nav nav-tabs col-md-10 ps-md-3">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">Recipes</a>
+                    <a class="nav-link <?=!isset($section) ? "active" : "" ?>" aria-current="page" href="<?=getRootUrl()?>/pages/profile.php">Recipes</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Reviews</a>
+                    <a class="nav-link <?=isset($section) && $section == 2 ? "active" : ""?>" href="<?=getRootUrl()?>/pages/profile_reviews.php">Reviews</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Favourites</a>
+                    <a class="nav-link <?=isset($section) && $section == 3 ? "active" : ""?>" href="<?=getRootUrl()?>/pages/profile_favourites.php">Favourites</a>
                 </li>
             </ul>
             <div class="rating-box col-md-2 text-center d-none d-md-block">

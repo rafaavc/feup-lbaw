@@ -1,19 +1,19 @@
 <?php
 
     // Recipe card
-    function getRecipeCard() { ?> 
+    function getRecipeCard($name="Cozido à portuguesa", $author="Jamie Oliver", $image="https://www.heart.org/-/media/images/news/2019/april-2019/0429sustainablefoodsystem_sc.jpg") { ?> 
         <div class="search-card">
             <a type="button" href="<?=getRootUrl()?>/pages/recipe.php" class="btn card shadow-sm p-2">
-                <div class="card-img-top recipe-card-img-top"></div>
+                <div class="card-img-top" style="background-image: url('<?=$image?>')"></div>
                 <div class="card-body m-0">
-                    <h4 class="card-title">Cozido à portuguesa</h4>
+                    <h4 class="card-title"><?=$name?></h4>
                     <p class="text-muted m-0" style="font-size: .8rem">4.6 
                         <i class="fas fa-star active"></i>
                         <i class="fas fa-star active"></i>
                         <i class="fas fa-star active"></i>
                         <i class="fas fa-star active"></i>
                         <i class="fas fa-star active"></i> | 563 reviews</p>
-                    <p class="card-text mt-2">by Jamie Oliver</p>
+                    <p class="card-text mt-2">by <?=$author?></p>
                 </div>
             </a>
         </div>

@@ -224,11 +224,11 @@ drawBreadcrumb(["Recipes", "Desserts", "Classic Tiramisu"])
                         <tbody>
                             <tr>
                                 <td class="col-2 col-md-1 image-container">
-                                    <img class="rounded-circle" src="https://thispersondoesnotexist.com/image" alt="...">
+                                    <img class="rounded-circle" src="https://mdbootstrap.com/img/Photos/Avatars/img%20(31).jpg" alt="...">
                                 </td>
                                 <td class="align-middle">
                                     <div class="col-md-5 card-body p-0 m-0 ms-2 text-start">
-                                        by <a href="<?=getRootUrl()?>/pages/profile.php">Alex Johnson</a>
+                                        by <a href="<?=getRootUrl()?>/pages/profile.php">Jamie Oliver</a>
                                     </div>
                                 </td>
                             </tr>

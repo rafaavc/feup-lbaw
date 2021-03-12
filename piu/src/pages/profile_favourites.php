@@ -8,6 +8,7 @@ $extraStyles = [
     "../components/post.css",
     "../components/membersFollowingBoxes.css",
     "../components/breadcrumb.css",
+    "../components/search_results_cards.css",
     "group.css"
 ];
 $extraScripts = [
@@ -20,6 +21,7 @@ include_once "../components/nav.php";
 include_once "../components/post.php";
 include_once "../components/breadcrumb.php";
 include_once "../components/membersFollowingBoxes.php";
+include_once "../components/search_results_cards.php";
 
 ?>
 
@@ -27,7 +29,8 @@ include_once "../components/membersFollowingBoxes.php";
     <?php drawBreadcrumb(["Profiles", "Jamie Oliver's Profile"], true); ?>
     <div>
         <div class="cover">
-            <?php include_once "../components/profile_cover.php"; ?>
+            
+            <?php $section=3; include_once "../components/profile_cover.php"; ?>
         </div>
         <div class="row group-body">
             <div class="col-md-4 p-0 pe-md-4 mt-5">
@@ -43,16 +46,15 @@ include_once "../components/membersFollowingBoxes.php";
                 <?php displayPeopleBox("Following"); ?>
             </div>
 
-            <div class="col-md-8 posts-area ps-md-4 mt-5">
-                <div class="row first-recipe-mt">
-                    <h3>Recipes</h3>
-                    <?php 
-                        displayRecipe(false); 
-                        displayRecipe(false, "Churro Waffles", "Jamie Oliver", "If you've ever had churros dipped in chocolate, you know what this recipe is all about. Churros are perfectly crunchy, cinnamon sugar-dusted sticks of goodness, dunked in creamy chocolate—a dream come true. But turning your waffles into churros for breakfast? That's heaven.", "https://www.thespruceeats.com/thmb/7xtcaM7YX-9YV9Mrp5ANPi3dLzA=/960x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/churrowaffles-05-5c6378ce46e0fb0001ca8e49.jpg", "https://mdbootstrap.com/img/Photos/Avatars/img%20(31).jpg", "21 October, 2020"); 
-                    ?>
-                </div>
+            <div class="col-md-8 posts-area ps-md-4 pe-0 mt-5">
+                <h3>Favourite Recipes</h3>
                 <div class="row">
-                    <button type="button" class="btn btn-dark load-more w-25 mt-5">Load More</button>
+                    <div class="col-sm p-0 mt-3 me-sm-3">
+                        <?php getRecipeCard("Traditional Irish Stew", "Allie Costa", "https://www.thespruceeats.com/thmb/AhWrgq_6_WUp6Vezr69PdbLC_tM=/960x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/traditional-irish-stew-recipe-435757-hero-01-7ec7d4b8688a424d93b080f000ab53ff.jpg"); ?>
+                    </div>
+                    <div class="col-sm p-0 mt-3 me-sm-3">
+                        <?php getRecipeCard("Classic Double Crust Blueberry Pie", "Allie Costa", "https://www.thespruceeats.com/thmb/l_HEh1Z__Tb43dgZqC3ySmNnOdY=/960x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/classic-double-crust-blueberry-pie-3051709-hero-01-e3db9e34e7dc416ba9b5d48a22f947f1.jpg"); ?>
+                    </div>          
                 </div>
             </div>
         </div>
