@@ -108,15 +108,15 @@
                 </div>
                 <div class="mt-4">
                     <div><strong>Rating:</strong> <i class="fas fa-star active ms-2"></i> <i class="fas fa-star active"></i> <i class="fas fa-star active"></i> <i class="fas fa-star active"></i> <i class="fas fa-star"></i></div>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+                    <p>I cooked it and it was awesome. Although I don't think you'll get the same results (do you really think you are at my level?), I think you should try it!</p>
                 </div>
                 <a type="button" href="<?=getRootUrl()?>/pages/recipe.php" class="btn card mb-2 mt-4 shadow-sm p-2 recipe-post-review">
                     <div class="row">
                         <div class="col-md-4">
-                            <img src="https://blog.myfitnesspal.com/wp-content/uploads/2017/12/Essential-Guide-to-Healthy-Eating-2-752x472.png" class="bd-placeholder-img recipe-image" width="100%">
+                            <img src="https://dpv87w1mllzh1.cloudfront.net/alitalia_discover/attachments/data/000/002/587/original/la-ricetta-classica-del-tiramisu-con-uova-savoiardi-e-mascarpone-1920x1080.jpg?1567093636" class="bd-placeholder-img recipe-image" width="100%">
                         </div>
                         <div class="col-md-8 p-3">
-                            <h4 class="m-0 p-0 card-title">Cozido à Portuguesa</h4>
+                            <h4 class="m-0 p-0 card-title">Classic Tiramisu</h4>
                             <p class="m-0 p-0"><small class="text-muted">4.6 <i class="fas fa-star active ms-2"></i> <i class="fas fa-star active"></i> <i class="fas fa-star active"></i> <i class="fas fa-star active"></i> <i class="fas fa-star active"></i> | 563 reviews</small></p>
                         </div>
                     </div>
