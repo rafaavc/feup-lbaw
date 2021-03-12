@@ -26,7 +26,7 @@ $visitor = [
 $dropdown = [
     "my profile" => [
         "icon" => "address-card",
-        "href" => getRootUrl()."/pages/edit_profile.php"
+        "href" => getRootUrl()."/pages/profile.php"
     ],
     "sign out" => [
         "icon" => "sign-out-alt",

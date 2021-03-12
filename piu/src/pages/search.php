@@ -1,15 +1,15 @@
     <?php
-        $role = "member";
-        $pageTitle = "Search Results | TasteBuds";
-        $extraStyles = [ "search.css", "../components/search_results_cards.css", "../components/filterSortBar.css", "../components/breadcrumb.css" ];
-        $extraScripts = [ "../components/filterSortBar.js" ];
-        
-        include_once "../components/search_results_cards.php";
-        include_once "../components/breadcrumb.php";
-        include_once "../components/docHeader.php";
-        include_once "../components/nav.php";
+    $role = "member";
+    $pageTitle = "Search Results | TasteBuds";
+    $extraStyles = ["search.css", "../components/search_results_cards.css", "../components/filterSortBar.css", "../components/breadcrumb.css"];
+    $extraScripts = ["../components/filterSortBar.js"];
+
+    include_once "../components/search_results_cards.php";
+    include_once "../components/breadcrumb.php";
+    include_once "../components/docHeader.php";
+    include_once "../components/nav.php";
     ?>
-    <?php drawBreadcrumb([ "Search",  "\"cozido à portuguesa\"" ]); ?>
+    <?php drawBreadcrumb(["Search",  "\"cozido à portuguesa\""]); ?>
     <div class="container search-page content-general-margin mt-5 margin-to-footer">
         <div class="search-header">
             <h1 class="mb-5">Search Results</h1>
@@ -150,7 +150,7 @@
             </nav>
         </div>
     </div>
-    <?php 
-        include_once "../components/footer.php"; 
-        include_once "../components/docFooter.php"; 
+    <?php
+    include_once "../components/footer.php";
+    include_once "../components/docFooter.php";
     ?>

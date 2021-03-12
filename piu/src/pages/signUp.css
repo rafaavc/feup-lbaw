@@ -56,5 +56,10 @@ strong.finish-msg {
         height: 20vw !important;
         width: 20vw !important;
     }
+}
 
+@media (min-width: 1200px) {
+    .sign-form {
+        padding-top: 0.25em !important;
+    }
 }

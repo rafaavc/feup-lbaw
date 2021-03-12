@@ -1,0 +1,152 @@
+:root {
+    --default-background-color: white;
+}
+
+h2 {
+    padding: 1rem;
+    padding-top: 0;
+}
+
+h1 {
+    padding-left: 1rem;
+}
+
+/* Box with icon at the top component */
+
+.icon-box {
+    margin-top: 0.5em;
+    padding: 0px;
+    padding-top: -0.5em;
+    line-height: 1em;
+    text-align: center;
+    border: 1px solid rgba(0, 0, 0, .125);
+    border-radius: .25rem;
+}
+
+.icon-box>i {
+    font-size: 2em;
+    margin: 0px;
+    position: relative;
+    top: -0.5em;
+    display: inline-block;
+    background-color: var(--default-background-color);
+    padding: 0 0.2em;
+}
+
+.instruction h3 {
+    font-size: 1.5em;
+    margin-bottom: 0;
+}
+
+.instruction h3 i {
+    font-size: 1.2em;
+    margin-right: 0.5em;
+}
+
+.instruction h3.collapsed {
+    color: green;
+}
+
+.instruction .card {
+    border: 0;
+}
+
+#recipe>header {
+    margin-top: 0;
+    border: 1px solid rgba(0, 0, 0, .125);
+    border-radius: .25rem;
+}
+
+#comments .card {
+    border: 0px;
+    text-align: left;
+    border-radius: 0px;
+}
+
+#comments .checked {
+    color: rgb(255, 217, 0);
+}
+
+.comment img {
+    width: 8em;
+    height: 8em;
+}
+
+.comment .card-body {
+    margin-left: 1em;
+}
+
+.comment .rating {
+    font-size: 0.8em;
+}
+
+#comments .subcomment {
+    border-left: 1px solid rgba(0, 0, 0, .125) !important;
+    margin-left: 3em;
+}
+
+#comments .text-area-with-button {
+    margin: 1em;
+}
+
+#ingredients table {
+    border: 1px solid rgba(0, 0, 0, .125);
+    border-radius: .25rem;
+}
+
+aside {
+    font-size: 0.8em;
+}
+
+aside .icon-box {
+    margin: 2em 0;
+}
+
+aside .media .main {
+    width: 100%;
+    height: 15em;
+    object-fit: cover;
+    padding: 0 0.1em;
+}
+
+aside .media .small-img img {
+    padding: 0.1em;
+}
+
+aside .search-card {
+    margin: 3em 0;
+}
+
+#recipe header {
+    align-items: end;
+}
+
+#recipe header ul .legend {
+    font-size: 0.7em;
+    margin-right: 1em;
+}
+
+#recipe header ul li {
+    border: 0;
+}
+
+#recipe header a {
+    text-decoration: none;
+}
+
+@media (max-width: 991.98px) {
+    .legend {
+        display: none;
+    }
+
+    h1,
+    h2 {
+        padding-left: 0;
+    }
+}
+
+@media (min-width: 768px) {
+    #recipe>section {
+        margin: 1em;
+    }
+}

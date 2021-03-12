@@ -3,10 +3,10 @@
     <div class="container card">
         <div class="row g-0 p-3 text-center text-md-start">
             <div class="col-md-2 image-container">
-                <img class="rounded-circle" src="https://thispersondoesnotexist.com/image" alt="...">
+                <img class="rounded-circle mx-auto" src="https://mdbootstrap.com/img/Photos/Avatars/img%20(31).jpg" alt="...">
             </div>
             <div class="col-md-6 card-body m-0">
-                <h1 class="card-title">Alex Johnson</h1>
+                <h1 class="card-title">Jamie Oliver</h1>
                 <p class="card-text">Sushi chef | Sushisan</p>
                 <table class="table table-borderless lh-1">
                     <tr>
@@ -23,13 +23,17 @@
             </div>
             <div class="col-md-4 card-body text-md-end m-0">
                 <div class="btn-group" role="group" aria-label="">
-                    <button type="button" class="btn btn-outline-dark"><i class="fas fa-user-plus"></i>Follow</button>
-                    <button type="button" class="btn btn-outline-dark"><i class="fas fa-comments"></i>Chat</button>
+                    <?php if ($owner) { ?>
+                        <a href="<?= getRootUrl() . "/pages/edit_profile.php" ?>" class=" btn btn-outline-dark"><i class="fas fa-edit"></i>Edit</a>
+                    <?php } else { ?>
+                        <button type="button" class="btn btn-outline-dark"><i class="fas fa-user-plus"></i>Follow</button>
+                        <button type="button" class="btn btn-outline-dark"><i class="fas fa-comments"></i>Chat</button>
+                    <?php } ?>
                 </div>
             </div>
         </div>
         <div class="row">
-            <ul class="nav nav-tabs col-md-10 ps-3">
+            <ul class="nav nav-tabs col-md-10 ps-md-3">
                 <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="#">Activity</a>
                 </li>
