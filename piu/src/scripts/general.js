@@ -13,11 +13,18 @@ tooltips.forEach(elem => new bootstrap.Tooltip(elem, { container: 'body', placem
 
 const header = document.querySelector('body > nav.navbar');
 let counter = 0;
+let last = null;
 
 const interval = setInterval(() => {   
     counter++;
-    document.body.style.paddingTop = window.getComputedStyle(header).height
-    console.log("hey")
-    if (counter > 7) clearInterval(interval)
+    const newHeight = window.getComputedStyle(header).height;
+    if (last !== null && newHeight >= last) {
+        if (counter > 10) clearInterval(interval);
+        return;
+    }
+    last = Number.parseFloat(newHeight);
+    document.body.style.paddingTop = newHeight;
+    console.log(`Updated body top padding (${last}).`)
+    if (counter > 10) clearInterval(interval);
 }, 200);  // sometimes there was problems in the calculation
 
