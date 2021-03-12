@@ -11,7 +11,7 @@ $questions = [
 
     "Where is the homepage?" => "If you are in the site you can go to the homepage at any time using the breadcrumb (The path in the top of the page that gives your location on the website) or clicking on our logo on the top left corner of the page.",
 
-    "How to search for something?" => "You can search for recipes, users, tags and groups. This can be achieved using our searchbox, on the top of the page a place to type your search will be available (mobile users need to click on the magnifying glass icon for it to appear), then after writing your search term you can press enter and you will see the search results.",
+    "How to search for something?" => "You can search for recipes, users, tags and groups. This can be achieved using our searchbox, on the top of the page a place to type your search will be available (mobile users need to click on the <i class=\"fas fa-search\"></i> icon for it to appear), then after writing your search term you can press enter and you will see the search results.",
 
     "How to filter my search results?" => "After doing a search, you will see some filter inputs, you can use them to filter the results by category, tags, rating, ingredients, date, duration and difficulty, after you choose a filter your results will include or exclude as you ordered.",
 
@@ -25,7 +25,7 @@ $questions = [
 
     "How to see the frequently asked questions page?" => "This is not a good place to make this question, as you are already in it.",
 
-    "How to share a recipe?" => "If you are in a recipe page and want to share it you can just go to the information box of that recipe and click on the button that says \"Share\", if you are on mobile you will only see the icon ",
+    "How to share a recipe?" => "If you are in a recipe page and want to share it you can just go to the information box of that recipe and click on the button that says \"Share\", if you are on mobile you will only see the <i class=\"fas fa-share-alt\"></i> icon",
 
     "How to print a recipe?" => "If you open a recipe in the upper part there will be an text that says \"share\", if you are using a mobile dispositive, then only the icon of a printer will be seen.",
     
