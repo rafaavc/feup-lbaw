@@ -91,7 +91,10 @@
 }
 
 .post-image {
-    width: 50% !important;    
+    width: 45% !important;  
+    min-height: 100%;
+    background-position: 50%;
+    background-size: cover;
 }
 
 .post-image img {
@@ -109,6 +112,7 @@
 
     .post-image {
         width: 100% !important;
+        min-height: 300px;
     }
 
     .name-and-date {

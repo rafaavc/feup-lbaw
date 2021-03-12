@@ -37,13 +37,11 @@
                 </div>
 
                 <a type="button" href="<?=getRootUrl()?>/pages/recipe.php" class="btn card p-2 shadow-sm recipe-preview mt-4">
-                    <div class="row" style="min-height: 300px;">
-                        <div class="col-md-4 post-image">
-                            <img src="https://blog.myfitnesspal.com/wp-content/uploads/2017/12/Essential-Guide-to-Healthy-Eating-2-752x472.png" class="bd-placeholder-img recipe-image-big" height="300px" width="100%">
-                        </div>
-                        <div class="col-md-8 w-50 text-recipe">
-                            <div class="text-recipe p-1">
-                                <h2 class="card-title mt-3">Cozido à Portuguesa</h2>
+                    <div class="row px-3">
+                        <div class="col-md post-image" style="background-image: url('https://blog.myfitnesspal.com/wp-content/uploads/2017/12/Essential-Guide-to-Healthy-Eating-2-752x472.png')"></div>
+                        <div class="col-md w-50 text-recipe pt-4 pt-md-0 px-0 ps-md-4">
+                            <div class="text-recipe">
+                                <h2 class="card-title">Cozido à Portuguesa</h2>
                                 <p class="card-text post-description">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</p>
                                 <p><small class="text-muted">4.6 <i class="fas fa-star active"></i> <i class="fas fa-star active"></i> <i class="fas fa-star active"></i> <i class="fas fa-star active"></i> <i class="fas fa-star active"></i> | 563 reviews</small></p>
                             </div>
