@@ -13,11 +13,16 @@ $role = isset($role) ? $role : "visitor";
 $menu = $role;
 
 $visitor = [
+    "visitor feed" => [
+        "icon" => "comments",
+        "href" => getRootUrl()."/pages/feed.php"
+    ],
     "sign in" => [
         "icon" => "sign-in-alt",
         "href" => getRootUrl()."/pages/signIn.php"
     ],
     "sign up" => [
+        "special" => true,
         "icon" => "user-plus",
         "href" => getRootUrl()."/pages/signUp.php"
     ]
@@ -69,7 +74,11 @@ function printMenu()
     global $menu;
     global $$menu;
     foreach ($$menu as $name => $attributes) {
-        if (key_exists("popover", $attributes)) {
+        if (key_exists("special", $attributes)) { ?>
+            <li class="nav-item">
+                <a role="button" href="<?=$attributes['href']?>" class="btn btn-primary btn-sm mt-1 ms-2"><i class="fas me-2 fa-<?=$attributes['icon']?>"></i> <?=ucwords($name)?></a>
+            </li>
+        <?php } elseif (key_exists("popover", $attributes)) {
             if ($name == "notifications") {
                 printNotificationsPopover();
             } else if ($name == "messages") {
