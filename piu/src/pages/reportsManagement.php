@@ -7,10 +7,10 @@
     include_once "../components/breadcrumb.php"; 
 
     function displayActions($comment=true) { ?>
-        <button type="button" class="btn btn-secondary me-2 has-tooltip" data-bs-toggle="tooltip" data-bs-placement="bottom" title="View <?= $comment ? "comment" : "recipe" ?>"><i class="fas fa-eye"></i></button>
-        <button type="button" class="btn btn-warning text-white me-2 has-tooltip" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Ban owner"><i class="fas fa-ban"></i></button>
-        <button type="button" class="btn btn-danger has-tooltip me-2" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Delete the offensive <?= $comment ? "comment" : "recipe" ?>"><i class="fas fa-trash"></i></button>
-        <button type="button" class="btn btn-secondary has-tooltip" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Dismiss report"><i class="fas fa-times"></i></button>
+        <button type="button" class="btn btn-secondary me-2 my-2 has-tooltip" data-bs-toggle="tooltip" data-bs-placement="bottom" title="View <?= $comment ? "comment" : "recipe" ?>"><i class="fas fa-eye"></i></button>
+        <button type="button" class="btn btn-warning text-white me-2 my-2 has-tooltip" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Ban owner"><i class="fas fa-ban"></i></button>
+        <button type="button" class="btn btn-danger has-tooltip me-2 my-2" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Delete the offensive <?= $comment ? "comment" : "recipe" ?>"><i class="fas fa-trash"></i></button>
+        <button type="button" class="btn btn-secondary has-tooltip my-2" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Dismiss report"><i class="fas fa-times"></i></button>
 <?php } ?>
 <?php drawBreadcrumb([ "Reports Management" ]); ?>
 <div class="content-general-margin mt-5 margin-to-footer">
@@ -20,7 +20,7 @@
         <i class="fas fa-search fa-icon-right"></i>
     </div>
     <div class="card">
-        <div class="card-body">
+        <div class="card-body table-responsive">
         <table class="table align-middle table-striped table-hover">
             <thead>
                 <th>Type</th>
