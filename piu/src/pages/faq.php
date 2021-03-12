@@ -68,5 +68,6 @@ function printFAQ($id, $name, $text)
 </body>
 
 <?php
+include_once "../components/footer.php";
 include "../components/docFooter.php";
 ?>
