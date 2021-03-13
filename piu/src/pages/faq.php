@@ -27,7 +27,7 @@ $questions = [
 
     "How to see the frequently asked questions page?" => "This is not a good place to make this question, as you are already in it.",
 
-    "How to share a recipe?" => "If you are in a recipe page and want to share it you can just go to the information box of that recipe and click on the button that says \"Share\", if you are on mobile you will only see the <i class=\"fas fa-share-alt\"></i> icon",
+    "How to share a recipe?" => "If you are in a recipe page and want to share it you can just go to the information box of that recipe and click on the button that says \"Share\", if you are on mobile you will only see the <i class=\"fas fa-share-alt\"></i> icon.",
 
     "How to print a recipe?" => "If you open a recipe in the upper part there will be an text that says \"share\", if you are using a mobile dispositive, then only the icon of a printer will be seen.",
     
