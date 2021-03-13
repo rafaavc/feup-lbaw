@@ -1,4 +1,6 @@
 <?php
+$pageTitle = "FAQ | TasteBuds";
+$extraStyles = [ "../components/breadcrumb.css" ];
 include "../components/docHeader.php";
 include "../components/breadcrumb.php";
 
@@ -58,7 +60,8 @@ function printFAQ($id, $name, $text)
     include "../components/nav.php";
     drawBreadcrumb(["FAQ"]);
     ?>
-    <div class="accordion content-general-margin" id="accordionExample">
+    <h2 class="content-general-margin mb-4">FAQ</h2>
+    <div class="accordion content-general-margin margin-to-footer" id="accordionExample">
         <?php
         $i = 0;
         foreach ($questions as $name => $text)
