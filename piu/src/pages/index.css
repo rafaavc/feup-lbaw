@@ -11,6 +11,11 @@
     padding-bottom: 6rem;
 }
 
+.home-slide .btn:focus {
+    transition: box-shadow .2s;
+    box-shadow: 0 0 0 0.25rem rgba(255, 255, 255, 0.65) !important;
+}
+
 .home-slide > h2 {
     float: right;
     clear: right;

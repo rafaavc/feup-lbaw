@@ -109,7 +109,7 @@ function printDropdown($name, $icon, $submenu)
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             <?php printIconText($icon, $name, true) ?>
         </a>
-        <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
             <?php foreach ($submenu as $name => $attributes) printItem(ucwords($name), $attributes["icon"], $attributes["href"], true) ?>
         </ul>
     </li>
