@@ -45,10 +45,10 @@
         </div>
         <div class="col p-3">
             <strong class="d-inline-block mt-1">Sarah Colbert</strong>
-            <button type="button" class="btn btn-outline-secondary float-end py-1">
+            <a role="button" href="<?=getRootUrl()?>/pages/profile.php" class="btn btn-outline-secondary float-end py-1">
                 <small><i class="fas fa-user me-2"></i>
                 View Profile</small>
-            </button>
+            </a>
         </div>
     </div>
     <div class="row g-0">

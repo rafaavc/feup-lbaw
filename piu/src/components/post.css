@@ -78,6 +78,10 @@
     transition: background-color outline .2s;
 }
 
+.post-button:focus {
+    box-shadow: 0 0 0 0.25rem var(--accent-color-lighter) !important;
+}
+
 .post-button:hover {
     background-color: white;
 }

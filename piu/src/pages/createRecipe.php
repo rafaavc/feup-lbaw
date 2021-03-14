@@ -151,7 +151,7 @@
                 <?php include(__DIR__ . '/../components/createRecipeMethodStep.php'); ?>
 
                 <button type="button" class="btn btn-secondary" id="addStepButton"><i class="fas fa-plus"></i> Add Step</button>
-                <button type="button" class="btn btn-primary next-step" style="float: right;">Create Recipe</button>
+                <a role="button" href="<?=getRootUrl()?>/pages/recipe.php" class="btn btn-primary next-step" style="float: right;">Create Recipe</a>
 
             </div>  
         </div>
