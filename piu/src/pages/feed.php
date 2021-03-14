@@ -35,7 +35,11 @@
         <div class="search-area searched-recipes my-5">
             <?php 
                 displayRecipe(false);
-                if (!$isCategory) displayReview(true);
+                if (!$isCategory) {
+                    displayReview(true);
+                    displayRecipe(true, "Traditional Irish Stew", "Jay Gatsby", "Pure comfort food for a chilly day for the slow cooker! A little prep time needed up front. Don't be fooled by how much onion and garlic is used. It's honestly not too much! Cheers!", "https://www.thespruceeats.com/thmb/AhWrgq_6_WUp6Vezr69PdbLC_tM=/960x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/traditional-irish-stew-recipe-435757-hero-01-7ec7d4b8688a424d93b080f000ab53ff.jpg", "https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Ftheawesomedaily.com%2Fwp-content%2Fuploads%2F2017%2F02%2Ffunny-profile-pictures-14-1.jpg&f=1&nofb=1", "5 September, 2021", ["Main Dish", "Meat Lovers"]);
+                    displayRecipe(true, "Classic Double Crust Blueberry Pie", "Jay Gatsby", "Fresh blueberries are some of the best treasures of summer, and a flavorful cinnamon-spiced blueberry pie will be welcomed by your family and guests. Besides being a delicious fruit, blueberries are called a superfood due to their beneficial nutrients and antioxidants.", "https://www.thespruceeats.com/thmb/l_HEh1Z__Tb43dgZqC3ySmNnOdY=/960x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/classic-double-crust-blueberry-pie-3051709-hero-01-e3db9e34e7dc416ba9b5d48a22f947f1.jpg", "https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Ftheawesomedaily.com%2Fwp-content%2Fuploads%2F2017%2F02%2Ffunny-profile-pictures-14-1.jpg&f=1&nofb=1", "2 September, 2021", ["Dessert", "Low Carb"]);
+                }
                 else displayRecipe(true, "Churro Waffles", "Jamie Oliver", "If you've ever had churros dipped in chocolate, you know what this recipe is all about. Churros are perfectly crunchy, cinnamon sugar-dusted sticks of goodness, dunked in creamy chocolate—a dream come true. But turning your waffles into churros for breakfast? That's heaven.", "https://www.thespruceeats.com/thmb/7xtcaM7YX-9YV9Mrp5ANPi3dLzA=/960x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/churrowaffles-05-5c6378ce46e0fb0001ca8e49.jpg", "https://mdbootstrap.com/img/Photos/Avatars/img%20(31).jpg", "21 October, 2020"); 
 
             ?>

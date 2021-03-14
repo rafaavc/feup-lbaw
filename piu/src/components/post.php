@@ -6,7 +6,7 @@
     // displayReview(false); // Review - Owner
     
 
-    function displayRecipe($isVisitor = true, $title="Classic Tiramisu", $poster="Jamie Oliver", $description="Classic Italian dessert made with ladyfingers and mascarpone cheese. It can be made in a trifle bowl or a springform pan.", $img="https://dpv87w1mllzh1.cloudfront.net/alitalia_discover/attachments/data/000/002/587/original/la-ricetta-classica-del-tiramisu-con-uova-savoiardi-e-mascarpone-1920x1080.jpg?1567093636", $userImg="https://mdbootstrap.com/img/Photos/Avatars/img%20(31).jpg", $date="11 September, 2020") { ?>
+    function displayRecipe($isVisitor = true, $title="Classic Tiramisu", $poster="Jamie Oliver", $description="Classic Italian dessert made with ladyfingers and mascarpone cheese. It can be made in a trifle bowl or a springform pan.", $img="https://dpv87w1mllzh1.cloudfront.net/alitalia_discover/attachments/data/000/002/587/original/la-ricetta-classica-del-tiramisu-con-uova-savoiardi-e-mascarpone-1920x1080.jpg?1567093636", $userImg="https://mdbootstrap.com/img/Photos/Avatars/img%20(31).jpg", $date="11 September, 2020", $tags=["Dessert", "Vegetarian", "Low carb"]) { ?>
         <div class="card shadow-sm recipe-post mt-5">
             <div class="col-sm post-options">
                 <div class="dropdown">
@@ -50,15 +50,12 @@
                 </a>
 
                 <div class="container mt-4 p-0 ">
-                    <a role="button" class="btn btn-sm btn-secondary d-inline-block me-3 mb-2" href="<?=getRootUrl(). "/pages/category.php"?>">
-                        Dessert
-                    </a>
-                    <a role="button" class="btn btn-sm btn-outline-secondary d-inline-block me-3 mb-2" href="<?=getRootUrl(). "/pages/category.php"?>">
-                        Low carb
-                    </a>
-                    <a role="button" class="btn btn-sm btn-outline-secondary d-inline-block me-3 mb-2" href="<?=getRootUrl(). "/pages/category.php"?>">
-                        Vegetarian
-                    </a>
+                    <?php $first = true; foreach ($tags as $tag) { ?>
+                        <a role="button" class="btn btn-sm btn-<?= $first ? '' : 'outline-' ?>secondary d-inline-block me-3 mb-2" href="<?=getRootUrl(). "/pages/category.php"?>">
+                            <?=$tag?>
+                        </a>
+                    <?php $first = false;
+                    } ?>
                 </div>
             </div>
             <div class="btn-group col-sm d-flex justify-content-center text-center">
