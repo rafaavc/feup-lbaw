@@ -188,3 +188,9 @@ aside .search-card {
         padding-left: 0;
     }
 }
+
+.rating-input {
+    position: absolute;
+    right: 0.5rem;
+    top: 0.5rem;
+}

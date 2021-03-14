@@ -1,6 +1,6 @@
 <?php
 
-$extraStyles = ["recipe.css", "../components/search_results_cards.css", "../components/profile_cover.css", "../components/textareaWithButton.css", "../components/breadcrumb.css"];
+$extraStyles = ["recipe.css", "../components/search_results_cards.css", "../components/profile_cover.css", "../components/textareaWithButton.css", "../components/breadcrumb.css", "../components/rating.css"];
 
 $extraScripts = ["../scripts/recipeYields.js"];
 
@@ -25,10 +25,20 @@ $recipe = [
         "square semisweet chocolate" => "<span class=\"number\">1</span> ounce",
     ],
     "method" => [
-        "Step 1" => "Combine egg yolks and sugar in the top of a double boiler, over boiling water. Reduce heat to low, and cook for about 10 minutes, stirring constantly. Remove from heat and whip yolks until thick and lemon colored.",
-        "Step 2" => "Add mascarpone to whipped yolks. Beat until combined. In a separate bowl, whip cream to stiff peaks. Gently fold into yolk mixture and set aside.",
-        "Step 3" => "Split the lady fingers in half, and line the bottom and sides of a large glass bowl. Brush with coffee liqueur. Spoon half of the cream filling over the lady fingers. Repeat ladyfingers, coffee liqueur and filling layers. Garnish with cocoa and chocolate curls. Refrigerate several hours or overnight.",
-        "Step 4" => "To make the chocolate curls, use a vegetable peeler and run it down the edge of the chocolate bar."
+        "Step 1" => [
+            "text" => "Combine egg yolks and sugar in the top of a double boiler, over boiling water. Reduce heat to low, and cook for about 10 minutes, stirring constantly. Remove from heat and whip yolks until thick and lemon colored.",
+            "image" => "https://cdn.sallysbakingaddiction.com/wp-content/uploads/2019/06/tiramisu-cream-400x400.jpg"
+        ],
+        "Step 2" => [
+            "text" => "Add mascarpone to whipped yolks. Beat until combined. In a separate bowl, whip cream to stiff peaks. Gently fold into yolk mixture and set aside.",
+        ],
+        "Step 3" => [
+            "text" => "Split the lady fingers in half, and line the bottom and sides of a large glass bowl. Brush with coffee liqueur. Spoon half of the cream filling over the lady fingers. Repeat ladyfingers, coffee liqueur and filling layers. Garnish with cocoa and chocolate curls. Refrigerate several hours or overnight.",
+            "image" => "https://cdn.sallysbakingaddiction.com/wp-content/uploads/2019/06/ladyfingers-for-tiramisu-400x400.jpg"
+        ],
+        "Step 4" => [
+            "text" => "To make the chocolate curls, use a vegetable peeler and run it down the edge of the chocolate bar.",
+        ]
     ],
     "comments" => [
         [
@@ -83,12 +93,12 @@ function printInstruction($number, $name, $text, $image = null)
 function printMethod($method)
 {
     $i = 1;
-    foreach ($method as $name => $text) {
+    foreach ($method as $name => $info) {
         printInstruction(
             $i++,
             $name,
-            $text,
-            $i % 3 != 0 ? "https://www.thespruceeats.com/thmb/OCytFbckS2guE73MmUTAGLw6D9k=/960x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/cubes-of-tofu-168621031-588670e23df78c2ccdef8c7d.jpg" : null
+            $info["text"],
+            isset($info["image"]) ? $info["image"] : null
         );
     }
 }
@@ -144,10 +154,10 @@ function printBoxes($mobile = false)
         <div class="media my-4 my-md-0">
             <img class="img-fluid main" src="https://dpv87w1mllzh1.cloudfront.net/alitalia_discover/attachments/data/000/002/587/original/la-ricetta-classica-del-tiramisu-con-uova-savoiardi-e-mascarpone-1920x1080.jpg?1567093636">
             <div class="small-img d-flex">
-                <img class="col-3" src="https://dpv87w1mllzh1.cloudfront.net/alitalia_discover/attachments/data/000/002/587/original/la-ricetta-classica-del-tiramisu-con-uova-savoiardi-e-mascarpone-1920x1080.jpg?1567093636">
-                <img class="col-3" src="https://dpv87w1mllzh1.cloudfront.net/alitalia_discover/attachments/data/000/002/587/original/la-ricetta-classica-del-tiramisu-con-uova-savoiardi-e-mascarpone-1920x1080.jpg?1567093636">
-                <img class="col-3" src="https://dpv87w1mllzh1.cloudfront.net/alitalia_discover/attachments/data/000/002/587/original/la-ricetta-classica-del-tiramisu-con-uova-savoiardi-e-mascarpone-1920x1080.jpg?1567093636">
-                <img class="col-3" src="https://dpv87w1mllzh1.cloudfront.net/alitalia_discover/attachments/data/000/002/587/original/la-ricetta-classica-del-tiramisu-con-uova-savoiardi-e-mascarpone-1920x1080.jpg?1567093636">
+                <img class="col-3" src="https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fimages.media-allrecipes.com%2Fuserphotos%2F2270040.jpg&w=596&h=596&c=sc&poi=face&q=85">
+                <img class="col-3" src="https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fimages.media-allrecipes.com%2Fuserphotos%2F339568.jpg&w=595&h=595&c=sc&poi=face&q=85">
+                <img class="col-3" src="https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fimages.media-allrecipes.com%2Fuserphotos%2F378412.jpg&w=596&h=596&c=sc&poi=face&q=85">
+                <img class="col-3" src="https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fimages.media-allrecipes.com%2Fuserphotos%2F11110.jpg&w=596&h=399&c=sc&poi=face&q=85">
             </div>
         </div>
         <div class="row mt-5">
@@ -303,10 +313,11 @@ drawBreadcrumb(["Recipes", "Desserts", "Classic Tiramisu"])
             <div class="form-floating m-3 position-relative">
                 <textarea class="form-control" placeholder="Leave a comment here" id="commentTextarea" style="height: 6rem"></textarea>
                 <label for="floatingTextarea2">Your comment</label>
-                <button type="button" class="btn btn-primary position-absolute py-1 send">
+                <button type="button" class="btn btn-primary position-absolute py-1 send" onclick="result()">
                     <small><i class="fas fa-paper-plane me-2"></i>
                         Comment</small>
                 </button>
+                <?php include "../components/rating.php" ?>
             </div>
         </section>
     </article>
