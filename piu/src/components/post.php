@@ -6,7 +6,7 @@
     // displayReview(false); // Review - Owner
     
 
-    function displayRecipe($isVisitor = true, $title="Classic Tiramisu", $poster="Jamie Oliver", $description="Classic Italian dessert made with ladyfingers and mascarpone cheese. It can be made in a trifle bowl or a springform pan.", $img="https://dpv87w1mllzh1.cloudfront.net/alitalia_discover/attachments/data/000/002/587/original/la-ricetta-classica-del-tiramisu-con-uova-savoiardi-e-mascarpone-1920x1080.jpg?1567093636", $userImg="https://mdbootstrap.com/img/Photos/Avatars/img%20(31).jpg", $date="11 September, 2020", $tags=["Dessert", "Vegetarian", "Low carb"]) { ?>
+    function displayRecipe($isVisitor = true, $title="Classic Tiramisu", $poster="Jamie Oliver", $description="Classic Italian dessert made with ladyfingers and mascarpone cheese. It can be made in a trifle bowl or a springform pan.", $img="https://dpv87w1mllzh1.cloudfront.net/alitalia_discover/attachments/data/000/002/587/original/la-ricetta-classica-del-tiramisu-con-uova-savoiardi-e-mascarpone-1920x1080.jpg?1567093636", $userImg="https://mdbootstrap.com/img/Photos/Avatars/img%20(31).jpg", $date="11 September, 2020", $tags=["Dessert", "Vegetarian", "Low carb"], $favourites=false) { ?>
         <div class="card shadow-sm recipe-post mt-5">
             <div class="col-sm post-options">
                 <div class="dropdown">
@@ -59,8 +59,8 @@
                 </div>
             </div>
             <div class="btn-group col-sm d-flex justify-content-center text-center">
-                <button type="button" class="btn post-button" onClick="this.firstElementChild.style.color = 'var(--accent-color)'">
-                    <i class="fas fa-heart me-2"></i>
+                <button type="button" class="btn post-button add-to-favourites-button">
+                    <i class="fas fa-heart me-2 <?= $favourites ? "added" : "" ?>"></i>
                     <span class="button-caption">Add to Favourites</span>
                 </button>
                 <a type="button" href="<?=getRootUrl()?>/pages/recipe.php" class="btn post-button">

@@ -6,7 +6,7 @@
     $pageTitle = ($isCategory ? "Category: Vegetarian" : "Feed") . " | TasteBuds";
     $extraStyles = [ "../components/filterSortBar.css", "../components/post.css", "category.css"];
     $mainScript = "../components/filterSortBar.js";
-    $extraScripts = $isCategory ?  [$mainScript, "../scripts/category.js"] : [$mainScript];
+    $extraScripts = $isCategory ?  [$mainScript, "../scripts/addToFavourites.js", "../scripts/category.js"] : [$mainScript, "../scripts/addToFavourites.js"];
     include_once "../components/post.php";
     include_once "../components/docHeader.php"; 
     include_once "../components/nav.php"; 
