@@ -12,7 +12,8 @@ $extraStyles = [
 ];
 $extraScripts = [
     "../components/membersFollowingBoxes.js",
-    "../components/navPopups.js"
+    "../components/navPopups.js",
+    "../scripts/addToFavourites.js"
 ];
 $role = "member";
 include_once "../components/docHeader.php";

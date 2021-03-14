@@ -157,3 +157,6 @@
     color: var(--bs-gray);
 }
 
+.added {
+    color: var(--accent-color)
+}
