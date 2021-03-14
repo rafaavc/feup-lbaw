@@ -2,7 +2,7 @@
     <?php
         $role = "member";
         $pageTitle = "Create Group | TasteBuds";
-        $extraStyles = [ "create_group.css", "../components/breadcrumb.css" ];
+        $extraStyles = [ "edit_profile.css", "../components/breadcrumb.css" ];
         $extraScripts = [ "../scripts/edit_profile.js" ];
         include_once "../components/docHeader.php";
         include_once "../components/nav.php";
