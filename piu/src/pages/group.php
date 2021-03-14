@@ -41,9 +41,10 @@
                     </button>
                 </div>
                 <div class="row">
-                    <?php for ($i = 0; $i < 2; $i++) {
-                        displayRecipe(true);
-                    } ?>
+                    <?php 
+                        displayRecipe(false); 
+                        displayRecipe(true, "Classic Double Crust Blueberry Pie", "Jay Gatsby", "Fresh blueberries are some of the best treasures of summer, and a flavorful cinnamon-spiced blueberry pie will be welcomed by your family and guests. Besides being a delicious fruit, blueberries are called a superfood due to their beneficial nutrients and antioxidants.", "https://www.thespruceeats.com/thmb/l_HEh1Z__Tb43dgZqC3ySmNnOdY=/960x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/classic-double-crust-blueberry-pie-3051709-hero-01-e3db9e34e7dc416ba9b5d48a22f947f1.jpg", "https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Ftheawesomedaily.com%2Fwp-content%2Fuploads%2F2017%2F02%2Ffunny-profile-pictures-14-1.jpg&f=1&nofb=1", "2 September, 2021", ["Dessert", "Low Carb"]);      
+                    ?>
                 </div> 
                 <div class="row">
                     <button type="button" class="btn btn-dark load-more w-25 mt-5 mx-auto">Load More</button>
