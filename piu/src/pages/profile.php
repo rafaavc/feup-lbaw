@@ -14,7 +14,7 @@ $extraScripts = [
     "../components/membersFollowingBoxes.js",
     "../components/navPopups.js"
 ];
-$role="member";
+$role = "member";
 include_once "../components/docHeader.php";
 include_once "../components/nav.php";
 include_once "../components/post.php";
@@ -39,16 +39,35 @@ include_once "../components/membersFollowingBoxes.php";
                         <span><i class="fas fa-birthday-cake"></i>Joined in Jul 2020</span>
                     </div>
                     <a class="btn btn-primary mt-2" href="<?= getRootUrl() . "/pages/createRecipe.php" ?>">Create Recipe</a>
+                    <a class="btn btn-primary mt-2" href="<?= getRootUrl() . "/pages/create_group.php" ?>">Create Group</a>
                 </div>
                 <?php displayPeopleBox("Following"); ?>
+                <div class="card shadow-sm people-box mt-4">
+                    <div class="card-body">
+                        <h5 class="card-title mb-4">Groups</h5>
+                        <div class="g-5 mb-5">
+                            <div class="mt-4">
+                                <button class="btn small-profile-photo small-group-photo d-inline"></button>
+                                <span class="name">Vegetarianos do Porto</span>
+                            </div>
+                            <div class="mt-4">
+                                <button class="btn small-profile-photo small-group-photo d-inline"></button>
+                                <span class="name">Receitas da avó</span>
+                            </div>
+                        </div>
+                        <button type="button" class="btn btn-outline-secondary">
+                            <small><i class="fas fa-plus me-2"></i> See all groups</small>
+                        </button>
+                    </div>
+                </div>
             </div>
 
             <div class="col-md-8 posts-area ps-md-4 mt-5">
                 <div class="row first-recipe-mt">
                     <h3>Recipes</h3>
-                    <?php 
-                        displayRecipe(false); 
-                        displayRecipe(false, "Churro Waffles", "Jamie Oliver", "If you've ever had churros dipped in chocolate, you know what this recipe is all about. Churros are perfectly crunchy, cinnamon sugar-dusted sticks of goodness, dunked in creamy chocolate—a dream come true. But turning your waffles into churros for breakfast? That's heaven.", "https://www.thespruceeats.com/thmb/7xtcaM7YX-9YV9Mrp5ANPi3dLzA=/960x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/churrowaffles-05-5c6378ce46e0fb0001ca8e49.jpg", "https://mdbootstrap.com/img/Photos/Avatars/img%20(31).jpg", "21 October, 2020"); 
+                    <?php
+                    displayRecipe(false);
+                    displayRecipe(false, "Churro Waffles", "Jamie Oliver", "If you've ever had churros dipped in chocolate, you know what this recipe is all about. Churros are perfectly crunchy, cinnamon sugar-dusted sticks of goodness, dunked in creamy chocolate—a dream come true. But turning your waffles into churros for breakfast? That's heaven.", "https://www.thespruceeats.com/thmb/7xtcaM7YX-9YV9Mrp5ANPi3dLzA=/960x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/churrowaffles-05-5c6378ce46e0fb0001ca8e49.jpg", "https://mdbootstrap.com/img/Photos/Avatars/img%20(31).jpg", "21 October, 2020");
                     ?>
                 </div>
                 <div class="row">
