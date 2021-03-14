@@ -60,8 +60,8 @@
             </nav>
         </div>
         <div class="card shadow-sm p-2 w-auto h-auto search-area searched-recipes p-sm-4 my-5">
-            <h3 class="section-title ps-2 mb-4">Groups</h3>
-            <div class="row gx-2 gy-5 justify-content-between items mx-0">
+            <h3 class="section-title ps-2 mb-4 text-center text-md-start">Groups</h3>
+            <div class="row gx-2 gy-5 justify-content-around justify-content-md-between items mx-0">
                 
                 <div class="col-lg-1 col-md-6 w-auto">
                     <?php getGroupCard("Amantes de Leitões", "https://www.comidaereceitas.com.br/img/sizeswp/1200x675/2007/11/Leitao_assadaaaa.jpg"); ?>
@@ -96,8 +96,8 @@
             </nav>
         </div>
         <div class="card shadow-sm p-2 w-auto h-auto search-area searched-recipes p-sm-4 my-5">
-            <h3 class="section-title ps-2 mb-4">People</h3>
-            <div class="row gx-2 gy-5 justify-content-between items mx-0">
+            <h3 class="section-title ps-2 mb-4 text-center text-md-start">People</h3>
+            <div class="row gx-2 gy-5 justify-content-around justify-content-md-between items mx-0">
                 
                 <div class="col-lg-1 col-md-6 w-auto">
                     <?php getUserCard("Zé Torres", "https://i.insider.com/5899ffcf6e09a897008b5c04?width=1100&format=jpeg&auto=webp"); ?>
@@ -132,8 +132,8 @@
             </nav>
         </div>
         <div class="card shadow-sm p-2 w-auto h-auto search-area searched-recipes p-sm-4 my-5">
-            <h3 class="section-title mb-4">Categories</h3>
-            <div class="row gx-2 gy-5 justify-content-between items mx-0">
+            <h3 class="section-title mb-4 text-center text-md-start">Categories</h3>
+            <div class="row gx-2 gy-5 justify-content-around justify-content-md-between items mx-0">
                 
                 <div class="col-lg-1 col-md-6 w-auto">
                     <?php getCategoryCard("Vegetarian","https://www.health.harvard.edu/media/content/images/cr/f5282d05-33f5-4c93-a08e-b000164a54db.jpg"); ?>
