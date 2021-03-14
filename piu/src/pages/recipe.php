@@ -320,13 +320,13 @@ drawBreadcrumb(["Recipes", "Desserts", "Classic Tiramisu"])
             <h4>Suggested</h4>
             <div class="row">
                 <div class="col">
-                    <?php getRecipeCard() ?>
+                    <?php getRecipeCard("Basic Brown Sugar Meringue", "Emma Watson", "https://www.thespruceeats.com/thmb/F1ebSCX8WuGCeEhkdsoyMMvmaFE=/960x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/brown-sugar-meringue-for-pies-3056204-hero-01-3ea7e126fc034c9c9ca69e8d7ddba9e2.jpg") ?>
                 </div>
                 <div class="col">
-                    <?php getRecipeCard() ?>
+                    <?php getRecipeCard("Classic Double Crust Blueberry Pie", "Jay Gatsby", "https://www.thespruceeats.com/thmb/l_HEh1Z__Tb43dgZqC3ySmNnOdY=/960x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/classic-double-crust-blueberry-pie-3051709-hero-01-e3db9e34e7dc416ba9b5d48a22f947f1.jpg") ?>
                 </div>
                 <div class="col">
-                    <?php getRecipeCard() ?>
+                    <?php getRecipeCard("Traditional Irish Stew", "Jay Gatsby", "https://www.thespruceeats.com/thmb/AhWrgq_6_WUp6Vezr69PdbLC_tM=/960x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/traditional-irish-stew-recipe-435757-hero-01-7ec7d4b8688a424d93b080f000ab53ff.jpg") ?>
                 </div>
                 <div class="col">
                     <?php getRecipeCard() ?>
