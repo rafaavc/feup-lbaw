@@ -154,13 +154,15 @@ a:hover {
     background-color: var(--accent-color-lighter) !important;
 }
 
-.btn-primary:focus, .btn-primary.active:focus, .btn-primary:active:focus {
+.btn:focus,
+.btn-primary.active:focus,
+.btn-primary:active:focus {
     box-shadow: 0 0 0 0.25rem var(--accent-color-lighter) !important;
 }
 
 .btn-primary:hover {
     background-color: var(--accent-color-darker) !important;
-} 
+}
 
 .btn.btn-no-shadow {
     box-shadow: none !important;
