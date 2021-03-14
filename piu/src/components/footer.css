@@ -1,0 +1,17 @@
+body {
+    position: relative;
+    padding-bottom: 6rem;
+}
+
+footer {
+    color: gray;
+    background-color: var(--bs-light);
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+
+a.a-footer {
+    color: gray;
+    text-decoration: none;
+}

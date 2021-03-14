@@ -1,0 +1,1 @@
+sudo docker run -p 8000:80 -it --rm --name lbaw -v $PWD/src:/var/www/html lbaw2135/lbaw2135-piu

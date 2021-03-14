@@ -1,0 +1,207 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap');
+
+:root {
+    --content-width: 65vw;
+    --content-margin: calc((100vw - var(--content-width))/2);
+
+    --margin-from-nav: 3rem;
+    --margin-to-footer: 6rem;
+
+    --accent-color: #009245;
+    --accent-color-darker: #006837;
+    --accent-color-lighter: #a8d6c0;
+}
+
+.accordion-button:not(.collapsed)::after {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23009245'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e")
+}
+
+a:hover {
+    color: var(--accent-color-darker);
+}
+
+.margin-from-nav {
+    margin-top: var(--margin-from-nav);
+}
+
+.margin-to-footer {
+    margin-bottom: var(--margin-to-footer);
+}
+
+.content-general-margin {
+    width: var(--content-width);
+    min-width: var(--content-width);
+    margin-left: var(--content-margin);
+}
+
+.content-general-padding {
+    padding-left: var(--content-margin);
+    padding-right: var(--content-margin);
+}
+
+.fa-star.active {
+    color: var(--accent-color); /* #f19b08 */
+}
+
+@media (max-width: 1500px) {
+    :root {
+        --content-width: 80vw;
+    }
+}
+
+@media (max-width: 1000px) {
+    :root {
+        --content-width: 90vw;
+    }
+}
+
+.form-required:before {
+    content: "*";
+    color: gray;
+}
+
+.progress-bar {
+    background-color: var(--accent-color-lighter) !important;
+}
+
+.bg-primary {
+    background-color: var(--accent-color) !important;
+}
+
+.dropdown-item:focus {
+    background-color: var(--accent-color) !important;
+    color: var(--bs-light);
+    transition: none;
+}
+
+.dropdown-item[aria-expanded=true], .accordion-button:focus, .accordion-button:target, .accordion-button:not(.collapsed), .accordion-button:active {
+    background-color: var(--bs-light) !important;
+    color: var(--bs-dark) !important;
+}
+
+.accordion-button:focus {
+    box-shadow: 0 0 0 0.25rem var(--accent-color-lighter) !important;
+    border-color: var(--accent-color);
+}
+
+.page-link:hover {
+    color: var(--accent-color);
+}
+
+.page-link:focus {
+    color: var(--accent-color);
+    box-shadow: 0 0 0 0.25rem var(--accent-color-lighter) !important;
+}
+
+.form-control:focus, .form-select:focus {
+    box-shadow: 0 0 0 0.25rem var(--accent-color-lighter) !important;
+    border-color: var(--accent-color);
+}
+
+.form-range::-webkit-slider-thumb {
+    background-color: var(--accent-color) !important;
+    box-shadow: none !important;
+    transition: box-shadow .2s;
+    cursor: pointer;
+}
+  
+.form-range::-moz-range-thumb {
+    background-color: var(--accent-color) !important;
+    box-shadow: none !important;
+    transition: box-shadow .2s;
+    cursor: pointer;
+}
+
+.form-range::-ms-thumb {
+    background-color: var(--accent-color) !important;
+    box-shadow: none !important;
+    transition: box-shadow .2s;
+    cursor: pointer;
+}
+
+.form-range::-webkit-slider-thumb:active {
+    background-color: var(--accent-color) !important;
+    box-shadow: 0 0 0 0.25rem var(--accent-color-lighter) !important;
+}
+  
+.form-range::-moz-range-thumb:active {
+    background-color: var(--accent-color) !important;
+    box-shadow: 0 0 0 0.25rem var(--accent-color-lighter) !important;
+}
+
+.form-range::-ms-thumb:active {
+    background-color: var(--accent-color) !important;
+    box-shadow: 0 0 0 0.25rem var(--accent-color-lighter) !important;
+}
+
+.form-range::-webkit-slider-thumb:focus {
+    box-shadow: 0 0 0 0.25rem var(--accent-color-lighter) !important;
+}
+  
+.form-range::-moz-range-thumb:focus {
+    box-shadow: 0 0 0 0.25rem var(--accent-color-lighter) !important;
+}
+
+.form-range::-ms-thumb:focus {
+    box-shadow: 0 0 0 0.25rem var(--accent-color-lighter) !important;
+}
+
+.form-check-input:checked {
+    background-color: var(--accent-color);
+    border-color: var(--accent-color-darker);
+}
+
+.form-check-input:focus {
+    box-shadow: 0 0 0 0.25rem var(--accent-color-lighter) !important;
+    border-color: var(--accent-color);
+}
+
+.btn-primary {
+    background-color: var(--accent-color) !important;
+    border-color: var(--accent-color-darker) !important;
+    transition: all .2s !important;
+}
+
+.btn-primary[disabled] {
+    color: white !important;
+    background-color: var(--accent-color-lighter) !important;
+}
+
+.btn:focus,
+.btn-primary.active:focus,
+.btn-primary:active:focus {
+    box-shadow: 0 0 0 0.25rem var(--accent-color-lighter) !important;
+}
+
+.btn-primary:hover {
+    background-color: var(--accent-color-darker) !important;
+}
+
+.btn.btn-no-shadow {
+    box-shadow: none !important;
+}
+.btn.btn-no-shadow:focus {
+    color: gray;
+}
+
+a {
+    color: var(--accent-color);
+    transition: color .2s;
+}
+
+body, html {
+    overflow-x: hidden;
+}
+
+* {
+    font-family: 'Ubuntu', sans-serif;
+}
+
+/* important because events in descendants were causing tooltips bugs */
+.has-tooltip * {
+    pointer-events: none !important;
+}
+
+.first-recipe-mt > .recipe-post:first-of-type {
+    margin-top: 1rem !important;
+}

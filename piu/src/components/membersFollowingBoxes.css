@@ -1,0 +1,8 @@
+.people-box .row {
+    justify-content: center;
+}
+
+.people-box .small-profile-photo {
+    width: 4rem;
+    height: 4rem;
+}

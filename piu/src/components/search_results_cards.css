@@ -1,0 +1,46 @@
+.search-card .card {
+    max-width: 18rem;
+    max-height: 20rem;
+    min-width: 14rem;
+    text-align: center;
+    cursor: pointer;
+    transition: background-color outline .2s;
+}
+
+.search-card .card:hover {
+    background-color: whitesmoke;
+}
+
+
+.search-card .card-img-top {
+    height: 12rem;
+    background-size: cover;
+    background-position: 50%;
+}
+
+.search-card .group-card-img-top {
+    background-image: url("https://www.casamagalhaes.com.br/blog/wp-content/uploads/2017/06/reduzir-atrago-na-entrega-dos-pratos-restaurante.jpg");
+}
+
+.search-card .category-card-img-top {
+    background-image: url("https://www.health.harvard.edu/media/content/images/cr/f5282d05-33f5-4c93-a08e-b000164a54db.jpg");
+}
+
+.search-card .user-card-img-top img {
+    width: 12rem;
+    height: 12rem;
+    background-image: url("https://www.casamagalhaes.com.br/blog/wp-content/uploads/2017/06/reduzir-atrago-na-entrega-dos-pratos-restaurante.jpg");
+}
+
+.search-card .username {
+    font-weight: 500;
+    text-decoration: none;
+}
+
+.search-card .card-body {
+    text-align: center;
+}
+
+.search-card .info-number {
+    font-weight: 600;
+}

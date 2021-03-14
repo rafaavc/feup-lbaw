@@ -1,0 +1,159 @@
+.recipe-post {
+    padding: 0em;
+    max-width: 60rem;
+    position: relative;
+}
+
+.recipe-post .card-body {
+    padding: 1.3em 2em 2em 2em;
+    margin-left: 0!important;
+}
+
+.filter-bar-container {
+    max-width: 60rem;
+}
+
+.user-info {
+    margin-bottom: 0em;
+    align-items: center;
+}
+
+.action {
+    width: 7em;
+}
+
+.user-info img {
+    width: 4rem;
+    height: 4rem;
+    border: 0;
+}
+
+.avatar-image {
+    max-width: 4rem;
+    max-height: 4rem;
+}
+
+.publication-date {
+    color: #6c757d!important;
+    font-size: .85rem;
+}
+
+.post-options {
+    justify-content: end;
+    justify-self: end;
+    justify-items: end;
+    width: 3em;
+    position: absolute;
+    right: 0;
+}
+
+@keyframes edit-photo-button-anim {
+    from {transform: rotate(0deg);}
+    to {transform: rotate(180deg);}
+}
+
+.edit-photo-button:hover {
+    animation: edit-photo-button-anim 0.5s;
+}
+
+.post-description {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    height: 170px;
+    -webkit-line-clamp: 6;
+    -webkit-box-orient: vertical;
+}
+
+.text-muted {
+    margin-top: 2em;
+}
+
+.post-button {
+    background-color: var(--bs-light);
+    width: 33.3%;
+    border: none;
+    border-top: 1px solid rgba(0,0,0,0.125);
+    padding: 0.5em;
+    transition: background-color outline .2s;
+}
+
+.post-button:focus {
+    box-shadow: 0 0 0 0.25rem var(--accent-color-lighter) !important;
+}
+
+.post-button:hover {
+    background-color: white;
+}
+
+.post-button:first-of-type {
+    border-top-left-radius: 0;
+}
+
+.post-button:last-of-type {
+    border-top-right-radius: 0;
+}
+
+.post-image {
+    width: 45% !important;  
+    min-height: 100%;
+    background-position: 50%;
+    background-size: cover;
+}
+
+.post-image img {
+    border: 0;
+}
+
+.recipe-image {
+    object-fit: cover;
+}
+
+@media (max-width: 992px) {
+    .button-caption {
+        display: none;
+    }
+
+    .post-image {
+        width: 100% !important;
+        min-height: 300px;
+    }
+
+    .name-and-date {
+        margin-left: 1em;
+    }
+
+    .recipe-image-big {
+        object-fit: cover;
+    }
+
+    .text-recipe {
+        width: 100% !important;
+    }
+}
+
+.recipe-post-review {
+    max-width: 50rem;
+    cursor: pointer;
+    transition: background-color outline .2s;
+    text-align: left;
+}
+
+.recipe-post-review:hover {
+    background-color: whitesmoke;
+}
+
+.recipe-preview {
+    cursor: pointer;
+    transition: background-color outline .2s;
+    text-align: left;
+}
+
+.recipe-preview:hover {
+    background-color: whitesmoke;
+}
+
+.review-text {
+    color: var(--bs-gray);
+}
+

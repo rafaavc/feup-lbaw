@@ -1,0 +1,8 @@
+li.breadcrumb-item a {
+    text-decoration: none;
+}
+
+i.fas.fa-home {
+    line-height: 1.375rem;
+    margin-right: 0.5em;
+}
