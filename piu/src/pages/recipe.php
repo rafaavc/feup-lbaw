@@ -101,7 +101,7 @@ function printComment($comment, $depth = 0)
                 <img class="d-inline-block rounded-circle" src="../images/people/<?= $comment["user"] ?>.jpg" alt="...">
             </div>
             <div class="col-5 card-body">
-                <h6 class="card-title"><a href="<?=getRootUrl()?>/pages/profile.php"><?= $comment["user"] ?></a> <?= key_exists("rate", $comment) ? "reviewed" : "commented" ?>:</h6>
+                <h6 class="card-title"><a href="<?= getRootUrl() ?>/pages/profile.php"><?= $comment["user"] ?></a> <?= key_exists("rate", $comment) ? "reviewed" : "commented" ?>:</h6>
                 <?php if (key_exists("rate", $comment)) { ?>
                     <div class="rating mb-3">
                         <i class="fas fa-star active"></i>
@@ -174,10 +174,8 @@ function printBoxes($mobile = false)
                                 </td>
                             </tr>
                         </table>
-                        <input type="range" class="form-range" min="1" max="10" id="yieldsInput" value="3">
-                        <button type="button" class="btn btn-sm btn-outline-secondary mt-3" onclick="calculateQuantities()">
-                            Reset servings
-                        </button>
+                        <input type="range" class="form-range" min="1" max="10" id="yieldsInput<?= $mobile ? "-mobile" : "" ?>" value="3">
+                        <input type="reset" class="btn btn-sm btn-outline-secondary mt-3" onclick="calculateQuantities()" value="Reset servings">
                     </form>
                 </section>
             </div>
@@ -228,7 +226,7 @@ drawBreadcrumb(["Recipes", "Desserts", "Classic Tiramisu"])
                                 </td>
                                 <td class="align-middle">
                                     <div class="col-md-5 card-body p-0 m-0 ms-2 text-start">
-                                        by <a href="<?=getRootUrl()?>/pages/profile.php">Jamie Oliver</a>
+                                        by <a href="<?= getRootUrl() ?>/pages/profile.php">Jamie Oliver</a>
                                     </div>
                                 </td>
                             </tr>
@@ -236,23 +234,23 @@ drawBreadcrumb(["Recipes", "Desserts", "Classic Tiramisu"])
                     </table>
                 </div>
                 <p>Classic Italian dessert made with ladyfingers and mascarpone cheese. It can be made in a trifle bowl or a springform pan.</p>
-                
-                
+
+
                 <span class="d-block mb-3"><small>Difficulty: medium</small></span>
                 <span class="d-inline-block me-3">Tags: </span>
-                <a role="button" class="btn btn-sm btn-secondary d-inline-block me-2 mb-2" href="<?=getRootUrl(). "/pages/category.php"?>">
+                <a role="button" class="btn btn-sm btn-secondary d-inline-block me-2 mb-2" href="<?= getRootUrl() . "/pages/category.php" ?>">
                     Dessert
                 </a>
-                <a role="button" class="btn btn-sm btn-outline-secondary d-inline-block me-2 mb-2" href="<?=getRootUrl(). "/pages/category.php"?>">
+                <a role="button" class="btn btn-sm btn-outline-secondary d-inline-block me-2 mb-2" href="<?= getRootUrl() . "/pages/category.php" ?>">
                     Low carb
                 </a>
-                <a role="button" class="btn btn-sm btn-outline-secondary d-inline-block me-2 mb-2" href="<?=getRootUrl(). "/pages/category.php"?>">
+                <a role="button" class="btn btn-sm btn-outline-secondary d-inline-block me-2 mb-2" href="<?= getRootUrl() . "/pages/category.php" ?>">
                     Vegetarian
                 </a>
             </div>
             <ul class="col-3 text-end">
                 <li class="list-group-item bg-light" style="border-radius: .5rem">
-                    <a href="<?=getRootUrl()?>/pages/editRecipe.php">
+                    <a href="<?= getRootUrl() ?>/pages/editRecipe.php">
                         <span class="legend">Edit Recipe</span><i class="fas fa-edit ms-2"></i>
                     </a>
                 </li>
@@ -307,7 +305,7 @@ drawBreadcrumb(["Recipes", "Desserts", "Classic Tiramisu"])
                 <label for="floatingTextarea2">Your comment</label>
                 <button type="button" class="btn btn-primary position-absolute py-1 send">
                     <small><i class="fas fa-paper-plane me-2"></i>
-                    Comment</small>
+                        Comment</small>
                 </button>
             </div>
         </section>
