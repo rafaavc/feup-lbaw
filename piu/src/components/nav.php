@@ -39,6 +39,13 @@ $dropdown = [
     ]
 ];
 
+$adminDropdown = [
+    "sign out" => [
+        "icon" => "sign-out-alt",
+        "href" => getRootUrl()
+    ]
+];
+
 $member = [
     "notifications" => [
         "icon" => "bell",
@@ -65,7 +72,7 @@ $admin = [
     ],
     "jamie oliver" => [
         "icon" => "user-circle",
-        "drop" => $dropdown
+        "drop" => $adminDropdown
     ]
 ];
 
