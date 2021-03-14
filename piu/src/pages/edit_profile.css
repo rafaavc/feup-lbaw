@@ -23,6 +23,25 @@
     height: 250px;
 }
 
+@media (max-width: 470px) {
+
+    .edit-profile-card {
+        padding: 1em!important;
+    }
+
+    .profile-image {
+        height: 10em !important;
+        width: 10em !important;
+        object-fit: cover;
+        margin: auto;
+    }
+
+    .cover-photo-area {
+        max-width: 92%;
+        min-width: 92%;
+    }
+}
+
 .edit-photo-button {
     font-size: 1.3em;
     margin: 0;
