@@ -15,7 +15,7 @@ $extraScripts = [
     "../components/membersFollowingBoxes.js",
     "../components/navPopups.js"
 ];
-$role="member";
+$role = "member";
 include_once "../components/docHeader.php";
 include_once "../components/nav.php";
 include_once "../components/post.php";
@@ -29,8 +29,9 @@ include_once "../components/search_results_cards.php";
     <?php drawBreadcrumb(["Profiles", "Jamie Oliver's Profile"], true); ?>
     <div>
         <div class="cover">
-            
-            <?php $section=3; include_once "../components/profile_cover.php"; ?>
+
+            <?php $section = 3;
+            include_once "../components/profile_cover.php"; ?>
         </div>
         <div class="row group-body">
             <div class="col-md-4 p-0 pe-md-4 mt-5">
@@ -44,6 +45,24 @@ include_once "../components/search_results_cards.php";
                     <a class="btn btn-primary mt-2" href="<?= getRootUrl() . "/pages/createRecipe.php" ?>">Create Recipe</a>
                 </div>
                 <?php displayPeopleBox("Following"); ?>
+                <div class="card shadow-sm people-box mt-4">
+                    <div class="card-body">
+                        <h5 class="card-title mb-4">Groups</h5>
+                        <div class="g-5 mb-5">
+                            <div class="mt-4">
+                                <button class="btn small-profile-photo small-group-photo d-inline"></button>
+                                <span class="name">Vegetarianos do Porto</span>
+                            </div>
+                            <div class="mt-4">
+                                <button class="btn small-profile-photo small-group-photo d-inline"></button>
+                                <span class="name">Receitas da avó</span>
+                            </div>
+                        </div>
+                        <button type="button" class="btn btn-outline-secondary">
+                            <small><i class="fas fa-plus me-2"></i> See all groups</small>
+                        </button>
+                    </div>
+                </div>
             </div>
 
             <div class="col-md-8 posts-area ps-md-4 pe-0 mt-5">
@@ -54,7 +73,7 @@ include_once "../components/search_results_cards.php";
                     </div>
                     <div class="col-sm p-0 mt-3 me-sm-3">
                         <?php getRecipeCard("Classic Double Crust Blueberry Pie", "Allie Costa", "https://www.thespruceeats.com/thmb/l_HEh1Z__Tb43dgZqC3ySmNnOdY=/960x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/classic-double-crust-blueberry-pie-3051709-hero-01-e3db9e34e7dc416ba9b5d48a22f947f1.jpg"); ?>
-                    </div>          
+                    </div>
                 </div>
             </div>
         </div>
