@@ -41,6 +41,7 @@ include_once "../components/membersFollowingBoxes.php";
                         <span><i class="fas fa-birthday-cake"></i>Joined in Jul 2020</span>
                     </div>
                     <a class="btn btn-primary mt-2" href="<?= getRootUrl() . "/pages/createRecipe.php" ?>">Create Recipe</a>
+                    <a class="btn btn-primary mt-2" href="<?= getRootUrl() . "/pages/create_group.php" ?>">Create Group</a>
                 </div>
                 <?php displayPeopleBox("Following"); ?>
                 <div class="card shadow-sm people-box mt-4">
