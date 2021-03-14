@@ -3,7 +3,7 @@
     // Recipe card
     function getRecipeCard($name="Cozido à portuguesa", $author="Jamie Oliver", $image="https://www.heart.org/-/media/images/news/2019/april-2019/0429sustainablefoodsystem_sc.jpg") { ?> 
         <div class="search-card">
-            <a type="button" href="<?=getRootUrl()?>/pages/recipe.php" class="btn card shadow-sm p-2">
+            <a type="button" href="<?=getRootUrl()?>/pages/recipe.php" class="btn card shadow-sm p-2 mx-auto">
                 <div class="card-img-top" style="background-image: url('<?=$image?>')"></div>
                 <div class="card-body m-0">
                     <h4 class="card-title"><?=$name?></h4>

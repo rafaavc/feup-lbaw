@@ -326,7 +326,7 @@ drawBreadcrumb(["Recipes", "Desserts", "Classic Tiramisu"])
             <?php printBoxes() ?>
         </div>
         <div class="suggested mt-5">
-            <h4>Suggested</h4>
+            <h4 class="text-center">Suggested</h4>
             <div class="row">
                 <div class="col">
                     <?php getRecipeCard("Basic Brown Sugar Meringue", "Emma Watson", "https://www.thespruceeats.com/thmb/F1ebSCX8WuGCeEhkdsoyMMvmaFE=/960x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/brown-sugar-meringue-for-pies-3056204-hero-01-3ea7e126fc034c9c9ca69e8d7ddba9e2.jpg") ?>
