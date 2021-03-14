@@ -20,7 +20,7 @@
                 </table>
             </div>
             <div class="col-md-2 card-body text-md-end m-0">
-                <button type="button" class="btn btn-outline-dark"><i class="fas fa-user-plus"></i>Join</button>
+                <a role="button" href="<?=getRootUrl()?>/pages/edit_group.php" class="btn btn-outline-dark"><i class="fas fa-edit me-2"></i>Edit</a>
             </div>
         </div>
     </div>
