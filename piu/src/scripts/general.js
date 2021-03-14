@@ -6,8 +6,8 @@ window.addEventListener('resize', () => {
     document.body.style.paddingTop = window.getComputedStyle(header).height
 });
 
-const tooltips = Array.from(document.querySelectorAll('.has-tooltip'));
-tooltips.forEach(elem => new bootstrap.Tooltip(elem, { container: 'body', placement: 'bottom', boundary: 'window' }));
+const tooltips = Array.from(document.querySelectorAll('.has-tooltip')); 
+tooltips.forEach(elem => new bootstrap.Tooltip(elem, { container: 'body', placement: 'bottom', boundary: 'window', html: true, sanitize: false }));
 
 
 
