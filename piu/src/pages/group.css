@@ -10,3 +10,13 @@
 .personal-info i {
     margin-right: 0.5em;
 }
+
+
+#memberRequests .small-profile-photo {
+    width: 3.2rem;
+    height: 3.2rem;
+}
+
+#memberRequests .card {
+    font-size: .9rem;
+}
