@@ -36,7 +36,7 @@
                             </div>
                         </div>
                     </div>
-                    <img class="rounded-circle z-depth-2 profile-image" src="https://crestedcranesolutions.com/wp-content/uploads/2013/07/facebook-profile-picture-no-pic-avatar.jpg">
+                    <img class="rounded-circle z-depth-2 profile-image" src="https://thispersondoesnotexist.com/image">
                 </div>
                 <div class="col cover-photo-area mx-2">
                     <div class="row area-title-row row-with-image">
@@ -60,18 +60,18 @@
                             </div>
                         </div>
                     </div>
-                    <img src="https://static.thenounproject.com/png/1560838-200.png" class="bd-placeholder-img">
+                    <img src="https://images-prod.healthline.com/hlcmsresource/images/AN_images/vegetarian-diet-plan-1296x728-feature.jpg" class="bd-placeholder-img">
                 </div>
             </div>
 
             <h6 class="area-title mt-4">Group Name <span class='form-required'></span></h6>
             <div class="form-group">
-                <textarea class="form-control mb-4 p-3 edit-profile-text-input" id="exampleFormControlTextarea1" rows="1">Group's name</textarea>
+                <textarea class="form-control mb-4 p-3 edit-profile-text-input" id="exampleFormControlTextarea1" rows="1">Vegetarianos do Porto</textarea>
             </div>
 
             <h6 class="area-title">Group Description <span class='form-required'></span></h6>
             <div class="form-group">
-                <textarea class="form-control mb-4 p-3 edit-profile-text-input" id="exampleFormControlTextarea1" rows="3">Group's description</textarea>
+                <textarea class="form-control mb-4 p-3 edit-profile-text-input" id="exampleFormControlTextarea1" rows="3">Este grupo foi criado para partilharmos receitas tradicionais e conversar sobre tópicos comuns aos vegetarianos do Porto. Este grupo foi criado para partilharmos receitas tradicionais e conversar sobre tópicos comuns aos vegetarianos do Porto</textarea>
             </div>
 
             <h6 class="area-title">Profile Visibility <span class='form-required'></span></h6>
