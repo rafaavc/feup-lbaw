@@ -24,8 +24,8 @@
 
         </div>
         <div class="card shadow-sm w-auto h-auto search-area searched-recipes p-2 p-sm-4 mb-5 mt-3">
-            <h3 class="section-title ps-2 mb-4">Recipes</h3>
-            <div class="row gx-2 gy-5 justify-content-between items mx-0">
+            <h3 class="section-title ps-2 mb-4 text-center text-md-start">Recipes</h3>
+            <div class="row gx-2 gy-5 justify-content-around justify-content-md-between items mx-0">
                 
                 <div class="col-lg-1 col-md-6 w-auto">
                     <?php getRecipeCard("Cozido à tuga","Zé Manel Padeiro", "https://www.teleculinaria.pt/wp-content/uploads/2018/03/cozido-a-portuguesa-600x449.jpg"); ?>

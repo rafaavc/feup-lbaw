@@ -53,7 +53,7 @@ include_once "../components/membersFollowingBoxes.php";
                     ?>
                 </div>
                 <div class="row">
-                    <button type="button" class="btn btn-dark load-more w-25 mt-5">Load More</button>
+                    <button type="button" class="btn btn-dark load-more w-25 mt-5 mx-auto">Load More</button>
                 </div>
             </div>
         </div>
