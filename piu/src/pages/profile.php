@@ -47,12 +47,12 @@ include_once "../components/membersFollowingBoxes.php";
                         <h5 class="card-title mb-4">Groups</h5>
                         <div class="g-5 mb-5">
                             <div class="mt-4">
-                                <button class="btn small-profile-photo small-group-photo d-inline"></button>
+                                <button onClick="window.location.href = '<?=getRootUrl()?>/pages/group.php'" style="background-image: url('https://www.studyfinds.org/wp-content/uploads/2020/01/AdobeStock_289529994-816x520.jpeg')" class="btn small-profile-photo small-group-photo d-inline"></button>
                                 <span class="name">Vegetarianos do Porto</span>
                             </div>
                             <div class="mt-4">
-                                <button class="btn small-profile-photo small-group-photo d-inline"></button>
-                                <span class="name">Receitas da avó</span>
+                                <button onClick="window.location.href = '<?=getRootUrl()?>/pages/group.php'" style="background-image: url('https://www.comidaereceitas.com.br/img/sizeswp/1200x675/2007/11/Leitao_assadaaaa.jpg')" class="btn small-profile-photo small-group-photo d-inline"></button>
+                                <span class="name">Amantes de Leitões</span>
                             </div>
                         </div>
                         <button type="button" class="btn btn-outline-secondary">
