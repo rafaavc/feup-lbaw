@@ -37,11 +37,11 @@
                 </span>
             </div> -->
         </div>
-        <div class="card shadow w-auto h-auto search-area searched-recipes p-4 mb-5 mt-3">
-            <h3 class="section-title">Recipes</h3>
-            <div class="row d-flex justify-content-around items mx-0">
-                <?php for ($i = 0; $i < 6; $i++) { ?>
-                    <div class="col-lg-1 col-md-6 mx-4 my-4 w-auto">
+        <div class="card shadow-sm w-auto h-auto search-area searched-recipes p-2 p-sm-4 mb-5 mt-3">
+            <h3 class="section-title ps-2 mb-4">Recipes</h3>
+            <div class="row gx-2 gy-5 justify-content-between items mx-0">
+                <?php for ($i = 0; $i < 4; $i++) { ?>
+                    <div class="col-lg-1 col-md-6 w-auto">
                         <?php getRecipeCard(); ?>
                     </div>
                 <?php }
@@ -65,11 +65,11 @@
                 </ul>
             </nav>
         </div>
-        <div class="card shadow p-2 w-auto h-auto search-area searched-recipes p-4 my-5">
-            <h3 class="section-title">Groups</h3>
-            <div class="row d-flex justify-content-around items mx-0">
-                <?php for ($i = 0; $i < 6; $i++) { ?>
-                    <div class="col-lg-1 col-md-6 mx-4 my-4 w-auto">
+        <div class="card shadow-sm p-2 w-auto h-auto search-area searched-recipes p-sm-4 my-5">
+            <h3 class="section-title ps-2 mb-4">Groups</h3>
+            <div class="row gx-2 gy-5 justify-content-between items mx-0">
+                <?php for ($i = 0; $i < 4; $i++) { ?>
+                    <div class="col-lg-1 col-md-6 w-auto">
                         <?php getGroupCard(); ?>
                     </div>
                 <?php }
@@ -93,11 +93,11 @@
                 </ul>
             </nav>
         </div>
-        <div class="card shadow p-2 w-auto h-auto search-area searched-recipes p-4 my-5">
-            <h3 class="section-title">People</h3>
-            <div class="row d-flex justify-content-around items mx-0">
-                <?php for ($i = 0; $i < 6; $i++) { ?>
-                    <div class="col-lg-1 col-md-6 mx-4 my-4 w-auto">
+        <div class="card shadow-sm p-2 w-auto h-auto search-area searched-recipes p-sm-4 my-5">
+            <h3 class="section-title ps-2 mb-4">People</h3>
+            <div class="row gx-2 gy-5 justify-content-between items mx-0">
+                <?php for ($i = 0; $i < 4; $i++) { ?>
+                    <div class="col-lg-1 col-md-6 w-auto">
                         <?php getUserCard(); ?>
                     </div>
                 <?php }
@@ -121,11 +121,11 @@
                 </ul>
             </nav>
         </div>
-        <div class="card shadow p-2 w-auto h-auto search-area searched-recipes p-4 my-5">
-            <h3 class="section-title">Categories</h3>
-            <div class="row d-flex justify-content-around items mx-0">
-                <?php for ($i = 0; $i < 6; $i++) { ?>
-                    <div class="col-lg-1 col-md-6 mx-4 my-4 w-auto">
+        <div class="card shadow-sm p-2 w-auto h-auto search-area searched-recipes p-sm-4 my-5">
+            <h3 class="section-title mb-4">Categories</h3>
+            <div class="row gx-2 gy-5 justify-content-between items mx-0">
+                <?php for ($i = 0; $i < 4; $i++) { ?>
+                    <div class="col-lg-1 col-md-6 w-auto">
                         <?php getCategoryCard(); ?>
                     </div>
                 <?php }

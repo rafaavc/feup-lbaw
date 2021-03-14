@@ -4,7 +4,7 @@
 }
 
 .button-area button {
-    width: 12em;
+    max-width: 16rem;
 }
 
 .personal-info i {

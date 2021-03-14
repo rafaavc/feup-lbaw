@@ -6,7 +6,6 @@ const popoverButtons = document.querySelectorAll('.nav-popover');
 
 for (const button of popoverButtons) {
     let content = button.dataset.popoverContent ? document.querySelector(button.dataset.popoverContent).innerHTML : '';
-    console.log(content)
 
     const popover = new bootstrap.Popover(button, {
         trigger: 'focus',

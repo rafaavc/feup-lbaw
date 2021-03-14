@@ -14,6 +14,7 @@
         "../components/navPopups.js"
     ];
 
+    $role = "member";
     include_once "../components/docHeader.php";
     include_once "../components/nav.php";
     include_once "../components/post.php";
@@ -22,27 +23,21 @@
 
 ?>
 
-<main>
-    <div class="container content-general-margin">
+<main class="content-general-margin margin-to-footer">
+        <?php drawBreadcrumb(["Groups", "Vegetarianos do Porto"], true); ?>
         <div class="cover">
             <?php include_once "../components/group_cover.php"; ?>
         </div>
-        <div class="row group-body">
+        <div class="row group-body mt-3 g-5">
             <div class="col-md-4">
-                <div class="row m-0 text-start">
-                    <?php drawBreadcrumb(["Groups", "Group Name"], true); ?>
-                </div>
-                <div class="row members-box m-0">
-                    <?php displayPeopleBox("Members"); ?>
-                </div>
+                <?php displayPeopleBox("Members"); ?>
             </div>
             
             <div class="col-md-8 posts-area">
-                
-                <div class="row button-area mt-5 text-start">
+                <div class="row button-area text-start">
                     <button type="button" class="btn btn-primary">
-                        <i class="fas fa-plus"></i> 
-                        &nbspCreate Recipe
+                        <i class="fas fa-plus me-2"></i> 
+                        &nbspPost Recipe to Group
                     </button>
                 </div>
                 <div class="row">
@@ -55,7 +50,6 @@
                 </div>
             </div>
         </div>
-    </div>
 </main>
 <?php
     include_once "../components/footer.php";           

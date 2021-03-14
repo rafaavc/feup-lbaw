@@ -5,9 +5,15 @@
 .home-slide {
     background-size: cover;
     background-position: 50%;
-    height: 50vh;
+    max-height: 50vh;
+    min-height: 30rem;
     padding-top: 6rem;
     padding-bottom: 6rem;
+}
+
+.home-slide .btn:focus {
+    transition: box-shadow .2s;
+    box-shadow: 0 0 0 0.25rem rgba(255, 255, 255, 0.65) !important;
 }
 
 .home-slide > h2 {
@@ -21,6 +27,22 @@
 
 .home-slide > h2 > div {
     display: inline-block;
+}
+
+.home-slide > a {
+    float: right;
+    margin-top: 1rem;
+    transition: background-color color border-color .2s;
+}
+
+.home-slide > a:hover {
+    background-color: var(--bs-dark);
+    color: var(--bs-light);
+    border-color: black;
+}
+
+.home-slide > a:first-of-type {
+    clear: right;
 }
 
 .home-slide .display-4 {
@@ -89,8 +111,13 @@ a.btn-large {
         width: 85%;
     }
 
-    .home-slide > h2 {
-        float: none;
+    .home-slide > * {
+        float: none !important;
+    }
+
+
+    .home-slide > a:first-of-type {
+        margin-right: 1rem;
     }
 
     .home-slide {

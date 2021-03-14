@@ -5,7 +5,7 @@ body {
 
 footer {
     color: gray;
-    background-color: whitesmoke;
+    background-color: var(--bs-light);
     position: absolute;
     bottom: 0;
     width: 100%;

@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap');
 
 :root {
-    --content-width: 70vw;
+    --content-width: 65vw;
     --content-margin: calc((100vw - var(--content-width))/2);
 
     --margin-from-nav: 3rem;
@@ -36,6 +36,10 @@ a:hover {
     padding-right: var(--content-margin);
 }
 
+.fa-star.active {
+    color: var(--accent-color);
+}
+
 @media (max-width: 1500px) {
     :root {
         --content-width: 80vw;
@@ -48,6 +52,11 @@ a:hover {
     }
 }
 
+.form-required:before {
+    content: "*";
+    color: gray;
+}
+
 .progress-bar {
     background-color: var(--accent-color-lighter) !important;
 }
@@ -56,12 +65,80 @@ a:hover {
     background-color: var(--accent-color) !important;
 }
 
-.form-control:focus {
+.dropdown-item:focus {
+    background-color: var(--accent-color) !important;
+    color: var(--bs-light);
+    transition: none;
+}
+
+.dropdown-item[aria-expanded=true], .accordion-button:focus, .accordion-button:target, .accordion-button:not(.collapsed), .accordion-button:active {
+    background-color: var(--bs-light) !important;
+    color: var(--bs-dark) !important;
+}
+
+.accordion-button:focus {
+    border-color: var(--accent-color);
+}
+
+.form-control:focus, .form-select:focus {
     box-shadow: 0 0 0 0.25rem var(--accent-color-lighter) !important;
     border-color: var(--accent-color);
 }
 
-.form-select:focus {
+.form-range::-webkit-slider-thumb {
+    background-color: var(--accent-color) !important;
+    box-shadow: none !important;
+    transition: box-shadow .2s;
+    cursor: pointer;
+}
+  
+.form-range::-moz-range-thumb {
+    background-color: var(--accent-color) !important;
+    box-shadow: none !important;
+    transition: box-shadow .2s;
+    cursor: pointer;
+}
+
+.form-range::-ms-thumb {
+    background-color: var(--accent-color) !important;
+    box-shadow: none !important;
+    transition: box-shadow .2s;
+    cursor: pointer;
+}
+
+.form-range::-webkit-slider-thumb:active {
+    background-color: var(--accent-color) !important;
+    box-shadow: 0 0 0 0.25rem var(--accent-color-lighter) !important;
+}
+  
+.form-range::-moz-range-thumb:active {
+    background-color: var(--accent-color) !important;
+    box-shadow: 0 0 0 0.25rem var(--accent-color-lighter) !important;
+}
+
+.form-range::-ms-thumb:active {
+    background-color: var(--accent-color) !important;
+    box-shadow: 0 0 0 0.25rem var(--accent-color-lighter) !important;
+}
+
+.form-range::-webkit-slider-thumb:focus {
+    box-shadow: 0 0 0 0.25rem var(--accent-color-lighter) !important;
+}
+  
+.form-range::-moz-range-thumb:focus {
+    box-shadow: 0 0 0 0.25rem var(--accent-color-lighter) !important;
+}
+
+.form-range::-ms-thumb:focus {
+    box-shadow: 0 0 0 0.25rem var(--accent-color-lighter) !important;
+}
+
+.form-check-input:checked {
+    background-color: var(--accent-color);
+    border-color: var(--accent-color-darker);
+}
+
+.form-check-input:focus {
     box-shadow: 0 0 0 0.25rem var(--accent-color-lighter) !important;
     border-color: var(--accent-color);
 }
@@ -87,6 +164,13 @@ a:hover {
     background-color: var(--accent-color-darker) !important;
 }
 
+.btn.btn-no-shadow {
+    box-shadow: none !important;
+}
+.btn.btn-no-shadow:focus {
+    color: gray;
+}
+
 a {
     color: var(--accent-color);
     transition: color .2s;
@@ -98,4 +182,13 @@ body {
 
 * {
     font-family: 'Ubuntu', sans-serif;
+}
+
+/* important because events in descendants were causing tooltips bugs */
+.has-tooltip * {
+    pointer-events: none !important;
+}
+
+.first-recipe-mt > .recipe-post:first-of-type {
+    margin-top: 1rem !important;
 }

@@ -13,11 +13,16 @@ $role = isset($role) ? $role : "visitor";
 $menu = $role;
 
 $visitor = [
+    "visitor feed" => [
+        "icon" => "comments",
+        "href" => getRootUrl()."/pages/feed.php"
+    ],
     "sign in" => [
         "icon" => "sign-in-alt",
         "href" => getRootUrl()."/pages/signIn.php"
     ],
     "sign up" => [
+        "special" => true,
         "icon" => "user-plus",
         "href" => getRootUrl()."/pages/signUp.php"
     ]
@@ -43,7 +48,7 @@ $member = [
         "icon" => "comments",
         "popover" => "This is the content of the second popover"
     ],
-    "john doe" => [
+    "jamie oliver" => [
         "icon" => "user-circle",
         "drop" => $dropdown
     ]
@@ -58,7 +63,7 @@ $admin = [
         "icon" => "users",
         "href" => getRootUrl()."/pages/usersManagement.php"
     ],
-    "john doe" => [
+    "jamie oliver" => [
         "icon" => "user-circle",
         "drop" => $dropdown
     ]
@@ -69,7 +74,11 @@ function printMenu()
     global $menu;
     global $$menu;
     foreach ($$menu as $name => $attributes) {
-        if (key_exists("popover", $attributes)) {
+        if (key_exists("special", $attributes)) { ?>
+            <li class="nav-item">
+                <a role="button" href="<?=$attributes['href']?>" class="btn btn-primary btn-sm mt-1 ms-2"><i class="fas me-2 fa-<?=$attributes['icon']?>"></i> <?=ucwords($name)?></a>
+            </li>
+        <?php } elseif (key_exists("popover", $attributes)) {
             if ($name == "notifications") {
                 printNotificationsPopover();
             } else if ($name == "messages") {
@@ -87,10 +96,9 @@ function printMenu()
 
 function printIconText($icon, $text, $caret = false)
 { ?>
-    <i class="fas fa-<?= $icon ?> d-none d-lg-inline ms-3"></i>
+    <i class="fas fa-<?= $icon ?> mx-2"></i>
     <span class="legend"><?= $text ?></span>
-    <?php
-    if ($caret) { ?>
+    <?php if ($caret) { ?>
         <i class="fas fa-caret-down"></i>
     <?php }
 }
@@ -101,7 +109,7 @@ function printDropdown($name, $icon, $submenu)
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             <?php printIconText($icon, $name, true) ?>
         </a>
-        <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
             <?php foreach ($submenu as $name => $attributes) printItem(ucwords($name), $attributes["icon"], $attributes["href"], true) ?>
         </ul>
     </li>
@@ -119,10 +127,14 @@ function printItem($name, $icon, $link, $dropdown = false)
 function printMessagesPopover()
 { ?>
     <li class="nav-item">
-        <button data-popover-content="#messagesPopupContent" class="btn btn-primary btn-sm mt-2 nav-popover position-relative" role="button" data-bs-placement="bottom" data-bs-toggle="popover">
+        <button data-popover-content="#messagesPopupContent" class="btn btn-primary btn-sm mt-2 nav-popover position-relative d-none d-lg-block" role="button" data-bs-placement="bottom" data-bs-toggle="popover">
             <i class="fas fa-envelope"></i> 
             <div class="notif-quantity-indicator"><small>1</small></div>
         </button>
+        <a class="nav-link d-inline-block d-lg-none" href="<?=getRootUrl()?>/pages/privateMessages.php">
+            <?php printIconText("envelope", "Messages") ?>
+        </a>
+        <div class="notif-quantity-indicator-inline d-inline-block d-lg-none"><small>1</small></div>
         <div id="messagesPopupContent" class="d-none">
             <ul class="p-0 m-0">
                 <li class="card p-2 mb-2">
@@ -142,11 +154,15 @@ function printMessagesPopover()
 function printNotificationsPopover()
 { ?>
     <li class="nav-item">
-        <button data-popover-content="#notificationsPopupContent" class="btn btn-primary btn-sm mt-2 me-4 nav-popover position-relative" role="button" data-bs-placement="bottom" data-bs-toggle="popover">
+        <button data-popover-content="#notificationsPopupContent" class="btn btn-primary btn-sm mt-2 me-4 nav-popover position-relative d-none d-lg-block" role="button" data-bs-placement="bottom" data-bs-toggle="popover">
             <i class="fas fa-bell"></i>
             <div class="notif-quantity-indicator"><small>3</small></div>
         </button>
-        <div id="notificationsPopupContent" class="d-none">
+        <button type="button" class="btn no-btn nav-link d-block d-lg-none position-relative" data-bs-toggle="collapse" aria-expanded="false" aria-controls="notificationsPopupContent" data-bs-target="#notificationsPopupContent">
+            <?php printIconText("bell", "Notifications") ?>
+            <div class="notif-quantity-indicator-mobile"><small>3</small></div>
+        </button>
+        <div id="notificationsPopupContent" class="collapse p-2 d-lg-none">
             <ul class="p-0 m-0">
                 <li class="card p-2 mb-2">
                     <?= displayFollowRequestCard("Ludwig Nascimento", "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fimages.pexels.com%2Fphotos%2F33614%2Fcooking-eat-cut-food.jpg%3Fauto%3Dcompress%26cs%3Dtinysrgb%26dpr%3D1%26w%3D500&f=1&nofb=1", true); ?>
@@ -169,7 +185,7 @@ function printNotificationsPopover()
 ?>
 
 <nav class="navbar navbar-expand-lg fixed-top navbar-light bg-light content-general-padding">
-    <div id="navbarContainer" class="container-fluid justify-content-between">
+    <div id="navbarContainer" class="container-fluid justify-content-between p-0">
         <!-- Logo -->
         <a class="navbar-brand flex-lg-grow-1 normalize" href="<?=getRootUrl() . ($role == "visitor" ? "" : ($role == "admin" ? "/pages/reportsManagement.php" : "/pages/feed.php" ))?>">
             <img class="logo" src="<?=isset($index) ? "." : ".." ?>/images/tastebuds-dark.png" height="50px" />

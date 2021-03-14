@@ -1,16 +1,21 @@
 .search-card .card {
-    width: 18rem;
-    height: 20rem;
+    max-width: 18rem;
+    max-height: 20rem;
+    min-width: 14rem;
     text-align: center;
+    cursor: pointer;
+    transition: background-color outline .2s;
 }
+
+.search-card .card:hover {
+    background-color: whitesmoke;
+}
+
 
 .search-card .card-img-top {
     height: 12rem;
     background-size: cover;
-}
-
-.search-card .recipe-card-img-top {
-    background-image: url("https://www.heart.org/-/media/images/news/2019/april-2019/0429sustainablefoodsystem_sc.jpg");
+    background-position: 50%;
 }
 
 .search-card .group-card-img-top {
@@ -28,6 +33,7 @@
 
 .search-card .username {
     font-weight: 500;
+    text-decoration: none;
 }
 
 .search-card .card-body {

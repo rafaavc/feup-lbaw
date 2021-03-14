@@ -13,3 +13,6 @@ COPY src /var/www/html
 # FOR PHP (NOW)
 # docker build -t 2dukes/lbaw2135 .
 # docker run -p 80:80 -it --rm --name lbaw -v $PWD/src:/var/www/html lbaw2135
+
+# docker build -t lbaw2135/lbaw2135-piu .
+# docker push lbaw2135/lbaw2135-piu

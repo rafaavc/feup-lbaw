@@ -1,8 +1,11 @@
 <?php
 
-$extraStyles = ["recipe.css", "../components/search_results_cards.css", "../components/profile_cover.css", "../components/textareaWithButton.css"];
+$extraStyles = ["recipe.css", "../components/search_results_cards.css", "../components/profile_cover.css", "../components/textareaWithButton.css", "../components/breadcrumb.css"];
 
 $extraScripts = ["../scripts/recipeYields.js"];
+
+$pageTitle = "Classic Tiramisu | TasteBuds";
+$role = "member";
 
 include "../components/docHeader.php";
 include "../components/search_results_cards.php";
@@ -59,18 +62,18 @@ $recipe = [
 
 function printInstruction($number, $name, $text, $image = null)
 { ?>
-    <section class="instruction d-inline-block col-12">
-        <h3 class="btn" data-bs-toggle="collapse" href="#instruction<?= $number ?>" role="button" aria-expanded="false" aria-controls="instruction<?= $number ?>">
+    <section class="instruction d-inline-block col-12 mt-4">
+        <h3 class="btn p-0" data-bs-toggle="collapse" href="#instruction<?= $number ?>" role="button" aria-expanded="false" aria-controls="instruction<?= $number ?>">
             <i class="fas fa-check-circle d-inline-block align-middle"></i>
             <span class="d-inline-block align-middle"><?= $number ?>. <?= $name ?></span>
         </h3>
         <div class="collapse show" id="instruction<?= $number ?>">
             <div class="d-md-flex">
-                <div class="col-md-<?= $image === null ? "12" : "8" ?> card card-body d-inline-block">
+                <div class="col-md-<?= $image === null ? "12" : "8" ?> card card-body d-inline-block p-0 mt-3">
                     <?= $text ?>
                 </div>
                 <?php if ($image !== null) { ?>
-                    <img class="col-12 col-md-3 d-inline-block" src="<?= $image ?>">
+                    <img class="col-12 col-md-3 d-inline-block mt-3 mt-md-0 ms-md-3" src="<?= $image ?>">
                 <?php } ?>
             </div>
         </div>
@@ -93,26 +96,30 @@ function printMethod($method)
 function printComment($comment, $depth = 0)
 { ?>
     <div class="card comment <?= $depth !== 0 ? "subcomment" : "" ?>">
-        <div class=" row g-0 p-3 d-flex">
-            <img class="d-none d-md-inline-block rounded-circle" src="../images/people/<?= $comment["user"] ?>.jpg" alt="...">
-            <div class="col-md-<?= 9 - round($depth / 2) ?> card-body">
-                <h5 class="card-title"><a href="#"><?= $comment["user"] ?></a> <?= key_exists("rate", $comment) ? "reviewed" : "commented" ?>:</h5>
+        <div class="row g-0 p-3">
+            <div class="col">
+                <img class="d-inline-block rounded-circle" src="../images/people/<?= $comment["user"] ?>.jpg" alt="...">
+            </div>
+            <div class="col-5 card-body">
+                <h6 class="card-title"><a href="<?=getRootUrl()?>/pages/profile.php"><?= $comment["user"] ?></a> <?= key_exists("rate", $comment) ? "reviewed" : "commented" ?>:</h6>
                 <?php if (key_exists("rate", $comment)) { ?>
-                    <div class="rating">
-                        <i class="fas fa-star checked"></i>
-                        <i class="fas fa-star checked"></i>
-                        <i class="fas fa-star checked"></i>
+                    <div class="rating mb-3">
+                        <i class="fas fa-star active"></i>
+                        <i class="fas fa-star active"></i>
+                        <i class="fas fa-star active"></i>
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star"></i>
                     </div>
                 <?php } ?>
-                <p class="card-text d-inline"><?= $comment["comment"] ?></p>
-                <button class="btn btn-outline-primary p-1 m-1"><i class="fas fa-reply me-1"></i>Reply</button>
-                <p class="card-text">
+                <p class="card-text mt-3"><?= $comment["comment"] ?></p>
+                <p class="card-text mt-3">
                     <small class="text-muted">
                         <?= key_exists("edit", $comment) ? "Edited " . $comment["edit"] : $comment["post"] ?>
                     </small>
                 </p>
+            </div>
+            <div class="col-md text-end position-relative">
+                <button class="btn btn-sm btn-outline-secondary p-1 m-1"><i class="fas fa-reply me-1"></i>Reply</button>
             </div>
         </div>
         <?php if (key_exists("replies", $comment)) printComment($comment["replies"][0], $depth + 1) ?>
@@ -133,7 +140,7 @@ function printBoxContent($array)
 
 function printBoxes($mobile = false)
 { ?>
-    <div class="<?= $mobile ? "d-block d-md-none" : "d-none d-md-block" ?>">
+    <div class="<?= $mobile ? "d-block d-xl-none" : "d-none d-xl-block" ?>">
         <div class="media my-4 my-md-0">
             <img class="img-fluid main" src="https://dpv87w1mllzh1.cloudfront.net/alitalia_discover/attachments/data/000/002/587/original/la-ricetta-classica-del-tiramisu-con-uova-savoiardi-e-mascarpone-1920x1080.jpg?1567093636">
             <div class="small-img d-flex">
@@ -143,9 +150,9 @@ function printBoxes($mobile = false)
                 <img class="col-3" src="https://dpv87w1mllzh1.cloudfront.net/alitalia_discover/attachments/data/000/002/587/original/la-ricetta-classica-del-tiramisu-con-uova-savoiardi-e-mascarpone-1920x1080.jpg?1567093636">
             </div>
         </div>
-        <div class="row">
+        <div class="row mt-5">
             <div class="col-md-6">
-                <section class="icon-box">
+                <section class="icon-box mb-4">
                     <i class="fas fa-clock"></i>
                     <? printBoxContent([
                         "Duration" => "45 mins",
@@ -154,7 +161,7 @@ function printBoxes($mobile = false)
                         "Additional" => "-"
                     ]) ?>
                 </section>
-                <section class="icon-box p-2 mt-4 mt-md-0">
+                <section class="icon-box p-2 mt-md-0">
                     <i class="fas fa-chart-bar"></i>
                     <form>
                         <table class="table table-borderless mb-0">
@@ -168,7 +175,9 @@ function printBoxes($mobile = false)
                             </tr>
                         </table>
                         <input type="range" class="form-range" min="1" max="10" id="yieldsInput" value="3">
-                        <input class="p-1" type="reset" onclick="calculateQuantities()" value="Reset servings">
+                        <button type="button" class="btn btn-sm btn-outline-secondary mt-3" onclick="calculateQuantities()">
+                            Reset servings
+                        </button>
                     </form>
                 </section>
             </div>
@@ -180,7 +189,9 @@ function printBoxes($mobile = false)
                         "Sugars" => "52.7 g",
                         "Fat" => "39.6 g"
                     ]) ?>
-                    <input class="p-1" type="reset" onclick="showNutritionModal()" value="See all">
+                    <button type="button" class="btn btn-sm btn-outline-secondary" onclick="showNutritionModal()">
+                        See all
+                    </button>
                 </section>
             </div>
         </div>
@@ -195,21 +206,16 @@ drawBreadcrumb(["Recipes", "Desserts", "Classic Tiramisu"])
 
 ?>
 
-<main class="row content-general-margin">
-    <ul id="tags">
-        <li class="badge rounded-pill bg-secondary">Vegan</li>
-        <li class="badge rounded-pill bg-secondary">French Cuisine</li>
-        <li class="badge rounded-pill bg-secondary">Low Calorie</li>
-    </ul>
-    <article id="recipe" class="col-md-8">
-        <header class="row text-left pt-3 m-md-3">
+<main class="row content-general-margin margin-to-footer">
+    <article id="recipe" class="col-xl-8 p-0 pe-xl-4">
+        <header class="row text-left pt-3 pb-3 mb-md-3 shadow-sm mt-5 mt-xl-0">
             <h1 class="col-11">Classic Tiramisu</h1>
             <div class="col-9">
                 <div class="rating">
                     <span class="small">34 ratings</span>
-                    <i class="fas fa-star checked"></i>
-                    <i class="fas fa-star checked"></i>
-                    <i class="fas fa-star checked"></i>
+                    <i class="fas fa-star active"></i>
+                    <i class="fas fa-star active"></i>
+                    <i class="fas fa-star active"></i>
                     <i class="fas fa-star"></i>
                     <i class="fas fa-star"></i>
                 </div>
@@ -218,20 +224,38 @@ drawBreadcrumb(["Recipes", "Desserts", "Classic Tiramisu"])
                         <tbody>
                             <tr>
                                 <td class="col-2 col-md-1 image-container">
-                                    <img class="rounded-circle" src="https://thispersondoesnotexist.com/image" alt="...">
+                                    <img class="rounded-circle" src="https://mdbootstrap.com/img/Photos/Avatars/img%20(31).jpg" alt="...">
                                 </td>
                                 <td class="align-middle">
                                     <div class="col-md-5 card-body p-0 m-0 ms-2 text-start">
-                                        by <a href="#">Alex Johnson</a>
+                                        by <a href="<?=getRootUrl()?>/pages/profile.php">Jamie Oliver</a>
                                     </div>
                                 </td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
-                <p>These vegan meringues use the liquid from a tin of chickpeas as the substitute for egg whites - genius! Use these vegan meringues wherever you would use egg white meringue such as summer fruit pavlova and Eton mess.</p>
+                <p>Classic Italian dessert made with ladyfingers and mascarpone cheese. It can be made in a trifle bowl or a springform pan.</p>
+                
+                
+                <span class="d-block mb-3"><small>Difficulty: medium</small></span>
+                <span class="d-inline-block me-3">Tags: </span>
+                <a role="button" class="btn btn-sm btn-secondary d-inline-block me-2 mb-2" href="<?=getRootUrl(). "/pages/category.php"?>">
+                    Dessert
+                </a>
+                <a role="button" class="btn btn-sm btn-outline-secondary d-inline-block me-2 mb-2" href="<?=getRootUrl(). "/pages/category.php"?>">
+                    Low carb
+                </a>
+                <a role="button" class="btn btn-sm btn-outline-secondary d-inline-block me-2 mb-2" href="<?=getRootUrl(). "/pages/category.php"?>">
+                    Vegetarian
+                </a>
             </div>
             <ul class="col-3 text-end">
+                <li class="list-group-item bg-light" style="border-radius: .5rem">
+                    <a href="<?=getRootUrl()?>/pages/editRecipe.php">
+                        <span class="legend">Edit Recipe</span><i class="fas fa-edit ms-2"></i>
+                    </a>
+                </li>
                 <li class="list-group-item">
                     <a href="#">
                         <span class="legend">Print</span><i class="fas fa-print"></i>
@@ -256,8 +280,8 @@ drawBreadcrumb(["Recipes", "Desserts", "Classic Tiramisu"])
             </ul>
         </header>
         <?php printBoxes(true) ?>
-        <section id="ingredients">
-            <h2>Ingredients</h2>
+        <section id="ingredients" class="mt-5">
+            <h2 class="p-0 mb-4">Ingredients</h2>
             <table class="table table-striped p-3">
                 <?php
                 foreach ($recipe["ingredients"] as $ingredient => $quantity) { ?>
@@ -268,28 +292,46 @@ drawBreadcrumb(["Recipes", "Desserts", "Classic Tiramisu"])
                 <?php } ?>
             </table>
         </section>
-        <section id="method">
-            <h2>Method</h2>
-            <?php printMethod($recipe["method"]);
-            ?>
+        <section id="method" class="mt-5">
+            <h2 class="p-0">Method</h2>
+            <?php printMethod($recipe["method"]); ?>
         </section>
-        <section class="icon-box mt-4 mt-md-0" id="comments">
+        <section class="icon-box mt-5 shadow-sm" id="comments">
             <i class="fas fa-comments"></i>
             <?php
             foreach ($recipe["comments"] as $i => $comment)
                 printComment($comment);
-            include "../components/textareaWithButton.php";
             ?>
+            <div class="form-floating m-3 position-relative">
+                <textarea class="form-control" placeholder="Leave a comment here" id="commentTextarea" style="height: 6rem"></textarea>
+                <label for="floatingTextarea2">Your comment</label>
+                <button type="button" class="btn btn-primary position-absolute py-1 send">
+                    <small><i class="fas fa-paper-plane me-2"></i>
+                    Comment</small>
+                </button>
+            </div>
         </section>
     </article>
-    <aside class="col-md-4">
-        <?php printBoxes() ?>
-        <div class="suggested">
-            <h2 class="text-center">Suggested</h2>
-            <?php
-            for ($i = 0; $i < 4; $i++)
-                getRecipeCard()
-            ?>
+    <aside class="col-xl-4 p-0 ps-xl-4 mt-5 mt-xl-0">
+        <div class="d-none d-xl-block">
+            <?php printBoxes() ?>
+        </div>
+        <div class="suggested mt-5">
+            <h4>Suggested</h4>
+            <div class="row">
+                <div class="col">
+                    <?php getRecipeCard() ?>
+                </div>
+                <div class="col">
+                    <?php getRecipeCard() ?>
+                </div>
+                <div class="col">
+                    <?php getRecipeCard() ?>
+                </div>
+                <div class="col">
+                    <?php getRecipeCard() ?>
+                </div>
+            </div>
         </div>
     </aside>
 </main>

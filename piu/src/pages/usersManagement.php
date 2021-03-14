@@ -1,6 +1,6 @@
 <?php 
     $role = "admin";
-    $pageTitle = "Users Management";
+    $pageTitle = "Users Management | TasteBuds";
     $extraStyles = [ "adminArea.css", "../components/breadcrumb.css" ];
 
     include_once "../components/breadcrumb.php";
@@ -8,9 +8,9 @@
     include_once "../components/nav.php"; 
 
     function displayActions() { ?>
-        <button type="button" class="btn btn-secondary me-2 has-tooltip" data-bs-toggle="tooltip" data-bs-placement="bottom" title="View user profile"><i class="fas fa-eye"></i></button>
-        <button type="button" class="btn btn-warning text-white me-2 has-tooltip" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Ban user"><i class="fas fa-ban"></i></button>
-        <button type="button" class="btn btn-danger has-tooltip" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Delete user permanently"><i class="fas fa-trash"></i></button>
+        <button type="button" class="btn btn-secondary me-2 my-2 has-tooltip" data-bs-toggle="tooltip" data-bs-placement="bottom" title="View user profile"><i class="fas fa-eye"></i></button>
+        <button type="button" class="btn btn-warning text-white me-2 my-2 has-tooltip" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Ban user"><i class="fas fa-ban"></i></button>
+        <button type="button" class="btn btn-danger has-tooltip my-2" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Delete user permanently"><i class="fas fa-trash"></i></button>
 <?php } ?>
 <?php drawBreadcrumb([ "Users Management" ]); ?>
 <div class="content-general-margin mt-5 margin-to-footer">
@@ -20,7 +20,7 @@
         <i class="fas fa-search fa-icon-right"></i>
     </div>
     <div class="card">
-        <div class="card-body">
+        <div class="card-body table-responsive">
         <table class="table align-middle table-striped table-hover">
             <thead>
                 <th>Username</th>

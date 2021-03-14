@@ -8,7 +8,7 @@
 ?>
 <main>
     <?php drawBreadcrumb([ "Sign Up" ]); ?>
-    <div class="container content-general-margin mt-2">
+    <div class="container content-general-margin mt-2 margin-to-footer">
         <div class="row">
             <div class="col-xl-6 sign-img">
                 <div class="d-grid gap-2 col-6 mx-auto mt-5 sign-left-text w-100 text-center">
@@ -55,13 +55,13 @@
                         
                         <?php
                             include_once "../components/inputIcon.php";
-                            echo "<span class='d-block mt-4'>Username</span>";
+                            echo "<span class='d-block mt-4'>Username <span class='form-required'></span></span>";
                             inputIconLeft('user'); 
-                            echo "<span class='d-block mt-4'>Email Address</span>";
+                            echo "<span class='d-block mt-4'>Email Address <span class='form-required'></span></span>";
                             inputIconLeft('envelope'); 
-                            echo "<span class='d-block mt-4'>Password</span>";
+                            echo "<span class='d-block mt-4'>Password <span class='form-required'></span></span>";
                             inputIconLeft('lock'); 
-                            echo "<span class='d-block mt-4'>Repeat Password</span>";
+                            echo "<span class='d-block mt-4'>Repeat Password <span class='form-required'></span></span>";
                             inputIconLeft('lock'); 
                         ?>
 
@@ -74,14 +74,14 @@
                         <h1>Sign Up</h1>
                         <h3>Please enter your personal details.</h3>
                         <?php
-                            echo "<span class='d-block mt-4'>Name</span>";
+                            echo "<span class='d-block mt-4'>Name <span class='form-required'></span></span>";
                             inputIconLeft('user'); 
-                            echo "<span class='d-block mt-4'>Country</span>";
+                            echo "<span class='d-block mt-4'>Country <span class='form-required'></span></span>";
                             inputIconLeft('flag'); 
                             echo "<span class='d-block mt-4'>City</span>";
                             inputIconLeft('map-marker-alt'); 
                         ?>
-                        <span class='d-block mt-4'>Profile Photo</span>
+                        <span class='d-block mt-4'>Profile Photo <span class='form-required'></span></span>
                         <img src="../images/noImage.png" class="rounded-circle mx-auto d-block file-input" alt="...">
                         <input type="file" name="myfile" class="d-none"></input>
                         <div class="d-grid gap-2 col-6 mx-auto my-2">
