@@ -2,7 +2,9 @@
 
 TasteBuds helps people build a community of diverse, healthy and tasty eating habits.
 
-### LBAW2135 - Group Members
+### Group LBAW2135
+
+#### Members
 
 Alexandre Abreu, up201800168@fe.up.pt
 
