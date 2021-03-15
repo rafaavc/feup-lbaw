@@ -16,6 +16,8 @@
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton1"> 
                         <?php if($isVisitor) { ?>
                             <li><a class="dropdown-item" href="#">Report Post</a></li>
+                        <?php } else if (is_null($isVisitor)) { ?>
+                            <li><a class="dropdown-item" href="#">Delete Post</a></li>
                         <?php } else { ?>
                             <li><a class="dropdown-item" href="#">Edit Post</a></li>
                             <li><a class="dropdown-item" href="#">Delete Post</a></li>
