@@ -67,23 +67,34 @@
 
             <h6 class="area-title mt-4">Biography <span class='form-required'></span></h6>
             <div class="form-group">
-                <textarea class="form-control mb-4 p-3 edit-profile-text-input" id="exampleFormControlTextarea1" rows="3">User's biography</textarea>
+                <textarea class="form-control mb-4 p-3 edit-profile-text-input" id="exampleFormControlTextarea1" rows="3">Sushi chef | Sushisan</textarea>
             </div>
 
             <h6 class="area-title">Name <span class='form-required'></span></h6>
             <div class="form-group">
-                <textarea class="form-control mb-4 p-3 edit-profile-text-input" id="exampleFormControlTextarea1" rows="1">User's name</textarea>
+                <textarea class="form-control mb-4 p-3 edit-profile-text-input" id="exampleFormControlTextarea1" rows="1">Jamie Oliver</textarea>
             </div>
 
             <h6 class="area-title">Country <span class='form-required'></span></h6> 
             <div class="form-group">
-                <textarea class="form-control mb-4 p-3 edit-profile-text-input" id="exampleFormControlTextarea1" rows="1">User's country</textarea>
+                <textarea class="form-control mb-4 p-3 edit-profile-text-input" id="exampleFormControlTextarea1" rows="1">Portugal</textarea>
             </div>
 
             <h6 class="area-title">City</h6>
             <div class="form-group">
-                <textarea class="form-control mb-5 mt-1 p-3 edit-profile-text-input" id="exampleFormControlTextarea1" rows="1">User's city</textarea>
+                <textarea class="form-control mb-4 p-3 edit-profile-text-input" id="exampleFormControlTextarea1" rows="1">Ruílhe</textarea>
             </div>
+
+            <h6 class="area-title">Email</h6>
+            <div class="form-group">
+                <textarea class="form-control mb-4 p-3 edit-profile-text-input" id="exampleFormControlTextarea1" rows="1">jamieoliver@gmail.com</textarea>
+            </div>
+
+            <h6 class="area-title">Username</h6>
+            <div class="form-group">
+                <textarea class="form-control mb-5 p-3 edit-profile-text-input" id="exampleFormControlTextarea1" rows="1">jamieoliver</textarea>
+            </div>
+
             <h6 class="area-title">Profile Visibility <span class='form-required'></span></h6>
             <div class="form-check">
                 <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
@@ -97,16 +108,22 @@
                     Private
                 </label>
             </div>
-            <div class="row">
-                <div class="col text-start mt-5 mb-3 edit-profile-button-col">
-                    <button class="btn btn-primary submit-button">Submit</button>
-                </div>
-                <div class="col text-end mt-5 mb-3 edit-profile-button-col">
-                    <button class="btn btn-danger submit-button">
+            <div class="row d-flex justify-content-around justify-content-md-between my-5">
+                
+                    <button class="btn btn-primary submit-button my-2">Submit</button>
+                
+                    <button class="btn btn-secondary submit-button my-2">
+                        <i class="far fa-edit"></i>
+                        &nbsp; Change Password
+                    </button>
+                
+
+                
+                    <button class="btn btn-danger submit-button my-2">
                         <i class="fas fa-trash me-3"></i>
                         Delete Profile
                     </button>
-                </div>
+                
             </div>
         </div>
 
