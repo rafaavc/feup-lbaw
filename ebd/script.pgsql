@@ -153,7 +153,7 @@ CREATE TABLE tb_step (
     id_recipe integer NOT NULL,
 
     CONSTRAINT step_PK PRIMARY KEY (id),
-    CONSTRAINT step_recipe_PK FOREIGN KEY (id_recipe) REFERENCES "tb_recipe" (id) ON DELETE CASCADE ON UPDATE CASCADE
+    CONSTRAINT step_recipe_FK FOREIGN KEY (id_recipe) REFERENCES "tb_recipe" (id) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 CREATE TABLE tb_favourite (
