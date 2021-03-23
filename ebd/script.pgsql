@@ -223,7 +223,8 @@ CREATE TABLE tb_message (
 
     CONSTRAINT message_PK PRIMARY KEY (id),
     CONSTRAINT message_receiver_FK FOREIGN KEY (id_receiver) REFERENCES "tb_member" ON DELETE CASCADE ON UPDATE CASCADE,
-    CONSTRAINT message_sender_FK FOREIGN KEY (id_sender) REFERENCES "tb_member" ON DELETE CASCADE ON UPDATE CASCADE
+    CONSTRAINT message_sender_FK FOREIGN KEY (id_sender) REFERENCES "tb_member" ON DELETE CASCADE ON UPDATE CASCADE,
+    CONSTRAINT not_same_user_CK CHECK (id_receiver <> id_sender)
 );
 
 CREATE TABLE tb_comment (
