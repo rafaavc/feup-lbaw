@@ -1,3 +1,22 @@
+-- tb_member
+
+INSERT INTO tb_member (email, password, name, username, city, bio, id_country) VALUES ('ttuffell0@list-manage.com', 'Apk1siLs9f', 'Tera', 'tlowthian0', 'Betzdorf', 'I\'m 29 years, single and always willing to discover new stuff.', 189);
+INSERT INTO tb_member (email, password, name, username, city, bio, id_country) VALUES ('jmuffett1@friendfeed.com', 'cffKkGt56', 'Johnna', 'jminero1', 'Barão de Cocais', 'I\'m 50 years and I like to teach young people my recipes!', 169);
+INSERT INTO tb_member (email, password, name, username, city, bio, id_country) VALUES ('eklaiser2@pbs.org', 'EwkQyaD73K', 'Ethelda', 'erapsey2', 'Santo Niño', 'Francesinha is my favourite dish. Love portuguese cousin.', 140);
+INSERT INTO tb_member (email, password, name, username, city, bio, id_country) VALUES ('buwins3@scientificamerican.com', 'd2MY4IZ', 'Brittni', 'btumilson3', 'Santa Clara', 'I was born to eat.', 18);
+INSERT INTO tb_member (email, password, name, username, city, bio, id_country) VALUES ('marnett4@jugem.jp', '0s9SeMTu8', 'Marina', 'mhendren4', 'Zawiya', 'My speciality are candys!', 79);
+INSERT INTO tb_member (email, password, name, username, city, bio, id_country) VALUES ('rgillmore5@cisco.com', '7ccYdl4', 'Rudyard', 'rverheyden5', 'Kulaman', 'I love to eat snacks...', 145);
+INSERT INTO tb_member (email, password, name, username, city, bio, id_country) VALUES ('vminogue6@cargocollective.com', 'hqW978xRKm2P', 'Vaughn', 'vcomberbach6', 'Santa Cruz', 'Born to eat everything. It\'s all so delicous!', 33);
+INSERT INTO tb_member (email, password, name, username, city, bio, id_country) VALUES ('bdecleyne7@merriam-webster.com', 'Wq9ifRr', 'Bart', 'bfellow7', 'Huari', 'I\'m pro on cooking vegeterian recipes!', 49);
+INSERT INTO tb_member (email, password, name, username, city, bio, id_country) VALUES ('ebraams8@free.fr', 'T5ycvjggN', 'Ely', 'eleggis8', 'Tam Bình', 'I\'ve cooked all the recipes in TasteBuds!', 3);
+INSERT INTO tb_member (email, password, name, username, city, bio, id_country) VALUES ('mreijmers9@paginegialle.it', 'mSKncZpsyNB', 'Mace', 'msolan9', 'Magdalena', 'You can learn so many recipes with me! I\'m a chef!', 38);
+INSERT INTO tb_member (email, password, name, username, city, bio, id_country) VALUES ('rqueyosa@cnet.com', 'DvWfq2zJJJ9P', 'Rogerio', 'rdudeniea', 'Lam Plai Mat', 'Master Chef\'s winner 2021 edition!', 88);
+INSERT INTO tb_member (email, password, name, username, city, bio, id_country) VALUES ('mfrawleyb@state.tx.us', 'EsElC0bKJs', 'Maxi', 'melbyb', 'Kungsör', 'Hell\'s Kitchen Winner 2021 award!', 222);
+INSERT INTO tb_member (email, password, name, username, city, bio, id_country) VALUES ('ntrustyc@wisc.edu', 'PYgWfjHqCLU', 'Nadiya', 'nguidellic', 'Taibai', 'Owner of 3 Michelin stars. I rule the food industry.', 118);
+INSERT INTO tb_member (email, password, name, username, city, bio, id_country) VALUES ('litzcovichchd@e-recht24.de', 'jzIuJXfN', 'Lynde', 'lrubertd', 'Paris 19', 'I love to see the variaty of recipes in this website. It makes me want to cook them all!', 25);
+INSERT INTO tb_member (email, password, name, username, city, bio, id_country) VALUES ('ebunklee@purevolume.com', 'pdqCQtgOUqT', 'Ellwood', 'etoune', 'Rentung', 'I\'m here to have fun and feel new flavours. Nhummy!', 187);
+
+
 -- tb_country
 
 INSERT INTO tb_country(name, abbreviation) VALUES 
