@@ -1,9 +1,5 @@
 -- 17 - Create review
 
--- - [ ] comment
---     - member
---     - recipe
-
--- INSERT INTO tb_comment(text, id_member, id_) 
--- VALUES("A new comment has been inser)
+INSERT INTO tb_comment(text, rating, id_member, id_recipe) 
+VALUES("Absolutely delicious!", 5, 1, 1);
 
