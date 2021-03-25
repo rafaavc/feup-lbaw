@@ -3,22 +3,36 @@
 INSERT INTO tb_comment(text, rating, id_member, id_recipe) 
 VALUES("Absolutely delicious!", 5, 1, 1);
 
--- 1 - Member Information
+-- 1 - Member Information (Profile)
 
-SELECT tb_member.name, tb_member.username, tb_member.city, tb_member.bio, tb_member.visibility, tb_member.score, tb_country.name,
+SELECT tb_member.name, tb_member.username, tb_member.city, tb_member.bio, tb_member.visibility, coalesce(tb_member.score, 0) AS score, tb_country.name,
 (SELECT COUNT(*) FROM tb_recipe WHERE id_member = tb_member.id) AS number_recipes,
-(SELECT COUNT(*) FROM tb_following WHERE id_following = tb.member.id) AS number_following,
-(SELECT COUNT(*) FROM tb_following WHERE id_followed = tb.member.id) AS number_followed
+(SELECT COUNT(*) FROM tb_following WHERE id_following = tb_member.id) AS number_following,
+(SELECT COUNT(*) FROM tb_following WHERE id_followed = tb_member.id) AS number_followed
 FROM tb_member
 JOIN tb_country ON tb_member.id_country = tb_country.id;
+WHERE tb_member.id = $userId; -- $userId
+
+-- Users following (Profile)
+
+SELECT tb_following.id_followed 
+FROM tb_following
+WHERE tb_following.id_following = $userId; -- $userId
+
+-- User Groups (Profile)
+
+SELECT tb_group.id, tb_group.name
+FROM tb_group_member
+JOIN tb_group ON tb_group_member.id_group = tb_group.id
+WHERE tb_group_member.id_member = $userId; -- $userId
 
 -- 3 - Recipe information (tags, category, ingredients, units, steps, comments, etc.)
 
-SELECT tb_recipe.name, tb_recipe.difficulty, tb_recipe.description, tb_recipe.servings, tb_recipe.preparation_time, tb_recipe.cooking_time, tb_recipe.additional_time, tb_recipe.visibility,
+SELECT tb_recipe.name, tb_recipe.description, tb_recipe.servings, tb_recipe.preparation_time, tb_recipe.cooking_time, tb_recipe.additional_time, tb_recipe.visibility,
     tb_recipe.creation_time, tb_recipe.score, tb_member.name, tb_member.username, tb_tag.name, tb_category.name, tb_ingredient.name
 FROM tb_recipe
 JOIN tb_member ON tb_recipe.id_member = tb_member.id
-JOIN tb_category ON tb_recipe.id_category = tb_category.id_category;
+JOIN tb_category ON tb_recipe.id_category = tb_category.id;
 
 -- Tags
 
@@ -29,7 +43,7 @@ JOIN tb_tag ON tb_tag_recipe.id_tag = tb_tag.id;
 
 -- Ingredients
 
-SELECT tb_ingredient.name, tb_ingredient_recipe.quantity, tb_unit.text, tb_recipe.id
+SELECT tb_ingredient.name, tb_ingredient_recipe.quantity, tb_unit.name, tb_recipe.id
 FROM tb_ingredient_recipe
 JOIN tb_recipe ON tb_ingredient_recipe.id_recipe = tb_recipe.id
 JOIN tb_ingredient ON tb_ingredient_recipe.id_ingredient = tb_ingredient.id
