@@ -1,15 +1,15 @@
 -- tb_recipe_report
 
-INSERT INTO tb_recipe_report (id_reporter, reason, active, id_recipe) VALUES (338, 'Devolved well-modulated projection', true, 47);
-INSERT INTO tb_recipe_report (id_reporter, reason, active, id_recipe) VALUES (331, 'Visionary multi-tasking complexity', true, 46);
-INSERT INTO tb_recipe_report (id_reporter, reason, active, id_recipe) VALUES (117, 'Programmable high-level forecast', true, 13);
-INSERT INTO tb_recipe_report (id_reporter, reason, active, id_recipe) VALUES (246, 'Persevering regional circuit', true, 81);
-INSERT INTO tb_recipe_report (id_reporter, reason, active, id_recipe) VALUES (155, 'Monitored methodical Graphic Interface', true, 42);
-INSERT INTO tb_recipe_report (id_reporter, reason, active, id_recipe) VALUES (283, 'Cloned full-range data-warehouse', true, 83);
-INSERT INTO tb_recipe_report (id_reporter, reason, active, id_recipe) VALUES (308, 'Down-sized mobile contingency', true, 23);
-INSERT INTO tb_recipe_report (id_reporter, reason, active, id_recipe) VALUES (299, 'Pre-emptive modular array', true, 98);
-INSERT INTO tb_recipe_report (id_reporter, reason, active, id_recipe) VALUES (79, 'Fundamental disintermediate attitude', true, 4);
-INSERT INTO tb_recipe_report (id_reporter, reason, active, id_recipe) VALUES (292, 'Monitored value-added encoding', true, 29);
+INSERT INTO tb_recipe_report (id_reporter, reason, active, id_recipe) VALUES (338, 'Devolved well-modulated projection', TRUE, 47);
+INSERT INTO tb_recipe_report (id_reporter, reason, active, id_recipe) VALUES (331, 'Visionary multi-tasking complexity', TRUE, 46);
+INSERT INTO tb_recipe_report (id_reporter, reason, active, id_recipe) VALUES (117, 'Programmable high-level forecast', TRUE, 13);
+INSERT INTO tb_recipe_report (id_reporter, reason, active, id_recipe) VALUES (246, 'Persevering regional circuit', TRUE, 81);
+INSERT INTO tb_recipe_report (id_reporter, reason, active, id_recipe) VALUES (155, 'Monitored methodical Graphic Interface', TRUE, 42);
+INSERT INTO tb_recipe_report (id_reporter, reason, active, id_recipe) VALUES (283, 'Cloned full-range data-warehouse', TRUE, 83);
+INSERT INTO tb_recipe_report (id_reporter, reason, active, id_recipe) VALUES (308, 'Down-sized mobile contingency', TRUE, 23);
+INSERT INTO tb_recipe_report (id_reporter, reason, active, id_recipe) VALUES (299, 'Pre-emptive modular array', TRUE, 98);
+INSERT INTO tb_recipe_report (id_reporter, reason, active, id_recipe) VALUES (79, 'Fundamental disintermediate attitude', TRUE, 4);
+INSERT INTO tb_recipe_report (id_reporter, reason, active, id_recipe) VALUES (292, 'Monitored value-added encoding', TRUE, 29);
 
 -- tb_group_request
 

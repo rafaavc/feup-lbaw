@@ -78,6 +78,7 @@ CREATE TABLE tb_unit (
 CREATE TABLE tb_conversion (
     unit_1 integer NOT NULL,
     unit_2 integer NOT NULL,
+    factor real NOT NULL,
 
     CONSTRAINT conversion_PK PRIMARY KEY (unit_1, unit_2),
     CONSTRAINT conversion_unit_1_FK FOREIGN KEY (unit_1) REFERENCES "tb_unit" (id) ON DELETE CASCADE ON UPDATE CASCADE,
@@ -293,7 +294,7 @@ CREATE TABLE tb_comment_report (
     id SERIAL,
     id_reporter integer NOT NULL,
     reason text NOT NULL,
-    active text NOT NULL,
+    active boolean NOT NULL,
     id_comment integer NOT NULL,
 
     CONSTRAINT comment_report_PK PRIMARY KEY (id),
@@ -305,7 +306,7 @@ CREATE TABLE tb_recipe_report (
     id SERIAL,
     id_reporter integer NOT NULL,
     reason text NOT NULL,
-    active text NOT NULL,
+    active boolean NOT NULL,
     id_recipe integer NOT NULL,
 
     CONSTRAINT recipe_report_PK PRIMARY KEY (id),
