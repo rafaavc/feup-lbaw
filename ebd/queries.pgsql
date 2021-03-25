@@ -29,17 +29,20 @@ WHERE tb_group_member.id_member = $userId; -- $userId
 -- 3 - Recipe information (tags, category, ingredients, units, steps, comments, etc.)
 
 SELECT tb_recipe.name, tb_recipe.description, tb_recipe.servings, tb_recipe.preparation_time, tb_recipe.cooking_time, tb_recipe.additional_time, tb_recipe.visibility,
-    tb_recipe.creation_time, tb_recipe.score, tb_member.name, tb_member.username, tb_tag.name, tb_category.name, tb_ingredient.name
+    tb_recipe.creation_time, tb_recipe.score, tb_member.name, tb_member.username, tb_category.name,
+    (SELECT COUNT(*) FROM tb_comment WHERE id_recipe = $recipeId AND rating IS NOT NULL) AS number_ratings
 FROM tb_recipe
 JOIN tb_member ON tb_recipe.id_member = tb_member.id
-JOIN tb_category ON tb_recipe.id_category = tb_category.id;
+JOIN tb_category ON tb_recipe.id_category = tb_category.id
+WHERE tb_recipe.id = $recipeId; -- $recipeId
 
 -- Tags
 
-SELECT tb_tag.name, tb_recipe.id
+SELECT tb_tag.id, tb_tag.name
 FROM tb_tag_recipe
 JOIN tb_recipe ON tb_tag_recipe.id_recipe = tb_recipe.id
-JOIN tb_tag ON tb_tag_recipe.id_tag = tb_tag.id;
+JOIN tb_tag ON tb_tag_recipe.id_tag = tb_tag.id
+WHERE 
 
 -- Ingredients
 
@@ -48,20 +51,24 @@ FROM tb_ingredient_recipe
 JOIN tb_recipe ON tb_ingredient_recipe.id_recipe = tb_recipe.id
 JOIN tb_ingredient ON tb_ingredient_recipe.id_ingredient = tb_ingredient.id
 JOIN tb_unit ON tb_ingredient_recipe.id_unit = tb_unit.id;
+WHERE tb_recipe.id = $recipeId -- $recipeId
 
 -- Steps
 
-SELECT tb_step.name, tb_step.description, tb_recipe.id
+SELECT tb_step.id, tb_step.name, tb_step.description
 FROM tb_step
-JOIN tb_recipe ON tb_step.id_recipe = tb_recipe.id;
+JOIN tb_recipe ON tb_step.id_recipe = tb_recipe.id
+WHERE tb_recipe.id = $recipeId; -- $recipeId
 
 -- Comments
 
-SELECT tb_comment.text, tb_comment.post_time, tb_answer.father_comment
+SELECT tb_comment.text, tb_comment.post_time, tb_answer.father_comment, tb_member.name, tb_member.id
 FROM tb_comment
 JOIN tb_recipe ON tb_comment.id = tb_recipe.id
 JOIN tb_answer ON tb_comment.id = tb_answer.id_comment
-WHERE tb_comment.rating IS NULL;
+JOIN tb_member ON tb_comment.id_member = tb_member.id
+WHERE tb_recipe.id = $recipeId, -- $recipeId
+-- WHERE tb_comment.rating IS NULL;
 
 -- Reviews
 
