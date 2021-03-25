@@ -5,7 +5,10 @@ VALUES("Absolutely delicious!", 5, 1, 1);
 
 -- 1 - Member Information
 
-SELECT tb_member.name, tb_member.username, tb_member.city, tb_member.bio, tb_member.visibility, tb_member.score, tb_country.name
+SELECT tb_member.name, tb_member.username, tb_member.city, tb_member.bio, tb_member.visibility, tb_member.score, tb_country.name,
+(SELECT COUNT(*) FROM tb_recipe WHERE id_member = tb_member.id) AS number_recipes,
+(SELECT COUNT(*) FROM tb_following WHERE id_following = tb.member.id) AS number_following,
+(SELECT COUNT(*) FROM tb_following WHERE id_followed = tb.member.id) AS number_followed
 FROM tb_member
 JOIN tb_country ON tb_member.id_country = tb_country.id;
 
@@ -54,4 +57,6 @@ JOIN tb_recipe ON tb_comment.id = tb_recipe.id
 WHERE tb_comment.rating IS NOT NULL;
 
 
+
 -- Still need to specify the id for queries...
+
