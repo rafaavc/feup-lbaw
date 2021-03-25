@@ -81,3 +81,75 @@ WHERE tb_comment.rating IS NOT NULL;
 
 -- Still need to specify the id for queries...
 
+DROP FUNCTION IF EXISTS comment_elapsed_time(timestamptz) CASCADE;
+CREATE OR REPLACE FUNCTION comment_elapsed_time(comment_creation_time timestamptz)
+RETURNS TEXT AS $timeString$ 
+DECLARE 
+    time_unit INTEGER;
+BEGIN
+    -- Year
+	SELECT EXTRACT(YEAR FROM AGE(comment_creation_time, '2021-03-22 19:10:25'::timestamptz)) INTO time_unit;
+   	IF time_unit > 0 THEN
+        IF time_unit > 1 THEN
+            RETURN CONCAT(time_unit, ' years ago');
+        ELSE
+            RETURN CONCAT(time_unit, ' year ago');
+        END IF;
+    END IF;
+    
+    -- Months
+	SELECT EXTRACT(MONTH FROM AGE(comment_creation_time, '2021-03-25 19:10:25'::timestamptz)) INTO time_unit;
+	IF time_unit > 0 THEN
+        IF time_unit > 1 THEN
+            RETURN CONCAT(time_unit, ' months ago');
+        ELSE
+            RETURN CONCAT(time_unit, ' month ago');
+        END IF;
+    END IF;
+
+    -- Days
+	SELECT EXTRACT(DAY FROM AGE(comment_creation_time, '2021-03-25 19:10:25'::timestamptz)) INTO time_unit;
+    IF time_unit > 0 THEN
+        IF time_unit > 1 THEN
+            RETURN CONCAT(time_unit, ' days ago');
+        ELSE
+            RETURN CONCAT(time_unit, ' day ago');
+        END IF;
+    END IF;
+
+    -- Hours
+	SELECT EXTRACT(HOUR FROM AGE(comment_creation_time, '2021-03-24 21:10:25'::timestamptz)) INTO time_unit;
+    IF time_unit > 0 THEN
+        IF time_unit > 1 THEN
+            RETURN CONCAT(time_unit, ' hours ago');
+        ELSE
+            RETURN CONCAT(time_unit, ' hour ago');
+        END IF;
+    END IF;
+
+    -- Minutes
+	SELECT EXTRACT(MINUTE FROM AGE(comment_creation_time, '2021-03-22 19:10:25'::timestamptz)) INTO time_unit;
+    IF time_unit > 0 THEN
+        IF time_unit > 1 THEN
+            RETURN CONCAT(time_unit, ' minutes ago');
+        ELSE
+            RETURN CONCAT(time_unit, ' minute ago');
+        END IF;
+    END IF;
+
+    -- Seconds
+	SELECT EXTRACT(SECOND FROM AGE(comment_creation_time, '2021-03-22 19:10:25'::timestamptz)) INTO time_unit;
+    IF time_unit > 0 THEN
+        IF time_unit > 1 THEN
+            RETURN CONCAT(time_unit, ' seconds ago');
+        ELSE
+            RETURN CONCAT(time_unit, ' second ago');
+        END IF;
+    END IF;
+
+    RETURN time_unit;
+END;
+$timeString$ LANGUAGE plpgsql;
+
+SELECT comment_elapsed_time(now());
+
