@@ -293,7 +293,7 @@ CREATE TABLE tb_comment_report (
     id SERIAL,
     id_reporter integer NOT NULL,
     reason text NOT NULL,
-    active text NOT NULL,
+    active boolean NOT NULL,
     id_comment integer NOT NULL,
 
     CONSTRAINT comment_report_PK PRIMARY KEY (id),
@@ -305,7 +305,7 @@ CREATE TABLE tb_recipe_report (
     id SERIAL,
     id_reporter integer NOT NULL,
     reason text NOT NULL,
-    active text NOT NULL,
+    active boolean NOT NULL,
     id_recipe integer NOT NULL,
 
     CONSTRAINT recipe_report_PK PRIMARY KEY (id),
