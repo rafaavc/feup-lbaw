@@ -46,7 +46,7 @@ WHERE
 
 -- Ingredients
 
-SELECT tb_ingredient.name, tb_ingredient_recipe.quantity, tb_unit.name, tb_recipe.id
+SELECT ttb_ingredient.id, b_ingredient.name, tb_ingredient_recipe.quantity, tb_unit.name, tb_recipe.id
 FROM tb_ingredient_recipe
 JOIN tb_recipe ON tb_ingredient_recipe.id_recipe = tb_recipe.id
 JOIN tb_ingredient ON tb_ingredient_recipe.id_ingredient = tb_ingredient.id
@@ -62,7 +62,7 @@ WHERE tb_recipe.id = $recipeId; -- $recipeId
 
 -- Comments
 
-SELECT tb_comment.text, comment_elapsed_time(tb_comment.post_time), tb_answer.father_comment, tb_member.name, tb_member.id
+SELECT tb_comment.id, tb_comment.text, comment_elapsed_time(tb_comment.post_time), tb_answer.father_comment, tb_member.name, tb_member.id
 FROM tb_comment
 JOIN tb_recipe ON tb_comment.id = tb_recipe.id
 JOIN tb_answer ON tb_comment.id = tb_answer.id_comment
@@ -72,7 +72,7 @@ WHERE tb_comment.rating IS NULL;
 
 -- Reviews
 
-SELECT tb_comment.text, tb_comment.rating, comment_elapsed_time(tb_comment.post_time)
+SELECT tb_comment.id, tb_comment.text, tb_comment.rating, comment_elapsed_time(tb_comment.post_time)
 FROM tb_comment
 JOIN tb_recipe ON tb_comment.id = tb_recipe.id
 WHERE tb_comment.rating IS NOT NULL AND tb_recipe.id = $recipeId; -- $recipeId
@@ -150,4 +150,31 @@ END;
 $timeString$ LANGUAGE plpgsql;
 
 SELECT comment_elapsed_time('2021-03-22 19:10:25'::timestamptz);
+
+-- 2 - Group Information 
+
+SELECT tb_group.name, tb_group.description, tb_group.visibility
+FROM tb_group
+WHERE tb_group.id = $groupId; -- $groupId
+
+-- Members
+
+SELECT tb_member.id, tb_member.username
+FROM tb_group_member
+JOIN tb_member ON tb_group_member.id_member = tb_group.id_member
+WHERE tb_group_member.id_group = $groupId; -- $groupId
+
+-- Group Requests
+
+SELECT tb_group_request.id, tb_group_request.state, tb_member.id, tb_member.name, tb_member.username
+FROM tb_group_request
+JOIN tb_member ON tb_group_request.id_member = tb_member.id
+WHERE tb_group = $groupId; -- $groupId
+
+-- Group Members
+
+SELECT tb_group_member.id_member, tb_member.username
+FROM tb_group_member
+JOIN tb_member ON tb_group_member.id_member = tb_member.id
+WHERE tb_group = $groupId; -- $groupId
 
