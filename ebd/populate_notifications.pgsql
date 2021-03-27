@@ -1,1 +1,0 @@
-INSERT INTO tb_comment_notification (id_receiver, id_comment) VALUES ('1','2');

@@ -277,15 +277,11 @@ CREATE TABLE tb_favourite_notification (
     id SERIAL,
     read boolean DEFAULT FALSE NOT NULL,
     timestamp datetime,
-    id_receiver integer NOT NULL,
-    id_caused_by integer NOT NULL,
     id_recipe integer NOT NULL,
+    id_member integer NOT NULL,
 
     CONSTRAINT favourite_notification_PK PRIMARY KEY (id),
-    CONSTRAINT favourite_notification_receiver_FK FOREIGN KEY (id_receiver) REFERENCES "tb_member" (id) ON DELETE CASCADE ON UPDATE CASCADE,
-    CONSTRAINT favourite_notification_caused_by_FK FOREIGN KEY (id_caused_by) REFERENCES "tb_member" (id) ON DELETE CASCADE ON UPDATE CASCADE,
-    CONSTRAINT favourite_notification_recipe_FK FOREIGN KEY (id_recipe) REFERENCES "tb_recipe" (id) ON DELETE CASCADE ON UPDATE CASCADE,
-    CONSTRAINT favourite_notification_not_same_user_CK CHECK (id_receiver <> id_caused_by)
+    CONSTRAINT favourite_notification_FK FOREIGN KEY (id_recipe, id_member) REFERENCES "tb_favourite" (id_recipe, id_member) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 CREATE TABLE tb_comment_report (
