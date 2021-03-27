@@ -72,607 +72,608 @@ INSERT INTO tb_group (name, description, visibility) VALUES ('Yum City', 'He gav
 INSERT INTO tb_group (name, description, visibility) VALUES ('Yummy Center', 'But surely a pan that warns you if your house is burning down or your food will kill you has to be worth $200 to you.', FALSE);
 INSERT INTO tb_group (name, description, visibility) VALUES ('Yummy Town', 'This would be the case in a besieged city or a nation using the food supply to keep its citizenry in check.', TRUE);
 
-INSERT INTO tb_country(name, abbreviation) VALUES ('Afghanistan','AF');
-INSERT INTO tb_country(name, abbreviation) VALUES ('Aland Islands','AX');
-INSERT INTO tb_country(name, abbreviation) VALUES ('Albania','AL');
-INSERT INTO tb_country(name, abbreviation) VALUES ('Algeria','DZ');
-INSERT INTO tb_country(name, abbreviation) VALUES ('American Samoa','AS');
-INSERT INTO tb_country(name, abbreviation) VALUES ('Andorra','AD');
-INSERT INTO tb_country(name, abbreviation) VALUES ('Angola','AO');
-INSERT INTO tb_country(name, abbreviation) VALUES ('Anguilla','AI');
-INSERT INTO tb_country(name, abbreviation) VALUES ('Antarctica','AQ');
-INSERT INTO tb_country(name, abbreviation) VALUES ('Antigua and Barbuda','AG');
-INSERT INTO tb_country(name, abbreviation) VALUES ('Argentina','AR');
-INSERT INTO tb_country(name, abbreviation) VALUES ('Armenia','AM');
-INSERT INTO tb_country(name, abbreviation) VALUES ('Aruba','AW');
-INSERT INTO tb_country(name, abbreviation) VALUES ('Australia','AU');
-INSERT INTO tb_country(name, abbreviation) VALUES ('Austria','AT');
-INSERT INTO tb_country(name, abbreviation) VALUES ('Azerbaijan','AZ');
-INSERT INTO tb_country(name, abbreviation) VALUES ('Bahamas','BS');
-INSERT INTO tb_country(name, abbreviation) VALUES ('Bahrain','BH');
-INSERT INTO tb_country(name, abbreviation) VALUES ('Bangladesh','BD');
-INSERT INTO tb_country(name, abbreviation) VALUES ('Barbados','BB');
-INSERT INTO tb_country(name, abbreviation) VALUES ('Belarus','BY');
-INSERT INTO tb_country(name, abbreviation) VALUES ('Belgium','BE');
-INSERT INTO tb_country(name, abbreviation) VALUES ('Belize','BZ');
-INSERT INTO tb_country(name, abbreviation) VALUES ('Benin','BJ');
-INSERT INTO tb_country(name, abbreviation) VALUES ('Bermuda','BM');
-INSERT INTO tb_country(name, abbreviation) VALUES ('Bhutan','BT');
-INSERT INTO tb_country(name, abbreviation) VALUES ('Bolivia','BO');
-INSERT INTO tb_country(name, abbreviation) VALUES ('Bonaire, Sint Eustatius and Saba','BQ');
-INSERT INTO tb_country(name, abbreviation) VALUES ('Bosnia and Herzegovina','BA');
-INSERT INTO tb_country(name, abbreviation) VALUES ('Botswana','BW');
-INSERT INTO tb_country(name, abbreviation) VALUES ('Bouvet Island','BV');
-INSERT INTO tb_country(name, abbreviation) VALUES ('Brazil','BR');
-INSERT INTO tb_country(name, abbreviation) VALUES ('British Indian Ocean Territory','IO');
-INSERT INTO tb_country(name, abbreviation) VALUES ('Brunei','BN');
-INSERT INTO tb_country(name, abbreviation) VALUES ('Bulgaria','BG');
-INSERT INTO tb_country(name, abbreviation) VALUES ('Burkina Faso','BF');
-INSERT INTO tb_country(name, abbreviation) VALUES ('Burundi','BI');
-INSERT INTO tb_country(name, abbreviation) VALUES ('Cambodia','KH');
-INSERT INTO tb_country(name, abbreviation) VALUES ('Cameroon','CM');
-INSERT INTO tb_country(name, abbreviation) VALUES ('Canada','CA');
-INSERT INTO tb_country(name, abbreviation) VALUES ('Cape Verde','CV');
-INSERT INTO tb_country(name, abbreviation) VALUES ('Cayman Islands','KY');
-INSERT INTO tb_country(name, abbreviation) VALUES ('Central African Republic','CF');
-INSERT INTO tb_country(name, abbreviation) VALUES ('Chad','TD');
-INSERT INTO tb_country(name, abbreviation) VALUES ('Chile','CL');
-INSERT INTO tb_country(name, abbreviation) VALUES ('China','CN');
-INSERT INTO tb_country(name, abbreviation) VALUES ('Christmas Island','CX');
-INSERT INTO tb_country(name, abbreviation) VALUES ('Cocos (K) Islands','CC');
-INSERT INTO tb_country(name, abbreviation) VALUES ('Colombia','CO');
-INSERT INTO tb_country(name, abbreviation) VALUES ('Comoros','KM');
-INSERT INTO tb_country(name, abbreviation) VALUES ('Congo','CG');
-INSERT INTO tb_country(name, abbreviation) VALUES ('Cook Islands','CK');
-INSERT INTO tb_country(name, abbreviation) VALUES ('Costa Rica','CR');
-INSERT INTO tb_country(name, abbreviation) VALUES ('Ivory Coast','CI');
-INSERT INTO tb_country(name, abbreviation) VALUES ('Croatia','HR');
-INSERT INTO tb_country(name, abbreviation) VALUES ('Cuba','CU');
-INSERT INTO tb_country(name, abbreviation) VALUES ('Curacao','CW');
-INSERT INTO tb_country(name, abbreviation) VALUES ('Cyprus','CY');
-INSERT INTO tb_country(name, abbreviation) VALUES ('Czech Republic','CZ');
-INSERT INTO tb_country(name, abbreviation) VALUES ('Democratic Republic of the Congo','CD');
-INSERT INTO tb_country(name, abbreviation) VALUES ('Denmark','DK');
-INSERT INTO tb_country(name, abbreviation) VALUES ('Djibouti','DJ');
-INSERT INTO tb_country(name, abbreviation) VALUES ('Dominica','DM');
-INSERT INTO tb_country(name, abbreviation) VALUES ('Dominican Republic','DO');
-INSERT INTO tb_country(name, abbreviation) VALUES ('Ecuador','EC');
-INSERT INTO tb_country(name, abbreviation) VALUES ('Egypt','EG');
-INSERT INTO tb_country(name, abbreviation) VALUES ('El Salvador','SV');
-INSERT INTO tb_country(name, abbreviation) VALUES ('Equatorial Guinea','GQ');
-INSERT INTO tb_country(name, abbreviation) VALUES ('Eritrea','ER');
-INSERT INTO tb_country(name, abbreviation) VALUES ('Estonia','EE');
-INSERT INTO tb_country(name, abbreviation) VALUES ('Ethiopia','ET');
-INSERT INTO tb_country(name, abbreviation) VALUES ('Falkland Islands (Ma)','FK');
-INSERT INTO tb_country(name, abbreviation) VALUES ('Faroe Islands','FO');
-INSERT INTO tb_country(name, abbreviation) VALUES ('Fiji','FJ');
-INSERT INTO tb_country(name, abbreviation) VALUES ('Finland','FI');
-INSERT INTO tb_country(name, abbreviation) VALUES ('France','FR');
-INSERT INTO tb_country(name, abbreviation) VALUES ('French Guiana','GF');
-INSERT INTO tb_country(name, abbreviation) VALUES ('French Polynesia','PF');
-INSERT INTO tb_country(name, abbreviation) VALUES ('French Southern Territories','TF');
-INSERT INTO tb_country(name, abbreviation) VALUES ('Gabon','GA');
-INSERT INTO tb_country(name, abbreviation) VALUES ('Gambia','GM');
-INSERT INTO tb_country(name, abbreviation) VALUES ('Georgia','GE');
-INSERT INTO tb_country(name, abbreviation) VALUES ('Germany','DE');
-INSERT INTO tb_country(name, abbreviation) VALUES ('Ghana','GH');
-INSERT INTO tb_country(name, abbreviation) VALUES ('Gibraltar','GI');
-INSERT INTO tb_country(name, abbreviation) VALUES ('Greece','GR');
-INSERT INTO tb_country(name, abbreviation) VALUES ('Greenland','GL');
-INSERT INTO tb_country(name, abbreviation) VALUES ('Grenada','GD');
-INSERT INTO tb_country(name, abbreviation) VALUES ('Guadaloupe','GP');
-INSERT INTO tb_country(name, abbreviation) VALUES ('Guam','GU');
-INSERT INTO tb_country(name, abbreviation) VALUES ('Guatemala','GT');
-INSERT INTO tb_country(name, abbreviation) VALUES ('Guernsey','GG');
-INSERT INTO tb_country(name, abbreviation) VALUES ('Guinea','GN');
-INSERT INTO tb_country(name, abbreviation) VALUES ('Guinea-Bissau','GW');
-INSERT INTO tb_country(name, abbreviation) VALUES ('Guyana','GY');
-INSERT INTO tb_country(name, abbreviation) VALUES ('Haiti','HT');
-INSERT INTO tb_country(name, abbreviation) VALUES ('Heard Island and McDonald Islands','HM');
-INSERT INTO tb_country(name, abbreviation) VALUES ('Honduras','HN');
-INSERT INTO tb_country(name, abbreviation) VALUES ('Hong Kong','HK');
-INSERT INTO tb_country(name, abbreviation) VALUES ('Hungary','HU');
-INSERT INTO tb_country(name, abbreviation) VALUES ('Iceland','IS');
-INSERT INTO tb_country(name, abbreviation) VALUES ('India','IN');
-INSERT INTO tb_country(name, abbreviation) VALUES ('Indonesia','ID');
-INSERT INTO tb_country(name, abbreviation) VALUES ('Iran','IR');
-INSERT INTO tb_country(name, abbreviation) VALUES ('Iraq','IQ');
-INSERT INTO tb_country(name, abbreviation) VALUES ('Ireland','IE');
-INSERT INTO tb_country(name, abbreviation) VALUES ('Isle of Man','IM');
-INSERT INTO tb_country(name, abbreviation) VALUES ('Israel','IL');
-INSERT INTO tb_country(name, abbreviation) VALUES ('Italy','IT');
-INSERT INTO tb_country(name, abbreviation) VALUES ('Jamaica','JM');
-INSERT INTO tb_country(name, abbreviation) VALUES ('Japan','JP');
-INSERT INTO tb_country(name, abbreviation) VALUES ('Jersey','JE');
-INSERT INTO tb_country(name, abbreviation) VALUES ('Jordan','JO');
-INSERT INTO tb_country(name, abbreviation) VALUES ('Kazakhstan','KZ');
-INSERT INTO tb_country(name, abbreviation) VALUES ('Kenya','KE');
-INSERT INTO tb_country(name, abbreviation) VALUES ('Kiribati','KI');
-INSERT INTO tb_country(name, abbreviation) VALUES ('Kosovo','XK');
-INSERT INTO tb_country(name, abbreviation) VALUES ('Kuwait','KW');
-INSERT INTO tb_country(name, abbreviation) VALUES ('Kyrgyzstan','KG');
-INSERT INTO tb_country(name, abbreviation) VALUES ('Laos','LA');
-INSERT INTO tb_country(name, abbreviation) VALUES ('Latvia','LV');
-INSERT INTO tb_country(name, abbreviation) VALUES ('Lebanon','LB');
-INSERT INTO tb_country(name, abbreviation) VALUES ('Lesotho','LS');
-INSERT INTO tb_country(name, abbreviation) VALUES ('Liberia','LR');
-INSERT INTO tb_country(name, abbreviation) VALUES ('Libya','LY');
-INSERT INTO tb_country(name, abbreviation) VALUES ('Liechtenstein','LI');
-INSERT INTO tb_country(name, abbreviation) VALUES ('Lithuania','LT');
-INSERT INTO tb_country(name, abbreviation) VALUES ('Luxembourg','LU');
-INSERT INTO tb_country(name, abbreviation) VALUES ('Macao','MO');
-INSERT INTO tb_country(name, abbreviation) VALUES ('Macedonia','MK');
-INSERT INTO tb_country(name, abbreviation) VALUES ('Madagascar','MG');
-INSERT INTO tb_country(name, abbreviation) VALUES ('Malawi','MW');
-INSERT INTO tb_country(name, abbreviation) VALUES ('Malaysia','MY');
-INSERT INTO tb_country(name, abbreviation) VALUES ('Maldives','MV');
-INSERT INTO tb_country(name, abbreviation) VALUES ('Mali','ML');
-INSERT INTO tb_country(name, abbreviation) VALUES ('Malta','MT');
-INSERT INTO tb_country(name, abbreviation) VALUES ('Marshall Islands','MH');
-INSERT INTO tb_country(name, abbreviation) VALUES ('Martinique','MQ');
-INSERT INTO tb_country(name, abbreviation) VALUES ('Mauritania','MR');
-INSERT INTO tb_country(name, abbreviation) VALUES ('Mauritius','MU');
-INSERT INTO tb_country(name, abbreviation) VALUES ('Mayotte','YT');
-INSERT INTO tb_country(name, abbreviation) VALUES ('Mexico','MX');
-INSERT INTO tb_country(name, abbreviation) VALUES ('Micronesia','FM');
-INSERT INTO tb_country(name, abbreviation) VALUES ('Moldava','MD');
-INSERT INTO tb_country(name, abbreviation) VALUES ('Monaco','MC');
-INSERT INTO tb_country(name, abbreviation) VALUES ('Mongolia','MN');
-INSERT INTO tb_country(name, abbreviation) VALUES ('Montenegro','ME');
-INSERT INTO tb_country(name, abbreviation) VALUES ('Montserrat','MS');
-INSERT INTO tb_country(name, abbreviation) VALUES ('Morocco','MA');
-INSERT INTO tb_country(name, abbreviation) VALUES ('Mozambique','MZ');
-INSERT INTO tb_country(name, abbreviation) VALUES ('Myanmar )','MM');
-INSERT INTO tb_country(name, abbreviation) VALUES ('Namibia','NA');
-INSERT INTO tb_country(name, abbreviation) VALUES ('Nauru','NR');
-INSERT INTO tb_country(name, abbreviation) VALUES ('Nepal','NP');
-INSERT INTO tb_country(name, abbreviation) VALUES ('Netherlands','NL');
-INSERT INTO tb_country(name, abbreviation) VALUES ('New Caledonia','NC');
-INSERT INTO tb_country(name, abbreviation) VALUES ('New Zealand','NZ');
-INSERT INTO tb_country(name, abbreviation) VALUES ('Nicaragua','NI');
-INSERT INTO tb_country(name, abbreviation) VALUES ('Niger','NE');
-INSERT INTO tb_country(name, abbreviation) VALUES ('Nigeria','NG');
-INSERT INTO tb_country(name, abbreviation) VALUES ('Niue','NU');
-INSERT INTO tb_country(name, abbreviation) VALUES ('Norfolk Island','NF');
-INSERT INTO tb_country(name, abbreviation) VALUES ('North Korea','KP');
-INSERT INTO tb_country(name, abbreviation) VALUES ('Northern Mariana Islands','MP');
-INSERT INTO tb_country(name, abbreviation) VALUES ('Norway','NO');
-INSERT INTO tb_country(name, abbreviation) VALUES ('Oman','OM');
-INSERT INTO tb_country(name, abbreviation) VALUES ('Pakistan','PK');
-INSERT INTO tb_country(name, abbreviation) VALUES ('Palau','PW');
-INSERT INTO tb_country(name, abbreviation) VALUES ('Palestine','PS');
-INSERT INTO tb_country(name, abbreviation) VALUES ('Panama','PA');
-INSERT INTO tb_country(name, abbreviation) VALUES ('Papua New Guinea','PG');
-INSERT INTO tb_country(name, abbreviation) VALUES ('Paraguay','PY');
-INSERT INTO tb_country(name, abbreviation) VALUES ('Peru','PE');
-INSERT INTO tb_country(name, abbreviation) VALUES ('Phillipines','PH');
-INSERT INTO tb_country(name, abbreviation) VALUES ('Pitcairn','PN');
-INSERT INTO tb_country(name, abbreviation) VALUES ('Poland','PL');
-INSERT INTO tb_country(name, abbreviation) VALUES ('Portugal','PT');
-INSERT INTO tb_country(name, abbreviation) VALUES ('Puerto Rico','PR');
-INSERT INTO tb_country(name, abbreviation) VALUES ('Qatar','QA');
-INSERT INTO tb_country(name, abbreviation) VALUES ('Reunion','RE');
-INSERT INTO tb_country(name, abbreviation) VALUES ('Romania','RO');
-INSERT INTO tb_country(name, abbreviation) VALUES ('Russia','RU');
-INSERT INTO tb_country(name, abbreviation) VALUES ('Rwanda','RW');
-INSERT INTO tb_country(name, abbreviation) VALUES ('Saint Barthelemy','BL');
-INSERT INTO tb_country(name, abbreviation) VALUES ('Saint Helena','SH');
-INSERT INTO tb_country(name, abbreviation) VALUES ('Saint Kitts and Nevis','KN');
-INSERT INTO tb_country(name, abbreviation) VALUES ('Saint Lucia','LC');
-INSERT INTO tb_country(name, abbreviation) VALUES ('Saint Martin','MF');
-INSERT INTO tb_country(name, abbreviation) VALUES ('Saint Pierre and Miquelon','PM');
-INSERT INTO tb_country(name, abbreviation) VALUES ('Saint Vincent and the Grenadines','VC');
-INSERT INTO tb_country(name, abbreviation) VALUES ('Samoa','WS');
-INSERT INTO tb_country(name, abbreviation) VALUES ('San Marino','SM');
-INSERT INTO tb_country(name, abbreviation) VALUES ('Sao Tome and Principe','ST');
-INSERT INTO tb_country(name, abbreviation) VALUES ('Saudi Arabia','SA');
-INSERT INTO tb_country(name, abbreviation) VALUES ('Senegal','SN');
-INSERT INTO tb_country(name, abbreviation) VALUES ('Serbia','RS');
-INSERT INTO tb_country(name, abbreviation) VALUES ('Seychelles','SC');
-INSERT INTO tb_country(name, abbreviation) VALUES ('Sierra Leone','SL');
-INSERT INTO tb_country(name, abbreviation) VALUES ('Singapore','SG');
-INSERT INTO tb_country(name, abbreviation) VALUES ('Sint Maarten','SX');
-INSERT INTO tb_country(name, abbreviation) VALUES ('Slovakia','SK');
-INSERT INTO tb_country(name, abbreviation) VALUES ('Slovenia','SI');
-INSERT INTO tb_country(name, abbreviation) VALUES ('Solomon Islands','SB');
-INSERT INTO tb_country(name, abbreviation) VALUES ('Somalia','SO');
-INSERT INTO tb_country(name, abbreviation) VALUES ('South Africa','ZA');
-INSERT INTO tb_country(name, abbreviation) VALUES ('South Georgia and the South Sandwich Islands','GS');
-INSERT INTO tb_country(name, abbreviation) VALUES ('South Korea','KR');
-INSERT INTO tb_country(name, abbreviation) VALUES ('South Sudan','SS');
-INSERT INTO tb_country(name, abbreviation) VALUES ('Spain','ES');
-INSERT INTO tb_country(name, abbreviation) VALUES ('Sri Lanka','LK');
-INSERT INTO tb_country(name, abbreviation) VALUES ('Sudan','SD');
-INSERT INTO tb_country(name, abbreviation) VALUES ('Suriname','SR');
-INSERT INTO tb_country(name, abbreviation) VALUES ('Svalbard and Jan Mayen','SJ');
-INSERT INTO tb_country(name, abbreviation) VALUES ('Swaziland','SZ');
-INSERT INTO tb_country(name, abbreviation) VALUES ('Sweden','SE');
-INSERT INTO tb_country(name, abbreviation) VALUES ('Switzerland','CH');
-INSERT INTO tb_country(name, abbreviation) VALUES ('Syria','SY');
-INSERT INTO tb_country(name, abbreviation) VALUES ('Taiwan','TW');
-INSERT INTO tb_country(name, abbreviation) VALUES ('Tajikistan','TJ');
-INSERT INTO tb_country(name, abbreviation) VALUES ('Tanzania','TZ');
-INSERT INTO tb_country(name, abbreviation) VALUES ('Thailand','TH');
-INSERT INTO tb_country(name, abbreviation) VALUES ('Timor-Leste (East)','TL');
-INSERT INTO tb_country(name, abbreviation) VALUES ('Togo','TG');
-INSERT INTO tb_country(name, abbreviation) VALUES ('Tokelau','TK');
-INSERT INTO tb_country(name, abbreviation) VALUES ('Tonga','TO');
-INSERT INTO tb_country(name, abbreviation) VALUES ('Trinidad and Tobago','TT');
-INSERT INTO tb_country(name, abbreviation) VALUES ('Tunisia','TN');
-INSERT INTO tb_country(name, abbreviation) VALUES ('Turkey','TR');
-INSERT INTO tb_country(name, abbreviation) VALUES ('Turkmenistan','TM');
-INSERT INTO tb_country(name, abbreviation) VALUES ('Turks and Caicos Islands','TC');
-INSERT INTO tb_country(name, abbreviation) VALUES ('Tuvalu','TV');
-INSERT INTO tb_country(name, abbreviation) VALUES ('Uganda','UG');
-INSERT INTO tb_country(name, abbreviation) VALUES ('Ukraine','UA');
-INSERT INTO tb_country(name, abbreviation) VALUES ('United Arab Emirates','AE');
-INSERT INTO tb_country(name, abbreviation) VALUES ('United Kingdom','GB');
-INSERT INTO tb_country(name, abbreviation) VALUES ('United States','US');
-INSERT INTO tb_country(name, abbreviation) VALUES ('United States Minor Outlying Islands','UM');
-INSERT INTO tb_country(name, abbreviation) VALUES ('Uruguay','UY');
-INSERT INTO tb_country(name, abbreviation) VALUES ('Uzbekistan','UZ');
-INSERT INTO tb_country(name, abbreviation) VALUES ('Vanuatu','VU');
-INSERT INTO tb_country(name, abbreviation) VALUES ('Vatican City','VA');
-INSERT INTO tb_country(name, abbreviation) VALUES ('Venezuela','VE');
-INSERT INTO tb_country(name, abbreviation) VALUES ('Vietnam','VN');
-INSERT INTO tb_country(name, abbreviation) VALUES ('Virgin Islands, British','VG');
-INSERT INTO tb_country(name, abbreviation) VALUES ('Virgin Islands, US','VI');
-INSERT INTO tb_country(name, abbreviation) VALUES ('Wallis and Futuna','WF');
-INSERT INTO tb_country(name, abbreviation) VALUES ('Western Sahara','EH');
-INSERT INTO tb_country(name, abbreviation) VALUES ('Yemen','YE');
-INSERT INTO tb_country(name, abbreviation) VALUES ('Zambia','ZM');
-INSERT INTO tb_country(name, abbreviation) VALUES ('Zimbabwe','ZW');
+INSERT INTO tb_country(name, abbreviation) VALUES 
+('Afghanistan','AF')
+,('Aland Islands','AX')
+,('Albania','AL')
+,('Algeria','DZ')
+,('American Samoa','AS')
+,('Andorra','AD')
+,('Angola','AO')
+,('Anguilla','AI')
+,('Antarctica','AQ')
+,('Antigua and Barbuda','AG')
+,('Argentina','AR')
+,('Armenia','AM')
+,('Aruba','AW')
+,('Australia','AU')
+,('Austria','AT')
+,('Azerbaijan','AZ')
+,('Bahamas','BS')
+,('Bahrain','BH')
+,('Bangladesh','BD')
+,('Barbados','BB')
+,('Belarus','BY')
+,('Belgium','BE')
+,('Belize','BZ')
+,('Benin','BJ')
+,('Bermuda','BM')
+,('Bhutan','BT')
+,('Bolivia','BO')
+,('Bonaire, Sint Eustatius and Saba','BQ')
+,('Bosnia and Herzegovina','BA')
+,('Botswana','BW')
+,('Bouvet Island','BV')
+,('Brazil','BR')
+,('British Indian Ocean Territory','IO')
+,('Brunei','BN')
+,('Bulgaria','BG')
+,('Burkina Faso','BF')
+,('Burundi','BI')
+,('Cambodia','KH')
+,('Cameroon','CM')
+,('Canada','CA')
+,('Cape Verde','CV')
+,('Cayman Islands','KY')
+,('Central African Republic','CF')
+,('Chad','TD')
+,('Chile','CL')
+,('China','CN')
+,('Christmas Island','CX')
+,('Cocos (K) Islands','CC')
+,('Colombia','CO')
+,('Comoros','KM')
+,('Congo','CG')
+,('Cook Islands','CK')
+,('Costa Rica','CR')
+,('Ivory Coast','CI')
+,('Croatia','HR')
+,('Cuba','CU')
+,('Curacao','CW')
+,('Cyprus','CY')
+,('Czech Republic','CZ')
+,('Democratic Republic of the Congo','CD')
+,('Denmark','DK')
+,('Djibouti','DJ')
+,('Dominica','DM')
+,('Dominican Republic','DO')
+,('Ecuador','EC')
+,('Egypt','EG')
+,('El Salvador','SV')
+,('Equatorial Guinea','GQ')
+,('Eritrea','ER')
+,('Estonia','EE')
+,('Ethiopia','ET')
+,('Falkland Islands (Ma)','FK')
+,('Faroe Islands','FO')
+,('Fiji','FJ')
+,('Finland','FI')
+,('France','FR')
+,('French Guiana','GF')
+,('French Polynesia','PF')
+,('French Southern Territories','TF')
+,('Gabon','GA')
+,('Gambia','GM')
+,('Georgia','GE')
+,('Germany','DE')
+,('Ghana','GH')
+,('Gibraltar','GI')
+,('Greece','GR')
+,('Greenland','GL')
+,('Grenada','GD')
+,('Guadaloupe','GP')
+,('Guam','GU')
+,('Guatemala','GT')
+,('Guernsey','GG')
+,('Guinea','GN')
+,('Guinea-Bissau','GW')
+,('Guyana','GY')
+,('Haiti','HT')
+,('Heard Island and McDonald Islands','HM')
+,('Honduras','HN')
+,('Hong Kong','HK')
+,('Hungary','HU')
+,('Iceland','IS')
+,('India','IN')
+,('Indonesia','ID')
+,('Iran','IR')
+,('Iraq','IQ')
+,('Ireland','IE')
+,('Isle of Man','IM')
+,('Israel','IL')
+,('Italy','IT')
+,('Jamaica','JM')
+,('Japan','JP')
+,('Jersey','JE')
+,('Jordan','JO')
+,('Kazakhstan','KZ')
+,('Kenya','KE')
+,('Kiribati','KI')
+,('Kosovo','XK')
+,('Kuwait','KW')
+,('Kyrgyzstan','KG')
+,('Laos','LA')
+,('Latvia','LV')
+,('Lebanon','LB')
+,('Lesotho','LS')
+,('Liberia','LR')
+,('Libya','LY')
+,('Liechtenstein','LI')
+,('Lithuania','LT')
+,('Luxembourg','LU')
+,('Macao','MO')
+,('Macedonia','MK')
+,('Madagascar','MG')
+,('Malawi','MW')
+,('Malaysia','MY')
+,('Maldives','MV')
+,('Mali','ML')
+,('Malta','MT')
+,('Marshall Islands','MH')
+,('Martinique','MQ')
+,('Mauritania','MR')
+,('Mauritius','MU')
+,('Mayotte','YT')
+,('Mexico','MX')
+,('Micronesia','FM')
+,('Moldava','MD')
+,('Monaco','MC')
+,('Mongolia','MN')
+,('Montenegro','ME')
+,('Montserrat','MS')
+,('Morocco','MA')
+,('Mozambique','MZ')
+,('Myanmar )','MM')
+,('Namibia','NA')
+,('Nauru','NR')
+,('Nepal','NP')
+,('Netherlands','NL')
+,('New Caledonia','NC')
+,('New Zealand','NZ')
+,('Nicaragua','NI')
+,('Niger','NE')
+,('Nigeria','NG')
+,('Niue','NU')
+,('Norfolk Island','NF')
+,('North Korea','KP')
+,('Northern Mariana Islands','MP')
+,('Norway','NO')
+,('Oman','OM')
+,('Pakistan','PK')
+,('Palau','PW')
+,('Palestine','PS')
+,('Panama','PA')
+,('Papua New Guinea','PG')
+,('Paraguay','PY')
+,('Peru','PE')
+,('Phillipines','PH')
+,('Pitcairn','PN')
+,('Poland','PL')
+,('Portugal','PT')
+,('Puerto Rico','PR')
+,('Qatar','QA')
+,('Reunion','RE')
+,('Romania','RO')
+,('Russia','RU')
+,('Rwanda','RW')
+,('Saint Barthelemy','BL')
+,('Saint Helena','SH')
+,('Saint Kitts and Nevis','KN')
+,('Saint Lucia','LC')
+,('Saint Martin','MF')
+,('Saint Pierre and Miquelon','PM')
+,('Saint Vincent and the Grenadines','VC')
+,('Samoa','WS')
+,('San Marino','SM')
+,('Sao Tome and Principe','ST')
+,('Saudi Arabia','SA')
+,('Senegal','SN')
+,('Serbia','RS')
+,('Seychelles','SC')
+,('Sierra Leone','SL')
+,('Singapore','SG')
+,('Sint Maarten','SX')
+,('Slovakia','SK')
+,('Slovenia','SI')
+,('Solomon Islands','SB')
+,('Somalia','SO')
+,('South Africa','ZA')
+,('South Georgia and the South Sandwich Islands','GS')
+,('South Korea','KR')
+,('South Sudan','SS')
+,('Spain','ES')
+,('Sri Lanka','LK')
+,('Sudan','SD')
+,('Suriname','SR')
+,('Svalbard and Jan Mayen','SJ')
+,('Swaziland','SZ')
+,('Sweden','SE')
+,('Switzerland','CH')
+,('Syria','SY')
+,('Taiwan','TW')
+,('Tajikistan','TJ')
+,('Tanzania','TZ')
+,('Thailand','TH')
+,('Timor-Leste (East)','TL')
+,('Togo','TG')
+,('Tokelau','TK')
+,('Tonga','TO')
+,('Trinidad and Tobago','TT')
+,('Tunisia','TN')
+,('Turkey','TR')
+,('Turkmenistan','TM')
+,('Turks and Caicos Islands','TC')
+,('Tuvalu','TV')
+,('Uganda','UG')
+,('Ukraine','UA')
+,('United Arab Emirates','AE')
+,('United Kingdom','GB')
+,('United States','US')
+,('United States Minor Outlying Islands','UM')
+,('Uruguay','UY')
+,('Uzbekistan','UZ')
+,('Vanuatu','VU')
+,('Vatican City','VA')
+,('Venezuela','VE')
+,('Vietnam','VN')
+,('Virgin Islands, British','VG')
+,('Virgin Islands, US','VI')
+,('Wallis and Futuna','WF')
+,('Western Sahara','EH')
+,('Yemen','YE')
+,('Zambia','ZM')
+,('Zimbabwe','ZW');
 
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('deangelo.kuhn@hotmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', '1Layla Garcia', 'aacidiccharlene', 'city', 'Hipster-friendly zombie practitioner. Subtly charming explorer. Student. Troublemaker. Tv junkie. Bacon buff. Beer evangelist. Analyst.', 'TRUE', '104');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('joana48@gmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Sammy Rodriquez', 'acidic_scharlene', 'San Fernando', 'Web scholar. Creator. Proud zombie aficionado. Lifelong thinker. Pop cultureaholic.', 'FALSE', '32');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('jordon.champlin71@hotmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Alissia Rennie', 'dacidic.charlene', 'Aş Şaff', 'Friendly coffee buff. Passionate beer scholar. Communicator. Extreme twitter lover. Hipster-friendly internet fanatic.', 'FALSE', '84');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('jerrold_medhurst80@gmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Phyllis Sharples', 'aferatedcharlene', 'Campo Grande', 'Devoted problem solver. Subtly charming communicator. Pop culture ninja. Evil coffee lover. Web enthusiast.', 'TRUE', '88');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('lavon.schmidt@gmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Ariel Krause', 'aerated_chagrlene', 'Leksand', 'Wannabe coffee enthusiast. Internet scholar. Beer fanatic. Total introvert. Communicator.', 'FALSE', '244');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('darrin_armstrong80@hotmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Keegan Montoya', 'aehrated.charlene', 'Winneba', 'Friendly tv nerd. Avid coffee practitioner. Infuriatingly humble social media fan.', 'TRUE', '123');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('jeanne60@hotmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Malachi Guevara', 'almondycharljene', 'Wanxian', 'Amateur foodaholic. Incurable coffee buff. Reader. Award-winning twitter ninja.', 'TRUE', '198');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('hector96@gmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Alyssa Kearney', 'almondy_charlenke', 'Priiskovyy', 'Friend of animals everywhere. Freelance zombie buff. Total web ninja. Wannabe analyst.', 'TRUE', '196');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('dock83@hotmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Rosalie Nicholls', 'almondy.charllene', 'Kuloy', 'Student. Incurable explorer. Coffee buff. Evil communicator. Freelance twitter geek.', 'TRUE', '142');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('joesph29@hotmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Aeryn Martin', 'caramelizedchaprlene', 'Lai Cách', 'Friendly introvert. Lifelong beer practitioner. Subtly charming social media junkie.', 'FALSE', '120');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('jamie88@hotmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Kaira Preece', 'caramelized_chaorlene', 'Ōkawa', 'Extreme tv practitioner. Award-winning beer specialist. Coffee junkie. Friendly twitter advocate. Troublemaker.', 'TRUE', '228');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('roman.waelchi17@yahoo.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Ida Gay', 'caramelized.chiarlene', 'Kotabumi', 'Thinker. Subtly charming organizer. Proud web lover. General problem solver. Alcohol specialist.', 'TRUE', '43');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('antonietta.purdy@yahoo.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Riyad Costa', 'chloroticcuharlene', 'Mokil', 'Wannabe troublemaker. Proud coffee buff. Avid pop culture fan. Subtly charming bacon ninja.', 'FALSE', '138');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('ivah.kilback@yahoo.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Ayrton Richards', 'chlorotiyc_charlene', 'Amsterdam Noord west', 'Certified introvert. Incurable tv expert. Extreme student. Devoted problem solver. Analyst.', 'FALSE', '70');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('nicholas33@yahoo.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Suhayb Carpenter', 'chlorotict.charlene', 'Ninh Giang', 'General alcohol trailblazer. Amateur coffee guru. Unapologetic twitter geek. Web aficionado. Writer. Extreme tv specialist.', 'TRUE', '86');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('eliseo72@hotmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Noah Stubbs', 'clammycharlenre', 'Navegantes', 'Internet buff. Devoted communicator. Explorer. Organizer. Web lover. Alcohol advocate.', 'TRUE', '127');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('tavares23@gmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Sebastian Mcdonald', 'clammy_ceharlene', 'Lavia', 'Award-winning creator. Evil communicator. Subtly charming entrepreneur. Explorer. Amateur music expert.', 'TRUE', '41');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('will.hodkiewicz49@yahoo.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Ibrahim Tillman', 'clammwy.charlene', 'Aileu', 'Internet scholar. Beer buff. Zombieaholic. Amateur troublemaker. Student. Award-winning music practitioner.', 'FALSE', '18');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('willa.schaefer@yahoo.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Mohsin Madden', 'abominableqcharlene', 'Qinglin', 'Music enthusiast. Lifelong travel geek. Hipster-friendly communicator. Reader. Evil thinker.', 'FALSE', '248');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('ricky5@gmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Kailan OQuinn', 'abominable_charlewne', 'Kilju', 'Prone to fits of apathy. Introvert. Award-winning internet evangelist. Extreme beer expert.', 'TRUE', '15');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('lucinda71@yahoo.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Mihai Searle', 'abominable.charlezne', 'Leiwang', 'Freelance communicator. Unapologetic music guru. Student. Certified gamer. Hardcore writer. General organizer.', 'FALSE', '60');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('mark_lynch60@gmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Bertram Dalby', 'abysmalcharlene', 'San Manuel Chaparrón', 'Bacon evangelist. Typical creator. Hardcore tvaholic. Friendly writer. Twitter ninja.', 'FALSE', '112');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('heather_wunsch@hotmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Sumayya Gunn', 'abysmal_charlene', 'Le Mans', 'Professional beer buff. Social media ninja. Zombie advocate. Alcohol junkie. Total bacon expert. Incurable twitter fanatic.', 'TRUE', '204');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('clark.wilderman@yahoo.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Lily-Rose Wynn', 'abysmal.charlene', 'Hachinohe', 'Travel maven. Certified zombie fanatic. Wannabe reader. Devoted tv advocate. Beer enthusiast. Future teen idol.', 'TRUE', '240');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('carlotta77@yahoo.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Tammy Perkins', 'appallingcharlene', 'San Vicente', 'Web fan. General internet nerd. Infuriatingly humble zombieaholic. Typical social media aficionado. Writer.', 'FALSE', '158');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('vena.collins@gmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Enrico Shah', 'appalling_charlene', 'Huxi', 'Pop culture geek. Unable to type with boxing gloves on. Friendly explorer.', 'FALSE', '199');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('nya.ortiz19@hotmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Norma Cuevas', 'appalling.charlene', 'Waepana', 'Infuriatingly humble music aficionado. Bacon lover. Beer fan. Avid pop culture buff. Extreme tv trailblazer.', 'TRUE', '154');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('jovani82@gmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Ayman Pope', 'awfulcharlene', 'Áyios Nikólaos', 'Lifelong bacon nerd. Devoted tv scholar. Subtly charming coffee guru. Pop culture enthusiast.', 'FALSE', '10');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('melody_treutel@gmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Safaa Kendall', 'awful_charlene', 'Burao', 'Hardcore coffee practitioner. Troublemaker. Extreme beer enthusiast. Subtly charming travel fanatic. Writer.', 'FALSE', '60');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('olaf_kihn52@hotmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Clodagh Spencer', 'awful.charlene', 'Breda', 'Coffee fan. Communicator. Analyst. Infuriatingly humble travel expert. Tv ninja.', 'FALSE', '156');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('willy.thompson@hotmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Kristi Hensley', 'badcharlene', 'Wangcun', 'Beer nerd. Entrepreneur. Problem solver. Pop culture advocate. Evil thinker. Amateur coffee scholar.', 'FALSE', '178');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('trystan.daniel35@hotmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Daniela Nicholson', 'bad_charlene', 'Quanyang', 'Hipster-friendly zombie geek. Lifelong pop culture evangelist. Incurable bacon expert. Amateur alcohol aficionado. Communicator.', 'TRUE', '247');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('nettie.wiegand33@gmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Kayley Riddle', 'bad.charlene', 'Takefu', 'Bacon fanatic. Food aficionado. Explorer. Friendly travel buff. Typical creator. Unapologetic beer ninja.', 'TRUE', '3');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('katharina.ortiz25@yahoo.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Abdulrahman Doyle', 'beggarlycharlene', 'Jalingo', 'Typical thinker. Incurable social media evangelist. Avid problem solver. Alcoholaholic.', 'FALSE', '167');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('isidro.ryan@yahoo.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Nataniel Carlson', 'beggarly_charlene', 'Marseille', 'Student. Zombie specialist. Subtly charming analyst. Alcohol fanatic. Twitter enthusiast. Coffee ninja. Certified creator. Devoted travel fanatic.', 'FALSE', '156');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('christian_powlowski32@gmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Branden Branch', 'beggarly.charlene', 'Jahāniān Shāh', 'Passionate bacon expert. Web fanatic. Social media enthusiast. Organizer. Entrepreneur.', 'TRUE', '210');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('marquise_wehner16@hotmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Ismail Gardner', 'charlenelynchwales', 'Legionowo', 'Pop culture nerd. Avid internetaholic. Web trailblazer. Infuriatingly humble travel ninja.', 'FALSE', '51');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('adelia_mante@yahoo.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Tracy Weston', 'charlene_lynch_wales', 'Chernomorets', 'Freelance analyst. Professional foodaholic. Extreme pop culture fanatic. Gamer. Explorer. Thinker. Coffee trailblazer.', 'FALSE', '77');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('caesar_price43@yahoo.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Nadir Hamilton', 'charlene.lynch.wales', 'Fāryāb', 'Typical problem solver. Wannabe twitter expert. Evil explorer. Bacon lover. Beer geek. Avid internet scholar. Hipster-friendly thinker.', 'FALSE', '161');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('catharine_witting72@hotmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Simrah Peel', 'charlenelynchlawyer', 'L’govskiy', 'Typical gamer. Food aficionado. Alcohol practitioner. Problem solver. Unapologetic twitter fan. Award-winning bacon enthusiast. Total tv fanatic.', 'TRUE', '244');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('alf73@yahoo.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Kasey Rivera', 'charlene_lynch_lawyer', 'Dabao’anzhen', 'Unapologetic twitter scholar. Music enthusiast. Lifelong tv geek. Web ninja. Food advocate.', 'FALSE', '241');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('karli.reilly@hotmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Lacy Camacho', 'meancharlene', 'Espírito Santo do Pinhal', 'Entrepreneur. Zombie enthusiast. Tv evangelist. Unapologetic reader. Infuriatingly humble explorer. Organizer.', 'TRUE', '217');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('vallie54@yahoo.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Laura Squires', 'mean_charlene', 'San Roque', 'Subtly charming analyst. Food aficionado. Total problem solver. Certified beer enthusiast.', 'FALSE', '1');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('georgiana_borer85@hotmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Melissa Ashton', 'mean.charlene', 'Tuanjie', 'Certified zombie lover. Troublemaker. Evil twitter specialist. Analyst.', 'FALSE', '4');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('ramiro.murphy60@yahoo.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Ocean Gonzales', 'menacedenis', 'Haliut', 'Devoted internetaholic. Creator. Friendly coffee advocate. Pop culture evangelist.', 'FALSE', '178');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('randal_morissette42@hotmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Ellise Worthington', 'menace_denis', 'Ichupampa', 'Twitter fanatic. Devoted internet ninja. Passionate web trailblazer.', 'TRUE', '155');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('jacques88@hotmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Lina Morley', 'menace.denis', 'Savelugu', 'Proud music ninja. Student. Avid social media fan. Tv evangelist. Lifelong alcohol expert. Travel specialist. Prone to fits of apathy.', 'FALSE', '129');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('ashlee.bahringer39@hotmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Ruairidh Barnard', 'denisthetennis', 'Kokop', 'Troublemaker. Certified organizer. Tv fan. Infuriatingly humble coffee advocate.', 'FALSE', '47');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('nedra_rolfson@hotmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Robson Fuller', 'denis_the_tennis', 'Xinshichang', 'Devoted organizer. Pop cultureaholic. Subtly charming beer junkie. Falls down a lot. Music maven. Total bacon fan.', 'TRUE', '124');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('ozella_thompson87@gmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Danish Hines', 'denis.the.tennis', 'Junín', 'Subtly charming tv maven. Proud thinker. Food buff. Evil gamer. Web scholar. Internet nerd.', 'TRUE', '103');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('dana.beahan@hotmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Ted Hill', 'denisthevenice', 'Lago da Pedra', 'Avid beer ninja. Extreme tv fanatic. Analyst. Wannabe internet enthusiast. Hipster-friendly twitter scholar.', 'FALSE', '113');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('porter.volkman84@gmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Jorden Aguilar', 'denis_the_venice', 'Mikhaylovka', 'Friendly coffee junkie. Pop culture aficionado. Certified twitter buff. Unapologetic travel guru. Hardcore beer ninja.', 'TRUE', '9');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('beaulah_runolfsson50@yahoo.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Ruairi Anthony', 'denis.the.venice', 'Salerno', 'Evil beer enthusiast. Tv evangelist. Internet buff. Typical twitter guru. Pop culture geek.', 'FALSE', '182');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('marcus49@gmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Kristopher Wolf', 'pinchlynch', 'Leiguan', 'Amateur coffee nerd. Troublemaker. General communicator. Gamer. Analyst. Creator. Total beer ninja.', 'FALSE', '155');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('stuart.cole@yahoo.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Avaya Bowden', 'pinch_lynch', 'Fort Worth', 'Prone to fits of apathy. Incurable internet trailblazer. Proud communicator. Hardcore bacon enthusiast. Beer ninja. Gamer. Extreme coffee fan. Twitteraholic.', 'TRUE', '210');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('naomie_simonis48@hotmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Olli Povey', 'pinch.lynch', 'Carmen de Viboral', 'Explorer. Zombie scholar. Twitter lover. Music geek. Organizer. Food fanatic. Alcohol ninja.', 'TRUE', '221');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('lorna47@gmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Uma Wallis', 'greencharlene', 'Puerto Boyacá', 'Passionate internet specialist. Professional organizer. Devoted writer. Avid tv scholar. General web lover. Explorer.', 'TRUE', '48');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('olin.ernser1@yahoo.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Autumn Brady', 'green_charlene', 'Hamada', 'Infuriatingly humble explorer. Problem solver. Subtly charming travel buff. Award-winning web geek. Pop culture lover.', 'TRUE', '49');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('dan.oberbrunner@hotmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Leen Chen', 'green.charlene', 'Izborsk', 'Hipster-friendly twitter buff. Bacon lover. Certified zombie geek. Introvert. Evil alcohol ninja.', 'TRUE', '51');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('edd33@gmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Naveed Rojas', 'charlenethebean', 'Jaroměř', 'Writer. Hardcore food ninja. Social media lover. Friendly analyst. Future teen idol. Problem solver. Tv maven. Amateur travel aficionado.', 'FALSE', '151');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('ernesto27@hotmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Stella Deleon', 'charlene_the_bean', 'Chervonoarmiys’k', 'Freelance web fanatic. Tv expert. Evil student. Writer. Internet guru. Zombieaholic.', 'TRUE', '152');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('braeden12@hotmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Aliya Cook', 'charlene.the.bean', 'Cumming', 'Friend of animals everywhere. Web geek. Hipster-friendly coffee trailblazer. Organizer.', 'FALSE', '186');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('dillan13@yahoo.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Rhianne Grey', 'cinchlynch', 'Seattle', 'Writer. Twitter specialist. Passionate social media ninja. Lifelong beer buff. Bacon fanatic. Wannabe web scholar. Devoted coffee maven.', 'TRUE', '19');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('mohamed_balistreri38@gmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Anabel Neale', 'cinch_lynch', 'Sukoanyar', 'Award-winning zombie expert. Music aficionado. Alcohol evangelist. Subtly charming tv nerd. Internet scholar. Friendly bacon junkie.', 'TRUE', '166');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('earlene90@yahoo.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Winnie Summers', 'cinch.lynch', 'Sīlat al Ḩārithīyah', 'Devoted pop culture nerd. Lifelong problem solver. Amateur internet maven. Alcohol enthusiast. Student. Passionate beer fanatic.', 'FALSE', '227');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('kaitlin_rippin@hotmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Ananya Jarvis', 'leancharlene', 'Pengulu', 'Total internet lover. Zombie junkie. Travel buff. Alcohol specialist. Social media expert.', 'FALSE', '221');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('destiney.corwin@yahoo.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Rylan Oneil', 'lean_charlene', 'Heqiao', 'Friend of animals everywhere. Unable to type with boxing gloves on. Falls down a lot. Wannabe web enthusiast. Professional internet guru.', 'TRUE', '34');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('seth_dooley26@hotmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Josef ONeill', 'lean.charlene', 'Rivera', 'Social media evangelist. Freelance reader. Introvert. Infuriatingly humble internet scholar.', 'TRUE', '39');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('arnulfo.moen@yahoo.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Shamima Prentice', 'inchlynch', 'Sulahan', 'Beer fanatic. Amateur introvert. Twitter junkie. Lifelong food trailblazer. Proud alcohol nerd. Zombie buff.', 'FALSE', '25');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('jovany.stiedemann@yahoo.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Colette Healy', 'inch_lynch', 'Maoqitun', 'Coffee enthusiast. Devoted beer fanatic. Entrepreneur. Friendly travel scholar. Internet lover.', 'TRUE', '13');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('herbert4@hotmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Amrita Fields', 'inch.lynch', 'Plottier', 'Avid internet ninja. Bacon expert. Alcohol advocate. Hipster-friendly web trailblazer.', 'FALSE', '243');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('bianka_hilll21@yahoo.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Kaison Mayer', 'keencharlene', 'Pangradin Satu', 'Food aficionado. Hipster-friendly tv maven. Coffee fanatic. Prone to fits of apathy. Creator.', 'FALSE', '28');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('kristin88@hotmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Anil Pena', 'keen_charlene', 'Qalandiyā', 'Bacon guru. Future teen idol. Troublemaker. Friendly pop culture fanatic. Total problem solver. Music aficionado. Gamer. Incurable social media evangelist.', 'TRUE', '67');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('retta_lesch90@yahoo.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Reese Adkins', 'keen.charlene', 'Lagos da Beira', 'Subtly charming internet specialist. Travel scholar. Student. Problem solver. Beer geek.', 'FALSE', '131');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('betty79@gmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Ami Joyce', 'charlenethemachine', 'Būrewāla', 'Zombie specialist. Internet buff. Hardcore web lover. Award-winning pop culture geek. Subtly charming alcohol guru.', 'FALSE', '32');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('minnie88@yahoo.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Amar Wilkerson', 'charlene_the_machine', 'Jayanca', 'Hipster-friendly beer nerd. Music geek. Infuriatingly humble food specialist. Explorer.', 'TRUE', '232');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('edward.kertzmann10@hotmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Nabil Mayo', 'charlene.the.machine', 'Carora', 'Internet fanatic. Entrepreneur. Alcohol enthusiast. Falls down a lot. Avid troublemaker.', 'FALSE', '218');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('elvera.rowe5@gmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Isaak Boone', 'flinchlynch', 'Skatepark', 'Travel advocate. Internet aficionado. Bacon trailblazer. Typical analyst. Passionate gamer.', 'TRUE', '214');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('rocky_kuvalis@gmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Axl Lancaster', 'flinch_lynch', 'Shilovo', 'Thinker. Creator. Infuriatingly humble bacon junkie. Devoted alcohol geek. Introvert.', 'TRUE', '238');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('yasmine75@gmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Kristofer Koch', 'flinch.lynch', 'Padre Nabeto', 'Gamer. Pop culture evangelist. Travel fanatic. Alcohol geek. Total internet junkie.', 'TRUE', '154');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('zita.damore85@yahoo.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Roberta Mullen', 'lynchthehinch', 'Ordzhonikidzevskiy', 'Award-winning student. Evil social media fanatic. Writer. Zombie guru. Tv lover. Typical coffee advocate. Unable to type with boxing gloves on. Travel ninja.', 'FALSE', '141');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('meagan57@yahoo.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Bailey Hamer', 'lynch_the_hinch', 'Omsukchan', 'Tv fanatic. Social media scholar. Troublemaker. Beer trailblazer. Proud bacon enthusiast. Internet fan.', 'TRUE', '250');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('trace.grimes@yahoo.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Sahar Chadwick', 'lynch.the.hinch', 'Hougang', 'Music practitioner. Passionate internet fanatic. Hardcore bacon buff. Pop culture maven. Devoted web fanatic.', 'FALSE', '82');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('justyn8@hotmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Ricky Luna', 'cleancharlene', 'Arlöv', 'Certified thinker. Internet scholar. Freelance music junkie. Tv advocate. Analyst. Bacon fanatic. Friendly beer buff. Food maven.', 'TRUE', '38');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('olin99@hotmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Anum Diaz', 'clean_charlene', 'Pendawanbaru', 'Travelaholic. Passionate problem solver. Infuriatingly humble web nerd. Communicator. Typical beer guru. Amateur social media geek.', 'TRUE', '103');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('dennis.schneider@hotmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Farzana Valenzuela', 'clean.charlene', 'Myanaung', 'Travel aficionado. Tv fanatic. Reader. Typical beeraholic. Organizer. Certified music junkie. Zombie buff. Communicator. Creator.', 'TRUE', '105');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('keanu.bernhard66@gmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Sofie Mclellan', 'clinchlynch', 'Envigado', 'Food advocate. Future teen idol. Amateur social media expert. Gamer. Tv aficionado. Pop culture fanatic.', 'FALSE', '70');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('mabelle.jaskolski19@yahoo.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Elmer Lester', 'clinch_lynch', 'København', 'Food practitioner. Music junkie. Avid troublemaker. Hipster-friendly creator. Social media lover. Wannabe pop culture fanatic.', 'FALSE', '110');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('jazmyne.raynor91@hotmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Dylon Daly', 'clinch.lynch', 'Jiekeng', 'Devoted beer junkie. General zombie expert. Professional twitter nerd. Lifelong analyst. Reader. Hipster-friendly social media buff. Explorer. Coffee scholar.', 'TRUE', '29');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('letitia9@yahoo.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Roksana Barber', 'lynchthetinch', 'Ibaiti', 'Twitter guru. Passionate pop culture trailblazer. Alcohol fanatic. Bacon aficionado. Thinker. Explorer. Writer. Zombie junkie. Introvert.', 'FALSE', '250');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('ida_fahey46@yahoo.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Mahira Swan', 'lynch_the_tinch', 'Mīrābād', 'Lifelong tv aficionado. Social media fan. Award-winning food scholar. Writer. Music fanatic.', 'FALSE', '12');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('francis92@gmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Akeel Peacock', 'lynch.the.tinch', 'Montpellier', 'Twitter scholar. Amateur tv buff. Coffee specialist. Friendly communicator. Devoted food fanatic.', 'TRUE', '79');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('orland.streich@gmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Paulina Glass', 'charlene0xtkpiq45ul', 'Jeffersonville', 'Bacon aficionado. Internet scholar. Food expert. Typical zombie fan. Web enthusiast. Creator. Pop culture advocate.', 'TRUE', '61');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('emmalee52@yahoo.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Maude Curran', 'charlenej4racy6k', 'Chernyanka', 'Award-winning pop culture aficionado. Web fan. Professional alcohol maven. Bacon practitioner. Coffee scholar. Zombie fanatic.', 'FALSE', '32');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('price.wilderman8@gmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Emily-Jane Duggan', 'charlenez170b9e', 'Jatirejo', 'Explorer. Food evangelist. General analyst. Wannabe gamer. Alcohol specialist. Reader. Tv fan.', 'TRUE', '141');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('evan_hills18@yahoo.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Alivia Baker', 'charleneu.wxkejt', 'Hengpi', 'Unapologetic analyst. Gamer. Total internet scholar. Incurable writer. Introvert. Infuriatingly humble explorer.', 'FALSE', '142');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('guiseppe68@yahoo.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Marie Paul', 'charlene93ozumv', 'Tambulatana', 'Lifelong tv junkie. Zombie geek. Food ninja. Certified bacon lover. Travelaholic. Subtly charming web enthusiast.', 'TRUE', '32');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('ciara.funk@yahoo.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Khushi Hodge', 'charlene4e_bgafo', 'Lyozna', 'Incurable pop culture maven. Devoted twitter fanatic. Evil tvaholic. Friendly troublemaker.', 'FALSE', '147');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('silas.fay77@hotmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Lilly-Mae Hail', 'charlene3txezkgn', 'Sizhou', 'Subtly charming zombie fanatic. Web maven. Alcohol ninja. General travel fanatic.', 'TRUE', '221');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('tiffany_gulgowski@hotmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Sianna Plant', 'charlenezx1fn0q', 'Mabuhay', 'Bacon practitioner. Professional gamer. Pop culture junkie. Zombie fanatic. Thinker. Avid food nerd.', 'TRUE', '210');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('loraine27@yahoo.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Jarod Mackie', 'charleneezu6yn4xgm', 'Tacarigua', 'Zombie enthusiast. Subtly charming travel practitioner. Webaholic. Internet expert.', 'FALSE', '101');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('garrett53@yahoo.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Habiba Larson', 'charlenedenislynch', 'Pskov', 'Certified pop culture fanatic. Avid social media maven. Introvert. General travel enthusiast.', 'TRUE', '127');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('abby46@yahoo.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Alejandro Currie', 'charlene_denis_lynch', 'Wŏnju', 'Beer nerd. Music buff. Alcohol guru. Gamer. Certified student. Passionate writer.', 'FALSE', '34');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('wilburn_shields90@gmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Carmel Mcgill', 'charlene.denis.lynch', 'Pakel', 'Incurable introvert. Infuriatingly humble pop culture buff. Writer. Lifelong web practitioner. Beer geek. Travel maven.', 'FALSE', '178');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('sebastian47@gmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Shivam Williams', 'charlenelynch84', 'Baolong', 'Passionate pop culture nerd. Gamer. Twitter expert. Internet guru. Certified web advocate.', 'FALSE', '150');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('amelie.raynor@yahoo.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Huey Bass', 'charlene_lynch_84', 'Yelizavetinskaya', 'Travel fan. Social media scholar. Hipster-friendly writer. Reader. Avid zombie nerd.', 'FALSE', '59');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('felipa_erdman77@yahoo.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Ira Ahmad', 'charlenelynch84', 'San Manuel Chaparrón', 'Avid music specialist. Gamer. Evil food fanatic. Certified alcohol buff. Proud web aficionado.', 'FALSE', '178');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('hailie_cummings31@hotmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Della Calhoun', 'gdodgeball', 'Estoril', 'Tv geek. Friend of animals everywhere. Foodaholic. Certified internet ninja. Twitter aficionado. Hardcore web maven.', 'TRUE', '95');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('kasey61@yahoo.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Ben Newton', 'gsedge', 'Bailu', 'Falls down a lot. Beer aficionado. Reader. Wannabe zombie buff. Award-winning bacon enthusiast. Internet trailblazer. Social media ninja.', 'FALSE', '145');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('nellie57@yahoo.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Cora Bull', 'grather', 'Panzhou', 'Typical organizer. Wannabe problem solver. Creator. Writer. Proud travel maven.', 'TRUE', '98');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('andreane_hoeger21@hotmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Mikail Piper', 'gunreeve', 'Galátsi', 'Unapologetic introvert. Hipster-friendly thinker. Writer. Social media fanatic. Friendly alcoholaholic.', 'TRUE', '204');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('akeem.hane8@hotmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Giles Oliver', 'gcaribou', 'Blois', 'Thinker. Music junkie. Award-winning organizer. Wannabe internet fanatic. Proud creator. Typical beer practitioner.', 'FALSE', '177');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('mac_stanton@hotmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Abbas Dawson', 'gshush', 'Halmstad', 'Award-winning thinker. Avid organizer. Hardcore communicator. Problem solver. Internet practitioner. Typical tv guru.', 'TRUE', '52');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('alicia_johnston@gmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Charmaine Morales', 'gwhoosh', 'Krynychky', 'Entrepreneur. Student. Tv expert. Gamer. Devoted music practitioner. Unapologetic internet maven.', 'FALSE', '146');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('shania17@gmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Zhane Mohammed', 'donkeyg', 'Chuangwang', 'Incurable pop culture fanatic. Hardcore organizer. Subtly charming travel junkie. Coffee buff.', 'FALSE', '173');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('paige_krajcik34@gmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Aleah Hutchings', 'gslippers', 'Esperanza', 'Music specialist. Gamer. Tv lover. General twitter guru. Pop culture expert. Coffee ninja. Beer enthusiast.', 'FALSE', '121');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('janessa.crooks@hotmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Gina Corbett', 'ghumongous', 'Hucheng', 'Bacon fan. Avid web scholar. Subtly charming coffee aficionado. Friend of animals everywhere.', 'TRUE', '246');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('moises48@hotmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Tomos Pollard', 'chromosomeg', 'Bojnik', 'Incurable pop culture fan. Writer. Social media junkie. Proud bacon trailblazer. Future teen idol. Food fanatic. Lifelong music ninja.', 'FALSE', '68');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('tanya.lesch@yahoo.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Nikki Marquez', 'cordageg', 'Huambo', 'Pop culture trailblazer. Music practitioner. Writer. Communicator. Incurable creator.', 'TRUE', '246');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('christy_torphy@gmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Melinda Knights', 'gblueberries', 'Tambakmerak', 'Lifelong organizer. Travel lover. Student. Alcohol nerd. Incurable music scholar. Twitter practitioner. Introvert. Analyst. Friendly food guru.', 'FALSE', '24');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('aglae.zulauf50@hotmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Eve Mcbride', 'unusualg', 'Cijambe', 'Tv geek. Beeraholic. Proud food ninja. Alcohol specialist. Devoted social media fan. Internet aficionado. Bacon trailblazer. Writer.', 'FALSE', '221');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('alphonso84@yahoo.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Zac Fleming', 'computerg', 'Cimuncang', 'Alcohol specialist. Hipster-friendly travel buff. Organizer. General reader. Communicator. Certified twitter fanatic. Avid introvert.', 'TRUE', '189');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('joyce.rodriguez68@hotmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Corben Allison', 'gsos', 'Tangdukou', 'Amateur coffee maven. Travel enthusiast. Infuriatingly humble beer lover. Award-winning problem solver. Web nerd.', 'FALSE', '13');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('mariah80@hotmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Chelsie Fowler', 'yokeg', 'Florencio Sánchez', 'Hardcore internet enthusiast. Music buff. Beer geek. Subtly charming pop culture practitioner. Tv maven.', 'FALSE', '230');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('gordon_pfannerstill65@yahoo.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Anaya Dotson', 'gsandwich', 'Finzes', 'Travel evangelist. Creator. Alcohol aficionado. Professional internet guru. Total explorer. Thinker.', 'FALSE', '224');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('abe.miller@hotmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Wilma Wood', 'tranquilg', 'Bistrica ob Sotli', 'Zombie fanatic. Alcohol scholar. Lifelong problem solver. Internet fanatic. Freelance pop culture enthusiast. Devoted food advocate. Gamer.', 'FALSE', '88');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('mallie.waelchi@gmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Lauryn Anthony', 'smokerg', 'Göteborg', 'Web buff. Bacon fan. Hipster-friendly organizer. Unapologetic communicator. Music fanatic. Gamer. General zombie aficionado.', 'TRUE', '206');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('joe.koepp91@gmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Haley Keller', 'gabsurd', 'Vacaria', 'Wannabe introvert. Travel trailblazer. Music fanatic. Twitter advocate. Web ninja.', 'FALSE', '76');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('magnolia_hudson5@yahoo.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Sannah Wong', 'gprovider', 'Nizhnyaya Tura', 'Pop culture fanatic. Freelance bacon ninja. Problem solver. Devoted music practitioner.', 'FALSE', '124');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('destini39@yahoo.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Huw Cummings', 'gabject', 'Camrose', 'Incurable entrepreneur. Extreme internet enthusiast. Subtly charming introvert. Friend of animals everywhere.', 'TRUE', '62');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('leola53@hotmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Juniper Lord', 'gpeace', 'Santa María Chiquimula', 'Proud entrepreneur. Lifelong gamer. Zombie advocate. Alcohol specialist. Professional writer.', 'FALSE', '10');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('salma_brown@hotmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Elis Clarkson', 'gcleats', 'Dyurtyuli', 'Travel ninja. Food lover. Friendly beer geek. Certified music aficionado. Typical bacon fanatic.', 'TRUE', '235');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('josefina5@gmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Chloe Mcfarlane', 'gdeter', 'Căuşeni', 'Troublemaker. Pop culture lover. Friendly beer specialist. Passionate social media buff.', 'TRUE', '231');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('devonte80@hotmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Caroline Lugo', 'bangbangg', 'Xiabuji', 'Infuriatingly humble alcohol guru. Twitter aficionado. Reader. Zombie practitioner.', 'TRUE', '230');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('marcelino.kunde57@yahoo.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Ammarah Dillard', 'gnest', 'Jisegumen', 'Student. Devoted introvert. Certified alcohol expert. Coffee geek. Twitter ninja. Hipster-friendly reader.', 'FALSE', '189');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('winona.swift@hotmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Conan Cole', 'plantg', 'Fuxi', 'Lifelong tv practitioner. Internet geek. General gamer. Bacon evangelist. Alcohol junkie. Evil troublemaker.', 'TRUE', '168');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('curt.sauer87@yahoo.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Rosalind Needham', 'resistanceg', 'Shahezi', 'Entrepreneur. Beer trailblazer. General analyst. Avid internet guru. Lifelong social media lover.', 'FALSE', '85');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('jason_rau@yahoo.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Bridget Carter', 'intensityg', 'Oslo', 'Zombie trailblazer. Unapologetic tv fanatic. Music practitioner. Lifelong twitter fan. Professional social media geek.', 'TRUE', '110');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('dustin3@yahoo.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Toby Mellor', 'droneg', 'Luzern', 'Food buff. Analyst. Award-winning alcohol fanatic. Amateur zombie practitioner. Music trailblazer.', 'TRUE', '130');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('lesley.heidenreich@hotmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Teo Gross', 'gdeaf', 'Mach', 'Total tv buff. Incurable web ninja. Passionate food advocate. Music specialist. Freelance introvert.', 'FALSE', '137');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('imani11@gmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Derren Bruce', 'gpolitical', 'Tanjungagung', 'Wannabe food evangelist. Devoted gamer. General pop culture fanatic. Introvert. Beer lover. Amateur tv advocate.', 'FALSE', '32');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('albin_wilderman23@hotmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Shuaib Robertson', 'talentg', 'Esmoriz', 'Avid organizer. Internet advocate. Hipster-friendly creator. Professional tv guru. Food geek. Devoted zombie maven.', 'FALSE', '184');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('eldred56@gmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Rayhan Schofield', 'downtowng', 'Uwajima', 'Social media lover. Professional introvert. Evil food guru. Hardcore bacon fan. Unapologetic pop culture specialist.', 'TRUE', '145');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('myrtle.smitham45@gmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Rudy Ward', 'includeg', 'Arjasari', 'Hipster-friendly tv fanatic. Incurable web enthusiast. Amateur social media nerd. Typical zombie practitioner.', 'FALSE', '189');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('anais37@gmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Aviana Mclaughlin', 'gaddicted', 'Auxerre', 'Travel aficionado. Internet maven. Coffee specialist. Alcohol scholar. Incurable twitter trailblazer. Bacon fanatic.', 'FALSE', '96');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('kali_ernser@hotmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Madeeha Hooper', 'gproducer', 'Yangi-Nishon Shahri', 'Internet geek. Zombie evangelist. Falls down a lot. General food trailblazer. Travel guru.', 'TRUE', '28');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('zula.harvey58@gmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Alice Braun', 'crisisg', 'Xinkai', 'Student. Food aficionado. Lifelong music trailblazer. Creator. Gamer. Professional beer expert.', 'TRUE', '163');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('aleen_herman@gmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Lawrence Christie', 'biologicalg', 'Shibajiazi', 'Coffee specialist. Pop culture guru. Travel buff. Unapologetic web scholar. Twitter fanatic. Evil internet ninja. Devoted zombie lover.', 'TRUE', '28');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('etha.mann84@hotmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Iris Compton', 'grelation', 'Alcanhões', 'Award-winning bacon practitioner. Web enthusiast. Tv ninja. Internet advocate. Total explorer.', 'TRUE', '115');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('haylee.swift@yahoo.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Tymoteusz Scott', 'hardg', 'Klatovy', 'Hardcore internet trailblazer. Travel fanatic. Writer. Incurable tv fan. Friendly analyst.', 'TRUE', '62');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('lambert.fisher90@hotmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Drew Fritz', 'galso', 'Kwali', 'Coffee ninja. Wannabe twitter aficionado. Lifelong web fanatic. Hipster-friendly musicaholic.', 'FALSE', '209');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('buck_jerde@yahoo.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Jaydan Rollins', 'oddballg', 'Susoh', 'Beer maven. Coffee junkie. Extreme zombie practitioner. Webaholic. Tv advocate. Devoted bacon geek. Music expert. Internet ninja.', 'TRUE', '201');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('arno_grimes@hotmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Joey Esquivel', 'hiddeng', 'Patía', 'Evil analyst. Reader. Entrepreneur. Prone to fits of apathy. Amateur beer ninja. Total zombie fan. Lifelong troublemaker.', 'FALSE', '105');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('mckayla_littel91@yahoo.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Emer Galloway', 'gcashews', 'Gaoxing', 'Internet specialist. Evil entrepreneur. Troublemaker. Analyst. Tv aficionado. Thinker. Passionate explorer. Bacon guru.', 'FALSE', '120');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('jayce.reichert@yahoo.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Tate Atkinson', 'gviewer', 'Catbalogan', 'Wannabe coffee advocate. Freelance bacon practitioner. Social media guru. Musicaholic. Tv fan. Evil thinker.', 'TRUE', '244');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('alisa.bernhard1@hotmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Priscilla Sampson', 'courierg', 'Zagreb - Centar', 'Twitter enthusiast. Pop culture buff. Passionate web expert. General alcohol maven. Tvaholic. Troublemaker. Music fan.', 'TRUE', '67');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('barbara.rodriguez@yahoo.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Aurelia Henderson', 'gford', 'Carson City', 'Hipster-friendly introvert. Friendly music nerd. Extreme travel maven. Wannabe coffee geek. Award-winning alcohol trailblazer.', 'FALSE', '88');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('electa11@yahoo.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Jordanne Cash', 'touristg', 'Turbiv', 'Pop culture ninja. Unapologetic alcohol evangelist. Passionate beer nerd. Incurable coffeeaholic. Friendly tv expert.', 'TRUE', '61');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('cullen_muller@gmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Qasim Snow', 'gunthinking', 'Złotów', 'Friendly tv ninja. Incurable bacon trailblazer. Evil food practitioner. Student.', 'FALSE', '144');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('emile.vonrueden69@hotmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Rohan Person', 'gimplement', 'Ar Rass', 'Social media nerd. Troublemaker. Twitter buff. Friendly thinker. Freelance tv trailblazer. Incurable coffee evangelist. Organizer. General internet ninja.', 'TRUE', '226');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('winfield_zemlak75@hotmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Ophelia Morris', 'gcalm', 'Tomiya', 'Proud travel advocate. Freelance beer enthusiast. Creator. Hardcore tv evangelist.', 'TRUE', '102');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('kristina_braun@hotmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Owen Hood', 'flamboyantg', 'Telpaneca', 'Wannabe thinker. Avid internet specialist. Organizer. Communicator.', 'FALSE', '202');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('maudie80@gmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Kobe Robinson', 'gcordial', 'Luoping', 'Music specialist. Travel aficionado. Twitter guru. Bacon trailblazer. Friendly troublemaker. Extreme food advocate.', 'FALSE', '163');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('deborah25@hotmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Harvir Brooks', 'gstock', 'Irasan', 'Travel trailblazer. Avid troublemaker. Explorer. Web fan. Twitter buff. Wannabe social mediaholic.', 'FALSE', '64');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('price9@gmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Bear Povey', 'ggrowling', 'Soroca', 'Gamer. Infuriatingly humble zombie practitioner. Troublemaker. Extreme webaholic. Devoted creator.', 'TRUE', '2');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('kailey.waters8@hotmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Mia Hatfield', 'gtalkative', 'Tarimbang', 'Alcoholaholic. Organizer. Extreme travel nerd. Devoted problem solver. Lifelong web lover. Creator. Incurable pop culture specialist.', 'TRUE', '66');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('emilio75@gmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Elisha Dudley', 'cummerbundg', 'Debrecen', 'Travel ninja. Social media trailblazer. Subtly charming alcohol specialist. Coffee scholar. Gamer.', 'FALSE', '23');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('eriberto_murray@hotmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Jonathan Welch', 'gweaver', 'Huitong', 'Social media geek. Professional internet practitioner. Incurable web advocate. Future teen idol.', 'FALSE', '177');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('odessa92@gmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Judy Easton', 'switchg', 'Yuanguping', 'Alcohol junkie. Unable to type with boxing gloves on. Certified organizer. Evil zombie fan. Typical internet ninja.', 'FALSE', '22');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('jesse67@hotmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Sion Macgregor', 'gmiddle', 'Ciomas', 'Pop culture fan. Wannabe alcohol advocate. Zombie trailblazer. Web scholar. Coffee junkie.', 'TRUE', '225');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('arnulfo.king@yahoo.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Frances Patel', 'gdeafening', 'Luzhai', 'Pop culture fan. Lifelong gamer. Introvert. Writer. Freelance twitter specialist. Passionate web fanatic.', 'TRUE', '177');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('jerrold.torphy64@yahoo.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Fleur Ramsey', 'larboardg', 'Nanyuki', 'Hardcore alcohol fanatic. Devoted zombie fan. Bacon practitioner. Infuriatingly humble music lover. Entrepreneur. Falls down a lot. Passionate organizer.', 'FALSE', '73');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('clementine.rohan95@yahoo.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Can Bishop', 'gdapper', 'Maquiapo', 'Bacon buff. Thinker. Pop culture fanatic. Alcohol practitioner. Freelance web evangelist. Coffeeaholic.', 'FALSE', '120');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('alysha_ernser62@gmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Leonidas Stamp', 'gartery', 'Santo Tomas', 'Incurable pop culture junkie. Evil web specialist. Freelance food nerd. Award-winning coffee fan.', 'TRUE', '110');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('dalton5@gmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Deen Bennett', 'tolerantg', 'Vecumnieki', 'Professional writer. Analyst. Bacon trailblazer. Unapologetic pop culture aficionado. Freelance alcohol evangelist.', 'FALSE', '92');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('alaina.batz47@gmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Ziva Valenzuela', 'gtempting', 'Yintang', 'Avid coffee scholar. Evil zombie advocate. Wannabe web expert. Social media enthusiast. Subtly charming troublemaker. Introvert. Entrepreneur.', 'TRUE', '232');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('arturo_swaniawski14@hotmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Jun Giles', 'gumbrella', 'Kelaniya', 'Bacon ninja. Hipster-friendly twitter expert. Typical introvert. Web enthusiast. Communicator. Pop culture guru.', 'FALSE', '200');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('humberto.simonis@gmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Nellie Mcloughlin', 'parkg', 'Xincheng', 'Total gamer. Social media maven. Tv practitioner. Professional zombie advocate.', 'FALSE', '170');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('kimberly_muller@hotmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Vanessa Griffith', 'pestog', 'Congonhas', 'Friend of animals everywhere. Pop culture advocate. Certified writer. Avid social media trailblazer. Beer fan.', 'TRUE', '59');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('heber75@hotmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Zahraa Rivers', 'gcurvy', 'Jieznas', 'Zombie nerd. Bacon practitioner. Problem solver. Professional social media junkie. Certified coffee geek.', 'FALSE', '110');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('jada.dare@hotmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Kelsey Houston', 'buzzardg', 'Al Qiţena', 'Internet nerd. Professional alcohol evangelist. Amateur beer aficionado. Tv fan.', 'FALSE', '236');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('imani.reichel86@yahoo.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Brian Mccoy', 'gsmite', 'Lapuyan', 'Avid creator. Bacon junkie. Internet trailblazer. Writer. Organizer. Twitter fan.', 'FALSE', '150');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('millie_bednar98@hotmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Lexi-Mai Booth', 'ghat', 'Cibalung', 'Internet ninja. Total web practitioner. Lifelong twitter specialist. Writer. Friendly troublemaker.', 'FALSE', '131');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('stephan_west@gmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Zachariah Peralta', 'tone', 'Elliot', 'Avid problem solver. Beer evangelist. Communicator. Freelance social media scholar. Coffee nerd. Entrepreneur.', 'TRUE', '186');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('tristin.kuvalis@gmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Amber-Rose Kenny', 'quite', 'Jeseník', 'Gamer. Unable to type with boxing gloves on. Evil foodaholic. Tv maven. General thinker. Amateur beer lover.', 'TRUE', '84');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('lew_bauch@hotmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Jameson Mckenna', 'skip', 'Asamankese', 'Devoted twitter maven. Amateur internet trailblazer. Introvert. Passionate travelaholic. Total beer fan. Evil alcohol geek.', 'TRUE', '225');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('michelle_wuckert@gmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Jake Regan', 'don', 'Gangkoujie', 'Beer specialist. Certified pop culture buff. Devoted introvert. Internetaholic. Music enthusiast.', 'FALSE', '32');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('oswald_lueilwitz5@yahoo.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Ridwan Butt', 'result', 'Zbytków', 'Devoted zombie fan. Twitter practitioner. Food geek. Beer maven. Problem solver. Coffee junkie. Subtly charming entrepreneur.', 'FALSE', '231');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('jaleel_rice61@yahoo.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Farhana Dickinson', 'boing', 'Draguignan', 'Communicator. Devoted tv scholar. Wannabe writer. Creator. Hardcore twitter lover. Entrepreneur.', 'TRUE', '183');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('zechariah15@gmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Sufyaan Hutchinson', 'topic', 'Taiping', 'Reader. Certified web nerd. Lifelong writer. Zombieaholic. Travel enthusiast. Bacon ninja.', 'FALSE', '103');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('ruth89@gmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Fahim Matthews', 'tricky', 'Kyŏngsŏng', 'Thinker. Social media buff. Prone to fits of apathy. Evil web guru. General pop cultureaholic. Bacon practitioner.', 'TRUE', '79');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('constance73@hotmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Sid Odling', 'evil', 'Guantang', 'Communicator. Certified organizer. Alcohol lover. Social media aficionado.', 'FALSE', '148');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('cicero7@yahoo.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Mariah Durham', 'rate', 'Shuangfeng', 'Incurable alcohol guru. Avid writer. Social media advocate. Award-winning internet nerd. Bacon lover. Analyst. General student.', 'TRUE', '167');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('ramona.jerde@gmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Jordon Roberson', 'mule', 'Terpinnya', 'Creator. Total social media advocate. Tv enthusiast. Hardcore coffee specialist. Travel geek.', 'TRUE', '8');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('nolan.schmitt76@gmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Kush Lopez', 'porkchop', 'Huata', 'Tvaholic. Infuriatingly humble music fanatic. Communicator. Lifelong travel fan. Problem solver.', 'FALSE', '52');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('reid.bergnaum@yahoo.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Aamna Ray', 'colony', 'Bayt Dajan', 'Zombie buff. Alcohol maven. Analyst. Passionate organizer. Music advocate. Explorer. Food fan. Wannabe pop culture expert. Tv specialist.', 'TRUE', '97');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('jaunita.conn@yahoo.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Kairo Reynolds', 'merciful', 'Sibagat', 'General social media ninja. Bacon buff. Hipster-friendly troublemaker. Music fanatic. Amateur web geek. Subtly charming coffee advocate.', 'FALSE', '46');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('jadyn34@gmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Bilal Betts', 'hill', 'Oebatu', 'Devoted gamer. Beer aficionado. Certified organizer. Pop culture nerd. Travel enthusiast. Student.', 'TRUE', '91');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('leta.haley4@gmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Haleema Rasmussen', 'reflecting', 'Yuanzhou', 'Gamer. Amateur problem solver. Food specialist. Web maven. Internet ninja. Lifelong analyst.', 'FALSE', '192');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('jennie58@hotmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Aaran Hess', 'personnel', 'Dubno', 'Certified twitter guru. Food evangelist. Evil internet maven. Communicator. Professional bacon trailblazer.', 'FALSE', '113');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('rudolph.bayer@hotmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Humayra Fountain', 'dolls', 'Banjar Budakeling', 'Freelance music geek. Bacon buff. Social media junkie. Beer enthusiast. Writer. Hardcore pop culture lover. Reader.', 'FALSE', '14');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('nikko38@yahoo.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Samira Lucero', 'flagstaff', 'Santiago', 'Beer fanatic. Twitter specialist. Student. Creator. Troublemaker. Incurable webaholic. Pop culture lover. Wannabe reader. Social media guru.', 'TRUE', '136');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('kaci70@hotmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Tyla Mcdougall', 'covey', 'Cagnes-sur-Mer', 'Music expert. Unapologetic social mediaholic. Subtly charming food fanatic. Avid explorer. Friendly internet junkie.', 'TRUE', '242');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('kendrick.wilkinson73@yahoo.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Henley Pace', 'sprouts', 'Balong Wetan', 'Pop culture enthusiast. Coffee practitioner. Proud twitteraholic. General gamer. Hardcore alcohol lover. Evil zombie buff.', 'TRUE', '155');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('zola48@gmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Patricia Harrell', 'jodhpurs', 'Marmande', 'Extreme music maven. Troublemaker. Infuriatingly humble pop culture buff. Certified alcohol lover.', 'TRUE', '179');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('colt.reichert57@hotmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Misbah Mcclure', 'slide', 'Santisimo Rosario', 'Web fan. Prone to fits of apathy. Tv maven. Pop culture aficionado. General food enthusiast. Communicator.', 'TRUE', '202');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('jalen.kerluke@yahoo.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Rubie Singleton', 'tail', 'Hartford', 'Communicator. Amateur gamer. Infuriatingly humble coffee advocate. Passionate web expert. Social media junkie.', 'TRUE', '24');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('annie_roberts99@hotmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Tarun Lamb', 'spanish', 'Třebíč', 'Social media geek. Food scholar. Prone to fits of apathy. General student. Web ninja. Troublemaker.', 'TRUE', '25');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('gaylord_bode@hotmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Carlton Fitzgerald', 'tube', 'Riberalta', 'Wannabe alcohol lover. Internet guru. Avid travel nerd. Devoted tv scholar. Total social media junkie.', 'FALSE', '150');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('jennyfer_green@yahoo.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Skyla Kim', 'weight', 'Kamyshevka Vtoraya', 'Troublemaker. Award-winning communicator. Devoted internet geek. Total social media fanatic.', 'FALSE', '149');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('rosalinda.nicolas36@hotmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Trevor Gilbert', 'miracle', 'Laocheng', 'Student. Communicator. Food specialist. Troublemaker. Wannabe tv scholar. Pop culture fanatic. Professional music enthusiast.', 'FALSE', '65');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('milo.luettgen@yahoo.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Rianna Villalobos', 'truthful', 'Merritt', 'Incurable music advocate. Beer aficionado. Baconaholic. Certified writer. Internet specialist.', 'FALSE', '49');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('blanche70@gmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Cara Gross', 'reverse', 'Rongai', 'Devoted music aficionado. Coffeeaholic. Twitter lover. Subtly charming thinker. Unapologetic introvert.', 'FALSE', '234');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('jaiden.nolan64@gmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Emelia Mcgregor', 'drafty', 'Las Garcitas', 'Gamer. Wannabe social media nerd. Avid internet expert. Pop culture advocate. Infuriatingly humble tv buff.', 'TRUE', '167');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('dustin.barton@gmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Margaux Power', 'motionless', 'Bafilo', 'Extreme analyst. Travel advocate. Organizer. Professional music fanatic. Alcohol scholar. Incurable tv nerd.', 'TRUE', '208');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('april46@hotmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Danny Goff', 'dependable', 'Jiamiao', 'Award-winning zombie trailblazer. Coffeeaholic. Hardcore creator. Proud troublemaker. Web evangelist. Social media buff. Freelance gamer.', 'FALSE', '3');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('stewart_klein@hotmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Lilli Brandt', 'cloak', 'Hongsung', 'Unapologetic analyst. Twitter evangelist. Explorer. Prone to fits of apathy. Tv practitioner. Wannabe food ninja.', 'TRUE', '129');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('ashlee.lueilwitz@hotmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Felix Searle', 'informal', 'Lyon', 'Amateur reader. Twitter advocate. Avid music expert. Alcohol enthusiast. Pop culture lover.', 'TRUE', '111');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('britney.ohara88@gmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Sanya Eaton', 'vowel', 'Mostovskoy', 'Coffee advocate. Unapologetic bacon geek. Social media scholar. Typical reader. Zombie guru. Amateur problem solver.', 'FALSE', '65');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('antone64@yahoo.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Wesley Collier', 'advanced', 'Pereira', 'Pop culture guru. General internet nerd. Total tv junkie. Proud bacon buff. Infuriatingly humble writer.', 'TRUE', '25');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('lauretta.feest@yahoo.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Bayley Arias', 'deserted', 'Pérama', 'Evil pop culture ninja. Wannabe creator. Beer specialist. Freelance twitter buff. Infuriatingly humble writer.', 'TRUE', '250');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('evert_gutmann92@hotmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Huw Bradshaw', 'remind', 'Goris', 'Avid tv geek. Food fan. Social media fanatic. Incurable music buff. Coffee ninja. Travel junkie.', 'FALSE', '125');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('sharon74@gmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Nayla Bird', 'shyster', 'Radamata', 'Hardcore troublemaker. Professional gamer. Amateur beer nerd. Coffee geek. Analyst.', 'FALSE', '216');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('stephanie.halvorson@yahoo.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Ayana Mathews', 'supply', 'Druzhny', 'Lifelong alcohol aficionado. Thinker. Passionate tv ninja. Extreme food expert. Travel junkie. Unable to type with boxing gloves on. Proud student.', 'TRUE', '144');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('amira62@yahoo.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Annalise Hilton', 'grateful', 'Buni Yadi', 'Total writer. General internet expert. Hipster-friendly introvert. Organizer. Wannabe coffee buff.', 'TRUE', '18');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('guadalupe.deckow@gmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Anaya Walker', 'tabernacle', 'Cotmon', 'Music maven. Lifelong pop culture fanatic. Total communicator. Avid zombie junkie.', 'TRUE', '139');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('coleman30@gmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Ellenor Haines', 'pigface', 'Jivia', 'Friendly gamer. Hipster-friendly beer aficionado. Zombieaholic. Twitter nerd.', 'FALSE', '18');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('vita_kilback24@gmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Phillipa Deacon', 'rich', 'Aachen', 'Creator. Travel nerd. Hipster-friendly zombie trailblazer. Subtly charming food evangelist. Student. General tv practitioner.', 'TRUE', '114');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('gaston_fahey65@hotmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Izzy Castaneda', 'impala', 'Niigata-shi', 'Zombie fanatic. Unapologetic beer enthusiast. Web specialist. Total travel aficionado. Prone to fits of apathy. Reader.', 'TRUE', '4');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('bridget16@gmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Macauley Shelton', 'netted', 'Cicurug', 'Infuriatingly humble food buff. Freelance coffee specialist. General student. Zombie aficionado. Bacon lover.', 'FALSE', '32');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('kayla_goldner@yahoo.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Lilly-Grace Rich', 'food', 'Tsubame', 'Infuriatingly humble travel buff. Lifelong bacon junkie. Hipster-friendly organizer.', 'FALSE', '21');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('monique.powlowski21@yahoo.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Star Prentice', 'bother', 'Stradbally', 'Internet advocate. Pop culture trailblazer. Passionate travel practitioner. Total coffee fan.', 'TRUE', '247');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('odell11@yahoo.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Zoya Palmer', 'snowman', 'Ganxi', 'Student. Social media evangelist. Proud beer geek. Hardcore internet aficionado.', 'FALSE', '183');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('justine.nolan@hotmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Ioana Hogan', 'speed', 'Lao Suea Kok', 'Gamer. Professional twitter lover. Creator. Social media specialist. Devoted pop culture junkie.', 'TRUE', '8');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('roman.marvin9@yahoo.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Declan Melendez', 'imperfect', 'Banqiaodian', 'Infuriatingly humble problem solver. Internet fanatic. Zombie scholar. Award-winning bacon evangelist. Tv lover. Evil beer specialist.', 'FALSE', '45');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('jaqueline69@hotmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Jenna Lutz', 'agenda', 'Guangning', 'Food junkie. Proud beer maven. Alcohol scholar. General coffee specialist. Freelance bacon ninja.', 'FALSE', '227');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('xander87@hotmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Fathima Harwood', 'cherries', 'Wangzha', 'Thinker. Social media fan. Alcohol geek. Entrepreneur. Pop culture buff. Food fanatic.', 'FALSE', '244');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('jazmyn.hills80@hotmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Jawad Armitage', 'whoosh', 'San Carlos', 'Award-winning pop culture trailblazer. Evil tv fanatic. Food ninja. Entrepreneur.', 'TRUE', '155');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('kylie_rice@gmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Lina Hobbs', 'awful', 'Areado', 'Future teen idol. Travel specialist. Amateur alcoholaholic. Incurable introvert. Wannabe food buff.', 'TRUE', '76');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('kaden.cole@hotmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Maison Partridge', 'thing', 'Phra Pradaeng', 'Freelance coffee nerd. Friendly internet lover. Social media evangelist. Zombie scholar. Passionate analyst.', 'FALSE', '135');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('peyton_balistreri86@hotmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Caden Hodge', 'poll', 'Wenqiao', 'Extreme beeraholic. Communicator. Wannabe pop culture geek. Freelance travel fanatic. Music expert. Problem solver.', 'FALSE', '5');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('jody57@yahoo.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Mindy Arellano', 'weatherly', 'Qianzhou', 'Proud gamer. Social media practitioner. Musicaholic. Hardcore beer fanatic. Travel advocate.', 'FALSE', '122');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('jovany.schowalter80@gmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Areeba Lucas', 'diversity', 'Shaxi', 'Alcohol practitioner. Thinker. Passionate tv maven. Incurable problem solver. Communicator. Lifelong organizer.', 'FALSE', '216');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('brooks73@gmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Norah Moses', 'whispered', 'Cabodiongan', 'Music ninja. Professional twitter expert. Gamer. Beer practitioner. Food fan. Reader.', 'FALSE', '244');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('rhiannon_ratke82@gmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Abbie Hood', 'yearning', 'Asen', 'Tv fan. Web practitioner. Friend of animals everywhere. Typical pop culture evangelist. Amateur beer aficionado.', 'FALSE', '101');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('carlee44@gmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Hunter Atkins', 'reign', 'Komorní Lhotka', 'Wannabe writer. Lifelong gamer. Typical student. Troublemaker. Professional web fanatic.', 'TRUE', '96');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('blake_dicki@yahoo.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Eleasha Holding', 'drip', 'Biharamulo', 'Evil creator. Alcohol fan. Introvert. Analyst. Twitter junkie. Lifelong communicator. Music lover.', 'FALSE', '245');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('stevie_bartell3@gmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Zacharias Nolan', 'badelynge', 'Aībak', 'Beer expert. Lifelong travel ninja. Friendly internet specialist. Coffee practitioner. Introvert.', 'FALSE', '209');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('amelie_bergnaum55@gmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Peter Herbert', 'decent', 'Sebegen', 'Coffee specialist. Hipster-friendly reader. Freelance alcohol guru. Certified twitter ninja. Web aficionado. General travelaholic. Zombie fanatic.', 'TRUE', '46');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('edwardo_zemlak@hotmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Safah Ryan', 'lavender', 'Kinloch', 'Zombie aficionado. Incurable travel scholar. Subtly charming reader. Evil writer. Webaholic. Bacon maven. Freelance tv expert.', 'FALSE', '237');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('marina_donnelly92@hotmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Tori Morris', 'discerning', 'Linda Vista', 'Internet trailblazer. Bacon specialist. Zombie nerd. Proud tv scholar. Coffee guru. Music maven. Problem solver.', 'TRUE', '234');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('gudrun34@yahoo.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Garry Grant', 'originally', 'Szprotawa', 'Evil music enthusiast. Devoted coffee evangelist. Writer. Problem solver. Lifelong introvert. Amateur food nerd.', 'FALSE', '237');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('veronica_pollich@yahoo.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Emer Joseph', 'shoe', 'Jinan-gun', 'Travel lover. Entrepreneur. Amateur alcohol practitioner. Bacon aficionado. Avid coffee geek.', 'FALSE', '233');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('antonia41@gmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Eshaan Chavez', 'vacuum', 'Mranggen', 'Infuriatingly humble music trailblazer. Subtly charming travel maven. Unable to type with boxing gloves on.', 'FALSE', '142');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('arturo_moen@hotmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Caine Davidson', 'flapjack', 'Nashville', 'Beeraholic. Avid pop culture advocate. Passionate food enthusiast. Web junkie. Unapologetic travel aficionado.', 'TRUE', '243');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('caden65@gmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Stacy Mitchell', 'kidneys', 'Vaitogi', 'Hardcore entrepreneur. Unapologetic problem solver. Zombie trailblazer. Incurable twitter scholar. Bacon buff. Infuriatingly humble reader.', 'FALSE', '66');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('shanon50@gmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Rohaan Browne', 'principle', 'Barong', 'Infuriatingly humble travel fanatic. Bacon practitioner. Certified problem solver. Beer specialist. Zombie lover.', 'TRUE', '145');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('kasey.kohler45@gmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Zena Jeffery', 'hornet', 'Foz Giraldo', 'Music scholar. Extreme travel evangelist. Twitter enthusiast. Food buff. Bacon maven.', 'TRUE', '136');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('nella.swift@gmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Lily-Ann Huang', 'purpose', 'Duancun', 'Twitter scholar. Student. Analyst. Travel maven. Unapologetic alcohol expert. General explorer.', 'FALSE', '23');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('aron.nitzsche@gmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Alexandria Callahan', 'confirm', 'Futian', 'Travel advocate. Total internet specialist. Bacon fan. Tv enthusiast. Typical music expert. Professional introvert.', 'TRUE', '142');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('karl59@hotmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Mahima Kirby', 'melons', 'Karangmulyo', 'Web fanatic. Unable to type with boxing gloves on. Passionate coffee buff. Typical twitter fanatic.', 'TRUE', '174');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('ethelyn.schaefer85@yahoo.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Terrence Beck', 'shipton', 'Zaprudnya', 'Twitter advocate. Proud travel enthusiast. Organizer. Lifelong gamer. General reader. Food lover.', 'TRUE', '59');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('lonie.bruen54@yahoo.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Marjorie Salas', 'equipment', 'Mstsislaw', 'Hardcore pop culture trailblazer. Proud coffee evangelist. Unapologetic social media guru. Entrepreneur.', 'FALSE', '21');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('laverna.ratke@gmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Savannah Mcguire', 'milksop', 'Xinan', 'Extreme twitter evangelist. Proud reader. Coffee nerd. Pop culture junkie. Troublemaker. Typical food lover.', 'FALSE', '161');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('vergie_ruecker@yahoo.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Donna Rosales', 'reckless', 'Lope de Vega', 'Avid coffee geek. Internet evangelist. Troublemaker. Infuriatingly humble social media advocate.', 'FALSE', '207');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('raul90@gmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Tyler-Jay Oconnell', 'unbecoming', 'Hamanoichi', 'Web expert. Total thinker. Hardcore explorer. Devoted social media fan. Organizer. Internet guru. Tv fanatic.', 'FALSE', '222');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('houston.kub@yahoo.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Jacque Frey', 'pipe', 'Kuantan', 'Typical introvert. Web fanatic. Organizer. Food fan. Internet advocate.', 'TRUE', '189');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('tate67@gmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Reegan Palacios', 'district', 'San Isidro', 'Falls down a lot. Alcohol lover. Reader. Devoted social media buff. General gamer. Avid travel fan.', 'TRUE', '17');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('tatyana.mills76@gmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Lachlan Henderson', 'band', 'Muarabuliti', 'Extreme thinker. Wannabe social media geek. Pop culture lover. Avid internet aficionado. Introvert.', 'TRUE', '16');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('roxanne4@yahoo.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Shaquille Aguirre', 'point', 'Orenburg', 'Incurable web scholar. Tv nerd. Social media junkie. Baconaholic. Twitter buff. Unapologetic internet ninja.', 'FALSE', '51');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('leonard.kuphal32@hotmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Mack Mackay', 'wheelhouse', 'Sussex', 'Alcohol advocate. Food guru. Certified travel buff. Typical explorer. Avid zombie scholar. Analyst.', 'TRUE', '83');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('sadie.bosco42@gmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Akshay Rivas', 'ass', 'Néa Vrasná', 'Friend of animals everywhere. Subtly charming gamer. Certified troublemaker. Tv practitioner. Reader. Alcohol ninja.', 'TRUE', '28');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('rhea.dietrich@hotmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Bradleigh Lugo', 'anticipate', 'Salvacion', 'Incurable beer fanatic. Music fanatic. Award-winning bacon expert. Zombieaholic. Lifelong creator.', 'TRUE', '129');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('jayson_cummings93@hotmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Uzma Allen', 'muffled', 'Chengzi', 'Lifelong bacon buff. Creator. Twitter nerd. Subtly charming webaholic. Pop culture junkie. Student.', 'FALSE', '25');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('may21@gmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Iylah Gould', 'klutzy', 'Zlechov', 'Avid coffee fan. Infuriatingly humble entrepreneur. Thinker. Award-winning explorer. Total introvert. Zombie advocate. General beer expert.', 'FALSE', '243');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('korey6@hotmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Tamar Ware', 'flairhead', 'Cai Doi Vam', 'Unable to type with boxing gloves on. Friend of animals everywhere. Travel lover. Troublemaker.', 'TRUE', '206');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('melany.shanahan77@hotmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Shyam Lambert', 'queasy', 'Boden', 'Devoted internet practitioner. Hipster-friendly problem solver. Food specialist. Avid writer.', 'FALSE', '152');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('mackenzie70@hotmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Kane Maguire', 'obey', 'Dabagou', 'Zombie expert. Evil web scholar. Tv trailblazer. Wannabe music enthusiast.', 'TRUE', '213');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('jennyfer_oconner12@hotmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Joni Ballard', 'panoramic', 'Changsheng', 'Social media fan. Food expert. Web ninja. Travel enthusiast. Tv geek. Hardcore internet lover.', 'TRUE', '125');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('russell.dubuque41@gmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Oran Duffy', 'jungle', 'Lokokrangan', 'Professional reader. Zombie specialist. Incurable tvaholic. Friendly organizer.', 'FALSE', '50');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('emmet23@hotmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Ed Vaughan', 'smirk', 'Bauta', 'Hipster-friendly bacon enthusiast. Friendly social media ninja. Web aficionado. Beeraholic.', 'TRUE', '214');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('sienna2@gmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Ammara Perry', 'mull', 'Chaltyr', 'Coffee fan. Unapologetic communicator. Organizer. Unable to type with boxing gloves on. Web expert.', 'FALSE', '184');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('assunta_carter@yahoo.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Hussein England', 'princess', 'Veliko Tŭrnovo', 'Subtly charming alcohol scholar. Typical communicator. Certified student. Passionate writer. Reader.', 'TRUE', '116');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('dane.roberts@gmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Storm Holden', 'guidance', 'Yŏnggwang-ŭp', 'Extreme gamer. Total writer. Web evangelist. Coffee practitioner. Hardcore entrepreneur. Travel trailblazer. Beer buff.', 'FALSE', '94');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('daniella70@yahoo.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Kenny Andrew', 'torso', 'Fengle', 'Falls down a lot. Passionate social media junkie. Typical alcohol fanatic. Analyst. Incurable tvaholic. Evil reader.', 'TRUE', '172');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('elian10@gmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Marianne Ryder', 'rice', 'Monticello', 'Creator. Internet guru. Pop culture junkie. Professional student. General alcohol evangelist. Extreme problem solver. Social media fan.', 'FALSE', '168');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('daniella14@hotmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Elouise Knight', 'distribute', 'La Ceja', 'Amateur organizer. Friendly tv aficionado. Unapologetic alcohol maven. Creator. Twitter nerd.', 'TRUE', '185');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('chelsey_nicolas@yahoo.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Sian Workman', 'involve', 'Oakville', 'Twitter fanatic. General zombie evangelist. Certified internet nerd. Introvert. Bacon aficionado.', 'FALSE', '234');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('leo.powlowski56@hotmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Danielius Barr', 'sulphur', 'Metu', 'Thinker. Web trailblazer. Total internet lover. Passionate twitter maven. Award-winning writer.', 'FALSE', '12');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('katherine63@hotmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Luciana Dawson', 'mute', 'Ágios Vasíleios', 'Travel advocate. Proud problem solver. Passionate pop culture aficionado. Lifelong twitter fanatic.', 'TRUE', '15');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('emily45@yahoo.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Jagoda Nairn', 'currants', 'Dalu', 'Travel enthusiast. Evil explorer. Infuriatingly humble pop culture fanatic. Lifelong zombie ninja. Extreme twitter specialist.', 'FALSE', '66');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('aileen_keeling4@gmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Bob Hicks', 'clearly', 'Lao Suea Kok', 'Professional organizer. Coffee enthusiast. Infuriatingly humble food geek. Creator. Zombie buff. Lifelong student.', 'FALSE', '224');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('steve39@gmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Wiktoria Benson', 'fizzle', 'Prince Albert', 'Hipster-friendly social media maven. Creator. Entrepreneur. Friendly zombie practitioner.', 'FALSE', '91');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('dane_wyman23@hotmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Meredith Dudley', 'settle', 'Amirdzhan', 'Incurable alcohol buff. Unapologetic twitter advocate. Hipster-friendly web expert.', 'TRUE', '197');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('ali.ryan@hotmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Mari Hewitt', 'healthy', 'Pakuranga', 'Communicator. Zombie advocate. Professional pop culture lover. Typical coffee practitioner. Troublemaker. General student. Organizer. Writer.', 'TRUE', '4');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('buford.lang8@gmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Ari Bouvet', 'beneath', 'Wupu', 'Total tv fanatic. Reader. Internet fan. Pop culture fanatic. Gamer.', 'FALSE', '178');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('hertha.upton@yahoo.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Conah Dunlap', 'witty', 'Majie', 'Typical social media expert. Analyst. Coffee practitioner. Hardcore communicator. Infuriatingly humble tv nerd. Passionate problem solver.', 'TRUE', '26');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('kendall50@hotmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Maximus Pope', 'scumbag', 'Kelburn', 'Bacon evangelist. Web practitioner. Food advocate. Alcohol specialist. Social media ninja. Tv guru.', 'FALSE', '193');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('tierra_kassulke99@hotmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Ismaeel Ventura', 'plague', 'Yarmolyntsi', 'Thinker. Freelance entrepreneur. Coffee evangelist. Proud twitter trailblazer.', 'TRUE', '131');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('stan.hane@gmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Blanka Mcclain', 'peppercorn', 'Lenakapa', 'Beer advocate. Student. Pop culture expert. Wannabe entrepreneur. Bacon fan. Alcoholaholic. Zombie aficionado. Music trailblazer.', 'FALSE', '239');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('damaris25@gmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Zunaira Hodges', 'cuban', 'Ferreira', 'Evil travel fanatic. Beer buff. Future teen idol. Unapologetic social media aficionado.', 'FALSE', '93');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('raheem49@hotmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Aadam Floyd', 'killer', 'Oranjestad', 'Subtly charming coffee guru. Bacon lover. Incurable pop culture expert. Music junkie. Infuriatingly humble tv fan.', 'TRUE', '117');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('marlon_braun@hotmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Jenna Castillo', 'pale', 'General Lavalle', 'Food junkie. Social media advocate. Student. Unapologetic introvert. Analyst. Music nerd.', 'FALSE', '90');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('samantha.marvin@gmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Kynan Marks', 'quote', 'Buyunshan', 'Proud troublemaker. Analyst. Professional web specialist. Evil pop culture buff. Amateur tv fan.', 'FALSE', '46');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('geovany11@yahoo.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Beulah Travers', 'bureaucrat', 'Neepawa', 'Unapologetic social media guru. Devoted coffee fanatic. Freelance travel aficionado. Alcohol evangelist.', 'FALSE', '214');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('nannie98@yahoo.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Delilah Travis', 'automatic', 'Mirskoy', 'Gamer. Pop culture maven. Freelance student. Tv nerd. Avid travel expert. Friendly troublemaker. Lifelong alcohol geek. Web evangelist.', 'TRUE', '222');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('henderson.stracke@yahoo.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Macie Knox', 'ought', 'Lajkovac', 'Professional entrepreneur. Unapologetic communicator. Hardcore beer aficionado. Devoted student.', 'FALSE', '76');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('jermaine_jast75@gmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Maximilian Figueroa', 'plot', 'Delft', 'Explorer. Evil social media fanatic. Travel aficionado. Beeraholic. Zombie fan. Hardcore student.', 'FALSE', '171');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('tevin.anderson32@gmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Steffan Keller', 'sect', 'Bobowa', 'Alcohol scholar. Freelance beer fanatic. Food geek. Lifelong troublemaker. Zombie junkie. Friendly web aficionado.', 'FALSE', '186');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('armani32@yahoo.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Nile Espinosa', 'grainy', 'Weitang', 'Falls down a lot. Friendly organizer. Freelance alcohol evangelist. Award-winning writer.', 'FALSE', '124');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('aric.rosenbaum@hotmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Cassie Hendricks', 'handbag', 'Shepetivka', 'Organizer. Zombie enthusiast. Alcohol guru. Reader. Extreme tv practitioner. Entrepreneur. Explorer. Social media specialist. Beer buff.', 'TRUE', '95');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('adolf30@yahoo.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Leslie Armstrong', 'philips', 'Bacong', 'Typical analyst. Lifelong music specialist. Certified internet ninja. General thinker.', 'TRUE', '53');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('ellsworth_tillman@hotmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Juliet Cochran', 'wombat', 'Talisay', 'Unable to type with boxing gloves on. Incurable coffee advocate. Freelance beer guru.', 'TRUE', '224');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('zechariah.lakin57@yahoo.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Cieran Ballard', 'commitment', 'Bulihan', 'Pop culture specialist. Twitter expert. Music enthusiast. Tv scholar. Hipster-friendly travel lover. Devoted explorer.', 'TRUE', '178');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('malachi_kihn@hotmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Rhea Valenzuela', 'shall', 'Essen', 'Lifelong troublemaker. Social media geek. Beer buff. Alcohol aficionado.', 'TRUE', '242');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('sasha.barrows@gmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Shana Saunders', 'sausages', 'Itacurubí del Rosario', 'Social media specialist. Hardcore thinker. Unapologetic web scholar. Troublemaker. Award-winning tv guru. Entrepreneur.', 'FALSE', '10');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('marjory_grant@gmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Elvis Diaz', 'ethical', 'Ghāt', 'Evil travel scholar. Hipster-friendly troublemaker. Music practitioner. Falls down a lot. Organizer. Extreme tv buff.', 'TRUE', '95');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('ollie39@hotmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Elly Chadwick', 'criteria', 'Baizhu', 'Communicator. Hipster-friendly internet fan. Devoted introvert. Thinker. Hardcore travel junkie.', 'TRUE', '82');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('lauriane_king@gmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Tayler Burton', 'trickle', 'Postřekov', 'Travel buff. Pop culture guru. Food geek. Reader. Student. Incurable social media practitioner.', 'FALSE', '203');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('eli.johns57@gmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Giles Walsh', 'badminton', 'Mayang', 'Problem solver. Proud travel guru. Unapologetic introvert. Wannabe writer.', 'TRUE', '14');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('ronny41@gmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Lillie-Rose Woodcock', 'describe', 'Sandviken', 'Freelance internet guru. Creator. Web fan. Travelaholic. Unable to type with boxing gloves on. Tv evangelist.', 'FALSE', '50');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('cleve14@gmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Donna Kavanagh', 'individual', 'Lolodorf', 'Troublemaker. Lifelong twitter ninja. Typical zombie practitioner. Social media fanatic. Wannabe problem solver. Pop culture evangelist.', 'TRUE', '102');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('presley_toy@hotmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Taslima Bates', 'coot', 'Bozoum', 'Certified beer fan. Pop culture enthusiast. Web buff. Friend of animals everywhere. Internet fanatic. Writer.', 'FALSE', '158');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('tyler.batz@yahoo.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Jonas Ware', 'when', 'Paris 20', 'Infuriatingly humble travel guru. Zombie maven. Web ninja. Extreme coffee aficionado.', 'FALSE', '92');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('lesley.beer@hotmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Alexa Paine', 'somber', 'Saint-André-Avellin', 'Problem solver. Hardcore internet specialist. Total coffee practitioner. Professional communicator. Twitter maven.', 'TRUE', '72');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('antonina_stanton@gmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Saanvi Daugherty', 'watching', 'Ciénaga', 'Tv geek. Beer evangelist. Music trailblazer. Social media lover. Unapologetic writer. Devoted analyst. Bacon expert.', 'FALSE', '146');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('cara.altenwerth84@yahoo.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Kira Oliver', 'rewind', 'Gaillac', 'Future teen idol. Alcohol practitioner. Wannabe zombie specialist. Hardcore twitter expert. Lifelong communicator.', 'TRUE', '118');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('larue_hills@yahoo.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Hadassah Bloom', 'wrestle', 'Carrascal', 'Infuriatingly humble music aficionado. Amateur bacon trailblazer. Troublemaker. Thinker. Web junkie. Pop culture fanatic. Typical twitter ninja.', 'FALSE', '211');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('tate79@hotmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Ann-Marie Enriquez', 'painful', 'Piasek', 'Zombie enthusiast. Bacon guru. Twitter buff. Reader. Social media fanatic. Hardcore beer specialist. Falls down a lot.', 'TRUE', '7');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('roger.ziemann@yahoo.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Dilan Kouma', 'creepy', 'Xaysetha', 'Hardcore analyst. Social media expert. Subtly charming problem solver. Falls down a lot.', 'FALSE', '192');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('eryn.corkery78@yahoo.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Selena Oakley', 'portray', 'Penhold', 'Extreme communicator. Beer evangelist. Avid travel fan. Writer. Hardcore music ninja.', 'FALSE', '101');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('scottie34@gmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Alia Wyatt', 'race', 'Delmas', 'Devoted troublemaker. Typical tv fan. Evil gamer. Problem solver. Unapologetic entrepreneur.', 'TRUE', '75');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('etha_pfannerstill4@gmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Kashif Rodgers', 'rectum', 'Itapevi', 'Unapologetic social media evangelist. Wannabe explorer. Certified alcohol nerd.', 'FALSE', '187');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('orville_becker@gmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Maddison Feeney', 'drawing', 'Helsingborg', 'General coffee evangelist. Social media lover. Wannabe web fanatic. Creator. Passionate organizer. Unapologetic beeraholic. Bacon ninja.', 'FALSE', '18');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('luisa_sipes28@hotmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Leona Glover', 'victim', 'Fūman', 'Incurable travel geek. Pop culture lover. Internet evangelist. Friendly writer. Reader.', 'FALSE', '27');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('maiya.feest51@yahoo.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Suraj Reid', 'language', 'Sumber Tengah', 'Food ninja. Devoted creator. Alcohol fanatic. Typical internet buff. Zombie geek. Coffee nerd. Passionate social mediaholic.', 'TRUE', '174');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('rene86@gmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Maxine Weiss', 'cardinal', 'Qiulu', 'Writer. Communicator. Award-winning food junkie. Internet ninja. Incurable bacon fanatic.', 'TRUE', '169');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('effie34@gmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Grady Easton', 'exemplary', 'Srbinovo', 'Falls down a lot. Friendly coffee trailblazer. Certified problem solver. Wannabe travel maven. Pop culture scholar.', 'TRUE', '151');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('ottis.mayert@gmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Varun ORyan', 'frontal', 'Lamalewo', 'Coffee guru. Zombie evangelist. Unapologetic bacon ninja. Creator. Reader. Twitter aficionado.', 'TRUE', '44');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('joanny47@gmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Asiyah Adkins', 'boot', 'Staraya Stanitsa', 'Award-winning bacon fanatic. Typical beer fan. Proud music advocate. Entrepreneur. Twitteraholic. Professional thinker.', 'TRUE', '99');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('melissa_hintz@gmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Pearce Dodd', 'cackle', 'Lucerna', 'Organizer. Pop culture geek. General web scholar. Travelaholic. Coffee buff. Alcohol aficionado. Twitter expert. Subtly charming thinker.', 'TRUE', '128');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('wilton_wintheiser@hotmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Hollie Bray', 'clancy', 'Canmore', 'Analyst. Coffee fan. General reader. Introvert. Future teen idol. Tv expert. Friendly twitter guru.', 'FALSE', '108');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('jeramie_brown90@gmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Tazmin Calhoun', 'tongue', 'Ar Ramthā', 'Twitter specialist. Internet trailblazer. Proud zombie fanatic. Entrepreneur. Webaholic. Passionate organizer.', 'TRUE', '115');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('zetta_hodkiewicz63@hotmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Theodore Mathis', 'sicko', 'Tilamuta', 'Zombie ninja. Alcohol maven. Freelance travel fanatic. Pop culture fan. Proud introvert.', 'TRUE', '199');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('leopold12@yahoo.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Sheila Nicholls', 'zygomatic', 'Svyatogorsk', 'Friendly social media advocate. Analyst. Music geek. Thinker. Pop culture enthusiast. Coffee nerd.', 'TRUE', '199');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('rae63@gmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Aliyah Appleton', 'basil', 'Burgau', 'Travel evangelist. Infuriatingly humble web lover. Creator. Extreme internet aficionado. Beer expert. Bacon maven. Tv fan. Zombie guru.', 'FALSE', '168');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('korey.langworth@yahoo.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Giselle Mcgill', 'bitter', 'Rauna', 'Coffee fan. Freelance food maven. Twitter guru. Passionate web aficionado.', 'FALSE', '129');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('ava32@yahoo.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Oran Markham', 'overdue', 'Xuefeng', 'Alcohol fan. Internet aficionado. Total web enthusiast. General travel expert. Award-winning beer geek.', 'TRUE', '141');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('lorna_harvey75@gmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Alayna Talley', 'murmer', 'Xiasi', 'Typical pop culture trailblazer. Tv scholar. Incurable travelaholic. Troublemaker. Music buff. Beer geek. Reader.', 'TRUE', '213');
-INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('kirk.bins@hotmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Keegan Mcphee', 'warlike', 'Victoria', 'Evil introvert. Web fanatic. Foodaholic. Subtly charming social media fan. Bacon ninja.', 'FALSE', '13');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('deangelo.kuhn@hotmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', '1Layla Garcia', 'acidiccharlene', 'city', 'Hipster-friendly zombie practitioner. Subtly charming explorer. Student. Troublemaker. Tv junkie. Bacon buff. Beer evangelist. Analyst.', FALSE, '135');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('joana48@gmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Sammy Rodriquez', 'acidic_charlene', 'San Fernando', 'Web scholar. Creator. Proud zombie aficionado. Lifelong thinker. Pop cultureaholic.', FALSE, '39');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('jordon.champlin71@hotmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Alissia Rennie', 'acidic.charlene', 'Aş Şaff', 'Friendly coffee buff. Passionate beer scholar. Communicator. Extreme twitter lover. Hipster-friendly internet fanatic.', FALSE, '92');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('jerrold_medhurst80@gmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Phyllis Sharples', 'aeratedcharlene', 'Campo Grande', 'Devoted problem solver. Subtly charming communicator. Pop culture ninja. Evil coffee lover. Web enthusiast.', TRUE, '123');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('lavon.schmidt@gmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Ariel Krause', 'aerated_charlene', 'Leksand', 'Wannabe coffee enthusiast. Internet scholar. Beer fanatic. Total introvert. Communicator.', TRUE, '7');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('darrin_armstrong80@hotmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Keegan Montoya', 'aerated.charlene', 'Winneba', 'Friendly tv nerd. Avid coffee practitioner. Infuriatingly humble social media fan.', TRUE, '74');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('jeanne60@hotmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Malachi Guevara', 'almondycharlene', 'Wanxian', 'Amateur foodaholic. Incurable coffee buff. Reader. Award-winning twitter ninja.', TRUE, '24');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('hector96@gmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Alyssa Kearney', 'almondy_charlene', 'Priiskovyy', 'Friend of animals everywhere. Freelance zombie buff. Total web ninja. Wannabe analyst.', TRUE, '70');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('dock83@hotmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Rosalie Nicholls', 'almondy.charlene', 'Kuloy', 'Student. Incurable explorer. Coffee buff. Evil communicator. Freelance twitter geek.', FALSE, '231');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('joesph29@hotmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Aeryn Martin', 'caramelizedcharlene', 'Lai Cách', 'Friendly introvert. Lifelong beer practitioner. Subtly charming social media junkie.', TRUE, '173');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('jamie88@hotmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Kaira Preece', 'caramelized_charlene', 'Ōkawa', 'Extreme tv practitioner. Award-winning beer specialist. Coffee junkie. Friendly twitter advocate. Troublemaker.', FALSE, '110');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('roman.waelchi17@yahoo.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Ida Gay', 'caramelized.charlene', 'Kotabumi', 'Thinker. Subtly charming organizer. Proud web lover. General problem solver. Alcohol specialist.', FALSE, '189');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('antonietta.purdy@yahoo.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Riyad Costa', 'chloroticcharlene', 'Mokil', 'Wannabe troublemaker. Proud coffee buff. Avid pop culture fan. Subtly charming bacon ninja.', FALSE, '122');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('ivah.kilback@yahoo.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Ayrton Richards', 'chlorotic_charlene', 'Amsterdam Noord west', 'Certified introvert. Incurable tv expert. Extreme student. Devoted problem solver. Analyst.', FALSE, '7');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('nicholas33@yahoo.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Suhayb Carpenter', 'chlorotic.charlene', 'Ninh Giang', 'General alcohol trailblazer. Amateur coffee guru. Unapologetic twitter geek. Web aficionado. Writer. Extreme tv specialist.', TRUE, '136');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('eliseo72@hotmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Noah Stubbs', 'clammycharlene', 'Navegantes', 'Internet buff. Devoted communicator. Explorer. Organizer. Web lover. Alcohol advocate.', TRUE, '11');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('tavares23@gmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Sebastian Mcdonald', 'clammy_charlene', 'Lavia', 'Award-winning creator. Evil communicator. Subtly charming entrepreneur. Explorer. Amateur music expert.', TRUE, '94');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('will.hodkiewicz49@yahoo.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Ibrahim Tillman', 'clammy.charlene', 'Aileu', 'Internet scholar. Beer buff. Zombieaholic. Amateur troublemaker. Student. Award-winning music practitioner.', TRUE, '208');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('willa.schaefer@yahoo.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Mohsin Madden', 'abominablecharlene', 'Qinglin', 'Music enthusiast. Lifelong travel geek. Hipster-friendly communicator. Reader. Evil thinker.', TRUE, '9');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('ricky5@gmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Kailan OQuinn', 'abominable_charlene', 'Kilju', 'Prone to fits of apathy. Introvert. Award-winning internet evangelist. Extreme beer expert.', TRUE, '203');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('lucinda71@yahoo.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Mihai Searle', 'abominable.charlene', 'Leiwang', 'Freelance communicator. Unapologetic music guru. Student. Certified gamer. Hardcore writer. General organizer.', TRUE, '55');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('mark_lynch60@gmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Bertram Dalby', 'abysmalcharlene', 'San Manuel Chaparrón', 'Bacon evangelist. Typical creator. Hardcore tvaholic. Friendly writer. Twitter ninja.', FALSE, '244');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('heather_wunsch@hotmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Sumayya Gunn', 'abysmal_charlene', 'Le Mans', 'Professional beer buff. Social media ninja. Zombie advocate. Alcohol junkie. Total bacon expert. Incurable twitter fanatic.', FALSE, '143');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('clark.wilderman@yahoo.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Lily-Rose Wynn', 'abysmal.charlene', 'Hachinohe', 'Travel maven. Certified zombie fanatic. Wannabe reader. Devoted tv advocate. Beer enthusiast. Future teen idol.', FALSE, '90');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('carlotta77@yahoo.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Tammy Perkins', 'appallingcharlene', 'San Vicente', 'Web fan. General internet nerd. Infuriatingly humble zombieaholic. Typical social media aficionado. Writer.', FALSE, '54');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('vena.collins@gmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Enrico Shah', 'appalling_charlene', 'Huxi', 'Pop culture geek. Unable to type with boxing gloves on. Friendly explorer.', TRUE, '49');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('nya.ortiz19@hotmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Norma Cuevas', 'appalling.charlene', 'Waepana', 'Infuriatingly humble music aficionado. Bacon lover. Beer fan. Avid pop culture buff. Extreme tv trailblazer.', FALSE, '236');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('jovani82@gmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Ayman Pope', 'awfulcharlene', 'Áyios Nikólaos', 'Lifelong bacon nerd. Devoted tv scholar. Subtly charming coffee guru. Pop culture enthusiast.', TRUE, '148');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('melody_treutel@gmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Safaa Kendall', 'awful_charlene', 'Burao', 'Hardcore coffee practitioner. Troublemaker. Extreme beer enthusiast. Subtly charming travel fanatic. Writer.', FALSE, '140');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('olaf_kihn52@hotmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Clodagh Spencer', 'awful.charlene', 'Breda', 'Coffee fan. Communicator. Analyst. Infuriatingly humble travel expert. Tv ninja.', FALSE, '171');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('willy.thompson@hotmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Kristi Hensley', 'badcharlene', 'Wangcun', 'Beer nerd. Entrepreneur. Problem solver. Pop culture advocate. Evil thinker. Amateur coffee scholar.', FALSE, '104');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('trystan.daniel35@hotmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Daniela Nicholson', 'bad_charlene', 'Quanyang', 'Hipster-friendly zombie geek. Lifelong pop culture evangelist. Incurable bacon expert. Amateur alcohol aficionado. Communicator.', TRUE, '191');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('nettie.wiegand33@gmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Kayley Riddle', 'bad.charlene', 'Takefu', 'Bacon fanatic. Food aficionado. Explorer. Friendly travel buff. Typical creator. Unapologetic beer ninja.', FALSE, '14');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('katharina.ortiz25@yahoo.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Abdulrahman Doyle', 'beggarlycharlene', 'Jalingo', 'Typical thinker. Incurable social media evangelist. Avid problem solver. Alcoholaholic.', TRUE, '210');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('isidro.ryan@yahoo.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Nataniel Carlson', 'beggarly_charlene', 'Marseille', 'Student. Zombie specialist. Subtly charming analyst. Alcohol fanatic. Twitter enthusiast. Coffee ninja. Certified creator. Devoted travel fanatic.', TRUE, '138');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('christian_powlowski32@gmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Branden Branch', 'beggarly.charlene', 'Jahāniān Shāh', 'Passionate bacon expert. Web fanatic. Social media enthusiast. Organizer. Entrepreneur.', TRUE, '167');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('marquise_wehner16@hotmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Ismail Gardner', 'charlenelynchwales', 'Legionowo', 'Pop culture nerd. Avid internetaholic. Web trailblazer. Infuriatingly humble travel ninja.', TRUE, '45');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('adelia_mante@yahoo.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Tracy Weston', 'charlene_lynch_wales', 'Chernomorets', 'Freelance analyst. Professional foodaholic. Extreme pop culture fanatic. Gamer. Explorer. Thinker. Coffee trailblazer.', FALSE, '46');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('caesar_price43@yahoo.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Nadir Hamilton', 'charlene.lynch.wales', 'Fāryāb', 'Typical problem solver. Wannabe twitter expert. Evil explorer. Bacon lover. Beer geek. Avid internet scholar. Hipster-friendly thinker.', FALSE, '211');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('catharine_witting72@hotmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Simrah Peel', 'charlenelynchlawyer', 'L’govskiy', 'Typical gamer. Food aficionado. Alcohol practitioner. Problem solver. Unapologetic twitter fan. Award-winning bacon enthusiast. Total tv fanatic.', TRUE, '60');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('alf73@yahoo.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Kasey Rivera', 'charlene_lynch_lawyer', 'Dabao’anzhen', 'Unapologetic twitter scholar. Music enthusiast. Lifelong tv geek. Web ninja. Food advocate.', TRUE, '93');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('karli.reilly@hotmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Lacy Camacho', 'meancharlene', 'Espírito Santo do Pinhal', 'Entrepreneur. Zombie enthusiast. Tv evangelist. Unapologetic reader. Infuriatingly humble explorer. Organizer.', TRUE, '72');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('vallie54@yahoo.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Laura Squires', 'mean_charlene', 'San Roque', 'Subtly charming analyst. Food aficionado. Total problem solver. Certified beer enthusiast.', FALSE, '117');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('georgiana_borer85@hotmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Melissa Ashton', 'mean.charlene', 'Tuanjie', 'Certified zombie lover. Troublemaker. Evil twitter specialist. Analyst.', TRUE, '238');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('ramiro.murphy60@yahoo.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Ocean Gonzales', 'menacedenis', 'Haliut', 'Devoted internetaholic. Creator. Friendly coffee advocate. Pop culture evangelist.', FALSE, '244');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('randal_morissette42@hotmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Ellise Worthington', 'menace_denis', 'Ichupampa', 'Twitter fanatic. Devoted internet ninja. Passionate web trailblazer.', FALSE, '33');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('jacques88@hotmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Lina Morley', 'menace.denis', 'Savelugu', 'Proud music ninja. Student. Avid social media fan. Tv evangelist. Lifelong alcohol expert. Travel specialist. Prone to fits of apathy.', TRUE, '127');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('ashlee.bahringer39@hotmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Ruairidh Barnard', 'denisthetennis', 'Kokop', 'Troublemaker. Certified organizer. Tv fan. Infuriatingly humble coffee advocate.', TRUE, '211');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('nedra_rolfson@hotmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Robson Fuller', 'denis_the_tennis', 'Xinshichang', 'Devoted organizer. Pop cultureaholic. Subtly charming beer junkie. Falls down a lot. Music maven. Total bacon fan.', TRUE, '160');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('ozella_thompson87@gmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Danish Hines', 'denis.the.tennis', 'Junín', 'Subtly charming tv maven. Proud thinker. Food buff. Evil gamer. Web scholar. Internet nerd.', TRUE, '212');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('dana.beahan@hotmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Ted Hill', 'denisthevenice', 'Lago da Pedra', 'Avid beer ninja. Extreme tv fanatic. Analyst. Wannabe internet enthusiast. Hipster-friendly twitter scholar.', FALSE, '170');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('porter.volkman84@gmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Jorden Aguilar', 'denis_the_venice', 'Mikhaylovka', 'Friendly coffee junkie. Pop culture aficionado. Certified twitter buff. Unapologetic travel guru. Hardcore beer ninja.', TRUE, '219');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('beaulah_runolfsson50@yahoo.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Ruairi Anthony', 'denis.the.venice', 'Salerno', 'Evil beer enthusiast. Tv evangelist. Internet buff. Typical twitter guru. Pop culture geek.', FALSE, '13');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('marcus49@gmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Kristopher Wolf', 'pinchlynch', 'Leiguan', 'Amateur coffee nerd. Troublemaker. General communicator. Gamer. Analyst. Creator. Total beer ninja.', TRUE, '197');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('stuart.cole@yahoo.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Avaya Bowden', 'pinch_lynch', 'Fort Worth', 'Prone to fits of apathy. Incurable internet trailblazer. Proud communicator. Hardcore bacon enthusiast. Beer ninja. Gamer. Extreme coffee fan. Twitteraholic.', FALSE, '84');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('naomie_simonis48@hotmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Olli Povey', 'pinch.lynch', 'Carmen de Viboral', 'Explorer. Zombie scholar. Twitter lover. Music geek. Organizer. Food fanatic. Alcohol ninja.', FALSE, '216');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('lorna47@gmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Uma Wallis', 'greencharlene', 'Puerto Boyacá', 'Passionate internet specialist. Professional organizer. Devoted writer. Avid tv scholar. General web lover. Explorer.', TRUE, '96');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('olin.ernser1@yahoo.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Autumn Brady', 'green_charlene', 'Hamada', 'Infuriatingly humble explorer. Problem solver. Subtly charming travel buff. Award-winning web geek. Pop culture lover.', FALSE, '99');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('dan.oberbrunner@hotmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Leen Chen', 'green.charlene', 'Izborsk', 'Hipster-friendly twitter buff. Bacon lover. Certified zombie geek. Introvert. Evil alcohol ninja.', FALSE, '128');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('edd33@gmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Naveed Rojas', 'charlenethebean', 'Jaroměř', 'Writer. Hardcore food ninja. Social media lover. Friendly analyst. Future teen idol. Problem solver. Tv maven. Amateur travel aficionado.', FALSE, '127');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('ernesto27@hotmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Stella Deleon', 'charlene_the_bean', 'Chervonoarmiys’k', 'Freelance web fanatic. Tv expert. Evil student. Writer. Internet guru. Zombieaholic.', FALSE, '151');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('braeden12@hotmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Aliya Cook', 'charlene.the.bean', 'Cumming', 'Friend of animals everywhere. Web geek. Hipster-friendly coffee trailblazer. Organizer.', FALSE, '135');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('dillan13@yahoo.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Rhianne Grey', 'cinchlynch', 'Seattle', 'Writer. Twitter specialist. Passionate social media ninja. Lifelong beer buff. Bacon fanatic. Wannabe web scholar. Devoted coffee maven.', TRUE, '56');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('mohamed_balistreri38@gmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Anabel Neale', 'cinch_lynch', 'Sukoanyar', 'Award-winning zombie expert. Music aficionado. Alcohol evangelist. Subtly charming tv nerd. Internet scholar. Friendly bacon junkie.', FALSE, '115');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('earlene90@yahoo.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Winnie Summers', 'cinch.lynch', 'Sīlat al Ḩārithīyah', 'Devoted pop culture nerd. Lifelong problem solver. Amateur internet maven. Alcohol enthusiast. Student. Passionate beer fanatic.', FALSE, '58');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('kaitlin_rippin@hotmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Ananya Jarvis', 'leancharlene', 'Pengulu', 'Total internet lover. Zombie junkie. Travel buff. Alcohol specialist. Social media expert.', FALSE, '236');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('destiney.corwin@yahoo.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Rylan Oneil', 'lean_charlene', 'Heqiao', 'Friend of animals everywhere. Unable to type with boxing gloves on. Falls down a lot. Wannabe web enthusiast. Professional internet guru.', TRUE, '148');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('seth_dooley26@hotmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Josef ONeill', 'lean.charlene', 'Rivera', 'Social media evangelist. Freelance reader. Introvert. Infuriatingly humble internet scholar.', TRUE, '2');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('arnulfo.moen@yahoo.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Shamima Prentice', 'inchlynch', 'Sulahan', 'Beer fanatic. Amateur introvert. Twitter junkie. Lifelong food trailblazer. Proud alcohol nerd. Zombie buff.', FALSE, '13');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('jovany.stiedemann@yahoo.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Colette Healy', 'inch_lynch', 'Maoqitun', 'Coffee enthusiast. Devoted beer fanatic. Entrepreneur. Friendly travel scholar. Internet lover.', FALSE, '227');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('herbert4@hotmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Amrita Fields', 'inch.lynch', 'Plottier', 'Avid internet ninja. Bacon expert. Alcohol advocate. Hipster-friendly web trailblazer.', TRUE, '23');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('bianka_hilll21@yahoo.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Kaison Mayer', 'keencharlene', 'Pangradin Satu', 'Food aficionado. Hipster-friendly tv maven. Coffee fanatic. Prone to fits of apathy. Creator.', TRUE, '205');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('kristin88@hotmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Anil Pena', 'keen_charlene', 'Qalandiyā', 'Bacon guru. Future teen idol. Troublemaker. Friendly pop culture fanatic. Total problem solver. Music aficionado. Gamer. Incurable social media evangelist.', TRUE, '95');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('retta_lesch90@yahoo.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Reese Adkins', 'keen.charlene', 'Lagos da Beira', 'Subtly charming internet specialist. Travel scholar. Student. Problem solver. Beer geek.', TRUE, '210');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('betty79@gmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Ami Joyce', 'charlenethemachine', 'Būrewāla', 'Zombie specialist. Internet buff. Hardcore web lover. Award-winning pop culture geek. Subtly charming alcohol guru.', FALSE, '15');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('minnie88@yahoo.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Amar Wilkerson', 'charlene_the_machine', 'Jayanca', 'Hipster-friendly beer nerd. Music geek. Infuriatingly humble food specialist. Explorer.', FALSE, '189');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('edward.kertzmann10@hotmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Nabil Mayo', 'charlene.the.machine', 'Carora', 'Internet fanatic. Entrepreneur. Alcohol enthusiast. Falls down a lot. Avid troublemaker.', FALSE, '192');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('elvera.rowe5@gmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Isaak Boone', 'flinchlynch', 'Skatepark', 'Travel advocate. Internet aficionado. Bacon trailblazer. Typical analyst. Passionate gamer.', FALSE, '43');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('rocky_kuvalis@gmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Axl Lancaster', 'flinch_lynch', 'Shilovo', 'Thinker. Creator. Infuriatingly humble bacon junkie. Devoted alcohol geek. Introvert.', FALSE, '183');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('yasmine75@gmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Kristofer Koch', 'flinch.lynch', 'Padre Nabeto', 'Gamer. Pop culture evangelist. Travel fanatic. Alcohol geek. Total internet junkie.', FALSE, '42');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('zita.damore85@yahoo.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Roberta Mullen', 'lynchthehinch', 'Ordzhonikidzevskiy', 'Award-winning student. Evil social media fanatic. Writer. Zombie guru. Tv lover. Typical coffee advocate. Unable to type with boxing gloves on. Travel ninja.', TRUE, '156');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('meagan57@yahoo.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Bailey Hamer', 'lynch_the_hinch', 'Omsukchan', 'Tv fanatic. Social media scholar. Troublemaker. Beer trailblazer. Proud bacon enthusiast. Internet fan.', FALSE, '3');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('trace.grimes@yahoo.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Sahar Chadwick', 'lynch.the.hinch', 'Hougang', 'Music practitioner. Passionate internet fanatic. Hardcore bacon buff. Pop culture maven. Devoted web fanatic.', TRUE, '191');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('justyn8@hotmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Ricky Luna', 'cleancharlene', 'Arlöv', 'Certified thinker. Internet scholar. Freelance music junkie. Tv advocate. Analyst. Bacon fanatic. Friendly beer buff. Food maven.', FALSE, '55');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('olin99@hotmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Anum Diaz', 'clean_charlene', 'Pendawanbaru', 'Travelaholic. Passionate problem solver. Infuriatingly humble web nerd. Communicator. Typical beer guru. Amateur social media geek.', TRUE, '202');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('dennis.schneider@hotmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Farzana Valenzuela', 'clean.charlene', 'Myanaung', 'Travel aficionado. Tv fanatic. Reader. Typical beeraholic. Organizer. Certified music junkie. Zombie buff. Communicator. Creator.', FALSE, '70');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('keanu.bernhard66@gmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Sofie Mclellan', 'clinchlynch', 'Envigado', 'Food advocate. Future teen idol. Amateur social media expert. Gamer. Tv aficionado. Pop culture fanatic.', FALSE, '152');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('mabelle.jaskolski19@yahoo.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Elmer Lester', 'clinch_lynch', 'København', 'Food practitioner. Music junkie. Avid troublemaker. Hipster-friendly creator. Social media lover. Wannabe pop culture fanatic.', TRUE, '1');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('jazmyne.raynor91@hotmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Dylon Daly', 'clinch.lynch', 'Jiekeng', 'Devoted beer junkie. General zombie expert. Professional twitter nerd. Lifelong analyst. Reader. Hipster-friendly social media buff. Explorer. Coffee scholar.', FALSE, '59');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('letitia9@yahoo.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Roksana Barber', 'lynchthetinch', 'Ibaiti', 'Twitter guru. Passionate pop culture trailblazer. Alcohol fanatic. Bacon aficionado. Thinker. Explorer. Writer. Zombie junkie. Introvert.', FALSE, '29');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('ida_fahey46@yahoo.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Mahira Swan', 'lynch_the_tinch', 'Mīrābād', 'Lifelong tv aficionado. Social media fan. Award-winning food scholar. Writer. Music fanatic.', FALSE, '168');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('francis92@gmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Akeel Peacock', 'lynch.the.tinch', 'Montpellier', 'Twitter scholar. Amateur tv buff. Coffee specialist. Friendly communicator. Devoted food fanatic.', FALSE, '167');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('orland.streich@gmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Paulina Glass', 'charlene0xtkpiq45ul', 'Jeffersonville', 'Bacon aficionado. Internet scholar. Food expert. Typical zombie fan. Web enthusiast. Creator. Pop culture advocate.', FALSE, '3');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('emmalee52@yahoo.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Maude Curran', 'charlenej4racy6k', 'Chernyanka', 'Award-winning pop culture aficionado. Web fan. Professional alcohol maven. Bacon practitioner. Coffee scholar. Zombie fanatic.', TRUE, '217');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('price.wilderman8@gmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Emily-Jane Duggan', 'charlenez170b9e', 'Jatirejo', 'Explorer. Food evangelist. General analyst. Wannabe gamer. Alcohol specialist. Reader. Tv fan.', TRUE, '142');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('evan_hills18@yahoo.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Alivia Baker', 'charleneu.wxkejt', 'Hengpi', 'Unapologetic analyst. Gamer. Total internet scholar. Incurable writer. Introvert. Infuriatingly humble explorer.', FALSE, '183');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('guiseppe68@yahoo.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Marie Paul', 'charlene93ozumv', 'Tambulatana', 'Lifelong tv junkie. Zombie geek. Food ninja. Certified bacon lover. Travelaholic. Subtly charming web enthusiast.', TRUE, '211');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('ciara.funk@yahoo.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Khushi Hodge', 'charlene4e_bgafo', 'Lyozna', 'Incurable pop culture maven. Devoted twitter fanatic. Evil tvaholic. Friendly troublemaker.', FALSE, '214');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('silas.fay77@hotmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Lilly-Mae Hail', 'charlene3txezkgn', 'Sizhou', 'Subtly charming zombie fanatic. Web maven. Alcohol ninja. General travel fanatic.', TRUE, '187');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('tiffany_gulgowski@hotmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Sianna Plant', 'charlenezx1fn0q', 'Mabuhay', 'Bacon practitioner. Professional gamer. Pop culture junkie. Zombie fanatic. Thinker. Avid food nerd.', TRUE, '203');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('loraine27@yahoo.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Jarod Mackie', 'charleneezu6yn4xgm', 'Tacarigua', 'Zombie enthusiast. Subtly charming travel practitioner. Webaholic. Internet expert.', FALSE, '166');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('garrett53@yahoo.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Habiba Larson', 'charlenedenislynch', 'Pskov', 'Certified pop culture fanatic. Avid social media maven. Introvert. General travel enthusiast.', TRUE, '106');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('abby46@yahoo.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Alejandro Currie', 'charlene_denis_lynch', 'Wŏnju', 'Beer nerd. Music buff. Alcohol guru. Gamer. Certified student. Passionate writer.', FALSE, '96');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('wilburn_shields90@gmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Carmel Mcgill', 'charlene.denis.lynch', 'Pakel', 'Incurable introvert. Infuriatingly humble pop culture buff. Writer. Lifelong web practitioner. Beer geek. Travel maven.', FALSE, '32');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('sebastian47@gmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Shivam Williams', 'charlenelynch84', 'Baolong', 'Passionate pop culture nerd. Gamer. Twitter expert. Internet guru. Certified web advocate.', FALSE, '93');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('amelie.raynor@yahoo.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Huey Bass', 'charlene_lynch_84', 'Yelizavetinskaya', 'Travel fan. Social media scholar. Hipster-friendly writer. Reader. Avid zombie nerd.', TRUE, '35');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('felipa_erdman77@yahoo.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Ira Ahmad', 'gdodgeball', 'Estoril', 'Avid music specialist. Gamer. Evil food fanatic. Certified alcohol buff. Proud web aficionado.', TRUE, '219');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('hailie_cummings31@hotmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Della Calhoun', 'gsedge', 'Bailu', 'Tv geek. Friend of animals everywhere. Foodaholic. Certified internet ninja. Twitter aficionado. Hardcore web maven.', TRUE, '222');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('kasey61@yahoo.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Ben Newton', 'grather', 'Panzhou', 'Falls down a lot. Beer aficionado. Reader. Wannabe zombie buff. Award-winning bacon enthusiast. Internet trailblazer. Social media ninja.', TRUE, '194');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('nellie57@yahoo.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Cora Bull', 'gunreeve', 'Galátsi', 'Typical organizer. Wannabe problem solver. Creator. Writer. Proud travel maven.', FALSE, '28');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('andreane_hoeger21@hotmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Mikail Piper', 'gcaribou', 'Blois', 'Unapologetic introvert. Hipster-friendly thinker. Writer. Social media fanatic. Friendly alcoholaholic.', TRUE, '108');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('akeem.hane8@hotmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Giles Oliver', 'gshush', 'Halmstad', 'Thinker. Music junkie. Award-winning organizer. Wannabe internet fanatic. Proud creator. Typical beer practitioner.', FALSE, '4');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('mac_stanton@hotmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Abbas Dawson', 'gwhoosh', 'Krynychky', 'Award-winning thinker. Avid organizer. Hardcore communicator. Problem solver. Internet practitioner. Typical tv guru.', TRUE, '236');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('alicia_johnston@gmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Charmaine Morales', 'donkeyg', 'Chuangwang', 'Entrepreneur. Student. Tv expert. Gamer. Devoted music practitioner. Unapologetic internet maven.', TRUE, '65');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('shania17@gmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Zhane Mohammed', 'gslippers', 'Esperanza', 'Incurable pop culture fanatic. Hardcore organizer. Subtly charming travel junkie. Coffee buff.', TRUE, '194');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('paige_krajcik34@gmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Aleah Hutchings', 'ghumongous', 'Hucheng', 'Music specialist. Gamer. Tv lover. General twitter guru. Pop culture expert. Coffee ninja. Beer enthusiast.', TRUE, '5');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('janessa.crooks@hotmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Gina Corbett', 'chromosomeg', 'Bojnik', 'Bacon fan. Avid web scholar. Subtly charming coffee aficionado. Friend of animals everywhere.', TRUE, '45');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('moises48@hotmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Tomos Pollard', 'cordageg', 'Huambo', 'Incurable pop culture fan. Writer. Social media junkie. Proud bacon trailblazer. Future teen idol. Food fanatic. Lifelong music ninja.', FALSE, '230');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('tanya.lesch@yahoo.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Nikki Marquez', 'gblueberries', 'Tambakmerak', 'Pop culture trailblazer. Music practitioner. Writer. Communicator. Incurable creator.', FALSE, '139');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('christy_torphy@gmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Melinda Knights', 'unusualg', 'Cijambe', 'Lifelong organizer. Travel lover. Student. Alcohol nerd. Incurable music scholar. Twitter practitioner. Introvert. Analyst. Friendly food guru.', TRUE, '110');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('aglae.zulauf50@hotmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Eve Mcbride', 'computerg', 'Cimuncang', 'Tv geek. Beeraholic. Proud food ninja. Alcohol specialist. Devoted social media fan. Internet aficionado. Bacon trailblazer. Writer.', FALSE, '130');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('alphonso84@yahoo.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Zac Fleming', 'gsos', 'Tangdukou', 'Alcohol specialist. Hipster-friendly travel buff. Organizer. General reader. Communicator. Certified twitter fanatic. Avid introvert.', TRUE, '137');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('joyce.rodriguez68@hotmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Corben Allison', 'yokeg', 'Florencio Sánchez', 'Amateur coffee maven. Travel enthusiast. Infuriatingly humble beer lover. Award-winning problem solver. Web nerd.', FALSE, '217');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('mariah80@hotmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Chelsie Fowler', 'gsandwich', 'Finzes', 'Hardcore internet enthusiast. Music buff. Beer geek. Subtly charming pop culture practitioner. Tv maven.', TRUE, '187');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('gordon_pfannerstill65@yahoo.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Anaya Dotson', 'tranquilg', 'Bistrica ob Sotli', 'Travel evangelist. Creator. Alcohol aficionado. Professional internet guru. Total explorer. Thinker.', TRUE, '176');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('abe.miller@hotmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Wilma Wood', 'smokerg', 'Göteborg', 'Zombie fanatic. Alcohol scholar. Lifelong problem solver. Internet fanatic. Freelance pop culture enthusiast. Devoted food advocate. Gamer.', FALSE, '201');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('mallie.waelchi@gmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Lauryn Anthony', 'gabsurd', 'Vacaria', 'Web buff. Bacon fan. Hipster-friendly organizer. Unapologetic communicator. Music fanatic. Gamer. General zombie aficionado.', FALSE, '142');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('joe.koepp91@gmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Haley Keller', 'gprovider', 'Nizhnyaya Tura', 'Wannabe introvert. Travel trailblazer. Music fanatic. Twitter advocate. Web ninja.', TRUE, '98');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('magnolia_hudson5@yahoo.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Sannah Wong', 'gabject', 'Camrose', 'Pop culture fanatic. Freelance bacon ninja. Problem solver. Devoted music practitioner.', FALSE, '73');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('destini39@yahoo.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Huw Cummings', 'gpeace', 'Santa María Chiquimula', 'Incurable entrepreneur. Extreme internet enthusiast. Subtly charming introvert. Friend of animals everywhere.', TRUE, '246');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('leola53@hotmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Juniper Lord', 'gcleats', 'Dyurtyuli', 'Proud entrepreneur. Lifelong gamer. Zombie advocate. Alcohol specialist. Professional writer.', FALSE, '175');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('salma_brown@hotmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Elis Clarkson', 'gdeter', 'Căuşeni', 'Travel ninja. Food lover. Friendly beer geek. Certified music aficionado. Typical bacon fanatic.', TRUE, '141');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('josefina5@gmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Chloe Mcfarlane', 'bangbangg', 'Xiabuji', 'Troublemaker. Pop culture lover. Friendly beer specialist. Passionate social media buff.', FALSE, '47');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('devonte80@hotmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Caroline Lugo', 'gnest', 'Jisegumen', 'Infuriatingly humble alcohol guru. Twitter aficionado. Reader. Zombie practitioner.', TRUE, '101');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('marcelino.kunde57@yahoo.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Ammarah Dillard', 'plantg', 'Fuxi', 'Student. Devoted introvert. Certified alcohol expert. Coffee geek. Twitter ninja. Hipster-friendly reader.', TRUE, '28');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('winona.swift@hotmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Conan Cole', 'resistanceg', 'Shahezi', 'Lifelong tv practitioner. Internet geek. General gamer. Bacon evangelist. Alcohol junkie. Evil troublemaker.', TRUE, '248');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('curt.sauer87@yahoo.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Rosalind Needham', 'intensityg', 'Oslo', 'Entrepreneur. Beer trailblazer. General analyst. Avid internet guru. Lifelong social media lover.', FALSE, '54');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('jason_rau@yahoo.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Bridget Carter', 'droneg', 'Luzern', 'Zombie trailblazer. Unapologetic tv fanatic. Music practitioner. Lifelong twitter fan. Professional social media geek.', FALSE, '22');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('dustin3@yahoo.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Toby Mellor', 'gdeaf', 'Mach', 'Food buff. Analyst. Award-winning alcohol fanatic. Amateur zombie practitioner. Music trailblazer.', TRUE, '38');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('lesley.heidenreich@hotmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Teo Gross', 'gpolitical', 'Tanjungagung', 'Total tv buff. Incurable web ninja. Passionate food advocate. Music specialist. Freelance introvert.', FALSE, '51');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('imani11@gmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Derren Bruce', 'talentg', 'Esmoriz', 'Wannabe food evangelist. Devoted gamer. General pop culture fanatic. Introvert. Beer lover. Amateur tv advocate.', FALSE, '120');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('albin_wilderman23@hotmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Shuaib Robertson', 'downtowng', 'Uwajima', 'Avid organizer. Internet advocate. Hipster-friendly creator. Professional tv guru. Food geek. Devoted zombie maven.', FALSE, '15');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('eldred56@gmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Rayhan Schofield', 'includeg', 'Arjasari', 'Social media lover. Professional introvert. Evil food guru. Hardcore bacon fan. Unapologetic pop culture specialist.', TRUE, '178');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('myrtle.smitham45@gmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Rudy Ward', 'gaddicted', 'Auxerre', 'Hipster-friendly tv fanatic. Incurable web enthusiast. Amateur social media nerd. Typical zombie practitioner.', FALSE, '123');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('anais37@gmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Aviana Mclaughlin', 'gproducer', 'Yangi-Nishon Shahri', 'Travel aficionado. Internet maven. Coffee specialist. Alcohol scholar. Incurable twitter trailblazer. Bacon fanatic.', FALSE, '151');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('kali_ernser@hotmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Madeeha Hooper', 'crisisg', 'Xinkai', 'Internet geek. Zombie evangelist. Falls down a lot. General food trailblazer. Travel guru.', TRUE, '52');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('zula.harvey58@gmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Alice Braun', 'biologicalg', 'Shibajiazi', 'Student. Food aficionado. Lifelong music trailblazer. Creator. Gamer. Professional beer expert.', TRUE, '52');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('aleen_herman@gmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Lawrence Christie', 'grelation', 'Alcanhões', 'Coffee specialist. Pop culture guru. Travel buff. Unapologetic web scholar. Twitter fanatic. Evil internet ninja. Devoted zombie lover.', TRUE, '35');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('etha.mann84@hotmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Iris Compton', 'hardg', 'Klatovy', 'Award-winning bacon practitioner. Web enthusiast. Tv ninja. Internet advocate. Total explorer.', TRUE, '161');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('haylee.swift@yahoo.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Tymoteusz Scott', 'galso', 'Kwali', 'Hardcore internet trailblazer. Travel fanatic. Writer. Incurable tv fan. Friendly analyst.', FALSE, '86');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('lambert.fisher90@hotmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Drew Fritz', 'oddballg', 'Susoh', 'Coffee ninja. Wannabe twitter aficionado. Lifelong web fanatic. Hipster-friendly musicaholic.', TRUE, '199');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('buck_jerde@yahoo.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Jaydan Rollins', 'hiddeng', 'Patía', 'Beer maven. Coffee junkie. Extreme zombie practitioner. Webaholic. Tv advocate. Devoted bacon geek. Music expert. Internet ninja.', FALSE, '154');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('arno_grimes@hotmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Joey Esquivel', 'gcashews', 'Gaoxing', 'Evil analyst. Reader. Entrepreneur. Prone to fits of apathy. Amateur beer ninja. Total zombie fan. Lifelong troublemaker.', FALSE, '227');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('mckayla_littel91@yahoo.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Emer Galloway', 'gviewer', 'Catbalogan', 'Internet specialist. Evil entrepreneur. Troublemaker. Analyst. Tv aficionado. Thinker. Passionate explorer. Bacon guru.', FALSE, '188');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('jayce.reichert@yahoo.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Tate Atkinson', 'courierg', 'Zagreb - Centar', 'Wannabe coffee advocate. Freelance bacon practitioner. Social media guru. Musicaholic. Tv fan. Evil thinker.', FALSE, '29');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('alisa.bernhard1@hotmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Priscilla Sampson', 'gford', 'Carson City', 'Twitter enthusiast. Pop culture buff. Passionate web expert. General alcohol maven. Tvaholic. Troublemaker. Music fan.', FALSE, '206');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('barbara.rodriguez@yahoo.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Aurelia Henderson', 'touristg', 'Turbiv', 'Hipster-friendly introvert. Friendly music nerd. Extreme travel maven. Wannabe coffee geek. Award-winning alcohol trailblazer.', FALSE, '42');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('electa11@yahoo.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Jordanne Cash', 'gunthinking', 'Złotów', 'Pop culture ninja. Unapologetic alcohol evangelist. Passionate beer nerd. Incurable coffeeaholic. Friendly tv expert.', FALSE, '130');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('cullen_muller@gmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Qasim Snow', 'gimplement', 'Ar Rass', 'Friendly tv ninja. Incurable bacon trailblazer. Evil food practitioner. Student.', FALSE, '153');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('emile.vonrueden69@hotmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Rohan Person', 'gcalm', 'Tomiya', 'Social media nerd. Troublemaker. Twitter buff. Friendly thinker. Freelance tv trailblazer. Incurable coffee evangelist. Organizer. General internet ninja.', TRUE, '98');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('winfield_zemlak75@hotmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Ophelia Morris', 'flamboyantg', 'Telpaneca', 'Proud travel advocate. Freelance beer enthusiast. Creator. Hardcore tv evangelist.', FALSE, '89');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('kristina_braun@hotmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Owen Hood', 'gcordial', 'Luoping', 'Wannabe thinker. Avid internet specialist. Organizer. Communicator.', TRUE, '188');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('maudie80@gmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Kobe Robinson', 'gstock', 'Irasan', 'Music specialist. Travel aficionado. Twitter guru. Bacon trailblazer. Friendly troublemaker. Extreme food advocate.', TRUE, '14');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('deborah25@hotmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Harvir Brooks', 'ggrowling', 'Soroca', 'Travel trailblazer. Avid troublemaker. Explorer. Web fan. Twitter buff. Wannabe social mediaholic.', FALSE, '246');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('price9@gmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Bear Povey', 'gtalkative', 'Tarimbang', 'Gamer. Infuriatingly humble zombie practitioner. Troublemaker. Extreme webaholic. Devoted creator.', FALSE, '222');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('kailey.waters8@hotmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Mia Hatfield', 'cummerbundg', 'Debrecen', 'Alcoholaholic. Organizer. Extreme travel nerd. Devoted problem solver. Lifelong web lover. Creator. Incurable pop culture specialist.', TRUE, '70');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('emilio75@gmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Elisha Dudley', 'gweaver', 'Huitong', 'Travel ninja. Social media trailblazer. Subtly charming alcohol specialist. Coffee scholar. Gamer.', TRUE, '178');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('eriberto_murray@hotmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Jonathan Welch', 'switchg', 'Yuanguping', 'Social media geek. Professional internet practitioner. Incurable web advocate. Future teen idol.', TRUE, '177');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('odessa92@gmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Judy Easton', 'gmiddle', 'Ciomas', 'Alcohol junkie. Unable to type with boxing gloves on. Certified organizer. Evil zombie fan. Typical internet ninja.', TRUE, '194');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('jesse67@hotmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Sion Macgregor', 'gdeafening', 'Luzhai', 'Pop culture fan. Wannabe alcohol advocate. Zombie trailblazer. Web scholar. Coffee junkie.', TRUE, '93');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('arnulfo.king@yahoo.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Frances Patel', 'larboardg', 'Nanyuki', 'Pop culture fan. Lifelong gamer. Introvert. Writer. Freelance twitter specialist. Passionate web fanatic.', FALSE, '150');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('jerrold.torphy64@yahoo.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Fleur Ramsey', 'gdapper', 'Maquiapo', 'Hardcore alcohol fanatic. Devoted zombie fan. Bacon practitioner. Infuriatingly humble music lover. Entrepreneur. Falls down a lot. Passionate organizer.', TRUE, '130');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('clementine.rohan95@yahoo.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Can Bishop', 'gartery', 'Santo Tomas', 'Bacon buff. Thinker. Pop culture fanatic. Alcohol practitioner. Freelance web evangelist. Coffeeaholic.', FALSE, '4');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('alysha_ernser62@gmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Leonidas Stamp', 'tolerantg', 'Vecumnieki', 'Incurable pop culture junkie. Evil web specialist. Freelance food nerd. Award-winning coffee fan.', TRUE, '158');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('dalton5@gmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Deen Bennett', 'gtempting', 'Yintang', 'Professional writer. Analyst. Bacon trailblazer. Unapologetic pop culture aficionado. Freelance alcohol evangelist.', TRUE, '62');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('alaina.batz47@gmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Ziva Valenzuela', 'gumbrella', 'Kelaniya', 'Avid coffee scholar. Evil zombie advocate. Wannabe web expert. Social media enthusiast. Subtly charming troublemaker. Introvert. Entrepreneur.', TRUE, '222');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('arturo_swaniawski14@hotmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Jun Giles', 'parkg', 'Xincheng', 'Bacon ninja. Hipster-friendly twitter expert. Typical introvert. Web enthusiast. Communicator. Pop culture guru.', FALSE, '35');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('humberto.simonis@gmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Nellie Mcloughlin', 'pestog', 'Congonhas', 'Total gamer. Social media maven. Tv practitioner. Professional zombie advocate.', TRUE, '27');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('kimberly_muller@hotmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Vanessa Griffith', 'gcurvy', 'Jieznas', 'Friend of animals everywhere. Pop culture advocate. Certified writer. Avid social media trailblazer. Beer fan.', FALSE, '189');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('heber75@hotmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Zahraa Rivers', 'buzzardg', 'Al Qiţena', 'Zombie nerd. Bacon practitioner. Problem solver. Professional social media junkie. Certified coffee geek.', TRUE, '71');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('jada.dare@hotmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Kelsey Houston', 'gsmite', 'Lapuyan', 'Internet nerd. Professional alcohol evangelist. Amateur beer aficionado. Tv fan.', TRUE, '235');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('imani.reichel86@yahoo.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Brian Mccoy', 'ghat', 'Cibalung', 'Avid creator. Bacon junkie. Internet trailblazer. Writer. Organizer. Twitter fan.', TRUE, '162');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('millie_bednar98@hotmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Lexi-Mai Booth', 'tone', 'Elliot', 'Internet ninja. Total web practitioner. Lifelong twitter specialist. Writer. Friendly troublemaker.', TRUE, '141');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('stephan_west@gmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Zachariah Peralta', 'quite', 'Jeseník', 'Avid problem solver. Beer evangelist. Communicator. Freelance social media scholar. Coffee nerd. Entrepreneur.', FALSE, '76');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('tristin.kuvalis@gmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Amber-Rose Kenny', 'skip', 'Asamankese', 'Gamer. Unable to type with boxing gloves on. Evil foodaholic. Tv maven. General thinker. Amateur beer lover.', FALSE, '95');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('lew_bauch@hotmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Jameson Mckenna', 'don', 'Gangkoujie', 'Devoted twitter maven. Amateur internet trailblazer. Introvert. Passionate travelaholic. Total beer fan. Evil alcohol geek.', TRUE, '82');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('michelle_wuckert@gmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Jake Regan', 'result', 'Zbytków', 'Beer specialist. Certified pop culture buff. Devoted introvert. Internetaholic. Music enthusiast.', TRUE, '215');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('oswald_lueilwitz5@yahoo.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Ridwan Butt', 'boing', 'Draguignan', 'Devoted zombie fan. Twitter practitioner. Food geek. Beer maven. Problem solver. Coffee junkie. Subtly charming entrepreneur.', FALSE, '244');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('jaleel_rice61@yahoo.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Farhana Dickinson', 'topic', 'Taiping', 'Communicator. Devoted tv scholar. Wannabe writer. Creator. Hardcore twitter lover. Entrepreneur.', TRUE, '60');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('zechariah15@gmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Sufyaan Hutchinson', 'tricky', 'Kyŏngsŏng', 'Reader. Certified web nerd. Lifelong writer. Zombieaholic. Travel enthusiast. Bacon ninja.', TRUE, '160');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('ruth89@gmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Fahim Matthews', 'evil', 'Guantang', 'Thinker. Social media buff. Prone to fits of apathy. Evil web guru. General pop cultureaholic. Bacon practitioner.', TRUE, '17');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('constance73@hotmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Sid Odling', 'rate', 'Shuangfeng', 'Communicator. Certified organizer. Alcohol lover. Social media aficionado.', TRUE, '134');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('cicero7@yahoo.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Mariah Durham', 'mule', 'Terpinnya', 'Incurable alcohol guru. Avid writer. Social media advocate. Award-winning internet nerd. Bacon lover. Analyst. General student.', FALSE, '36');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('ramona.jerde@gmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Jordon Roberson', 'porkchop', 'Huata', 'Creator. Total social media advocate. Tv enthusiast. Hardcore coffee specialist. Travel geek.', FALSE, '108');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('nolan.schmitt76@gmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Kush Lopez', 'colony', 'Bayt Dajan', 'Tvaholic. Infuriatingly humble music fanatic. Communicator. Lifelong travel fan. Problem solver.', FALSE, '187');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('reid.bergnaum@yahoo.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Aamna Ray', 'merciful', 'Sibagat', 'Zombie buff. Alcohol maven. Analyst. Passionate organizer. Music advocate. Explorer. Food fan. Wannabe pop culture expert. Tv specialist.', TRUE, '194');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('jaunita.conn@yahoo.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Kairo Reynolds', 'hill', 'Oebatu', 'General social media ninja. Bacon buff. Hipster-friendly troublemaker. Music fanatic. Amateur web geek. Subtly charming coffee advocate.', FALSE, '12');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('jadyn34@gmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Bilal Betts', 'reflecting', 'Yuanzhou', 'Devoted gamer. Beer aficionado. Certified organizer. Pop culture nerd. Travel enthusiast. Student.', TRUE, '18');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('leta.haley4@gmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Haleema Rasmussen', 'personnel', 'Dubno', 'Gamer. Amateur problem solver. Food specialist. Web maven. Internet ninja. Lifelong analyst.', TRUE, '13');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('jennie58@hotmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Aaran Hess', 'dolls', 'Banjar Budakeling', 'Certified twitter guru. Food evangelist. Evil internet maven. Communicator. Professional bacon trailblazer.', FALSE, '234');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('rudolph.bayer@hotmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Humayra Fountain', 'flagstaff', 'Santiago', 'Freelance music geek. Bacon buff. Social media junkie. Beer enthusiast. Writer. Hardcore pop culture lover. Reader.', TRUE, '69');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('nikko38@yahoo.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Samira Lucero', 'covey', 'Cagnes-sur-Mer', 'Beer fanatic. Twitter specialist. Student. Creator. Troublemaker. Incurable webaholic. Pop culture lover. Wannabe reader. Social media guru.', TRUE, '12');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('kaci70@hotmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Tyla Mcdougall', 'sprouts', 'Balong Wetan', 'Music expert. Unapologetic social mediaholic. Subtly charming food fanatic. Avid explorer. Friendly internet junkie.', FALSE, '130');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('kendrick.wilkinson73@yahoo.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Henley Pace', 'jodhpurs', 'Marmande', 'Pop culture enthusiast. Coffee practitioner. Proud twitteraholic. General gamer. Hardcore alcohol lover. Evil zombie buff.', TRUE, '131');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('zola48@gmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Patricia Harrell', 'slide', 'Santisimo Rosario', 'Extreme music maven. Troublemaker. Infuriatingly humble pop culture buff. Certified alcohol lover.', TRUE, '185');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('colt.reichert57@hotmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Misbah Mcclure', 'tail', 'Hartford', 'Web fan. Prone to fits of apathy. Tv maven. Pop culture aficionado. General food enthusiast. Communicator.', FALSE, '73');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('jalen.kerluke@yahoo.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Rubie Singleton', 'spanish', 'Třebíč', 'Communicator. Amateur gamer. Infuriatingly humble coffee advocate. Passionate web expert. Social media junkie.', FALSE, '131');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('annie_roberts99@hotmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Tarun Lamb', 'tube', 'Riberalta', 'Social media geek. Food scholar. Prone to fits of apathy. General student. Web ninja. Troublemaker.', TRUE, '88');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('gaylord_bode@hotmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Carlton Fitzgerald', 'weight', 'Kamyshevka Vtoraya', 'Wannabe alcohol lover. Internet guru. Avid travel nerd. Devoted tv scholar. Total social media junkie.', TRUE, '124');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('jennyfer_green@yahoo.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Skyla Kim', 'miracle', 'Laocheng', 'Troublemaker. Award-winning communicator. Devoted internet geek. Total social media fanatic.', TRUE, '9');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('rosalinda.nicolas36@hotmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Trevor Gilbert', 'truthful', 'Merritt', 'Student. Communicator. Food specialist. Troublemaker. Wannabe tv scholar. Pop culture fanatic. Professional music enthusiast.', FALSE, '171');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('milo.luettgen@yahoo.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Rianna Villalobos', 'reverse', 'Rongai', 'Incurable music advocate. Beer aficionado. Baconaholic. Certified writer. Internet specialist.', FALSE, '241');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('blanche70@gmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Cara Gross', 'drafty', 'Las Garcitas', 'Devoted music aficionado. Coffeeaholic. Twitter lover. Subtly charming thinker. Unapologetic introvert.', TRUE, '141');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('jaiden.nolan64@gmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Emelia Mcgregor', 'motionless', 'Bafilo', 'Gamer. Wannabe social media nerd. Avid internet expert. Pop culture advocate. Infuriatingly humble tv buff.', TRUE, '48');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('dustin.barton@gmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Margaux Power', 'dependable', 'Jiamiao', 'Extreme analyst. Travel advocate. Organizer. Professional music fanatic. Alcohol scholar. Incurable tv nerd.', TRUE, '142');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('april46@hotmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Danny Goff', 'cloak', 'Hongsung', 'Award-winning zombie trailblazer. Coffeeaholic. Hardcore creator. Proud troublemaker. Web evangelist. Social media buff. Freelance gamer.', FALSE, '148');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('stewart_klein@hotmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Lilli Brandt', 'informal', 'Lyon', 'Unapologetic analyst. Twitter evangelist. Explorer. Prone to fits of apathy. Tv practitioner. Wannabe food ninja.', TRUE, '246');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('ashlee.lueilwitz@hotmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Felix Searle', 'vowel', 'Mostovskoy', 'Amateur reader. Twitter advocate. Avid music expert. Alcohol enthusiast. Pop culture lover.', FALSE, '145');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('britney.ohara88@gmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Sanya Eaton', 'advanced', 'Pereira', 'Coffee advocate. Unapologetic bacon geek. Social media scholar. Typical reader. Zombie guru. Amateur problem solver.', TRUE, '91');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('antone64@yahoo.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Wesley Collier', 'deserted', 'Pérama', 'Pop culture guru. General internet nerd. Total tv junkie. Proud bacon buff. Infuriatingly humble writer.', TRUE, '133');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('lauretta.feest@yahoo.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Bayley Arias', 'remind', 'Goris', 'Evil pop culture ninja. Wannabe creator. Beer specialist. Freelance twitter buff. Infuriatingly humble writer.', FALSE, '78');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('evert_gutmann92@hotmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Huw Bradshaw', 'shyster', 'Radamata', 'Avid tv geek. Food fan. Social media fanatic. Incurable music buff. Coffee ninja. Travel junkie.', FALSE, '107');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('sharon74@gmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Nayla Bird', 'supply', 'Druzhny', 'Hardcore troublemaker. Professional gamer. Amateur beer nerd. Coffee geek. Analyst.', TRUE, '126');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('stephanie.halvorson@yahoo.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Ayana Mathews', 'grateful', 'Buni Yadi', 'Lifelong alcohol aficionado. Thinker. Passionate tv ninja. Extreme food expert. Travel junkie. Unable to type with boxing gloves on. Proud student.', FALSE, '135');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('amira62@yahoo.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Annalise Hilton', 'tabernacle', 'Cotmon', 'Total writer. General internet expert. Hipster-friendly introvert. Organizer. Wannabe coffee buff.', FALSE, '111');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('guadalupe.deckow@gmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Anaya Walker', 'pigface', 'Jivia', 'Music maven. Lifelong pop culture fanatic. Total communicator. Avid zombie junkie.', FALSE, '36');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('coleman30@gmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Ellenor Haines', 'rich', 'Aachen', 'Friendly gamer. Hipster-friendly beer aficionado. Zombieaholic. Twitter nerd.', FALSE, '44');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('vita_kilback24@gmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Phillipa Deacon', 'impala', 'Niigata-shi', 'Creator. Travel nerd. Hipster-friendly zombie trailblazer. Subtly charming food evangelist. Student. General tv practitioner.', TRUE, '147');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('gaston_fahey65@hotmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Izzy Castaneda', 'netted', 'Cicurug', 'Zombie fanatic. Unapologetic beer enthusiast. Web specialist. Total travel aficionado. Prone to fits of apathy. Reader.', TRUE, '104');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('bridget16@gmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Macauley Shelton', 'food', 'Tsubame', 'Infuriatingly humble food buff. Freelance coffee specialist. General student. Zombie aficionado. Bacon lover.', TRUE, '64');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('kayla_goldner@yahoo.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Lilly-Grace Rich', 'bother', 'Stradbally', 'Infuriatingly humble travel buff. Lifelong bacon junkie. Hipster-friendly organizer.', FALSE, '49');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('monique.powlowski21@yahoo.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Star Prentice', 'snowman', 'Ganxi', 'Internet advocate. Pop culture trailblazer. Passionate travel practitioner. Total coffee fan.', TRUE, '55');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('odell11@yahoo.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Zoya Palmer', 'speed', 'Lao Suea Kok', 'Student. Social media evangelist. Proud beer geek. Hardcore internet aficionado.', FALSE, '142');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('justine.nolan@hotmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Ioana Hogan', 'imperfect', 'Banqiaodian', 'Gamer. Professional twitter lover. Creator. Social media specialist. Devoted pop culture junkie.', FALSE, '228');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('roman.marvin9@yahoo.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Declan Melendez', 'agenda', 'Guangning', 'Infuriatingly humble problem solver. Internet fanatic. Zombie scholar. Award-winning bacon evangelist. Tv lover. Evil beer specialist.', TRUE, '118');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('jaqueline69@hotmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Jenna Lutz', 'cherries', 'Wangzha', 'Food junkie. Proud beer maven. Alcohol scholar. General coffee specialist. Freelance bacon ninja.', FALSE, '84');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('xander87@hotmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Fathima Harwood', 'whoosh', 'San Carlos', 'Thinker. Social media fan. Alcohol geek. Entrepreneur. Pop culture buff. Food fanatic.', FALSE, '92');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('jazmyn.hills80@hotmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Jawad Armitage', 'awful', 'Areado', 'Award-winning pop culture trailblazer. Evil tv fanatic. Food ninja. Entrepreneur.', FALSE, '51');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('kylie_rice@gmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Lina Hobbs', 'thing', 'Phra Pradaeng', 'Future teen idol. Travel specialist. Amateur alcoholaholic. Incurable introvert. Wannabe food buff.', TRUE, '98');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('kaden.cole@hotmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Maison Partridge', 'poll', 'Wenqiao', 'Freelance coffee nerd. Friendly internet lover. Social media evangelist. Zombie scholar. Passionate analyst.', TRUE, '64');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('peyton_balistreri86@hotmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Caden Hodge', 'weatherly', 'Qianzhou', 'Extreme beeraholic. Communicator. Wannabe pop culture geek. Freelance travel fanatic. Music expert. Problem solver.', FALSE, '227');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('jody57@yahoo.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Mindy Arellano', 'diversity', 'Shaxi', 'Proud gamer. Social media practitioner. Musicaholic. Hardcore beer fanatic. Travel advocate.', FALSE, '84');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('jovany.schowalter80@gmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Areeba Lucas', 'whispered', 'Cabodiongan', 'Alcohol practitioner. Thinker. Passionate tv maven. Incurable problem solver. Communicator. Lifelong organizer.', TRUE, '209');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('brooks73@gmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Norah Moses', 'yearning', 'Asen', 'Music ninja. Professional twitter expert. Gamer. Beer practitioner. Food fan. Reader.', TRUE, '91');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('rhiannon_ratke82@gmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Abbie Hood', 'reign', 'Komorní Lhotka', 'Tv fan. Web practitioner. Friend of animals everywhere. Typical pop culture evangelist. Amateur beer aficionado.', TRUE, '3');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('carlee44@gmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Hunter Atkins', 'drip', 'Biharamulo', 'Wannabe writer. Lifelong gamer. Typical student. Troublemaker. Professional web fanatic.', FALSE, '232');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('blake_dicki@yahoo.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Eleasha Holding', 'badelynge', 'Aībak', 'Evil creator. Alcohol fan. Introvert. Analyst. Twitter junkie. Lifelong communicator. Music lover.', FALSE, '120');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('stevie_bartell3@gmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Zacharias Nolan', 'decent', 'Sebegen', 'Beer expert. Lifelong travel ninja. Friendly internet specialist. Coffee practitioner. Introvert.', TRUE, '215');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('amelie_bergnaum55@gmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Peter Herbert', 'lavender', 'Kinloch', 'Coffee specialist. Hipster-friendly reader. Freelance alcohol guru. Certified twitter ninja. Web aficionado. General travelaholic. Zombie fanatic.', FALSE, '138');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('edwardo_zemlak@hotmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Safah Ryan', 'discerning', 'Linda Vista', 'Zombie aficionado. Incurable travel scholar. Subtly charming reader. Evil writer. Webaholic. Bacon maven. Freelance tv expert.', TRUE, '170');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('marina_donnelly92@hotmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Tori Morris', 'originally', 'Szprotawa', 'Internet trailblazer. Bacon specialist. Zombie nerd. Proud tv scholar. Coffee guru. Music maven. Problem solver.', TRUE, '131');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('gudrun34@yahoo.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Garry Grant', 'shoe', 'Jinan-gun', 'Evil music enthusiast. Devoted coffee evangelist. Writer. Problem solver. Lifelong introvert. Amateur food nerd.', FALSE, '148');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('veronica_pollich@yahoo.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Emer Joseph', 'vacuum', 'Mranggen', 'Travel lover. Entrepreneur. Amateur alcohol practitioner. Bacon aficionado. Avid coffee geek.', TRUE, '110');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('antonia41@gmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Eshaan Chavez', 'flapjack', 'Nashville', 'Infuriatingly humble music trailblazer. Subtly charming travel maven. Unable to type with boxing gloves on.', TRUE, '115');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('arturo_moen@hotmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Caine Davidson', 'kidneys', 'Vaitogi', 'Beeraholic. Avid pop culture advocate. Passionate food enthusiast. Web junkie. Unapologetic travel aficionado.', TRUE, '113');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('caden65@gmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Stacy Mitchell', 'principle', 'Barong', 'Hardcore entrepreneur. Unapologetic problem solver. Zombie trailblazer. Incurable twitter scholar. Bacon buff. Infuriatingly humble reader.', FALSE, '23');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('shanon50@gmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Rohaan Browne', 'hornet', 'Foz Giraldo', 'Infuriatingly humble travel fanatic. Bacon practitioner. Certified problem solver. Beer specialist. Zombie lover.', TRUE, '15');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('kasey.kohler45@gmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Zena Jeffery', 'purpose', 'Duancun', 'Music scholar. Extreme travel evangelist. Twitter enthusiast. Food buff. Bacon maven.', FALSE, '8');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('nella.swift@gmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Lily-Ann Huang', 'confirm', 'Futian', 'Twitter scholar. Student. Analyst. Travel maven. Unapologetic alcohol expert. General explorer.', TRUE, '25');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('aron.nitzsche@gmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Alexandria Callahan', 'melons', 'Karangmulyo', 'Travel advocate. Total internet specialist. Bacon fan. Tv enthusiast. Typical music expert. Professional introvert.', TRUE, '212');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('karl59@hotmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Mahima Kirby', 'shipton', 'Zaprudnya', 'Web fanatic. Unable to type with boxing gloves on. Passionate coffee buff. Typical twitter fanatic.', TRUE, '46');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('ethelyn.schaefer85@yahoo.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Terrence Beck', 'equipment', 'Mstsislaw', 'Twitter advocate. Proud travel enthusiast. Organizer. Lifelong gamer. General reader. Food lover.', TRUE, '185');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('lonie.bruen54@yahoo.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Marjorie Salas', 'milksop', 'Xinan', 'Hardcore pop culture trailblazer. Proud coffee evangelist. Unapologetic social media guru. Entrepreneur.', TRUE, '126');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('laverna.ratke@gmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Savannah Mcguire', 'reckless', 'Lope de Vega', 'Extreme twitter evangelist. Proud reader. Coffee nerd. Pop culture junkie. Troublemaker. Typical food lover.', FALSE, '228');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('vergie_ruecker@yahoo.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Donna Rosales', 'unbecoming', 'Hamanoichi', 'Avid coffee geek. Internet evangelist. Troublemaker. Infuriatingly humble social media advocate.', TRUE, '113');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('raul90@gmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Tyler-Jay Oconnell', 'pipe', 'Kuantan', 'Web expert. Total thinker. Hardcore explorer. Devoted social media fan. Organizer. Internet guru. Tv fanatic.', FALSE, '174');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('houston.kub@yahoo.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Jacque Frey', 'district', 'San Isidro', 'Typical introvert. Web fanatic. Organizer. Food fan. Internet advocate.', FALSE, '157');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('tate67@gmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Reegan Palacios', 'band', 'Muarabuliti', 'Falls down a lot. Alcohol lover. Reader. Devoted social media buff. General gamer. Avid travel fan.', FALSE, '40');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('tatyana.mills76@gmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Lachlan Henderson', 'point', 'Orenburg', 'Extreme thinker. Wannabe social media geek. Pop culture lover. Avid internet aficionado. Introvert.', FALSE, '132');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('roxanne4@yahoo.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Shaquille Aguirre', 'wheelhouse', 'Sussex', 'Incurable web scholar. Tv nerd. Social media junkie. Baconaholic. Twitter buff. Unapologetic internet ninja.', TRUE, '121');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('leonard.kuphal32@hotmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Mack Mackay', 'ass', 'Néa Vrasná', 'Alcohol advocate. Food guru. Certified travel buff. Typical explorer. Avid zombie scholar. Analyst.', FALSE, '226');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('sadie.bosco42@gmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Akshay Rivas', 'anticipate', 'Salvacion', 'Friend of animals everywhere. Subtly charming gamer. Certified troublemaker. Tv practitioner. Reader. Alcohol ninja.', FALSE, '83');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('rhea.dietrich@hotmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Bradleigh Lugo', 'muffled', 'Chengzi', 'Incurable beer fanatic. Music fanatic. Award-winning bacon expert. Zombieaholic. Lifelong creator.', TRUE, '223');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('jayson_cummings93@hotmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Uzma Allen', 'klutzy', 'Zlechov', 'Lifelong bacon buff. Creator. Twitter nerd. Subtly charming webaholic. Pop culture junkie. Student.', FALSE, '115');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('may21@gmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Iylah Gould', 'flairhead', 'Cai Doi Vam', 'Avid coffee fan. Infuriatingly humble entrepreneur. Thinker. Award-winning explorer. Total introvert. Zombie advocate. General beer expert.', TRUE, '216');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('korey6@hotmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Tamar Ware', 'queasy', 'Boden', 'Unable to type with boxing gloves on. Friend of animals everywhere. Travel lover. Troublemaker.', TRUE, '151');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('melany.shanahan77@hotmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Shyam Lambert', 'obey', 'Dabagou', 'Devoted internet practitioner. Hipster-friendly problem solver. Food specialist. Avid writer.', FALSE, '177');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('mackenzie70@hotmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Kane Maguire', 'panoramic', 'Changsheng', 'Zombie expert. Evil web scholar. Tv trailblazer. Wannabe music enthusiast.', FALSE, '223');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('jennyfer_oconner12@hotmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Joni Ballard', 'jungle', 'Lokokrangan', 'Social media fan. Food expert. Web ninja. Travel enthusiast. Tv geek. Hardcore internet lover.', FALSE, '241');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('russell.dubuque41@gmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Oran Duffy', 'smirk', 'Bauta', 'Professional reader. Zombie specialist. Incurable tvaholic. Friendly organizer.', FALSE, '212');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('emmet23@hotmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Ed Vaughan', 'mull', 'Chaltyr', 'Hipster-friendly bacon enthusiast. Friendly social media ninja. Web aficionado. Beeraholic.', TRUE, '233');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('sienna2@gmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Ammara Perry', 'princess', 'Veliko Tŭrnovo', 'Coffee fan. Unapologetic communicator. Organizer. Unable to type with boxing gloves on. Web expert.', FALSE, '186');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('assunta_carter@yahoo.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Hussein England', 'guidance', 'Yŏnggwang-ŭp', 'Subtly charming alcohol scholar. Typical communicator. Certified student. Passionate writer. Reader.', FALSE, '120');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('dane.roberts@gmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Storm Holden', 'torso', 'Fengle', 'Extreme gamer. Total writer. Web evangelist. Coffee practitioner. Hardcore entrepreneur. Travel trailblazer. Beer buff.', TRUE, '168');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('daniella70@yahoo.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Kenny Andrew', 'rice', 'Monticello', 'Falls down a lot. Passionate social media junkie. Typical alcohol fanatic. Analyst. Incurable tvaholic. Evil reader.', TRUE, '116');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('elian10@gmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Marianne Ryder', 'distribute', 'La Ceja', 'Creator. Internet guru. Pop culture junkie. Professional student. General alcohol evangelist. Extreme problem solver. Social media fan.', FALSE, '80');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('daniella14@hotmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Elouise Knight', 'involve', 'Oakville', 'Amateur organizer. Friendly tv aficionado. Unapologetic alcohol maven. Creator. Twitter nerd.', TRUE, '56');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('chelsey_nicolas@yahoo.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Sian Workman', 'sulphur', 'Metu', 'Twitter fanatic. General zombie evangelist. Certified internet nerd. Introvert. Bacon aficionado.', FALSE, '88');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('leo.powlowski56@hotmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Danielius Barr', 'mute', 'Ágios Vasíleios', 'Thinker. Web trailblazer. Total internet lover. Passionate twitter maven. Award-winning writer.', FALSE, '230');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('katherine63@hotmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Luciana Dawson', 'currants', 'Dalu', 'Travel advocate. Proud problem solver. Passionate pop culture aficionado. Lifelong twitter fanatic.', TRUE, '33');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('emily45@yahoo.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Jagoda Nairn', 'clearly', 'Prince Albert', 'Travel enthusiast. Evil explorer. Infuriatingly humble pop culture fanatic. Lifelong zombie ninja. Extreme twitter specialist.', TRUE, '245');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('aileen_keeling4@gmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Bob Hicks', 'fizzle', 'Amirdzhan', 'Professional organizer. Coffee enthusiast. Infuriatingly humble food geek. Creator. Zombie buff. Lifelong student.', FALSE, '152');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('steve39@gmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Wiktoria Benson', 'settle', 'Pakuranga', 'Hipster-friendly social media maven. Creator. Entrepreneur. Friendly zombie practitioner.', FALSE, '199');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('dane_wyman23@hotmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Meredith Dudley', 'healthy', 'Wupu', 'Incurable alcohol buff. Unapologetic twitter advocate. Hipster-friendly web expert.', FALSE, '201');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('ali.ryan@hotmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Mari Hewitt', 'beneath', 'Majie', 'Communicator. Zombie advocate. Professional pop culture lover. Typical coffee practitioner. Troublemaker. General student. Organizer. Writer.', TRUE, '90');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('buford.lang8@gmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Ari Bouvet', 'witty', 'Kelburn', 'Total tv fanatic. Reader. Internet fan. Pop culture fanatic. Gamer.', TRUE, '79');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('hertha.upton@yahoo.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Conah Dunlap', 'scumbag', 'Yarmolyntsi', 'Typical social media expert. Analyst. Coffee practitioner. Hardcore communicator. Infuriatingly humble tv nerd. Passionate problem solver.', TRUE, '144');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('kendall50@hotmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Maximus Pope', 'plague', 'Lenakapa', 'Bacon evangelist. Web practitioner. Food advocate. Alcohol specialist. Social media ninja. Tv guru.', FALSE, '103');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('tierra_kassulke99@hotmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Ismaeel Ventura', 'peppercorn', 'Ferreira', 'Thinker. Freelance entrepreneur. Coffee evangelist. Proud twitter trailblazer.', FALSE, '155');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('stan.hane@gmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Blanka Mcclain', 'cuban', 'Oranjestad', 'Beer advocate. Student. Pop culture expert. Wannabe entrepreneur. Bacon fan. Alcoholaholic. Zombie aficionado. Music trailblazer.', TRUE, '124');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('damaris25@gmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Zunaira Hodges', 'killer', 'General Lavalle', 'Evil travel fanatic. Beer buff. Future teen idol. Unapologetic social media aficionado.', FALSE, '177');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('raheem49@hotmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Aadam Floyd', 'pale', 'Buyunshan', 'Subtly charming coffee guru. Bacon lover. Incurable pop culture expert. Music junkie. Infuriatingly humble tv fan.', FALSE, '79');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('marlon_braun@hotmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Jenna Castillo', 'quote', 'Neepawa', 'Food junkie. Social media advocate. Student. Unapologetic introvert. Analyst. Music nerd.', FALSE, '85');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('samantha.marvin@gmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Kynan Marks', 'bureaucrat', 'Mirskoy', 'Proud troublemaker. Analyst. Professional web specialist. Evil pop culture buff. Amateur tv fan.', FALSE, '209');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('geovany11@yahoo.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Beulah Travers', 'automatic', 'Lajkovac', 'Unapologetic social media guru. Devoted coffee fanatic. Freelance travel aficionado. Alcohol evangelist.', FALSE, '125');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('nannie98@yahoo.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Delilah Travis', 'ought', 'Delft', 'Gamer. Pop culture maven. Freelance student. Tv nerd. Avid travel expert. Friendly troublemaker. Lifelong alcohol geek. Web evangelist.', TRUE, '87');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('henderson.stracke@yahoo.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Macie Knox', 'plot', 'Bobowa', 'Professional entrepreneur. Unapologetic communicator. Hardcore beer aficionado. Devoted student.', FALSE, '42');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('jermaine_jast75@gmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Maximilian Figueroa', 'sect', 'Weitang', 'Explorer. Evil social media fanatic. Travel aficionado. Beeraholic. Zombie fan. Hardcore student.', TRUE, '181');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('tevin.anderson32@gmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Steffan Keller', 'grainy', 'Shepetivka', 'Alcohol scholar. Freelance beer fanatic. Food geek. Lifelong troublemaker. Zombie junkie. Friendly web aficionado.', FALSE, '76');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('armani32@yahoo.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Nile Espinosa', 'handbag', 'Bacong', 'Falls down a lot. Friendly organizer. Freelance alcohol evangelist. Award-winning writer.', TRUE, '138');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('aric.rosenbaum@hotmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Cassie Hendricks', 'philips', 'Talisay', 'Organizer. Zombie enthusiast. Alcohol guru. Reader. Extreme tv practitioner. Entrepreneur. Explorer. Social media specialist. Beer buff.', TRUE, '214');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('adolf30@yahoo.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Leslie Armstrong', 'wombat', 'Bulihan', 'Typical analyst. Lifelong music specialist. Certified internet ninja. General thinker.', TRUE, '157');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('ellsworth_tillman@hotmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Juliet Cochran', 'commitment', 'Essen', 'Unable to type with boxing gloves on. Incurable coffee advocate. Freelance beer guru.', FALSE, '109');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('zechariah.lakin57@yahoo.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Cieran Ballard', 'shall', 'Itacurubí del Rosario', 'Pop culture specialist. Twitter expert. Music enthusiast. Tv scholar. Hipster-friendly travel lover. Devoted explorer.', TRUE, '165');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('malachi_kihn@hotmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Rhea Valenzuela', 'sausages', 'Ghāt', 'Lifelong troublemaker. Social media geek. Beer buff. Alcohol aficionado.', TRUE, '185');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('sasha.barrows@gmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Shana Saunders', 'ethical', 'Baizhu', 'Social media specialist. Hardcore thinker. Unapologetic web scholar. Troublemaker. Award-winning tv guru. Entrepreneur.', FALSE, '26');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('marjory_grant@gmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Elvis Diaz', 'criteria', 'Postřekov', 'Evil travel scholar. Hipster-friendly troublemaker. Music practitioner. Falls down a lot. Organizer. Extreme tv buff.', FALSE, '67');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('ollie39@hotmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Elly Chadwick', 'trickle', 'Mayang', 'Communicator. Hipster-friendly internet fan. Devoted introvert. Thinker. Hardcore travel junkie.', TRUE, '110');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('lauriane_king@gmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Tayler Burton', 'badminton', 'Sandviken', 'Travel buff. Pop culture guru. Food geek. Reader. Student. Incurable social media practitioner.', FALSE, '125');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('eli.johns57@gmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Giles Walsh', 'describe', 'Lolodorf', 'Problem solver. Proud travel guru. Unapologetic introvert. Wannabe writer.', TRUE, '108');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('ronny41@gmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Lillie-Rose Woodcock', 'individual', 'Bozoum', 'Freelance internet guru. Creator. Web fan. Travelaholic. Unable to type with boxing gloves on. Tv evangelist.', TRUE, '235');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('cleve14@gmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Donna Kavanagh', 'coot', 'Paris 20', 'Troublemaker. Lifelong twitter ninja. Typical zombie practitioner. Social media fanatic. Wannabe problem solver. Pop culture evangelist.', FALSE, '36');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('presley_toy@hotmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Taslima Bates', 'when', 'Saint-André-Avellin', 'Certified beer fan. Pop culture enthusiast. Web buff. Friend of animals everywhere. Internet fanatic. Writer.', TRUE, '134');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('tyler.batz@yahoo.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Jonas Ware', 'somber', 'Ciénaga', 'Infuriatingly humble travel guru. Zombie maven. Web ninja. Extreme coffee aficionado.', FALSE, '19');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('lesley.beer@hotmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Alexa Paine', 'watching', 'Gaillac', 'Problem solver. Hardcore internet specialist. Total coffee practitioner. Professional communicator. Twitter maven.', FALSE, '196');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('antonina_stanton@gmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Saanvi Daugherty', 'rewind', 'Carrascal', 'Tv geek. Beer evangelist. Music trailblazer. Social media lover. Unapologetic writer. Devoted analyst. Bacon expert.', TRUE, '176');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('cara.altenwerth84@yahoo.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Kira Oliver', 'wrestle', 'Piasek', 'Future teen idol. Alcohol practitioner. Wannabe zombie specialist. Hardcore twitter expert. Lifelong communicator.', FALSE, '73');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('larue_hills@yahoo.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Hadassah Bloom', 'painful', 'Xaysetha', 'Infuriatingly humble music aficionado. Amateur bacon trailblazer. Troublemaker. Thinker. Web junkie. Pop culture fanatic. Typical twitter ninja.', TRUE, '217');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('tate79@hotmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Ann-Marie Enriquez', 'creepy', 'Penhold', 'Zombie enthusiast. Bacon guru. Twitter buff. Reader. Social media fanatic. Hardcore beer specialist. Falls down a lot.', TRUE, '77');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('roger.ziemann@yahoo.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Dilan Kouma', 'portray', 'Delmas', 'Hardcore analyst. Social media expert. Subtly charming problem solver. Falls down a lot.', FALSE, '79');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('eryn.corkery78@yahoo.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Selena Oakley', 'race', 'Itapevi', 'Extreme communicator. Beer evangelist. Avid travel fan. Writer. Hardcore music ninja.', TRUE, '229');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('scottie34@gmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Alia Wyatt', 'rectum', 'Helsingborg', 'Devoted troublemaker. Typical tv fan. Evil gamer. Problem solver. Unapologetic entrepreneur.', FALSE, '28');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('etha_pfannerstill4@gmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Kashif Rodgers', 'drawing', 'Fūman', 'Unapologetic social media evangelist. Wannabe explorer. Certified alcohol nerd.', FALSE, '90');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('orville_becker@gmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Maddison Feeney', 'victim', 'Sumber Tengah', 'General coffee evangelist. Social media lover. Wannabe web fanatic. Creator. Passionate organizer. Unapologetic beeraholic. Bacon ninja.', TRUE, '63');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('luisa_sipes28@hotmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Leona Glover', 'language', 'Qiulu', 'Incurable travel geek. Pop culture lover. Internet evangelist. Friendly writer. Reader.', TRUE, '94');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('maiya.feest51@yahoo.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Suraj Reid', 'cardinal', 'Srbinovo', 'Food ninja. Devoted creator. Alcohol fanatic. Typical internet buff. Zombie geek. Coffee nerd. Passionate social mediaholic.', FALSE, '78');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('rene86@gmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Maxine Weiss', 'exemplary', 'Lamalewo', 'Writer. Communicator. Award-winning food junkie. Internet ninja. Incurable bacon fanatic.', FALSE, '145');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('effie34@gmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Grady Easton', 'frontal', 'Staraya Stanitsa', 'Falls down a lot. Friendly coffee trailblazer. Certified problem solver. Wannabe travel maven. Pop culture scholar.', TRUE, '66');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('ottis.mayert@gmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Varun ORyan', 'boot', 'Lucerna', 'Coffee guru. Zombie evangelist. Unapologetic bacon ninja. Creator. Reader. Twitter aficionado.', FALSE, '223');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('joanny47@gmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Asiyah Adkins', 'cackle', 'Canmore', 'Award-winning bacon fanatic. Typical beer fan. Proud music advocate. Entrepreneur. Twitteraholic. Professional thinker.', FALSE, '46');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('melissa_hintz@gmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Pearce Dodd', 'clancy', 'Ar Ramthā', 'Organizer. Pop culture geek. General web scholar. Travelaholic. Coffee buff. Alcohol aficionado. Twitter expert. Subtly charming thinker.', TRUE, '91');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('wilton_wintheiser@hotmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Hollie Bray', 'tongue', 'Tilamuta', 'Analyst. Coffee fan. General reader. Introvert. Future teen idol. Tv expert. Friendly twitter guru.', FALSE, '185');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('jeramie_brown90@gmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Tazmin Calhoun', 'sicko', 'Svyatogorsk', 'Twitter specialist. Internet trailblazer. Proud zombie fanatic. Entrepreneur. Webaholic. Passionate organizer.', FALSE, '19');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('zetta_hodkiewicz63@hotmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Theodore Mathis', 'zygomatic', 'Burgau', 'Zombie ninja. Alcohol maven. Freelance travel fanatic. Pop culture fan. Proud introvert.', TRUE, '76');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('leopold12@yahoo.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Sheila Nicholls', 'basil', 'Rauna', 'Friendly social media advocate. Analyst. Music geek. Thinker. Pop culture enthusiast. Coffee nerd.', TRUE, '53');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('rae63@gmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Aliyah Appleton', 'bitter', 'Xuefeng', 'Travel evangelist. Infuriatingly humble web lover. Creator. Extreme internet aficionado. Beer expert. Bacon maven. Tv fan. Zombie guru.', FALSE, '230');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('korey.langworth@yahoo.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Giselle Mcgill', 'overdue', 'Xiasi', 'Coffee fan. Freelance food maven. Twitter guru. Passionate web aficionado.', TRUE, '42');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('ava32@yahoo.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Oran Markham', 'murmer', 'Victoria', 'Alcohol fan. Internet aficionado. Total web enthusiast. General travel expert. Award-winning beer geek.', FALSE, '6');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('lorna_harvey75@gmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Alayna Talley', 'warlike', 'Kepahiang', 'Typical pop culture trailblazer. Tv scholar. Incurable travelaholic. Troublemaker. Music buff. Beer geek. Reader.', TRUE, '222');
+INSERT INTO tb_member (email, password, name, username, city, bio, visibility, id_country) VALUES ('kirk.bins@hotmail.com', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Keegan Mcphee', 'tittering', 'Kongwan', 'Evil introvert. Web fanatic. Foodaholic. Subtly charming social media fan. Bacon ninja.', TRUE, '31');
 
 INSERT INTO tb_ingredient (name) VALUES ('Acacia');
 INSERT INTO tb_ingredient (name) VALUES ('Acerola');
@@ -2061,7 +2062,7 @@ INSERT INTO tb_step (name, id_recipe) VALUES ('After the dough has doubled in si
 INSERT INTO tb_step (name, id_recipe) VALUES ('Roll dough into a 16x21-inch rectangle. Spread dough with 1/3 cup butter and sprinkle evenly with sugar/cinnamon mixture. Roll up dough and cut into 12 rolls. Place rolls in a lightly greased 9x13 inch baking pan. Cover and let rise until nearly doubled, about 30 minutes. Meanwhile, preheat oven to 400 degrees F (200 degrees C).', 58);
 INSERT INTO tb_step (name, id_recipe) VALUES ('Bake rolls in preheated oven until golden brown, about 15 minutes. While rolls are baking, beat together cream cheese, 1/4 cup butter, confectioners'' sugar, vanilla extract and salt. Spread frosting on warm rolls before serving.', 58);
 INSERT INTO tb_step (name, id_recipe) VALUES ('Bring a large pot of salted water to a boil. Peel potatoes and add to pot. Cook until tender but still firm, about 15 minutes. Drain, cool and mash with a fork or potato masher.', 59);
-INSERT INTO tb_step (name, id_recipe) VALUES ('Combine 1 cup mashed potato, flour and egg in a large bowl. Knead until dough forms a ball. Shape small portions of the dough into long ''snakes''. On a floured surface, cut snakes into half-inch pieces.', 59);
+INSERT INTO tb_step (name, id_recipe) VALUES ('Combine 1 cup mashed potato, flour and egg in a large bowl. Knead until dough forms a ball. Shape small portions of the dough into long "snakes". On a floured surface, cut snakes into half-inch pieces.', 59);
 INSERT INTO tb_step (name, id_recipe) VALUES ('Bring a large pot of lightly salted water to a boil. Drop in gnocchi and cook for 3 to 5 minutes or until gnocchi have risen to the top; drain and serve.', 59);
 INSERT INTO tb_step (name, id_recipe) VALUES ('Melt butter with olive oil in an 8 quart stock pot on medium heat. Add onions and continually stir until tender and translucent. Do not brown the onions.', 60);
 INSERT INTO tb_step (name, id_recipe) VALUES ('Add beef broth, sherry and thyme. Season with salt and pepper, and simmer for 30 minutes.', 60);
@@ -2190,106 +2191,106 @@ INSERT INTO tb_step (name, id_recipe) VALUES ('Mix cream cheese with 2 cups sals
 INSERT INTO tb_step (name, id_recipe) VALUES ('Spread top of enchiladas with remaining 1 cup salsa. Lightly mix remaining 1/2 cup Cheddar cheese and 1/2 cup Monterey Jack cheese in a bowl and spread over the salsa. Sprinkle with remaining green onions. Cover dish with aluminum foil.', 100);
 INSERT INTO tb_step (name, id_recipe) VALUES ('Bake in preheated oven until cheese is melted and bubbly, about 20 minutes.', 100);
 
-INSERT INTO tb_recipe (name, difficulty, description, servings, preparation_time, cooking_time, additional_time, visibility, creation_time, id_member, id_category, id_group) VALUES ('Corned Beef and Cabbage I', 'very hard', 'Her daily goal was to improve on yesterday.', 5, 51.666666666666664, 103.33333333333333, 0, TRUE, '25-04-20 21:51:00', 82, 3);
-INSERT INTO tb_recipe (name, difficulty, description, servings, preparation_time, cooking_time, additional_time, visibility, creation_time, id_member, id_category, id_group) VALUES ('Good Old Fashioned Pancakes', 'hard', 'The waitress was not amused when he ordered green eggs and ham.', 8, 6.666666666666667, 13.333333333333334, 0, TRUE, '03-06-19 17:08:00', 136, 4);
-INSERT INTO tb_recipe (name, difficulty, description, servings, preparation_time, cooking_time, additional_time, visibility, creation_time, id_member, id_category, id_group) VALUES ('Slow-Cooker Corned Beef and Cabbage', 'medium', 'It''s much more difficult to play tennis with a bowling ball than it is to bowl with a tennis ball.', 8, 185.0, 370.0, 0, TRUE, '15-02-19 02:37:00', 3, 3);
-INSERT INTO tb_recipe (name, difficulty, description, servings, preparation_time, cooking_time, additional_time, visibility, creation_time, id_member, id_category, id_group) VALUES ('Oven-Roasted Asparagus', 'medium', 'She couldn''t decide of the glass was half empty or half full so she drank it.', 4, 0.0, 0.0, 0, TRUE, '16-06-18 15:30:00', 54, 5);
-INSERT INTO tb_recipe (name, difficulty, description, servings, preparation_time, cooking_time, additional_time, visibility, creation_time, id_member, id_category, id_group) VALUES ('Easy Meatloaf', 'very hard', 'He appeared to be confusingly perplexed.', 8, 0.0, 0.0, 0, TRUE, '15-07-18 17:43:00', 74, 4);
-INSERT INTO tb_recipe (name, difficulty, description, servings, preparation_time, cooking_time, additional_time, visibility, creation_time, id_member, id_category, id_group) VALUES ('Best Chocolate Chip Cookies', 'very hard', 'It caught him off guard that space smelled of seared steak.', 4, 20.0, 40.0, 0, TRUE, '16-12-17 10:09:00', 278, 5);
-INSERT INTO tb_recipe (name, difficulty, description, servings, preparation_time, cooking_time, additional_time, visibility, creation_time, id_member, id_category, id_group) VALUES ('Easy Cinnamon Rolls', 'medium', 'I checked to make sure that he was still alive.', 20, 46.666666666666664, 93.33333333333333, 0, TRUE, '27-12-18 12:14:00', 108, 7);
-INSERT INTO tb_recipe (name, difficulty, description, servings, preparation_time, cooking_time, additional_time, visibility, creation_time, id_member, id_category, id_group) VALUES ('Guacamole', 'medium', 'Tom got a small piece of pie.', 4, 3.3333333333333335, 6.666666666666667, 0, TRUE, '14-07-20 09:29:00', 132, 4);
-INSERT INTO tb_recipe (name, difficulty, description, servings, preparation_time, cooking_time, additional_time, visibility, creation_time, id_member, id_category, id_group) VALUES ('Best Brownies', 'hard', 'We should play with legos at camp.', 16, 0.0, 0.0, 0, TRUE, '15-05-17 17:54:00', 189, 6);
-INSERT INTO tb_recipe (name, difficulty, description, servings, preparation_time, cooking_time, additional_time, visibility, creation_time, id_member, id_category, id_group) VALUES ('Butter Beef', 'very hard', 'She traveled because it cost the same as therapy and was a lot more enjoyable.', 8, 101.66666666666667, 203.33333333333334, 0, TRUE, '25-04-19 13:20:00', 303, 5);
-INSERT INTO tb_recipe (name, difficulty, description, servings, preparation_time, cooking_time, additional_time, visibility, creation_time, id_member, id_category, id_group) VALUES ('Alfredo Sauce', 'medium', 'With a single flip of the coin, his life changed forever.', 4, 6.666666666666667, 13.333333333333334, 0, TRUE, '03-05-18 00:09:00', 277, 2);
-INSERT INTO tb_recipe (name, difficulty, description, servings, preparation_time, cooking_time, additional_time, visibility, creation_time, id_member, id_category, id_group) VALUES ('Basic Crepes', 'medium', 'After exploring the abandoned building, he started to believe in ghosts.', 8, 10.0, 20.0, 0, TRUE, '07-07-17 15:03:00', 193, 1, 11);
-INSERT INTO tb_recipe (name, difficulty, description, servings, preparation_time, cooking_time, additional_time, visibility, creation_time, id_member, id_category, id_group) VALUES ('Quick and Almost-Professional Buttercream Icing', 'very hard', 'The waitress was not amused when he ordered green eggs and ham.', 2, 0.0, 0.0, 0, TRUE, '21-07-20 14:00:00', 268, 1);
-INSERT INTO tb_recipe (name, difficulty, description, servings, preparation_time, cooking_time, additional_time, visibility, creation_time, id_member, id_category, id_group) VALUES ('Reuben Sandwich II', 'very hard', 'Her daily goal was to improve on yesterday.', 4, 8.333333333333334, 16.666666666666668, 0, TRUE, '21-09-17 01:09:00', 49, 6);
-INSERT INTO tb_recipe (name, difficulty, description, servings, preparation_time, cooking_time, additional_time, visibility, creation_time, id_member, id_category, id_group) VALUES ('Instant Pot® Corned Beef', 'very hard', 'I’m working on a sweet potato farm.', 4, 41.666666666666664, 83.33333333333333, 0, TRUE, '03-12-17 07:47:00', 290, 5);
-INSERT INTO tb_recipe (name, difficulty, description, servings, preparation_time, cooking_time, additional_time, visibility, creation_time, id_member, id_category, id_group) VALUES ('Waffles I', 'medium', 'The waves were crashing on the shore; it was a lovely sight.', 6, 6.666666666666667, 13.333333333333334, 0, TRUE, '27-11-18 11:04:00', 154, 6);
-INSERT INTO tb_recipe (name, difficulty, description, servings, preparation_time, cooking_time, additional_time, visibility, creation_time, id_member, id_category, id_group) VALUES ('Joy''s Easy Banana Bread', 'very hard', 'People who insist on picking their teeth with their elbows are so annoying!', 1, 25.0, 50.0, 0, TRUE, '14-04-19 21:21:00', 61, 4);
-INSERT INTO tb_recipe (name, difficulty, description, servings, preparation_time, cooking_time, additional_time, visibility, creation_time, id_member, id_category, id_group) VALUES ('Quick and Easy Brownies', 'very hard', 'She couldn''t decide of the glass was half empty or half full so she drank it.', 20, 11.666666666666666, 23.333333333333332, 0, TRUE, '25-08-18 02:09:00', 256, 4);
-INSERT INTO tb_recipe (name, difficulty, description, servings, preparation_time, cooking_time, additional_time, visibility, creation_time, id_member, id_category, id_group) VALUES ('Simple Macaroni and Cheese', 'hard', 'The waves were crashing on the shore; it was a lovely sight.', 4, 10.0, 20.0, 0, TRUE, '23-03-21 18:59:00', 229, 6, 45);
-INSERT INTO tb_recipe (name, difficulty, description, servings, preparation_time, cooking_time, additional_time, visibility, creation_time, id_member, id_category, id_group) VALUES ('Chicken Pot Pie IX', 'very hard', 'Weather is not trivial - it''s especially important when you''re standing in it.', 1, 23.333333333333332, 46.666666666666664, 0, TRUE, '25-03-19 10:18:00', 135, 2);
-INSERT INTO tb_recipe (name, difficulty, description, servings, preparation_time, cooking_time, additional_time, visibility, creation_time, id_member, id_category, id_group) VALUES ('Loaded Breakfast Skillet', 'medium', 'Pair your designer cowboy hat with scuba gear for a memorable occasion.', 4, 16.666666666666668, 33.333333333333336, 0, TRUE, '11-03-20 05:54:00', 346, 3);
-INSERT INTO tb_recipe (name, difficulty, description, servings, preparation_time, cooking_time, additional_time, visibility, creation_time, id_member, id_category, id_group) VALUES ('Creamy Italian Slow Cooker Chicken', 'hard', 'The light that burns twice as bright burns half as long.', 4, 91.66666666666667, 183.33333333333334, 0, TRUE, '15-12-19 07:51:00', 79, 3);
-INSERT INTO tb_recipe (name, difficulty, description, servings, preparation_time, cooking_time, additional_time, visibility, creation_time, id_member, id_category, id_group) VALUES ('Easy Chicken Piccata', 'hard', 'David subscribes to the ''stuff your tent into the bag'' strategy over nicely folding it.', 4, 8.333333333333334, 16.666666666666668, 0, TRUE, '07-02-19 20:12:00', 220, 1);
-INSERT INTO tb_recipe (name, difficulty, description, servings, preparation_time, cooking_time, additional_time, visibility, creation_time, id_member, id_category, id_group) VALUES ('Gourmet Mushroom Risotto', 'hard', 'Excitement replaced fear until the final moment.', 6, 16.666666666666668, 33.333333333333336, 0, TRUE, '13-03-18 13:35:00', 335, 3);
-INSERT INTO tb_recipe (name, difficulty, description, servings, preparation_time, cooking_time, additional_time, visibility, creation_time, id_member, id_category, id_group) VALUES ('Microwave Chocolate Mug Cake', 'medium', 'Swim at your own risk was taken as a challenge for the group of Kansas City college students.', 1, 2.3333333333333335, 4.666666666666667, 0, TRUE, '22-06-18 07:06:00', 35, 2);
-INSERT INTO tb_recipe (name, difficulty, description, servings, preparation_time, cooking_time, additional_time, visibility, creation_time, id_member, id_category, id_group) VALUES ('Soft Oatmeal Cookies', 'medium', 'Each person who knows you has a different perception of who you are.', 2, 40.0, 80.0, 0, TRUE, '21-05-17 21:14:00', 280, 2);
-INSERT INTO tb_recipe (name, difficulty, description, servings, preparation_time, cooking_time, additional_time, visibility, creation_time, id_member, id_category, id_group) VALUES ('Simple Roasted Butternut Squash', 'hard', 'There was no ice cream in the freezer, nor did they have money to go to the store.', 4, 13.333333333333334, 26.666666666666668, 0, TRUE, '21-04-18 09:43:00', 99, 1);
-INSERT INTO tb_recipe (name, difficulty, description, servings, preparation_time, cooking_time, additional_time, visibility, creation_time, id_member, id_category, id_group) VALUES ('Fajita Seasoning', 'hard', 'I often see the time 11:11 or 12:34 on clocks.', 3, 1.6666666666666667, 3.3333333333333335, 0, TRUE, '24-03-19 17:37:00', 205, 2);
-INSERT INTO tb_recipe (name, difficulty, description, servings, preparation_time, cooking_time, additional_time, visibility, creation_time, id_member, id_category, id_group) VALUES ('Skinny Chicken Casserole', 'hard', 'I’m working on a sweet potato farm.', 8, 21.666666666666668, 43.333333333333336, 0, TRUE, '01-06-19 09:57:00', 128, 5);
-INSERT INTO tb_recipe (name, difficulty, description, servings, preparation_time, cooking_time, additional_time, visibility, creation_time, id_member, id_category, id_group) VALUES ('Braised Corned Beef Brisket', 'medium', 'I checked to make sure that he was still alive.', 6, 130.0, 260.0, 0, TRUE, '23-10-18 06:44:00', 303, 2);
-INSERT INTO tb_recipe (name, difficulty, description, servings, preparation_time, cooking_time, additional_time, visibility, creation_time, id_member, id_category, id_group) VALUES ('The Real Mojito', 'very hard', 'Choosing to do nothing is still a choice, after all.', 1, 3.3333333333333335, 6.666666666666667, 0, TRUE, '21-08-17 23:13:00', 197, 6);
-INSERT INTO tb_recipe (name, difficulty, description, servings, preparation_time, cooking_time, additional_time, visibility, creation_time, id_member, id_category, id_group) VALUES ('Strawberry Chicken Salad for Sandwiches', 'medium', 'Today arrived with a crash of my car through the garage door.', 2, 6.666666666666667, 13.333333333333334, 0, TRUE, '19-10-20 03:21:00', 192, 2);
-INSERT INTO tb_recipe (name, difficulty, description, servings, preparation_time, cooking_time, additional_time, visibility, creation_time, id_member, id_category, id_group) VALUES ('Easy Pancakes', 'medium', 'I liked their first two albums but changed my mind after that charity gig.', 4, 5.0, 10.0, 0, TRUE, '28-05-20 20:00:00', 72, 7);
-INSERT INTO tb_recipe (name, difficulty, description, servings, preparation_time, cooking_time, additional_time, visibility, creation_time, id_member, id_category, id_group) VALUES ('Best Big, Fat, Chewy Chocolate Chip Cookie', 'hard', 'With a single flip of the coin, his life changed forever.', 1, 13.333333333333334, 26.666666666666668, 0, TRUE, '04-06-19 12:08:00', 24, 5, 68);
-INSERT INTO tb_recipe (name, difficulty, description, servings, preparation_time, cooking_time, additional_time, visibility, creation_time, id_member, id_category, id_group) VALUES ('Baked Pork Chops I', 'very hard', 'It caught him off guard that space smelled of seared steak.', 6, 40.0, 80.0, 0, TRUE, '21-12-20 12:56:00', 199, 1);
-INSERT INTO tb_recipe (name, difficulty, description, servings, preparation_time, cooking_time, additional_time, visibility, creation_time, id_member, id_category, id_group) VALUES ('Salmon Patties I', 'very hard', 'Each person who knows you has a different perception of who you are.', 4, 8.333333333333334, 16.666666666666668, 0, TRUE, '22-02-21 03:16:00', 227, 3);
-INSERT INTO tb_recipe (name, difficulty, description, servings, preparation_time, cooking_time, additional_time, visibility, creation_time, id_member, id_category, id_group) VALUES ('Tatertot Casserole', 'very hard', 'With a single flip of the coin, his life changed forever.', 8, 13.333333333333334, 26.666666666666668, 0, TRUE, '08-09-18 05:48:00', 206, 4);
-INSERT INTO tb_recipe (name, difficulty, description, servings, preparation_time, cooking_time, additional_time, visibility, creation_time, id_member, id_category, id_group) VALUES ('Vietnamese Fresh Spring Rolls', 'hard', 'With a single flip of the coin, his life changed forever.', 8, 16.666666666666668, 33.333333333333336, 0, TRUE, '18-11-20 06:06:00', 304, 3);
-INSERT INTO tb_recipe (name, difficulty, description, servings, preparation_time, cooking_time, additional_time, visibility, creation_time, id_member, id_category, id_group) VALUES ('Quick Tartar Sauce', 'hard', 'We should play with legos at camp.', 1, 1.6666666666666667, 3.3333333333333335, 0, TRUE, '30-09-20 20:50:00', 342, 1);
-INSERT INTO tb_recipe (name, difficulty, description, servings, preparation_time, cooking_time, additional_time, visibility, creation_time, id_member, id_category, id_group) VALUES ('Lasagna Roll Ups II', 'medium', 'It caught him off guard that space smelled of seared steak.', 9, 26.666666666666668, 53.333333333333336, 0, TRUE, '25-04-19 23:09:00', 295, 4, 61);
-INSERT INTO tb_recipe (name, difficulty, description, servings, preparation_time, cooking_time, additional_time, visibility, creation_time, id_member, id_category, id_group) VALUES ('Baked Kale Chips', 'medium', 'Tom got a small piece of pie.', 6, 6.666666666666667, 13.333333333333334, 0, TRUE, '17-08-17 17:27:00', 239, 5);
-INSERT INTO tb_recipe (name, difficulty, description, servings, preparation_time, cooking_time, additional_time, visibility, creation_time, id_member, id_category, id_group) VALUES ('Roasted Pork Loin', 'very hard', 'She found his complete dullness interesting.', 8, 26.666666666666668, 53.333333333333336, 0, TRUE, '24-09-17 06:22:00', 187, 4);
-INSERT INTO tb_recipe (name, difficulty, description, servings, preparation_time, cooking_time, additional_time, visibility, creation_time, id_member, id_category, id_group) VALUES ('Whipped Cream', 'medium', 'We should play with legos at camp.', 16, 1.6666666666666667, 3.3333333333333335, 0, TRUE, '14-11-19 20:09:00', 331, 5);
-INSERT INTO tb_recipe (name, difficulty, description, servings, preparation_time, cooking_time, additional_time, visibility, creation_time, id_member, id_category, id_group) VALUES ('Chewy Chocolate Chip Oatmeal Cookies', 'medium', 'His mind was blown that there was nothing in space except space itself.', 3, 18.333333333333332, 36.666666666666664, 0, TRUE, '12-12-19 00:27:00', 113, 5);
-INSERT INTO tb_recipe (name, difficulty, description, servings, preparation_time, cooking_time, additional_time, visibility, creation_time, id_member, id_category, id_group) VALUES ('Banana Pancakes I', 'medium', 'Her daily goal was to improve on yesterday.', 12, 5.0, 10.0, 0, TRUE, '20-10-18 21:18:00', 229, 7);
-INSERT INTO tb_recipe (name, difficulty, description, servings, preparation_time, cooking_time, additional_time, visibility, creation_time, id_member, id_category, id_group) VALUES ('Cordon Bleu Rollups with Honey-Mustard Wine Sauce', 'medium', 'I often see the time 11:11 or 12:34 on clocks.', 8, 0.0, 0.0, 0, TRUE, '21-01-20 23:03:00', 326, 3, 17);
-INSERT INTO tb_recipe (name, difficulty, description, servings, preparation_time, cooking_time, additional_time, visibility, creation_time, id_member, id_category, id_group) VALUES ('Cast Iron Pan-Seared Steak (Oven-Finished)', 'very hard', 'Shingle color was not something the couple had ever talked about.', 2, 27.333333333333332, 54.666666666666664, 0, TRUE, '01-09-18 20:15:00', 114, 3);
-INSERT INTO tb_recipe (name, difficulty, description, servings, preparation_time, cooking_time, additional_time, visibility, creation_time, id_member, id_category, id_group) VALUES ('Buffalo Chicken Wing Sauce', 'medium', 'She traveled because it cost the same as therapy and was a lot more enjoyable.', 8, 3.3333333333333335, 6.666666666666667, 0, TRUE, '21-08-18 04:28:00', 266, 4);
-INSERT INTO tb_recipe (name, difficulty, description, servings, preparation_time, cooking_time, additional_time, visibility, creation_time, id_member, id_category, id_group) VALUES ('Creamy Rice Pudding', 'very hard', 'Getting up at dawn is for the birds.', 4, 15.0, 30.0, 0, TRUE, '18-01-18 17:16:00', 191, 2);
-INSERT INTO tb_recipe (name, difficulty, description, servings, preparation_time, cooking_time, additional_time, visibility, creation_time, id_member, id_category, id_group) VALUES ('Old Fashioned Onion Rings', 'very hard', 'It''s much more difficult to play tennis with a bowling ball than it is to bowl with a tennis ball.', 3, 6.0, 12.0, 0, TRUE, '09-01-19 18:50:00', 89, 7);
-INSERT INTO tb_recipe (name, difficulty, description, servings, preparation_time, cooking_time, additional_time, visibility, creation_time, id_member, id_category, id_group) VALUES ('Pasta Salad', 'medium', 'Getting up at dawn is for the birds.', 6, 278.3333333333333, 556.6666666666666, 0, TRUE, '09-09-20 17:00:00', 330, 4);
-INSERT INTO tb_recipe (name, difficulty, description, servings, preparation_time, cooking_time, additional_time, visibility, creation_time, id_member, id_category, id_group) VALUES ('Best Lemonade Ever', 'medium', 'It caught him off guard that space smelled of seared steak.', 10, 91.66666666666667, 183.33333333333334, 0, TRUE, '16-04-17 23:17:00', 230, 3, 38);
-INSERT INTO tb_recipe (name, difficulty, description, servings, preparation_time, cooking_time, additional_time, visibility, creation_time, id_member, id_category, id_group) VALUES ('Cheesy Hamburger Stew with Rice', 'very hard', 'She found his complete dullness interesting.', 4, 11.666666666666666, 23.333333333333332, 0, TRUE, '04-09-20 18:05:00', 268, 6);
-INSERT INTO tb_recipe (name, difficulty, description, servings, preparation_time, cooking_time, additional_time, visibility, creation_time, id_member, id_category, id_group) VALUES ('German Hamburgers (Frikadellen)', 'medium', 'He looked behind the door and didn''t like what he saw.', 4, 13.333333333333334, 26.666666666666668, 0, TRUE, '03-10-20 10:56:00', 116, 5);
-INSERT INTO tb_recipe (name, difficulty, description, servings, preparation_time, cooking_time, additional_time, visibility, creation_time, id_member, id_category, id_group) VALUES ('Oven-Baked Potato Slices', 'very hard', 'Before he moved to the inner city, he had always believed that security complexes were psychological.', 4, 18.333333333333332, 36.666666666666664, 0, TRUE, '13-08-18 12:40:00', 2, 7);
-INSERT INTO tb_recipe (name, difficulty, description, servings, preparation_time, cooking_time, additional_time, visibility, creation_time, id_member, id_category, id_group) VALUES ('Quick and Easy Alfredo Sauce', 'hard', 'He looked behind the door and didn''t like what he saw.', 4, 3.3333333333333335, 6.666666666666667, 0, TRUE, '09-02-21 05:48:00', 227, 5);
-INSERT INTO tb_recipe (name, difficulty, description, servings, preparation_time, cooking_time, additional_time, visibility, creation_time, id_member, id_category, id_group) VALUES ('Janet''s Rich Banana Bread', 'medium', 'Nancy was proud that she ran a tight shipwreck.', 1, 23.333333333333332, 46.666666666666664, 0, TRUE, '12-03-21 20:15:00', 88, 3);
-INSERT INTO tb_recipe (name, difficulty, description, servings, preparation_time, cooking_time, additional_time, visibility, creation_time, id_member, id_category, id_group) VALUES ('Clone of a Cinnabon', 'very hard', 'I often see the time 11:11 or 12:34 on clocks.', 12, 60.0, 120.0, 0, TRUE, '27-07-19 00:13:00', 343, 4);
-INSERT INTO tb_recipe (name, difficulty, description, servings, preparation_time, cooking_time, additional_time, visibility, creation_time, id_member, id_category, id_group) VALUES ('Gnocchi I', 'very hard', 'Her daily goal was to improve on yesterday.', 4, 20.0, 40.0, 0, TRUE, '07-05-17 23:13:00', 293, 6);
-INSERT INTO tb_recipe (name, difficulty, description, servings, preparation_time, cooking_time, additional_time, visibility, creation_time, id_member, id_category, id_group) VALUES ('Rich and Simple French Onion Soup', 'medium', 'He''s in a boy band which doesn''t make much sense for a snake.', 4, 21.666666666666668, 43.333333333333336, 0, TRUE, '24-11-20 05:20:00', 209, 1);
-INSERT INTO tb_recipe (name, difficulty, description, servings, preparation_time, cooking_time, additional_time, visibility, creation_time, id_member, id_category, id_group) VALUES ('Salisbury Steak', 'medium', 'The efficiency we have at removing trash has made creating trash more acceptable.', 6, 13.333333333333334, 26.666666666666668, 0, TRUE, '26-10-19 16:52:00', 282, 2);
-INSERT INTO tb_recipe (name, difficulty, description, servings, preparation_time, cooking_time, additional_time, visibility, creation_time, id_member, id_category, id_group) VALUES ('Tender Italian Baked Chicken', 'very hard', 'He was disappointed when he found the beach to be so sandy and the sun so sunny.', 4, 10.0, 20.0, 0, TRUE, '26-03-21 18:19:00', 136, 2);
-INSERT INTO tb_recipe (name, difficulty, description, servings, preparation_time, cooking_time, additional_time, visibility, creation_time, id_member, id_category, id_group) VALUES ('Perfect Ten Baked Cod', 'medium', 'Nancy was proud that she ran a tight shipwreck.', 4, 11.666666666666666, 23.333333333333332, 0, TRUE, '20-04-18 06:34:00', 245, 7);
-INSERT INTO tb_recipe (name, difficulty, description, servings, preparation_time, cooking_time, additional_time, visibility, creation_time, id_member, id_category, id_group) VALUES ('Classic Old Fashioned', 'hard', 'Chocolate covered crickets were his favorite snack.', 1, 3.3333333333333335, 6.666666666666667, 0, TRUE, '30-09-20 08:58:00', 182, 6);
-INSERT INTO tb_recipe (name, difficulty, description, servings, preparation_time, cooking_time, additional_time, visibility, creation_time, id_member, id_category, id_group) VALUES ('How to Make Perfect Polenta', 'very hard', 'Nancy was proud that she ran a tight shipwreck.', 4, 18.333333333333332, 36.666666666666664, 0, TRUE, '09-01-20 09:14:00', 209, 4);
-INSERT INTO tb_recipe (name, difficulty, description, servings, preparation_time, cooking_time, additional_time, visibility, creation_time, id_member, id_category, id_group) VALUES ('Mamaw''s Chicken and Rice Casserole', 'very hard', 'The efficiency we have at removing trash has made creating trash more acceptable.', 6, 26.666666666666668, 53.333333333333336, 0, TRUE, '27-04-19 16:52:00', 240, 5);
-INSERT INTO tb_recipe (name, difficulty, description, servings, preparation_time, cooking_time, additional_time, visibility, creation_time, id_member, id_category, id_group) VALUES ('Indian Chicken Curry (Murgh Kari)', 'hard', 'Going from child, to childish, to childlike is only a matter of time.', 6, 20.0, 40.0, 0, TRUE, '25-10-17 20:23:00', 267, 1, 34);
-INSERT INTO tb_recipe (name, difficulty, description, servings, preparation_time, cooking_time, additional_time, visibility, creation_time, id_member, id_category, id_group) VALUES ('Old Fashioned Creamy Rice Pudding', 'medium', 'Today arrived with a crash of my car through the garage door.', 4, 10.0, 20.0, 0, TRUE, '26-05-20 07:14:00', 59, 5);
-INSERT INTO tb_recipe (name, difficulty, description, servings, preparation_time, cooking_time, additional_time, visibility, creation_time, id_member, id_category, id_group) VALUES ('Spaghetti Aglio e Olio', 'medium', 'The efficiency we have at removing trash has made creating trash more acceptable.', 4, 10.666666666666666, 21.333333333333332, 0, TRUE, '16-01-19 07:04:00', 275, 7);
-INSERT INTO tb_recipe (name, difficulty, description, servings, preparation_time, cooking_time, additional_time, visibility, creation_time, id_member, id_category, id_group) VALUES ('Melt-In-Your-Mouth Meat Loaf', 'hard', 'He looked behind the door and didn''t like what he saw.', 6, 113.33333333333333, 226.66666666666666, 0, TRUE, '25-08-17 19:56:00', 81, 3);
-INSERT INTO tb_recipe (name, difficulty, description, servings, preparation_time, cooking_time, additional_time, visibility, creation_time, id_member, id_category, id_group) VALUES ('Ultimate Twice Baked Potatoes', 'very hard', 'They got there early, and they got really good seats.', 8, 30.0, 60.0, 0, TRUE, '29-11-18 14:39:00', 134, 7, 43);
-INSERT INTO tb_recipe (name, difficulty, description, servings, preparation_time, cooking_time, additional_time, visibility, creation_time, id_member, id_category, id_group) VALUES ('Three Ingredient Peanut Butter Cookies', 'very hard', 'After exploring the abandoned building, he started to believe in ghosts.', 1, 0.0, 0.0, 0, TRUE, '11-07-19 01:15:00', 322, 7);
-INSERT INTO tb_recipe (name, difficulty, description, servings, preparation_time, cooking_time, additional_time, visibility, creation_time, id_member, id_category, id_group) VALUES ('Basic Chicken Salad', 'medium', 'I’m working on a sweet potato farm.', 2, 3.3333333333333335, 6.666666666666667, 0, TRUE, '17-07-20 01:03:00', 58, 4);
-INSERT INTO tb_recipe (name, difficulty, description, servings, preparation_time, cooking_time, additional_time, visibility, creation_time, id_member, id_category, id_group) VALUES ('Balsamic Bruschetta', 'medium', 'After exploring the abandoned building, he started to believe in ghosts.', 8, 5.0, 10.0, 0, TRUE, '31-10-17 22:42:00', 51, 7);
-INSERT INTO tb_recipe (name, difficulty, description, servings, preparation_time, cooking_time, additional_time, visibility, creation_time, id_member, id_category, id_group) VALUES ('Emily''s Famous Hash Browns', 'very hard', 'I checked to make sure that he was still alive.', 4, 11.666666666666666, 23.333333333333332, 0, TRUE, '13-04-17 00:20:00', 249, 7);
-INSERT INTO tb_recipe (name, difficulty, description, servings, preparation_time, cooking_time, additional_time, visibility, creation_time, id_member, id_category, id_group) VALUES ('Cabbage Fat-Burning Soup', 'medium', 'You''re unsure whether or not to trust him, but very thankful that you wore a turtle neck.', 15, 15.0, 30.0, 0, TRUE, '18-06-17 18:44:00', 30, 6);
-INSERT INTO tb_recipe (name, difficulty, description, servings, preparation_time, cooking_time, additional_time, visibility, creation_time, id_member, id_category, id_group) VALUES ('Seared Ahi Tuna Steaks', 'medium', 'The beauty of the sunset was obscured by the industrial cranes.', 2, 5.666666666666667, 11.333333333333334, 0, TRUE, '06-11-17 16:50:00', 289, 2);
-INSERT INTO tb_recipe (name, difficulty, description, servings, preparation_time, cooking_time, additional_time, visibility, creation_time, id_member, id_category, id_group) VALUES ('Baked Ziti I', 'hard', 'After exploring the abandoned building, he started to believe in ghosts.', 10, 18.333333333333332, 36.666666666666664, 0, TRUE, '30-08-17 01:50:00', 76, 1);
-INSERT INTO tb_recipe (name, difficulty, description, servings, preparation_time, cooking_time, additional_time, visibility, creation_time, id_member, id_category, id_group) VALUES ('Absolute Best Liver and Onions', 'very hard', 'She found his complete dullness interesting.', 4, 15.0, 30.0, 0, TRUE, '03-08-20 16:44:00', 204, 3);
-INSERT INTO tb_recipe (name, difficulty, description, servings, preparation_time, cooking_time, additional_time, visibility, creation_time, id_member, id_category, id_group) VALUES ('Juiciest Hamburgers Ever', 'very hard', 'He was disappointed when he found the beach to be so sandy and the sun so sunny.', 8, 11.666666666666666, 23.333333333333332, 0, TRUE, '01-03-18 01:11:00', 269, 4);
-INSERT INTO tb_recipe (name, difficulty, description, servings, preparation_time, cooking_time, additional_time, visibility, creation_time, id_member, id_category, id_group) VALUES ('Greek Lemon Chicken and Potatoes', 'hard', 'There were three sphered rocks congregating in a cubed room.', 4, 20.0, 40.0, 0, TRUE, '06-11-17 14:23:00', 320, 5);
-INSERT INTO tb_recipe (name, difficulty, description, servings, preparation_time, cooking_time, additional_time, visibility, creation_time, id_member, id_category, id_group) VALUES ('Cheesy Chicken Pot Pie', 'hard', 'Today arrived with a crash of my car through the garage door.', 1, 0.0, 0.0, 0, TRUE, '12-07-17 00:31:00', 284, 7);
-INSERT INTO tb_recipe (name, difficulty, description, servings, preparation_time, cooking_time, additional_time, visibility, creation_time, id_member, id_category, id_group) VALUES ('Old Fashioned Potato Cakes', 'hard', 'David subscribes to the ''stuff your tent into the bag'' strategy over nicely folding it.', 4, 6.666666666666667, 13.333333333333334, 0, TRUE, '27-12-17 20:54:00', 162, 4);
-INSERT INTO tb_recipe (name, difficulty, description, servings, preparation_time, cooking_time, additional_time, visibility, creation_time, id_member, id_category, id_group) VALUES ('Chef John''s Perfect Prime Rib', 'very hard', 'The waitress was not amused when he ordered green eggs and ham.', 4, 130.0, 260.0, 0, TRUE, '03-06-20 23:13:00', 21, 2);
-INSERT INTO tb_recipe (name, difficulty, description, servings, preparation_time, cooking_time, additional_time, visibility, creation_time, id_member, id_category, id_group) VALUES ('Baked Ham and Cheese Party Sandwiches', 'medium', 'She found his complete dullness interesting.', 24, 11.666666666666666, 23.333333333333332, 0, TRUE, '29-03-20 18:00:00', 305, 3);
-INSERT INTO tb_recipe (name, difficulty, description, servings, preparation_time, cooking_time, additional_time, visibility, creation_time, id_member, id_category, id_group) VALUES ('Easy Garlic-Lemon Scallops', 'very hard', 'Tom got a small piece of pie.', 6, 6.666666666666667, 13.333333333333334, 0, TRUE, '21-03-20 03:52:00', 256, 2);
-INSERT INTO tb_recipe (name, difficulty, description, servings, preparation_time, cooking_time, additional_time, visibility, creation_time, id_member, id_category, id_group) VALUES ('One-Pan Sour Cream Chicken Enchilada Skillet', 'very hard', 'Nancy was proud that she ran a tight shipwreck.', 8, 16.0, 32.0, 0, TRUE, '19-07-17 12:42:00', 217, 6);
-INSERT INTO tb_recipe (name, difficulty, description, servings, preparation_time, cooking_time, additional_time, visibility, creation_time, id_member, id_category, id_group) VALUES ('Bacon-Wrapped Jalapeno Poppers', 'medium', 'There are few things better in life than a slice of pie.', 12, 10.0, 20.0, 0, TRUE, '23-10-17 07:08:00', 71, 7);
-INSERT INTO tb_recipe (name, difficulty, description, servings, preparation_time, cooking_time, additional_time, visibility, creation_time, id_member, id_category, id_group) VALUES ('Classic Hash Browns', 'very hard', 'We should play with legos at camp.', 2, 6.666666666666667, 13.333333333333334, 0, TRUE, '10-09-20 03:32:00', 166, 5);
-INSERT INTO tb_recipe (name, difficulty, description, servings, preparation_time, cooking_time, additional_time, visibility, creation_time, id_member, id_category, id_group) VALUES ('Best Carrot Cake Ever', 'very hard', 'Tom got a small piece of pie.', 2, 50.0, 100.0, 0, TRUE, '09-12-18 07:12:00', 326, 3);
-INSERT INTO tb_recipe (name, difficulty, description, servings, preparation_time, cooking_time, additional_time, visibility, creation_time, id_member, id_category, id_group) VALUES ('Pesto Pasta', 'hard', 'His mind was blown that there was nothing in space except space itself.', 8, 5.0, 10.0, 0, TRUE, '08-12-20 15:05:00', 105, 4);
-INSERT INTO tb_recipe (name, difficulty, description, servings, preparation_time, cooking_time, additional_time, visibility, creation_time, id_member, id_category, id_group) VALUES ('Fried Cabbage with Bacon, Onion, and Garlic', 'medium', 'After exploring the abandoned building, he started to believe in ghosts.', 6, 25.0, 50.0, 0, TRUE, '21-03-18 04:38:00', 159, 1);
-INSERT INTO tb_recipe (name, difficulty, description, servings, preparation_time, cooking_time, additional_time, visibility, creation_time, id_member, id_category, id_group) VALUES ('Homemade Baked Egg Custard', 'very hard', 'You''re unsure whether or not to trust him, but very thankful that you wore a turtle neck.', 8, 41.666666666666664, 83.33333333333333, 0, TRUE, '19-01-19 07:45:00', 334, 3);
-INSERT INTO tb_recipe (name, difficulty, description, servings, preparation_time, cooking_time, additional_time, visibility, creation_time, id_member, id_category, id_group) VALUES ('Mushroom Pork Chops', 'hard', 'Her daily goal was to improve on yesterday.', 4, 13.333333333333334, 26.666666666666668, 0, TRUE, '27-09-17 17:08:00', 286, 5);
-INSERT INTO tb_recipe (name, difficulty, description, servings, preparation_time, cooking_time, additional_time, visibility, creation_time, id_member, id_category, id_group) VALUES ('Roasted Rack of Lamb', 'very hard', 'They got there early, and they got really good seats.', 4, 13.333333333333334, 26.666666666666668, 0, TRUE, '31-07-20 11:00:00', 225, 5);
-INSERT INTO tb_recipe (name, difficulty, description, servings, preparation_time, cooking_time, additional_time, visibility, creation_time, id_member, id_category, id_group) VALUES ('Scones', 'very hard', 'He used to get confused between soldiers and shoulders, but as a military man, he now soldiers responsibility.', 8, 8.333333333333334, 16.666666666666668, 0, TRUE, '23-11-20 06:40:00', 284, 1);
-INSERT INTO tb_recipe (name, difficulty, description, servings, preparation_time, cooking_time, additional_time, visibility, creation_time, id_member, id_category, id_group) VALUES ('Easy Guacamole', 'medium', 'She found his complete dullness interesting.', 2, 13.333333333333334, 26.666666666666668, 0, TRUE, '05-02-18 21:03:00', 156, 3);
-INSERT INTO tb_recipe (name, difficulty, description, servings, preparation_time, cooking_time, additional_time, visibility, creation_time, id_member, id_category, id_group) VALUES ('Cherry Cream Cheese Dump Cake', 'very hard', 'There are few things better in life than a slice of pie.', 16, 26.666666666666668, 53.333333333333336, 0, TRUE, '30-01-20 13:10:00', 78, 6);
-INSERT INTO tb_recipe (name, difficulty, description, servings, preparation_time, cooking_time, additional_time, visibility, creation_time, id_member, id_category, id_group) VALUES ('Unbelievable Fish Batter', 'hard', 'I covered my friend in baby oil.', 2, 3.3333333333333335, 6.666666666666667, 0, TRUE, '05-02-21 14:00:00', 309, 7);
-INSERT INTO tb_recipe (name, difficulty, description, servings, preparation_time, cooking_time, additional_time, visibility, creation_time, id_member, id_category, id_group) VALUES ('3 Cheese Enchiladas', 'very hard', 'Pink horses galloped across the sea.', 6, 20.0, 40.0, 0, TRUE, '24-01-18 18:16:00', 254, 7, 40);
+INSERT INTO tb_recipe (name, difficulty, description, servings, preparation_time, cooking_time, additional_time, visibility, creation_time, id_member, id_category) VALUES ('Corned Beef and Cabbage I', 'medium', 'I often see the time 11:11 or 12:34 on clocks.', 5, 51.666666666666664, 103.33333333333333, 0, TRUE, '22-12-20 14:15:00', 6, 7);
+INSERT INTO tb_recipe (name, difficulty, description, servings, preparation_time, cooking_time, additional_time, visibility, creation_time, id_member, id_category) VALUES ('Good Old Fashioned Pancakes', 'medium', 'There were three sphered rocks congregating in a cubed room.', 8, 6.666666666666667, 13.333333333333334, 0, TRUE, '04-11-20 19:08:00', 255, 2);
+INSERT INTO tb_recipe (name, difficulty, description, servings, preparation_time, cooking_time, additional_time, visibility, creation_time, id_member, id_category) VALUES ('Slow-Cooker Corned Beef and Cabbage', 'hard', 'Today arrived with a crash of my car through the garage door.', 8, 185.0, 370.0, 0, TRUE, '13-06-18 13:49:00', 63, 6);
+INSERT INTO tb_recipe (name, difficulty, description, servings, preparation_time, cooking_time, additional_time, visibility, creation_time, id_member, id_category) VALUES ('Oven-Roasted Asparagus', 'medium', 'He''s in a boy band which doesn''t make much sense for a snake.', 4, 0.0, 0.0, 0, TRUE, '27-09-18 15:38:00', 262, 1);
+INSERT INTO tb_recipe (name, difficulty, description, servings, preparation_time, cooking_time, additional_time, visibility, creation_time, id_member, id_category) VALUES ('Easy Meatloaf', 'very hard', 'He looked behind the door and didn''t like what he saw.', 8, 0.0, 0.0, 0, TRUE, '13-08-19 04:13:00', 24, 3);
+INSERT INTO tb_recipe (name, difficulty, description, servings, preparation_time, cooking_time, additional_time, visibility, creation_time, id_member, id_category) VALUES ('Best Chocolate Chip Cookies', 'hard', 'Nancy was proud that she ran a tight shipwreck.', 4, 20.0, 40.0, 0, TRUE, '04-10-18 13:51:00', 93, 3);
+INSERT INTO tb_recipe (name, difficulty, description, servings, preparation_time, cooking_time, additional_time, visibility, creation_time, id_member, id_category) VALUES ('Easy Cinnamon Rolls', 'very hard', 'Excitement replaced fear until the final moment.', 20, 46.666666666666664, 93.33333333333333, 0, TRUE, '30-11-18 02:10:00', 219, 2);
+INSERT INTO tb_recipe (name, difficulty, description, servings, preparation_time, cooking_time, additional_time, visibility, creation_time, id_member, id_category) VALUES ('Guacamole', 'very hard', 'The beauty of the sunset was obscured by the industrial cranes.', 4, 3.3333333333333335, 6.666666666666667, 0, TRUE, '12-09-17 20:07:00', 290, 5);
+INSERT INTO tb_recipe (name, difficulty, description, servings, preparation_time, cooking_time, additional_time, visibility, creation_time, id_member, id_category) VALUES ('Best Brownies', 'hard', 'We should play with legos at camp.', 16, 0.0, 0.0, 0, TRUE, '10-05-18 03:46:00', 249, 7);
+INSERT INTO tb_recipe (name, difficulty, description, servings, preparation_time, cooking_time, additional_time, visibility, creation_time, id_member, id_category) VALUES ('Butter Beef', 'very hard', 'Today arrived with a crash of my car through the garage door.', 8, 101.66666666666667, 203.33333333333334, 0, TRUE, '16-04-18 20:43:00', 154, 5);
+INSERT INTO tb_recipe (name, difficulty, description, servings, preparation_time, cooking_time, additional_time, visibility, creation_time, id_member, id_category) VALUES ('Alfredo Sauce', 'very hard', 'She found his complete dullness interesting.', 4, 6.666666666666667, 13.333333333333334, 0, TRUE, '27-08-20 18:03:00', 39, 5);
+INSERT INTO tb_recipe (name, difficulty, description, servings, preparation_time, cooking_time, additional_time, visibility, creation_time, id_member, id_category) VALUES ('Basic Crepes', 'medium', 'We should play with legos at camp.', 8, 10.0, 20.0, 0, TRUE, '02-09-18 20:07:00', 97, 6);
+INSERT INTO tb_recipe (name, difficulty, description, servings, preparation_time, cooking_time, additional_time, visibility, creation_time, id_member, id_category) VALUES ('Quick and Almost-Professional Buttercream Icing', 'very hard', 'He appeared to be confusingly perplexed.', 2, 0.0, 0.0, 0, TRUE, '16-11-19 05:35:00', 262, 6);
+INSERT INTO tb_recipe (name, difficulty, description, servings, preparation_time, cooking_time, additional_time, visibility, creation_time, id_member, id_category) VALUES ('Reuben Sandwich II', 'hard', 'The beauty of the sunset was obscured by the industrial cranes.', 4, 8.333333333333334, 16.666666666666668, 0, TRUE, '20-08-19 22:41:00', 329, 7);
+INSERT INTO tb_recipe (name, difficulty, description, servings, preparation_time, cooking_time, additional_time, visibility, creation_time, id_member, id_category, id_group) VALUES ('Instant Pot® Corned Beef', 'hard', 'Tom got a small piece of pie.', 4, 41.666666666666664, 83.33333333333333, 0, TRUE, '05-02-18 13:01:00', 138, 6, 45);
+INSERT INTO tb_recipe (name, difficulty, description, servings, preparation_time, cooking_time, additional_time, visibility, creation_time, id_member, id_category) VALUES ('Waffles I', 'hard', 'We should play with legos at camp.', 6, 6.666666666666667, 13.333333333333334, 0, TRUE, '28-12-20 15:10:00', 259, 6);
+INSERT INTO tb_recipe (name, difficulty, description, servings, preparation_time, cooking_time, additional_time, visibility, creation_time, id_member, id_category) VALUES ('Joy''s Easy Banana Bread', 'medium', 'People who insist on picking their teeth with their elbows are so annoying!', 1, 25.0, 50.0, 0, TRUE, '27-01-18 11:10:00', 56, 3);
+INSERT INTO tb_recipe (name, difficulty, description, servings, preparation_time, cooking_time, additional_time, visibility, creation_time, id_member, id_category) VALUES ('Quick and Easy Brownies', 'very hard', 'She found his complete dullness interesting.', 20, 11.666666666666666, 23.333333333333332, 0, TRUE, '07-06-19 22:32:00', 302, 4);
+INSERT INTO tb_recipe (name, difficulty, description, servings, preparation_time, cooking_time, additional_time, visibility, creation_time, id_member, id_category) VALUES ('Simple Macaroni and Cheese', 'very hard', 'It caught him off guard that space smelled of seared steak.', 4, 10.0, 20.0, 0, TRUE, '15-12-20 17:24:00', 328, 2);
+INSERT INTO tb_recipe (name, difficulty, description, servings, preparation_time, cooking_time, additional_time, visibility, creation_time, id_member, id_category) VALUES ('Chicken Pot Pie IX', 'medium', 'Today arrived with a crash of my car through the garage door.', 1, 23.333333333333332, 46.666666666666664, 0, TRUE, '09-04-21 21:00:00', 29, 5);
+INSERT INTO tb_recipe (name, difficulty, description, servings, preparation_time, cooking_time, additional_time, visibility, creation_time, id_member, id_category, id_group) VALUES ('Loaded Breakfast Skillet', 'medium', 'Shingle color was not something the couple had ever talked about.', 4, 16.666666666666668, 33.333333333333336, 0, TRUE, '02-08-17 10:26:00', 260, 2, 50);
+INSERT INTO tb_recipe (name, difficulty, description, servings, preparation_time, cooking_time, additional_time, visibility, creation_time, id_member, id_category) VALUES ('Creamy Italian Slow Cooker Chicken', 'hard', 'David subscribes to the "stuff your tent into the bag" strategy over nicely folding it.', 4, 91.66666666666667, 183.33333333333334, 0, TRUE, '07-02-18 16:06:00', 182, 1);
+INSERT INTO tb_recipe (name, difficulty, description, servings, preparation_time, cooking_time, additional_time, visibility, creation_time, id_member, id_category) VALUES ('Easy Chicken Piccata', 'very hard', 'Weather is not trivial - it''s especially important when you''re standing in it.', 4, 8.333333333333334, 16.666666666666668, 0, TRUE, '01-06-20 08:05:00', 60, 5);
+INSERT INTO tb_recipe (name, difficulty, description, servings, preparation_time, cooking_time, additional_time, visibility, creation_time, id_member, id_category) VALUES ('Gourmet Mushroom Risotto', 'very hard', 'He appeared to be confusingly perplexed.', 6, 16.666666666666668, 33.333333333333336, 0, TRUE, '03-04-19 03:23:00', 2, 5);
+INSERT INTO tb_recipe (name, difficulty, description, servings, preparation_time, cooking_time, additional_time, visibility, creation_time, id_member, id_category, id_group) VALUES ('Microwave Chocolate Mug Cake', 'hard', 'There are few things better in life than a slice of pie.', 1, 2.3333333333333335, 4.666666666666667, 0, TRUE, '30-06-20 09:07:00', 29, 5, 50);
+INSERT INTO tb_recipe (name, difficulty, description, servings, preparation_time, cooking_time, additional_time, visibility, creation_time, id_member, id_category) VALUES ('Soft Oatmeal Cookies', 'hard', 'I checked to make sure that he was still alive.', 2, 40.0, 80.0, 0, TRUE, '06-10-17 22:28:00', 342, 6);
+INSERT INTO tb_recipe (name, difficulty, description, servings, preparation_time, cooking_time, additional_time, visibility, creation_time, id_member, id_category) VALUES ('Simple Roasted Butternut Squash', 'medium', 'Going from child, to childish, to childlike is only a matter of time.', 4, 13.333333333333334, 26.666666666666668, 0, TRUE, '05-05-18 17:46:00', 144, 2);
+INSERT INTO tb_recipe (name, difficulty, description, servings, preparation_time, cooking_time, additional_time, visibility, creation_time, id_member, id_category) VALUES ('Fajita Seasoning', 'medium', 'There were three sphered rocks congregating in a cubed room.', 3, 1.6666666666666667, 3.3333333333333335, 0, TRUE, '27-12-19 05:27:00', 90, 4);
+INSERT INTO tb_recipe (name, difficulty, description, servings, preparation_time, cooking_time, additional_time, visibility, creation_time, id_member, id_category) VALUES ('Skinny Chicken Casserole', 'hard', 'Swim at your own risk was taken as a challenge for the group of Kansas City college students.', 8, 21.666666666666668, 43.333333333333336, 0, TRUE, '04-05-17 00:46:00', 33, 7);
+INSERT INTO tb_recipe (name, difficulty, description, servings, preparation_time, cooking_time, additional_time, visibility, creation_time, id_member, id_category) VALUES ('Braised Corned Beef Brisket', 'hard', 'They got there early, and they got really good seats.', 6, 130.0, 260.0, 0, TRUE, '12-11-19 22:43:00', 322, 6);
+INSERT INTO tb_recipe (name, difficulty, description, servings, preparation_time, cooking_time, additional_time, visibility, creation_time, id_member, id_category) VALUES ('The Real Mojito', 'very hard', 'It''s much more difficult to play tennis with a bowling ball than it is to bowl with a tennis ball.', 1, 3.3333333333333335, 6.666666666666667, 0, TRUE, '12-04-20 21:27:00', 127, 1);
+INSERT INTO tb_recipe (name, difficulty, description, servings, preparation_time, cooking_time, additional_time, visibility, creation_time, id_member, id_category) VALUES ('Strawberry Chicken Salad for Sandwiches', 'medium', 'There are few things better in life than a slice of pie.', 2, 6.666666666666667, 13.333333333333334, 0, TRUE, '13-01-18 11:06:00', 267, 2);
+INSERT INTO tb_recipe (name, difficulty, description, servings, preparation_time, cooking_time, additional_time, visibility, creation_time, id_member, id_category) VALUES ('Easy Pancakes', 'very hard', 'Going from child, to childish, to childlike is only a matter of time.', 4, 5.0, 10.0, 0, TRUE, '08-05-19 21:49:00', 143, 6);
+INSERT INTO tb_recipe (name, difficulty, description, servings, preparation_time, cooking_time, additional_time, visibility, creation_time, id_member, id_category) VALUES ('Best Big, Fat, Chewy Chocolate Chip Cookie', 'hard', 'Each person who knows you has a different perception of who you are.', 1, 13.333333333333334, 26.666666666666668, 0, TRUE, '17-09-17 07:57:00', 60, 4);
+INSERT INTO tb_recipe (name, difficulty, description, servings, preparation_time, cooking_time, additional_time, visibility, creation_time, id_member, id_category, id_group) VALUES ('Baked Pork Chops I', 'very hard', 'Before he moved to the inner city, he had always believed that security complexes were psychological.', 6, 40.0, 80.0, 0, TRUE, '21-12-18 17:17:00', 141, 2, 46);
+INSERT INTO tb_recipe (name, difficulty, description, servings, preparation_time, cooking_time, additional_time, visibility, creation_time, id_member, id_category) VALUES ('Salmon Patties I', 'hard', 'People who insist on picking their teeth with their elbows are so annoying!', 4, 8.333333333333334, 16.666666666666668, 0, TRUE, '31-12-20 14:29:00', 177, 1);
+INSERT INTO tb_recipe (name, difficulty, description, servings, preparation_time, cooking_time, additional_time, visibility, creation_time, id_member, id_category) VALUES ('Tatertot Casserole', 'medium', 'I’m working on a sweet potato farm.', 8, 13.333333333333334, 26.666666666666668, 0, TRUE, '04-08-17 17:18:00', 204, 7);
+INSERT INTO tb_recipe (name, difficulty, description, servings, preparation_time, cooking_time, additional_time, visibility, creation_time, id_member, id_category) VALUES ('Vietnamese Fresh Spring Rolls', 'hard', 'Tom got a small piece of pie.', 8, 16.666666666666668, 33.333333333333336, 0, TRUE, '21-08-19 16:09:00', 114, 4);
+INSERT INTO tb_recipe (name, difficulty, description, servings, preparation_time, cooking_time, additional_time, visibility, creation_time, id_member, id_category) VALUES ('Quick Tartar Sauce', 'very hard', 'Going from child, to childish, to childlike is only a matter of time.', 1, 1.6666666666666667, 3.3333333333333335, 0, TRUE, '23-09-19 01:56:00', 5, 6);
+INSERT INTO tb_recipe (name, difficulty, description, servings, preparation_time, cooking_time, additional_time, visibility, creation_time, id_member, id_category) VALUES ('Lasagna Roll Ups II', 'very hard', 'Going from child, to childish, to childlike is only a matter of time.', 9, 26.666666666666668, 53.333333333333336, 0, TRUE, '27-08-18 12:43:00', 24, 5);
+INSERT INTO tb_recipe (name, difficulty, description, servings, preparation_time, cooking_time, additional_time, visibility, creation_time, id_member, id_category) VALUES ('Baked Kale Chips', 'medium', 'The beauty of the sunset was obscured by the industrial cranes.', 6, 6.666666666666667, 13.333333333333334, 0, TRUE, '07-08-20 01:28:00', 271, 3);
+INSERT INTO tb_recipe (name, difficulty, description, servings, preparation_time, cooking_time, additional_time, visibility, creation_time, id_member, id_category) VALUES ('Roasted Pork Loin', 'medium', 'I covered my friend in baby oil.', 8, 26.666666666666668, 53.333333333333336, 0, TRUE, '23-12-18 09:18:00', 284, 1);
+INSERT INTO tb_recipe (name, difficulty, description, servings, preparation_time, cooking_time, additional_time, visibility, creation_time, id_member, id_category) VALUES ('Whipped Cream', 'hard', 'I’m working on a sweet potato farm.', 16, 1.6666666666666667, 3.3333333333333335, 0, TRUE, '20-04-19 21:08:00', 130, 2);
+INSERT INTO tb_recipe (name, difficulty, description, servings, preparation_time, cooking_time, additional_time, visibility, creation_time, id_member, id_category) VALUES ('Chewy Chocolate Chip Oatmeal Cookies', 'very hard', 'Chocolate covered crickets were his favorite snack.', 3, 18.333333333333332, 36.666666666666664, 0, TRUE, '23-05-19 22:39:00', 49, 6);
+INSERT INTO tb_recipe (name, difficulty, description, servings, preparation_time, cooking_time, additional_time, visibility, creation_time, id_member, id_category) VALUES ('Banana Pancakes I', 'hard', 'There are few things better in life than a slice of pie.', 12, 5.0, 10.0, 0, TRUE, '08-05-19 17:02:00', 290, 6);
+INSERT INTO tb_recipe (name, difficulty, description, servings, preparation_time, cooking_time, additional_time, visibility, creation_time, id_member, id_category) VALUES ('Cordon Bleu Rollups with Honey-Mustard Wine Sauce', 'medium', 'Chocolate covered crickets were his favorite snack.', 8, 0.0, 0.0, 0, TRUE, '25-04-19 21:20:00', 101, 5);
+INSERT INTO tb_recipe (name, difficulty, description, servings, preparation_time, cooking_time, additional_time, visibility, creation_time, id_member, id_category) VALUES ('Cast Iron Pan-Seared Steak (Oven-Finished)', 'medium', 'The waves were crashing on the shore; it was a lovely sight.', 2, 27.333333333333332, 54.666666666666664, 0, TRUE, '31-05-20 08:15:00', 148, 1);
+INSERT INTO tb_recipe (name, difficulty, description, servings, preparation_time, cooking_time, additional_time, visibility, creation_time, id_member, id_category) VALUES ('Buffalo Chicken Wing Sauce', 'medium', 'Chocolate covered crickets were his favorite snack.', 8, 3.3333333333333335, 6.666666666666667, 0, TRUE, '13-08-19 18:01:00', 50, 7);
+INSERT INTO tb_recipe (name, difficulty, description, servings, preparation_time, cooking_time, additional_time, visibility, creation_time, id_member, id_category) VALUES ('Creamy Rice Pudding', 'medium', 'The waitress was not amused when he ordered green eggs and ham.', 4, 15.0, 30.0, 0, TRUE, '11-03-21 13:39:00', 32, 1);
+INSERT INTO tb_recipe (name, difficulty, description, servings, preparation_time, cooking_time, additional_time, visibility, creation_time, id_member, id_category) VALUES ('Old Fashioned Onion Rings', 'medium', 'Weather is not trivial - it''s especially important when you''re standing in it.', 3, 6.0, 12.0, 0, TRUE, '01-06-19 06:19:00', 107, 6);
+INSERT INTO tb_recipe (name, difficulty, description, servings, preparation_time, cooking_time, additional_time, visibility, creation_time, id_member, id_category) VALUES ('Pasta Salad', 'hard', 'Swim at your own risk was taken as a challenge for the group of Kansas City college students.', 6, 278.3333333333333, 556.6666666666666, 0, TRUE, '22-04-20 07:19:00', 341, 5);
+INSERT INTO tb_recipe (name, difficulty, description, servings, preparation_time, cooking_time, additional_time, visibility, creation_time, id_member, id_category) VALUES ('Best Lemonade Ever', 'medium', 'The efficiency we have at removing trash has made creating trash more acceptable.', 10, 91.66666666666667, 183.33333333333334, 0, TRUE, '22-08-17 10:11:00', 283, 5);
+INSERT INTO tb_recipe (name, difficulty, description, servings, preparation_time, cooking_time, additional_time, visibility, creation_time, id_member, id_category) VALUES ('Cheesy Hamburger Stew with Rice', 'hard', 'People who insist on picking their teeth with their elbows are so annoying!', 4, 11.666666666666666, 23.333333333333332, 0, TRUE, '04-12-18 10:43:00', 349, 6);
+INSERT INTO tb_recipe (name, difficulty, description, servings, preparation_time, cooking_time, additional_time, visibility, creation_time, id_member, id_category) VALUES ('German Hamburgers (Frikadellen)', 'hard', 'Going from child, to childish, to childlike is only a matter of time.', 4, 13.333333333333334, 26.666666666666668, 0, TRUE, '12-09-20 09:13:00', 229, 2);
+INSERT INTO tb_recipe (name, difficulty, description, servings, preparation_time, cooking_time, additional_time, visibility, creation_time, id_member, id_category) VALUES ('Oven-Baked Potato Slices', 'very hard', 'There were three sphered rocks congregating in a cubed room.', 4, 18.333333333333332, 36.666666666666664, 0, TRUE, '24-06-18 03:04:00', 167, 6);
+INSERT INTO tb_recipe (name, difficulty, description, servings, preparation_time, cooking_time, additional_time, visibility, creation_time, id_member, id_category) VALUES ('Quick and Easy Alfredo Sauce', 'hard', 'He was disappointed when he found the beach to be so sandy and the sun so sunny.', 4, 3.3333333333333335, 6.666666666666667, 0, TRUE, '13-09-18 19:08:00', 295, 6);
+INSERT INTO tb_recipe (name, difficulty, description, servings, preparation_time, cooking_time, additional_time, visibility, creation_time, id_member, id_category) VALUES ('Janet''s Rich Banana Bread', 'hard', 'Combines are no longer just for farms.', 1, 23.333333333333332, 46.666666666666664, 0, TRUE, '26-04-17 05:10:00', 28, 1);
+INSERT INTO tb_recipe (name, difficulty, description, servings, preparation_time, cooking_time, additional_time, visibility, creation_time, id_member, id_category) VALUES ('Clone of a Cinnabon', 'hard', 'They got there early, and they got really good seats.', 12, 60.0, 120.0, 0, TRUE, '04-03-18 16:40:00', 166, 4);
+INSERT INTO tb_recipe (name, difficulty, description, servings, preparation_time, cooking_time, additional_time, visibility, creation_time, id_member, id_category) VALUES ('Gnocchi I', 'very hard', 'I’m working on a sweet potato farm.', 4, 20.0, 40.0, 0, TRUE, '05-02-18 03:12:00', 161, 6);
+INSERT INTO tb_recipe (name, difficulty, description, servings, preparation_time, cooking_time, additional_time, visibility, creation_time, id_member, id_category) VALUES ('Rich and Simple French Onion Soup', 'medium', 'Today arrived with a crash of my car through the garage door.', 4, 21.666666666666668, 43.333333333333336, 0, TRUE, '21-01-21 17:32:00', 255, 4);
+INSERT INTO tb_recipe (name, difficulty, description, servings, preparation_time, cooking_time, additional_time, visibility, creation_time, id_member, id_category) VALUES ('Salisbury Steak', 'medium', 'There were three sphered rocks congregating in a cubed room.', 6, 13.333333333333334, 26.666666666666668, 0, TRUE, '27-04-19 02:46:00', 179, 4);
+INSERT INTO tb_recipe (name, difficulty, description, servings, preparation_time, cooking_time, additional_time, visibility, creation_time, id_member, id_category) VALUES ('Tender Italian Baked Chicken', 'hard', 'I covered my friend in baby oil.', 4, 10.0, 20.0, 0, TRUE, '27-10-17 13:13:00', 21, 1);
+INSERT INTO tb_recipe (name, difficulty, description, servings, preparation_time, cooking_time, additional_time, visibility, creation_time, id_member, id_category) VALUES ('Perfect Ten Baked Cod', 'hard', 'It caught him off guard that space smelled of seared steak.', 4, 11.666666666666666, 23.333333333333332, 0, TRUE, '19-12-17 10:03:00', 347, 4);
+INSERT INTO tb_recipe (name, difficulty, description, servings, preparation_time, cooking_time, additional_time, visibility, creation_time, id_member, id_category) VALUES ('Classic Old Fashioned', 'hard', 'Her daily goal was to improve on yesterday.', 1, 3.3333333333333335, 6.666666666666667, 0, TRUE, '22-09-19 20:21:00', 305, 7);
+INSERT INTO tb_recipe (name, difficulty, description, servings, preparation_time, cooking_time, additional_time, visibility, creation_time, id_member, id_category) VALUES ('How to Make Perfect Polenta', 'medium', 'Before he moved to the inner city, he had always believed that security complexes were psychological.', 4, 18.333333333333332, 36.666666666666664, 0, TRUE, '10-08-17 15:51:00', 266, 1);
+INSERT INTO tb_recipe (name, difficulty, description, servings, preparation_time, cooking_time, additional_time, visibility, creation_time, id_member, id_category) VALUES ('Mamaw''s Chicken and Rice Casserole', 'hard', 'He appeared to be confusingly perplexed.', 6, 26.666666666666668, 53.333333333333336, 0, TRUE, '21-12-19 06:55:00', 72, 3);
+INSERT INTO tb_recipe (name, difficulty, description, servings, preparation_time, cooking_time, additional_time, visibility, creation_time, id_member, id_category) VALUES ('Indian Chicken Curry (Murgh Kari)', 'very hard', 'I''m a great listener, really good with empathy vs sympathy and all that, but I hate people.', 6, 20.0, 40.0, 0, TRUE, '03-02-18 04:47:00', 55, 4);
+INSERT INTO tb_recipe (name, difficulty, description, servings, preparation_time, cooking_time, additional_time, visibility, creation_time, id_member, id_category, id_group) VALUES ('Old Fashioned Creamy Rice Pudding', 'hard', 'I often see the time 11:11 or 12:34 on clocks.', 4, 10.0, 20.0, 0, TRUE, '23-10-20 00:53:00', 330, 3, 61);
+INSERT INTO tb_recipe (name, difficulty, description, servings, preparation_time, cooking_time, additional_time, visibility, creation_time, id_member, id_category) VALUES ('Spaghetti Aglio e Olio', 'hard', 'I liked their first two albums but changed my mind after that charity gig.', 4, 10.666666666666666, 21.333333333333332, 0, TRUE, '20-04-19 02:42:00', 142, 1);
+INSERT INTO tb_recipe (name, difficulty, description, servings, preparation_time, cooking_time, additional_time, visibility, creation_time, id_member, id_category) VALUES ('Melt-In-Your-Mouth Meat Loaf', 'hard', 'The beauty of the sunset was obscured by the industrial cranes.', 6, 113.33333333333333, 226.66666666666666, 0, TRUE, '01-11-17 16:26:00', 196, 5);
+INSERT INTO tb_recipe (name, difficulty, description, servings, preparation_time, cooking_time, additional_time, visibility, creation_time, id_member, id_category) VALUES ('Ultimate Twice Baked Potatoes', 'medium', 'He''s in a boy band which doesn''t make much sense for a snake.', 8, 30.0, 60.0, 0, TRUE, '03-07-20 09:01:00', 69, 6);
+INSERT INTO tb_recipe (name, difficulty, description, servings, preparation_time, cooking_time, additional_time, visibility, creation_time, id_member, id_category) VALUES ('Three Ingredient Peanut Butter Cookies', 'very hard', 'He looked behind the door and didn''t like what he saw.', 1, 0.0, 0.0, 0, TRUE, '02-01-21 22:49:00', 163, 2);
+INSERT INTO tb_recipe (name, difficulty, description, servings, preparation_time, cooking_time, additional_time, visibility, creation_time, id_member, id_category, id_group) VALUES ('Basic Chicken Salad', 'very hard', 'He looked behind the door and didn''t like what he saw.', 2, 3.3333333333333335, 6.666666666666667, 0, TRUE, '28-03-19 05:38:00', 122, 6, 44);
+INSERT INTO tb_recipe (name, difficulty, description, servings, preparation_time, cooking_time, additional_time, visibility, creation_time, id_member, id_category) VALUES ('Balsamic Bruschetta', 'medium', 'People who insist on picking their teeth with their elbows are so annoying!', 8, 5.0, 10.0, 0, TRUE, '11-11-19 06:04:00', 5, 2);
+INSERT INTO tb_recipe (name, difficulty, description, servings, preparation_time, cooking_time, additional_time, visibility, creation_time, id_member, id_category) VALUES ('Emily''s Famous Hash Browns', 'medium', 'She couldn''t decide of the glass was half empty or half full so she drank it.', 4, 11.666666666666666, 23.333333333333332, 0, TRUE, '12-12-20 13:41:00', 230, 6);
+INSERT INTO tb_recipe (name, difficulty, description, servings, preparation_time, cooking_time, additional_time, visibility, creation_time, id_member, id_category) VALUES ('Cabbage Fat-Burning Soup', 'very hard', 'She found his complete dullness interesting.', 15, 15.0, 30.0, 0, TRUE, '18-09-19 15:10:00', 179, 6);
+INSERT INTO tb_recipe (name, difficulty, description, servings, preparation_time, cooking_time, additional_time, visibility, creation_time, id_member, id_category) VALUES ('Seared Ahi Tuna Steaks', 'hard', 'Shingle color was not something the couple had ever talked about.', 2, 5.666666666666667, 11.333333333333334, 0, TRUE, '06-03-20 08:57:00', 278, 2);
+INSERT INTO tb_recipe (name, difficulty, description, servings, preparation_time, cooking_time, additional_time, visibility, creation_time, id_member, id_category) VALUES ('Baked Ziti I', 'hard', 'The beauty of the sunset was obscured by the industrial cranes.', 10, 18.333333333333332, 36.666666666666664, 0, TRUE, '22-12-19 16:08:00', 106, 7);
+INSERT INTO tb_recipe (name, difficulty, description, servings, preparation_time, cooking_time, additional_time, visibility, creation_time, id_member, id_category, id_group) VALUES ('Absolute Best Liver and Onions', 'hard', 'It caught him off guard that space smelled of seared steak.', 4, 15.0, 30.0, 0, TRUE, '16-10-20 22:31:00', 145, 1, 73);
+INSERT INTO tb_recipe (name, difficulty, description, servings, preparation_time, cooking_time, additional_time, visibility, creation_time, id_member, id_category) VALUES ('Juiciest Hamburgers Ever', 'very hard', 'Nancy was proud that she ran a tight shipwreck.', 8, 11.666666666666666, 23.333333333333332, 0, TRUE, '20-08-20 02:25:00', 247, 5);
+INSERT INTO tb_recipe (name, difficulty, description, servings, preparation_time, cooking_time, additional_time, visibility, creation_time, id_member, id_category) VALUES ('Greek Lemon Chicken and Potatoes', 'medium', 'Getting up at dawn is for the birds.', 4, 20.0, 40.0, 0, TRUE, '23-10-18 13:16:00', 90, 7);
+INSERT INTO tb_recipe (name, difficulty, description, servings, preparation_time, cooking_time, additional_time, visibility, creation_time, id_member, id_category) VALUES ('Cheesy Chicken Pot Pie', 'very hard', 'The beauty of the sunset was obscured by the industrial cranes.', 1, 0.0, 0.0, 0, TRUE, '24-12-20 22:27:00', 113, 5);
+INSERT INTO tb_recipe (name, difficulty, description, servings, preparation_time, cooking_time, additional_time, visibility, creation_time, id_member, id_category, id_group) VALUES ('Old Fashioned Potato Cakes', 'hard', 'I checked to make sure that he was still alive.', 4, 6.666666666666667, 13.333333333333334, 0, TRUE, '07-05-19 17:28:00', 163, 4, 52);
+INSERT INTO tb_recipe (name, difficulty, description, servings, preparation_time, cooking_time, additional_time, visibility, creation_time, id_member, id_category) VALUES ('Chef John''s Perfect Prime Rib', 'very hard', 'He''s in a boy band which doesn''t make much sense for a snake.', 4, 130.0, 260.0, 0, TRUE, '24-06-17 07:24:00', 312, 1);
+INSERT INTO tb_recipe (name, difficulty, description, servings, preparation_time, cooking_time, additional_time, visibility, creation_time, id_member, id_category) VALUES ('Baked Ham and Cheese Party Sandwiches', 'hard', 'It caught him off guard that space smelled of seared steak.', 24, 11.666666666666666, 23.333333333333332, 0, TRUE, '02-11-18 00:40:00', 83, 6);
+INSERT INTO tb_recipe (name, difficulty, description, servings, preparation_time, cooking_time, additional_time, visibility, creation_time, id_member, id_category) VALUES ('Easy Garlic-Lemon Scallops', 'hard', 'There were three sphered rocks congregating in a cubed room.', 6, 6.666666666666667, 13.333333333333334, 0, TRUE, '20-08-20 04:21:00', 138, 5);
+INSERT INTO tb_recipe (name, difficulty, description, servings, preparation_time, cooking_time, additional_time, visibility, creation_time, id_member, id_category) VALUES ('One-Pan Sour Cream Chicken Enchilada Skillet', 'very hard', 'We should play with legos at camp.', 8, 16.0, 32.0, 0, TRUE, '21-09-19 08:59:00', 154, 1);
+INSERT INTO tb_recipe (name, difficulty, description, servings, preparation_time, cooking_time, additional_time, visibility, creation_time, id_member, id_category) VALUES ('Bacon-Wrapped Jalapeno Poppers', 'very hard', 'After exploring the abandoned building, he started to believe in ghosts.', 12, 10.0, 20.0, 0, TRUE, '26-01-19 06:06:00', 153, 3);
+INSERT INTO tb_recipe (name, difficulty, description, servings, preparation_time, cooking_time, additional_time, visibility, creation_time, id_member, id_category) VALUES ('Classic Hash Browns', 'hard', 'Tom got a small piece of pie.', 2, 6.666666666666667, 13.333333333333334, 0, TRUE, '28-10-17 01:53:00', 176, 1);
+INSERT INTO tb_recipe (name, difficulty, description, servings, preparation_time, cooking_time, additional_time, visibility, creation_time, id_member, id_category, id_group) VALUES ('Best Carrot Cake Ever', 'hard', 'Going from child, to childish, to childlike is only a matter of time.', 2, 50.0, 100.0, 0, TRUE, '09-05-17 16:51:00', 6, 7, 41);
+INSERT INTO tb_recipe (name, difficulty, description, servings, preparation_time, cooking_time, additional_time, visibility, creation_time, id_member, id_category, id_group) VALUES ('Pesto Pasta', 'hard', 'Getting up at dawn is for the birds.', 8, 5.0, 10.0, 0, TRUE, '05-06-18 10:12:00', 295, 7, 8);
+INSERT INTO tb_recipe (name, difficulty, description, servings, preparation_time, cooking_time, additional_time, visibility, creation_time, id_member, id_category) VALUES ('Fried Cabbage with Bacon, Onion, and Garlic', 'medium', 'He appeared to be confusingly perplexed.', 6, 25.0, 50.0, 0, TRUE, '17-05-18 06:19:00', 260, 2);
+INSERT INTO tb_recipe (name, difficulty, description, servings, preparation_time, cooking_time, additional_time, visibility, creation_time, id_member, id_category) VALUES ('Homemade Baked Egg Custard', 'medium', 'They got there early, and they got really good seats.', 8, 41.666666666666664, 83.33333333333333, 0, TRUE, '19-10-18 18:06:00', 27, 2);
+INSERT INTO tb_recipe (name, difficulty, description, servings, preparation_time, cooking_time, additional_time, visibility, creation_time, id_member, id_category) VALUES ('Mushroom Pork Chops', 'hard', 'Nancy was proud that she ran a tight shipwreck.', 4, 13.333333333333334, 26.666666666666668, 0, TRUE, '01-01-19 20:36:00', 46, 5);
+INSERT INTO tb_recipe (name, difficulty, description, servings, preparation_time, cooking_time, additional_time, visibility, creation_time, id_member, id_category) VALUES ('Roasted Rack of Lamb', 'very hard', 'The light that burns twice as bright burns half as long.', 4, 13.333333333333334, 26.666666666666668, 0, TRUE, '14-04-18 03:49:00', 52, 3);
+INSERT INTO tb_recipe (name, difficulty, description, servings, preparation_time, cooking_time, additional_time, visibility, creation_time, id_member, id_category) VALUES ('Scones', 'hard', 'Swim at your own risk was taken as a challenge for the group of Kansas City college students.', 8, 8.333333333333334, 16.666666666666668, 0, TRUE, '25-09-18 17:03:00', 338, 6);
+INSERT INTO tb_recipe (name, difficulty, description, servings, preparation_time, cooking_time, additional_time, visibility, creation_time, id_member, id_category) VALUES ('Easy Guacamole', 'very hard', 'I covered my friend in baby oil.', 2, 13.333333333333334, 26.666666666666668, 0, TRUE, '28-07-18 01:31:00', 36, 1);
+INSERT INTO tb_recipe (name, difficulty, description, servings, preparation_time, cooking_time, additional_time, visibility, creation_time, id_member, id_category) VALUES ('Cherry Cream Cheese Dump Cake', 'very hard', 'Combines are no longer just for farms.', 16, 26.666666666666668, 53.333333333333336, 0, TRUE, '08-12-17 08:33:00', 202, 1);
+INSERT INTO tb_recipe (name, difficulty, description, servings, preparation_time, cooking_time, additional_time, visibility, creation_time, id_member, id_category) VALUES ('Unbelievable Fish Batter', 'medium', 'Combines are no longer just for farms.', 2, 3.3333333333333335, 6.666666666666667, 0, TRUE, '21-07-19 08:10:00', 115, 4);
+INSERT INTO tb_recipe (name, difficulty, description, servings, preparation_time, cooking_time, additional_time, visibility, creation_time, id_member, id_category) VALUES ('3 Cheese Enchiladas', 'hard', 'He appeared to be confusingly perplexed.', 6, 20.0, 40.0, 0, TRUE, '06-12-20 22:49:00', 168, 2);
 
 INSERT INTO tb_ingredient_recipe (id_recipe, id_ingredient, id_unit, quantity) VALUES (0,607,7,925.9);
 INSERT INTO tb_ingredient_recipe (id_recipe, id_ingredient, id_unit, quantity) VALUES (0,1122,4,678.9);
@@ -3418,380 +3419,381 @@ INSERT INTO tb_favourite (id_recipe, id_member) VALUES (77, 62);
 INSERT INTO tb_favourite (id_recipe, id_member) VALUES (8, 244);
 INSERT INTO tb_favourite (id_recipe, id_member) VALUES (12, 245);
 
-INSERT INTO tb_group_member (id_member, id_group) VALUES(287,1);
-INSERT INTO tb_group_member (id_member, id_group) VALUES(6,2);
-INSERT INTO tb_group_member (id_member, id_group) VALUES(222,3);
-INSERT INTO tb_group_member (id_member, id_group) VALUES(263,4);
-INSERT INTO tb_group_member (id_member, id_group) VALUES(19,5);
-INSERT INTO tb_group_member (id_member, id_group) VALUES(275,6);
-INSERT INTO tb_group_member (id_member, id_group) VALUES(91,7);
-INSERT INTO tb_group_member (id_member, id_group) VALUES(251,8);
-INSERT INTO tb_group_member (id_member, id_group) VALUES(96,9);
-INSERT INTO tb_group_member (id_member, id_group) VALUES(188,10);
-INSERT INTO tb_group_member (id_member, id_group) VALUES(193,11);
-INSERT INTO tb_group_member (id_member, id_group) VALUES(178,12);
-INSERT INTO tb_group_member (id_member, id_group) VALUES(244,13);
-INSERT INTO tb_group_member (id_member, id_group) VALUES(94,14);
-INSERT INTO tb_group_member (id_member, id_group) VALUES(136,15);
-INSERT INTO tb_group_member (id_member, id_group) VALUES(301,16);
-INSERT INTO tb_group_member (id_member, id_group) VALUES(326,17);
-INSERT INTO tb_group_member (id_member, id_group) VALUES(213,18);
-INSERT INTO tb_group_member (id_member, id_group) VALUES(164,19);
-INSERT INTO tb_group_member (id_member, id_group) VALUES(228,20);
-INSERT INTO tb_group_member (id_member, id_group) VALUES(75,21);
-INSERT INTO tb_group_member (id_member, id_group) VALUES(204,22);
-INSERT INTO tb_group_member (id_member, id_group) VALUES(250,23);
-INSERT INTO tb_group_member (id_member, id_group) VALUES(112,24);
-INSERT INTO tb_group_member (id_member, id_group) VALUES(150,25);
-INSERT INTO tb_group_member (id_member, id_group) VALUES(238,26);
-INSERT INTO tb_group_member (id_member, id_group) VALUES(186,27);
-INSERT INTO tb_group_member (id_member, id_group) VALUES(116,28);
-INSERT INTO tb_group_member (id_member, id_group) VALUES(74,29);
-INSERT INTO tb_group_member (id_member, id_group) VALUES(33,30);
-INSERT INTO tb_group_member (id_member, id_group) VALUES(183,31);
-INSERT INTO tb_group_member (id_member, id_group) VALUES(104,32);
-INSERT INTO tb_group_member (id_member, id_group) VALUES(235,33);
-INSERT INTO tb_group_member (id_member, id_group) VALUES(267,34);
-INSERT INTO tb_group_member (id_member, id_group) VALUES(216,35);
-INSERT INTO tb_group_member (id_member, id_group) VALUES(169,36);
-INSERT INTO tb_group_member (id_member, id_group) VALUES(201,37);
-INSERT INTO tb_group_member (id_member, id_group) VALUES(350,38);
-INSERT INTO tb_group_member (id_member, id_group) VALUES(274,39);
-INSERT INTO tb_group_member (id_member, id_group) VALUES(18,40);
-INSERT INTO tb_group_member (id_member, id_group) VALUES(89,41);
-INSERT INTO tb_group_member (id_member, id_group) VALUES(185,42);
-INSERT INTO tb_group_member (id_member, id_group) VALUES(134,43);
-INSERT INTO tb_group_member (id_member, id_group) VALUES(207,44);
-INSERT INTO tb_group_member (id_member, id_group) VALUES(26,45);
-INSERT INTO tb_group_member (id_member, id_group) VALUES(221,46);
-INSERT INTO tb_group_member (id_member, id_group) VALUES(83,47);
-INSERT INTO tb_group_member (id_member, id_group) VALUES(192,48);
-INSERT INTO tb_group_member (id_member, id_group) VALUES(343,49);
-INSERT INTO tb_group_member (id_member, id_group) VALUES(62,50);
-INSERT INTO tb_group_member (id_member, id_group) VALUES(128,51);
-INSERT INTO tb_group_member (id_member, id_group) VALUES(231,52);
-INSERT INTO tb_group_member (id_member, id_group) VALUES(324,53);
-INSERT INTO tb_group_member (id_member, id_group) VALUES(328,54);
-INSERT INTO tb_group_member (id_member, id_group) VALUES(66,55);
-INSERT INTO tb_group_member (id_member, id_group) VALUES(302,56);
-INSERT INTO tb_group_member (id_member, id_group) VALUES(330,57);
-INSERT INTO tb_group_member (id_member, id_group) VALUES(232,58);
-INSERT INTO tb_group_member (id_member, id_group) VALUES(327,59);
-INSERT INTO tb_group_member (id_member, id_group) VALUES(162,60);
-INSERT INTO tb_group_member (id_member, id_group) VALUES(295,61);
-INSERT INTO tb_group_member (id_member, id_group) VALUES(270,62);
-INSERT INTO tb_group_member (id_member, id_group) VALUES(181,63);
-INSERT INTO tb_group_member (id_member, id_group) VALUES(65,64);
-INSERT INTO tb_group_member (id_member, id_group) VALUES(125,65);
-INSERT INTO tb_group_member (id_member, id_group) VALUES(199,66);
-INSERT INTO tb_group_member (id_member, id_group) VALUES(109,67);
-INSERT INTO tb_group_member (id_member, id_group) VALUES(24,68);
-INSERT INTO tb_group_member (id_member, id_group) VALUES(87,69);
-INSERT INTO tb_group_member (id_member, id_group) VALUES(76,70);
-INSERT INTO tb_group_member (id_member, id_group) VALUES(137,71);
-INSERT INTO tb_group_member (id_member, id_group) VALUES(131,72);
-INSERT INTO tb_group_member (id_member, id_group) VALUES(32,1);
-INSERT INTO tb_group_member (id_member, id_group) VALUES(329,2);
-INSERT INTO tb_group_member (id_member, id_group) VALUES(42,3);
-INSERT INTO tb_group_member (id_member, id_group) VALUES(187,4);
-INSERT INTO tb_group_member (id_member, id_group) VALUES(338,5);
-INSERT INTO tb_group_member (id_member, id_group) VALUES(4,6);
-INSERT INTO tb_group_member (id_member, id_group) VALUES(127,7);
-INSERT INTO tb_group_member (id_member, id_group) VALUES(253,8);
-INSERT INTO tb_group_member (id_member, id_group) VALUES(166,9);
-INSERT INTO tb_group_member (id_member, id_group) VALUES(318,10);
-INSERT INTO tb_group_member (id_member, id_group) VALUES(119,11);
-INSERT INTO tb_group_member (id_member, id_group) VALUES(149,12);
-INSERT INTO tb_group_member (id_member, id_group) VALUES(10,13);
-INSERT INTO tb_group_member (id_member, id_group) VALUES(307,14);
-INSERT INTO tb_group_member (id_member, id_group) VALUES(121,15);
-INSERT INTO tb_group_member (id_member, id_group) VALUES(148,16);
-INSERT INTO tb_group_member (id_member, id_group) VALUES(291,17);
-INSERT INTO tb_group_member (id_member, id_group) VALUES(36,18);
+INSERT INTO tb_group_member (id_member, id_group) VALUES(294,1);
+INSERT INTO tb_group_member (id_member, id_group) VALUES(47,2);
+INSERT INTO tb_group_member (id_member, id_group) VALUES(121,3);
+INSERT INTO tb_group_member (id_member, id_group) VALUES(286,4);
+INSERT INTO tb_group_member (id_member, id_group) VALUES(73,5);
+INSERT INTO tb_group_member (id_member, id_group) VALUES(59,6);
+INSERT INTO tb_group_member (id_member, id_group) VALUES(64,7);
+INSERT INTO tb_group_member (id_member, id_group) VALUES(51,8);
+INSERT INTO tb_group_member (id_member, id_group) VALUES(116,9);
+INSERT INTO tb_group_member (id_member, id_group) VALUES(170,10);
+INSERT INTO tb_group_member (id_member, id_group) VALUES(348,11);
+INSERT INTO tb_group_member (id_member, id_group) VALUES(218,12);
+INSERT INTO tb_group_member (id_member, id_group) VALUES(337,13);
+INSERT INTO tb_group_member (id_member, id_group) VALUES(258,14);
+INSERT INTO tb_group_member (id_member, id_group) VALUES(113,15);
+INSERT INTO tb_group_member (id_member, id_group) VALUES(160,16);
+INSERT INTO tb_group_member (id_member, id_group) VALUES(349,17);
+INSERT INTO tb_group_member (id_member, id_group) VALUES(157,18);
+INSERT INTO tb_group_member (id_member, id_group) VALUES(196,19);
+INSERT INTO tb_group_member (id_member, id_group) VALUES(10,20);
+INSERT INTO tb_group_member (id_member, id_group) VALUES(226,21);
+INSERT INTO tb_group_member (id_member, id_group) VALUES(61,22);
+INSERT INTO tb_group_member (id_member, id_group) VALUES(328,23);
+INSERT INTO tb_group_member (id_member, id_group) VALUES(140,24);
+INSERT INTO tb_group_member (id_member, id_group) VALUES(98,25);
+INSERT INTO tb_group_member (id_member, id_group) VALUES(241,26);
+INSERT INTO tb_group_member (id_member, id_group) VALUES(340,27);
+INSERT INTO tb_group_member (id_member, id_group) VALUES(344,28);
+INSERT INTO tb_group_member (id_member, id_group) VALUES(148,29);
+INSERT INTO tb_group_member (id_member, id_group) VALUES(222,30);
+INSERT INTO tb_group_member (id_member, id_group) VALUES(78,31);
+INSERT INTO tb_group_member (id_member, id_group) VALUES(279,32);
+INSERT INTO tb_group_member (id_member, id_group) VALUES(75,33);
+INSERT INTO tb_group_member (id_member, id_group) VALUES(17,34);
+INSERT INTO tb_group_member (id_member, id_group) VALUES(188,35);
+INSERT INTO tb_group_member (id_member, id_group) VALUES(274,36);
+INSERT INTO tb_group_member (id_member, id_group) VALUES(118,37);
+INSERT INTO tb_group_member (id_member, id_group) VALUES(37,38);
+INSERT INTO tb_group_member (id_member, id_group) VALUES(32,39);
+INSERT INTO tb_group_member (id_member, id_group) VALUES(350,40);
+INSERT INTO tb_group_member (id_member, id_group) VALUES(339,41);
+INSERT INTO tb_group_member (id_member, id_group) VALUES(136,42);
+INSERT INTO tb_group_member (id_member, id_group) VALUES(278,43);
+INSERT INTO tb_group_member (id_member, id_group) VALUES(122,44);
+INSERT INTO tb_group_member (id_member, id_group) VALUES(138,45);
+INSERT INTO tb_group_member (id_member, id_group) VALUES(141,46);
+INSERT INTO tb_group_member (id_member, id_group) VALUES(169,47);
+INSERT INTO tb_group_member (id_member, id_group) VALUES(13,48);
+INSERT INTO tb_group_member (id_member, id_group) VALUES(33,49);
+INSERT INTO tb_group_member (id_member, id_group) VALUES(29,50);
+INSERT INTO tb_group_member (id_member, id_group) VALUES(28,51);
+INSERT INTO tb_group_member (id_member, id_group) VALUES(163,52);
+INSERT INTO tb_group_member (id_member, id_group) VALUES(281,53);
+INSERT INTO tb_group_member (id_member, id_group) VALUES(303,54);
+INSERT INTO tb_group_member (id_member, id_group) VALUES(313,55);
+INSERT INTO tb_group_member (id_member, id_group) VALUES(9,56);
+INSERT INTO tb_group_member (id_member, id_group) VALUES(38,57);
+INSERT INTO tb_group_member (id_member, id_group) VALUES(150,58);
+INSERT INTO tb_group_member (id_member, id_group) VALUES(97,59);
+INSERT INTO tb_group_member (id_member, id_group) VALUES(53,60);
+INSERT INTO tb_group_member (id_member, id_group) VALUES(182,61);
+INSERT INTO tb_group_member (id_member, id_group) VALUES(189,62);
+INSERT INTO tb_group_member (id_member, id_group) VALUES(70,63);
+INSERT INTO tb_group_member (id_member, id_group) VALUES(137,64);
+INSERT INTO tb_group_member (id_member, id_group) VALUES(190,65);
+INSERT INTO tb_group_member (id_member, id_group) VALUES(208,66);
+INSERT INTO tb_group_member (id_member, id_group) VALUES(249,67);
+INSERT INTO tb_group_member (id_member, id_group) VALUES(227,68);
+INSERT INTO tb_group_member (id_member, id_group) VALUES(108,69);
+INSERT INTO tb_group_member (id_member, id_group) VALUES(225,70);
+INSERT INTO tb_group_member (id_member, id_group) VALUES(205,71);
+INSERT INTO tb_group_member (id_member, id_group) VALUES(193,72);
+INSERT INTO tb_group_member (id_member, id_group) VALUES(145,1);
+INSERT INTO tb_group_member (id_member, id_group) VALUES(66,2);
+INSERT INTO tb_group_member (id_member, id_group) VALUES(65,3);
+INSERT INTO tb_group_member (id_member, id_group) VALUES(179,4);
+INSERT INTO tb_group_member (id_member, id_group) VALUES(130,5);
+INSERT INTO tb_group_member (id_member, id_group) VALUES(101,6);
+INSERT INTO tb_group_member (id_member, id_group) VALUES(11,7);
+INSERT INTO tb_group_member (id_member, id_group) VALUES(144,8);
+INSERT INTO tb_group_member (id_member, id_group) VALUES(54,9);
+INSERT INTO tb_group_member (id_member, id_group) VALUES(256,10);
+INSERT INTO tb_group_member (id_member, id_group) VALUES(346,11);
+INSERT INTO tb_group_member (id_member, id_group) VALUES(71,12);
+INSERT INTO tb_group_member (id_member, id_group) VALUES(237,13);
+INSERT INTO tb_group_member (id_member, id_group) VALUES(168,14);
+INSERT INTO tb_group_member (id_member, id_group) VALUES(309,15);
+INSERT INTO tb_group_member (id_member, id_group) VALUES(315,16);
+INSERT INTO tb_group_member (id_member, id_group) VALUES(129,17);
+INSERT INTO tb_group_member (id_member, id_group) VALUES(302,18);
 INSERT INTO tb_group_member (id_member, id_group) VALUES(335,19);
-INSERT INTO tb_group_member (id_member, id_group) VALUES(147,20);
-INSERT INTO tb_group_member (id_member, id_group) VALUES(218,21);
-INSERT INTO tb_group_member (id_member, id_group) VALUES(140,22);
-INSERT INTO tb_group_member (id_member, id_group) VALUES(143,23);
-INSERT INTO tb_group_member (id_member, id_group) VALUES(84,24);
-INSERT INTO tb_group_member (id_member, id_group) VALUES(117,25);
-INSERT INTO tb_group_member (id_member, id_group) VALUES(9,26);
-INSERT INTO tb_group_member (id_member, id_group) VALUES(78,27);
-INSERT INTO tb_group_member (id_member, id_group) VALUES(280,28);
-INSERT INTO tb_group_member (id_member, id_group) VALUES(12,29);
-INSERT INTO tb_group_member (id_member, id_group) VALUES(184,30);
-INSERT INTO tb_group_member (id_member, id_group) VALUES(332,31);
-INSERT INTO tb_group_member (id_member, id_group) VALUES(25,32);
-INSERT INTO tb_group_member (id_member, id_group) VALUES(138,33);
-INSERT INTO tb_group_member (id_member, id_group) VALUES(99,34);
-INSERT INTO tb_group_member (id_member, id_group) VALUES(195,35);
-INSERT INTO tb_group_member (id_member, id_group) VALUES(17,36);
-INSERT INTO tb_group_member (id_member, id_group) VALUES(101,37);
-INSERT INTO tb_group_member (id_member, id_group) VALUES(190,38);
-INSERT INTO tb_group_member (id_member, id_group) VALUES(339,39);
-INSERT INTO tb_group_member (id_member, id_group) VALUES(93,40);
-INSERT INTO tb_group_member (id_member, id_group) VALUES(191,41);
-INSERT INTO tb_group_member (id_member, id_group) VALUES(289,42);
-INSERT INTO tb_group_member (id_member, id_group) VALUES(108,43);
-INSERT INTO tb_group_member (id_member, id_group) VALUES(72,44);
-INSERT INTO tb_group_member (id_member, id_group) VALUES(212,45);
-INSERT INTO tb_group_member (id_member, id_group) VALUES(229,46);
-INSERT INTO tb_group_member (id_member, id_group) VALUES(115,47);
-INSERT INTO tb_group_member (id_member, id_group) VALUES(236,48);
-INSERT INTO tb_group_member (id_member, id_group) VALUES(120,49);
-INSERT INTO tb_group_member (id_member, id_group) VALUES(8,50);
-INSERT INTO tb_group_member (id_member, id_group) VALUES(341,51);
-INSERT INTO tb_group_member (id_member, id_group) VALUES(95,52);
-INSERT INTO tb_group_member (id_member, id_group) VALUES(139,53);
-INSERT INTO tb_group_member (id_member, id_group) VALUES(73,54);
-INSERT INTO tb_group_member (id_member, id_group) VALUES(309,55);
-INSERT INTO tb_group_member (id_member, id_group) VALUES(165,56);
-INSERT INTO tb_group_member (id_member, id_group) VALUES(189,57);
-INSERT INTO tb_group_member (id_member, id_group) VALUES(44,58);
-INSERT INTO tb_group_member (id_member, id_group) VALUES(41,59);
-INSERT INTO tb_group_member (id_member, id_group) VALUES(334,60);
-INSERT INTO tb_group_member (id_member, id_group) VALUES(48,61);
-INSERT INTO tb_group_member (id_member, id_group) VALUES(322,62);
-INSERT INTO tb_group_member (id_member, id_group) VALUES(7,63);
-INSERT INTO tb_group_member (id_member, id_group) VALUES(152,64);
-INSERT INTO tb_group_member (id_member, id_group) VALUES(260,65);
-INSERT INTO tb_group_member (id_member, id_group) VALUES(168,66);
-INSERT INTO tb_group_member (id_member, id_group) VALUES(85,67);
-INSERT INTO tb_group_member (id_member, id_group) VALUES(40,68);
-INSERT INTO tb_group_member (id_member, id_group) VALUES(54,69);
-INSERT INTO tb_group_member (id_member, id_group) VALUES(347,70);
-INSERT INTO tb_group_member (id_member, id_group) VALUES(103,71);
-INSERT INTO tb_group_member (id_member, id_group) VALUES(202,72);
-INSERT INTO tb_group_member (id_member, id_group) VALUES(64,1);
-INSERT INTO tb_group_member (id_member, id_group) VALUES(52,2);
-INSERT INTO tb_group_member (id_member, id_group) VALUES(194,3);
-INSERT INTO tb_group_member (id_member, id_group) VALUES(156,4);
-INSERT INTO tb_group_member (id_member, id_group) VALUES(51,5);
-INSERT INTO tb_group_member (id_member, id_group) VALUES(320,6);
-INSERT INTO tb_group_member (id_member, id_group) VALUES(153,7);
-INSERT INTO tb_group_member (id_member, id_group) VALUES(333,8);
-INSERT INTO tb_group_member (id_member, id_group) VALUES(28,9);
-INSERT INTO tb_group_member (id_member, id_group) VALUES(255,10);
-INSERT INTO tb_group_member (id_member, id_group) VALUES(225,11);
-INSERT INTO tb_group_member (id_member, id_group) VALUES(167,12);
-INSERT INTO tb_group_member (id_member, id_group) VALUES(92,13);
-INSERT INTO tb_group_member (id_member, id_group) VALUES(305,14);
-INSERT INTO tb_group_member (id_member, id_group) VALUES(277,15);
-INSERT INTO tb_group_member (id_member, id_group) VALUES(171,16);
-INSERT INTO tb_group_member (id_member, id_group) VALUES(211,17);
-INSERT INTO tb_group_member (id_member, id_group) VALUES(172,18);
-INSERT INTO tb_group_member (id_member, id_group) VALUES(281,19);
-INSERT INTO tb_group_member (id_member, id_group) VALUES(88,20);
-INSERT INTO tb_group_member (id_member, id_group) VALUES(70,21);
-INSERT INTO tb_group_member (id_member, id_group) VALUES(80,22);
-INSERT INTO tb_group_member (id_member, id_group) VALUES(196,23);
-INSERT INTO tb_group_member (id_member, id_group) VALUES(161,24);
-INSERT INTO tb_group_member (id_member, id_group) VALUES(314,25);
-INSERT INTO tb_group_member (id_member, id_group) VALUES(129,26);
-INSERT INTO tb_group_member (id_member, id_group) VALUES(57,27);
-INSERT INTO tb_group_member (id_member, id_group) VALUES(63,28);
-INSERT INTO tb_group_member (id_member, id_group) VALUES(241,29);
-INSERT INTO tb_group_member (id_member, id_group) VALUES(249,30);
-INSERT INTO tb_group_member (id_member, id_group) VALUES(170,31);
-INSERT INTO tb_group_member (id_member, id_group) VALUES(198,32);
-INSERT INTO tb_group_member (id_member, id_group) VALUES(71,33);
-INSERT INTO tb_group_member (id_member, id_group) VALUES(124,34);
-INSERT INTO tb_group_member (id_member, id_group) VALUES(311,35);
-INSERT INTO tb_group_member (id_member, id_group) VALUES(294,36);
-INSERT INTO tb_group_member (id_member, id_group) VALUES(16,37);
-INSERT INTO tb_group_member (id_member, id_group) VALUES(90,38);
-INSERT INTO tb_group_member (id_member, id_group) VALUES(257,39);
-INSERT INTO tb_group_member (id_member, id_group) VALUES(230,40);
-INSERT INTO tb_group_member (id_member, id_group) VALUES(349,41);
-INSERT INTO tb_group_member (id_member, id_group) VALUES(254,42);
-INSERT INTO tb_group_member (id_member, id_group) VALUES(273,43);
-INSERT INTO tb_group_member (id_member, id_group) VALUES(224,44);
-INSERT INTO tb_group_member (id_member, id_group) VALUES(69,45);
-INSERT INTO tb_group_member (id_member, id_group) VALUES(215,46);
-INSERT INTO tb_group_member (id_member, id_group) VALUES(34,47);
-INSERT INTO tb_group_member (id_member, id_group) VALUES(98,48);
-INSERT INTO tb_group_member (id_member, id_group) VALUES(209,49);
-INSERT INTO tb_group_member (id_member, id_group) VALUES(344,50);
-INSERT INTO tb_group_member (id_member, id_group) VALUES(308,51);
-INSERT INTO tb_group_member (id_member, id_group) VALUES(130,52);
-INSERT INTO tb_group_member (id_member, id_group) VALUES(3,53);
-INSERT INTO tb_group_member (id_member, id_group) VALUES(160,54);
-INSERT INTO tb_group_member (id_member, id_group) VALUES(146,55);
-INSERT INTO tb_group_member (id_member, id_group) VALUES(313,56);
-INSERT INTO tb_group_member (id_member, id_group) VALUES(346,57);
-INSERT INTO tb_group_member (id_member, id_group) VALUES(56,58);
-INSERT INTO tb_group_member (id_member, id_group) VALUES(285,59);
-INSERT INTO tb_group_member (id_member, id_group) VALUES(31,60);
-INSERT INTO tb_group_member (id_member, id_group) VALUES(177,61);
-INSERT INTO tb_group_member (id_member, id_group) VALUES(282,62);
-INSERT INTO tb_group_member (id_member, id_group) VALUES(106,63);
-INSERT INTO tb_group_member (id_member, id_group) VALUES(154,64);
-INSERT INTO tb_group_member (id_member, id_group) VALUES(39,65);
-INSERT INTO tb_group_member (id_member, id_group) VALUES(100,66);
-INSERT INTO tb_group_member (id_member, id_group) VALUES(342,67);
-INSERT INTO tb_group_member (id_member, id_group) VALUES(300,68);
-INSERT INTO tb_group_member (id_member, id_group) VALUES(29,69);
-INSERT INTO tb_group_member (id_member, id_group) VALUES(200,70);
-INSERT INTO tb_group_member (id_member, id_group) VALUES(256,71);
-INSERT INTO tb_group_member (id_member, id_group) VALUES(144,72);
-INSERT INTO tb_group_member (id_member, id_group) VALUES(14,1);
-INSERT INTO tb_group_member (id_member, id_group) VALUES(286,2);
-INSERT INTO tb_group_member (id_member, id_group) VALUES(297,3);
-INSERT INTO tb_group_member (id_member, id_group) VALUES(46,4);
-INSERT INTO tb_group_member (id_member, id_group) VALUES(261,5);
-INSERT INTO tb_group_member (id_member, id_group) VALUES(174,6);
-INSERT INTO tb_group_member (id_member, id_group) VALUES(303,7);
-INSERT INTO tb_group_member (id_member, id_group) VALUES(179,8);
-INSERT INTO tb_group_member (id_member, id_group) VALUES(79,9);
-INSERT INTO tb_group_member (id_member, id_group) VALUES(110,10);
-INSERT INTO tb_group_member (id_member, id_group) VALUES(268,11);
-INSERT INTO tb_group_member (id_member, id_group) VALUES(45,12);
-INSERT INTO tb_group_member (id_member, id_group) VALUES(68,13);
-INSERT INTO tb_group_member (id_member, id_group) VALUES(142,14);
+INSERT INTO tb_group_member (id_member, id_group) VALUES(57,20);
+INSERT INTO tb_group_member (id_member, id_group) VALUES(43,21);
+INSERT INTO tb_group_member (id_member, id_group) VALUES(202,22);
+INSERT INTO tb_group_member (id_member, id_group) VALUES(246,23);
+INSERT INTO tb_group_member (id_member, id_group) VALUES(289,24);
+INSERT INTO tb_group_member (id_member, id_group) VALUES(68,25);
+INSERT INTO tb_group_member (id_member, id_group) VALUES(268,26);
+INSERT INTO tb_group_member (id_member, id_group) VALUES(333,27);
+INSERT INTO tb_group_member (id_member, id_group) VALUES(215,28);
+INSERT INTO tb_group_member (id_member, id_group) VALUES(91,29);
+INSERT INTO tb_group_member (id_member, id_group) VALUES(236,30);
+INSERT INTO tb_group_member (id_member, id_group) VALUES(24,31);
+INSERT INTO tb_group_member (id_member, id_group) VALUES(2,32);
+INSERT INTO tb_group_member (id_member, id_group) VALUES(21,33);
+INSERT INTO tb_group_member (id_member, id_group) VALUES(128,34);
+INSERT INTO tb_group_member (id_member, id_group) VALUES(211,35);
+INSERT INTO tb_group_member (id_member, id_group) VALUES(312,36);
+INSERT INTO tb_group_member (id_member, id_group) VALUES(149,37);
+INSERT INTO tb_group_member (id_member, id_group) VALUES(287,38);
+INSERT INTO tb_group_member (id_member, id_group) VALUES(39,39);
+INSERT INTO tb_group_member (id_member, id_group) VALUES(221,40);
+INSERT INTO tb_group_member (id_member, id_group) VALUES(305,41);
+INSERT INTO tb_group_member (id_member, id_group) VALUES(283,42);
+INSERT INTO tb_group_member (id_member, id_group) VALUES(285,43);
+INSERT INTO tb_group_member (id_member, id_group) VALUES(107,44);
+INSERT INTO tb_group_member (id_member, id_group) VALUES(79,45);
+INSERT INTO tb_group_member (id_member, id_group) VALUES(52,46);
+INSERT INTO tb_group_member (id_member, id_group) VALUES(94,47);
+INSERT INTO tb_group_member (id_member, id_group) VALUES(112,48);
+INSERT INTO tb_group_member (id_member, id_group) VALUES(173,49);
+INSERT INTO tb_group_member (id_member, id_group) VALUES(184,50);
+INSERT INTO tb_group_member (id_member, id_group) VALUES(260,51);
+INSERT INTO tb_group_member (id_member, id_group) VALUES(239,52);
+INSERT INTO tb_group_member (id_member, id_group) VALUES(316,53);
+INSERT INTO tb_group_member (id_member, id_group) VALUES(106,54);
+INSERT INTO tb_group_member (id_member, id_group) VALUES(201,55);
+INSERT INTO tb_group_member (id_member, id_group) VALUES(220,56);
+INSERT INTO tb_group_member (id_member, id_group) VALUES(213,57);
+INSERT INTO tb_group_member (id_member, id_group) VALUES(200,58);
+INSERT INTO tb_group_member (id_member, id_group) VALUES(16,59);
+INSERT INTO tb_group_member (id_member, id_group) VALUES(219,60);
+INSERT INTO tb_group_member (id_member, id_group) VALUES(317,61);
+INSERT INTO tb_group_member (id_member, id_group) VALUES(105,62);
+INSERT INTO tb_group_member (id_member, id_group) VALUES(104,63);
+INSERT INTO tb_group_member (id_member, id_group) VALUES(210,64);
+INSERT INTO tb_group_member (id_member, id_group) VALUES(204,65);
+INSERT INTO tb_group_member (id_member, id_group) VALUES(41,66);
+INSERT INTO tb_group_member (id_member, id_group) VALUES(84,67);
+INSERT INTO tb_group_member (id_member, id_group) VALUES(198,68);
+INSERT INTO tb_group_member (id_member, id_group) VALUES(4,69);
+INSERT INTO tb_group_member (id_member, id_group) VALUES(245,70);
+INSERT INTO tb_group_member (id_member, id_group) VALUES(304,71);
+INSERT INTO tb_group_member (id_member, id_group) VALUES(114,72);
+INSERT INTO tb_group_member (id_member, id_group) VALUES(132,1);
+INSERT INTO tb_group_member (id_member, id_group) VALUES(14,2);
+INSERT INTO tb_group_member (id_member, id_group) VALUES(119,3);
+INSERT INTO tb_group_member (id_member, id_group) VALUES(177,4);
+INSERT INTO tb_group_member (id_member, id_group) VALUES(345,5);
+INSERT INTO tb_group_member (id_member, id_group) VALUES(100,6);
+INSERT INTO tb_group_member (id_member, id_group) VALUES(251,7);
+INSERT INTO tb_group_member (id_member, id_group) VALUES(27,8);
+INSERT INTO tb_group_member (id_member, id_group) VALUES(300,9);
+INSERT INTO tb_group_member (id_member, id_group) VALUES(295,10);
+INSERT INTO tb_group_member (id_member, id_group) VALUES(264,11);
+INSERT INTO tb_group_member (id_member, id_group) VALUES(290,12);
+INSERT INTO tb_group_member (id_member, id_group) VALUES(88,13);
+INSERT INTO tb_group_member (id_member, id_group) VALUES(25,14);
 INSERT INTO tb_group_member (id_member, id_group) VALUES(49,15);
-INSERT INTO tb_group_member (id_member, id_group) VALUES(345,16);
-INSERT INTO tb_group_member (id_member, id_group) VALUES(296,17);
-INSERT INTO tb_group_member (id_member, id_group) VALUES(205,18);
-INSERT INTO tb_group_member (id_member, id_group) VALUES(283,19);
-INSERT INTO tb_group_member (id_member, id_group) VALUES(220,20);
-INSERT INTO tb_group_member (id_member, id_group) VALUES(321,21);
-INSERT INTO tb_group_member (id_member, id_group) VALUES(122,22);
-INSERT INTO tb_group_member (id_member, id_group) VALUES(97,23);
-INSERT INTO tb_group_member (id_member, id_group) VALUES(217,24);
-INSERT INTO tb_group_member (id_member, id_group) VALUES(252,25);
-INSERT INTO tb_group_member (id_member, id_group) VALUES(299,26);
-INSERT INTO tb_group_member (id_member, id_group) VALUES(272,27);
-INSERT INTO tb_group_member (id_member, id_group) VALUES(312,28);
-INSERT INTO tb_group_member (id_member, id_group) VALUES(278,29);
-INSERT INTO tb_group_member (id_member, id_group) VALUES(81,30);
-INSERT INTO tb_group_member (id_member, id_group) VALUES(284,31);
-INSERT INTO tb_group_member (id_member, id_group) VALUES(319,32);
-INSERT INTO tb_group_member (id_member, id_group) VALUES(292,33);
-INSERT INTO tb_group_member (id_member, id_group) VALUES(325,34);
+INSERT INTO tb_group_member (id_member, id_group) VALUES(19,16);
+INSERT INTO tb_group_member (id_member, id_group) VALUES(206,17);
+INSERT INTO tb_group_member (id_member, id_group) VALUES(224,18);
+INSERT INTO tb_group_member (id_member, id_group) VALUES(197,19);
+INSERT INTO tb_group_member (id_member, id_group) VALUES(146,20);
+INSERT INTO tb_group_member (id_member, id_group) VALUES(342,21);
+INSERT INTO tb_group_member (id_member, id_group) VALUES(261,22);
+INSERT INTO tb_group_member (id_member, id_group) VALUES(95,23);
+INSERT INTO tb_group_member (id_member, id_group) VALUES(48,24);
+INSERT INTO tb_group_member (id_member, id_group) VALUES(1,25);
+INSERT INTO tb_group_member (id_member, id_group) VALUES(67,26);
+INSERT INTO tb_group_member (id_member, id_group) VALUES(34,27);
+INSERT INTO tb_group_member (id_member, id_group) VALUES(162,28);
+INSERT INTO tb_group_member (id_member, id_group) VALUES(271,29);
+INSERT INTO tb_group_member (id_member, id_group) VALUES(212,30);
+INSERT INTO tb_group_member (id_member, id_group) VALUES(80,31);
+INSERT INTO tb_group_member (id_member, id_group) VALUES(30,32);
+INSERT INTO tb_group_member (id_member, id_group) VALUES(42,33);
+INSERT INTO tb_group_member (id_member, id_group) VALUES(323,34);
+INSERT INTO tb_group_member (id_member, id_group) VALUES(5,35);
+INSERT INTO tb_group_member (id_member, id_group) VALUES(117,36);
+INSERT INTO tb_group_member (id_member, id_group) VALUES(277,37);
+INSERT INTO tb_group_member (id_member, id_group) VALUES(238,38);
+INSERT INTO tb_group_member (id_member, id_group) VALUES(110,39);
+INSERT INTO tb_group_member (id_member, id_group) VALUES(291,40);
+INSERT INTO tb_group_member (id_member, id_group) VALUES(44,41);
+INSERT INTO tb_group_member (id_member, id_group) VALUES(255,42);
+INSERT INTO tb_group_member (id_member, id_group) VALUES(6,43);
+INSERT INTO tb_group_member (id_member, id_group) VALUES(23,44);
+INSERT INTO tb_group_member (id_member, id_group) VALUES(46,45);
+INSERT INTO tb_group_member (id_member, id_group) VALUES(270,46);
+INSERT INTO tb_group_member (id_member, id_group) VALUES(298,47);
+INSERT INTO tb_group_member (id_member, id_group) VALUES(15,48);
+INSERT INTO tb_group_member (id_member, id_group) VALUES(111,49);
+INSERT INTO tb_group_member (id_member, id_group) VALUES(347,50);
+INSERT INTO tb_group_member (id_member, id_group) VALUES(306,51);
+INSERT INTO tb_group_member (id_member, id_group) VALUES(329,52);
+INSERT INTO tb_group_member (id_member, id_group) VALUES(12,53);
+INSERT INTO tb_group_member (id_member, id_group) VALUES(341,54);
+INSERT INTO tb_group_member (id_member, id_group) VALUES(72,55);
+INSERT INTO tb_group_member (id_member, id_group) VALUES(240,56);
+INSERT INTO tb_group_member (id_member, id_group) VALUES(272,57);
+INSERT INTO tb_group_member (id_member, id_group) VALUES(228,58);
+INSERT INTO tb_group_member (id_member, id_group) VALUES(31,59);
+INSERT INTO tb_group_member (id_member, id_group) VALUES(35,60);
+INSERT INTO tb_group_member (id_member, id_group) VALUES(292,61);
+INSERT INTO tb_group_member (id_member, id_group) VALUES(45,62);
+INSERT INTO tb_group_member (id_member, id_group) VALUES(330,63);
+INSERT INTO tb_group_member (id_member, id_group) VALUES(178,64);
+INSERT INTO tb_group_member (id_member, id_group) VALUES(96,65);
+INSERT INTO tb_group_member (id_member, id_group) VALUES(216,66);
+INSERT INTO tb_group_member (id_member, id_group) VALUES(207,67);
+INSERT INTO tb_group_member (id_member, id_group) VALUES(147,68);
+INSERT INTO tb_group_member (id_member, id_group) VALUES(185,69);
+INSERT INTO tb_group_member (id_member, id_group) VALUES(269,70);
+INSERT INTO tb_group_member (id_member, id_group) VALUES(326,71);
+INSERT INTO tb_group_member (id_member, id_group) VALUES(92,72);
+INSERT INTO tb_group_member (id_member, id_group) VALUES(166,1);
+INSERT INTO tb_group_member (id_member, id_group) VALUES(155,2);
+INSERT INTO tb_group_member (id_member, id_group) VALUES(297,3);
+INSERT INTO tb_group_member (id_member, id_group) VALUES(56,4);
+INSERT INTO tb_group_member (id_member, id_group) VALUES(336,5);
+INSERT INTO tb_group_member (id_member, id_group) VALUES(135,6);
+INSERT INTO tb_group_member (id_member, id_group) VALUES(311,7);
+INSERT INTO tb_group_member (id_member, id_group) VALUES(232,8);
+INSERT INTO tb_group_member (id_member, id_group) VALUES(159,9);
+INSERT INTO tb_group_member (id_member, id_group) VALUES(199,10);
+INSERT INTO tb_group_member (id_member, id_group) VALUES(18,11);
+INSERT INTO tb_group_member (id_member, id_group) VALUES(174,12);
+INSERT INTO tb_group_member (id_member, id_group) VALUES(152,13);
+INSERT INTO tb_group_member (id_member, id_group) VALUES(60,14);
+INSERT INTO tb_group_member (id_member, id_group) VALUES(7,15);
+INSERT INTO tb_group_member (id_member, id_group) VALUES(242,16);
+INSERT INTO tb_group_member (id_member, id_group) VALUES(214,17);
+INSERT INTO tb_group_member (id_member, id_group) VALUES(301,18);
+INSERT INTO tb_group_member (id_member, id_group) VALUES(244,19);
+INSERT INTO tb_group_member (id_member, id_group) VALUES(50,20);
+INSERT INTO tb_group_member (id_member, id_group) VALUES(259,21);
+INSERT INTO tb_group_member (id_member, id_group) VALUES(115,22);
+INSERT INTO tb_group_member (id_member, id_group) VALUES(234,23);
+INSERT INTO tb_group_member (id_member, id_group) VALUES(131,24);
+INSERT INTO tb_group_member (id_member, id_group) VALUES(233,25);
+INSERT INTO tb_group_member (id_member, id_group) VALUES(217,26);
+INSERT INTO tb_group_member (id_member, id_group) VALUES(161,27);
+INSERT INTO tb_group_member (id_member, id_group) VALUES(74,28);
+INSERT INTO tb_group_member (id_member, id_group) VALUES(318,29);
+INSERT INTO tb_group_member (id_member, id_group) VALUES(156,30);
+INSERT INTO tb_group_member (id_member, id_group) VALUES(276,31);
+INSERT INTO tb_group_member (id_member, id_group) VALUES(82,32);
+INSERT INTO tb_group_member (id_member, id_group) VALUES(127,33);
+INSERT INTO tb_group_member (id_member, id_group) VALUES(195,34);
 
-INSERT INTO tb_group_moderator (id_member, id_group) VALUES(287,1);
-INSERT INTO tb_group_moderator (id_member, id_group) VALUES(6,2);
-INSERT INTO tb_group_moderator (id_member, id_group) VALUES(222,3);
-INSERT INTO tb_group_moderator (id_member, id_group) VALUES(263,4);
-INSERT INTO tb_group_moderator (id_member, id_group) VALUES(19,5);
-INSERT INTO tb_group_moderator (id_member, id_group) VALUES(275,6);
-INSERT INTO tb_group_moderator (id_member, id_group) VALUES(91,7);
-INSERT INTO tb_group_moderator (id_member, id_group) VALUES(251,8);
-INSERT INTO tb_group_moderator (id_member, id_group) VALUES(96,9);
-INSERT INTO tb_group_moderator (id_member, id_group) VALUES(188,10);
-INSERT INTO tb_group_moderator (id_member, id_group) VALUES(193,11);
-INSERT INTO tb_group_moderator (id_member, id_group) VALUES(178,12);
-INSERT INTO tb_group_moderator (id_member, id_group) VALUES(244,13);
-INSERT INTO tb_group_moderator (id_member, id_group) VALUES(94,14);
-INSERT INTO tb_group_moderator (id_member, id_group) VALUES(136,15);
-INSERT INTO tb_group_moderator (id_member, id_group) VALUES(301,16);
-INSERT INTO tb_group_moderator (id_member, id_group) VALUES(326,17);
-INSERT INTO tb_group_moderator (id_member, id_group) VALUES(213,18);
-INSERT INTO tb_group_moderator (id_member, id_group) VALUES(164,19);
-INSERT INTO tb_group_moderator (id_member, id_group) VALUES(228,20);
-INSERT INTO tb_group_moderator (id_member, id_group) VALUES(75,21);
-INSERT INTO tb_group_moderator (id_member, id_group) VALUES(204,22);
-INSERT INTO tb_group_moderator (id_member, id_group) VALUES(250,23);
-INSERT INTO tb_group_moderator (id_member, id_group) VALUES(112,24);
-INSERT INTO tb_group_moderator (id_member, id_group) VALUES(150,25);
-INSERT INTO tb_group_moderator (id_member, id_group) VALUES(238,26);
-INSERT INTO tb_group_moderator (id_member, id_group) VALUES(186,27);
-INSERT INTO tb_group_moderator (id_member, id_group) VALUES(116,28);
-INSERT INTO tb_group_moderator (id_member, id_group) VALUES(74,29);
-INSERT INTO tb_group_moderator (id_member, id_group) VALUES(33,30);
-INSERT INTO tb_group_moderator (id_member, id_group) VALUES(183,31);
-INSERT INTO tb_group_moderator (id_member, id_group) VALUES(104,32);
-INSERT INTO tb_group_moderator (id_member, id_group) VALUES(235,33);
-INSERT INTO tb_group_moderator (id_member, id_group) VALUES(267,34);
-INSERT INTO tb_group_moderator (id_member, id_group) VALUES(216,35);
-INSERT INTO tb_group_moderator (id_member, id_group) VALUES(169,36);
-INSERT INTO tb_group_moderator (id_member, id_group) VALUES(201,37);
-INSERT INTO tb_group_moderator (id_member, id_group) VALUES(350,38);
-INSERT INTO tb_group_moderator (id_member, id_group) VALUES(274,39);
-INSERT INTO tb_group_moderator (id_member, id_group) VALUES(18,40);
-INSERT INTO tb_group_moderator (id_member, id_group) VALUES(89,41);
-INSERT INTO tb_group_moderator (id_member, id_group) VALUES(185,42);
-INSERT INTO tb_group_moderator (id_member, id_group) VALUES(134,43);
-INSERT INTO tb_group_moderator (id_member, id_group) VALUES(207,44);
-INSERT INTO tb_group_moderator (id_member, id_group) VALUES(26,45);
-INSERT INTO tb_group_moderator (id_member, id_group) VALUES(221,46);
-INSERT INTO tb_group_moderator (id_member, id_group) VALUES(83,47);
-INSERT INTO tb_group_moderator (id_member, id_group) VALUES(192,48);
-INSERT INTO tb_group_moderator (id_member, id_group) VALUES(343,49);
-INSERT INTO tb_group_moderator (id_member, id_group) VALUES(62,50);
-INSERT INTO tb_group_moderator (id_member, id_group) VALUES(128,51);
-INSERT INTO tb_group_moderator (id_member, id_group) VALUES(231,52);
-INSERT INTO tb_group_moderator (id_member, id_group) VALUES(324,53);
-INSERT INTO tb_group_moderator (id_member, id_group) VALUES(328,54);
-INSERT INTO tb_group_moderator (id_member, id_group) VALUES(66,55);
-INSERT INTO tb_group_moderator (id_member, id_group) VALUES(302,56);
-INSERT INTO tb_group_moderator (id_member, id_group) VALUES(330,57);
-INSERT INTO tb_group_moderator (id_member, id_group) VALUES(232,58);
-INSERT INTO tb_group_moderator (id_member, id_group) VALUES(327,59);
-INSERT INTO tb_group_moderator (id_member, id_group) VALUES(162,60);
-INSERT INTO tb_group_moderator (id_member, id_group) VALUES(295,61);
-INSERT INTO tb_group_moderator (id_member, id_group) VALUES(270,62);
-INSERT INTO tb_group_moderator (id_member, id_group) VALUES(181,63);
-INSERT INTO tb_group_moderator (id_member, id_group) VALUES(65,64);
-INSERT INTO tb_group_moderator (id_member, id_group) VALUES(125,65);
-INSERT INTO tb_group_moderator (id_member, id_group) VALUES(199,66);
-INSERT INTO tb_group_moderator (id_member, id_group) VALUES(109,67);
-INSERT INTO tb_group_moderator (id_member, id_group) VALUES(24,68);
-INSERT INTO tb_group_moderator (id_member, id_group) VALUES(87,69);
-INSERT INTO tb_group_moderator (id_member, id_group) VALUES(76,70);
-INSERT INTO tb_group_moderator (id_member, id_group) VALUES(137,71);
-INSERT INTO tb_group_moderator (id_member, id_group) VALUES(131,72);
-INSERT INTO tb_group_moderator (id_member, id_group) VALUES(32,73);
+INSERT INTO tb_group_moderator (id_member, id_group) VALUES(294,1);
+INSERT INTO tb_group_moderator (id_member, id_group) VALUES(47,2);
+INSERT INTO tb_group_moderator (id_member, id_group) VALUES(121,3);
+INSERT INTO tb_group_moderator (id_member, id_group) VALUES(286,4);
+INSERT INTO tb_group_moderator (id_member, id_group) VALUES(73,5);
+INSERT INTO tb_group_moderator (id_member, id_group) VALUES(59,6);
+INSERT INTO tb_group_moderator (id_member, id_group) VALUES(64,7);
+INSERT INTO tb_group_moderator (id_member, id_group) VALUES(51,8);
+INSERT INTO tb_group_moderator (id_member, id_group) VALUES(116,9);
+INSERT INTO tb_group_moderator (id_member, id_group) VALUES(170,10);
+INSERT INTO tb_group_moderator (id_member, id_group) VALUES(348,11);
+INSERT INTO tb_group_moderator (id_member, id_group) VALUES(218,12);
+INSERT INTO tb_group_moderator (id_member, id_group) VALUES(337,13);
+INSERT INTO tb_group_moderator (id_member, id_group) VALUES(258,14);
+INSERT INTO tb_group_moderator (id_member, id_group) VALUES(113,15);
+INSERT INTO tb_group_moderator (id_member, id_group) VALUES(160,16);
+INSERT INTO tb_group_moderator (id_member, id_group) VALUES(349,17);
+INSERT INTO tb_group_moderator (id_member, id_group) VALUES(157,18);
+INSERT INTO tb_group_moderator (id_member, id_group) VALUES(196,19);
+INSERT INTO tb_group_moderator (id_member, id_group) VALUES(10,20);
+INSERT INTO tb_group_moderator (id_member, id_group) VALUES(226,21);
+INSERT INTO tb_group_moderator (id_member, id_group) VALUES(61,22);
+INSERT INTO tb_group_moderator (id_member, id_group) VALUES(328,23);
+INSERT INTO tb_group_moderator (id_member, id_group) VALUES(140,24);
+INSERT INTO tb_group_moderator (id_member, id_group) VALUES(98,25);
+INSERT INTO tb_group_moderator (id_member, id_group) VALUES(241,26);
+INSERT INTO tb_group_moderator (id_member, id_group) VALUES(340,27);
+INSERT INTO tb_group_moderator (id_member, id_group) VALUES(344,28);
+INSERT INTO tb_group_moderator (id_member, id_group) VALUES(148,29);
+INSERT INTO tb_group_moderator (id_member, id_group) VALUES(222,30);
+INSERT INTO tb_group_moderator (id_member, id_group) VALUES(78,31);
+INSERT INTO tb_group_moderator (id_member, id_group) VALUES(279,32);
+INSERT INTO tb_group_moderator (id_member, id_group) VALUES(75,33);
+INSERT INTO tb_group_moderator (id_member, id_group) VALUES(17,34);
+INSERT INTO tb_group_moderator (id_member, id_group) VALUES(188,35);
+INSERT INTO tb_group_moderator (id_member, id_group) VALUES(274,36);
+INSERT INTO tb_group_moderator (id_member, id_group) VALUES(118,37);
+INSERT INTO tb_group_moderator (id_member, id_group) VALUES(37,38);
+INSERT INTO tb_group_moderator (id_member, id_group) VALUES(32,39);
+INSERT INTO tb_group_moderator (id_member, id_group) VALUES(350,40);
+INSERT INTO tb_group_moderator (id_member, id_group) VALUES(339,41);
+INSERT INTO tb_group_moderator (id_member, id_group) VALUES(136,42);
+INSERT INTO tb_group_moderator (id_member, id_group) VALUES(278,43);
+INSERT INTO tb_group_moderator (id_member, id_group) VALUES(122,44);
+INSERT INTO tb_group_moderator (id_member, id_group) VALUES(138,45);
+INSERT INTO tb_group_moderator (id_member, id_group) VALUES(141,46);
+INSERT INTO tb_group_moderator (id_member, id_group) VALUES(169,47);
+INSERT INTO tb_group_moderator (id_member, id_group) VALUES(13,48);
+INSERT INTO tb_group_moderator (id_member, id_group) VALUES(33,49);
+INSERT INTO tb_group_moderator (id_member, id_group) VALUES(29,50);
+INSERT INTO tb_group_moderator (id_member, id_group) VALUES(28,51);
+INSERT INTO tb_group_moderator (id_member, id_group) VALUES(163,52);
+INSERT INTO tb_group_moderator (id_member, id_group) VALUES(281,53);
+INSERT INTO tb_group_moderator (id_member, id_group) VALUES(303,54);
+INSERT INTO tb_group_moderator (id_member, id_group) VALUES(313,55);
+INSERT INTO tb_group_moderator (id_member, id_group) VALUES(9,56);
+INSERT INTO tb_group_moderator (id_member, id_group) VALUES(38,57);
+INSERT INTO tb_group_moderator (id_member, id_group) VALUES(150,58);
+INSERT INTO tb_group_moderator (id_member, id_group) VALUES(97,59);
+INSERT INTO tb_group_moderator (id_member, id_group) VALUES(53,60);
+INSERT INTO tb_group_moderator (id_member, id_group) VALUES(182,61);
+INSERT INTO tb_group_moderator (id_member, id_group) VALUES(189,62);
+INSERT INTO tb_group_moderator (id_member, id_group) VALUES(70,63);
+INSERT INTO tb_group_moderator (id_member, id_group) VALUES(137,64);
+INSERT INTO tb_group_moderator (id_member, id_group) VALUES(190,65);
+INSERT INTO tb_group_moderator (id_member, id_group) VALUES(208,66);
+INSERT INTO tb_group_moderator (id_member, id_group) VALUES(249,67);
+INSERT INTO tb_group_moderator (id_member, id_group) VALUES(227,68);
+INSERT INTO tb_group_moderator (id_member, id_group) VALUES(108,69);
+INSERT INTO tb_group_moderator (id_member, id_group) VALUES(225,70);
+INSERT INTO tb_group_moderator (id_member, id_group) VALUES(205,71);
+INSERT INTO tb_group_moderator (id_member, id_group) VALUES(193,72);
+INSERT INTO tb_group_moderator (id_member, id_group) VALUES(145,73);
 
-INSERT INTO tb_group_request (id_member, id_group) VALUES(277,1);
-INSERT INTO tb_group_request (id_member, id_group) VALUES(118,2);
-INSERT INTO tb_group_request (id_member, id_group) VALUES(29,3);
-INSERT INTO tb_group_request (id_member, id_group) VALUES(267,4);
-INSERT INTO tb_group_request (id_member, id_group) VALUES(15,5);
-INSERT INTO tb_group_request (id_member, id_group) VALUES(263,6);
-INSERT INTO tb_group_request (id_member, id_group) VALUES(318,7);
-INSERT INTO tb_group_request (id_member, id_group) VALUES(154,8);
-INSERT INTO tb_group_request (id_member, id_group) VALUES(297,9);
-INSERT INTO tb_group_request (id_member, id_group) VALUES(14,10);
-INSERT INTO tb_group_request (id_member, id_group) VALUES(318,11);
-INSERT INTO tb_group_request (id_member, id_group) VALUES(195,12);
-INSERT INTO tb_group_request (id_member, id_group) VALUES(85,13);
-INSERT INTO tb_group_request (id_member, id_group) VALUES(55,14);
-INSERT INTO tb_group_request (id_member, id_group) VALUES(108,15);
-INSERT INTO tb_group_request (id_member, id_group) VALUES(29,16);
-INSERT INTO tb_group_request (id_member, id_group) VALUES(275,17);
-INSERT INTO tb_group_request (id_member, id_group) VALUES(347,18);
-INSERT INTO tb_group_request (id_member, id_group) VALUES(152,19);
-INSERT INTO tb_group_request (id_member, id_group) VALUES(299,20);
-INSERT INTO tb_group_request (id_member, id_group) VALUES(214,21);
-INSERT INTO tb_group_request (id_member, id_group) VALUES(111,22);
-INSERT INTO tb_group_request (id_member, id_group) VALUES(266,23);
-INSERT INTO tb_group_request (id_member, id_group) VALUES(228,24);
-INSERT INTO tb_group_request (id_member, id_group) VALUES(322,25);
-INSERT INTO tb_group_request (id_member, id_group) VALUES(163,26);
-INSERT INTO tb_group_request (id_member, id_group) VALUES(202,27);
-INSERT INTO tb_group_request (id_member, id_group) VALUES(19,28);
-INSERT INTO tb_group_request (id_member, id_group) VALUES(59,29);
-INSERT INTO tb_group_request (id_member, id_group) VALUES(73,30);
-INSERT INTO tb_group_request (id_member, id_group) VALUES(307,31);
-INSERT INTO tb_group_request (id_member, id_group) VALUES(155,32);
-INSERT INTO tb_group_request (id_member, id_group) VALUES(168,33);
-INSERT INTO tb_group_request (id_member, id_group) VALUES(255,34);
-INSERT INTO tb_group_request (id_member, id_group) VALUES(175,35);
-INSERT INTO tb_group_request (id_member, id_group) VALUES(108,36);
-INSERT INTO tb_group_request (id_member, id_group) VALUES(70,37);
-INSERT INTO tb_group_request (id_member, id_group) VALUES(134,38);
-INSERT INTO tb_group_request (id_member, id_group) VALUES(193,39);
-INSERT INTO tb_group_request (id_member, id_group) VALUES(34,40);
-INSERT INTO tb_group_request (id_member, id_group) VALUES(13,41);
-INSERT INTO tb_group_request (id_member, id_group) VALUES(59,42);
-INSERT INTO tb_group_request (id_member, id_group) VALUES(286,43);
-INSERT INTO tb_group_request (id_member, id_group) VALUES(231,44);
-INSERT INTO tb_group_request (id_member, id_group) VALUES(291,45);
-INSERT INTO tb_group_request (id_member, id_group) VALUES(13,46);
-INSERT INTO tb_group_request (id_member, id_group) VALUES(26,47);
-INSERT INTO tb_group_request (id_member, id_group) VALUES(322,48);
-INSERT INTO tb_group_request (id_member, id_group) VALUES(169,49);
+INSERT INTO tb_group_request (id_member, id_group) VALUES(153,1);
+INSERT INTO tb_group_request (id_member, id_group) VALUES(30,2);
+INSERT INTO tb_group_request (id_member, id_group) VALUES(62,3);
+INSERT INTO tb_group_request (id_member, id_group) VALUES(74,4);
+INSERT INTO tb_group_request (id_member, id_group) VALUES(195,5);
+INSERT INTO tb_group_request (id_member, id_group) VALUES(26,6);
+INSERT INTO tb_group_request (id_member, id_group) VALUES(98,7);
+INSERT INTO tb_group_request (id_member, id_group) VALUES(52,8);
+INSERT INTO tb_group_request (id_member, id_group) VALUES(198,9);
+INSERT INTO tb_group_request (id_member, id_group) VALUES(184,10);
+INSERT INTO tb_group_request (id_member, id_group) VALUES(159,11);
+INSERT INTO tb_group_request (id_member, id_group) VALUES(307,12);
+INSERT INTO tb_group_request (id_member, id_group) VALUES(115,13);
+INSERT INTO tb_group_request (id_member, id_group) VALUES(156,14);
+INSERT INTO tb_group_request (id_member, id_group) VALUES(162,15);
+INSERT INTO tb_group_request (id_member, id_group) VALUES(163,16);
+INSERT INTO tb_group_request (id_member, id_group) VALUES(73,17);
+INSERT INTO tb_group_request (id_member, id_group) VALUES(277,18);
+INSERT INTO tb_group_request (id_member, id_group) VALUES(17,19);
+INSERT INTO tb_group_request (id_member, id_group) VALUES(345,20);
+INSERT INTO tb_group_request (id_member, id_group) VALUES(156,21);
+INSERT INTO tb_group_request (id_member, id_group) VALUES(256,22);
+INSERT INTO tb_group_request (id_member, id_group) VALUES(340,23);
+INSERT INTO tb_group_request (id_member, id_group) VALUES(215,24);
+INSERT INTO tb_group_request (id_member, id_group) VALUES(278,25);
+INSERT INTO tb_group_request (id_member, id_group) VALUES(6,26);
+INSERT INTO tb_group_request (id_member, id_group) VALUES(200,27);
+INSERT INTO tb_group_request (id_member, id_group) VALUES(94,28);
+INSERT INTO tb_group_request (id_member, id_group) VALUES(342,29);
+INSERT INTO tb_group_request (id_member, id_group) VALUES(83,30);
+INSERT INTO tb_group_request (id_member, id_group) VALUES(201,31);
+INSERT INTO tb_group_request (id_member, id_group) VALUES(206,32);
+INSERT INTO tb_group_request (id_member, id_group) VALUES(289,33);
+INSERT INTO tb_group_request (id_member, id_group) VALUES(52,34);
+INSERT INTO tb_group_request (id_member, id_group) VALUES(131,35);
+INSERT INTO tb_group_request (id_member, id_group) VALUES(160,36);
+INSERT INTO tb_group_request (id_member, id_group) VALUES(60,37);
+INSERT INTO tb_group_request (id_member, id_group) VALUES(273,38);
+INSERT INTO tb_group_request (id_member, id_group) VALUES(319,39);
+INSERT INTO tb_group_request (id_member, id_group) VALUES(119,40);
+INSERT INTO tb_group_request (id_member, id_group) VALUES(72,41);
+INSERT INTO tb_group_request (id_member, id_group) VALUES(325,42);
+INSERT INTO tb_group_request (id_member, id_group) VALUES(78,43);
+INSERT INTO tb_group_request (id_member, id_group) VALUES(277,44);
+INSERT INTO tb_group_request (id_member, id_group) VALUES(337,45);
+INSERT INTO tb_group_request (id_member, id_group) VALUES(330,46);
+INSERT INTO tb_group_request (id_member, id_group) VALUES(214,47);
+INSERT INTO tb_group_request (id_member, id_group) VALUES(297,48);
+INSERT INTO tb_group_request (id_member, id_group) VALUES(138,49);
+
 
 INSERT INTO tb_admin (email, password, name, username) VALUES ('alex@github.io', 'ngV7WrRe66gR', 'Alexandre Abreu', 'a3brx');
 INSERT INTO tb_admin (email, password, name, username) VALUES ('rafa@github.io', 'kcYNpe9nUENq', 'Rafael Cristino', 'rafaavc');
