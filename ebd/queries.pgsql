@@ -5,7 +5,7 @@ VALUES('Absolutely delicious!', 5, 1, 1);
 
 -- 1 - Member Information (Profile)
 
-SELECT tb_member.name, tb_member.username, tb_member.city, tb_member.bio, tb_member.visibility, coalesce(tb_member.score, 0) AS score, tb_country.name AS country,
+SELECT tb_member.name, tb_member.username, tb_member.city, tb_member.bio, coalesce(tb_member.score, 0) AS score, tb_country.name AS country,
 (SELECT COUNT(*) FROM tb_recipe WHERE id_member = tb_member.id) AS number_recipes,
 (SELECT COUNT(*) FROM tb_following WHERE id_following = tb_member.id) AS number_following,
 (SELECT COUNT(*) FROM tb_following WHERE id_followed = tb_member.id) AS number_followed
@@ -28,13 +28,13 @@ WHERE tb_group_member.id_member = $userId; -- $userId
 
 -- 3 - Recipe information (tags, category, ingredients, units, steps, comments, etc.)
 
-SELECT tb_recipe.name, tb_recipe.description, tb_recipe.servings, tb_recipe.preparation_time, tb_recipe.cooking_time, tb_recipe.additional_time, tb_recipe.visibility,
+SELECT tb_recipe.name, tb_recipe.description, tb_recipe.servings, tb_recipe.preparation_time, tb_recipe.cooking_time, tb_recipe.additional_time,
     tb_recipe.creation_time, coalesce(tb_recipe.score, 0) AS score, tb_member.name AS member_name, tb_member.username AS member_username, tb_category.name AS category,
     (SELECT COUNT(*) FROM tb_comment WHERE id_recipe = $recipeId AND rating IS NOT NULL) AS number_ratings
 FROM tb_recipe
 JOIN tb_member ON tb_recipe.id_member = tb_member.id
 JOIN tb_category ON tb_recipe.id_category = tb_category.id
-WHERE tb_recipe.id = $recipeId; -- $recipeId
+WHERE (tb_recipe.id = $recipeId AND tb_recipe.visibility = TRUE) OR (tb_recipe.id = $recipeId AND tb_recipe.id_member = $userId); -- $recipeId | $userId
 
 -- Tags
 
@@ -136,7 +136,7 @@ SELECT comment_elapsed_time('2021-03-22 19:10:25'::timestamptz);
 
 SELECT tb_comment.id, tb_comment.text, comment_elapsed_time(tb_comment.post_time), tb_answer.father_comment, tb_member.name, tb_member.id
 FROM tb_comment
-JOIN tb_recipe ON tb_comment.id_recipe = tb_recipe.id;
+JOIN tb_recipe ON tb_comment.id_recipe = tb_recipe.id
 JOIN tb_answer ON tb_comment.id = tb_answer.id_comment
 JOIN tb_member ON tb_comment.id_member = tb_member.id
 WHERE tb_recipe.id = $recipeId; -- $recipeId
@@ -151,7 +151,7 @@ WHERE tb_comment.rating IS NOT NULL AND tb_recipe.id = $recipeId; -- $recipeId
 
 -- 2 - Group Information 
 
-SELECT tb_group.name, tb_group.description, tb_group.visibility
+SELECT tb_group.name, tb_group.description
 FROM tb_group
 WHERE tb_group.id = $groupId; -- $groupId
 
@@ -159,12 +159,12 @@ WHERE tb_group.id = $groupId; -- $groupId
 
 SELECT tb_member.id, tb_member.username
 FROM tb_group_member
-JOIN tb_member ON tb_group_member.id_member = tb_group.id_member
+JOIN tb_member ON tb_group_member.id_member = tb_member.id
 WHERE tb_group_member.id_group = $groupId; -- $groupId
 
 -- Group Requests
 
-SELECT tb_group_request.id, tb_group_request.state, tb_member.id, tb_member.name, tb_member.username
+SELECT tb_group_request.state, tb_member.id, tb_member.name, tb_member.username
 FROM tb_group_request
 JOIN tb_member ON tb_group_request.id_member = tb_member.id
 WHERE tb_group = $groupId; -- $groupId
@@ -176,3 +176,54 @@ FROM tb_group_member
 JOIN tb_member ON tb_group_member.id_member = tb_member.id
 WHERE tb_group = $groupId; -- $groupId
 
+-- 7 - Search [Recipes, Groups, Users, Categories] (FTS)
+
+-- Recipes
+
+DROP MATERIALIZED VIEW IF EXISTS recipes_fts_view;
+CREATE MATERIALIZED VIEW recipes_fts_view AS
+    SELECT tb_recipe.id AS recipe_id , tb_recipe.name AS recipe_name, tb_member.id AS member_id, tb_member.name AS member_name,
+        tb_category.name AS category, string_agg(tb_tag.name, ' ') AS tag,
+        (setweight(to_tsvector('english', tb_recipe.name), 'A') ||
+        setweight(to_tsvector('english', tb_category.name), 'B') ||
+        setweight(to_tsvector('english', string_agg(tb_tag.name, ' ')), 'B') ||
+        setweight(to_tsvector('simple', tb_member.name), 'C')) AS search
+    FROM tb_recipe
+    JOIN tb_member ON tb_recipe.id_member = tb_member.id
+    JOIN tb_category ON tb_recipe.id_category = tb_category.id
+    JOIN tb_tag_recipe ON tb_recipe.id = tb_tag_recipe.id_recipe
+    JOIN tb_tag ON tb_tag_recipe.id_tag = tb_tag.id
+    WHERE tb_recipe.visibility = TRUE
+    GROUP BY tb_recipe.id, tb_member.id, tb_category.name
+    ORDER BY tb_recipe.id;
+
+DROP INDEX IF EXISTS recipes_fts;
+CREATE INDEX recipes_fts ON recipes_fts_view USING GIN(search);
+
+SELECT *, ts_rank("search", to_tsquery('english', 'egg | beef')) AS "rank"
+FROM recipes_fts_view
+WHERE "search" @@ to_tsquery('english', 'egg | beef')
+ORDER BY "rank" DESC;
+
+-- Groups
+
+DROP MATERIALIZED VIEW IF EXISTS groups_fts_view;
+CREATE MATERIALIZED VIEW groups_fts_view AS
+    SELECT tb_group.id, tb_group.name, to_tsvector('english', tb_group.name) AS search
+    FROM tb_group
+    WHERE tb_group.visibility = TRUE;
+
+DROP INDEX IF EXISTS groups_fts;
+CREATE INDEX groups_fts ON groups_fts_view USING GIN(search);
+
+SELECT *, ts_rank("search", to_tsquery('english', 'Chef | Cook')) AS "rank"
+FROM groups_fts_view
+WHERE "search" @@ to_tsquery('english', 'Chef | Cook')
+ORDER BY "rank" DESC;
+
+-- CREATE FUNCTION recipe_search_update() RETURNS TRIGGER AS $$
+-- BEGIN
+--     IF TG_OP = 'INSERT' THEN
+--         NEW.search = to_tsvector('simple', NEW.name)
+-- END
+-- $$ LANGUAGE 'plpgsql';
