@@ -60,25 +60,6 @@ FROM tb_step
 JOIN tb_recipe ON tb_step.id_recipe = tb_recipe.id
 WHERE tb_recipe.id = $recipeId; -- $recipeId
 
--- Comments
-
-SELECT tb_comment.id, tb_comment.text, comment_elapsed_time(tb_comment.post_time), tb_answer.father_comment, tb_member.name, tb_member.id
-FROM tb_comment
-JOIN tb_recipe ON tb_comment.id = tb_recipe.id
-JOIN tb_answer ON tb_comment.id = tb_answer.id_comment
-JOIN tb_member ON tb_comment.id_member = tb_member.id
-WHERE tb_recipe.id = $recipeId -- $recipeId
-WHERE tb_comment.rating IS NULL;
-
--- Reviews
-
-SELECT tb_comment.id, tb_comment.text, tb_comment.rating, comment_elapsed_time(tb_comment.post_time)
-FROM tb_comment
-JOIN tb_recipe ON tb_comment.id = tb_recipe.id
-WHERE tb_comment.rating IS NOT NULL AND tb_recipe.id = $recipeId; -- $recipeId
-
--- Still need to specify the id for queries...
-
 DROP FUNCTION IF EXISTS comment_elapsed_time(timestamptz) CASCADE;
 CREATE OR REPLACE FUNCTION comment_elapsed_time(comment_creation_time timestamptz)
 RETURNS TEXT AS $timeString$ 
@@ -150,6 +131,23 @@ END;
 $timeString$ LANGUAGE plpgsql;
 
 SELECT comment_elapsed_time('2021-03-22 19:10:25'::timestamptz);
+
+-- Comments
+
+SELECT tb_comment.id, tb_comment.text, comment_elapsed_time(tb_comment.post_time), tb_answer.father_comment, tb_member.name, tb_member.id
+FROM tb_comment
+JOIN tb_recipe ON tb_comment.id_recipe = tb_recipe.id;
+JOIN tb_answer ON tb_comment.id = tb_answer.id_comment
+JOIN tb_member ON tb_comment.id_member = tb_member.id
+WHERE tb_recipe.id = $recipeId; -- $recipeId
+
+-- Reviews
+
+SELECT tb_comment.id, tb_comment.text, tb_comment.rating, comment_elapsed_time(tb_comment.post_time)
+FROM tb_comment
+JOIN tb_recipe ON tb_comment.id = tb_recipe.id
+WHERE tb_comment.rating IS NOT NULL AND tb_recipe.id = $recipeId; -- $recipeId
+
 
 -- 2 - Group Information 
 
