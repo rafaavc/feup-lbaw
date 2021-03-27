@@ -256,11 +256,9 @@ CREATE TABLE tb_comment_notification (
     id SERIAL,
     read boolean DEFAULT FALSE NOT NULL,
     timestamp datetime,
-    id_receiver integer NOT NULL,
     id_comment integer NOT NULL,
 
     CONSTRAINT comment_notification_PK PRIMARY KEY (id),
-    CONSTRAINT comment_notification_receiver_FK FOREIGN KEY (id_receiver) REFERENCES "tb_member" (id) ON DELETE CASCADE ON UPDATE CASCADE,
     CONSTRAINT comment_notification_comment_FK FOREIGN KEY (id_comment) REFERENCES "tb_comment" (id) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
