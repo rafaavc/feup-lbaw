@@ -1,16 +1,16 @@
 -- 17 - Create review
 
 INSERT INTO tb_comment(text, rating, id_member, id_recipe) 
-VALUES("Absolutely delicious!", 5, 1, 1);
+VALUES('Absolutely delicious!', 5, 1, 1);
 
 -- 1 - Member Information (Profile)
 
-SELECT tb_member.name, tb_member.username, tb_member.city, tb_member.bio, tb_member.visibility, coalesce(tb_member.score, 0) AS score, tb_country.name,
+SELECT tb_member.name, tb_member.username, tb_member.city, tb_member.bio, tb_member.visibility, coalesce(tb_member.score, 0) AS score, tb_country.name AS country,
 (SELECT COUNT(*) FROM tb_recipe WHERE id_member = tb_member.id) AS number_recipes,
 (SELECT COUNT(*) FROM tb_following WHERE id_following = tb_member.id) AS number_following,
 (SELECT COUNT(*) FROM tb_following WHERE id_followed = tb_member.id) AS number_followed
 FROM tb_member
-JOIN tb_country ON tb_member.id_country = tb_country.id;
+JOIN tb_country ON tb_member.id_country = tb_country.id
 WHERE tb_member.id = $userId; -- $userId
 
 -- Users following (Profile)
@@ -29,7 +29,7 @@ WHERE tb_group_member.id_member = $userId; -- $userId
 -- 3 - Recipe information (tags, category, ingredients, units, steps, comments, etc.)
 
 SELECT tb_recipe.name, tb_recipe.description, tb_recipe.servings, tb_recipe.preparation_time, tb_recipe.cooking_time, tb_recipe.additional_time, tb_recipe.visibility,
-    tb_recipe.creation_time, tb_recipe.score, tb_member.name, tb_member.username, tb_category.name,
+    tb_recipe.creation_time, coalesce(tb_recipe.score, 0) AS score, tb_member.name AS member_name, tb_member.username AS member_username, tb_category.name AS category,
     (SELECT COUNT(*) FROM tb_comment WHERE id_recipe = $recipeId AND rating IS NOT NULL) AS number_ratings
 FROM tb_recipe
 JOIN tb_member ON tb_recipe.id_member = tb_member.id
@@ -42,16 +42,16 @@ SELECT tb_tag.id, tb_tag.name
 FROM tb_tag_recipe
 JOIN tb_recipe ON tb_tag_recipe.id_recipe = tb_recipe.id
 JOIN tb_tag ON tb_tag_recipe.id_tag = tb_tag.id
-WHERE 
+WHERE tb_recipe.id = $recipeId; -- $recipeId
 
 -- Ingredients
 
-SELECT ttb_ingredient.id, b_ingredient.name, tb_ingredient_recipe.quantity, tb_unit.name, tb_recipe.id
+SELECT tb_ingredient.id, tb_ingredient.name, tb_ingredient_recipe.quantity, tb_unit.name
 FROM tb_ingredient_recipe
 JOIN tb_recipe ON tb_ingredient_recipe.id_recipe = tb_recipe.id
 JOIN tb_ingredient ON tb_ingredient_recipe.id_ingredient = tb_ingredient.id
-JOIN tb_unit ON tb_ingredient_recipe.id_unit = tb_unit.id;
-WHERE tb_recipe.id = $recipeId -- $recipeId
+JOIN tb_unit ON tb_ingredient_recipe.id_unit = tb_unit.id
+WHERE tb_recipe.id = $recipeId; -- $recipeId
 
 -- Steps
 
