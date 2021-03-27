@@ -198,7 +198,7 @@ CREATE MATERIALIZED VIEW recipes_fts_view AS
     ORDER BY tb_recipe.id;
 
 DROP INDEX IF EXISTS recipes_fts;
-CREATE INDEX recipes_fts ON recipes_fts_view USING GIN(search);
+CREATE INDEX recipes_fts ON recipes_fts_view USING GIST(search);
 
 SELECT *, ts_rank("search", to_tsquery('english', 'egg | beef')) AS "rank"
 FROM recipes_fts_view
@@ -220,6 +220,38 @@ SELECT *, ts_rank("search", to_tsquery('english', 'Chef | Cook')) AS "rank"
 FROM groups_fts_view
 WHERE "search" @@ to_tsquery('english', 'Chef | Cook')
 ORDER BY "rank" DESC;
+
+-- Users
+
+DROP MATERIALIZED VIEW IF EXISTS users_fts_view;
+CREATE MATERIALIZED VIEW users_fts_view AS
+    SELECT tb_member.id, tb_member.name, to_tsvector('simple', tb_member.name) AS search
+    FROM tb_member
+    WHERE tb_member.visibility = TRUE;
+
+DROP INDEX IF EXISTS users_fts;
+CREATE INDEX users_fts ON users_fts_view USING GIN(search);
+
+SELECT *, ts_rank("search", to_tsquery('simple', 'Mihai & Searle')) AS "rank"
+FROM users_fts_view
+WHERE "search" @@ to_tsquery('simple', 'Mihai & Searle')
+ORDER BY "rank" DESC;
+
+-- Categories
+
+DROP MATERIALIZED VIEW IF EXISTS categories_fts_view;
+CREATE MATERIALIZED VIEW categories_fts_view AS
+    SELECT tb_category.id, tb_category.name, to_tsvector('english', tb_category.name) AS search
+    FROM tb_category;
+
+DROP INDEX IF EXISTS categories_fts;
+CREATE INDEX categories_fts ON categories_fts_view USING GIN(search);
+
+SELECT *, ts_rank("search", to_tsquery('english', 'Desserts')) AS "rank"
+FROM categories_fts_view
+WHERE "search" @@ to_tsquery('english', 'Desserts')
+ORDER BY "rank" DESC;
+
 
 -- CREATE FUNCTION recipe_search_update() RETURNS TRIGGER AS $$
 -- BEGIN
