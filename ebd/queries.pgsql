@@ -205,57 +205,75 @@ FROM recipes_fts_view
 WHERE "search" @@ to_tsquery('english', 'egg | beef')
 ORDER BY "rank" DESC;
 
+-- REFRESH MATERIALIZED VIEW recipes_fts_view;
+
 -- Groups
 
-DROP MATERIALIZED VIEW IF EXISTS groups_fts_view;
-CREATE MATERIALIZED VIEW groups_fts_view AS
-    SELECT tb_group.id, tb_group.name, to_tsvector('english', tb_group.name) AS search
-    FROM tb_group
-    WHERE tb_group.visibility = TRUE;
+ALTER TABLE tb_group
+ADD COLUMN search tsvector;
 
 DROP INDEX IF EXISTS groups_fts;
-CREATE INDEX groups_fts ON groups_fts_view USING GIN(search);
+CREATE INDEX groups_fts ON tb_group USING GIN(search);
+
+DROP TRIGGER IF EXISTS groups_search_tg ON tb_group;
+CREATE TRIGGER groups_search_tg
+BEFORE INSERT OR UPDATE ON tb_group
+FOR EACH ROW
+EXECUTE PROCEDURE name_search();
 
 SELECT *, ts_rank("search", to_tsquery('english', 'Chef | Cook')) AS "rank"
-FROM groups_fts_view
+FROM tb_group
 WHERE "search" @@ to_tsquery('english', 'Chef | Cook')
 ORDER BY "rank" DESC;
 
 -- Users
 
-DROP MATERIALIZED VIEW IF EXISTS users_fts_view;
-CREATE MATERIALIZED VIEW users_fts_view AS
-    SELECT tb_member.id, tb_member.name, to_tsvector('simple', tb_member.name) AS search
-    FROM tb_member
-    WHERE tb_member.visibility = TRUE;
+ALTER TABLE tb_member
+ADD COLUMN search tsvector;
 
 DROP INDEX IF EXISTS users_fts;
-CREATE INDEX users_fts ON users_fts_view USING GIN(search);
+CREATE INDEX users_fts ON tb_member USING GIN(search);
 
-SELECT *, ts_rank("search", to_tsquery('simple', 'Mihai & Searle')) AS "rank"
-FROM users_fts_view
-WHERE "search" @@ to_tsquery('simple', 'Mihai & Searle')
+DROP TRIGGER IF EXISTS users_search_tg ON tb_member;
+CREATE TRIGGER users_search_tg
+BEFORE INSERT OR UPDATE ON tb_member
+FOR EACH ROW
+EXECUTE PROCEDURE name_search();
+
+SELECT *, ts_rank("search", to_tsquery('simple', 'Mihai | Searle')) AS "rank"
+FROM tb_member
+WHERE "search" @@ to_tsquery('simple', 'Mihai | Searle')
 ORDER BY "rank" DESC;
 
 -- Categories
 
-DROP MATERIALIZED VIEW IF EXISTS categories_fts_view;
-CREATE MATERIALIZED VIEW categories_fts_view AS
-    SELECT tb_category.id, tb_category.name, to_tsvector('english', tb_category.name) AS search
-    FROM tb_category;
+ALTER TABLE tb_category
+ADD COLUMN search tsvector;
 
 DROP INDEX IF EXISTS categories_fts;
-CREATE INDEX categories_fts ON categories_fts_view USING GIN(search);
+CREATE INDEX categories_fts ON tb_category USING GIN(search);
+
+CREATE FUNCTION name_search() RETURNS TRIGGER AS $$
+BEGIN
+    IF TG_OP = 'INSERT' THEN
+        NEW.search = to_tsvector('english', NEW.name);
+    END IF;
+    IF TG_OP = 'UPDATE' THEN
+        IF NEW.name <> OLD.name THEN   
+            NEW.search = to_tsvector('english', NEW.name);
+        END IF;
+    END IF;
+    RETURN NEW;
+END
+$$ LANGUAGE plpgsql;
+
+DROP TRIGGER IF EXISTS category_search_tg ON tb_category;
+CREATE TRIGGER category_search_tg
+BEFORE INSERT OR UPDATE ON tb_category
+FOR EACH ROW
+EXECUTE PROCEDURE name_search();
 
 SELECT *, ts_rank("search", to_tsquery('english', 'Desserts')) AS "rank"
-FROM categories_fts_view
+FROM tb_category
 WHERE "search" @@ to_tsquery('english', 'Desserts')
 ORDER BY "rank" DESC;
-
-
--- CREATE FUNCTION recipe_search_update() RETURNS TRIGGER AS $$
--- BEGIN
---     IF TG_OP = 'INSERT' THEN
---         NEW.search = to_tsvector('simple', NEW.name)
--- END
--- $$ LANGUAGE 'plpgsql';
