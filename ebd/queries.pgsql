@@ -155,13 +155,6 @@ SELECT tb_group.name, tb_group.description
 FROM tb_group
 WHERE tb_group.id = $groupId; -- $groupId
 
--- Members
-
-SELECT tb_member.id, tb_member.username
-FROM tb_group_member
-JOIN tb_member ON tb_group_member.id_member = tb_member.id
-WHERE tb_group_member.id_group = $groupId; -- $groupId
-
 -- Group Requests
 
 SELECT tb_group_request.state, tb_member.id, tb_member.name, tb_member.username
@@ -215,7 +208,7 @@ CREATE INDEX recipes_fts ON tb_recipe USING GIN(search);
 
 DROP TRIGGER IF EXISTS recipes_search_tg ON tb_recipe;
 CREATE TRIGGER recipes_search_tg
-BEFORE INSERT OR UPDATE ON tb_recipe
+BEFORE INSERT OR UPDATE OF name ON tb_recipe
 FOR EACH ROW
 EXECUTE PROCEDURE name_search('english');
 
@@ -247,7 +240,7 @@ CREATE INDEX groups_fts ON tb_group USING GIN(search);
 
 DROP TRIGGER IF EXISTS groups_search_tg ON tb_group;
 CREATE TRIGGER groups_search_tg
-BEFORE INSERT OR UPDATE ON tb_group
+BEFORE INSERT OR UPDATE OF name ON tb_group
 FOR EACH ROW
 EXECUTE PROCEDURE name_search('english');
 
@@ -266,7 +259,7 @@ CREATE INDEX users_fts ON tb_member USING GIN(search);
 
 DROP TRIGGER IF EXISTS users_search_tg ON tb_member;
 CREATE TRIGGER users_search_tg
-BEFORE INSERT OR UPDATE ON tb_member
+BEFORE INSERT OR UPDATE OF name ON tb_member
 FOR EACH ROW
 EXECUTE PROCEDURE name_search('simple');
 
@@ -287,21 +280,21 @@ CREATE FUNCTION name_search() RETURNS TRIGGER AS $$
 DECLARE
     idiom regconfig := TG_ARGV[0];
 BEGIN
-    IF TG_OP = 'INSERT' THEN
+    -- IF TG_OP = 'INSERT' THEN
         NEW.search = to_tsvector(idiom, NEW.name);
-    END IF;
-    IF TG_OP = 'UPDATE' THEN
-        IF NEW.name <> OLD.name THEN   
-            NEW.search = to_tsvector(idiom, NEW.name);
-        END IF;
-    END IF;
+    -- END IF;
+    -- IF TG_OP = 'UPDATE' THEN
+    --     IF NEW.name <> OLD.name THEN   
+    --         NEW.search = to_tsvector(idiom, NEW.name);
+    --     END IF;
+    -- END IF;
     RETURN NEW;
 END
 $$ LANGUAGE plpgsql;
 
 DROP TRIGGER IF EXISTS category_search_tg ON tb_category;
 CREATE TRIGGER category_search_tg
-BEFORE INSERT OR UPDATE ON tb_category
+BEFORE INSERT OR UPDATE OF name ON tb_category
 FOR EACH ROW
 EXECUTE PROCEDURE name_search('english');
 
