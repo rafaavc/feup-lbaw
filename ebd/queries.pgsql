@@ -180,32 +180,62 @@ WHERE tb_group = $groupId; -- $groupId
 
 -- Recipes
 
-DROP MATERIALIZED VIEW IF EXISTS recipes_fts_view;
-CREATE MATERIALIZED VIEW recipes_fts_view AS
-    SELECT tb_recipe.id AS recipe_id , tb_recipe.name AS recipe_name, tb_member.id AS member_id, tb_member.name AS member_name,
-        tb_category.name AS category, string_agg(tb_tag.name, ' ') AS tag,
-        (setweight(to_tsvector('english', tb_recipe.name), 'A') ||
-        setweight(to_tsvector('english', tb_category.name), 'B') ||
-        setweight(to_tsvector('english', string_agg(tb_tag.name, ' ')), 'B') ||
-        setweight(to_tsvector('simple', tb_member.name), 'C')) AS search
-    FROM tb_recipe
-    JOIN tb_member ON tb_recipe.id_member = tb_member.id
-    JOIN tb_category ON tb_recipe.id_category = tb_category.id
-    JOIN tb_tag_recipe ON tb_recipe.id = tb_tag_recipe.id_recipe
-    JOIN tb_tag ON tb_tag_recipe.id_tag = tb_tag.id
-    WHERE tb_recipe.visibility = TRUE
-    GROUP BY tb_recipe.id, tb_member.id, tb_category.name
-    ORDER BY tb_recipe.id;
+-- DROP MATERIALIZED VIEW IF EXISTS recipes_fts_view;
+-- CREATE MATERIALIZED VIEW recipes_fts_view AS
+--     SELECT tb_recipe.id AS recipe_id , tb_recipe.name AS recipe_name, tb_member.id AS member_id, tb_member.name AS member_name,
+--         tb_category.name AS category, string_agg(tb_tag.name, ' ') AS tag,
+--         (setweight(to_tsvector('english', tb_recipe.name), 'A') ||
+--         setweight(to_tsvector('english', tb_category.name), 'B') ||
+--         setweight(to_tsvector('english', string_agg(tb_tag.name, ' ')), 'B') ||
+--         setweight(to_tsvector('simple', tb_member.name), 'C')) AS search
+--     FROM tb_recipe
+--     JOIN tb_member ON tb_recipe.id_member = tb_member.id
+--     JOIN tb_category ON tb_recipe.id_category = tb_category.id
+--     JOIN tb_tag_recipe ON tb_recipe.id = tb_tag_recipe.id_recipe
+--     JOIN tb_tag ON tb_tag_recipe.id_tag = tb_tag.id
+--     WHERE tb_recipe.visibility = TRUE
+--     GROUP BY tb_recipe.id, tb_member.id, tb_category.name
+--     ORDER BY tb_recipe.id;
 
-DROP INDEX IF EXISTS recipes_fts;
-CREATE INDEX recipes_fts ON recipes_fts_view USING GIST(search);
+-- DROP INDEX IF EXISTS recipes_fts;
+-- CREATE INDEX recipes_fts ON recipes_fts_view USING GIST(search);
 
-SELECT *, ts_rank("search", to_tsquery('english', 'egg | beef')) AS "rank"
-FROM recipes_fts_view
-WHERE "search" @@ to_tsquery('english', 'egg | beef')
-ORDER BY "rank" DESC;
+-- SELECT *, ts_rank("search", to_tsquery('english', 'egg | beef')) AS "rank"
+-- FROM recipes_fts_view
+-- WHERE "search" @@ to_tsquery('english', 'egg | beef')
+-- ORDER BY "rank" DESC;
 
 -- REFRESH MATERIALIZED VIEW recipes_fts_view;
+
+ALTER TABLE tb_recipe
+ADD COLUMN search tsvector;
+
+DROP INDEX IF EXISTS recipes_fts;
+CREATE INDEX recipes_fts ON tb_recipe USING GIST(search);
+
+DROP TRIGGER IF EXISTS recipes_search_tg ON tb_recipe;
+CREATE TRIGGER recipes_search_tg
+BEFORE INSERT OR UPDATE ON tb_recipe
+FOR EACH ROW
+EXECUTE PROCEDURE name_search('english');
+
+SELECT *, ts_rank(query_table._search, to_tsquery('simple', 'egg | beef')) AS "rank", _search
+FROM    (SELECT tb_recipe.id AS recipe_id , tb_recipe.name AS recipe_name, tb_member.id AS member_id, tb_member.name AS member_name,
+        tb_category.name AS category, string_agg(tb_tag.name, ' ') AS tag,
+        (setweight(tb_recipe.search, 'A') ||
+        setweight(tb_category.search, 'B') ||
+        setweight(to_tsvector('english', string_agg(tb_tag.name, ' ')), 'B') ||
+        setweight(tb_member.search, 'C')) AS _search
+        FROM tb_recipe
+        JOIN tb_member ON tb_recipe.id_member = tb_member.id
+        JOIN tb_category ON tb_recipe.id_category = tb_category.id
+        JOIN tb_tag_recipe ON tb_recipe.id = tb_tag_recipe.id_recipe
+        JOIN tb_tag ON tb_tag_recipe.id_tag = tb_tag.id
+        WHERE tb_recipe.visibility = TRUE
+        GROUP BY tb_recipe.id, tb_member.id, tb_category.name, tb_category.search
+        ORDER BY tb_recipe.id) AS query_table
+WHERE query_table._search @@ to_tsquery('simple', 'egg | beef')
+ORDER BY "rank" DESC;
 
 -- Groups
 
@@ -219,7 +249,7 @@ DROP TRIGGER IF EXISTS groups_search_tg ON tb_group;
 CREATE TRIGGER groups_search_tg
 BEFORE INSERT OR UPDATE ON tb_group
 FOR EACH ROW
-EXECUTE PROCEDURE name_search();
+EXECUTE PROCEDURE name_search('english');
 
 SELECT *, ts_rank("search", to_tsquery('english', 'Chef | Cook')) AS "rank"
 FROM tb_group
@@ -238,7 +268,7 @@ DROP TRIGGER IF EXISTS users_search_tg ON tb_member;
 CREATE TRIGGER users_search_tg
 BEFORE INSERT OR UPDATE ON tb_member
 FOR EACH ROW
-EXECUTE PROCEDURE name_search();
+EXECUTE PROCEDURE name_search('simple');
 
 SELECT *, ts_rank("search", to_tsquery('simple', 'Mihai | Searle')) AS "rank"
 FROM tb_member
@@ -254,13 +284,15 @@ DROP INDEX IF EXISTS categories_fts;
 CREATE INDEX categories_fts ON tb_category USING GIN(search);
 
 CREATE FUNCTION name_search() RETURNS TRIGGER AS $$
+DECLARE
+    idiom regconfig := TG_ARGV[0];
 BEGIN
     IF TG_OP = 'INSERT' THEN
-        NEW.search = to_tsvector('english', NEW.name);
+        NEW.search = to_tsvector(idiom, NEW.name);
     END IF;
     IF TG_OP = 'UPDATE' THEN
         IF NEW.name <> OLD.name THEN   
-            NEW.search = to_tsvector('english', NEW.name);
+            NEW.search = to_tsvector(idiom, NEW.name);
         END IF;
     END IF;
     RETURN NEW;
@@ -271,7 +303,7 @@ DROP TRIGGER IF EXISTS category_search_tg ON tb_category;
 CREATE TRIGGER category_search_tg
 BEFORE INSERT OR UPDATE ON tb_category
 FOR EACH ROW
-EXECUTE PROCEDURE name_search();
+EXECUTE PROCEDURE name_search('english');
 
 SELECT *, ts_rank("search", to_tsquery('english', 'Desserts')) AS "rank"
 FROM tb_category
