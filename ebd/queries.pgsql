@@ -198,7 +198,7 @@ WHERE tb_group = $groupId; -- $groupId
 --     ORDER BY tb_recipe.id;
 
 -- DROP INDEX IF EXISTS recipes_fts;
--- CREATE INDEX recipes_fts ON recipes_fts_view USING GIST(search);
+-- CREATE INDEX recipes_fts ON recipes_fts_view USING GIN(search);
 
 -- SELECT *, ts_rank("search", to_tsquery('english', 'egg | beef')) AS "rank"
 -- FROM recipes_fts_view
@@ -211,7 +211,7 @@ ALTER TABLE tb_recipe
 ADD COLUMN search tsvector;
 
 DROP INDEX IF EXISTS recipes_fts;
-CREATE INDEX recipes_fts ON tb_recipe USING GIST(search);
+CREATE INDEX recipes_fts ON tb_recipe USING GIN(search);
 
 DROP TRIGGER IF EXISTS recipes_search_tg ON tb_recipe;
 CREATE TRIGGER recipes_search_tg
