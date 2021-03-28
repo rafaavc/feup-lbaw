@@ -101,7 +101,6 @@ CREATE TABLE tb_recipe (
     preparation_time integer,
     cooking_time integer,
     additional_time integer,
-    visibility boolean NOT NULL,
     creation_time datetime NOT NULL,
     id_member integer NOT NULL,
     id_category integer,
