@@ -135,3 +135,56 @@ CREATE TRIGGER score_member_delete_tg
 AFTER DELETE ON tb_recipe
 FOR EACH ROW
 EXECUTE PROCEDURE score_member_delete();
+
+-- 3 - Recipe Visibility (Still needs further testing)
+
+-- > TODO: add query to see if recipe is visible:
+-- > if the recipe is in a group:
+--     > it is visible if the group is public or if the user is member of the group
+-- > else it is visible if the author is public 
+-- > else it is visible if the user follows the author
+-- > else is private
+
+DROP FUNCTION IF EXISTS recipe_visibility();
+CREATE OR REPLACE FUNCTION recipe_visibility(id_recipe integer, id_user integer)
+RETURNS BOOLEAN AS $$ 
+DECLARE 
+    id_group integer;
+    group_visibility boolean;
+    author_visibility boolean;
+    id_author integer;
+BEGIN
+    SELECT tb_recipe.id_group INTO id_group
+    FROM tb_recipe 
+    WHERE tb_recipe.id = id_recipe;
+
+    IF id_group IS NOT NULL THEN
+        SELECT visibility INTO group_visibility FROM tb_group;
+        IF group_visibility = TRUE THEN
+            RETURN TRUE;
+        END IF; 
+        IF EXISTS(
+            SELECT * FROM tb_group_member 
+            WHERE tb_group_member.id_group = id_group AND tb_group_member.id_member = id_user) THEN
+            RETURN TRUE;
+        END IF;
+    END IF;
+
+    SELECT tb_member.visibility INTO author_visibility, tb_recipe.id_member INTO id_author
+    FROM tb_recipe
+    JOIN tb_member ON tb_recipe.id_member = tb_member.id
+    WHERE tb_recipe.id = id_recipe;
+
+    IF author_visibility = TRUE THEN
+        RETURN TRUE;
+    END IF;
+
+    IF EXISTS (
+        SELECT * FROM tb_following
+        WHERE tb_following.id_following = id_user AND tb_following.id_followed = id_author) THEN
+        RETURN TRUE;
+    END IF;
+
+    RETURN FALSE;
+END;
+$$ LANGUAGE plpgsql;
