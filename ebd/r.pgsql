@@ -1,8 +1,9 @@
 -- 4: Member Recipes
+-- TODO visibility !!!!
 -- only selects the member's recipes that are not part of a group (those are only visible inside the group)
 SELECT tb_recipe.id, tb_recipe.name, tb_recipe.description, tb_recipe.servings, 
-    tb_recipe.preparation_time, tb_recipe.cooking_time, tb_recipe.additional_time, 
-    tb_recipe.visibility, tb_recipe.creation_time, 
+    tb_recipe.preparation_time, tb_recipe.cooking_time, tb_recipe.additional_time, -- TODO: visibility
+    tb_recipe.creation_time, 
     tb_category.name AS category, coalesce(tb_recipe.score, 0) as score
     -- , comment_elapsed_time(tb_recipe.creation_time) as elapsed_time  -- tried using this but was returning weird values :/
 
@@ -20,8 +21,13 @@ ORDER BY timestamp DESC;
 
 -- 15: Create recipe
 
-INSERT INTO tb_recipe (name, difficulty, description, servings, preparation_time, cooking_time, additional_time, visibility, creation_time, id_member, id_category) 
-VALUES ('Spanish Moroccan Fish', 'medium', 'This Moroccan recipe was passed down for generations in my family. We usually serve it on the Sabbath night and holidays. It is a favorite! This dish may be served hot or cold according to taste.', 5, 51.666666666666664, 103.33333333333333, 0, TRUE, '202019-12-13 04:45:00', 19, 7);
+INSERT INTO tb_recipe (name, difficulty, description, servings, preparation_time, cooking_time, additional_time, visibility, creation_time, id_member, id_category)
+VALUES ($title, $difficulty, $description, $servings, $preparation_time, $cooking_time, $additional_time, $visibility, $creation_time, $id_member, $id_category);
+
+INSERT INTO tb_step (name, description, id_recipe) VALUES ($step_name, $step_description, $id_recipe);
+
+INSERT INTO tb_tag_recipe (id_tag, id_recipe) VALUES ($id_tag, $id_recipe);
+
 
 
 -- 13: Update recipe
