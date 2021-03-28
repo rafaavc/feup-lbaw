@@ -21,15 +21,14 @@ CREATE TRIGGER comment_notification
 
 
 -- Favourite Notification
--- Add a favourite notification when a user adds a recipes to the favourites (show the the recipe owner)
-
+-- Add favourite notification when a user adds a recipes to the favourites (show the the recipe owner)
 
 DROP FUNCTION IF EXISTS add_favourite_notification CASCADE;
-CREATE FUNCTION add_favourite_notification RETURNS TRIGGER AS
+CREATE FUNCTION add_favourite_notification() RETURNS TRIGGER AS
 $BODY$
 BEGIN
     INSERT INTO tb_favourite_notification (id_caused_by, id_recipe)
-    VALUES (NEW.id_member, NEW.id);
+    VALUES (NEW.id_member, NEW.id_recipe);
     RETURN NEW;
 END;
 $BODY$
