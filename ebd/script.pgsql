@@ -207,6 +207,8 @@ CREATE TABLE tb_admin (
 CREATE TABLE tb_following (
     id_following integer NOT NULL,
     id_followed integer NOT NULL,
+    state State NOT NULL,
+    timestamp datetime, 
 
     CONSTRAINT following_PK PRIMARY KEY (id_following, id_followed),
     CONSTRAINT following_following_FK FOREIGN KEY (id_following) REFERENCES "tb_member" ON DELETE CASCADE ON UPDATE CASCADE,
