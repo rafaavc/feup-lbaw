@@ -43,7 +43,7 @@ FOR EACH ROW
 EXECUTE PROCEDURE comment_date_precedence();
 
 
--- The date of a review/comment/answer must be after the post's creation date
+-- The date of an answer must be after the comment's creation date
 
 CREATE OR REPLACE FUNCTION answer_date_precedence() RETURNS TRIGGER AS $$
 DECLARE
