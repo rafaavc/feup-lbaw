@@ -19,6 +19,7 @@ FROM tb_message
 WHERE (id_receiver = $memberId1 AND id_sender = $memberId2) OR (id_receiver = $memberId2 AND id_sender = $memberId1)
 ORDER BY timestamp DESC;
 
+
 -- 15: Create recipe
 
 INSERT INTO tb_recipe (name, difficulty, description, servings, preparation_time, cooking_time, additional_time, visibility, creation_time, id_member, id_category)
@@ -28,6 +29,7 @@ INSERT INTO tb_step (name, description, id_recipe) VALUES ($step_name, $step_des
 
 INSERT INTO tb_tag_recipe (id_tag, id_recipe) VALUES ($id_tag, $id_recipe);
 
+INSERT INTO tb_ingredient_recipe (id_recipe, id_ingredient, id_unit, quantity) VALUES ($id_recipe, $id_ingredient, $id_unit, $quantity);
 
 
 -- 13: Update recipe
@@ -37,6 +39,14 @@ SET difficulty = $difficulty, description = $description, servings = $servings, 
 cooking_time = $cooking_time, additional_time = $additional_time, 
 visibility = $visibility, id_category = $category
 WHERE id = $recipeId;
+
+UPDATE tb_step   -- may need to update steps, may be repeated as necessary
+SET name = $new_step_name, description = $new_step_description  
+WHERE id = $id_step_to_update;
+
+UPDATE tb_ingredient_recipe  -- may need to update recipe ingredients, may be repeated as necessary
+SET id_unit = $new_id_unit, quantity = $new_quantity
+WHERE id_recipe = $id_recipe AND id_ingredient = $id_ingredient_to_update;
 
 
 -- 19: Delete recipe
