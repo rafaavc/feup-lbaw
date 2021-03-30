@@ -1,6 +1,7 @@
 -- Create recipe transaction
 
-BEGIN;
+SET TRANSACTION ISOLATION LEVEL READ COMMITED;
+BEGIN TRANSACTION;
 
 INSERT INTO tb_recipe (name, difficulty, description, servings, preparation_time, cooking_time, additional_time, visibility, creation_time, id_member, id_category)
 VALUES ($title, $difficulty, $description, $servings, $preparation_time, $cooking_time, $additional_time, $visibility, $creation_time, $id_member, $id_category);
@@ -16,7 +17,8 @@ COMMIT;
 
 -- Reply to comment transaction
 
-BEGIN;
+SET TRANSACTION ISOLATION LEVEL READ COMMITED;
+BEGIN TRANSACTION;
 
 WITH new_comment AS (
     INSERT INTO tb_comment (text, rating, id_member, id_recipe) 
@@ -29,7 +31,8 @@ COMMIT;
 
 -- Update recipe
 
-BEGIN;
+SET TRANSACTION ISOLATION LEVEL READ COMMITED;
+BEGIN TRANSACTION;
 
 UPDATE tb_recipe
 SET difficulty = $difficulty, description = $description, servings = $servings, preparation_time = $preparation_time, 
