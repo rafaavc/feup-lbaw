@@ -370,7 +370,7 @@ ALTER TABLE tb_recipe
 ADD COLUMN search tsvector;
 
 DROP INDEX IF EXISTS recipes_fts;
-CREATE INDEX recipes_fts ON tb_recipe USING GIN(search);
+CREATE INDEX recipes_fts ON recipes_fts_view USING GIN(search);
 
 
 ALTER TABLE tb_group

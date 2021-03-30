@@ -187,7 +187,7 @@ CREATE MATERIALIZED VIEW recipes_fts_view AS
     JOIN tb_tag ON tb_tag_recipe.id_tag = tb_tag.id
     WHERE recipe_visibility(tb_recipe.id, $userId) = TRUE
     GROUP BY tb_recipe.id, tb_member.id, tb_category.name
-    ORDER BY "rank" DESC;
+    ORDER BY tb_recipe.id;
 
 DROP INDEX IF EXISTS recipes_fts;
 CREATE INDEX recipes_fts ON recipes_fts_view USING GIN(search);
