@@ -353,10 +353,6 @@ DROP INDEX IF EXISTS recipe_difficulty_index;
 CREATE INDEX recipe_difficulty_index ON tb_recipe USING hash(difficulty);
 
 
-DROP INDEX IF EXISTS member_username_index;
-CREATE INDEX member_username_index ON tb_member USING hash(username);
-
-
 ALTER TABLE tb_category
 ADD COLUMN search tsvector;
 
