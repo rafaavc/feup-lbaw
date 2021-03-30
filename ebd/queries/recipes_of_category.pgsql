@@ -1,5 +1,4 @@
 
-SELECT tb_recipe.id
+SELECT id
 FROM tb_recipe
-JOIN tb_category ON tb_recipe.id_category = tb_category.id
-WHERE tb_category.id = $categoryId;
+WHERE id_category = $categoryId;
