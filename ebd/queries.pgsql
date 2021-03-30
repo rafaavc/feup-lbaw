@@ -1,7 +1,7 @@
 -- 17 - Create review
 
 INSERT INTO tb_comment(text, rating, id_member, id_recipe) 
-VALUES('Absolutely delicious!', 5, 1, 1);
+VALUES($text, $rating, $id_member, $id_recipe);
 
 -- 1 - Member Information (Profile)
 
@@ -136,10 +136,9 @@ SELECT comment_elapsed_time('2021-03-22 19:10:25'::timestamptz);
 
 SELECT tb_comment.id, tb_comment.text, comment_elapsed_time(tb_comment.post_time), tb_answer.father_comment, tb_member.name, tb_member.id
 FROM tb_comment
-JOIN tb_recipe ON tb_comment.id_recipe = tb_recipe.id
 JOIN tb_answer ON tb_comment.id = tb_answer.id_comment
 JOIN tb_member ON tb_comment.id_member = tb_member.id
-WHERE tb_recipe.id = $recipeId; -- $recipeId
+WHERE tb_comment.id_recipe = $recipeId; -- $recipeId
 
 -- Reviews
 
