@@ -193,44 +193,18 @@ CREATE MATERIALIZED VIEW recipes_fts_view AS
 DROP INDEX IF EXISTS recipes_fts;
 CREATE INDEX recipes_fts ON recipes_fts_view USING GIN(search);
 
-SELECT *, ts_rank("search", to_tsquery('english', 'egg | beef')) AS "rank"
-FROM recipes_fts_view
-WHERE "search" @@ to_tsquery('english', 'egg | beef')
-ORDER BY "rank" DESC;
-
-
 DROP FUNCTION IF EXISTS recipes_fts_UDF() CASCADE;
-CREATE FUNCTION DROP FUNCTION IF EXISTS recipes_fts_tg() CASCADE;
-RETURNS TRIGGER AS $$
+CREATE FUNCTION recipes_fts_UDF() RETURNS TRIGGER AS $$
 BEGIN
     REFRESH MATERIALIZED VIEW recipes_fts_view;
     RETURN NEW;
 END
 $$ LANGUAGE plpgsql;
 
-DROP TRIGGER IF EXISTS refresh_recipes_fts_tg ON tb_recipe;
-CREATE TRIGGER refresh_recipes_fts_tg
-AFTER INSERT OR UPDATE OR DELETE ON tb_recipe
-FOR EACH ROW
-EXECUTE PROCEDURE recipes_fts_UDF();
-
-DROP TRIGGER IF EXISTS refresh_categories_fts_tg ON tb_category;
-CREATE TRIGGER refresh_categories_fts_tg
-AFTER INSERT OR UPDATE OR DELETE ON tb_category
-FOR EACH ROW
-EXECUTE PROCEDURE recipes_fts_UDF();
-
-DROP TRIGGER IF EXISTS refresh_tags_fts_tg ON tb_tag;
-CREATE TRIGGER refresh_tags_fts_tg
-AFTER INSERT OR UPDATE OR DELETE ON tb_tag
-FOR EACH ROW
-EXECUTE PROCEDURE recipes_fts_UDF();
-
-DROP TRIGGER IF EXISTS refresh_name_fts_tg ON tb_member;
-CREATE TRIGGER refresh_name_fts_tg
-AFTER INSERT OR UPDATE OR DELETE ON tb_member
-FOR EACH ROW
-EXECUTE PROCEDURE recipes_fts_UDF();
+SELECT *, ts_rank("search", to_tsquery('english', 'egg | beef')) AS "rank"
+FROM recipes_fts_view
+WHERE "search" @@ to_tsquery('english', 'egg | beef')
+ORDER BY "rank" DESC;
 
 -- Still need to add a cron job in Laravel
 
