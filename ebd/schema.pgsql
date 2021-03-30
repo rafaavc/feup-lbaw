@@ -312,7 +312,6 @@ CREATE TABLE tb_recipe_report (
 
 -- INDEXES
 
-
 DROP INDEX IF EXISTS member_recipe_index;
 CREATE INDEX member_recipe_index ON tb_recipe USING hash(id_member);
 
@@ -326,11 +325,11 @@ CREATE INDEX group_recipe_index ON tb_recipe USING hash(id_group);
 
 
 DROP INDEX IF EXISTS message_index;
-CREATE INDEX message_index ON tb_message USING hash(id_sender, id_receiver);
+CREATE INDEX message_index ON tb_message (id_sender, id_receiver);
 
 
 DROP INDEX IF EXISTS rating_index;
-CREATE INDEX rating_index ON tb_recipe USING (score); -- B-tree by default
+CREATE INDEX rating_index ON tb_recipe USING btree(score); -- B-tree by default
 
 
 DROP INDEX IF EXISTS member_comment_index;
@@ -346,7 +345,7 @@ CREATE INDEX receiver_delete_notification_index ON tb_delete_notification USING 
 
 
 DROP INDEX IF EXISTS recipe_creation_time_index;
-CREATE INDEX recipe_creation_time_index ON tb_recipe USING (creation_time);
+CREATE INDEX recipe_creation_time_index ON tb_recipe USING btree(creation_time);
 
 
 DROP INDEX IF EXISTS recipe_difficulty_index;
@@ -578,7 +577,3 @@ CREATE TRIGGER groups_search_tg
 BEFORE INSERT OR UPDATE ON tb_group
 FOR EACH ROW
 EXECUTE PROCEDURE name_search('english');
-
-
-
-
