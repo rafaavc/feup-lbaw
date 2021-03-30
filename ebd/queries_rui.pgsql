@@ -29,12 +29,12 @@ WHERE tb_group_member.id_member = $userId; -- $userId
 -- 3 - Recipe information (tags, category, ingredients, units, steps, comments, etc.)
 
 SELECT tb_recipe.name, tb_recipe.description, tb_recipe.servings, tb_recipe.preparation_time, tb_recipe.cooking_time, tb_recipe.additional_time,
-    tb_recipe.creation_time, coalesce(tb_recipe.score, 0) AS score, tb_member.name AS member_name, tb_member.username AS member_username, tb_category.name AS category,
-    (SELECT COUNT(*) FROM tb_comment WHERE id_recipe = $recipeId AND rating IS NOT NULL) AS number_ratings
+    tb_recipe.creation_time, score, tb_member.name AS member_name, tb_member.username AS member_username, tb_category.name AS category,
+    (SELECT COUNT(*) FROM tb_comment WHERE id_recipe = tb_recipe.id AND rating IS NOT NULL) AS number_ratings,
 FROM tb_recipe
 JOIN tb_member ON tb_recipe.id_member = tb_member.id
 JOIN tb_category ON tb_recipe.id_category = tb_category.id
-WHERE (tb_recipe.id = $recipeId AND tb_recipe.visibility = TRUE) OR (tb_recipe.id = $recipeId AND tb_recipe.id_member = $userId); -- $recipeId | $userId
+WHERE recipe_visibility(tb_recipe.id, $userId) = TRUE AND tb_recipe.id = $recipeId; -- $userId | $recipeId
 
 -- Tags
 
@@ -185,9 +185,9 @@ CREATE MATERIALIZED VIEW recipes_fts_view AS
     JOIN tb_category ON tb_recipe.id_category = tb_category.id
     JOIN tb_tag_recipe ON tb_recipe.id = tb_tag_recipe.id_recipe
     JOIN tb_tag ON tb_tag_recipe.id_tag = tb_tag.id
-    WHERE tb_recipe.visibility = TRUE
+    WHERE recipe_visibility(tb_recipe.id, $userId) = TRUE
     GROUP BY tb_recipe.id, tb_member.id, tb_category.name
-    ORDER BY tb_recipe.id;
+    ORDER BY "rank" DESC;
 
 DROP INDEX IF EXISTS recipes_fts;
 CREATE INDEX recipes_fts ON recipes_fts_view USING GIN(search);
@@ -253,7 +253,7 @@ ADD COLUMN search tsvector;
 DROP INDEX IF EXISTS categories_fts;
 CREATE INDEX categories_fts ON tb_category USING GIN(search);
 
-CREATE FUNCTION name_search() RETURNS TRIGGER AS $$
+CREATE OR REPLACE FUNCTION name_search() RETURNS TRIGGER AS $$
 DECLARE
     idiom regconfig := TG_ARGV[0];
 BEGIN
