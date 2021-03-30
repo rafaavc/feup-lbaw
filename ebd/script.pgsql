@@ -365,14 +365,6 @@ ADD COLUMN search tsvector;
 DROP INDEX IF EXISTS users_fts;
 CREATE INDEX users_fts ON tb_member USING GIN(search);
 
-
-ALTER TABLE tb_recipe
-ADD COLUMN search tsvector;
-
-DROP INDEX IF EXISTS recipes_fts;
-CREATE INDEX recipes_fts ON recipes_fts_view USING GIN(search);
-
-
 ALTER TABLE tb_group
 ADD COLUMN search tsvector;
 
@@ -745,13 +737,6 @@ CREATE TRIGGER users_search_tg
 BEFORE INSERT OR UPDATE ON tb_member
 FOR EACH ROW
 EXECUTE PROCEDURE name_search('simple');
-
-
-DROP TRIGGER IF EXISTS recipes_search_tg ON tb_recipe;
-CREATE TRIGGER recipes_search_tg
-BEFORE INSERT OR UPDATE ON tb_recipe
-FOR EACH ROW
-EXECUTE PROCEDURE name_search('english');
 
 
 DROP TRIGGER IF EXISTS groups_search_tg ON tb_group;
