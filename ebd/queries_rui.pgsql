@@ -193,10 +193,10 @@ DROP INDEX IF EXISTS recipes_fts;
 CREATE INDEX recipes_fts ON recipes_fts_view USING GIN(search);
 
 DROP FUNCTION IF EXISTS recipes_fts_UDF() CASCADE;
-CREATE FUNCTION recipes_fts_UDF() RETURNS TRIGGER AS $$
+CREATE OR REPLACE FUNCTION recipes_fts_UDF() 
+RETURNS void AS $$
 BEGIN
     REFRESH MATERIALIZED VIEW recipes_fts_view;
-    RETURN NEW;
 END
 $$ LANGUAGE plpgsql;
 

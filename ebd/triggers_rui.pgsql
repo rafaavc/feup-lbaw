@@ -31,7 +31,7 @@ $$ LANGUAGE plpgsql;
 
 DROP TRIGGER IF EXISTS score_recipe_insertOrUpdate_tg ON tb_comment;
 CREATE TRIGGER score_recipe_insertOrUpdate_tg
-AFTER INSERT OR UPDATE ON tb_comment
+AFTER INSERT OR UPDATE OF rating ON tb_comment
 FOR EACH ROW
 WHEN (NEW.rating IS NOT NULL)
 EXECUTE PROCEDURE score_recipe_insertOrUpdate();
@@ -107,7 +107,7 @@ $$ LANGUAGE plpgsql;
 
 DROP TRIGGER IF EXISTS score_member_update_tg ON tb_recipe;
 CREATE TRIGGER score_member_update_tg
-AFTER UPDATE ON tb_recipe
+AFTER UPDATE OF score ON tb_recipe
 FOR EACH ROW
 EXECUTE PROCEDURE score_member_update();
 
