@@ -258,14 +258,7 @@ CREATE FUNCTION name_search() RETURNS TRIGGER AS $$
 DECLARE
     idiom regconfig := TG_ARGV[0];
 BEGIN
-    -- IF TG_OP = 'INSERT' THEN
-        NEW.search = to_tsvector(idiom, NEW.name);
-    -- END IF;
-    -- IF TG_OP = 'UPDATE' THEN
-    --     IF NEW.name <> OLD.name THEN   
-    --         NEW.search = to_tsvector(idiom, NEW.name);
-    --     END IF;
-    -- END IF;
+    NEW.search = to_tsvector(idiom, NEW.name);
     RETURN NEW;
 END
 $$ LANGUAGE plpgsql;
