@@ -312,7 +312,6 @@ CREATE TABLE tb_recipe_report (
 
 -- INDEXES
 
-
 DROP INDEX IF EXISTS member_recipe_index;
 CREATE INDEX member_recipe_index ON tb_recipe USING hash(id_member);
 
@@ -326,11 +325,11 @@ CREATE INDEX group_recipe_index ON tb_recipe USING hash(id_group);
 
 
 DROP INDEX IF EXISTS message_index;
-CREATE INDEX message_index ON tb_message USING hash(id_sender, id_receiver);
+CREATE INDEX message_index ON tb_message (id_sender, id_receiver);
 
 
 DROP INDEX IF EXISTS rating_index;
-CREATE INDEX rating_index ON tb_recipe USING (score); -- B-tree by default
+CREATE INDEX rating_index ON tb_recipe USING btree(score); -- B-tree by default
 
 
 DROP INDEX IF EXISTS member_comment_index;
@@ -346,7 +345,7 @@ CREATE INDEX receiver_delete_notification_index ON tb_delete_notification USING 
 
 
 DROP INDEX IF EXISTS recipe_creation_time_index;
-CREATE INDEX recipe_creation_time_index ON tb_recipe USING (creation_time);
+CREATE INDEX recipe_creation_time_index ON tb_recipe USING btree(creation_time);
 
 
 DROP INDEX IF EXISTS recipe_difficulty_index;
@@ -500,7 +499,7 @@ DECLARE
     answer_time timestamptz := (SELECT post_time FROM tb_comment WHERE id = NEW.id_comment);
 BEGIN
     IF answer_time < original_comment_time THEN
-        RAISE EXCEPTION 'The date/time of an answer must be after the original comment''s creation date. Comment id = (%), answer id = (%)', NEW.father_comment, NEW.id_comment;
+        RAISE EXCEPTION 'The date/time of an answer must be after the original comment''s creation date. Comment id = (%) t = (%), answer id = (%) t = (%),', NEW.father_comment, original_comment_time, NEW.id_comment, answer_time;
     END IF; 
     RETURN NEW;
 END;
@@ -533,6 +532,28 @@ CREATE TRIGGER default_following_state_tg
 BEFORE INSERT ON tb_following
 FOR EACH ROW
 EXECUTE PROCEDURE default_following_state();
+
+
+CREATE OR REPLACE FUNCTION default_group_request_state() RETURNS TRIGGER AS $$
+DECLARE
+    group_visibility boolean := (SELECT visibility FROM tb_group WHERE id = NEW.id_group);
+BEGIN
+    IF NEW.state IS NULL THEN
+        IF group_visibility = TRUE THEN
+            NEW.state := 'accepted';
+        ELSE
+            NEW.state := 'pending';
+        END IF; 
+    END IF;
+    RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
+
+DROP TRIGGER IF EXISTS default_group_request_state_tg ON tb_group_request;
+CREATE TRIGGER default_group_request_state_tg
+BEFORE INSERT OR UPDATE ON tb_group_request
+FOR EACH ROW
+EXECUTE PROCEDURE default_group_request_state();
 
 
 CREATE FUNCTION name_search() RETURNS TRIGGER AS $$
@@ -578,7 +599,3 @@ CREATE TRIGGER groups_search_tg
 BEFORE INSERT OR UPDATE ON tb_group
 FOR EACH ROW
 EXECUTE PROCEDURE name_search('english');
-
-
-
-

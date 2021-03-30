@@ -28,5 +28,16 @@ FROM tb_group_member
 JOIN tb_member ON tb_group_member.id_member = tb_member.id
 WHERE tb_group = $groupId; -- $groupId
 
+-- Group recipes
+
+SELECT tb_recipe.id, tb_recipe.name, tb_recipe.description, tb_recipe.servings, 
+    tb_recipe.preparation_time, tb_recipe.cooking_time, tb_recipe.additional_time, -- TODO: visibility
+    tb_recipe.creation_time, 
+    tb_category.name AS category, coalesce(tb_recipe.score, 0) as score
+
+FROM tb_recipe JOIN tb_category ON tb_recipe.id_category = tb_category.id
+
+WHERE id_group = $id_group;
+
 
 COMMIT;
