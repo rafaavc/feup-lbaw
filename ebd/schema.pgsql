@@ -499,7 +499,7 @@ DECLARE
     answer_time timestamptz := (SELECT post_time FROM tb_comment WHERE id = NEW.id_comment);
 BEGIN
     IF answer_time < original_comment_time THEN
-        RAISE EXCEPTION 'The date/time of an answer must be after the original comment''s creation date. Comment id = (%), answer id = (%)', NEW.father_comment, NEW.id_comment;
+        RAISE EXCEPTION 'The date/time of an answer must be after the original comment''s creation date. Comment id = (%) t = (%), answer id = (%) t = (%),', NEW.father_comment, original_comment_time, NEW.id_comment, answer_time;
     END IF; 
     RETURN NEW;
 END;
