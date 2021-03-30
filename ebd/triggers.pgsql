@@ -98,7 +98,7 @@ BEGIN
     WHERE id = NEW.id_member;
 
     UPDATE tb_member 
-    SET score = (totalScore + (NEW.rating - OLD.rating)) / num_rating
+    SET score = (totalScore + (NEW.score - OLD.score)) / num_rating
     WHERE tb_member.id = NEW.id_member;
 
     RETURN NEW;
@@ -123,7 +123,7 @@ BEGIN
     WHERE id = OLD.id_member;
 
     UPDATE tb_member
-    SET num_rating = num_rating - 1, score = (totalScore - OLD.rating) / (num_rating - 1)
+    SET num_rating = num_rating - 1, score = (totalScore - OLD.score) / (num_rating - 1)
     WHERE tb_member.id = OLD.id_member;
 
     RETURN OLD;    
