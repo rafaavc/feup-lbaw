@@ -208,36 +208,6 @@ ORDER BY "rank" DESC;
 
 -- Still need to add a cron job in Laravel
 
--- ALTER TABLE tb_recipe
--- ADD COLUMN search tsvector;
-
--- DROP INDEX IF EXISTS recipes_fts;
--- CREATE INDEX recipes_fts ON tb_recipe USING GIN(search);
-
--- DROP TRIGGER IF EXISTS recipes_search_tg ON tb_recipe;
--- CREATE TRIGGER recipes_search_tg
--- BEFORE INSERT OR UPDATE OF name ON tb_recipe
--- FOR EACH ROW
--- EXECUTE PROCEDURE name_search('english');
-
--- SELECT *, ts_rank(query_table._search, to_tsquery('simple', 'egg | beef')) AS "rank", _search
--- FROM    (SELECT tb_recipe.id AS recipe_id , tb_recipe.name AS recipe_name, tb_member.id AS member_id, tb_member.name AS member_name,
---         tb_category.name AS category, string_agg(tb_tag.name, ' ') AS tag,
---         (setweight(tb_recipe.search, 'A') ||
---         setweight(tb_category.search, 'B') ||
---         setweight(to_tsvector('english', string_agg(tb_tag.name, ' ')), 'B') ||
---         setweight(tb_member.search, 'C')) AS _search
---         FROM tb_recipe
---         JOIN tb_member ON tb_recipe.id_member = tb_member.id
---         JOIN tb_category ON tb_recipe.id_category = tb_category.id
---         JOIN tb_tag_recipe ON tb_recipe.id = tb_tag_recipe.id_recipe
---         JOIN tb_tag ON tb_tag_recipe.id_tag = tb_tag.id
---         WHERE tb_recipe.visibility = TRUE
---         GROUP BY tb_recipe.id, tb_member.id, tb_category.name, tb_category.search
---         ORDER BY tb_recipe.id) AS query_table
--- WHERE query_table._search @@ to_tsquery('simple', 'egg | beef')
--- ORDER BY "rank" DESC;
-
 -- Groups
 
 ALTER TABLE tb_group
