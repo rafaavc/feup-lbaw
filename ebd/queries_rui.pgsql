@@ -201,7 +201,7 @@ $$ LANGUAGE plpgsql;
 
 SELECT *, ts_rank("search", to_tsquery('english', 'egg | beef')) AS "rank"
 FROM recipes_fts_view
-WHERE "search" @@ to_tsquery('english', 'egg | beef') AND recipe_visibility(recipes_fts_view.recipe_id.id, $userId) = TRUE
+WHERE "search" @@ to_tsquery('english', 'egg | beef') AND recipe_visibility(recipes_fts_view.recipe_id, $userId) = TRUE
 ORDER BY "rank" DESC;
 
 -- Still need to add a cron job in Laravel
