@@ -185,7 +185,6 @@ CREATE MATERIALIZED VIEW recipes_fts_view AS
     JOIN tb_category ON tb_recipe.id_category = tb_category.id
     JOIN tb_tag_recipe ON tb_recipe.id = tb_tag_recipe.id_recipe
     JOIN tb_tag ON tb_tag_recipe.id_tag = tb_tag.id
-    WHERE recipe_visibility(tb_recipe.id, $userId) = TRUE
     GROUP BY tb_recipe.id, tb_member.id, tb_category.name
     ORDER BY tb_recipe.id;
 
@@ -202,7 +201,7 @@ $$ LANGUAGE plpgsql;
 
 SELECT *, ts_rank("search", to_tsquery('english', 'egg | beef')) AS "rank"
 FROM recipes_fts_view
-WHERE "search" @@ to_tsquery('english', 'egg | beef')
+WHERE "search" @@ to_tsquery('english', 'egg | beef') AND recipe_visibility(recipes_fts_view.recipe_id.id, $userId) = TRUE
 ORDER BY "rank" DESC;
 
 -- Still need to add a cron job in Laravel

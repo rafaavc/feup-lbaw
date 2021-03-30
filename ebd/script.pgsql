@@ -673,7 +673,7 @@ DECLARE
     answer_time timestamptz := (SELECT post_time FROM tb_comment WHERE id = NEW.id_comment);
 BEGIN
     IF answer_time < original_comment_time THEN
-        RAISE EXCEPTION 'The date/time of an answer must be after the original comment''s creation date. Comment id = (%), answer id = (%)', NEW.father_comment, NEW.id_comment;
+        RAISE EXCEPTION 'The date/time of an answer must be after the original comment''s creation date. Comment id = (%) t = (%), answer id = (%) t = (%),', NEW.father_comment, original_comment_time, NEW.id_comment, answer_time;
     END IF; 
     RETURN NEW;
 END;
@@ -706,6 +706,29 @@ CREATE TRIGGER default_following_state_tg
 BEFORE INSERT ON tb_following
 FOR EACH ROW
 EXECUTE PROCEDURE default_following_state();
+
+
+CREATE OR REPLACE FUNCTION default_group_request_state() RETURNS TRIGGER AS $$
+DECLARE
+    group_visibility boolean := (SELECT visibility FROM tb_group WHERE id = NEW.id_group);
+BEGIN
+    IF NEW.state IS NULL THEN
+        IF group_visibility = TRUE THEN
+            NEW.state := 'accepted';
+        ELSE
+            NEW.state := 'pending';
+        END IF; 
+    END IF;
+    RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
+
+DROP TRIGGER IF EXISTS default_group_request_state_tg ON tb_group_request;
+CREATE TRIGGER default_group_request_state_tg
+BEFORE INSERT OR UPDATE ON tb_group_request
+FOR EACH ROW
+EXECUTE PROCEDURE default_group_request_state();
+
 
 
 CREATE FUNCTION name_search() RETURNS TRIGGER AS $$
