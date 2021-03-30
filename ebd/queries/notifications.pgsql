@@ -6,7 +6,7 @@ FROM tb_comment_notification
 JOIN tb_comment ON tb_comment_notification.id_comment = tb_comment.id
 JOIN tb_recipe ON tb_comment.id_recipe = tb_recipe.id
 JOIN tb_member ON tb_recipe.id_member = tb_member.id
-WHERE tb_comment.id_member = $userId;
+WHERE tb_recipe.id_member = $userId;
 
 
 -- get delete notifications of $userId
