@@ -47,7 +47,7 @@ CREATE TABLE tb_member (
     visibility boolean DEFAULT FALSE NOT NULL,
     is_banned boolean DEFAULT FALSE NOT NULL,
     id_country integer NOT NULL,
-    score real,
+    score real DEFAULT 0,
 
     CONSTRAINT member_PK PRIMARY KEY (id),
     CONSTRAINT member_country_FK FOREIGN KEY (id_country) REFERENCES "tb_country" ON DELETE SET NULL ON UPDATE CASCADE
@@ -105,7 +105,7 @@ CREATE TABLE tb_recipe (
     id_member integer NOT NULL,
     id_category integer,
     id_group integer,
-    score real,
+    score real DEFAULT 0,
 
     CONSTRAINT recipe_PK PRIMARY KEY (id),
     CONSTRAINT recipe_member_FK FOREIGN KEY (id_member) REFERENCES "tb_member" (id) ON DELETE CASCADE ON UPDATE CASCADE,
