@@ -5,9 +5,9 @@ ADD COLUMN num_rating integer DEFAULT 0;
 
 -- Insert and Update
 
-DROP FUNCTION IF EXISTS score_recipe_insertOrUpdate() CASCADE;
-CREATE FUNCTION score_recipe_insertOrUpdate() RETURNS TRIGGER AS $$
-DECLARE
+DROP FUNCTION IF EXISTS score_recipe_insert_update() CASCADE;
+CREATE FUNCTION score_recipe_insert_update() RETURNS TRIGGER AS $$
+DECLARE 
     totalScore real;
 BEGIN
     SELECT score * num_rating INTO totalScore
@@ -29,12 +29,12 @@ BEGIN
 END
 $$ LANGUAGE plpgsql;
 
-DROP TRIGGER IF EXISTS score_recipe_insertOrUpdate_tg ON tb_comment;
-CREATE TRIGGER score_recipe_insertOrUpdate_tg
+DROP TRIGGER IF EXISTS score_recipe_insert_update_tg ON tb_comment;
+CREATE TRIGGER score_recipe_insert_update_tg
 AFTER INSERT OR UPDATE OF rating ON tb_comment
 FOR EACH ROW
 WHEN (NEW.rating IS NOT NULL)
-EXECUTE PROCEDURE score_recipe_insertOrUpdate();
+EXECUTE PROCEDURE score_recipe_insert_update();
 
 -- Delete
 
