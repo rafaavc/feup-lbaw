@@ -20,3 +20,11 @@ CREATE MATERIALIZED VIEW recipes_fts_view AS
 
 DROP INDEX IF EXISTS recipes_fts;
 CREATE INDEX recipes_fts ON recipes_fts_view USING GIN(search);
+
+DROP FUNCTION IF EXISTS recipes_fts_UDF() CASCADE;
+CREATE OR REPLACE FUNCTION recipes_fts_UDF() 
+RETURNS void AS $$
+BEGIN
+    REFRESH MATERIALIZED VIEW recipes_fts_view;
+END
+$$ LANGUAGE plpgsql;
