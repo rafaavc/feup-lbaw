@@ -5,7 +5,7 @@ DECLARE
     comment_rating integer := (SELECT rating FROM tb_comment WHERE id = NEW.id_comment);
 BEGIN
     IF comment_rating IS NOT NULL THEN
-        RAISE EXCEPTION 'A comment cannot have a rating.';
+        RAISE EXCEPTION 'An answer cannot have a rating.';
     END IF;
     RETURN NEW;
 END

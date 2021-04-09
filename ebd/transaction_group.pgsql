@@ -21,13 +21,6 @@ FROM tb_group_request
 JOIN tb_member ON tb_group_request.id_member = tb_member.id
 WHERE tb_group = $groupId; -- $groupId
 
--- Group Members
-
-SELECT tb_group_member.id_member, tb_member.username
-FROM tb_group_member
-JOIN tb_member ON tb_group_member.id_member = tb_member.id
-WHERE tb_group = $groupId; -- $groupId
-
 -- Group recipes
 
 SELECT tb_recipe.id, tb_recipe.name, tb_recipe.description, tb_recipe.servings, 
