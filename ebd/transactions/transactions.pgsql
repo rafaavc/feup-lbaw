@@ -1,6 +1,6 @@
 -- Create recipe transaction
 
-SET TRANSACTION ISOLATION LEVEL READ COMMITED;
+SET TRANSACTION ISOLATION LEVEL READ COMMITTED;
 BEGIN TRANSACTION;
 
 INSERT INTO tb_recipe (name, difficulty, description, servings, preparation_time, cooking_time, additional_time, visibility, creation_time, id_member, id_category)
@@ -17,7 +17,7 @@ COMMIT;
 
 -- Reply to comment transaction
 
-SET TRANSACTION ISOLATION LEVEL READ COMMITED;
+SET TRANSACTION ISOLATION LEVEL READ COMMITTED;
 BEGIN TRANSACTION;
 
 WITH new_comment AS (
@@ -31,7 +31,7 @@ COMMIT;
 
 -- Update recipe
 
-SET TRANSACTION ISOLATION LEVEL READ COMMITED;
+SET TRANSACTION ISOLATION LEVEL READ COMMITTED;
 BEGIN TRANSACTION;
 
 UPDATE tb_recipe
