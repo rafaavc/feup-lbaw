@@ -1,6 +1,9 @@
 DROP SCHEMA IF EXISTS public CASCADE;
 CREATE SCHEMA public;
 
+DROP SCHEMA IF EXISTS public CASCADE;
+CREATE SCHEMA public;
+
 CREATE DOMAIN "datetime" 
 AS timestamp with time zone 
 DEFAULT now()
@@ -47,7 +50,7 @@ CREATE TABLE tb_member (
     visibility boolean DEFAULT FALSE NOT NULL,
     is_banned boolean DEFAULT FALSE NOT NULL,
     id_country integer NOT NULL,
-    score real,
+    score real DEFAULT 0,
 
     CONSTRAINT member_PK PRIMARY KEY (id),
     CONSTRAINT member_country_FK FOREIGN KEY (id_country) REFERENCES "tb_country" ON DELETE SET NULL ON UPDATE CASCADE
@@ -105,7 +108,7 @@ CREATE TABLE tb_recipe (
     id_member integer NOT NULL,
     id_category integer,
     id_group integer,
-    score real,
+    score real DEFAULT 0,
 
     CONSTRAINT recipe_PK PRIMARY KEY (id),
     CONSTRAINT recipe_member_FK FOREIGN KEY (id_member) REFERENCES "tb_member" (id) ON DELETE CASCADE ON UPDATE CASCADE,
@@ -309,6 +312,7 @@ CREATE TABLE tb_recipe_report (
     CONSTRAINT recipe_report_reporter_FK FOREIGN KEY (id_reporter) REFERENCES "tb_member" (id) ON DELETE CASCADE ON UPDATE CASCADE,
     CONSTRAINT recipe_report_recipe_FK FOREIGN KEY (id_recipe) REFERENCES "tb_recipe" (id) ON DELETE CASCADE ON UPDATE CASCADE
 );
+
 
 -- INDEXES
 
@@ -708,26 +712,29 @@ FOR EACH ROW
 EXECUTE PROCEDURE default_following_state();
 
 
-CREATE OR REPLACE FUNCTION default_group_request_state() RETURNS TRIGGER AS $$
+
+DROP FUNCTION IF EXISTS group_request() CASCADE;
+CREATE FUNCTION group_request() RETURNS TRIGGER AS
+$BODY$
 DECLARE
     group_visibility boolean := (SELECT visibility FROM tb_group WHERE id = NEW.id_group);
 BEGIN
-    IF NEW.state IS NULL THEN
-        IF group_visibility = TRUE THEN
-            NEW.state := 'accepted';
-        ELSE
-            NEW.state := 'pending';
-        END IF; 
+    IF group_visibility = TRUE THEN
+        NEW.state := 'accepted';
+    ELSE
+        NEW.state := 'pending';
     END IF;
     RETURN NEW;
-END;
-$$ LANGUAGE plpgsql;
+END
+$BODY$
+LANGUAGE plpgsql;
 
-DROP TRIGGER IF EXISTS default_group_request_state_tg ON tb_group_request;
-CREATE TRIGGER default_group_request_state_tg
-BEFORE INSERT OR UPDATE ON tb_group_request
-FOR EACH ROW
-EXECUTE PROCEDURE default_group_request_state();
+
+DROP TRIGGER IF EXISTS group_request_tg ON tb_group_request;
+CREATE TRIGGER group_request_tg
+    BEFORE INSERT OR UPDATE ON tb_group_request
+    FOR EACH ROW
+    EXECUTE PROCEDURE group_request();
 
 
 
@@ -767,3 +774,66 @@ CREATE TRIGGER groups_search_tg
 BEFORE INSERT OR UPDATE ON tb_group
 FOR EACH ROW
 EXECUTE PROCEDURE name_search('english');
+
+
+
+DROP FUNCTION IF EXISTS add_comment_notification CASCADE;
+CREATE FUNCTION add_comment_notification() RETURNS TRIGGER AS
+$BODY$
+BEGIN
+    INSERT INTO tb_comment_notification (id_comment) VALUES (NEW.id);
+	RETURN NEW;
+END;
+$BODY$
+LANGUAGE plpgsql;
+
+
+DROP TRIGGER IF EXISTS comment_notification ON tb_comment_notification CASCADE;
+CREATE TRIGGER comment_notification
+    AFTER INSERT ON tb_comment
+    FOR EACH ROW
+    EXECUTE PROCEDURE add_comment_notification();
+
+
+
+DROP FUNCTION IF EXISTS add_favourite_notification CASCADE;
+CREATE FUNCTION add_favourite_notification() RETURNS TRIGGER AS
+$BODY$
+BEGIN
+    INSERT INTO tb_favourite_notification (id_caused_by, id_recipe)
+    VALUES (NEW.id_member, NEW.id_recipe);
+    RETURN NEW;
+END;
+$BODY$
+LANGUAGE plpgsql;
+
+
+DROP TRIGGER IF EXISTS favourite_notification ON tb_favourite_notification CASCADE;
+CREATE TRIGGER favourite_notification
+    AFTER INSERT ON tb_favourite
+    FOR EACH ROW
+    EXECUTE PROCEDURE add_favourite_notification();
+
+
+DROP FUNCTION IF EXISTS answer_rating() CASCADE;
+CREATE FUNCTION answer_rating() RETURNS TRIGGER AS
+$BODY$
+DECLARE
+    comment_rating integer := (SELECT rating FROM tb_comment WHERE id = NEW.id_comment);
+BEGIN
+    IF comment_rating IS NOT NULL THEN
+        RAISE EXCEPTION 'An answer cannot have a rating.';
+    END IF;
+    RETURN NEW;
+END
+$BODY$
+LANGUAGE plpgsql;
+
+
+DROP TRIGGER IF EXISTS answer_rating_tg ON tb_answer;
+CREATE TRIGGER answer_rating_tg
+    BEFORE INSERT OR UPDATE ON tb_answer
+    FOR EACH ROW
+    EXECUTE PROCEDURE answer_rating();
+
+
