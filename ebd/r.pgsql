@@ -67,45 +67,41 @@ DELETE FROM tb_recipe WHERE id = $recipeId;   -- It should cascade to the steps,
 
 -- Filter date
 
--- need to add visibility
-SELECT tb_recipe.id, tb_recipe.name as title, description, creation_time, tb_member.name as member_name, tb_recipe.score
+SELECT 
+    tb_recipe.id, tb_recipe.name as title, 
+    description,
+    comment_elapsed_time(tb_recipe.creation_time) as elapsed_time, 
+    tb_member.name as member_name, 
+    tb_recipe.score
 FROM tb_recipe
 JOIN tb_member ON tb_recipe.id_member = tb_member.id
-WHERE tb_recipe.visibility AND creation_time > $lower_date_bound AND creation_time < $upper_date_bound
-AND tb_recipe.id_member IN (
-	SELECT tb_following.id_followed AS id
-	FROM tb_following
-	JOIN tb_member ON tb_following.id_following = tb_member.id
-	WHERE tb_member.id = $memberId
-)
+WHERE recipe_visibility(tb_recipe.id, $memberId) AND creation_time > $lower_date_bound AND creation_time < $upper_date_bound
 ORDER BY creation_time DESC;
 
 
--- Filter date
+-- Filter difficulty
 
--- need to add visibility
-SELECT tb_recipe.id, tb_recipe.name as title, description, creation_time, tb_member.name as member_name, tb_recipe.score
+SELECT 
+    tb_recipe.id, tb_recipe.name as title, 
+    description,
+    comment_elapsed_time(tb_recipe.creation_time) as elapsed_time, 
+    tb_member.name as member_name, 
+    tb_recipe.score
 FROM tb_recipe
 JOIN tb_member ON tb_recipe.id_member = tb_member.id
-WHERE tb_recipe.visibility AND difficulty = $desired_difficulty
-AND tb_recipe.id_member IN (
-	SELECT tb_following.id_followed AS id
-	FROM tb_following
-	JOIN tb_member ON tb_following.id_following = tb_member.id
-	WHERE tb_member.id = $memberId
-)
+WHERE recipe_visibility(tb_recipe.id, $memberId) AND difficulty = $desired_difficulty
 ORDER BY creation_time DESC;
+
 
 -- Filter score
--- need to add visibility
-SELECT tb_recipe.id, tb_recipe.name as title, description, creation_time, tb_member.name as member_name, tb_recipe.score
+
+SELECT 
+    tb_recipe.id, tb_recipe.name as title, 
+    description,
+    comment_elapsed_time(tb_recipe.creation_time) as elapsed_time, 
+    tb_member.name as member_name, 
+    tb_recipe.score
 FROM tb_recipe
 JOIN tb_member ON tb_recipe.id_member = tb_member.id
-WHERE tb_recipe.visibility AND score > $lower_score_bound AND score < $upper_score_bound
-AND tb_recipe.id_member IN (
-	SELECT tb_following.id_followed AS id
-	FROM tb_following
-	JOIN tb_member ON tb_following.id_following = tb_member.id
-	WHERE tb_member.id = $memberId
-)
+WHERE recipe_visibility(tb_recipe.id, $memberId) AND score > $lower_score_bound AND score < $upper_score_bound
 ORDER BY creation_time DESC;
