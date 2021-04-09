@@ -14,8 +14,8 @@ END
 $BODY$
 LANGUAGE plpgsql;
 
-DROP TRIGGER IF EXISTS group_request ON tb_group_request;
-CREATE TRIGGER group_request
+DROP TRIGGER IF EXISTS group_request_tg ON tb_group_request;
+CREATE TRIGGER group_request_tg
     BEFORE INSERT OR UPDATE ON tb_group_request
     FOR EACH ROW
     EXECUTE PROCEDURE group_request();

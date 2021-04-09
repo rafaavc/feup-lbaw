@@ -12,8 +12,8 @@ END
 $BODY$
 LANGUAGE plpgsql;
 
-DROP TRIGGER IF EXISTS answer_rating ON tb_answer;
-CREATE TRIGGER answer_rating
+DROP TRIGGER IF EXISTS answer_rating_tg ON tb_answer;
+CREATE TRIGGER answer_rating_tg
     BEFORE INSERT OR UPDATE ON tb_answer
     FOR EACH ROW
     EXECUTE PROCEDURE answer_rating();
