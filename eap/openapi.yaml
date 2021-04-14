@@ -21,34 +21,61 @@ tags:
     - name: 'M05: Web resources associated with the administrator pages, namely the users and reports management'
   
 paths:
+    # 1 - Tiago
     /
 
+    # 2 - Rui
     /login
+
+    # 3 - Tiago
     /register
+
+    # 4 - Alexandre
     /logout
     
+    # 5 - Rui
     /member/{username}/recipes
+
+    # 6 - Rui
     /member/{username}/favourites
+
+    # 7 - Rafael
     /member/{username}/reviews
     
+    # 8 - Tiago
     /category/{categoryId}
     
+    # 9 - Alexandre
     /recipe/{recipeId}
+
+    # 10 - Rafael
     /recipe
 
+    # 11 - Tiago
     /group/{groupId}
+
+    # 12 - Alexandre
     /group
     
+    # 13 - Rafael
     /feed
 
+    # 14 - Alexandre
     /chat/{recipientId}
-    
+
+    # 15 - Rui
     /search/{searchQuery}
 
-    /admin/reports
-    /admin/users
+    # 16 - Tiago
+    /reports
 
+    # 17 - Rafael
+    /users
+
+    # 18 - Alexandre
     /about
+
+    # 19 - Rui
     /faq
     
     /api/user
@@ -667,6 +694,7 @@ paths:
                 '400':
                     description: 'Invalid Request'    
     
+    # 1 - Rafael
     /api/recipe
         post:
             operationId: R2101
@@ -678,6 +706,7 @@ paths:
                 '200':
                     description:
 
+    # 2 - Alexandre
     /api/recipe/{recipeId}
         get:
             operationId: R2102
@@ -707,6 +736,7 @@ paths:
                 '200':
                     description:
 
+    # 3 - Rafael
     /api/recipe/{recipeId}/favourite
         post:
             operationId: R2105
@@ -727,6 +757,7 @@ paths:
                 '200':
                     description:        
     
+    # 4 - Alexandre
     /api/group
         post:
             operationId: R2201
@@ -738,6 +769,7 @@ paths:
                 '200':
                     description:
     
+    # 5 - Rafael
     /api/group/{groupId}
         get:
             operationId: R2202
@@ -766,7 +798,8 @@ paths:
             responses:    
                 '200':
                     description:
-                    
+
+    # 6 - Tiago 
     /api/group/{groupId}/request
         post:
             operationId: R2205
@@ -778,6 +811,7 @@ paths:
                 '200':
                     description:
 
+    # 7 - Rui
     /api/group/{groupId}/request/{memberId}
         post:
             operationId: R2206
@@ -798,6 +832,7 @@ paths:
                 '200':
                     description:
     
+    # 8 - Alexandre
     /api/group/{groupId}/moderator/{memberId}
         post:
             operationId: R2208
@@ -809,6 +844,7 @@ paths:
                 '200':
                     description:
     
+    # 9 - Alexandre
     /api/group/{groupId}/member/{memberId}
         delete:
             operationId: R2209
@@ -820,6 +856,7 @@ paths:
                 '200':
                     description:
 
+    # 10 - Rui
     /api/group/{groupId}/members
         get:
             operationId: R2210
@@ -831,6 +868,7 @@ paths:
                 '200':
                     description:
 
+    # 11 - Rui
     /api/chat/{recipientId}
         get:
             operationId: R2301
@@ -851,6 +889,7 @@ paths:
                 '200':
                     description:
     
+    # 12 - Rafael
     /api/comment
         post:
             operationId: R2401
@@ -861,7 +900,8 @@ paths:
             responses:    
                 '200':
                     description:
-        
+
+    # 13 - Tiago
     /api/comment/{commentId}
         put:
             operationId: R2402
@@ -883,6 +923,7 @@ paths:
                 '200':
                     description:
     
+    # 14 - Rui
     /api/feed
         ?sort=asc&ingredient=tomato,flour&date=15/05/2020-16/05/2020&difficulty=hard
         get:
@@ -895,6 +936,7 @@ paths:
                 '200':
                     description:
     
+    # 15 - Rafael
     /api/search/{searchTerm}
         ?sort=asc&ingredient=tomato,potato&time=40-100&category=2
         get:
@@ -907,6 +949,7 @@ paths:
                 '200':
                     description:
     
+    # 16 - Alexandre
     /api/report
         post:
             operationId: R2701
@@ -917,7 +960,8 @@ paths:
             responses:
                 '200':
                     description:
-
+    
+    # 17 - Tiago
     /api/report/{reportId}
         delete:
             operationId: R2702
@@ -928,7 +972,8 @@ paths:
             responses:    
                 '200':
                     description:
-                    
+    
+    # 18 - Tiago         
     /api/reports
         get:
             operationId: R2703
@@ -940,6 +985,7 @@ paths:
                 '200':
                     description:
     
+    # 19 - Rui
     /api/notifications
         get:
             operationId: R2801
@@ -951,6 +997,7 @@ paths:
                 '200':
                     description:
     
+    # 20 - Tiago
     /api/countries
         get:
             operationId: R2901
