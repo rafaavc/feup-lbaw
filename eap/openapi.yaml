@@ -67,10 +67,10 @@ paths:
     /search/{searchQuery}
 
     # 16 - Tiago
-    /reports
+    /admin/reports
 
     # 17 - Rafael
-    /users
+    /admin/users
 
     # 18 - Alexandre
     /about
@@ -78,7 +78,7 @@ paths:
     # 19 - Rui
     /faq
     
-    /api/user
+    /api/user:
         post:
             operationId: R2001
             summary: 'R2001: Member account'
@@ -119,7 +119,7 @@ paths:
                 '400':
                     description: 'Invalid Request'
 
-    /api/user/{username}
+    /api/user/{username}:
         get:
             operationId: R2002
             summary: 'R2002: Member information'
@@ -280,7 +280,7 @@ paths:
                 '400':
                     description: 'Invalid Request'
 
-    /api/user/{username}/recipes
+    /api/user/{username}/recipes:
         get:
             operationId: R2005
             summary: 'R2005: Member recipes'
@@ -348,7 +348,7 @@ paths:
                 '404':
                     description: 'The user does not exist'
 
-    /api/user/{username}/reviews
+    /api/user/{username}/reviews:
         get:
             operationId: R2006
             summary: 'R2006: Member reviews'
@@ -397,7 +397,7 @@ paths:
                 '404':
                     description: 'The user does not exist'
 
-    /api/user/{username}/favourites
+    /api/user/{username}/favourites:
         get:
             operationId: R2007
             summary: 'R2007: Member favourites'
@@ -463,7 +463,7 @@ paths:
                 '404':
                     description: 'The user does not exist'
 
-    /api/user/{username}/following
+    /api/user/{username}/following:
         get:
             operationId: R2008
             summary: 'R2008: Members that the member is following'
@@ -504,7 +504,7 @@ paths:
                 '404':
                     description: 'The user does not exist'
 
-    /api/user/{username}/followers
+    /api/user/{username}/followers:
         get:
             operationId: R2009
             summary: 'R2009: Member''s followers'
@@ -542,7 +542,7 @@ paths:
                 '404':
                     description: 'The user does not exist'
 
-    /api/user/{username}/groups
+    /api/user/{username}/groups:
         get:
             operationId: R2010
             summary: "R2007: Member's groups"
@@ -577,7 +577,7 @@ paths:
                 '404':
                     description: 'The user does not exist'
 
-    /api/user/{username}/request
+    /api/user/{username}/request:
         post:
             operationId: R2011
             summary: 'R2008: Create follow request'
@@ -598,7 +598,7 @@ paths:
                 '404':
                     description: 'The user does not exist'
 
-    /api/user/request/{username}
+    /api/user/request/{username}:
         post:
             operationId: R2012
             summary: 'R2009: Accept follow request'
@@ -636,7 +636,7 @@ paths:
                 '400':
                   description: 'Invalid Request'
 
-    /api/users
+    /api/users:
         get:
             operationId: R2011
             summary: 'R2011: Get all members'
