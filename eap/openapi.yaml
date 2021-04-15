@@ -87,6 +87,13 @@ paths:
             tags: 
                 - 'M02: Recipes, categories, groups and members'
 
+            parameters:
+                - in: path
+                name: username
+                schema:
+                    type: string
+                required: true
+
             responses:    
                 '200':
                     description: 'Ok. Show [UI09](http://lbaw2135-piu.lbaw-prod.fe.up.pt/pages/profile.php)'
@@ -99,6 +106,13 @@ paths:
             description: 'Provide member favourited recipes page. Access: PUB'
             tags: 
                 - 'M02: Recipes, categories, groups and members'
+
+            parameters:
+                - in: path
+                name: username
+                schema:
+                    type: string
+                required: true
 
             responses:    
                 '200':
@@ -137,6 +151,14 @@ paths:
             description: 'Provide results from the performed search. Access: PUB'
             tags: 
                 - 'M02: Recipes, categories, groups and members'
+
+            parameters:
+                - in: path
+                name: searchQuery
+                schema:
+                    type: string
+                required: false
+
             responses:    
                 '200':
                     description: 'Ok. Show [UI15](http://lbaw2135-piu.lbaw-prod.fe.up.pt/pages/search.php)'
@@ -1178,13 +1200,62 @@ paths:
                     description:
     
     # 14 - Rui
-    /api/feed?sort=asc&ingredient=tomato,flour&date=2020/05/15-2020/05/16&difficulty=hard
+    /api/feed?sortparam=duration&sort=asc&ingredient=tomato,flour&date=2020/05/15-2020/05/16&difficulty=hard
         get:
             operationId: R2501
             summary: "R2501: Get member's feed"
             description: 'Gets the feed of a given member in JSON. Access: MBR'
             tags: 
                 - 'M02: Recipes, categories, groups and members'
+
+            parameters:
+                - in: query
+                name: sort
+                schema:
+                    type: string
+                required: false
+                - in: query
+                name: sortparam
+                schema:
+                    type: string
+                required: false
+                - in: query
+                name: category
+                schema:
+                    type: string
+                required: false
+                - in: query
+                name: tag
+                schema:
+                    type: string
+                required: false
+                - in: query
+                name: rating
+                schema:
+                    type: string
+                required: false
+                - in: query
+                name: ingredient
+                schema:
+                    type: string
+                required: false
+                - in: query
+                name: date
+                schema:
+                    type: string
+                required: false
+                - in: query
+                name: duration
+                schema:
+                    type: string
+                required: false
+                - in: query
+                name: difficulty
+                schema:
+                    type: string
+                required: false
+
+
             responses:
                 '200':
                     description: "Sucess"
@@ -1292,7 +1363,7 @@ paths:
 
     # 15 - Rafael
     /api/search/{searchTerm}
-        ?sort=asc&ingredient=tomato,potato&time=40-100&category=2
+        ?sort=asc&sortparam=duration&&ingredient=tomato,potato&time=40-100&category=2
         get:
             operationId: R2601
             summary: 'R2601: Search for a term'
