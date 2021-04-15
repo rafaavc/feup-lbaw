@@ -618,7 +618,7 @@ paths:
                     schema:
                         type: string
                     required: true
-           
+
             responses:
                 '200':
                   description: 'Accepted'
@@ -1271,8 +1271,6 @@ paths:
                                 items:
                                     type: object
                                         properties:
-                                            notificationId:
-                                                type: int
                                             type:    
                                                 type: string
                                             read:
@@ -1284,38 +1282,32 @@ paths:
                                             username:
                                                 type: string
                                 example:
-                                    -   notificationId: 1
-                                        type: followRequest
+                                    -   type: followRequest
                                         read: false
                                         userId: 1
                                         name: Sarah Colbert
                                         username: sarahc 
-                                    -   notificationId: 2
-                                        type: review
+                                    -   type: review
                                         read: true
                                         userId: 2
                                         name: Biggus Dickus
                                         username: biggus_dickus
-                                    -   notificationId: 3
-                                        type: follow
+                                    -   type: follow
                                         read: true
                                         userId: 2
                                         name: Biggus Dickus
                                         username: biggus_dickus     
-                                    -   notificationId: 4
-                                        type: comment
+                                    -   type: comment
                                         read: true
                                         userId: 2
                                         name: Biggus Dickus
                                         username: biggus_dickus 
-                                    -   notificationId: 5
-                                        type: delete
+                                    -   type: delete
                                         read: false
                                         userId: 1
                                         name: Sarah Colbert
                                         username: sarahc  
-                                    -   notificationId: 6
-                                        type: favourite
+                                    -   type: favourite
                                         read: false
                                         userId: 1
                                         name: Sarah Colbert
