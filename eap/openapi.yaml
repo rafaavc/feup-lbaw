@@ -25,7 +25,52 @@ paths:
     /
 
     # 2 - Rui
-    /login
+    /login:
+        get: 
+            operationId: R1002
+            summary: 'R1002: Login form'
+            description: 'Provide login form. Access: PUB'
+            tags: 
+                - 'M01: Authentication and Individual Profile'
+            responses:    
+                '200':
+                    description: 'Ok. Show [UI02](http://lbaw2135-piu.lbaw-prod.fe.up.pt/pages/signIn.php)'
+        post:
+            operationId: R1003
+            summary: 'R1093: Login Action'
+            description: 'Processes the login form submission. Access: PUB'
+            tags:
+                - 'M01: Authentication and Individual Profile'
+        
+            requestBody:
+                required: true
+                content:
+                application/x-www-form-urlencoded:
+                    schema:
+                        type: object
+                        properties:
+                            email:          
+                                type: string
+                            password:   
+                                type: string
+                        required:
+                            - email
+                            - password
+        
+            responses:
+                '302':
+                description: 'Redirect after processing the login credentials.'
+                headers:
+                    Location:
+                        schema:
+                            type: string
+                        examples:
+                            302Success:
+                                description: 'Successful authentication. Redirect to feed.'
+                                value: '/feed'
+                            302Error:
+                                description: 'Failed authentication. Redirect to login form.'
+                                value: '/login'
 
     # 3 - Tiago
     /register
@@ -34,10 +79,31 @@ paths:
     /logout
     
     # 5 - Rui
-    /member/{username}/recipes
+    /member/{username}/recipes:
+        get: 
+            operationId: R10XX
+            summary: 'R10XX: Member recipes'
+            description: 'Provide member recipes page. Access: PUB'
+            tags: 
+                - 'M02: Recipes, categories, groups and members'
+
+            responses:    
+                '200':
+                    description: 'Ok. Show [UI09](http://lbaw2135-piu.lbaw-prod.fe.up.pt/pages/profile.php)'
 
     # 6 - Rui
-    /member/{username}/favourites
+    /member/{username}/favourites:
+        get: 
+            operationId: R10XX
+            summary: 'R10XX: Member favourited recipes.'
+            description: 'Provide member favourited recipes page. Access: PUB'
+            tags: 
+                - 'M02: Recipes, categories, groups and members'
+
+            responses:    
+                '200':
+                    description: 'Ok. Show [UI11](http://lbaw2135-piu.lbaw-prod.fe.up.pt/pages/profile_favourites.php)'
+
 
     # 7 - Rafael
     /member/{username}/reviews
@@ -64,7 +130,16 @@ paths:
     /chat/{recipientId}
 
     # 15 - Rui
-    /search/{searchQuery}
+    /search/{searchQuery}:
+        get: 
+            operationId: R10XX
+            summary: 'R10XX: Search results page'
+            description: 'Provide results from the performed search. Access: PUB'
+            tags: 
+                - 'M02: Recipes, categories, groups and members'
+            responses:    
+                '200':
+                    description: 'Ok. Show [UI15](http://lbaw2135-piu.lbaw-prod.fe.up.pt/pages/search.php)'
 
     # 16 - Tiago
     /admin/reports
@@ -76,7 +151,18 @@ paths:
     /about
 
     # 19 - Rui
-    /faq
+    /faq:
+        /member/{username}/recipes:
+        get: 
+            operationId: R10XX
+            summary: 'R10XX: FAQ page'
+            description: 'Provide FAQ page. Access: PUB'
+            tags: 
+                - 'M04: Information'
+
+            responses:    
+                '200':
+                    description: 'Ok. Show [UI07](http://lbaw2135-piu.lbaw-prod.fe.up.pt/pages/faq.php)'
     
     /api/user:
         post:
