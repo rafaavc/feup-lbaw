@@ -1362,8 +1362,7 @@ paths:
                   description: 'Invalid Request' 
 
     # 15 - Rafael
-    /api/search/{searchTerm}
-        ?sort=asc&sortparam=duration&&ingredient=tomato,potato&time=40-100&category=2
+    /api/search/{searchTerm}?sortparam=duration&sort=asc&&&ingredient=tomato,potato&time=40-100&category=2
         get:
             operationId: R2601
             summary: 'R2601: Search for a term'
