@@ -303,6 +303,8 @@ paths:
                                 items:
                                     type: object
                                     properties:
+                                        id:
+                                            type: string
                                         title:
                                             type: string
                                         description:
@@ -374,7 +376,7 @@ paths:
                                         recipeTitle:
                                             type: string
                                         postTime:
-                                            type: datetime
+                                            type: date
                                         givenRating:
                                             type: int
                                         givenComment:
@@ -427,7 +429,7 @@ paths:
                                         description:
                                             type: string
                                         creationTime:
-                                            type: datetime
+                                            type: date
                                         rating:
                                             type: float
                                         numberOfReviews:
@@ -527,9 +529,12 @@ paths:
                                 items:
                                     type: object
                                     properties:
-                                        id: int
-                                        name: string
-                                        username: string
+                                        id: 
+                                            type: int
+                                        name: 
+                                            type: string
+                                        username: 
+                                            type: string
                                 example:
                                     - id: 4
                                     name: Judd Trump
@@ -565,8 +570,10 @@ paths:
                                 items:
                                     type: object
                                         properties:
-                                            id: int
-                                            name: string
+                                            id: 
+                                                type: int
+                                            name: 
+                                                type: string
                                 example:
                                     -   id: 1
                                         name: Oporto Vegetarians
@@ -611,6 +618,17 @@ paths:
                     schema:
                         type: string
                     required: true
+            requestBody:
+                    required: true
+                    content:
+                    application/x-www-form-urlencoded:
+                        schema:
+                        type: object
+                        properties:    
+                            id: 
+                                type: int
+                        required:
+                            - id            
             responses:
                 '200':
                   description: 'Accepted'
@@ -630,6 +648,19 @@ paths:
                     schema:
                         type: string
                     required: true
+            
+            requestBody:
+                    required: true
+                    content:
+                    application/x-www-form-urlencoded:
+                        schema:
+                        type: object
+                        properties:    
+                            id: 
+                                type: int
+                        required:
+                            - id
+
             responses:
                 '200':
                   description: 'Deleted'
@@ -819,18 +850,50 @@ paths:
             description: 'Accepts a membership request, adding the member to the group. Access: MOD'
             tags: 
                 - 'M02: Recipes, categories, groups and members'
+            
+            parameters:
+                -   in: path
+                    name: groupId
+                    schema:
+                        type: int
+                    required: true
+                -   in: path
+                    name: memberId
+                    schema:
+                        type: int
+                    required: true    
+            
             responses:
                 '200':
-                    description:
+                  description: 'Accepted'
+                '400':
+                  description: 'Invalid Request'
+                '404':
+                    description: 'The request does not exist'
         delete:
             operationId: R2207
             summary: 'R2207: Refuse membership request'
             description: 'Refuses a membership request. Access: MOD'
             tags: 
                 - 'M02: Recipes, categories, groups and members'
+
+            parameters:
+                -   in: path
+                    name: groupId
+                    schema:
+                        type: int
+                    required: true
+                -   in: path
+                    name: memberId
+                    schema:
+                        type: int
+                    required: true 
+
             responses:
                 '200':
-                    description:
+                  description: 'Deleted'
+                '400':
+                  description: 'Invalid Request'
     
     # 8 - Alexandre
     /api/group/{groupId}/moderator/{memberId}
@@ -864,9 +927,41 @@ paths:
             description: 'Returns a list of the members of the group in JSON Access: MOD'
             tags: 
                 - 'M02: Recipes, categories, groups and members'
+
+            parameters:
+                -   in: path
+                    name: groupId
+                    schema:
+                        type: int
+                    required: true
+
             responses:
                 '200':
-                    description:
+                    description: "Success"
+                    content: 
+                        application/json:
+                            schema:
+                                type: array
+                                items:
+                                    type: object
+                                        properties:
+                                            id:
+                                                type: int
+                                            name: 
+                                                type: string
+                                            username:
+                                                type: string
+                                example:
+                                    -   id: 2
+                                        name: Mark Hasmunsen              
+                                        username: mark_h
+                                    -   id: 3
+                                        name: Kyren Wilson
+                                        username: kyren77
+                '403':
+                    description: 'The authenticated user cannot access the requested information (the requested group is private and the authenticated user doesn't belong to it)'
+                '404':
+                    description: 'The group does not exist'
 
     # 11 - Rui
     /api/chat/{recipientId}
@@ -876,18 +971,101 @@ paths:
             description: 'Gets a chat between two members in JSON Access: MBR'
             tags: 
                 - 'M03: Chat'
+
+            parameters:
+                -   in: path
+                    name: recipientId
+                    schema:
+                        type: int
+                    required: true  
+
             responses:    
                 '200':
-                    description:
+                    description: "Sucess"
+                    content:
+                        application/json:
+                            schema:
+                                type: array
+                                items:
+                                    type: object
+                                        properties:
+                                            text:
+                                                type: string
+                                            creationDate:
+                                                type: date
+                                example:
+                                    -   text: That's nice!
+                                        creationDate: 2019-05-09 16:19
+                                    -   text: Hello :)
+                                        creationDate: 2019-05-12 13:09
+                '400':
+                    description: 'Invalid Request'
         post:
             operationId: R2302
             summary: 'R2302: Add message'
             description: 'Adds a message to a chat between two users. Access: MBR'
             tags: 
                 - 'M03: Chat'
+
+            parameters:
+                -   in: path
+                    name: recipientId
+                    schema:
+                        type: int
+                    required: true  
+
             responses:    
                 '200':
-                    description:
+                    description: 'Success'
+                '400':
+                  description: 'Invalid Request'    
+
+    # Needed route for getting user conversations (left menu in privateMessages.php)
+    /api/chats
+        get:
+            operationId: R2302
+            summary: 'R2302: Get the user conversations'
+            description: 'Gets a chat between two members in JSON Access: MBR'
+            tags: 
+                - 'M03: Chat'
+
+            responses:    
+                '200':
+                    description: 'Sucess'
+                    content:
+                        application/json:
+                            schema:
+                                type: array
+                                items:
+                                    type: object
+                                        properties:
+                                            userId: 
+                                                type: int
+                                            name: 
+                                                type: string
+                                            username:
+                                                type: string
+                                            lastMessage:
+                                                type: string    
+                                            read: 
+                                                type: boolean
+                                            lastSenderName:
+                                                type: string
+                                example:
+                                    -   userId: 1
+                                        name: Sarah Colbert
+                                        username: sarahc
+                                        lastMessage: That's nice!
+                                        read: false
+                                        lastSenderId: Sarah
+                                    -   userId: 2
+                                        name: Biggus Dickus
+                                        username: biggus_dickus
+                                        lastMessage: Okay bro.
+                                        read: true
+                                        lastSenderId: You    
+                '400':
+                    description: 'Invalid Request'
     
     # 12 - Rafael
     /api/comment
@@ -924,8 +1102,7 @@ paths:
                     description:
     
     # 14 - Rui
-    /api/feed
-        ?sort=asc&ingredient=tomato,flour&date=15/05/2020-16/05/2020&difficulty=hard
+    /api/feed?sort=asc&ingredient=tomato,flour&date=2020/05/15-2020/05/16&difficulty=hard
         get:
             operationId: R2501
             summary: "R2501: Get member's feed"
@@ -934,8 +1111,109 @@ paths:
                 - 'M02: Recipes, categories, groups and members'
             responses:
                 '200':
-                    description:
-    
+                    description: "Sucess"
+                    content:
+                        application/json:
+                            schema:
+                                type: object
+                                    properties:
+                                        recipes:
+                                            type: array
+                                            items:
+                                                type: object
+                                                properties:
+                                                    id:
+                                                        type: string
+                                                    title:
+                                                        type: string
+                                                    description:
+                                                        type: string
+                                                    creationDate:
+                                                        type: date
+                                                    rating:
+                                                        type: float
+                                                    numberOfReviews:
+                                                        type: int
+                                                    category:
+                                                        type: string
+                                                    tags:
+                                                        type: array
+                                                        items:
+                                                            type: object
+                                                            properties:
+                                                                id: 
+                                                                    type: int
+                                                                name:
+                                                                    type: string
+                                        categories:
+                                            type: array
+                                            items:
+                                                type: object
+                                                    properties:
+                                                        id:
+                                                            type: int
+                                                        name: 
+                                                            type: string
+                                        tags:
+                                            type: array
+                                            items:
+                                                type: object
+                                                    properties:
+                                                        id:
+                                                            type: int
+                                                        name: 
+                                                            type: string 
+                                        trendingRecipes:
+                                            type: array
+                                            items:
+                                                type: object
+                                                    properties:
+                                                        id:
+                                                            type: int
+                                                        title: 
+                                                            type: string 
+                                    example:
+                                        recipes:
+                                            -   id: 1
+                                                title: Classic Tiramisu
+                                                description: Classic Italian dessert made with ladyfingers and mascarpone cheese.
+                                                creationDate: 22-01-2021
+                                                rating: 4.5
+                                                numberOfReviews: 5
+                                                category: Dessert
+                                                tags: 
+                                                    -   id: 45
+                                                        name: "Vegetarian"
+                                                    -   id: 32
+                                                        name: "Zero sugar"  
+                                            -   id: 2
+                                                title: Francesinha
+                                                description: Portuguese delicious meal.
+                                                creationDate: 20-03-2020
+                                                rating: 4.8
+                                                numberOfReviews: 3
+                                                category: Lunch
+                                                tags: 
+                                                    -   id: 45
+                                                        name: "Vegetarian"
+                                                    -   id: 32
+                                                        name: "Zero sugar"  
+                                        categories:
+                                            -   id: 1
+                                                name: Lunch
+                                            -   id: 2
+                                                name: Breakfast
+                                        tags:
+                                            -   id: 1
+                                                name: Vegetarian
+                                            -   id: 2
+                                                name: Low carb
+                                        trendingRecipes:
+                                            -   id: 3
+                                                name: Cozido à portuguesa        
+                '400':
+                  description: 'Invalid Request' 
+
     # 15 - Rafael
     /api/search/{searchTerm}
         ?sort=asc&ingredient=tomato,potato&time=40-100&category=2
@@ -995,8 +1273,64 @@ paths:
                 - 'M01: Authentication and Individual Profile'
             responses:    
                 '200':
-                    description:
-    
+                    description: "Success"
+                    content:
+                        application/json:
+                            schema: 
+                                type: array
+                                items:
+                                    type: object
+                                        properties:
+                                            notificationId:
+                                                type: int
+                                            type:    
+                                                type: string
+                                            read:
+                                                type: boolean
+                                            userId: 
+                                                type: int
+                                            name:
+                                                type: string
+                                            username:
+                                                type: string
+                                example:
+                                    -   notificationId: 1
+                                        type: followRequest
+                                        read: false
+                                        userId: 1
+                                        name: Sarah Colbert
+                                        username: sarahc 
+                                    -   notificationId: 2
+                                        type: review
+                                        read: true
+                                        userId: 2
+                                        name: Biggus Dickus
+                                        username: biggus_dickus
+                                    -   notificationId: 3
+                                        type: follow
+                                        read: true
+                                        userId: 2
+                                        name: Biggus Dickus
+                                        username: biggus_dickus     
+                                    -   notificationId: 4
+                                        type: comment
+                                        read: true
+                                        userId: 2
+                                        name: Biggus Dickus
+                                        username: biggus_dickus 
+                                    -   notificationId: 5
+                                        type: delete
+                                        read: false
+                                        userId: 1
+                                        name: Sarah Colbert
+                                        username: sarahc  
+                                    -   notificationId: 6
+                                        type: favourite
+                                        read: false
+                                        userId: 1
+                                        name: Sarah Colbert
+                                        username: sarahc                
+
     # 20 - Tiago
     /api/countries
         get:
