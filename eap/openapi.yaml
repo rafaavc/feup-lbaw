@@ -82,7 +82,64 @@ paths:
                                 value: '/login'
 
     # 3 - Tiago
-    /register
+    /register:
+        get: 
+            operationId: R1004
+            summary: 'R1004: Register form'
+            description: 'Provide register form. Access: PUB'
+            tags: 
+                - 'M01: Authentication and Individual Profile'
+            responses:    
+                '200':
+                    description: 'Ok. Show [UI03](http://lbaw2135-piu.lbaw-prod.fe.up.pt/pages/signUp.php)'
+        
+        post:
+            operationId: R1005
+            summary: 'R1005: Register Action'
+            description: 'Processes the register form submission. Access: PUB'
+            tags:
+                - 'M01: Authentication and Individual Profile'
+        
+            requestBody:
+                required: true
+                content:
+                application/x-www-form-urlencoded:
+                    schema:
+                        type: object
+                        properties:
+                            username:
+                                type: string
+                            email:          
+                                type: string
+                            password:   
+                                type: string
+                            name:   
+                                type: string
+                            countryId:   
+                                type: int
+                            city:   
+                                type: string
+                        required:
+                            - username
+                            - email
+                            - password
+                            - name
+                            - countryId        
+            responses:
+                '302':
+                description: 'Redirect after processing the sign up.'
+                headers:
+                    Location:
+                        schema:
+                            type: string
+                        examples:
+                            302Success:
+                                description: 'Successful registration. Redirect to feed.'
+                                value: '/feed'
+                            302Error:
+                                description: 'Failed authentication. Redirect to register form.'
+                                value: '/register'
+        
 
     # 4 - Alexandre
     /logout
