@@ -1185,9 +1185,33 @@ paths:
             description: 'Edits a comment. Access: OWN'
             tags: 
                 - 'M02: Recipes, categories, groups and members'
-            responses:    
+            parameters:
+                -   in: path
+                    name: commentId
+                    schema:
+                        type: int
+                    required: true
+
+            requestBody:
+                required: false
+                content:
+                    multipart/form-data:
+                        schema:
+                        type: object
+                        properties:
+                            text:
+                                type: string
+                            rating:
+                                type: int
+
+            responses:
                 '200':
-                    description:
+                    description: 'Updated Comment'
+                '400':
+                    description: 'Invalid Request'
+                '403':
+                    description: 'Forbidden Access'
+
         delete:
             operationId: R2403
             summary: 'R2403: Delete comment'
@@ -1195,9 +1219,19 @@ paths:
             tags: 
                 - 'M02: Recipes, categories, groups and members'
                 - 'M05: Administration'
-            responses:
+            parameters:
+                -   in: path
+                    name: commentId
+                    schema:
+                        type: int
+                    required: true
+            responses:    
+                responses:    
                 '200':
-                    description:
+                    description: 'Deleted Comment'
+                '400':
+                    description: 'Invalid Request' 
+            
     
     # 14 - Rui
     /api/feed?sortparam=duration&sort=asc&ingredient=tomato,flour&date=2020/05/15-2020/05/16&difficulty=hard
@@ -1397,7 +1431,7 @@ paths:
                 -   in: path
                     name: reportId
                     schema:
-                        type: string
+                        type: int
                     required: true
             responses:    
                 responses:    
