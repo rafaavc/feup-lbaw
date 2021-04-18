@@ -207,6 +207,8 @@ paths:
             responses:    
                 '200':
                     description: 'Ok. Show [UI17](http://lbaw2135-piu.lbaw-prod.fe.up.pt/pages/category.php)'
+                '404':
+                    description: 'This page does not exist.'
 
     
     # 9 - Alexandre
@@ -265,7 +267,19 @@ paths:
                     description: 'Ok. Show [UI15](http://lbaw2135-piu.lbaw-prod.fe.up.pt/pages/search.php)'
 
     # 16 - Tiago
-    /admin/reports
+    /admin/reports:
+        get: 
+            operationId: R10XX
+            summary: 'R10XX: Reports page.'
+            description: 'Show all the comment and recipe reports to the admin. Access: ADM'
+            tags: 
+                - 'M05: Web resources associated with the administrator pages, namely the users and reports management'
+
+            responses:    
+                '200':
+                    description: 'Ok. Show [UI15](http://lbaw2135-piu.lbaw-prod.fe.up.pt/pages/reportsManagement.php)'
+                '404':
+                    description: 'This page does not exist.' # non-admins should not know that this page exists
 
     # 17 - Rafael
     /admin/users
