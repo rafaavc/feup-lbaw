@@ -37,7 +37,7 @@ paths:
                     description: 'Ok. Show [UI02](http://lbaw2135-piu.lbaw-prod.fe.up.pt/pages/signIn.php)'
         post:
             operationId: R1003
-            summary: 'R1093: Login Action'
+            summary: 'R1093: Login Action' # TODO is this supposed to be 1003?
             description: 'Processes the login form submission. Access: PUB'
             tags:
                 - 'M01: Authentication and Individual Profile'
@@ -120,7 +120,24 @@ paths:
 
 
     # 7 - Rafael
-    /member/{username}/reviews
+    /member/{username}/reviews:
+        get:
+            operationId: R10XX
+            summary: 'R10XX: Member's reviews.'
+            description: 'Provide member''s reviews page. Access: PUB'
+            tags: 
+                - 'M02: Recipes, categories, groups and members'
+
+            parameters:
+                - in: path
+                name: username
+                schema:
+                    type: string
+                required: true
+
+            responses:    
+                '200':
+                    description: 'Ok. Show [UI10](https://lbaw2135-piu.lbaw-prod.fe.up.pt/pages/profile_reviews.php)'
     
     # 8 - Tiago
     /category/{categoryId}
@@ -129,7 +146,16 @@ paths:
     /recipe/{recipeId}
 
     # 10 - Rafael
-    /recipe
+    /recipe:
+        get:
+            operationId: R10XX
+            summary: 'R10XX: Create Recipe.'
+            description: 'Provides the create recipe page. Access: PUB'
+            tags: 
+                - 'M02: Recipes, categories, groups and members'
+            responses:    
+                '200':
+                    description: 'Ok. Show [UI19](http://lbaw2135-piu.lbaw-prod.fe.up.pt/pages/createRecipe.php)'
 
     # 11 - Tiago
     /group/{groupId}
@@ -138,7 +164,16 @@ paths:
     /group
     
     # 13 - Rafael
-    /feed
+    /feed:
+        get:
+            operationId: R10XX
+            summary: 'R10XX: Feed.'
+            description: 'Provides the feed page. Access: PUB'
+            tags: 
+                - 'M02: Recipes, categories, groups and members'
+            responses:    
+                '200':
+                    description: 'Ok. Show [UI18](http://lbaw2135-piu.lbaw-prod.fe.up.pt/pages/feed.php)'
 
     # 14 - Alexandre
     /chat/{recipientId}
@@ -167,7 +202,16 @@ paths:
     /admin/reports
 
     # 17 - Rafael
-    /admin/users
+    /admin/users:
+        get:
+            operationId: R10XX
+            summary: 'R10XX: Users management section.'
+            description: 'Provides the users management section. Access: PUB'
+            tags: 
+                - 'M02: Recipes, categories, groups and members'
+            responses:    
+                '200':
+                    description: 'Ok. Show [UI14](http://lbaw2135-piu.lbaw-prod.fe.up.pt/pages/usersManagement.php)'
 
     # 18 - Alexandre
     /about
