@@ -936,9 +936,17 @@ paths:
             description: 'Creates a membership request (if group is public becomes a member instantly). Access: MBR'
             tags: 
                 - 'M02: Recipes, categories, groups and members'
+            parameters:
+                -   in: path
+                    name: groupId
+                    schema:
+                        type: int
+                    required: true
             responses:    
                 '200':
-                    description:
+                    description: 'Success'
+                '400':
+                  description: 'Invalid Request'
 
     # 7 - Rui
     /api/group/{groupId}/request/{memberId}
