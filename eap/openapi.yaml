@@ -1393,9 +1393,18 @@ paths:
             description: "Deletes a report from the list. Access: ADM"
             tags: 
                 - 'M05: Administration'
+            parameters:
+                -   in: path
+                    name: reportId
+                    schema:
+                        type: string
+                    required: true
             responses:    
+                responses:    
                 '200':
-                    description:
+                    description: 'Deleted Report'
+                '400':
+                    description: 'Invalid Request'    
     
     # 18 - Tiago         
     /api/reports
@@ -1407,8 +1416,40 @@ paths:
                 - 'M05: Administration'
             responses:    
                 '200':
-                    description:
-    
+                    description: "Success"
+                    content:
+                        application/json:
+                            schema: 
+                                type: array
+                                items:
+                                    type: object
+                                        properties:
+                                            type:    
+                                                type: string
+                                            id_reporter:
+                                                type: int
+                                            reason: 
+                                                type: string
+                                            active:
+                                                type: boolean
+                                            id_comment:
+                                                type: int
+                                            id_recipe:
+                                                type: int
+                                example:
+                                    -   type: comment_report
+                                        id_reporter: 1
+                                        reason: Disrespectful
+                                        active: true
+                                        id_comment: 2
+                                        id_recipe: null
+                                    -   type: recipe_report
+                                        id_reporter: 54
+                                        reason: Disrespectful
+                                        active: true
+                                        id_comment: null
+                                        id_recipe: 4
+                                    
     # 19 - Rui
     /api/notifications
         get:
