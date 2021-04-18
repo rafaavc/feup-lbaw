@@ -189,7 +189,25 @@ paths:
     /member/{username}/reviews
     
     # 8 - Tiago
-    /category/{categoryId}
+    /category/{categoryId}:
+        get: 
+            operationId: R10XX
+            summary: 'R10XX: Category page.'
+            description: 'Show a page with recipes of a certain category. Access: PUB'
+            tags: 
+                - 'M02: Recipes, categories, groups and members'
+
+            parameters:
+                - in: path
+                name: categoryId
+                schema:
+                    type: int
+                required: true
+
+            responses:    
+                '200':
+                    description: 'Ok. Show [UI17](http://lbaw2135-piu.lbaw-prod.fe.up.pt/pages/category.php)'
+
     
     # 9 - Alexandre
     /recipe/{recipeId}
@@ -198,8 +216,25 @@ paths:
     /recipe
 
     # 11 - Tiago
-    /group/{groupId}
+    /group/{groupId}:
+        get: 
+            operationId: R10XX
+            summary: 'R10XX: Group page.'
+            description: 'Show a page with recipes and information of a certain group. Access: PUB.'
+            tags: 
+                - 'M02: Recipes, categories, groups and members'
 
+            parameters:
+                - in: path
+                name: groupId
+                schema:
+                    type: int
+                required: true
+
+            responses:    
+                '200':
+                    description: 'Ok. Show [UI16](http://lbaw2135-piu.lbaw-prod.fe.up.pt/pages/group.php)'
+                
     # 12 - Alexandre
     /group
     
