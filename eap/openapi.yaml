@@ -22,7 +22,16 @@ tags:
   
 paths:
     # 1 - Tiago
-    /
+    /:
+        get: 
+            operationId: R1001
+            summary: 'R1001: Home page'
+            description: 'Provide home page. Access: PUB'
+            tags: 
+                - 'M04: Information'
+            responses:    
+                '200':
+                    description: 'Ok. Show [UI01](http://lbaw2135-piu.lbaw-prod.fe.up.pt/)'
 
     # 2 - Rui
     /login:
