@@ -1479,4 +1479,30 @@ paths:
                 - 'M04: Information'
             responses:    
                 '200':
-                    description: 
+                    description: "Success"
+                    content:
+                        application/json:
+                            schema: 
+                                type: array
+                                items:
+                                    type: object
+                                        properties:
+                                            id:    
+                                                type: int
+                                            abbreviation:
+                                                type: string
+                                            name: 
+                                                type: string
+                                example:
+                                    -   int: 1
+                                        abbreviation: PT
+                                        name: Portugal
+                                    -   int: 2
+                                        abbreviation: ES
+                                        name: Spain
+                                    -   int: 3
+                                        abbreviation: FR
+                                        name: France
+                                    -   int: 4
+                                        abbreviation: USA
+                                        name: United States of America
