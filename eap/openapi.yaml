@@ -1135,7 +1135,7 @@ paths:
         get:
             operationId: R2302
             summary: 'R2302: Get the user conversations'
-            description: 'Gets a the user''s chat. Access: OWN'
+            description: 'Gets a user''s chat in JSON. Access: OWN'
             tags: 
                 - 'M03: Chat'
 
