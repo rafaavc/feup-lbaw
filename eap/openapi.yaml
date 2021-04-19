@@ -37,7 +37,7 @@ paths:
                     description: 'Ok. Show [UI02](http://lbaw2135-piu.lbaw-prod.fe.up.pt/pages/signIn.php)'
         post:
             operationId: R1003
-            summary: 'R1093: Login Action' # TODO is this supposed to be 1003?
+            summary: 'R1003: Login Action'
             description: 'Processes the login form submission. Access: PUB'
             tags:
                 - 'M01: Authentication and Individual Profile'
@@ -59,18 +59,18 @@ paths:
         
             responses:
                 '302':
-                description: 'Redirect after processing the login credentials.'
-                headers:
-                    Location:
-                        schema:
-                            type: string
-                        examples:
-                            302Success:
-                                description: 'Successful authentication. Redirect to feed.'
-                                value: '/feed'
-                            302Error:
-                                description: 'Failed authentication. Redirect to login form.'
-                                value: '/login'
+                    description: 'Redirect after processing the login credentials.'
+                    headers:
+                        Location:
+                            schema:
+                                type: string
+                            examples:
+                                302Success:
+                                    description: 'Successful authentication. Redirect to feed.'
+                                    value: '/feed'
+                                302Error:
+                                    description: 'Failed authentication. Redirect to login form.'
+                                    value: '/login'
 
     # 3 - Tiago
     /register
@@ -320,21 +320,21 @@ paths:
                                             type: int
                                         following:
                                             type: int
-                            example:
-                                - id: 2
-                                name: Mark Hasmunsen
-                                username: mark_h
-                                city: Bergen
-                                country: 
-                                    - id: 165
-                                    abbreviation: "NO"
-                                    name: Norway
-                                creationDate: "2019-05-09"
-                                score: 4.7
-                                biography: "Black metal fan making food, what could go wrong?"
-                                recipes: 14
-                                followers: 34
-                                following: 13
+                                example:
+                                    - id: 2
+                                    name: Mark Hasmunsen
+                                    username: mark_h
+                                    city: Bergen
+                                    country: 
+                                        - id: 165
+                                        abbreviation: "NO"
+                                        name: Norway
+                                    creationDate: "2019-05-09"
+                                    score: 4.7
+                                    biography: "Black metal fan making food, what could go wrong?"
+                                    recipes: 14
+                                    followers: 34
+                                    following: 13
                 '200':
                     description: 'OK. The requested user is private and the authenticated user doesn't follow him.'
                     content:
@@ -356,13 +356,13 @@ paths:
                                             type: int
                                         following:
                                             type: int
-                            example:
-                                id: 2
-                                name: Mark Hasmunsen
-                                username: mark_h
-                                recipes: 14
-                                followers: 34
-                                following: 13      
+                                example:
+                                    id: 2
+                                    name: Mark Hasmunsen
+                                    username: mark_h
+                                    recipes: 14
+                                    followers: 34
+                                    following: 13      
         put:
             operationId: R2003
             summary: 'R2003: Edit profile'
@@ -825,25 +825,25 @@ paths:
                                 type: array
                                 items:
                                     type: object
-                                        properties:
-                                            id: 
-                                                type: int
-                                            name: 
-                                                type: string
-                                            username: 
-                                                type: string
-                                            email:
-                                                type: string
-                                            country:
-                                                type: string
-                                            city:
-                                                type: string
-                                            posts:
-                                                type: int
-                                            comments:
-                                                type: int
-                                            reports:
-                                                type: int
+                                    properties:
+                                        id: 
+                                            type: int
+                                        name: 
+                                            type: string
+                                        username: 
+                                            type: string
+                                        email:
+                                            type: string
+                                        country:
+                                            type: string
+                                        city:
+                                            type: string
+                                        numberOfPosts:
+                                            type: int
+                                        numberOfComments:
+                                            type: int
+                                        numberOfReports:
+                                            type: int
                                 example:
                                     -   id: 1
                                         name: Sarah Colbert
@@ -868,16 +868,97 @@ paths:
                     description: 'Invalid Request'    
     
     # 1 - Rafael
-    /api/recipe
+    /api/recipe:
         post:
             operationId: R2101
             summary: 'R2101: Create recipe'
             description: 'Creates a new recipe. Access: MBR'
             tags: 
                 - 'M02: Recipes, categories, groups and members'
-            responses:    
+            requestBody:
+                required: true
+                content:
+                    application/x-www-form-urlencoded:
+                        schema:
+                        type: object
+                        properties:
+                            title:
+                                type: string
+                            mainCategory:
+                                type: integer
+                            description:
+                                type: string
+                            tags:
+                                type: array
+                                items:
+                                    type: integer
+                            difficulty:
+                                type: string
+                            servings:
+                                type: integer
+                            images:
+                                type: array
+                                items:
+                                    type: string
+                                    form: binary
+                            visibility:
+                                type: boolean
+                            ingredients:
+                                type: array
+                                items:
+                                    type: object
+                                    properties:
+                                        quantity:
+                                            type: float
+                                        unit:
+                                            type: integer
+                                        name:
+                                            type: string
+                                    required:
+                                        - quantity
+                                        - unit
+                                        - name
+                            preparationTime:
+                                type: integer
+                            cookingTime:
+                                type: integer
+                            additionalTime:
+                                type: integer
+                            steps:
+                                type: array
+                                items:
+                                    type: object
+                                    properties:
+                                        name:
+                                            type: string
+                                        description:
+                                            type: string
+                                        images:
+                                            type: array
+                                            items:
+                                                type: string
+                                                form: binary
+                                    required:
+                                        - name
+                                        - description
+                        required:
+                            - title
+                            - mainCategory
+                            - description
+                            - tags
+                            - difficulty
+                            - servings
+                            - images
+                            - visibility
+                            - ingredients
+                            - preparationTime
+                            - cookingTime
+                            - steps
+            responses:
                 '200':
-                    description:
+                    description: 'Success'
+                '400':
+                    description: 'Invalid Request'
 
     # 2 - Alexandre
     /api/recipe/{recipeId}
@@ -1199,13 +1280,13 @@ paths:
                                         username: sarahc
                                         lastMessage: That's nice!
                                         read: false
-                                        lastSenderId: Sarah
+                                        lastSenderName: Sarah
                                     -   userId: 2
                                         name: Biggus Dickus
                                         username: biggus_dickus
                                         lastMessage: Okay bro.
                                         read: true
-                                        lastSenderId: You    
+                                        lastSenderName: You    
                 '400':
                     description: 'Invalid Request'
     
@@ -1363,45 +1444,45 @@ paths:
                                                             type: int
                                                         title: 
                                                             type: string 
-                                    example:
-                                        recipes:
-                                            -   id: 1
-                                                title: Classic Tiramisu
-                                                description: Classic Italian dessert made with ladyfingers and mascarpone cheese.
-                                                creationDate: 22-01-2021
-                                                rating: 4.5
-                                                numberOfReviews: 5
-                                                category: Dessert
-                                                tags: 
-                                                    -   id: 45
-                                                        name: "Vegetarian"
-                                                    -   id: 32
-                                                        name: "Zero sugar"  
-                                            -   id: 2
-                                                title: Francesinha
-                                                description: Portuguese delicious meal.
-                                                creationDate: 20-03-2020
-                                                rating: 4.8
-                                                numberOfReviews: 3
-                                                category: Lunch
-                                                tags: 
-                                                    -   id: 45
-                                                        name: "Vegetarian"
-                                                    -   id: 32
-                                                        name: "Zero sugar"  
-                                        categories:
-                                            -   id: 1
-                                                name: Lunch
-                                            -   id: 2
-                                                name: Breakfast
-                                        tags:
-                                            -   id: 1
-                                                name: Vegetarian
-                                            -   id: 2
-                                                name: Low carb
-                                        trendingRecipes:
-                                            -   id: 3
-                                                name: Cozido à portuguesa        
+                                example:
+                                    recipes:
+                                        -   id: 1
+                                            title: Classic Tiramisu
+                                            description: Classic Italian dessert made with ladyfingers and mascarpone cheese.
+                                            creationDate: 22-01-2021
+                                            rating: 4.5
+                                            numberOfReviews: 5
+                                            category: Dessert
+                                            tags: 
+                                                -   id: 45
+                                                    name: "Vegetarian"
+                                                -   id: 32
+                                                    name: "Zero sugar"  
+                                        -   id: 2
+                                            title: Francesinha
+                                            description: Portuguese delicious meal.
+                                            creationDate: 20-03-2020
+                                            rating: 4.8
+                                            numberOfReviews: 3
+                                            category: Lunch
+                                            tags: 
+                                                -   id: 45
+                                                    name: "Vegetarian"
+                                                -   id: 32
+                                                    name: "Zero sugar"  
+                                    categories:
+                                        -   id: 1
+                                            name: Lunch
+                                        -   id: 2
+                                            name: Breakfast
+                                    tags:
+                                        -   id: 1
+                                            name: Vegetarian
+                                        -   id: 2
+                                            name: Low carb
+                                    trendingRecipes:
+                                        -   id: 3
+                                            title: Cozido à portuguesa        
                 '400':
                   description: 'Invalid Request' 
 
