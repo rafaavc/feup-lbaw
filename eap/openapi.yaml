@@ -1365,19 +1365,19 @@ paths:
                                 type: array
                                 items:
                                     type: object
-                                        properties:
-                                            userId: 
-                                                type: int
-                                            name: 
-                                                type: string
-                                            username:
-                                                type: string
-                                            lastMessage:
-                                                type: string    
-                                            read: 
-                                                type: boolean
-                                            lastSenderName:
-                                                type: string
+                                    properties:
+                                        userId: 
+                                            type: int
+                                        name: 
+                                            type: string
+                                        username:
+                                            type: string
+                                        lastMessage:
+                                            type: string    
+                                        read: 
+                                            type: boolean
+                                        lastSenderName:
+                                            type: string
                                 example:
                                     -   userId: 1
                                         name: Sarah Colbert
@@ -1402,9 +1402,27 @@ paths:
             description: 'Adds a comment / review to a recipe. Access: MBR'
             tags: 
                 - 'M02: Recipes, categories, groups and members'
+            requestBody:
+                required: true
+                content:
+                    application/x-www-form-urlencoded:
+                        schema:
+                            type: object
+                            properties:
+                                recipeId:
+                                    type: integer
+                                content:
+                                    type: string
+                                rating:
+                                    type: integer
+                            required:
+                                - recipeId
+                                - content
             responses:    
                 '200':
-                    description:
+                    description: 'Success'
+                '400':
+                    description: 'Bad request'
 
     # 13 - Tiago
     /api/comment/{commentId}
