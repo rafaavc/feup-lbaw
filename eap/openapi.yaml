@@ -45,17 +45,17 @@ paths:
             requestBody:
                 required: true
                 content:
-                application/x-www-form-urlencoded:
-                    schema:
-                        type: object
-                        properties:
-                            email:          
-                                type: string
-                            password:   
-                                type: string
-                        required:
-                            - email
-                            - password
+                    application/x-www-form-urlencoded:
+                        schema:
+                            type: object
+                            properties:
+                                email:          
+                                    type: string
+                                password:   
+                                    type: string
+                            required:
+                                - email
+                                - password
         
             responses:
                 '302':
@@ -750,14 +750,14 @@ paths:
             requestBody:
                     required: true
                     content:
-                    application/x-www-form-urlencoded:
-                        schema:
-                        type: object
-                        properties:    
-                            id: 
-                                type: int
-                        required:
-                            - id
+                        application/x-www-form-urlencoded:
+                            schema:
+                            type: object
+                            properties:    
+                                id: 
+                                    type: int
+                            required:
+                                - id
 
             responses:
                 '200':
@@ -1112,6 +1112,18 @@ paths:
                         type: int
                     required: true  
 
+            requestBody:
+                required: true
+                content:
+                    application/x-www-form-urlencoded:
+                        schema:
+                            type: object
+                            properties:
+                                message:          
+                                    type: string
+                            required:
+                                - message
+
             responses:    
                 '200':
                     description: 'Success'
@@ -1123,7 +1135,7 @@ paths:
         get:
             operationId: R2302
             summary: 'R2302: Get the user conversations'
-            description: 'Gets a chat between two members in JSON Access: MBR'
+            description: 'Gets a the user''s chat. Access: OWN'
             tags: 
                 - 'M03: Chat'
 
@@ -1426,24 +1438,39 @@ paths:
                                 type: array
                                 items:
                                     type: object
-                                        properties:
-                                            type:    
-                                                type: string
-                                            read:
-                                                type: boolean
-                                            userId: 
-                                                type: int
-                                            name:
-                                                type: string
-                                            username:
-                                                type: string
+                                    properties:
+                                        id:
+                                            type: int
+                                        type:    
+                                            type: string
+                                        read:
+                                            type: boolean
+                                        commentId:
+                                            type: int
+                                        recipeName:
+                                            type: string
+                                        recipeId:
+                                            type: int
+                                        userId: 
+                                            type: int
+                                        name:
+                                            type: string
+                                        username:
+                                            type: string
+                                    required:
+                                        - type
+                                        - read
+                                        - userId
+                                        - name
+                                        - username
                                 example:
                                     -   type: followRequest
                                         read: false
                                         userId: 1
                                         name: Sarah Colbert
                                         username: sarahc 
-                                    -   type: review
+                                    -   id: 1
+                                        type: review
                                         read: true
                                         userId: 2
                                         name: Biggus Dickus
@@ -1453,21 +1480,60 @@ paths:
                                         userId: 2
                                         name: Biggus Dickus
                                         username: biggus_dickus     
-                                    -   type: comment
+                                    -   id: 1
+                                        type: comment
                                         read: true
+                                        commentId: 3
                                         userId: 2
                                         name: Biggus Dickus
                                         username: biggus_dickus 
-                                    -   type: delete
+                                    -   id: 1
+                                        type: delete
                                         read: false
+                                        recipeName: Scones
                                         userId: 1
                                         name: Sarah Colbert
                                         username: sarahc  
-                                    -   type: favourite
+                                    -   id: 1
+                                        type: favourite
                                         read: false
+                                        recipeId: 3
                                         userId: 1
                                         name: Sarah Colbert
-                                        username: sarahc                
+                                        username: sarahc   
+
+        put:
+            operationId: R2802
+            summary: 'R2802: Change notification state'
+            description: 'Change notification read state. Access: OWN'
+            tags: 
+                - 'M01: Authentication and Individual Profile'
+
+            requestBody:
+                required: false
+                content:
+                    multipart/form-data:
+                        schema:
+                            type: array
+                                items:
+                                    type: object
+                                    properties:
+                                        id: 
+                                            type: int # Not required in follow and followRequest
+                                        type:    
+                                            type: string
+                                        read:
+                                            type: boolean
+                                        userId: 
+                                            type: int # Only required in follow and followRequest
+                                    required:
+                                        - type
+                                        - read
+            responses:
+                '200':
+                    description: 'Updated User'
+                '400':
+                    description: 'Invalid Request'          
 
     # 20 - Tiago
     /api/countries
