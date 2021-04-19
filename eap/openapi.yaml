@@ -998,18 +998,30 @@ paths:
             description: "Adds the recipe to the user's favourite list. Access: MBR"
             tags: 
                 - 'M02: Recipes, categories, groups and members'
+            parameters:
+                - in: path
+                name: recipeId
+                schema:
+                    type: integer
+                required: true
             responses:   
                 '200':
-                    description:
+                    description: 'Success'
         delete:
             operationId: R2106
             summary: 'R2106: Remove a favourite recipe'
             description: "Remove the recipe from the user's favourite list. Access: MBR"
             tags: 
                 - 'M02: Recipes, categories, groups and members'
-            responses:   
+            parameters:
+                - in: path
+                name: recipeId
+                schema:
+                    type: integer
+                required: true
+            responses:
                 '200':
-                    description:        
+                    description: 'Success'
     
     # 4 - Alexandre
     /api/group
@@ -1540,9 +1552,9 @@ paths:
             operationId: R2801
             summary: 'R2801: Get notifications'
             description: "Gets the logged in user's notifications in JSON. Access: MBR"
-            tags: 
+            tags:
                 - 'M01: Authentication and Individual Profile'
-            responses:    
+            responses:
                 '200':
                     description: "Success"
                     content:
