@@ -290,38 +290,36 @@ paths:
                     content:
                         application/json:
                             schema:
-                                type: array
-                                items:
-                                    type: object
-                                    properties:
-                                        id:
-                                            type: int
-                                        name:
-                                            type: string
-                                        username:
-                                            type: string
-                                        city:
-                                            type: string
-                                        country:
-                                            type: object
-                                            properties:
-                                                id: int
-                                                abbreviation: string
-                                                name: string
-                                        creationDate:
-                                            type: date
-                                        score:
-                                            type: float
-                                        biography:
-                                            type: string
-                                        recipes:
-                                            type: int
-                                        followers:
-                                            type: int
-                                        following:
-                                            type: int
+                                type: object
+                                properties:
+                                    id:
+                                        type: int
+                                    name:
+                                        type: string
+                                    username:
+                                        type: string
+                                    city:
+                                        type: string
+                                    country:
+                                        type: object
+                                        properties:
+                                            id: int
+                                            abbreviation: string
+                                            name: string
+                                    creationDate:
+                                        type: date
+                                    score:
+                                        type: float
+                                    biography:
+                                        type: string
+                                    recipes:
+                                        type: int
+                                    followers:
+                                        type: int
+                                    following:
+                                        type: int
                                 example:
-                                    - id: 2
+                                    id: 2
                                     name: Mark Hasmunsen
                                     username: mark_h
                                     city: Bergen
@@ -340,22 +338,20 @@ paths:
                     content:
                         application/json:
                             schema:
-                                type: array
-                                items:
-                                    type: object
-                                    properties:
-                                        id:
-                                            type: int
-                                        name:
-                                            type: string
-                                        username:
-                                            type: string
-                                        recipes:
-                                            type: int
-                                        followers:
-                                            type: int
-                                        following:
-                                            type: int
+                                type: object
+                                properties:
+                                    id:
+                                        type: int
+                                    name:
+                                        type: string
+                                    username:
+                                        type: string
+                                    recipes:
+                                        type: int
+                                    followers:
+                                        type: int
+                                    following:
+                                        type: int
                                 example:
                                     id: 2
                                     name: Mark Hasmunsen
@@ -611,7 +607,7 @@ paths:
                                             -   id: 32
                                                 name: "Zero sugar"                                      
                 '400':
-                  description: 'Invalid Request'
+                    description: 'Invalid Request'
                 '403':
                     description: 'The authenticated user cannot access the requested information (the requested member is private and the authenticated user doesn't follow him)'
                 '404':
@@ -796,12 +792,12 @@ paths:
                     content:
                     application/x-www-form-urlencoded:
                         schema:
-                        type: object
-                        properties:    
-                            id: 
-                                type: int
-                        required:
-                            - id
+                            type: object
+                            properties:    
+                                id: 
+                                    type: int
+                            required:
+                                - id
 
             responses:
                 '200':
@@ -878,82 +874,82 @@ paths:
             requestBody:
                 required: true
                 content:
-                    application/x-www-form-urlencoded:
+                    multipart/form-data:
                         schema:
-                        type: object
-                        properties:
-                            title:
-                                type: string
-                            mainCategory:
-                                type: integer
-                            description:
-                                type: string
-                            tags:
-                                type: array
-                                items:
-                                    type: integer
-                            difficulty:
-                                type: string
-                            servings:
-                                type: integer
-                            images:
-                                type: array
-                                items:
+                            type: object
+                            properties:
+                                title:
                                     type: string
-                                    form: binary
-                            visibility:
-                                type: boolean
-                            ingredients:
-                                type: array
-                                items:
-                                    type: object
-                                    properties:
-                                        quantity:
-                                            type: float
-                                        unit:
-                                            type: integer
-                                        name:
-                                            type: string
-                                    required:
-                                        - quantity
-                                        - unit
-                                        - name
-                            preparationTime:
-                                type: integer
-                            cookingTime:
-                                type: integer
-                            additionalTime:
-                                type: integer
-                            steps:
-                                type: array
-                                items:
-                                    type: object
-                                    properties:
-                                        name:
-                                            type: string
-                                        description:
-                                            type: string
-                                        images:
-                                            type: array
-                                            items:
+                                mainCategory:
+                                    type: integer
+                                description:
+                                    type: string
+                                tags:
+                                    type: array
+                                    items:
+                                        type: integer
+                                difficulty:
+                                    type: string
+                                servings:
+                                    type: integer
+                                images:
+                                    type: array
+                                    items:
+                                        type: string
+                                        form: binary
+                                visibility:
+                                    type: boolean
+                                ingredients:
+                                    type: array
+                                    items:
+                                        type: object
+                                        properties:
+                                            quantity:
+                                                type: float
+                                            unit:
+                                                type: integer
+                                            name:
                                                 type: string
-                                                form: binary
-                                    required:
-                                        - name
-                                        - description
-                        required:
-                            - title
-                            - mainCategory
-                            - description
-                            - tags
-                            - difficulty
-                            - servings
-                            - images
-                            - visibility
-                            - ingredients
-                            - preparationTime
-                            - cookingTime
-                            - steps
+                                        required:
+                                            - quantity
+                                            - unit
+                                            - name
+                                preparationTime:
+                                    type: integer
+                                cookingTime:
+                                    type: integer
+                                additionalTime:
+                                    type: integer
+                                steps:
+                                    type: array
+                                    items:
+                                        type: object
+                                        properties:
+                                            name:
+                                                type: string
+                                            description:
+                                                type: string
+                                            images:
+                                                type: array
+                                                items:
+                                                    type: string
+                                                    form: binary
+                                        required:
+                                            - name
+                                            - description
+                            required:
+                                - title
+                                - mainCategory
+                                - description
+                                - tags
+                                - difficulty
+                                - servings
+                                - images
+                                - visibility
+                                - ingredients
+                                - preparationTime
+                                - cookingTime
+                                - steps
             responses:
                 '200':
                     description: 'Success'
@@ -991,7 +987,7 @@ paths:
                     description:
 
     # 3 - Rafael
-    /api/recipe/{recipeId}/favourite
+    /api/recipe/{recipeId}/favourite:
         post:
             operationId: R2105
             summary: 'R2105: Add a favourite recipe'
@@ -1036,34 +1032,130 @@ paths:
                     description:
     
     # 5 - Rafael
-    /api/group/{groupId}
+    /api/group/{groupId}:
         get:
             operationId: R2202
             summary: 'R2202: Group information'
             description: 'Gets the information about a group. Access: PUB'
             tags: 
                 - 'M02: Recipes, categories, groups and members'
-            responses:    
+            parameters:
+                - in: path
+                name: groupId
+                schema:
+                    type: integer
+                required: true
+            responses:
                 '200':
-                    description:
+                    description: 'OK. The authenticated user has access to the group''s' information.'
+                    content:
+                        application/json:
+                            schema:
+                                type: object
+                                properties:
+                                    id:
+                                        type: int
+                                    name:
+                                        type: string
+                                    description:
+                                        type: string
+                                    visibility:
+                                        type: boolean
+                                    numberOfRecipes:
+                                        type: integer
+                                    numberOfMembers:
+                                        type: integer
+                                example:
+                                    id: 2
+                                    name: Vegetarianos do Porto
+                                    description: Este é o melhor grupo de vegetarianos do Porto.
+                                    visibility: false
+                                    numberOfRecipes: 14
+                                    numberOfMembers: 56
+                '200':
+                    description: 'OK. The authenticated user has access to the group''s' information and membership requests.'
+                    content:
+                        application/json:
+                            schema:
+                                type: object
+                                properties:
+                                    id:
+                                        type: int
+                                    name:
+                                        type: string
+                                    description:
+                                        type: string
+                                    visibility:
+                                        type: boolean
+                                    numberOfRecipes:
+                                        type: integer
+                                    numberOfMembers:
+                                        type: integer
+                                    membershipRequests:
+                                        type: array
+                                        items:
+                                            type: integer
+                                example:
+                                    id: 2
+                                    name: Vegetarianos do Porto
+                                    description: Este é o melhor grupo de vegetarianos do Porto.
+                                    visibility: true
+                                    numberOfRecipes: 14
+                                    numberOfMembers: 56
+                                    requests:
+                                        - 1
+                                        - 5
         put:
             operationId: R2203
             summary: 'R2203: Edit group'
             description: 'Alters the groups information. Access: MOD'
             tags: 
                 - 'M02: Recipes, categories, groups and members'
-            responses:    
+            parameters:
+                - in: path
+                name: groupId
+                schema:
+                    type: integer
+                required: true
+            requestBody:
+                required: true
+                content:
+                    application/x-www-form-urlencoded:
+                        schema:
+                            type: object
+                            properties:
+                                name:
+                                    type: string
+                                description:
+                                    type: string
+                                visibility:
+                                    type: boolean
+                                coverImage:
+                                    type: string
+                                    form: binary
+                                profileImage:
+                                    type: string
+                                    form: binary
+            responses:
                 '200':
-                    description:
+                    description: 'OK'
+                '400':
+                    description: 'Bad request'
         delete:
             operationId: R2204
             summary: 'R2204: Delete group'
             description: 'Deletes the group. Access: MOD'
             tags: 
                 - 'M02: Recipes, categories, groups and members'
+            parameters:
+                - in: path
+                name: groupId
+                schema:
+                    type: integer
+                required: true
             responses:    
                 '200':
-                    description:
+                    description: 'OK'
 
     # 6 - Tiago 
     /api/group/{groupId}/request
@@ -1303,7 +1395,7 @@ paths:
                     description: 'Invalid Request'
     
     # 12 - Rafael
-    /api/comment
+    /api/comment:
         post:
             operationId: R2401
             summary: 'R2401: Create comment'
@@ -1499,7 +1591,7 @@ paths:
                   description: 'Invalid Request' 
 
     # 15 - Rafael
-    /api/search/{searchTerm}?sortparam=duration&sort=asc&&&ingredient=tomato,potato&time=40-100&category=2
+    /api/search/{searchTerm}?sortparam=duration&sort=asc&ingredient=tomato,potato&time=40-100&category=2:
         get:
             operationId: R2601
             summary: 'R2601: Search for a term'
