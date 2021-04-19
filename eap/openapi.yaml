@@ -717,11 +717,11 @@ paths:
                                 type: array
                                 items:
                                     type: object
-                                        properties:
-                                            id: 
-                                                type: int
-                                            name: 
-                                                type: string
+                                    properties:
+                                        id: 
+                                            type: int
+                                        name: 
+                                            type: string
                                 example:
                                     -   id: 1
                                         name: Oporto Vegetarians
@@ -1609,16 +1609,180 @@ paths:
                   description: 'Invalid Request' 
 
     # 15 - Rafael
-    /api/search/{searchTerm}?sortparam=duration&sort=asc&ingredient=tomato,potato&time=40-100&category=2:
+    /api/search/{searchQuery}?sortparam=duration&sort=asc&ingredient=tomato,potato&time=40-100&category=2:
         get:
             operationId: R2601
             summary: 'R2601: Search for a term'
             description: "Searches for a search term, accepting sort and filter parameters, returning the result as JSON. Access: PUB"
             tags: 
                 - 'M02: Recipes, categories, groups and members'
-            responses:    
+            parameters:
+                - in: path
+                name: searchQuery
+                schema:
+                    type: string
+                required: false
+                - in: query
+                name: sort
+                schema:
+                    type: string
+                required: false
+                - in: query
+                name: sortparam
+                schema:
+                    type: string
+                required: false
+                - in: query
+                name: category
+                schema:
+                    type: string
+                required: false
+                - in: query
+                name: tag
+                schema:
+                    type: string
+                required: false
+                - in: query
+                name: rating
+                schema:
+                    type: string
+                required: false
+                - in: query
+                name: ingredient
+                schema:
+                    type: string
+                required: false
+                - in: query
+                name: date
+                schema:
+                    type: string
+                required: false
+                - in: query
+                name: duration
+                schema:
+                    type: string
+                required: false
+                - in: query
+                name: difficulty
+                schema:
+                    type: string
+                required: false
+            responses:
                 '200':
-                    description:
+                    description: 'OK'
+                    content:
+                        application/json:
+                            schema:
+                                type: object
+                                properties:
+                                    recipes:
+                                        type: array
+                                        items:
+                                            type: object
+                                            properties:
+                                                id:
+                                                    type: integer
+                                                title:
+                                                    type: string
+                                                authorName:
+                                                    type: string
+                                                rating:
+                                                    type: float
+                                                numberOfReviews:
+                                                    type: integer
+                                    users:
+                                        type: array
+                                        items:
+                                            type: object
+                                            properties:
+                                                id:
+                                                    type: integer
+                                                username:
+                                                    type: string
+                                                name:
+                                                    type: string
+                                                rating:
+                                                    type: float
+                                                numberOfRecipes:
+                                                    type: integer
+                                    groups:
+                                        type: array
+                                        items:
+                                            type: object
+                                            properties:
+                                                id:
+                                                    type: integer
+                                                name:
+                                                    type: string
+                                                numberOfRecipes:
+                                                    type: integer
+                                                numberOfMembers:
+                                                    type: integer
+                                    categories:
+                                        type: array
+                                        items:
+                                            type: object
+                                            properties:
+                                                id:
+                                                    type: integer
+                                                name:
+                                                    type: string
+                                    tags:
+                                        type: array
+                                        items:
+                                            type: object
+                                            properties:
+                                                id:
+                                                    type: integer
+                                                name:
+                                                    type: string
+
+                                example:
+                                    recipes:
+                                        -   id: 1
+                                            title: Classic Tiramisu
+                                            description: Classic Italian dessert made with ladyfingers and mascarpone cheese.
+                                            authorName: John Trousseau
+                                            rating: 4.5
+                                            numberOfReviews: 5 
+                                        -   id: 2
+                                            title: Francesinha
+                                            description: Portuguese delicious meal.
+                                            authorName: Jean Meileur
+                                            rating: 4.8
+                                            numberOfReviews: 3
+                                    users:
+                                        -   id: 1
+                                            username: sarahxcolbert
+                                            name: Sarah Colbert
+                                            rating: 4.5
+                                            numberOfRecipes: 10
+                                        -   id: 2
+                                            username: johnlul
+                                            name: John Lul
+                                            rating: 3.8
+                                            numberOfRecipes: 2
+                                    groups:
+                                        -   id: 1
+                                            name: Vegetarianos do Porto
+                                            numberOfRecipes: 7
+                                            numberOfMembers: 50
+                                        -   id: 1
+                                            name: Amantes de vegetais
+                                            numberOfRecipes: 15
+                                            numberOfMembers: 130
+                                    tags:
+                                        -   id: 1
+                                            name: Vegetarian
+                                        -   id: 2
+                                            name: Fresh
+                                    categories:
+                                        -   id: 1
+                                            name: Main Dish
+                                        -   id: 2
+                                            name: Dessert
+
+
     
     # 16 - Alexandre
     /api/report
