@@ -1,3 +1,5 @@
+# TODO: After merge change all the ids of the routes, and change the reports to the respective places
+
 openapi: 3.0.0
 
 info:
@@ -19,7 +21,7 @@ tags:
     - name: 'M03: Chat'
     - name: 'M04: Information'
     - name: 'M05: Web resources associated with the administrator pages, namely the users and reports management'
-  
+
 paths:
     # 1 - Tiago
     /
