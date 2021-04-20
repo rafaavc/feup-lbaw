@@ -1373,6 +1373,17 @@ paths:
                                                 type: string
                                             description:
                                                 type: string
+                                            images:
+                                                type: array
+                                                items:
+                                                    type: string
+                                                    format: binary
+                                images:
+                                    type: array
+                                    items:
+                                        type: string
+                                        format: binary
+                                    
             responses:
                 '200':
                     description: 'Updated Recipe'
@@ -1445,7 +1456,7 @@ paths:
             requestBody:
                 required: true
                 content:
-                    multipart/form-data:
+                    application/x-www-form-urlencoded:
                         schema:
                             type: string        # Reason
             responses:
@@ -1989,7 +2000,7 @@ paths:
             requestBody:
                 required: true
                 content:
-                    multipart/form-data:
+                    application/x-www-form-urlencoded:
                         schema:
                             type: string        # Reason
             responses:
@@ -2485,7 +2496,7 @@ paths:
             requestBody:
                 required: false
                 content:
-                    multipart/form-data:
+                    application/x-www-form-urlencoded:
                         schema:
                             type: array
                             items:
