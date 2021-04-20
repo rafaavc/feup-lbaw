@@ -1,5 +1,3 @@
-# TODO: After merge change all the ids of the routes, and change the reports to the respective places
-
 openapi: 3.0.0
 
 info:
@@ -20,10 +18,9 @@ tags:
     - name: 'M02: Recipes, categories, groups and members'
     - name: 'M03: Chat'
     - name: 'M04: Information'
-    - name: 'M05: Web resources associated with the administrator pages, namely the users and reports management'
+    - name: 'M05: Web resources associated with the administrator pages'
 
 paths:
-    # 1 - Tiago
     /:
         get: 
             operationId: R1001
@@ -35,7 +32,6 @@ paths:
                 '200':
                     description: 'Ok. Show [UI01](http://lbaw2135-piu.lbaw-prod.fe.up.pt/)'
 
-    # 2 - Rui
     /login:
         get: 
             operationId: R1002
@@ -83,7 +79,6 @@ paths:
                                     description: 'Failed authentication. Redirect to login form.'
                                     value: '/login'
 
-    # 3 - Tiago
     /register:
         get: 
             operationId: R1004
@@ -141,13 +136,11 @@ paths:
                                 302Error:
                                     description: 'Failed authentication. Redirect to register form.'
                                     value: '/register'
-        
 
-    # 4 - Alexandre
     /logout:
         post:
-            operationId: R10XX
-            summary: 'R10XX: Logout Action'
+            operationId: R1005
+            summary: 'R1005: Logout Action'
             description: 'Logout from an account. Access: MBR'
             tags:
                 - 'M01: Authentication and Individual Profile'
@@ -162,12 +155,11 @@ paths:
                                 302Error:
                                     description: 'Failed authentication. Redirect to login form.'
                                     value: '/login'
-    
-    # 5 - Rui
+
     /member/{username}/recipes:
         get: 
-            operationId: R10XX
-            summary: 'R10XX: Member recipes'
+            operationId: R1006
+            summary: 'R1006: Member recipes'
             description: 'Provide member recipes page. Access: PUB'
             tags: 
                 - 'M02: Recipes, categories, groups and members'
@@ -183,11 +175,10 @@ paths:
                 '200':
                     description: 'Ok. Show [UI09](http://lbaw2135-piu.lbaw-prod.fe.up.pt/pages/profile.php)'
 
-    # 6 - Rui
     /member/{username}/favourites:
         get: 
-            operationId: R10XX
-            summary: 'R10XX: Member favourited recipes.'
+            operationId: R1007
+            summary: 'R1007: Member favourited recipes.'
             description: 'Provide member favourited recipes page. Access: PUB'
             tags: 
                 - 'M02: Recipes, categories, groups and members'
@@ -203,12 +194,10 @@ paths:
                 '200':
                     description: 'Ok. Show [UI11](http://lbaw2135-piu.lbaw-prod.fe.up.pt/pages/profile_favourites.php)'
 
-
-    # 7 - Rafael
     /member/{username}/reviews:
         get:
-            operationId: R10XX
-            summary: "R10XX: Member's reviews."
+            operationId: R1008
+            summary: "R1008: Member's reviews."
             description: "Provide member's reviews page. Access: PUB"
             tags: 
                 - 'M02: Recipes, categories, groups and members'
@@ -221,12 +210,11 @@ paths:
             responses:    
                 '200':
                     description: 'Ok. Show [UI10](https://lbaw2135-piu.lbaw-prod.fe.up.pt/pages/profile_reviews.php)'
-    
-    # 8 - Tiago
+
     /category/{categoryId}:
         get: 
-            operationId: R10XX
-            summary: 'R10XX: Category page.'
+            operationId: R1009
+            summary: 'R1009: Category page.'
             description: 'Show a page with recipes of a certain category. Access: PUB'
             tags: 
                 - 'M02: Recipes, categories, groups and members'
@@ -244,12 +232,10 @@ paths:
                 '404':
                     description: 'This page does not exist.'
 
-    
-    # 9 - Alexandre
     /recipe/{recipeId}:
         get:
-            operationId: R10XX
-            summary: 'R10XX: View recipes'
+            operationId: R1010
+            summary: 'R1010: View recipes'
             description: 'Show an individual recipe page. Access: PUB'
             tags:
                 - 'M02: Recipes, categories, groups and members'
@@ -263,11 +249,10 @@ paths:
                 '200':
                     description: 'Ok. Show [UI22](http://lbaw2135-piu.lbaw-prod.fe.up.pt/pages/recipe.php)'
 
-    # 10 - Rafael
     /recipe:
         get:
-            operationId: R10XX
-            summary: 'R10XX: Create Recipe.'
+            operationId: R1011
+            summary: 'R1011: Create Recipe.'
             description: 'Provides the create recipe page. Access: PUB'
             tags: 
                 - 'M02: Recipes, categories, groups and members'
@@ -275,11 +260,10 @@ paths:
                 '200':
                     description: 'Ok. Show [UI19](http://lbaw2135-piu.lbaw-prod.fe.up.pt/pages/createRecipe.php)'
 
-    # 11 - Tiago
     /group/{groupId}:
         get: 
-            operationId: R10XX
-            summary: 'R10XX: Group page.'
+            operationId: R1012
+            summary: 'R1012: Group page.'
             description: 'Show a page with recipes and information of a certain group. Access: PUB.'
             tags: 
                 - 'M02: Recipes, categories, groups and members'
@@ -294,12 +278,11 @@ paths:
             responses:    
                 '200':
                     description: 'Ok. Show [UI16](http://lbaw2135-piu.lbaw-prod.fe.up.pt/pages/group.php)'
-                
-    # 12 - Alexandre
+
     /group:
         post:
-            operationId: R10XX
-            summary: 'R10XX: Create group'
+            operationId: R1013
+            summary: 'R1013: Create group'
             description: 'Create a new group. Access: MBR'
             tags:
                 - 'M02: Recipes, categories, groups and members'
@@ -342,12 +325,11 @@ paths:
                                 302Error:
                                     description: 'Failed creation. Redirect back to group creation page.'
                                     value: '/create_group'
-    
-    # 13 - Rafael
+
     /feed:
         get:
-            operationId: R10XX
-            summary: 'R10XX: Feed.'
+            operationId: R1014
+            summary: 'R1014: Feed.'
             description: 'Provides the feed page. Access: PUB'
             tags: 
                 - 'M02: Recipes, categories, groups and members'
@@ -355,11 +337,10 @@ paths:
                 '200':
                     description: 'Ok. Show [UI18](http://lbaw2135-piu.lbaw-prod.fe.up.pt/pages/feed.php)'
 
-    # 14 - Alexandre
     /chat/{recipientId}:
         get:
-            operationId: R10XX
-            summary: 'R10XX: Read messages'
+            operationId: R1015
+            summary: 'R1015: Read messages'
             description: 'Read private messages sent to another user. Access: MBR'
             tags:
                 -   'M03: Chat'
@@ -373,11 +354,10 @@ paths:
                 '200':
                     description: 'Ok. Show [UI08](http://lbaw2135-piu.lbaw-prod.fe.up.pt/pages/privateMessages.php)'
 
-    # 15 - Rui
     /search/{searchQuery}:
         get: 
-            operationId: R10XX
-            summary: 'R10XX: Search results page'
+            operationId: R1016
+            summary: 'R1016: Search results page'
             description: 'Provide results from the performed search. Access: PUB'
             tags: 
                 - 'M02: Recipes, categories, groups and members'
@@ -391,26 +371,23 @@ paths:
                 '200':
                     description: 'Ok. Show [UI15](http://lbaw2135-piu.lbaw-prod.fe.up.pt/pages/search.php)'
 
-    # 16 - Tiago
     /admin/reports:
         get: 
-            operationId: R10XX
-            summary: 'R10XX: Reports page.'
+            operationId: R1017
+            summary: 'R1017: Reports page.'
             description: 'Show all the comment and recipe reports to the admin. Access: ADM'
             tags: 
-                - 'M05: Web resources associated with the administrator pages, namely the users and reports management'
-
+                - 'M05: Web resources associated with the administrator pages'
             responses:    
                 '200':
                     description: 'Ok. Show [UI15](http://lbaw2135-piu.lbaw-prod.fe.up.pt/pages/reportsManagement.php)'
                 '404':
                     description: 'This page does not exist.' # non-admins should not know that this page exists
 
-    # 17 - Rafael
     /admin/users:
         get:
-            operationId: R10XX
-            summary: 'R10XX: Users management section.'
+            operationId: R1018
+            summary: 'R1018: Users management section.'
             description: 'Provides the users management section. Access: PUB'
             tags: 
                 - 'M02: Recipes, categories, groups and members'
@@ -418,11 +395,10 @@ paths:
                 '200':
                     description: 'Ok. Show [UI14](http://lbaw2135-piu.lbaw-prod.fe.up.pt/pages/usersManagement.php)'
 
-    # 18 - Alexandre
     /about:
         get: 
-            operationId: R10XX
-            summary: 'R10XX: About page'
+            operationId: R1019
+            summary: 'R1019: About page'
             description: 'Provide information about TasteBuds. Access: PUB'
             tags: 
                 - 'M04: Information'
@@ -430,11 +406,10 @@ paths:
                 '200':
                     description: 'Ok. Show [UI06](http://lbaw2135-piu.lbaw-prod.fe.up.pt/pages/about.php)'
 
-    # 19 - Rui
     /faq:
         get: 
-            operationId: R10XX
-            summary: 'R10XX: FAQ page'
+            operationId: R1020
+            summary: 'R1020: FAQ page'
             description: 'Provide FAQ page. Access: PUB'
             tags: 
                 - 'M04: Information'
@@ -632,7 +607,7 @@ paths:
             description: 'Delete a member account. Access: OWN, ADM'
             tags: 
                 - 'M02: Recipes, categories, groups and members'
-                - 'M05: Administration'
+                - 'M05: Web resources associated with the administrator pages'
             parameters:
                 -   in: path
                     name: username
@@ -1031,7 +1006,7 @@ paths:
             summary: 'R2011: Get all members'
             description: 'Gets all the registered members of the website in JSON. Access: ADM'
             tags: 
-                - 'M05: Administration'
+                - 'M05: Web resources associated with the administrator pages'
             responses:
                 '200':
                     description: "Success"
@@ -1082,8 +1057,7 @@ paths:
                 
                 '400':
                     description: 'Invalid Request'    
-    
-    # 1 - Rafael
+
     /api/recipe:
         post:
             operationId: R2101
@@ -1176,7 +1150,6 @@ paths:
                 '400':
                     description: 'Invalid Request'
 
-    # 2 - Alexandre
     /api/recipe/{recipeId}:
         get:
             operationId: R2102
@@ -1424,7 +1397,7 @@ paths:
             description: 'Deletes the recipe. Access: OWN, ADM'
             tags: 
                 - 'M02: Recipes, categories, groups and members'
-                - 'M05: Administration'
+                - 'M05: Web resources associated with the administrator pages'
             parameters:
                 -   in: path
                     name: recipeId
@@ -1437,7 +1410,6 @@ paths:
                 '400':
                     description: 'Invalid Request'
 
-    # 3 - Rafael
     /api/recipe/{recipeId}/favourite:
         post:
             operationId: R2105
@@ -1469,8 +1441,32 @@ paths:
             responses:
                 '200':
                     description: 'Success'
-    
-    # 4 - Alexandre
+
+    /api/recipe/{recipeId}/report:
+        post:
+            operationId: R2107
+            summary: 'R2107: Creates a report of a recipe'
+            description: 'Creates a report of a recipe. Access: MBR'
+            tags: 
+                - 'M05: Web resources associated with the administrator pages'
+            parameters:
+                -   in: path
+                    name: recipeId
+                    schema:
+                        type: integer
+                    required: true
+            requestBody:
+                required: true
+                content:
+                    multipart/form-data:
+                        schema:
+                            type: string        # Reason
+            responses:
+                '200':
+                    description: 'Reported Recipe'
+                '400':
+                    description: 'Invalid Request'
+
     /api/group:
         post:
             operationId: R2201
@@ -1507,8 +1503,7 @@ paths:
                     description: 'Created Group'
                 '400':
                     description: 'Invalid Request'
-    
-    # 5 - Rafael
+
     /api/group/{groupId}:
         get:
             operationId: R2202
@@ -1634,7 +1629,6 @@ paths:
                 '200':
                     description: 'OK'
 
-    # 6 - Tiago 
     /api/group/{groupId}/request:
         post:
             operationId: R2205
@@ -1654,7 +1648,6 @@ paths:
                 '400':
                   description: 'Invalid Request'
 
-    # 7 - Rui
     /api/group/{groupId}/request/{memberId}:
         post:
             operationId: R2206
@@ -1706,8 +1699,7 @@ paths:
                   description: 'Deleted'
                 '400':
                   description: 'Invalid Request'
-    
-    # 8 - Alexandre
+
     /api/group/{groupId}/moderator/{memberId}:
         post:
             operationId: R2208
@@ -1731,8 +1723,7 @@ paths:
                     description: 'Member turned into moderator'
                 '400':
                     description: 'Invalid Request'
-    
-    # 9 - Alexandre
+
     /api/group/{groupId}/member/{memberId}:
         delete:
             operationId: R2209
@@ -1757,7 +1748,6 @@ paths:
                 '400':
                     description: 'Invalid Request'
 
-    # 10 - Rui
     /api/group/{groupId}/members:
         get:
             operationId: R2210
@@ -1799,7 +1789,6 @@ paths:
                 '404':
                     description: 'The group does not exist'
 
-    # 11 - Rui
     /api/chat/{recipientId}:
         get:
             operationId: R2301
@@ -1869,7 +1858,6 @@ paths:
                 '400':
                   description: 'Invalid Request'    
 
-    # Needed route for getting user conversations (left menu in privateMessages.php)
     /api/chats:
         get:
             operationId: R2302
@@ -1915,8 +1903,7 @@ paths:
                                         lastSenderName: You    
                 '400':
                     description: 'Invalid Request'
-    
-    # 12 - Rafael
+
     /api/comment:
         post:
             operationId: R2401                
@@ -1946,7 +1933,6 @@ paths:
                 '400':
                     description: 'Bad request'
 
-    # 13 - Tiago
     /api/comment/{commentId}:
         put:
             operationId: R2402
@@ -1987,7 +1973,7 @@ paths:
             description: 'Deletes a comment. Access: OWN'
             tags: 
                 - 'M02: Recipes, categories, groups and members'
-                - 'M05: Administration'
+                - 'M05: Web resources associated with the administrator pages'
             parameters:
                 -   in: path
                     name: commentId
@@ -1999,9 +1985,32 @@ paths:
                     description: 'Deleted Comment'
                 '400':
                     description: 'Invalid Request' 
-            
-    
-    # 14 - Rui
+
+    /api/comment/{commentId}/report:
+        post:
+            operationId: R2404
+            summary: 'R2404: Creates a report of a comment'
+            description: 'Creates a report of a comment. Access: MBR'
+            tags: 
+                - 'M05: Web resources associated with the administrator pages'
+            parameters:
+                -   in: path
+                    name: commentId
+                    schema:
+                        type: integer
+                    required: true
+            requestBody:
+                required: true
+                content:
+                    multipart/form-data:
+                        schema:
+                            type: string        # Reason
+            responses:
+                '200':
+                    description: 'Reported Comment'
+                '400':
+                    description: 'Invalid Request'
+
     /api/feed?sortparam=duration&sort=asc&ingredient=tomato,flour&date=2020/05/15-2020/05/16&difficulty=hard:
         get:
             operationId: R2501
@@ -2164,7 +2173,6 @@ paths:
                 '400':
                   description: 'Invalid Request' 
 
-    # 15 - Rafael
     /api/search/{searchQuery}?sortparam=duration&sort=asc&ingredient=tomato,potato&time=40-100&category=2:
         get:
             operationId: R2601
@@ -2338,68 +2346,13 @@ paths:
                                         -   id: 2
                                             name: Dessert
 
-
-    
-    # 16 - Alexandre
-    /api/recipe/{recipeId}/report:
-        post:
-            operationId: R2701
-            summary: 'R2701: Creates a report of a recipe'
-            description: 'Creates a report of a recipe. Access: MBR'
-            tags: 
-                - 'M05: Administration'
-            parameters:
-                -   in: path
-                    name: recipeId
-                    schema:
-                        type: integer
-                    required: true
-            requestBody:
-                required: true
-                content:
-                    multipart/form-data:
-                        schema:
-                            type: string        # Reason
-            responses:
-                '200':
-                    description: 'Reported Recipe'
-                '400':
-                    description: 'Invalid Request'
-    
-    # 16 - Alexandre
-    /api/comment/{commentId}/report:
-        post:
-            operationId: R2701
-            summary: 'R2701: Creates a report of a comment'
-            description: 'Creates a report of a comment. Access: MBR'
-            tags: 
-                - 'M05: Administration'
-            parameters:
-                -   in: path
-                    name: commentId
-                    schema:
-                        type: integer
-                    required: true
-            requestBody:
-                required: true
-                content:
-                    multipart/form-data:
-                        schema:
-                            type: string        # Reason
-            responses:
-                '200':
-                    description: 'Reported Comment'
-                '400':
-                    description: 'Invalid Request'
-    
-    # 17 - Tiago
     /api/report/{reportId}:
         delete:
             operationId: R2702
             summary: 'R2702: Dismiss report'
             description: "Deletes a report from the list. Access: ADM"
             tags: 
-                - 'M05: Administration'
+                - 'M05: Web resources associated with the administrator pages'
             parameters:
                 -   in: path
                     name: reportId
@@ -2411,15 +2364,14 @@ paths:
                     description: 'Deleted Report'
                 '400':
                     description: 'Invalid Request'    
-    
-    # 18 - Tiago         
+
     /api/reports:
         get:
             operationId: R2703
             summary: 'R2703: Get all reports'
             description: 'Gets all the reports in JSON. Access: ADM'
             tags: 
-                - 'M05: Administration'
+                - 'M05: Web resources associated with the administrator pages'
             responses:    
                 '200':
                     description: "Success"
@@ -2455,8 +2407,7 @@ paths:
                                         active: true
                                         id_comment: null
                                         id_recipe: 4
-                                    
-    # 19 - Rui
+
     /api/notifications:
         get:
             operationId: R2801
@@ -2570,7 +2521,6 @@ paths:
                 '400':
                     description: 'Invalid Request'          
 
-    # 20 - Tiago
     /api/countries:
         get:
             operationId: R2901
