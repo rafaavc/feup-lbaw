@@ -1,3 +1,5 @@
+# TODO: After merge change all the ids of the routes, and change the reports to the respective places
+
 openapi: 3.0.0
 
 info:
@@ -19,7 +21,7 @@ tags:
     - name: 'M03: Chat'
     - name: 'M04: Information'
     - name: 'M05: Web resources associated with the administrator pages, namely the users and reports management'
-  
+
 paths:
     # 1 - Tiago
     /:
@@ -142,7 +144,24 @@ paths:
         
 
     # 4 - Alexandre
-    /logout
+    /logout:
+        post:
+            operationId: R10XX
+            summary: 'R10XX: Logout Action'
+            description: 'Logout from an account. Access: MBR'
+            tags:
+                - 'M01: Authentication and Individual Profile'
+            responses:
+                '302':
+                description: 'Redirect after processing logout, so user can login again.'
+                headers:
+                    Location:
+                        schema:
+                            type: string
+                        examples:
+                            302Error:
+                                description: 'Failed authentication. Redirect to login form.'
+                                value: '/login'
     
     # 5 - Rui
     /member/{username}/recipes:
@@ -229,7 +248,22 @@ paths:
 
     
     # 9 - Alexandre
-    /recipe/{recipeId}
+    /recipe/{recipeId}:
+        get:
+            operationId: R10XX
+            summary: 'R10XX: View recipes'
+            description: 'Show an individual recipe page. Access: PUB'
+            tags:
+                - 'M02: Recipes, categories, groups and members'
+            parameters:
+                -   in: path
+                    name: recipeId
+                    schema:
+                        type: integer
+                    required: true
+            responses:
+                '200':
+                    description: 'Ok. Show [UI22](http://lbaw2135-piu.lbaw-prod.fe.up.pt/pages/recipe.php)'
 
     # 10 - Rafael
     /recipe:
@@ -264,7 +298,52 @@ paths:
                     description: 'Ok. Show [UI16](http://lbaw2135-piu.lbaw-prod.fe.up.pt/pages/group.php)'
                 
     # 12 - Alexandre
-    /group
+    /group:
+        post:
+            operationId: R10XX
+            summary: 'R10XX: Create group'
+            description: 'Create a new group. Access: MBR'
+            tags:
+                - 'M02: Recipes, categories, groups and members'
+            requestBody:
+                required: true
+                content:
+                    multipart/form-data:
+                        schema:
+                        type: object
+                        properties:
+                            profilePhoto:
+                                type: string
+                                form: binary
+                            name:
+                                type: string
+                            description:
+                                type: string
+                            visibility:
+                                type: boolean
+                            coverPhoto:
+                                type: string
+                                form: binary
+                        required:
+                            - profilePhoto
+                            - name
+                            - description
+                            - visibility
+                            - coverPhoto
+            responses:
+                '302':
+                    description: 'Redirect after processing the group creation.'
+                    headers:
+                        Location:
+                            schema:
+                                type: string
+                            examples:
+                                302Success:
+                                    description: 'Successful group creation. Redirect to group page.'
+                                    value: '/group'
+                                302Error:
+                                    description: 'Failed creation. Redirect back to group creation page.'
+                                    value: '/create_group'
     
     # 13 - Rafael
     /feed:
@@ -279,7 +358,22 @@ paths:
                     description: 'Ok. Show [UI18](http://lbaw2135-piu.lbaw-prod.fe.up.pt/pages/feed.php)'
 
     # 14 - Alexandre
-    /chat/{recipientId}
+    /chat/{recipientId}:
+        get:
+            operationId: R10XX
+            summary: 'R10XX: Read messages'
+            description: 'Read private messages sent to another user. Access: MBR'
+            tags:
+                -   name: 'M03: Chat'
+            parameters:
+                -   in: path
+                    name: recipiendId
+                    schema:
+                        type: string
+                        required: true
+            responses:
+                '200':
+                    description: 'Ok. Show [UI08](http://lbaw2135-piu.lbaw-prod.fe.up.pt/pages/privateMessages.php)'
 
     # 15 - Rui
     /search/{searchQuery}:
@@ -329,7 +423,16 @@ paths:
                     description: 'Ok. Show [UI14](http://lbaw2135-piu.lbaw-prod.fe.up.pt/pages/usersManagement.php)'
 
     # 18 - Alexandre
-    /about
+    /about:
+        get: 
+            operationId: R10XX
+            summary: 'R10XX: About page'
+            description: 'Provide information about TasteBuds. Access: PUB'
+            tags: 
+                - 'M04: Information'
+            responses:    
+                '200':
+                    description: 'Ok. Show [UI06](http://lbaw2135-piu.lbaw-prod.fe.up.pt/pages/about.php)'
 
     # 19 - Rui
     /faq:
@@ -537,7 +640,7 @@ paths:
                     schema:
                         type: string
                     required: true
-            responses:    
+            responses:
                 '200':
                     description: 'Deleted User'
                 '400':
@@ -1072,34 +1175,263 @@ paths:
                     description: 'Invalid Request'
 
     # 2 - Alexandre
-    /api/recipe/{recipeId}
+    /api/recipe/{recipeId}:
         get:
             operationId: R2102
             summary: 'R2102: Get recipe'
             description: "Gets the recipe's information in JSON. Access: PUB"
             tags: 
                 - 'M02: Recipes, categories, groups and members'
-            responses:    
+            parameters:
+                -   in: path
+                    name: recipeId
+                    schema:
+                        type: int
+                    required: true
+            responses:
                 '200':
-                    description:
+                    description: 'OK. The authenticated user has access to the recipe.'
+                    content:
+                        application/json:
+                            schema:
+                                type: object
+                                properties:
+                                    id:
+                                        type: int
+                                    name:
+                                        type: string
+                                    difficulty:
+                                        type: Difficulty
+                                    description:
+                                        type: string
+                                    servings:
+                                        type: int
+                                    preparation_time:
+                                        type: int
+                                    cooking_time:
+                                        type: int
+                                    additional_time:
+                                        type: int
+                                    creation_time:
+                                        type: datetime
+                                    creator:
+                                        type: object
+                                        properties:
+                                            id:
+                                                type: int
+                                            name:
+                                                type: string
+                                    category:
+                                        type: object
+                                        properties:
+                                            id:
+                                                type: int
+                                            name:
+                                                type: string
+                                    id_group:
+                                        type: int
+                                    score:
+                                        type: float
+                                    ingredients:
+                                        type: array
+                                        items:
+                                            type: object
+                                            properties:
+                                                ingredient:
+                                                    type: object
+                                                    properties:
+                                                        id:
+                                                            type: int
+                                                        name:
+                                                            type: string
+                                                unit:
+                                                    type: object
+                                                    properties:
+                                                        id:
+                                                            type: int
+                                                        name:
+                                                            type: string
+                                                quantity:
+                                                    type: float
+                                    tags:
+                                        type: array
+                                        items:
+                                            type: object
+                                            properties:
+                                                id:
+                                                    type: int
+                                                name:
+                                                    type: string
+                                    steps:
+                                        type: array
+                                        items:
+                                            type: object
+                                            properties:
+                                                id:
+                                                    type: int
+                                                name:
+                                                    type: string
+                                                description:
+                                                    type: string
+                            example:
+                                -   id: 2
+                                    name: Tofu à brás
+                                    difficulty: easy
+                                    description: "Tofu feito com batatas"
+                                    servings: 5
+                                    preparation_time: 10
+                                    cooking_time: 40
+                                    additional_time: 0
+                                    creation_time: "2020-10-09 08:57"
+                                    creator:
+                                        id: 10
+                                        name: "Ana Maria Braga"
+                                    category:
+                                        id: 1
+                                        name: "Pratos principais"
+                                    ingredients:
+                                        -   ingredient:
+                                                id: 40
+                                                name: tofu
+                                            unit:
+                                                id: 3
+                                                name: kilograms
+                                            quantity: 400
+                                        -   ingredient:
+                                                id: 20
+                                                name: potato
+                                            unit:
+                                                id: 3
+                                                name: kilograms
+                                            quantity: 600
+                                    tags:
+                                        -   id: 30
+                                            name: vegetarian
+                                        -   id: 45
+                                            name: portuguese cuisine
+                                    steps:
+                                        -   id: 354
+                                            name: "Faça a receita"
+                                            description: "Prepare o tofu à brás, depois disso pode comê-lo"
+                '404':
+                    description: "The recipe does not exist or the authenticated user has no access to it"
         put:
             operationId: R2103
             summary: 'R2103: Edit recipe'
             description: "Alters the recipe's information. Access: OWN"
             tags: 
                 - 'M02: Recipes, categories, groups and members'
-            responses:    
+            parameters:
+                -   in: path
+                    name: recipeId
+                    schema:
+                        type: int
+                    required: true
+            requestBody:
+                required: true
+                content:
+                    multipart/form-data:
+                        schema:
+                            type: object
+                            properties:
+                                name:
+                                    type: string
+                                difficulty:
+                                    type: Difficulty
+                                description:
+                                    type: string
+                                servings:
+                                    type: int
+                                preparation_time:
+                                    type: int
+                                cooking_time:
+                                    type: int
+                                additional_time:
+                                    type: int
+                                creation_time:
+                                    type: datetime
+                                creator:
+                                    type: object
+                                    properties:
+                                        id:
+                                            type: int
+                                        name:
+                                            type: string
+                                category:
+                                    type: object
+                                    properties:
+                                        id:
+                                            type: int
+                                        name:
+                                            type: string
+                                id_group:
+                                    type: int
+                                score:
+                                    type: float
+                                ingredients:
+                                    type: array
+                                    items:
+                                        type: object
+                                        properties:
+                                            ingredient:
+                                                type: object
+                                                properties:
+                                                    id:
+                                                        type: int
+                                                    name:
+                                                        type: string
+                                            unit:
+                                                type: object
+                                                properties:
+                                                    id:
+                                                        type: int
+                                                    name:
+                                                        type: string
+                                            quantity:
+                                                type: float
+                                tags:
+                                    type: array
+                                    items:
+                                        type: object
+                                        properties:
+                                            id:
+                                                type: int
+                                            name:
+                                                type: string
+                                steps:
+                                    type: array
+                                    items:
+                                        type: object
+                                        properties:
+                                            id:
+                                                type: int
+                                            name:
+                                                type: string
+                                            description:
+                                                type: string
+            responses:
                 '200':
-                    description:
+                    description: 'Updated Recipe'
+                '400':
+                    description: 'Invalid Request'
         delete:
             operationId: R2104
             summary: 'R2104: Delete recipe'
             description: 'Deletes the recipe. Access: OWN, ADM'
             tags: 
                 - 'M02: Recipes, categories, groups and members'
-            responses:    
+                - 'M05: Administration'
+            parameters:
+                -   in: path
+                    name: recipeId
+                    schema:
+                        type: int
+                    required: true
+            responses:
                 '200':
-                    description:
+                    description: 'Deleted Recipe'
+                '400':
+                    description: 'Invalid Request'
 
     # 3 - Rafael
     /api/recipe/{recipeId}/favourite:
@@ -1135,16 +1467,42 @@ paths:
                     description: 'Success'
     
     # 4 - Alexandre
-    /api/group
+    /api/group:
         post:
             operationId: R2201
             summary: 'R2201: Create group'
             description: 'Creates a group. Access: MBR'
             tags: 
                 - 'M02: Recipes, categories, groups and members'
-            responses:    
+            requestBody:
+                required: true
+                content:
+                    multipart/form-data:
+                        schema:
+                        type: object
+                        properties:
+                            name:
+                                type: string
+                            description:
+                                type: string
+                            visibility:
+                                type: boolean
+                            groupImage:
+                                type: string
+                                form: binary
+                            coverImage:
+                                type: string
+                                form: binary
+                        required:
+                            - name
+                            - description
+                            - visibility
+                            - groupImage
+            responses:
                 '200':
-                    description:
+                    description: 'Created Group'
+                '400':
+                    description: 'Invalid Request'
     
     # 5 - Rafael
     /api/group/{groupId}:
@@ -1346,28 +1704,54 @@ paths:
                   description: 'Invalid Request'
     
     # 8 - Alexandre
-    /api/group/{groupId}/moderator/{memberId}
+    /api/group/{groupId}/moderator/{memberId}:
         post:
             operationId: R2208
             summary: 'R2208: Turn group member into moderator'
             description: 'Turn group member into moderator, adding it to the moderators group. Access: MOD'
             tags: 
                 - 'M02: Recipes, categories, groups and members'
+            parameters:
+                -   in: path
+                    name: groupId
+                    schema:
+                        type: int
+                    required: true
+                -   in: path
+                    name: memberId
+                    schema:
+                        type: int
+                    required: true
             responses:
                 '200':
-                    description:
+                    description: 'Member turned into moderator'
+                '400':
+                    description: 'Invalid Request'
     
     # 9 - Alexandre
-    /api/group/{groupId}/member/{memberId}
+    /api/group/{groupId}/member/{memberId}:
         delete:
             operationId: R2209
             summary: 'R2209: Removes member from the group'
             description: 'Removes member from the group. Access: MOD'
             tags: 
                 - 'M02: Recipes, categories, groups and members'
+            parameters:
+                -   in: path
+                    name: groupId
+                    schema:
+                        type: int
+                    required: true
+                -   in: path
+                    name: memberId
+                    schema:
+                        type: int
+                    required: true
             responses:
                 '200':
-                    description:
+                    description: 'Member removed from group'
+                '400':
+                    description: 'Invalid Request'
 
     # 10 - Rui
     /api/group/{groupId}/members
@@ -1532,7 +1916,7 @@ paths:
     # 12 - Rafael
     /api/comment:
         post:
-            operationId: R2401
+            operationId: R2401                
             summary: 'R2401: Create comment'
             description: 'Adds a comment / review to a recipe. Access: MBR'
             tags: 
@@ -1954,16 +2338,56 @@ paths:
 
     
     # 16 - Alexandre
-    /api/report
+    /api/recipe/{recipeId}/report:
         post:
             operationId: R2701
-            summary: 'R2701: Creates a report'
-            description: 'Creates a report. Access: MBR'
+            summary: 'R2701: Creates a report of a recipe'
+            description: 'Creates a report of a recipe. Access: MBR'
             tags: 
                 - 'M05: Administration'
+            parameters:
+                -   in: path
+                    name: recipeId
+                    schema:
+                        type: int
+                    required: true
+            requestBody:
+                required: true
+                content:
+                    multipart/form-data:
+                        schema:
+                        type: string        # Reason
             responses:
                 '200':
-                    description:
+                    description: 'Reported Recipe'
+                '400':
+                    description: 'Invalid Request'
+    
+    # 16 - Alexandre
+    /api/comment/{commentId}/report:
+        post:
+            operationId: R2701
+            summary: 'R2701: Creates a report of a comment'
+            description: 'Creates a report of a comment. Access: MBR'
+            tags: 
+                - 'M05: Administration'
+            parameters:
+                -   in: path
+                    name: commentId
+                    schema:
+                        type: int
+                    required: true
+            requestBody:
+                required: true
+                content:
+                    multipart/form-data:
+                        schema:
+                        type: string        # Reason
+            responses:
+                '200':
+                    description: 'Reported Comment'
+                '400':
+                    description: 'Invalid Request'
     
     # 17 - Tiago
     /api/report/{reportId}
