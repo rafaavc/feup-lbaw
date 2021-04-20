@@ -8,8 +8,8 @@ info:
     description: 'Web Resources Specification (A7) for TasteBuds'
 
 servers:
-    url: http://lbaw2135-prod.fe.up.pt
-    description: Production server
+    -   url: http://lbaw2135-prod.fe.up.pt
+        description: Production server
   
 externalDocs:
     description: Find more info here.
@@ -105,42 +105,42 @@ paths:
             requestBody:
                 required: true
                 content:
-                application/x-www-form-urlencoded:
-                    schema:
-                        type: object
-                        properties:
-                            username:
-                                type: string
-                            email:          
-                                type: string
-                            password:   
-                                type: string
-                            name:   
-                                type: string
-                            countryId:   
-                                type: int
-                            city:   
-                                type: string
-                        required:
-                            - username
-                            - email
-                            - password
-                            - name
-                            - countryId        
+                    application/x-www-form-urlencoded:
+                        schema:
+                            type: object
+                            properties:
+                                username:
+                                    type: string
+                                email:          
+                                    type: string
+                                password:   
+                                    type: string
+                                name:   
+                                    type: string
+                                countryId:   
+                                    type: integer
+                                city:   
+                                    type: string
+                            required:
+                                - username
+                                - email
+                                - password
+                                - name
+                                - countryId        
             responses:
                 '302':
-                description: 'Redirect after processing the sign up.'
-                headers:
-                    Location:
-                        schema:
-                            type: string
-                        examples:
-                            302Success:
-                                description: 'Successful registration. Redirect to feed.'
-                                value: '/feed'
-                            302Error:
-                                description: 'Failed authentication. Redirect to register form.'
-                                value: '/register'
+                    description: 'Redirect after processing the sign up.'
+                    headers:
+                        Location:
+                            schema:
+                                type: string
+                            examples:
+                                302Success:
+                                    description: 'Successful registration. Redirect to feed.'
+                                    value: '/feed'
+                                302Error:
+                                    description: 'Failed authentication. Redirect to register form.'
+                                    value: '/register'
         
 
     # 4 - Alexandre
@@ -153,15 +153,15 @@ paths:
                 - 'M01: Authentication and Individual Profile'
             responses:
                 '302':
-                description: 'Redirect after processing logout, so user can login again.'
-                headers:
-                    Location:
-                        schema:
-                            type: string
-                        examples:
-                            302Error:
-                                description: 'Failed authentication. Redirect to login form.'
-                                value: '/login'
+                    description: 'Redirect after processing logout, so user can login again.'
+                    headers:
+                        Location:
+                            schema:
+                                type: string
+                            examples:
+                                302Error:
+                                    description: 'Failed authentication. Redirect to login form.'
+                                    value: '/login'
     
     # 5 - Rui
     /member/{username}/recipes:
@@ -208,18 +208,16 @@ paths:
     /member/{username}/reviews:
         get:
             operationId: R10XX
-            summary: 'R10XX: Member's reviews.'
-            description: 'Provide member''s reviews page. Access: PUB'
+            summary: "R10XX: Member's reviews."
+            description: "Provide member's reviews page. Access: PUB"
             tags: 
                 - 'M02: Recipes, categories, groups and members'
-
             parameters:
                 -   in: path
                     name: username
                     schema:
                         type: string
                     required: true
-
             responses:    
                 '200':
                     description: 'Ok. Show [UI10](https://lbaw2135-piu.lbaw-prod.fe.up.pt/pages/profile_reviews.php)'
@@ -237,7 +235,7 @@ paths:
                 -   in: path
                     name: categoryId
                     schema:
-                        type: int
+                        type: integer
                     required: true
 
             responses:    
@@ -290,7 +288,7 @@ paths:
                 -   in: path
                     name: groupId
                     schema:
-                        type: int
+                        type: integer
                     required: true
 
             responses:    
@@ -310,26 +308,26 @@ paths:
                 content:
                     multipart/form-data:
                         schema:
-                        type: object
-                        properties:
-                            profilePhoto:
-                                type: string
-                                form: binary
-                            name:
-                                type: string
-                            description:
-                                type: string
-                            visibility:
-                                type: boolean
-                            coverPhoto:
-                                type: string
-                                form: binary
-                        required:
-                            - profilePhoto
-                            - name
-                            - description
-                            - visibility
-                            - coverPhoto
+                            type: object
+                            properties:
+                                profilePhoto:
+                                    type: string
+                                    format: binary
+                                name:
+                                    type: string
+                                description:
+                                    type: string
+                                visibility:
+                                    type: boolean
+                                coverPhoto:
+                                    type: string
+                                    format: binary
+                            required:
+                                - profilePhoto
+                                - name
+                                - description
+                                - visibility
+                                - coverPhoto
             responses:
                 '302':
                     description: 'Redirect after processing the group creation.'
@@ -364,13 +362,13 @@ paths:
             summary: 'R10XX: Read messages'
             description: 'Read private messages sent to another user. Access: MBR'
             tags:
-                -   name: 'M03: Chat'
+                -   'M03: Chat'
             parameters:
                 -   in: path
                     name: recipiendId
                     schema:
                         type: string
-                        required: true
+                    required: true
             responses:
                 '200':
                     description: 'Ok. Show [UI08](http://lbaw2135-piu.lbaw-prod.fe.up.pt/pages/privateMessages.php)'
@@ -383,14 +381,12 @@ paths:
             description: 'Provide results from the performed search. Access: PUB'
             tags: 
                 - 'M02: Recipes, categories, groups and members'
-
             parameters:
                 -   in: path
                     name: searchQuery
                     schema:
                         type: string
-                    required: false
-
+                    required: true
             responses:    
                 '200':
                     description: 'Ok. Show [UI15](http://lbaw2135-piu.lbaw-prod.fe.up.pt/pages/search.php)'
@@ -436,7 +432,6 @@ paths:
 
     # 19 - Rui
     /faq:
-        /member/{username}/recipes:
         get: 
             operationId: R10XX
             summary: 'R10XX: FAQ page'
@@ -460,29 +455,29 @@ paths:
                 content:
                     multipart/form-data:
                         schema:
-                        type: object
-                        properties:
-                            name:
-                                type: string
-                            username:
-                                type: string
-                            email:
-                                type: string
-                            city:
-                                type: string
-                            country:
-                                type: integer
-                            password:
-                                type: string
-                            profileImage:
-                                type: string
-                                form: binary
-                        required:
-                            - name
-                            - username
-                            - email
-                            - country
-                            - password
+                            type: object
+                            properties:
+                                name:
+                                    type: string
+                                username:
+                                    type: string
+                                email:
+                                    type: string
+                                city:
+                                    type: string
+                                country:
+                                    type: integer
+                                password:
+                                    type: string
+                                profileImage:
+                                    type: string
+                                    format: binary
+                            required:
+                                - name
+                                - username
+                                - email
+                                - country
+                                - password
             responses:
                 '200':
                     description: 'OK'
@@ -511,7 +506,7 @@ paths:
                                 type: object
                                 properties:
                                     id:
-                                        type: int
+                                        type: integer
                                     name:
                                         type: string
                                     username:
@@ -521,55 +516,59 @@ paths:
                                     country:
                                         type: object
                                         properties:
-                                            id: int
-                                            abbreviation: string
-                                            name: string
+                                            id: 
+                                                type: integer
+                                            abbreviation:
+                                                type: string
+                                            name:
+                                                type: string
                                     creationDate:
-                                        type: date
+                                        type: string
+                                        format: datetime
                                     score:
-                                        type: float
+                                        type: number
                                     biography:
                                         type: string
                                     recipes:
-                                        type: int
+                                        type: integer
                                     followers:
-                                        type: int
+                                        type: integer
                                     following:
-                                        type: int
+                                        type: integer
                                 example:
                                     id: 2
-                                    name: Mark Hasmunsen
+                                    name: "Mark Hasmunsen"
                                     username: mark_h
                                     city: Bergen
                                     country: 
-                                        - id: 165
-                                        abbreviation: "NO"
-                                        name: Norway
+                                        -   id: 165
+                                            abbreviation: "NO"
+                                            name: Norway
                                     creationDate: "2019-05-09"
                                     score: 4.7
                                     biography: "Black metal fan making food, what could go wrong?"
                                     recipes: 14
                                     followers: 34
                                     following: 13
-                '200':
-                    description: 'OK. The requested user is private and the authenticated user doesn't follow him.'
+                '201': # TODO: CHANGE THIS!!!!!!
+                    description: "OK. The requested user is private and the authenticated user doesn't follow him."
                     content:
                         application/json:
                             schema:
                                 type: object
                                 properties:
                                     id:
-                                        type: int
+                                        type: integer
                                     name:
                                         type: string
                                     username:
                                         type: string
                                     recipes:
-                                        type: int
+                                        type: integer
                                     followers:
-                                        type: int
+                                        type: integer
                                     following:
-                                        type: int
+                                        type: integer
                                 example:
                                     id: 2
                                     name: Mark Hasmunsen
@@ -596,30 +595,30 @@ paths:
                 content:
                     multipart/form-data:
                         schema:
-                        type: object
-                        properties:
-                            name:
-                                type: string
-                            username:
-                                type: string
-                            email:
-                                type: string
-                            city:
-                                type: string
-                            country:
-                                type: integer
-                            password:
-                                type: string
-                            biography:
-                                type: string
-                            visibility:
-                                type: boolean
-                            profileImage:
-                                type: string
-                                format: binary
-                            coverImage:
-                                type: string
-                                format: binary
+                            type: object
+                            properties:
+                                name:
+                                    type: string
+                                username:
+                                    type: string
+                                email:
+                                    type: string
+                                city:
+                                    type: string
+                                country:
+                                    type: integer
+                                password:
+                                    type: string
+                                biography:
+                                    type: string
+                                visibility:
+                                    type: boolean
+                                profileImage:
+                                    type: string
+                                    format: binary
+                                coverImage:
+                                    type: string
+                                    format: binary
             responses:
                 '200':
                     description: 'Updated User'
@@ -662,57 +661,58 @@ paths:
             responses:
                 '200':
                   description: 'OK'
-                    content:
-                        application/json:
-                            schema:
-                                type: array
-                                items:
-                                    type: object
-                                    properties:
-                                        id:
-                                            type: string
-                                        title:
-                                            type: string
-                                        description:
-                                            type: string
-                                        creationDate:
-                                            type: date
-                                        rating:
-                                            type: float
-                                        numberOfReviews:
-                                            type: int
-                                        category:
-                                            type: string
-                                        tags:
-                                            type: array
-                                            items:
-                                                type: object
-                                                properties:
-                                                    id: 
-                                                        type: int
-                                                    name:
-                                                        type: string
-                                        inFavourites:
-                                            type: boolean
-                                example:
-                                    -   id: 1
-                                        title: Classic Tiramisu
-                                        description: Classic Italian dessert made with ladyfingers and mascarpone cheese.
-                                        creationDate: 22-01-2021
-                                        rating: 4.5
-                                        numberOfReviews: 5
-                                        category: Dessert
-                                        tags: 
-                                            -   id: 45
-                                                name: "Vegetarian"
-                                            -   id: 32
-                                                name: "Zero sugar"
-                                        inFavourites: false
+                  content:
+                      application/json:
+                          schema:
+                              type: array
+                              items:
+                                  type: object
+                                  properties:
+                                      id:
+                                          type: string
+                                      title:
+                                          type: string
+                                      description:
+                                          type: string
+                                      creationDate:
+                                          type: string
+                                          format: datetime
+                                      rating:
+                                          type: number
+                                      numberOfReviews:
+                                          type: integer
+                                      category:
+                                          type: string
+                                      tags:
+                                          type: array
+                                          items:
+                                              type: object
+                                              properties:
+                                                  id: 
+                                                      type: integer
+                                                  name:
+                                                      type: string
+                                      inFavourites:
+                                          type: boolean
+                              example:
+                                  -   id: 1
+                                      title: Classic Tiramisu
+                                      description: Classic Italian dessert made with ladyfingers and mascarpone cheese.
+                                      creationDate: 22-01-2021
+                                      rating: 4.5
+                                      numberOfReviews: 5
+                                      category: Dessert
+                                      tags: 
+                                          -   id: 45
+                                              name: "Vegetarian"
+                                          -   id: 32
+                                              name: "Zero sugar"
+                                      inFavourites: false
                                         
                 '400':
                     description: 'Invalid Request'
                 '403':
-                    description: 'The authenticated user cannot access the requested information (the requested member is private and the authenticated user doesn't follow him)'
+                    description: "The authenticated user cannot access the requested information (the requested member is private and the authenticated user doesn't follow him)"
                 '404':
                     description: 'The user does not exist'
 
@@ -732,36 +732,37 @@ paths:
             responses:    
                 '200':
                   description: 'OK'
-                    content:
-                        application/json:
-                            schema:
-                                type: array
-                                items:
-                                    type: object
-                                    properties:
-                                        recipeTitle:
-                                            type: string
-                                        postTime:
-                                            type: date
-                                        givenRating:
-                                            type: int
-                                        givenComment:
-                                            type: string
-                                        recipeRating:
-                                            type: float
-                                        numberOfReviews:
-                                            type: int
-                                example:
-                                    -   recipeTitle: Traditional Irish Stew
-                                        postTime: 2 hours ago
-                                        givenRating: 4
-                                        givenComment: Absolutely delicious! Explosion of flavour...
-                                        recipeRating: 4.6
-                                        numberOfReviews: 20
+                  content:
+                      application/json:
+                          schema:
+                              type: array
+                              items:
+                                  type: object
+                                  properties:
+                                      recipeTitle:
+                                          type: string
+                                      postTime:
+                                          type: string
+                                          format: datetime
+                                      givenRating:
+                                          type: integer
+                                      givenComment:
+                                          type: string
+                                      recipeRating:
+                                          type: number
+                                      numberOfReviews:
+                                          type: integer
+                              example:
+                                  -   recipeTitle: Traditional Irish Stew
+                                      postTime: 2 hours ago
+                                      givenRating: 4
+                                      givenComment: Absolutely delicious! Explosion of flavour...
+                                      recipeRating: 4.6
+                                      numberOfReviews: 20
                 '400':
                     description: 'Invalid Request'
                 '403':
-                    description: 'The authenticated user cannot access the requested information (the requested member is private and the authenticated user doesn't follow him)'
+                    description: "The authenticated user cannot access the requested information (the requested member is private and the authenticated user doesn't follow him)"
                 '404':
                     description: 'The user does not exist'
 
@@ -781,53 +782,54 @@ paths:
             responses:   
                 '200':
                   description: 'OK'
-                    content:
-                        application/json:
-                            schema:
-                                type: array
-                                items:
-                                    type: object
-                                    properties:
-                                        id:
-                                            type: int
-                                        recipeTitle:
-                                            type: string
-                                        description:
-                                            type: string
-                                        creationTime:
-                                            type: date
-                                        rating:
-                                            type: float
-                                        numberOfReviews:
-                                            type: int
-                                        category:
-                                            type: string
-                                        tags:
-                                            type: array
-                                            items:
-                                                type: object
-                                                properties:
-                                                    id: 
-                                                        type: int
-                                                    name:
-                                                        type: string
-                                example:
-                                    -   id: 1
-                                        recipeTitle: Classic Tiramisu
-                                        description: Classic Italian dessert made with ladyfingers and mascarpone cheese.
-                                        creationDate: 22-01-2021
-                                        rating: 4.5
-                                        numberOfReviews: 5
-                                        category: Dessert
-                                        tags: 
-                                            -   id: 45
-                                                name: "Vegetarian"
-                                            -   id: 32
-                                                name: "Zero sugar"                                      
+                  content:
+                      application/json:
+                          schema:
+                              type: array
+                              items:
+                                  type: object
+                                  properties:
+                                      id:
+                                          type: integer
+                                      recipeTitle:
+                                          type: string
+                                      description:
+                                          type: string
+                                      creationTime:
+                                          type: string
+                                          format: datetime
+                                      rating:
+                                          type: number
+                                      numberOfReviews:
+                                          type: integer
+                                      category:
+                                          type: string
+                                      tags:
+                                          type: array
+                                          items:
+                                              type: object
+                                              properties:
+                                                  id: 
+                                                      type: integer
+                                                  name:
+                                                      type: string
+                              example:
+                                  -   id: 1
+                                      recipeTitle: Classic Tiramisu
+                                      description: Classic Italian dessert made with ladyfingers and mascarpone cheese.
+                                      creationDate: 22-01-2021
+                                      rating: 4.5
+                                      numberOfReviews: 5
+                                      category: Dessert
+                                      tags: 
+                                          -   id: 45
+                                              name: "Vegetarian"
+                                          -   id: 32
+                                              name: "Zero sugar"                                      
                 '400':
                     description: 'Invalid Request'
                 '403':
-                    description: 'The authenticated user cannot access the requested information (the requested member is private and the authenticated user doesn't follow him)'
+                    description: "The authenticated user cannot access the requested information (the requested member is private and the authenticated user doesn't follow him)"
                 '404':
                     description: 'The user does not exist'
 
@@ -846,29 +848,29 @@ paths:
                     required: true
             responses:   
                 '200':
-                    description:
-                    content:
-                        application/json:
-                            schema:
-                                type: array
-                                items:
-                                    type: object
-                                    properties:
-                                        id: 
-                                            type: int
-                                        name: 
-                                            type: string
-                                        username: 
-                                            type: string
-                                example:
-                                    -   id: 2
-                                        name: Jamie Oliver
-                                        username: jamieOliverChef
-                                    -   id: 3
-                                        name: Kyren Wilson
-                                        username: kyren77
+                  description: 'OK'
+                  content:
+                      application/json:
+                          schema:
+                              type: array
+                              items:
+                                  type: object
+                                  properties:
+                                      id: 
+                                          type: integer
+                                      name: 
+                                          type: string
+                                      username: 
+                                          type: string
+                              example:
+                                  -   id: 2
+                                      name: Jamie Oliver
+                                      username: jamieOliverChef
+                                  -   id: 3
+                                      name: Kyren Wilson
+                                      username: kyren77
                 '403':
-                    description: 'The authenticated user cannot access the requested information (the requested member is private and the authenticated user doesn't follow him)'
+                    description: "The authenticated user cannot access the requested information (the requested member is private and the authenticated user doesn't follow him)"
                 '404':
                     description: 'The user does not exist'
 
@@ -887,7 +889,7 @@ paths:
                     required: true
             responses:   
                 '200':
-                    description:
+                    description: 'OK'
                     content:
                         application/json:
                             schema:
@@ -896,20 +898,20 @@ paths:
                                     type: object
                                     properties:
                                         id: 
-                                            type: int
+                                            type: integer
                                         name: 
                                             type: string
                                         username: 
                                             type: string
                                 example:
-                                    - id: 4
-                                    name: Judd Trump
-                                    username: trump00
-                                    - id: 5
-                                    name: Paul Morphy
-                                    username: _morphy_
+                                    -   id: 4
+                                        name: Judd Trump
+                                        username: trump00
+                                    -   id: 5
+                                        name: Paul Morphy
+                                        username: _morphy_
                 '403':
-                    description: 'The authenticated user cannot access the requested information (the requested member is private and the authenticated user doesn't follow him)'
+                    description: "The authenticated user cannot access the requested information (the requested member is private and the authenticated user doesn't follow him)"
                 '404':
                     description: 'The user does not exist'
 
@@ -937,7 +939,7 @@ paths:
                                     type: object
                                     properties:
                                         id: 
-                                            type: int
+                                            type: integer
                                         name: 
                                             type: string
                                 example:
@@ -946,7 +948,7 @@ paths:
                                     -   id: 2
                                         name: Lisbon Vegetarians
                 '403':
-                    description: 'The authenticated user cannot access the requested information (the requested member is private and the authenticated user doesn't follow him)'
+                    description: "The authenticated user cannot access the requested information (the requested member is private and the authenticated user doesn't follow him)"
                 '404':
                     description: 'The user does not exist'
 
@@ -1010,12 +1012,12 @@ paths:
                     content:
                         application/x-www-form-urlencoded:
                             schema:
-                            type: object
-                            properties:    
-                                id: 
-                                    type: int
-                            required:
-                                - id
+                              type: object
+                              properties:    
+                                  id: 
+                                      type: integer
+                              required:
+                                  - id
 
             responses:
                 '200':
@@ -1041,7 +1043,7 @@ paths:
                                     type: object
                                     properties:
                                         id: 
-                                            type: int
+                                            type: integer
                                         name: 
                                             type: string
                                         username: 
@@ -1053,11 +1055,11 @@ paths:
                                         city:
                                             type: string
                                         numberOfPosts:
-                                            type: int
+                                            type: integer
                                         numberOfComments:
-                                            type: int
+                                            type: integer
                                         numberOfReports:
-                                            type: int
+                                            type: integer
                                 example:
                                     -   id: 1
                                         name: Sarah Colbert
@@ -1114,7 +1116,7 @@ paths:
                                     type: array
                                     items:
                                         type: string
-                                        form: binary
+                                        format: binary
                                 visibility:
                                     type: boolean
                                 ingredients:
@@ -1123,7 +1125,7 @@ paths:
                                         type: object
                                         properties:
                                             quantity:
-                                                type: float
+                                                type: number
                                             unit:
                                                 type: integer
                                             name:
@@ -1151,7 +1153,7 @@ paths:
                                                 type: array
                                                 items:
                                                     type: string
-                                                    form: binary
+                                                    format: binary
                                         required:
                                             - name
                                             - description
@@ -1186,7 +1188,7 @@ paths:
                 -   in: path
                     name: recipeId
                     schema:
-                        type: int
+                        type: integer
                     required: true
             responses:
                 '200':
@@ -1197,41 +1199,42 @@ paths:
                                 type: object
                                 properties:
                                     id:
-                                        type: int
+                                        type: integer
                                     name:
                                         type: string
                                     difficulty:
-                                        type: Difficulty
+                                        type: string
                                     description:
                                         type: string
                                     servings:
-                                        type: int
+                                        type: integer
                                     preparation_time:
-                                        type: int
+                                        type: integer
                                     cooking_time:
-                                        type: int
+                                        type: integer
                                     additional_time:
-                                        type: int
+                                        type: integer
                                     creation_time:
-                                        type: datetime
+                                        type: string
+                                        format: datetime
                                     creator:
                                         type: object
                                         properties:
                                             id:
-                                                type: int
+                                                type: integer
                                             name:
                                                 type: string
                                     category:
                                         type: object
                                         properties:
                                             id:
-                                                type: int
+                                                type: integer
                                             name:
                                                 type: string
                                     id_group:
-                                        type: int
+                                        type: integer
                                     score:
-                                        type: float
+                                        type: number
                                     ingredients:
                                         type: array
                                         items:
@@ -1241,25 +1244,25 @@ paths:
                                                     type: object
                                                     properties:
                                                         id:
-                                                            type: int
+                                                            type: integer
                                                         name:
                                                             type: string
                                                 unit:
                                                     type: object
                                                     properties:
                                                         id:
-                                                            type: int
+                                                            type: integer
                                                         name:
                                                             type: string
                                                 quantity:
-                                                    type: float
+                                                    type: number
                                     tags:
                                         type: array
                                         items:
                                             type: object
                                             properties:
                                                 id:
-                                                    type: int
+                                                    type: integer
                                                 name:
                                                     type: string
                                     steps:
@@ -1268,7 +1271,7 @@ paths:
                                             type: object
                                             properties:
                                                 id:
-                                                    type: int
+                                                    type: integer
                                                 name:
                                                     type: string
                                                 description:
@@ -1325,7 +1328,7 @@ paths:
                 -   in: path
                     name: recipeId
                     schema:
-                        type: int
+                        type: integer
                     required: true
             requestBody:
                 required: true
@@ -1337,37 +1340,38 @@ paths:
                                 name:
                                     type: string
                                 difficulty:
-                                    type: Difficulty
+                                    type: string
                                 description:
                                     type: string
                                 servings:
-                                    type: int
+                                    type: integer
                                 preparation_time:
-                                    type: int
+                                    type: integer
                                 cooking_time:
-                                    type: int
+                                    type: integer
                                 additional_time:
-                                    type: int
+                                    type: integer
                                 creation_time:
-                                    type: datetime
+                                    type: string
+                                    format: datetime
                                 creator:
                                     type: object
                                     properties:
                                         id:
-                                            type: int
+                                            type: integer
                                         name:
                                             type: string
                                 category:
                                     type: object
                                     properties:
                                         id:
-                                            type: int
+                                            type: integer
                                         name:
                                             type: string
                                 id_group:
-                                    type: int
+                                    type: integer
                                 score:
-                                    type: float
+                                    type: number
                                 ingredients:
                                     type: array
                                     items:
@@ -1377,25 +1381,25 @@ paths:
                                                 type: object
                                                 properties:
                                                     id:
-                                                        type: int
+                                                        type: integer
                                                     name:
                                                         type: string
                                             unit:
                                                 type: object
                                                 properties:
                                                     id:
-                                                        type: int
+                                                        type: integer
                                                     name:
                                                         type: string
                                             quantity:
-                                                type: float
+                                                type: number
                                 tags:
                                     type: array
                                     items:
                                         type: object
                                         properties:
                                             id:
-                                                type: int
+                                                type: integer
                                             name:
                                                 type: string
                                 steps:
@@ -1404,7 +1408,7 @@ paths:
                                         type: object
                                         properties:
                                             id:
-                                                type: int
+                                                type: integer
                                             name:
                                                 type: string
                                             description:
@@ -1425,7 +1429,7 @@ paths:
                 -   in: path
                     name: recipeId
                     schema:
-                        type: int
+                        type: integer
                     required: true
             responses:
                 '200':
@@ -1479,25 +1483,25 @@ paths:
                 content:
                     multipart/form-data:
                         schema:
-                        type: object
-                        properties:
-                            name:
-                                type: string
-                            description:
-                                type: string
-                            visibility:
-                                type: boolean
-                            groupImage:
-                                type: string
-                                form: binary
-                            coverImage:
-                                type: string
-                                form: binary
-                        required:
-                            - name
-                            - description
-                            - visibility
-                            - groupImage
+                            type: object
+                            properties:
+                                name:
+                                    type: string
+                                description:
+                                    type: string
+                                visibility:
+                                    type: boolean
+                                groupImage:
+                                    type: string
+                                    format: binary
+                                coverImage:
+                                    type: string
+                                    format: binary
+                            required:
+                                - name
+                                - description
+                                - visibility
+                                - groupImage
             responses:
                 '200':
                     description: 'Created Group'
@@ -1520,14 +1524,14 @@ paths:
                     required: true
             responses:
                 '200':
-                    description: 'OK. The authenticated user has access to the group''s' information.'
+                    description: "OK. The authenticated user has access to the group''s' information."
                     content:
                         application/json:
                             schema:
                                 type: object
                                 properties:
                                     id:
-                                        type: int
+                                        type: integer
                                     name:
                                         type: string
                                     description:
@@ -1545,15 +1549,15 @@ paths:
                                     visibility: false
                                     numberOfRecipes: 14
                                     numberOfMembers: 56
-                '200':
-                    description: 'OK. The authenticated user has access to the group''s' information and membership requests.'
+                '201': #TODO: Change
+                    description: "OK. The authenticated user has access to the group's information and membership requests."
                     content:
                         application/json:
                             schema:
                                 type: object
                                 properties:
                                     id:
-                                        type: int
+                                        type: integer
                                     name:
                                         type: string
                                     description:
@@ -1605,10 +1609,10 @@ paths:
                                     type: boolean
                                 coverImage:
                                     type: string
-                                    form: binary
+                                    format: binary
                                 profileImage:
                                     type: string
-                                    form: binary
+                                    format: binary
             responses:
                 '200':
                     description: 'OK'
@@ -1631,7 +1635,7 @@ paths:
                     description: 'OK'
 
     # 6 - Tiago 
-    /api/group/{groupId}/request
+    /api/group/{groupId}/request:
         post:
             operationId: R2205
             summary: 'R2205: Create membership request'
@@ -1642,7 +1646,7 @@ paths:
                 -   in: path
                     name: groupId
                     schema:
-                        type: int
+                        type: integer
                     required: true
             responses:    
                 '200':
@@ -1651,7 +1655,7 @@ paths:
                   description: 'Invalid Request'
 
     # 7 - Rui
-    /api/group/{groupId}/request/{memberId}
+    /api/group/{groupId}/request/{memberId}:
         post:
             operationId: R2206
             summary: 'R2206: Accept membership request'
@@ -1663,12 +1667,12 @@ paths:
                 -   in: path
                     name: groupId
                     schema:
-                        type: int
+                        type: integer
                     required: true
                 -   in: path
                     name: memberId
                     schema:
-                        type: int
+                        type: integer
                     required: true    
             
             responses:
@@ -1689,12 +1693,12 @@ paths:
                 -   in: path
                     name: groupId
                     schema:
-                        type: int
+                        type: integer
                     required: true
                 -   in: path
                     name: memberId
                     schema:
-                        type: int
+                        type: integer
                     required: true 
 
             responses:
@@ -1715,12 +1719,12 @@ paths:
                 -   in: path
                     name: groupId
                     schema:
-                        type: int
+                        type: integer
                     required: true
                 -   in: path
                     name: memberId
                     schema:
-                        type: int
+                        type: integer
                     required: true
             responses:
                 '200':
@@ -1740,12 +1744,12 @@ paths:
                 -   in: path
                     name: groupId
                     schema:
-                        type: int
+                        type: integer
                     required: true
                 -   in: path
                     name: memberId
                     schema:
-                        type: int
+                        type: integer
                     required: true
             responses:
                 '200':
@@ -1754,21 +1758,19 @@ paths:
                     description: 'Invalid Request'
 
     # 10 - Rui
-    /api/group/{groupId}/members
+    /api/group/{groupId}/members:
         get:
             operationId: R2210
             summary: 'R2210: Gets a list of the members of a group'
             description: 'Returns a list of the members of the group in JSON Access: MOD'
             tags: 
                 - 'M02: Recipes, categories, groups and members'
-
             parameters:
                 -   in: path
                     name: groupId
                     schema:
-                        type: int
+                        type: integer
                     required: true
-
             responses:
                 '200':
                     description: "Success"
@@ -1778,13 +1780,13 @@ paths:
                                 type: array
                                 items:
                                     type: object
-                                        properties:
-                                            id:
-                                                type: int
-                                            name: 
-                                                type: string
-                                            username:
-                                                type: string
+                                    properties:
+                                        id:
+                                            type: integer
+                                        name: 
+                                            type: string
+                                        username:
+                                            type: string
                                 example:
                                     -   id: 2
                                         name: Mark Hasmunsen              
@@ -1793,12 +1795,12 @@ paths:
                                         name: Kyren Wilson
                                         username: kyren77
                 '403':
-                    description: 'The authenticated user cannot access the requested information (the requested group is private and the authenticated user doesn't belong to it)'
+                    description: "The authenticated user cannot access the requested information (the requested group is private and the authenticated user doesn't belong to it)"
                 '404':
                     description: 'The group does not exist'
 
     # 11 - Rui
-    /api/chat/{recipientId}
+    /api/chat/{recipientId}:
         get:
             operationId: R2301
             summary: 'R2301: Get chat'
@@ -1810,23 +1812,24 @@ paths:
                 -   in: path
                     name: recipientId
                     schema:
-                        type: int
+                        type: integer
                     required: true  
 
             responses:    
                 '200':
-                    description: "Sucess"
+                    description: "Success"
                     content:
                         application/json:
                             schema:
                                 type: array
                                 items:
                                     type: object
-                                        properties:
-                                            text:
-                                                type: string
-                                            creationDate:
-                                                type: date
+                                    properties:
+                                        text:
+                                            type: string
+                                        creationDate:
+                                            type: string
+                                            format: datetime
                                 example:
                                     -   text: That's nice!
                                         creationDate: 2019-05-09 16:19
@@ -1845,7 +1848,7 @@ paths:
                 -   in: path
                     name: recipientId
                     schema:
-                        type: int
+                        type: integer
                     required: true  
 
             requestBody:
@@ -1867,7 +1870,7 @@ paths:
                   description: 'Invalid Request'    
 
     # Needed route for getting user conversations (left menu in privateMessages.php)
-    /api/chats
+    /api/chats:
         get:
             operationId: R2302
             summary: 'R2302: Get the user conversations'
@@ -1877,7 +1880,7 @@ paths:
 
             responses:    
                 '200':
-                    description: 'Sucess'
+                    description: 'Success'
                     content:
                         application/json:
                             schema:
@@ -1886,7 +1889,7 @@ paths:
                                     type: object
                                     properties:
                                         userId: 
-                                            type: int
+                                            type: integer
                                         name: 
                                             type: string
                                         username:
@@ -1944,7 +1947,7 @@ paths:
                     description: 'Bad request'
 
     # 13 - Tiago
-    /api/comment/{commentId}
+    /api/comment/{commentId}:
         put:
             operationId: R2402
             summary: 'R2402: Edit comment'
@@ -1955,7 +1958,7 @@ paths:
                 -   in: path
                     name: commentId
                     schema:
-                        type: int
+                        type: integer
                     required: true
 
             requestBody:
@@ -1963,12 +1966,12 @@ paths:
                 content:
                     multipart/form-data:
                         schema:
-                        type: object
-                        properties:
-                            text:
-                                type: string
-                            rating:
-                                type: int
+                            type: object
+                            properties:
+                                text:
+                                    type: string
+                                rating:
+                                    type: integer
 
             responses:
                 '200':
@@ -1989,10 +1992,9 @@ paths:
                 -   in: path
                     name: commentId
                     schema:
-                        type: int
+                        type: integer
                     required: true
             responses:    
-                responses:    
                 '200':
                     description: 'Deleted Comment'
                 '400':
@@ -2000,7 +2002,7 @@ paths:
             
     
     # 14 - Rui
-    /api/feed?sortparam=duration&sort=asc&ingredient=tomato,flour&date=2020/05/15-2020/05/16&difficulty=hard
+    /api/feed?sortparam=duration&sort=asc&ingredient=tomato,flour&date=2020/05/15-2020/05/16&difficulty=hard:
         get:
             operationId: R2501
             summary: "R2501: Get member's feed"
@@ -2040,7 +2042,7 @@ paths:
                         type: string
                     required: false
                 -   in: query
-                    name: date
+                    name: datetime
                     schema:
                         type: string
                     required: false
@@ -2058,67 +2060,68 @@ paths:
 
             responses:
                 '200':
-                    description: "Sucess"
+                    description: "Success"
                     content:
                         application/json:
                             schema:
                                 type: object
-                                    properties:
-                                        recipes:
-                                            type: array
-                                            items:
-                                                type: object
-                                                properties:
-                                                    id:
-                                                        type: string
-                                                    title:
-                                                        type: string
-                                                    description:
-                                                        type: string
-                                                    creationDate:
-                                                        type: date
-                                                    rating:
-                                                        type: float
-                                                    numberOfReviews:
-                                                        type: int
-                                                    category:
-                                                        type: string
-                                                    tags:
-                                                        type: array
-                                                        items:
-                                                            type: object
-                                                            properties:
-                                                                id: 
-                                                                    type: int
-                                                                name:
-                                                                    type: string
-                                        categories:
-                                            type: array
-                                            items:
-                                                type: object
-                                                    properties:
-                                                        id:
-                                                            type: int
-                                                        name: 
-                                                            type: string
-                                        tags:
-                                            type: array
-                                            items:
-                                                type: object
-                                                    properties:
-                                                        id:
-                                                            type: int
-                                                        name: 
-                                                            type: string 
-                                        trendingRecipes:
-                                            type: array
-                                            items:
-                                                type: object
-                                                    properties:
-                                                        id:
-                                                            type: int
-                                                        title: 
-                                                            type: string 
+                                properties:
+                                    recipes:
+                                        type: array
+                                        items:
+                                            type: object
+                                            properties:
+                                                id:
+                                                    type: string
+                                                title:
+                                                    type: string
+                                                description:
+                                                    type: string
+                                                creationDate:
+                                                    type: string
+                                                    format: datetime
+                                                rating:
+                                                    type: number
+                                                numberOfReviews:
+                                                    type: integer
+                                                category:
+                                                    type: string
+                                                tags:
+                                                    type: array
+                                                    items:
+                                                        type: object
+                                                        properties:
+                                                            id: 
+                                                                type: integer
+                                                            name:
+                                                                type: string
+                                    categories:
+                                        type: array
+                                        items:
+                                            type: object
+                                            properties:
+                                                id:
+                                                    type: integer
+                                                name: 
+                                                    type: string
+                                    tags:
+                                        type: array
+                                        items:
+                                            type: object
+                                            properties:
+                                                id:
+                                                    type: integer
+                                                name: 
+                                                    type: string 
+                                    trendingRecipes:
+                                        type: array
+                                        items:
+                                            type: object
+                                            properties:
+                                                id:
+                                                    type: integer
+                                                title: 
+                                                    type: string 
                                 example:
                                     recipes:
                                         -   id: 1
@@ -2174,7 +2177,7 @@ paths:
                     name: searchQuery
                     schema:
                         type: string
-                    required: false
+                    required: true
                 -   in: query
                     name: sort
                     schema:
@@ -2240,7 +2243,7 @@ paths:
                                                 authorName:
                                                     type: string
                                                 rating:
-                                                    type: float
+                                                    type: number
                                                 numberOfReviews:
                                                     type: integer
                                     users:
@@ -2255,7 +2258,7 @@ paths:
                                                 name:
                                                     type: string
                                                 rating:
-                                                    type: float
+                                                    type: number
                                                 numberOfRecipes:
                                                     type: integer
                                     groups:
@@ -2349,14 +2352,14 @@ paths:
                 -   in: path
                     name: recipeId
                     schema:
-                        type: int
+                        type: integer
                     required: true
             requestBody:
                 required: true
                 content:
                     multipart/form-data:
                         schema:
-                        type: string        # Reason
+                            type: string        # Reason
             responses:
                 '200':
                     description: 'Reported Recipe'
@@ -2375,14 +2378,14 @@ paths:
                 -   in: path
                     name: commentId
                     schema:
-                        type: int
+                        type: integer
                     required: true
             requestBody:
                 required: true
                 content:
                     multipart/form-data:
                         schema:
-                        type: string        # Reason
+                            type: string        # Reason
             responses:
                 '200':
                     description: 'Reported Comment'
@@ -2390,7 +2393,7 @@ paths:
                     description: 'Invalid Request'
     
     # 17 - Tiago
-    /api/report/{reportId}
+    /api/report/{reportId}:
         delete:
             operationId: R2702
             summary: 'R2702: Dismiss report'
@@ -2401,17 +2404,16 @@ paths:
                 -   in: path
                     name: reportId
                     schema:
-                        type: int
+                        type: integer
                     required: true
             responses:    
-                responses:    
                 '200':
                     description: 'Deleted Report'
                 '400':
                     description: 'Invalid Request'    
     
     # 18 - Tiago         
-    /api/reports
+    /api/reports:
         get:
             operationId: R2703
             summary: 'R2703: Get all reports'
@@ -2427,19 +2429,19 @@ paths:
                                 type: array
                                 items:
                                     type: object
-                                        properties:
-                                            type:    
-                                                type: string
-                                            id_reporter:
-                                                type: int
-                                            reason: 
-                                                type: string
-                                            active:
-                                                type: boolean
-                                            id_comment:
-                                                type: int
-                                            id_recipe:
-                                                type: int
+                                    properties:
+                                        type:    
+                                            type: string
+                                        id_reporter:
+                                            type: integer
+                                        reason: 
+                                            type: string
+                                        active:
+                                            type: boolean
+                                        id_comment:
+                                            type: integer
+                                        id_recipe:
+                                            type: integer
                                 example:
                                     -   type: comment_report
                                         id_reporter: 1
@@ -2455,7 +2457,7 @@ paths:
                                         id_recipe: 4
                                     
     # 19 - Rui
-    /api/notifications
+    /api/notifications:
         get:
             operationId: R2801
             summary: 'R2801: Get notifications'
@@ -2473,19 +2475,19 @@ paths:
                                     type: object
                                     properties:
                                         id:
-                                            type: int
+                                            type: integer
                                         type:    
                                             type: string
                                         read:
                                             type: boolean
                                         commentId:
-                                            type: int
+                                            type: integer
                                         recipeName:
                                             type: string
                                         recipeId:
-                                            type: int
+                                            type: integer
                                         userId: 
-                                            type: int
+                                            type: integer
                                         name:
                                             type: string
                                         username:
@@ -2548,20 +2550,20 @@ paths:
                     multipart/form-data:
                         schema:
                             type: array
-                                items:
-                                    type: object
-                                    properties:
-                                        id: 
-                                            type: int # Not required in follow and followRequest
-                                        type:    
-                                            type: string
-                                        read:
-                                            type: boolean
-                                        userId: 
-                                            type: int # Only required in follow and followRequest
-                                    required:
-                                        - type
-                                        - read
+                            items:
+                                type: object
+                                properties:
+                                    id: 
+                                        type: integer # Not required in follow and followRequest
+                                    type:    
+                                        type: string
+                                    read:
+                                        type: boolean
+                                    userId: 
+                                        type: integer # Only required in follow and followRequest
+                                required:
+                                    - type
+                                    - read
             responses:
                 '200':
                     description: 'Updated User'
@@ -2569,7 +2571,7 @@ paths:
                     description: 'Invalid Request'          
 
     # 20 - Tiago
-    /api/countries
+    /api/countries:
         get:
             operationId: R2901
             summary: 'R2901: Get list of countries'
@@ -2585,23 +2587,23 @@ paths:
                                 type: array
                                 items:
                                     type: object
-                                        properties:
-                                            id:    
-                                                type: int
-                                            abbreviation:
-                                                type: string
-                                            name: 
-                                                type: string
+                                    properties:
+                                        id:    
+                                            type: integer
+                                        abbreviation:
+                                            type: string
+                                        name: 
+                                            type: string
                                 example:
-                                    -   int: 1
+                                    -   integer: 1
                                         abbreviation: PT
                                         name: Portugal
-                                    -   int: 2
+                                    -   integer: 2
                                         abbreviation: ES
                                         name: Spain
-                                    -   int: 3
+                                    -   integer: 3
                                         abbreviation: FR
                                         name: France
-                                    -   int: 4
+                                    -   integer: 4
                                         abbreviation: USA
                                         name: United States of America
