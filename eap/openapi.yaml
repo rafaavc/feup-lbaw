@@ -139,8 +139,8 @@ paths:
 
     /logout:
         post:
-            operationId: R1005
-            summary: 'R1005: Logout Action'
+            operationId: R1006
+            summary: 'R1006: Logout Action'
             description: 'Logout from an account. Access: MBR'
             tags:
                 - 'M01: Authentication and Individual Profile'
@@ -158,8 +158,8 @@ paths:
 
     /member/{username}/recipes:
         get: 
-            operationId: R1006
-            summary: 'R1006: Member recipes'
+            operationId: R1007
+            summary: 'R1007: Member recipes'
             description: 'Provide member recipes page. Access: PUB'
             tags: 
                 - 'M02: Recipes, categories, groups and members'
@@ -177,8 +177,8 @@ paths:
 
     /member/{username}/favourites:
         get: 
-            operationId: R1007
-            summary: 'R1007: Member favourited recipes.'
+            operationId: R1008
+            summary: 'R1008: Member favourited recipes.'
             description: 'Provide member favourited recipes page. Access: PUB'
             tags: 
                 - 'M02: Recipes, categories, groups and members'
@@ -196,8 +196,8 @@ paths:
 
     /member/{username}/reviews:
         get:
-            operationId: R1008
-            summary: "R1008: Member's reviews."
+            operationId: R1009
+            summary: "R1009: Member's reviews."
             description: "Provide member's reviews page. Access: PUB"
             tags: 
                 - 'M02: Recipes, categories, groups and members'
@@ -213,8 +213,8 @@ paths:
 
     /category/{categoryId}:
         get: 
-            operationId: R1009
-            summary: 'R1009: Category page.'
+            operationId: R1010
+            summary: 'R1010: Category page.'
             description: 'Show a page with recipes of a certain category. Access: PUB'
             tags: 
                 - 'M02: Recipes, categories, groups and members'
@@ -234,8 +234,8 @@ paths:
 
     /recipe/{recipeId}:
         get:
-            operationId: R1010
-            summary: 'R1010: View recipes'
+            operationId: R1011
+            summary: 'R1011: View recipes'
             description: 'Show an individual recipe page. Access: PUB'
             tags:
                 - 'M02: Recipes, categories, groups and members'
@@ -251,8 +251,8 @@ paths:
 
     /recipe:
         get:
-            operationId: R1011
-            summary: 'R1011: Create Recipe.'
+            operationId: R1012
+            summary: 'R1012: Create Recipe.'
             description: 'Provides the create recipe page. Access: PUB'
             tags: 
                 - 'M02: Recipes, categories, groups and members'
@@ -262,8 +262,8 @@ paths:
 
     /group/{groupId}:
         get: 
-            operationId: R1012
-            summary: 'R1012: Group page.'
+            operationId: R1013
+            summary: 'R1013: Group page.'
             description: 'Show a page with recipes and information of a certain group. Access: PUB.'
             tags: 
                 - 'M02: Recipes, categories, groups and members'
@@ -281,8 +281,8 @@ paths:
 
     /group:
         post:
-            operationId: R1013
-            summary: 'R1013: Create group'
+            operationId: R1014
+            summary: 'R1014: Create group'
             description: 'Create a new group. Access: MBR'
             tags:
                 - 'M02: Recipes, categories, groups and members'
@@ -328,8 +328,8 @@ paths:
 
     /feed:
         get:
-            operationId: R1014
-            summary: 'R1014: Feed.'
+            operationId: R1015
+            summary: 'R1015: Feed.'
             description: 'Provides the feed page. Access: PUB'
             tags: 
                 - 'M02: Recipes, categories, groups and members'
@@ -339,14 +339,14 @@ paths:
 
     /chat/{recipientId}:
         get:
-            operationId: R1015
-            summary: 'R1015: Read messages'
+            operationId: R1016
+            summary: 'R1016: Read messages'
             description: 'Read private messages sent to another user. Access: MBR'
             tags:
                 -   'M03: Chat'
             parameters:
                 -   in: path
-                    name: recipiendId
+                    name: recipientId
                     schema:
                         type: string
                     required: true
@@ -356,8 +356,8 @@ paths:
 
     /search/{searchQuery}:
         get: 
-            operationId: R1016
-            summary: 'R1016: Search results page'
+            operationId: R1017
+            summary: 'R1017: Search results page'
             description: 'Provide results from the performed search. Access: PUB'
             tags: 
                 - 'M02: Recipes, categories, groups and members'
@@ -373,8 +373,8 @@ paths:
 
     /admin/reports:
         get: 
-            operationId: R1017
-            summary: 'R1017: Reports page.'
+            operationId: R1018
+            summary: 'R1018: Reports page.'
             description: 'Show all the comment and recipe reports to the admin. Access: ADM'
             tags: 
                 - 'M05: Web resources associated with the administrator pages'
@@ -386,8 +386,8 @@ paths:
 
     /admin/users:
         get:
-            operationId: R1018
-            summary: 'R1018: Users management section.'
+            operationId: R1019
+            summary: 'R1019: Users management section.'
             description: 'Provides the users management section. Access: PUB'
             tags: 
                 - 'M02: Recipes, categories, groups and members'
@@ -397,8 +397,8 @@ paths:
 
     /about:
         get: 
-            operationId: R1019
-            summary: 'R1019: About page'
+            operationId: R1020
+            summary: 'R1020: About page'
             description: 'Provide information about TasteBuds. Access: PUB'
             tags: 
                 - 'M04: Information'
@@ -408,8 +408,8 @@ paths:
 
     /faq:
         get: 
-            operationId: R1020
-            summary: 'R1020: FAQ page'
+            operationId: R1021
+            summary: 'R1021: FAQ page'
             description: 'Provide FAQ page. Access: PUB'
             tags: 
                 - 'M04: Information'
@@ -893,7 +893,7 @@ paths:
     /api/user/{username}/groups:
         get:
             operationId: R2010
-            summary: "R2007: Member's groups"
+            summary: "R2010: Member's groups"
             description: 'Gets the groups that the member is part of in JSON. Access: PUB'
             tags: 
                 - 'M02: Recipes, categories, groups and members'
@@ -930,7 +930,7 @@ paths:
     /api/user/{username}/request:
         post:
             operationId: R2011
-            summary: 'R2008: Create follow request'
+            summary: 'R2011: Create follow request'
             description: 'Creates a follow request (if profile is public becomes a follower instantly). Access: MBR'
             tags: 
                 - 'M02: Recipes, categories, groups and members'
@@ -951,7 +951,7 @@ paths:
     /api/user/request/{username}:
         post:
             operationId: R2012
-            summary: 'R2009: Accept follow request'
+            summary: 'R2012: Accept follow request'
             description: 'Accepts a follow request. Access: OWN'
             tags: 
                 - 'M02: Recipes, categories, groups and members'
@@ -971,7 +971,7 @@ paths:
                     description: 'The request does not exist'
         delete:
             operationId: R2013
-            summary: 'R2010: Decline follow request'
+            summary: 'R2013: Decline follow request'
             description: 'Declines a follow request. Access: OWN'
             tags: 
                 - 'M02: Recipes, categories, groups and members'
@@ -981,19 +981,6 @@ paths:
                     schema:
                         type: string
                     required: true
-            
-            requestBody:
-                    required: true
-                    content:
-                        application/x-www-form-urlencoded:
-                            schema:
-                              type: object
-                              properties:    
-                                  id: 
-                                      type: integer
-                              required:
-                                  - id
-
             responses:
                 '200':
                   description: 'Deleted'
@@ -1002,8 +989,8 @@ paths:
 
     /api/users:
         get:
-            operationId: R2011
-            summary: 'R2011: Get all members'
+            operationId: R2014
+            summary: 'R2014: Get all members'
             description: 'Gets all the registered members of the website in JSON. Access: ADM'
             tags: 
                 - 'M05: Web resources associated with the administrator pages'
@@ -1860,8 +1847,8 @@ paths:
 
     /api/chats:
         get:
-            operationId: R2302
-            summary: 'R2302: Get the user conversations'
+            operationId: R2303
+            summary: 'R2303: Get the user conversations'
             description: 'Gets a user''s chat in JSON. Access: OWN'
             tags: 
                 - 'M03: Chat'
@@ -2011,7 +1998,7 @@ paths:
                 '400':
                     description: 'Invalid Request'
 
-    /api/feed?sortparam=duration&sort=asc&ingredient=tomato,flour&date=2020/05/15-2020/05/16&difficulty=hard:
+    /api/feed:
         get:
             operationId: R2501
             summary: "R2501: Get member's feed"
@@ -2173,7 +2160,7 @@ paths:
                 '400':
                   description: 'Invalid Request' 
 
-    /api/search/{searchQuery}?sortparam=duration&sort=asc&ingredient=tomato,potato&time=40-100&category=2:
+    /api/search/{searchQuery}:
         get:
             operationId: R2601
             summary: 'R2601: Search for a term'
@@ -2348,8 +2335,8 @@ paths:
 
     /api/report/{reportId}:
         delete:
-            operationId: R2702
-            summary: 'R2702: Dismiss report'
+            operationId: R2701
+            summary: 'R2701: Dismiss report'
             description: "Deletes a report from the list. Access: ADM"
             tags: 
                 - 'M05: Web resources associated with the administrator pages'
@@ -2367,8 +2354,8 @@ paths:
 
     /api/reports:
         get:
-            operationId: R2703
-            summary: 'R2703: Get all reports'
+            operationId: R2702
+            summary: 'R2702: Get all reports'
             description: 'Gets all the reports in JSON. Access: ADM'
             tags: 
                 - 'M05: Web resources associated with the administrator pages'
