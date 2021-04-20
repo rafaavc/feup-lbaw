@@ -173,11 +173,11 @@ paths:
                 - 'M02: Recipes, categories, groups and members'
 
             parameters:
-                - in: path
-                name: username
-                schema:
-                    type: string
-                required: true
+                -   in: path
+                    name: username
+                    schema:
+                        type: string
+                    required: true
 
             responses:    
                 '200':
@@ -193,11 +193,11 @@ paths:
                 - 'M02: Recipes, categories, groups and members'
 
             parameters:
-                - in: path
-                name: username
-                schema:
-                    type: string
-                required: true
+                -   in: path
+                    name: username
+                    schema:
+                        type: string
+                    required: true
 
             responses:    
                 '200':
@@ -214,11 +214,11 @@ paths:
                 - 'M02: Recipes, categories, groups and members'
 
             parameters:
-                - in: path
-                name: username
-                schema:
-                    type: string
-                required: true
+                -   in: path
+                    name: username
+                    schema:
+                        type: string
+                    required: true
 
             responses:    
                 '200':
@@ -234,11 +234,11 @@ paths:
                 - 'M02: Recipes, categories, groups and members'
 
             parameters:
-                - in: path
-                name: categoryId
-                schema:
-                    type: int
-                required: true
+                -   in: path
+                    name: categoryId
+                    schema:
+                        type: int
+                    required: true
 
             responses:    
                 '200':
@@ -287,11 +287,11 @@ paths:
                 - 'M02: Recipes, categories, groups and members'
 
             parameters:
-                - in: path
-                name: groupId
-                schema:
-                    type: int
-                required: true
+                -   in: path
+                    name: groupId
+                    schema:
+                        type: int
+                    required: true
 
             responses:    
                 '200':
@@ -385,11 +385,11 @@ paths:
                 - 'M02: Recipes, categories, groups and members'
 
             parameters:
-                - in: path
-                name: searchQuery
-                schema:
-                    type: string
-                required: false
+                -   in: path
+                    name: searchQuery
+                    schema:
+                        type: string
+                    required: false
 
             responses:    
                 '200':
@@ -585,11 +585,11 @@ paths:
                 - 'M02: Recipes, categories, groups and members'
 
             parameters:
-                - in: path
-                name: username
-                schema:
-                    type: string
-                required: true
+                -   in: path
+                    name: username
+                    schema:
+                        type: string
+                    required: true
 
             requestBody:
                 required: false
@@ -1442,11 +1442,11 @@ paths:
             tags: 
                 - 'M02: Recipes, categories, groups and members'
             parameters:
-                - in: path
-                name: recipeId
-                schema:
-                    type: integer
-                required: true
+                -   in: path
+                    name: recipeId
+                    schema:
+                        type: integer
+                    required: true
             responses:   
                 '200':
                     description: 'Success'
@@ -1457,11 +1457,11 @@ paths:
             tags: 
                 - 'M02: Recipes, categories, groups and members'
             parameters:
-                - in: path
-                name: recipeId
-                schema:
-                    type: integer
-                required: true
+                -   in: path
+                    name: recipeId
+                    schema:
+                        type: integer
+                    required: true
             responses:
                 '200':
                     description: 'Success'
@@ -1513,11 +1513,11 @@ paths:
             tags: 
                 - 'M02: Recipes, categories, groups and members'
             parameters:
-                - in: path
-                name: groupId
-                schema:
-                    type: integer
-                required: true
+                -   in: path
+                    name: groupId
+                    schema:
+                        type: integer
+                    required: true
             responses:
                 '200':
                     description: 'OK. The authenticated user has access to the group''s' information.'
@@ -1585,11 +1585,11 @@ paths:
             tags: 
                 - 'M02: Recipes, categories, groups and members'
             parameters:
-                - in: path
-                name: groupId
-                schema:
-                    type: integer
-                required: true
+                -   in: path
+                    name: groupId
+                    schema:
+                        type: integer
+                    required: true
             requestBody:
                 required: true
                 content:
@@ -1621,11 +1621,11 @@ paths:
             tags: 
                 - 'M02: Recipes, categories, groups and members'
             parameters:
-                - in: path
-                name: groupId
-                schema:
-                    type: integer
-                required: true
+                -   in: path
+                    name: groupId
+                    schema:
+                        type: integer
+                    required: true
             responses:    
                 '200':
                     description: 'OK'
@@ -2009,51 +2009,51 @@ paths:
                 - 'M02: Recipes, categories, groups and members'
 
             parameters:
-                - in: query
-                name: sort
-                schema:
-                    type: string
-                required: false
-                - in: query
-                name: sortparam
-                schema:
-                    type: string
-                required: false
-                - in: query
-                name: category
-                schema:
-                    type: string
-                required: false
-                - in: query
-                name: tag
-                schema:
-                    type: string
-                required: false
-                - in: query
-                name: rating
-                schema:
-                    type: string
-                required: false
-                - in: query
-                name: ingredient
-                schema:
-                    type: string
-                required: false
-                - in: query
-                name: date
-                schema:
-                    type: string
-                required: false
-                - in: query
-                name: duration
-                schema:
-                    type: string
-                required: false
-                - in: query
-                name: difficulty
-                schema:
-                    type: string
-                required: false
+                -   in: query
+                    name: sort
+                    schema:
+                        type: string
+                    required: false
+                -   in: query
+                    name: sortparam
+                    schema:
+                        type: string
+                    required: false
+                -   in: query
+                    name: category
+                    schema:
+                        type: string
+                    required: false
+                -   in: query
+                    name: tag
+                    schema:
+                        type: string
+                    required: false
+                -   in: query
+                    name: rating
+                    schema:
+                        type: string
+                    required: false
+                -   in: query
+                    name: ingredient
+                    schema:
+                        type: string
+                    required: false
+                -   in: query
+                    name: date
+                    schema:
+                        type: string
+                    required: false
+                -   in: query
+                    name: duration
+                    schema:
+                        type: string
+                    required: false
+                -   in: query
+                    name: difficulty
+                    schema:
+                        type: string
+                    required: false
 
 
             responses:
@@ -2170,56 +2170,56 @@ paths:
             tags: 
                 - 'M02: Recipes, categories, groups and members'
             parameters:
-                - in: path
-                name: searchQuery
-                schema:
-                    type: string
-                required: false
-                - in: query
-                name: sort
-                schema:
-                    type: string
-                required: false
-                - in: query
-                name: sortparam
-                schema:
-                    type: string
-                required: false
-                - in: query
-                name: category
-                schema:
-                    type: string
-                required: false
-                - in: query
-                name: tag
-                schema:
-                    type: string
-                required: false
-                - in: query
-                name: rating
-                schema:
-                    type: string
-                required: false
-                - in: query
-                name: ingredient
-                schema:
-                    type: string
-                required: false
-                - in: query
-                name: date
-                schema:
-                    type: string
-                required: false
-                - in: query
-                name: duration
-                schema:
-                    type: string
-                required: false
-                - in: query
-                name: difficulty
-                schema:
-                    type: string
-                required: false
+                -   in: path
+                    name: searchQuery
+                    schema:
+                        type: string
+                    required: false
+                -   in: query
+                    name: sort
+                    schema:
+                        type: string
+                    required: false
+                -   in: query
+                    name: sortparam
+                    schema:
+                        type: string
+                    required: false
+                -   in: query
+                    name: category
+                    schema:
+                        type: string
+                    required: false
+                -   in: query
+                    name: tag
+                    schema:
+                        type: string
+                    required: false
+                -   in: query
+                    name: rating
+                    schema:
+                        type: string
+                    required: false
+                -   in: query
+                    name: ingredient
+                    schema:
+                        type: string
+                    required: false
+                -   in: query
+                    name: date
+                    schema:
+                        type: string
+                    required: false
+                -   in: query
+                    name: duration
+                    schema:
+                        type: string
+                    required: false
+                -   in: query
+                    name: difficulty
+                    schema:
+                        type: string
+                    required: false
             responses:
                 '200':
                     description: 'OK'
