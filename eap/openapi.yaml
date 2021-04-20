@@ -22,7 +22,16 @@ tags:
   
 paths:
     # 1 - Tiago
-    /
+    /:
+        get: 
+            operationId: R1001
+            summary: 'R1001: Home page'
+            description: 'Provide home page. Access: PUB'
+            tags: 
+                - 'M04: Information'
+            responses:    
+                '200':
+                    description: 'Ok. Show [UI01](http://lbaw2135-piu.lbaw-prod.fe.up.pt/)'
 
     # 2 - Rui
     /login:
@@ -73,7 +82,64 @@ paths:
                                     value: '/login'
 
     # 3 - Tiago
-    /register
+    /register:
+        get: 
+            operationId: R1004
+            summary: 'R1004: Register form'
+            description: 'Provide register form. Access: PUB'
+            tags: 
+                - 'M01: Authentication and Individual Profile'
+            responses:    
+                '200':
+                    description: 'Ok. Show [UI03](http://lbaw2135-piu.lbaw-prod.fe.up.pt/pages/signUp.php)'
+        
+        post:
+            operationId: R1005
+            summary: 'R1005: Register Action'
+            description: 'Processes the register form submission. Access: PUB'
+            tags:
+                - 'M01: Authentication and Individual Profile'
+        
+            requestBody:
+                required: true
+                content:
+                application/x-www-form-urlencoded:
+                    schema:
+                        type: object
+                        properties:
+                            username:
+                                type: string
+                            email:          
+                                type: string
+                            password:   
+                                type: string
+                            name:   
+                                type: string
+                            countryId:   
+                                type: int
+                            city:   
+                                type: string
+                        required:
+                            - username
+                            - email
+                            - password
+                            - name
+                            - countryId        
+            responses:
+                '302':
+                description: 'Redirect after processing the sign up.'
+                headers:
+                    Location:
+                        schema:
+                            type: string
+                        examples:
+                            302Success:
+                                description: 'Successful registration. Redirect to feed.'
+                                value: '/feed'
+                            302Error:
+                                description: 'Failed authentication. Redirect to register form.'
+                                value: '/register'
+        
 
     # 4 - Alexandre
     /logout
@@ -140,7 +206,27 @@ paths:
                     description: 'Ok. Show [UI10](https://lbaw2135-piu.lbaw-prod.fe.up.pt/pages/profile_reviews.php)'
     
     # 8 - Tiago
-    /category/{categoryId}
+    /category/{categoryId}:
+        get: 
+            operationId: R10XX
+            summary: 'R10XX: Category page.'
+            description: 'Show a page with recipes of a certain category. Access: PUB'
+            tags: 
+                - 'M02: Recipes, categories, groups and members'
+
+            parameters:
+                - in: path
+                name: categoryId
+                schema:
+                    type: int
+                required: true
+
+            responses:    
+                '200':
+                    description: 'Ok. Show [UI17](http://lbaw2135-piu.lbaw-prod.fe.up.pt/pages/category.php)'
+                '404':
+                    description: 'This page does not exist.'
+
     
     # 9 - Alexandre
     /recipe/{recipeId}
@@ -158,8 +244,25 @@ paths:
                     description: 'Ok. Show [UI19](http://lbaw2135-piu.lbaw-prod.fe.up.pt/pages/createRecipe.php)'
 
     # 11 - Tiago
-    /group/{groupId}
+    /group/{groupId}:
+        get: 
+            operationId: R10XX
+            summary: 'R10XX: Group page.'
+            description: 'Show a page with recipes and information of a certain group. Access: PUB.'
+            tags: 
+                - 'M02: Recipes, categories, groups and members'
 
+            parameters:
+                - in: path
+                name: groupId
+                schema:
+                    type: int
+                required: true
+
+            responses:    
+                '200':
+                    description: 'Ok. Show [UI16](http://lbaw2135-piu.lbaw-prod.fe.up.pt/pages/group.php)'
+                
     # 12 - Alexandre
     /group
     
@@ -199,7 +302,19 @@ paths:
                     description: 'Ok. Show [UI15](http://lbaw2135-piu.lbaw-prod.fe.up.pt/pages/search.php)'
 
     # 16 - Tiago
-    /admin/reports
+    /admin/reports:
+        get: 
+            operationId: R10XX
+            summary: 'R10XX: Reports page.'
+            description: 'Show all the comment and recipe reports to the admin. Access: ADM'
+            tags: 
+                - 'M05: Web resources associated with the administrator pages, namely the users and reports management'
+
+            responses:    
+                '200':
+                    description: 'Ok. Show [UI15](http://lbaw2135-piu.lbaw-prod.fe.up.pt/pages/reportsManagement.php)'
+                '404':
+                    description: 'This page does not exist.' # non-admins should not know that this page exists
 
     # 17 - Rafael
     /admin/users:
@@ -1165,9 +1280,17 @@ paths:
             description: 'Creates a membership request (if group is public becomes a member instantly). Access: MBR'
             tags: 
                 - 'M02: Recipes, categories, groups and members'
+            parameters:
+                -   in: path
+                    name: groupId
+                    schema:
+                        type: int
+                    required: true
             responses:    
                 '200':
-                    description:
+                    description: 'Success'
+                '400':
+                  description: 'Invalid Request'
 
     # 7 - Rui
     /api/group/{groupId}/request/{memberId}
@@ -1444,9 +1567,33 @@ paths:
             description: 'Edits a comment. Access: OWN'
             tags: 
                 - 'M02: Recipes, categories, groups and members'
-            responses:    
+            parameters:
+                -   in: path
+                    name: commentId
+                    schema:
+                        type: int
+                    required: true
+
+            requestBody:
+                required: false
+                content:
+                    multipart/form-data:
+                        schema:
+                        type: object
+                        properties:
+                            text:
+                                type: string
+                            rating:
+                                type: int
+
+            responses:
                 '200':
-                    description:
+                    description: 'Updated Comment'
+                '400':
+                    description: 'Invalid Request'
+                '403':
+                    description: 'Forbidden Access'
+
         delete:
             operationId: R2403
             summary: 'R2403: Delete comment'
@@ -1454,9 +1601,19 @@ paths:
             tags: 
                 - 'M02: Recipes, categories, groups and members'
                 - 'M05: Administration'
-            responses:
+            parameters:
+                -   in: path
+                    name: commentId
+                    schema:
+                        type: int
+                    required: true
+            responses:    
+                responses:    
                 '200':
-                    description:
+                    description: 'Deleted Comment'
+                '400':
+                    description: 'Invalid Request' 
+            
     
     # 14 - Rui
     /api/feed?sortparam=duration&sort=asc&ingredient=tomato,flour&date=2020/05/15-2020/05/16&difficulty=hard
@@ -1816,9 +1973,18 @@ paths:
             description: "Deletes a report from the list. Access: ADM"
             tags: 
                 - 'M05: Administration'
+            parameters:
+                -   in: path
+                    name: reportId
+                    schema:
+                        type: int
+                    required: true
             responses:    
+                responses:    
                 '200':
-                    description:
+                    description: 'Deleted Report'
+                '400':
+                    description: 'Invalid Request'    
     
     # 18 - Tiago         
     /api/reports
@@ -1830,8 +1996,40 @@ paths:
                 - 'M05: Administration'
             responses:    
                 '200':
-                    description:
-    
+                    description: "Success"
+                    content:
+                        application/json:
+                            schema: 
+                                type: array
+                                items:
+                                    type: object
+                                        properties:
+                                            type:    
+                                                type: string
+                                            id_reporter:
+                                                type: int
+                                            reason: 
+                                                type: string
+                                            active:
+                                                type: boolean
+                                            id_comment:
+                                                type: int
+                                            id_recipe:
+                                                type: int
+                                example:
+                                    -   type: comment_report
+                                        id_reporter: 1
+                                        reason: Disrespectful
+                                        active: true
+                                        id_comment: 2
+                                        id_recipe: null
+                                    -   type: recipe_report
+                                        id_reporter: 54
+                                        reason: Disrespectful
+                                        active: true
+                                        id_comment: null
+                                        id_recipe: 4
+                                    
     # 19 - Rui
     /api/notifications
         get:
@@ -1956,4 +2154,30 @@ paths:
                 - 'M04: Information'
             responses:    
                 '200':
-                    description: 
+                    description: "Success"
+                    content:
+                        application/json:
+                            schema: 
+                                type: array
+                                items:
+                                    type: object
+                                        properties:
+                                            id:    
+                                                type: int
+                                            abbreviation:
+                                                type: string
+                                            name: 
+                                                type: string
+                                example:
+                                    -   int: 1
+                                        abbreviation: PT
+                                        name: Portugal
+                                    -   int: 2
+                                        abbreviation: ES
+                                        name: Spain
+                                    -   int: 3
+                                        abbreviation: FR
+                                        name: France
+                                    -   int: 4
+                                        abbreviation: USA
+                                        name: United States of America
