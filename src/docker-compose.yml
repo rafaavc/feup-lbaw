@@ -1,6 +1,5 @@
 version: '3'
 services:
-
   postgres:
     image: postgres:13
     restart: always
@@ -18,4 +17,14 @@ services:
     ports:
       - "4321:80"
     depends_on:
+      - postgres
+
+  laravel:
+    build: .
+    ports: 
+      - "8000:80"
+    volumes:
+      - /var/www/vendor
+      - .:/var/www/
+    depends_on: 
       - postgres
