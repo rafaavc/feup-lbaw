@@ -2,10 +2,16 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Conversion extends Model
+class Unit extends Model
 {
+    public $timestamps = false;
+    protected $table = "tb_unit";
 
+    public function units() {
+        $this->belongsToMany(Unit::class, 'tb_conversion', 'unit_1', 'unit_2')->withPivot("factor");
+    }
+
+    // Don't really think it's useful for a Unit to check its "ingredient_recipes"
 }
