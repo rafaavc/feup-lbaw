@@ -13,4 +13,4 @@ npm-debug.log
 yarn-error.log
 _ide_helper*
 .idea
-bootstrap/cache
+composer.lock
