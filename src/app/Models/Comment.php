@@ -13,6 +13,10 @@ class Comment extends Model
         return $this->belongsTo('App\Models\Member', 'id_member', 'id');
     }
 
+    public function replies() {
+        return $this->belongsToMany('App\Models\Comment', 'tb_answer', 'father_comment', 'id_comment');
+    }
+
     public function recipe() {
         return $this->belongsTo('App\Models\Recipe', 'id_recipe', 'id');
     }

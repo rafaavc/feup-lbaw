@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', $name)
+@section('title', $recipe->name)
 
 @push('css')
     <link href="{{ asset('css/recipe.css') }}" rel="stylesheet" />
@@ -23,10 +23,10 @@
 <main class="row content-general-margin margin-to-footer">
     <article id="recipe" class="col-xl-8 p-0 pe-xl-4">
         <header class="row text-left pt-3 pb-3 mb-md-3 shadow-sm mt-5 mt-xl-0">
-            <h1 class="col-11">{{ $name }}</h1>
+            <h1 class="col-11">{{ $recipe->name }}</h1>
             <div class="col-9">
                 <div class="rating">
-                    <span class="small">{{ $score }} ({{ $nRatings }} ratings)</span>
+                    <span class="small">{{ $recipe->score }} ({{ $recipe->num_rating }} ratings)</span>
                     <i class="fas fa-star active"></i>
                     <i class="fas fa-star active"></i>
                     <i class="fas fa-star active"></i>
@@ -42,27 +42,27 @@
                                 </td>
                                 <td class="align-middle">
                                     <div class="col-md-5 card-body p-0 m-0 ms-2 text-start">
-                                        by <a href="{{ url('/member/'.$owner['username'].'/recipes') }}">{{ $owner['name'] }}</a>
+                                        by <a href="{{ url('/member/'.$author->username.'/recipes') }}">{{ $author->name }}</a>
                                     </div>
                                 </td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
-                <p>{{ $description }}</p>
+                <p>{{ $recipe->description }}</p>
 
 
-                <span class="d-block mb-3"><small>Difficulty: {{ $difficulty }}</small></span>
+                <span class="d-block mb-3"><small>Difficulty: {{ $recipe->difficulty }}</small></span>
                 <span class="d-inline-block me-3">Tags: </span>
                 @foreach($tags as $idx => $tag)
-                    <a role="button" class="btn btn-sm btn-secondary d-inline-block me-2 mb-2" href="/category/{{ $tag['id'] }}">
-                        {{ $tag['name'] }}
+                    <a role="button" class="btn btn-sm btn-secondary d-inline-block me-2 mb-2" href="/category/{{ $tag->id }}">
+                        {{ $tag->name }}
                     </a>
                 @endforeach
             </div>
             <ul class="col-3 text-end">
                 <li class="list-group-item bg-light" style="border-radius: .5rem">
-                    <a href="{{ url('/recipe/'.$id.'/edit') }}">
+                    <a href="{{ url('/recipe/'.$recipe->id.'/edit') }}">
                         <span class="legend">Edit Recipe</span><i class="fas fa-edit ms-2"></i>
                     </a>
                 </li>
@@ -89,7 +89,7 @@
         </header>
         @include('partials.recipe.boxes', ['mobile' => true])
         @include('partials.recipe.ingredients', ['ingredients' => $ingredients])
-        @include('partials.recipe.method', ['method' => $method])
+        @include('partials.recipe.method', ['steps' => $steps])
         @include('partials.recipe.comments', ['comments' => $comments])
     </article>
     <aside class="col-xl-4 p-0 ps-xl-4 mt-5 mt-xl-0">
