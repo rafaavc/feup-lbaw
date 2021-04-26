@@ -12,6 +12,7 @@
 */
 // Home
 Route::view('/', 'pages.index');
+Route::get('/recipe/{id}', 'RecipeController@view');
 
 // Cards
 Route::get('cards', 'CardController@list');

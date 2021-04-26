@@ -6,7 +6,7 @@
 
 @section('content')
 
-<div class="margin-to-footer">
+<main class="margin-to-footer">
     <section>
         <div id="carouselExampleDark" class="carousel carousel-light slide carousel-fade"  data-bs-ride="carousel">
             <div class="carousel-inner">
@@ -106,6 +106,6 @@
             </div>
         </div>
     </section>
-</div>
+</main>
 
 @endsection

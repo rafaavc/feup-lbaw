@@ -11,7 +11,7 @@ tooltips.forEach(elem => new bootstrap.Tooltip(elem, { container: 'body', placem
 
 
 
-const header = document.querySelector('body nav.navbar');
+const header = document.querySelector('body > nav.navbar');
 let calculationCounter = 0;
 let last = null;
 
