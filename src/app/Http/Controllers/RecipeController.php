@@ -2,7 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use App\Models\Recipe;
+use App\Models\Step;
+
 
 class RecipeController extends Controller
 {
@@ -111,6 +116,7 @@ class RecipeController extends Controller
      */
     public function create()
     {
+        return response()->json(['message' => 'Succeed!'], 200);
         //
     }
 
@@ -122,7 +128,8 @@ class RecipeController extends Controller
      */
     public function edit($recipeId)
     {
-        //
+        if (!Auth::check()) return redirect('/recipe/' . $recipeId);
+        // $this->autorize(...);
     }
 
     /**
@@ -144,7 +151,7 @@ class RecipeController extends Controller
      */
     public function select($recipeId)
     {
-
+        //
     }
 
     /**
@@ -156,7 +163,78 @@ class RecipeController extends Controller
      */
     public function update(Request $request, $recipeId)
     {
-        //
+        DB::beginTransaction();
+        try {
+            $recipe = Recipe::findOrFail($recipeId);
+
+            $recipe->preparation_time = $request->input('preparation_time');
+            $recipe->cooking_time = $request->input('cooking_time');
+            $recipe->additional_time = $request->input('additional_time');
+            $recipe->name = $request->input('name');
+            $recipe->description = $request->input('description');
+            $recipe->difficulty = $request->input('difficulty');
+            $recipe->servings = $request->input('servings');
+
+            // Handle End Product Photos
+
+            // Category
+            $category = Category::findOrFail($request->input('category')['id']);
+            $recipe->category()->associate($category);
+
+            // Tags
+            $requestTags = $request->input('tags');
+            $numUserTags = count($requestTags);
+
+            $tagIds = array();
+            for ($i = 0; $i < $numUserTags; $i++)
+                array_push($tagIds, $requestTags[$i]['id']);
+
+            $recipe->tags()->sync($tagIds);
+
+            // Steps
+            $requestSteps = $request->input('steps');
+            $numUserSteps = count($requestSteps);
+
+            // Delete Step Images
+            $recipe->steps()->forceDelete();
+
+            for ($i = 0; $i < $numUserSteps; $i++) {
+                $step = new Step([
+                    'name' => $requestSteps[$i]->name,
+                    'description' => $requestSteps[$i]->description,
+                ]);
+                $step = $recipe->steps()->save($step);
+
+                // Save Step images
+            }
+
+            // Ingredients
+            $requestIngredients = $request->input('ingredients');
+            $numUserIngredients = count($requestIngredients);
+
+            $recipe->ingredients()->forceDelete();
+
+            for ($i = 0; $i < $numUserIngredients; $i++) {
+                $ingredientId = $requestIngredients[$i]['ingredient']['id'];
+                $recipe->ingredients->attach($ingredientId, [
+                    'id_unit' => $requestIngredients[$i]['unit']['id'],
+                    'quantity' => $requestIngredients[$i]['quantity']
+                ]);
+            }
+
+            $recipe->save();
+
+            DB::commit();
+            return response()->json(['message' => 'Succeed!'], 200);
+            // return response()->json(['message' => 'Succeed!'], 200);
+        } catch(\Exception $e) {
+            DB::rollback();
+            return response()->json(['message' => 'Invalid Request!'], 400);
+        }
+
+
+
+        // $this->autorize(...);
     }
 
     /**
