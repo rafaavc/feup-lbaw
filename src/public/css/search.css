@@ -1,0 +1,24 @@
+
+.sort-by {
+    text-align: end;
+}
+
+.search-area {
+    text-align: center;
+    justify-content: center;
+    justify-self: center;
+    justify-items: center;
+}
+
+.section-title {
+    text-align: start;
+}
+
+.items {
+    width: 100%;
+}
+
+.page-link {
+    color: black;
+    font-size: 1.1em;
+}
