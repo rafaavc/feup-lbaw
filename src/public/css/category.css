@@ -1,0 +1,14 @@
+.category-header {
+    margin-bottom: 7rem;
+}
+
+@media (max-width: 991.98px) { 
+   div.category-header {
+       margin-bottom: 0;
+   } 
+
+   .trending-topics-recipes {
+       padding-left: 0;
+       padding-right: 0;
+   }
+}

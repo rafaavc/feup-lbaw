@@ -11,7 +11,8 @@
 |
 */
 // Home
-Route::get('/', 'Auth\LoginController@home');
+Route::view('/', 'pages.index');
+Route::get('/recipe/{id}', 'RecipeController@view');
 
 // Cards
 Route::get('cards', 'CardController@list');

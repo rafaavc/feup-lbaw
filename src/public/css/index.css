@@ -1,0 +1,126 @@
+.img-nav-logo {
+    width: 6em;
+}
+
+.home-slide {
+    background-size: cover;
+    background-position: 50%;
+    max-height: 50vh;
+    min-height: 30rem;
+    padding-top: 6rem;
+    padding-bottom: 6rem;
+}
+
+.home-slide .btn:focus {
+    transition: box-shadow .2s;
+    box-shadow: 0 0 0 0.25rem rgba(255, 255, 255, 0.65) !important;
+}
+
+.home-slide > h2 {
+    float: right;
+    clear: right;
+}
+
+.home-slide > h2:first-child {
+    clear: left;
+}
+
+.home-slide > h2 > div {
+    display: inline-block;
+}
+
+.home-slide > a {
+    float: right;
+    margin-top: 1rem;
+    transition: background-color color border-color .2s;
+}
+
+.home-slide > a:hover {
+    background-color: var(--bs-dark);
+    color: var(--bs-light);
+    border-color: black;
+}
+
+.home-slide > a:first-of-type {
+    clear: right;
+}
+
+.home-slide .display-4 {
+    background-color: var(--bs-light);
+    padding: 0 1rem;
+    border-radius: 0.5rem;
+}
+
+.home-slide .display-2 {
+    background-color: var(--accent-color); 
+    color: var(--bs-light);
+    padding: 0 1rem;
+    margin-right: 2vw;
+    border-radius: 0.5rem;
+}
+
+
+.form-control {
+    padding-right: 2.375rem;
+}
+
+div.content-align {
+    padding: 5rem 0px;
+}
+
+div.text-description {
+    line-height: 0.35rem;
+}
+
+div.sign-up-call-to-action {
+    margin-top: 5rem;
+}
+
+div.cards-homepage {
+    margin-top: 2rem;
+}
+
+div.content-red {
+    background-color: var(--accent-color);
+}
+
+a.btn-large {
+    width: 13rem;
+}
+
+@media (max-width: 991.98px) {
+    div.fs-4, strong.fs-1 {
+        text-align: center;
+    }
+    
+    button.btn-dark-large {
+        margin: auto;
+    } 
+
+    div.content-align {
+        padding: 10px 10px !important;
+        text-align: center;
+    }
+
+    div img.w-75 {
+        margin: auto;
+        float: none !important;
+    }    
+
+    h2.display-4 {
+        width: 85%;
+    }
+
+    .home-slide > * {
+        float: none !important;
+    }
+
+
+    .home-slide > a:first-of-type {
+        margin-right: 1rem;
+    }
+
+    .home-slide {
+        height: 65vh;
+    }
+}
