@@ -4,8 +4,8 @@ CREATE SCHEMA public;
 DROP SCHEMA IF EXISTS public CASCADE;
 CREATE SCHEMA public;
 
-CREATE DOMAIN "datetime" 
-AS timestamp with time zone 
+CREATE DOMAIN "datetime"
+AS timestamp with time zone
 DEFAULT now()
 NOT NULL;
 
@@ -211,7 +211,7 @@ CREATE TABLE tb_following (
     id_following integer NOT NULL,
     id_followed integer NOT NULL,
     state State NOT NULL,
-    timestamp datetime, 
+    timestamp datetime,
 
     CONSTRAINT following_PK PRIMARY KEY (id_following, id_followed),
     CONSTRAINT following_following_FK FOREIGN KEY (id_following) REFERENCES "tb_member" ON DELETE CASCADE ON UPDATE CASCADE,
@@ -391,12 +391,12 @@ BEGIN
     WHERE id = NEW.id_recipe;
 
     IF TG_OP = 'INSERT' THEN
-        UPDATE tb_recipe 
+        UPDATE tb_recipe
         SET num_rating = num_rating + 1, score = (totalScore + NEW.rating) / (num_rating + 1)
         WHERE tb_recipe.id = NEW.id_recipe;
     END IF;
     IF TG_OP = 'UPDATE' THEN
-        UPDATE tb_recipe 
+        UPDATE tb_recipe
         SET score = (totalScore + (NEW.rating - OLD.rating)) / num_rating
         WHERE tb_recipe.id = NEW.id_recipe;
     END IF;
@@ -425,7 +425,7 @@ BEGIN
     SET num_rating = num_rating - 1, score = (totalScore - OLD.rating) / (num_rating - 1)
     WHERE tb_recipe.id = OLD.id_recipe;
 
-    RETURN OLD;    
+    RETURN OLD;
 END
 $$ LANGUAGE plpgsql;
 
@@ -442,7 +442,7 @@ ADD COLUMN num_rating integer DEFAULT 0;
 DROP FUNCTION IF EXISTS score_member_insert() CASCADE;
 CREATE FUNCTION score_member_insert() RETURNS TRIGGER AS $$
 BEGIN
-    UPDATE tb_member 
+    UPDATE tb_member
     SET num_rating = num_rating + 1
     WHERE tb_member.id = NEW.id_member;
 
@@ -465,7 +465,7 @@ BEGIN
     FROM tb_member
     WHERE id = NEW.id_member;
 
-    UPDATE tb_member 
+    UPDATE tb_member
     SET score = (totalScore + (NEW.score - OLD.score)) / num_rating
     WHERE tb_member.id = NEW.id_member;
 
@@ -492,7 +492,7 @@ BEGIN
     SET num_rating = num_rating - 1, score = (totalScore - OLD.score) / (num_rating - 1)
     WHERE tb_member.id = OLD.id_member;
 
-    RETURN OLD;    
+    RETURN OLD;
 END
 $$ LANGUAGE plpgsql;
 
@@ -504,25 +504,25 @@ EXECUTE PROCEDURE score_member_delete();
 
 DROP FUNCTION IF EXISTS recipe_visibility();
 CREATE OR REPLACE FUNCTION recipe_visibility(id_recipe integer, id_user integer)
-RETURNS BOOLEAN AS $$ 
-DECLARE 
+RETURNS BOOLEAN AS $$
+DECLARE
     _id_group integer;
     group_visibility boolean;
     author_visibility boolean;
     id_author integer;
 BEGIN
     SELECT tb_recipe.id_group INTO _id_group
-    FROM tb_recipe 
+    FROM tb_recipe
     WHERE tb_recipe.id = id_recipe;
-	
+
 	-- Recipe belongs to a group and the group is public or the user is member of that group
     IF _id_group IS NOT NULL THEN
         SELECT visibility INTO group_visibility FROM tb_group;
         IF group_visibility = TRUE THEN
             RETURN TRUE;
-        END IF; 
+        END IF;
         IF EXISTS(
-            SELECT * FROM tb_group_member 
+            SELECT * FROM tb_group_member
             WHERE tb_group_member.id_group = _id_group AND tb_group_member.id_member = id_user) THEN
             RETURN TRUE;
         END IF;
@@ -537,12 +537,12 @@ BEGIN
     FROM tb_recipe
     JOIN tb_member ON tb_recipe.id_member = tb_member.id
     WHERE tb_recipe.id = id_recipe;
-	
+
 	-- Recipe's author profile visibility if public
     IF author_visibility = TRUE THEN
         RETURN TRUE;
     END IF;
-	
+
 	-- User follows recipe's author
     IF EXISTS (
         SELECT * FROM tb_following
@@ -562,8 +562,8 @@ $$ LANGUAGE plpgsql;
 
 DROP FUNCTION IF EXISTS comment_elapsed_time(timestamptz) CASCADE;
 CREATE OR REPLACE FUNCTION comment_elapsed_time(comment_creation_time timestamptz)
-RETURNS TEXT AS $timeString$ 
-DECLARE 
+RETURNS TEXT AS $timeString$
+DECLARE
     time_unit INTEGER;
 BEGIN
     -- Year
@@ -575,7 +575,7 @@ BEGIN
             RETURN CONCAT(time_unit, ' year ago');
         END IF;
     END IF;
-    
+
     -- Months
 	SELECT EXTRACT(MONTH FROM AGE(now(), comment_creation_time)) INTO time_unit;
 	IF time_unit > 0 THEN
@@ -634,14 +634,14 @@ $timeString$ LANGUAGE plpgsql;
 CREATE OR REPLACE FUNCTION single_rating() RETURNS TRIGGER AS $$
 BEGIN
     IF NEW.rating IS NOT NULL AND EXISTS (
-            SELECT FROM tb_comment 
-            WHERE id_recipe = NEW.id_recipe 
-                AND id_member = NEW.id_member 
-                AND rating IS NOT NULL 
+            SELECT FROM tb_comment
+            WHERE id_recipe = NEW.id_recipe
+                AND id_member = NEW.id_member
+                AND rating IS NOT NULL
                 AND id != NEW.id   -- the id may be equal in case of update
     ) THEN
         RAISE EXCEPTION 'A user can only rate a recipe once.';
-    END IF; 
+    END IF;
     RETURN NEW;
 END;
 $$ LANGUAGE plpgsql;
@@ -659,7 +659,7 @@ DECLARE
 BEGIN
     IF NEW.post_time IS NOT NULL AND NEW.post_time < recipe_time THEN
         RAISE EXCEPTION 'The date/time of a comment/review must be after the recipe''s creation date. Comment id = (%)', NEW.id;
-    END IF; 
+    END IF;
     RETURN NEW;
 END;
 $$ LANGUAGE plpgsql;
@@ -678,7 +678,7 @@ DECLARE
 BEGIN
     IF answer_time < original_comment_time THEN
         RAISE EXCEPTION 'The date/time of an answer must be after the original comment''s creation date. Comment id = (%) t = (%), answer id = (%) t = (%),', NEW.father_comment, original_comment_time, NEW.id_comment, answer_time;
-    END IF; 
+    END IF;
     RETURN NEW;
 END;
 $$ LANGUAGE plpgsql;
@@ -699,7 +699,7 @@ BEGIN
             NEW.state := 'accepted';
         ELSE
             NEW.state := 'pending';
-        END IF; 
+        END IF;
     END IF;
     RETURN NEW;
 END;
@@ -746,7 +746,7 @@ BEGIN
         NEW.search = to_tsvector(idiom, NEW.name);
     END IF;
     IF TG_OP = 'UPDATE' THEN
-        IF NEW.name <> OLD.name THEN   
+        IF NEW.name <> OLD.name THEN
             NEW.search = to_tsvector(idiom, NEW.name);
         END IF;
     END IF;

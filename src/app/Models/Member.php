@@ -19,7 +19,7 @@ class Member extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password', 'username', 'city', 'bio', 'visibility', 'is_banned', 'id_country', 'score'
     ];
 
     /**
@@ -28,14 +28,10 @@ class Member extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        'password', 'remember_token',
+        'password', 'email'
     ];
 
-    /**
-     * The cards this user owns.
-     */
-    public function cards()
-    {
-        return $this->hasMany('App\Models\Card');
+    public function recipes() {
+        return $this->hasMany('App\Models\Recipe', 'id_member', 'id');
     }
 }

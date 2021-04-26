@@ -16,6 +16,7 @@ class RecipeController extends Controller
     public function view($recipeId)
     {
         // TODO get data from model
+        // this will all have to be changed
         $data = [
             "name" => "Classic Tiramisu",
             "id" => 1,
