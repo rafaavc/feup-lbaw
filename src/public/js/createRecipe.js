@@ -8,6 +8,7 @@ addIngredientButton.addEventListener('click', () => {
 })
 
 let stepCounter = 1;
+registerEventListeners();
 
 const addStepButton = document.querySelector('#addStepButton');
 addStepButton.addEventListener('click', () => {
@@ -66,7 +67,7 @@ function ingredientSelected(event) {
     let target = event.target;
     let parent = target.closest("div.search-div").previousElementSibling;
     let ingredientOption = parent.querySelector("select.form-select option");
-    ingredientOption.value = target.value;
+    ingredientOption.value = target.getAttribute("value")
     ingredientOption.innerHTML = target.innerHTML;
     target.closest("div.search-div").classList.toggle("show-searchBox");
     let searchInput = target.parentElement.previousElementSibling.firstElementChild;

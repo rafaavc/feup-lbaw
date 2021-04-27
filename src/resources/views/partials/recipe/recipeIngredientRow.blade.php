@@ -38,13 +38,9 @@
             <input type="text" class="searchBox-text form-control rounded-0" placeholder="Search..." aria-label="Recipient's username" aria-describedby="basic-addon2">
         </div>
         <div class="searchBox-ingredient">
-            <a class="list-group-item list-group-item-action ingredient">About</a>
-            <a class="list-group-item list-group-item-action ingredient">Base</a>
-            <a class="list-group-item list-group-item-action ingredient">Blog</a>
-            <a class="list-group-item list-group-item-action ingredient">Contact</a>
-            <a class="list-group-item list-group-item-action ingredient">Custom</a>
-            <a class="list-group-item list-group-item-action ingredient">Support</a>
-            <a class="list-group-item list-group-item-action ingredient">Tools</a>
+            @foreach ($totalIngredients as $tIngredient)
+                <a class="list-group-item list-group-item-action ingredient" value="{{ $tIngredient->id }}">{{ $tIngredient->name }}</a>
+            @endforeach
         </div>
     </div>
 </div>
