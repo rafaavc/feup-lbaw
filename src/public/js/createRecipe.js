@@ -41,11 +41,12 @@ ingredientAnchors.forEach(ingredient => {
 
 const searchBoxTexts = Array.from(document.querySelectorAll("input.searchBox-text"));
 searchBoxTexts.forEach(searchBox => {
-    searchBox.addEventListener('keyup', updateIngredients);
+    searchBox.addEventListener('keyup', (event) => {
+        updateIngredients(event.target);
+    });
 });
 
-function updateIngredients(event) {
-    let target = event.target;
+function updateIngredients(target) {
     let filter = target.value.toUpperCase();
     let searchBoxIngredients = target.parentElement.nextElementSibling;
     let ingredients = searchBoxIngredients.getElementsByTagName("a");
@@ -65,5 +66,7 @@ function ingredientSelected(event) {
     ingredientOption.value = target.value;
     ingredientOption.innerHTML = target.innerHTML;
     target.closest("div.search-div").classList.toggle("show-searchBox");
-    target.parentElement.previousElementSibling.firstElementChild.value = "";
+    let searchInput = target.parentElement.previousElementSibling.firstElementChild;
+    searchInput.value = "";
+    updateIngredients(searchInput);
 }
