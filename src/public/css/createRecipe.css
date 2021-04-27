@@ -52,3 +52,7 @@ div.searchBox-ingredient {
 .show-searchBox {
     display: block !important;
 }
+
+.searchBox-text:focus {
+    box-shadow: none !important;
+}
