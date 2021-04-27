@@ -69,6 +69,7 @@
             </div>
             <ul class="col-3 text-end">
                 <li class="list-group-item bg-light" style="border-radius: .5rem">
+                    {{-- TODO add permissions --}}
                     <a href="{{ url('/recipe/'.$recipe->id.'/edit') }}">
                         <span class="legend">Edit Recipe</span><i class="fas fa-edit ms-2"></i>
                     </a>
@@ -84,10 +85,6 @@
                     </a>
                 </li>
                 <li class="list-group-item">
-                    {{-- TODO add permissions --}}
-                    <a href="#">
-                        <span class="legend">Edit</span><i class="fas fa-edit"></i>
-                    </a>
                     <a href="#">
                         <span class="legend">Favourite</span><i class="fas fa-heart"></i>
                     </a>
