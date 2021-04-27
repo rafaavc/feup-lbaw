@@ -20,7 +20,7 @@ class RecipePolicy
 
     public function select(Member $user, Recipe $recipe)
     {
-        // TODO: verify if the recipe was posted in a group and the user is part of it
+        // TODO: verify if the recipe was posted in a group and the user is part of it or it is an administrator
         return true;
     }
 
@@ -32,7 +32,7 @@ class RecipePolicy
 
     public function delete(Member $user, Recipe $recipe)
     {
-        // Only recipe card owner can delete it
+        // Only recipe card owner and an administrator can delete it
         return $user->id == $recipe->author()->id;
     }
 }

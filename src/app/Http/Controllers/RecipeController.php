@@ -78,6 +78,7 @@ class RecipeController extends Controller
             'cooking_time' => 'required|integer',
             'id_category' => 'required|exists:App\Models\Category,id',
             'id_group' => 'required|nullable|exists:App\Models\Group,id',
+            'ingredients.*.id' => 'required|exists:App\Models\Ingredient,id',
             'ingredients.*.id_unity' => 'required|exists:App\Models\Unit,id',
             'ingredients.*.quantity' => 'required|integer',
             'tags.*.id' => 'required|exists:App\Models\Tag,id',
