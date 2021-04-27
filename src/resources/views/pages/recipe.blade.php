@@ -26,12 +26,19 @@
             <h1 class="col-11">{{ $recipe->name }}</h1>
             <div class="col-9">
                 <div class="rating">
-                    <span class="small">{{ $recipe->score }} ({{ $recipe->num_rating }} ratings)</span>
-                    <i class="fas fa-star active"></i>
-                    <i class="fas fa-star active"></i>
-                    <i class="fas fa-star active"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
+                    <span class="small me-2">
+                        @if($recipe->score == 0)
+                            No ratings
+                        @else
+                            {{ $recipe->score }} ({{ $recipe->num_rating }} ratings)
+                        @endif
+                    </span>
+                    @php
+                        $rounded = round($recipe->score);
+                    @endphp
+                    @for($i = 0; $i < 5; $i++)
+                        <i class="fas fa-star{{ $i < $rounded ? " active" : "" }}"></i>
+                    @endfor
                 </div>
                 <div class="row g-0 py-2 text-center text-md-start">
                     <table>

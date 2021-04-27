@@ -16,13 +16,19 @@ class RecipeController extends Controller
      */
     public function view($recipeId)
     {
-        $recipe = Recipe::find($recipeId);
+        $recipe = Recipe::findOrFail($recipeId);
+
+        $commentsWithFathers = $recipe->comments()->has('fatherComments')->get();
+        $commentsWithFathersIds = array();
+        foreach($commentsWithFathers as $comment) {
+            array_push($commentsWithFathersIds, $comment->id);
+        }
 
         return view('pages.recipe', [
             'recipe' => $recipe,
             'ingredients' => $recipe->ingredients,
             'tags' => $recipe->tags,
-            'comments' => $recipe->comments,
+            'comments' => $recipe->comments()->whereNotIn('id', $commentsWithFathersIds)->get(),
             'author' => $recipe->author,
             'steps' => $recipe->steps,
             'suggested' => []
