@@ -13,6 +13,8 @@
 // Home
 Route::view('/', 'pages.index');
 Route::get('/recipe/{id}', 'RecipeController@view');
+Route::get('/recipe/{recipeId}/edit', 'RecipeController@edit');
+// Route::post('/recipe/{recipeId}/edit', 'RecipeController@...');
 
 // Cards
 Route::get('cards', 'CardController@list');
