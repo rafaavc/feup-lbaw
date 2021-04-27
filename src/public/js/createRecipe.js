@@ -4,6 +4,7 @@ addIngredientButton.addEventListener('click', () => {
     const elem = document.createElement('template');
     elem.innerHTML = addIngredientButton.previousElementSibling.outerHTML;
     addIngredientButton.parentNode.insertBefore(elem.content.firstElementChild, addIngredientButton);
+    registerEventListeners();
 })
 
 let stepCounter = 1;
@@ -23,28 +24,30 @@ addStepButton.addEventListener('click', () => {
     addStepButton.parentNode.insertBefore(elem.content.firstElementChild, addStepButton);
 })
 
-const ingredientSelects = Array.from(document.querySelectorAll("select#ingredientSelect"));
+function registerEventListeners() {
+    const ingredientSelects = Array.from(document.querySelectorAll("select#ingredientSelect"));
 
-ingredientSelects.forEach(ingredientSelect => {
-    ingredientSelect.addEventListener('mousedown', (event) => {
-        event.preventDefault();
-        let target = event.target;
-        let searchDiv = target.closest("div.col-lg").nextElementSibling;
-        searchDiv.classList.toggle("show-searchBox");
+    ingredientSelects.forEach(ingredientSelect => {
+        ingredientSelect.addEventListener('mousedown', (event) => {
+            event.preventDefault();
+            let target = event.target;
+            let searchDiv = target.closest("div.col-lg").nextElementSibling;
+            searchDiv.classList.toggle("show-searchBox");
+        });
     });
-});
 
-const ingredientAnchors = Array.from(document.querySelectorAll("a.ingredient"));
-ingredientAnchors.forEach(ingredient => {
-    ingredient.addEventListener('click', ingredientSelected);
-});
-
-const searchBoxTexts = Array.from(document.querySelectorAll("input.searchBox-text"));
-searchBoxTexts.forEach(searchBox => {
-    searchBox.addEventListener('keyup', (event) => {
-        updateIngredients(event.target);
+    const ingredientAnchors = Array.from(document.querySelectorAll("a.ingredient"));
+    ingredientAnchors.forEach(ingredient => {
+        ingredient.addEventListener('click', ingredientSelected);
     });
-});
+
+    const searchBoxTexts = Array.from(document.querySelectorAll("input.searchBox-text"));
+    searchBoxTexts.forEach(searchBox => {
+        searchBox.addEventListener('keyup', (event) => {
+            updateIngredients(event.target);
+        });
+    });
+}
 
 function updateIngredients(target) {
     let filter = target.value.toUpperCase();
