@@ -11,7 +11,7 @@
                 <div class="form-floating">
                     <select class="form-select" id="quantityUnitSelect" aria-label="Quantity unit">
                         @foreach ($units as $unit)
-                            @if($ingredient->pivot->id_unit == $unit->id)
+                            @if($ingredient->pivot->id_unit === $unit->id)
                                 <option value="{{ $ingredient->pivot->id_unit }}" selected>{{ $unit->name }}</option>
                             @else
                                 <option value="{{ $unit->id }}">{{ $unit->name }}</option>
