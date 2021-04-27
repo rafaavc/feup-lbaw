@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\RecipeController;
+use App\Http\Controllers\UnitController;
 use Illuminate\Http\Request;
 
 /*
@@ -19,4 +20,6 @@ Route::middleware('auth:api')->get('/user', 'Auth\LoginController@getUser');
 // API - TasteBuds
 
 Route::put('recipe/{recipeId}', [RecipeController::class, 'update']);
+
+Route::get('units', [UnitController::class, 'index']);
 
