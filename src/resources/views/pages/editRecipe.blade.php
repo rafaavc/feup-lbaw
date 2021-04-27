@@ -33,11 +33,13 @@
                     <div class="col-md">
                         <div class="form-floating">
                             <select class="form-select" id="floatingSelectGrid" aria-label="Main category">
-                                {{-- Get Categories --}}
-                                <option>-</option>
-                                <option selected value="1">Dessert</option>
-                                <option value="2">Main Dish</option>
-                                <option value="3">Snack</option>
+                                @foreach ($categories as $category)
+                                    @if($recipe->category->id === $category->id)
+                                        <option value="{{ $category->id }}" selected>{{ $category->name }}</option>
+                                    @else
+                                        <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                    @endif
+                                @endforeach
                             </select>
                             <label for="floatingSelectGrid">Main category <span class='form-required'></span></label>
                         </div>
@@ -58,11 +60,9 @@
                     <div class="col-sm">
                         <div class="form-floating">
                             <select class="form-select" id="floatingSelectGrid" aria-label="Difficulty">
-                                {{-- Get Categories --}}
-                                <option>-</option>
-                                <option value="1">Easy</option>
-                                <option selected value="2">Medium</option>
-                                <option value="3">Hard</option>
+                                <option value="1" {{ ($recipe->difficulty === "Easy") ? "selected" : "" }}>Easy</option>
+                                <option value="2" {{ ($recipe->difficulty === "Medium") ? "selected" : "" }}>Medium</option>
+                                <option value="3" {{ ($recipe->difficulty === "Hard") ? "selected" : "" }}>Hard</option>
                             </select>
                             <label for="floatingSelectGrid">Difficulty <span class='form-required'></span></label>
                         </div>
@@ -83,27 +83,8 @@
             <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
                 <h3 class="mb-4">Ingredients</h3>
 
-                {{-- <script>
-                    async function fetchUnits() {
-                        let response = await fetch('/api/units');
-                        let jsonResponse = await response.json();
-                        console.log(jsonResponse);
-                        <option value="1" {{ isset($ingredient->pivot->id_unit) && $ingredient->pivot->id_unit == 1 ? "selected" : "" }}>teaspoon(s)</option>
-                        let selects = Array.from(document.querySelectorAll("select.form-select"));
-                        selects.forEach(select => {
-                            jsonResponse.units.forEach(unit => {
-                                let option = document.createElement("option");
-                                option.value = unit.id;
-                                option.innerText = unit.name;
-                                select.append(option);
-                            });
-                        });
-                    }
-
-                    fetchUnits();
-                </script> --}}
                 @foreach ($ingredients as $ingredient)
-                    @include('partials.recipe.recipeIngredientRow', ['ingredient' => $ingredient])
+                    @include('partials.recipe.recipeIngredientRow', ['ingredient' => $ingredient, 'units' => $units])
                 @endforeach
 
                 <button type="button" class="btn btn-secondary" id="addIngredientButton"><i class="fas fa-plus"></i> Add Ingredient</button>

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -63,6 +64,7 @@ class RecipeController extends Controller
         try {
             $recipe = Recipe::findOrFail($recipeId);
             $units = Unit::all();
+            $categories = Category::all();
 
             return view('pages.editRecipe', [
                 'recipe' => $recipe,
@@ -70,7 +72,8 @@ class RecipeController extends Controller
                 'tags' => $recipe->tags,
                 'author' => $recipe->author,
                 'steps' => $recipe->steps,
-                'units' => $units
+                'units' => $units,
+                'categories' => $categories
             ]);
         } catch (\Exception $e) {
             return response()->json(['message' => 'Invalid Request!'], 400);
