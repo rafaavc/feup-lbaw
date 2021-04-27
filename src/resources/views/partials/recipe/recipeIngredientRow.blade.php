@@ -3,7 +3,8 @@
         <div class="row g-3">
             <div class="col-sm">
                 <div class="form-floating">
-                    <input type="number" class="form-control" placeholder="0" aria-label="Quantity" id="quantityInput" <?=isset($ingredient->pivot->quantity) ? 'value="{{ $ingredient->pivot->quantity }}"' : ""?>>
+
+                    <input type="number" class="form-control" placeholder="0" aria-label="Quantity" id="quantityInput" value="{{ isset($ingredient->pivot->quantity) ? $ingredient->pivot->quantity : "" }}">
                     <label for="quantityInput">Quantity <span class='form-required'></span></label>
                 </div>
             </div>
