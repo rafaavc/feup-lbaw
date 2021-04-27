@@ -1,2557 +1,2665 @@
 openapi: 3.0.0
 
 info:
-    version: '1.0'
-    title: 'TasteBuds API'
-    description: 'Web Resources Specification (A7) for TasteBuds'
+  version: '1.0'
+  title: 'TasteBuds API'
+  description: 'Web Resources Specification (A7) for TasteBuds'
 
 servers:
-    -   url: http://lbaw2135-prod.fe.up.pt
-        description: Production server
-  
+  - url: http://lbaw2135-prod.fe.up.pt
+    description: Production server
+
 externalDocs:
-    description: Find more info here.
-    url: https://git.fe.up.pt/lbaw/lbaw2021/lbaw2135/-/wikis/EAP:-Architecture-Specification-and-Prototype#a7-high-level-architecture-privileges-web-resources-specification
+  description: Find more info here.
+  url: https://git.fe.up.pt/lbaw/lbaw2021/lbaw2135/-/wikis/EAP:-Architecture-Specification-and-Prototype#a7-high-level-architecture-privileges-web-resources-specification
 
 tags:
-    - name: 'M01: Authentication and Individual Profile'
-    - name: 'M02: Recipes, categories, groups and members'
-    - name: 'M03: Chat'
-    - name: 'M04: Information'
-    - name: 'M05: Web resources associated with the administrator pages'
+  - name: 'M01: Authentication and Individual Profile'
+  - name: 'M02: Recipes, categories, groups and members'
+  - name: 'M03: Chat'
+  - name: 'M04: Information'
+  - name: 'M05: Web resources associated with the administrator pages'
 
 paths:
-    /:
-        get: 
-            operationId: R1001
-            summary: 'R1001: Home page'
-            description: 'Provide home page. Access: PUB'
-            tags: 
-                - 'M04: Information'
-            responses:    
-                '200':
-                    description: 'Ok. Show [UI01](http://lbaw2135-piu.lbaw-prod.fe.up.pt/)'
+  /:
+    get:
+      operationId: R1001
+      summary: 'R1001: Home page'
+      description: 'Provide home page. Access: PUB'
+      tags:
+        - 'M04: Information'
+      responses:
+        '200':
+          description: 'Ok. Show [UI01](http://lbaw2135-piu.lbaw-prod.fe.up.pt/)'
 
-    /login:
-        get: 
-            operationId: R1002
-            summary: 'R1002: Login form'
-            description: 'Provide login form. Access: PUB'
-            tags: 
-                - 'M01: Authentication and Individual Profile'
-            responses:    
-                '200':
-                    description: 'Ok. Show [UI02](http://lbaw2135-piu.lbaw-prod.fe.up.pt/pages/signIn.php)'
-        post:
-            operationId: R1003
-            summary: 'R1003: Login Action'
-            description: 'Processes the login form submission. Access: PUB'
-            tags:
-                - 'M01: Authentication and Individual Profile'
-        
-            requestBody:
-                required: true
+  /login:
+    get:
+      operationId: R1002
+      summary: 'R1002: Login form'
+      description: 'Provide login form. Access: PUB'
+      tags:
+        - 'M01: Authentication and Individual Profile'
+      responses:
+        '200':
+          description: 'Ok. Show [UI02](http://lbaw2135-piu.lbaw-prod.fe.up.pt/pages/signIn.php)'
+    post:
+      operationId: R1003
+      summary: 'R1003: Login Action'
+      description: 'Processes the login form submission. Access: PUB'
+      tags:
+        - 'M01: Authentication and Individual Profile'
+
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                password:
+                  type: string
+              required:
+                - email
+                - password
+
+      responses:
+        '302':
+          description: 'Redirect after processing the login credentials.'
+          headers:
+            Location:
+              schema:
+                type: string
+              examples:
+                302Success:
+                  description: 'Successful authentication. Redirect to feed.'
+                  value: '/feed'
+                302Error:
+                  description: 'Failed authentication. Redirect to login form.'
+                  value: '/login'
+
+  /register:
+    get:
+      operationId: R1004
+      summary: 'R1004: Register form'
+      description: 'Provide register form. Access: PUB'
+      tags:
+        - 'M01: Authentication and Individual Profile'
+      responses:
+        '200':
+          description: 'Ok. Show [UI03](http://lbaw2135-piu.lbaw-prod.fe.up.pt/pages/signUp.php)'
+
+    post:
+      operationId: R1005
+      summary: 'R1005: Register Action'
+      description: 'Processes the register form submission. Access: PUB'
+      tags:
+        - 'M01: Authentication and Individual Profile'
+
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                username:
+                  type: string
+                email:
+                  type: string
+                password:
+                  type: string
+                name:
+                  type: string
+                countryId:
+                  type: integer
+                city:
+                  type: string
+              required:
+                - username
+                - email
+                - password
+                - name
+                - countryId
+      responses:
+        '302':
+          description: 'Redirect after processing the sign up.'
+          headers:
+            Location:
+              schema:
+                type: string
+              examples:
+                302Success:
+                  description: 'Successful registration. Redirect to feed.'
+                  value: '/feed'
+                302Error:
+                  description: 'Failed authentication. Redirect to register form.'
+                  value: '/register'
+
+  /logout:
+    post:
+      operationId: R1006
+      summary: 'R1006: Logout Action'
+      description: 'Logout from an account. Access: MBR'
+      tags:
+        - 'M01: Authentication and Individual Profile'
+      responses:
+        '302':
+          description: 'Redirect after processing logout, so user can login again.'
+          headers:
+            Location:
+              schema:
+                type: string
+              examples:
+                302Error:
+                  description: 'Failed authentication. Redirect to login form.'
+                  value: '/login'
+
+  /member/{username}/recipes:
+    get:
+      operationId: R1007
+      summary: 'R1007: Member recipes'
+      description: 'Provide member recipes page. Access: PUB'
+      tags:
+        - 'M02: Recipes, categories, groups and members'
+
+      parameters:
+        - in: path
+          name: username
+          schema:
+            type: string
+          required: true
+
+      responses:
+        '200':
+          description: 'Ok. Show [UI09](http://lbaw2135-piu.lbaw-prod.fe.up.pt/pages/profile.php)'
+
+  /member/{username}/favourites:
+    get:
+      operationId: R1008
+      summary: 'R1008: Member favourited recipes.'
+      description: 'Provide member favourited recipes page. Access: PUB'
+      tags:
+        - 'M02: Recipes, categories, groups and members'
+
+      parameters:
+        - in: path
+          name: username
+          schema:
+            type: string
+          required: true
+
+      responses:
+        '200':
+          description: 'Ok. Show [UI11](http://lbaw2135-piu.lbaw-prod.fe.up.pt/pages/profile_favourites.php)'
+
+  /member/{username}/reviews:
+    get:
+      operationId: R1009
+      summary: "R1009: Member's reviews."
+      description: "Provide member's reviews page. Access: PUB"
+      tags:
+        - 'M02: Recipes, categories, groups and members'
+      parameters:
+        - in: path
+          name: username
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: 'Ok. Show [UI10](https://lbaw2135-piu.lbaw-prod.fe.up.pt/pages/profile_reviews.php)'
+
+  /category/{categoryId}:
+    get:
+      operationId: R1010
+      summary: 'R1010: Category page.'
+      description: 'Show a page with recipes of a certain category. Access: PUB'
+      tags:
+        - 'M02: Recipes, categories, groups and members'
+
+      parameters:
+        - in: path
+          name: categoryId
+          schema:
+            type: integer
+          required: true
+
+      responses:
+        '200':
+          description: 'Ok. Show [UI17](http://lbaw2135-piu.lbaw-prod.fe.up.pt/pages/category.php)'
+        '404':
+          description: 'This page does not exist.'
+
+  /recipe/{recipeId}:
+    get:
+      operationId: R1011
+      summary: 'R1011: View recipes'
+      description: 'Show an individual recipe page. Access: PUB'
+      tags:
+        - 'M02: Recipes, categories, groups and members'
+      parameters:
+        - in: path
+          name: recipeId
+          schema:
+            type: integer
+          required: true
+      responses:
+        '200':
+          description: 'Ok. Show [UI22](http://lbaw2135-piu.lbaw-prod.fe.up.pt/pages/recipe.php)'
+
+  /recipe:
+    get:
+      operationId: R1012
+      summary: 'R1012: Create Recipe.'
+      description: 'Provides the create recipe page. Access: PUB'
+      tags:
+        - 'M02: Recipes, categories, groups and members'
+      responses:
+        '200':
+          description: 'Ok. Show [UI19](http://lbaw2135-piu.lbaw-prod.fe.up.pt/pages/createRecipe.php)'
+
+  /group/{groupId}:
+    get:
+      operationId: R1013
+      summary: 'R1013: Group page.'
+      description: 'Show a page with recipes and information of a certain group. Access: PUB.'
+      tags:
+        - 'M02: Recipes, categories, groups and members'
+
+      parameters:
+        - in: path
+          name: groupId
+          schema:
+            type: integer
+          required: true
+
+      responses:
+        '200':
+          description: 'Ok. Show [UI16](http://lbaw2135-piu.lbaw-prod.fe.up.pt/pages/group.php)'
+
+  /group:
+    post:
+      operationId: R1014
+      summary: 'R1014: Create group'
+      description: 'Create a new group. Access: MBR'
+      tags:
+        - 'M02: Recipes, categories, groups and members'
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                profilePhoto:
+                  type: string
+                  format: binary
+                name:
+                  type: string
+                description:
+                  type: string
+                visibility:
+                  type: boolean
+                coverPhoto:
+                  type: string
+                  format: binary
+              required:
+                - profilePhoto
+                - name
+                - description
+                - visibility
+                - coverPhoto
+      responses:
+        '302':
+          description: 'Redirect after processing the group creation.'
+          headers:
+            Location:
+              schema:
+                type: string
+              examples:
+                302Success:
+                  description: 'Successful group creation. Redirect to group page.'
+                  value: '/group'
+                302Error:
+                  description: 'Failed creation. Redirect back to group creation page.'
+                  value: '/create_group'
+
+  /feed:
+    get:
+      operationId: R1015
+      summary: 'R1015: Feed.'
+      description: 'Provides the feed page. Access: PUB'
+      tags:
+        - 'M02: Recipes, categories, groups and members'
+      responses:
+        '200':
+          description: 'Ok. Show [UI18](http://lbaw2135-piu.lbaw-prod.fe.up.pt/pages/feed.php)'
+
+  /chat/{recipientId}:
+    get:
+      operationId: R1016
+      summary: 'R1016: Read messages'
+      description: 'Read private messages sent to another user. Access: MBR'
+      tags:
+        - 'M03: Chat'
+      parameters:
+        - in: path
+          name: recipientId
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: 'Ok. Show [UI08](http://lbaw2135-piu.lbaw-prod.fe.up.pt/pages/privateMessages.php)'
+
+  /search/{searchQuery}:
+    get:
+      operationId: R1017
+      summary: 'R1017: Search results page'
+      description: 'Provide results from the performed search. Access: PUB'
+      tags:
+        - 'M02: Recipes, categories, groups and members'
+      parameters:
+        - in: path
+          name: searchQuery
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: 'Ok. Show [UI15](http://lbaw2135-piu.lbaw-prod.fe.up.pt/pages/search.php)'
+
+  /admin/reports:
+    get:
+      operationId: R1018
+      summary: 'R1018: Reports page.'
+      description: 'Show all the comment and recipe reports to the admin. Access: ADM'
+      tags:
+        - 'M05: Web resources associated with the administrator pages'
+      responses:
+        '200':
+          description: 'Ok. Show [UI15](http://lbaw2135-piu.lbaw-prod.fe.up.pt/pages/reportsManagement.php)'
+        '404':
+          description: 'This page does not exist.' # non-admins should not know that this page exists
+
+  /admin/users:
+    get:
+      operationId: R1019
+      summary: 'R1019: Users management section.'
+      description: 'Provides the users management section. Access: PUB'
+      tags:
+        - 'M02: Recipes, categories, groups and members'
+      responses:
+        '200':
+          description: 'Ok. Show [UI14](http://lbaw2135-piu.lbaw-prod.fe.up.pt/pages/usersManagement.php)'
+
+  /about:
+    get:
+      operationId: R1020
+      summary: 'R1020: About page'
+      description: 'Provide information about TasteBuds. Access: PUB'
+      tags:
+        - 'M04: Information'
+      responses:
+        '200':
+          description: 'Ok. Show [UI06](http://lbaw2135-piu.lbaw-prod.fe.up.pt/pages/about.php)'
+
+  /faq:
+    get:
+      operationId: R1021
+      summary: 'R1021: FAQ page'
+      description: 'Provide FAQ page. Access: PUB'
+      tags:
+        - 'M04: Information'
+
+      responses:
+        '200':
+          description: 'Ok. Show [UI07](http://lbaw2135-piu.lbaw-prod.fe.up.pt/pages/faq.php)'
+
+  /api/user:
+    post:
+      operationId: R2001
+      summary: 'R2001: Member account'
+      description: 'Create a member account. Access: PUB'
+      tags:
+        - 'M01: Authentication and Individual Profile'
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                username:
+                  type: string
+                email:
+                  type: string
+                city:
+                  type: string
+                country:
+                  type: integer
+                password:
+                  type: string
+                profileImage:
+                  type: string
+                  format: binary
+              required:
+                - name
+                - username
+                - email
+                - country
+                - password
+      responses:
+        '200':
+          description: 'OK'
+        '400':
+          description: 'Invalid Request'
+
+  /api/user/{username}:
+    get:
+      operationId: R2002
+      summary: 'R2002: Member information'
+      description: 'Get member information in JSON. Access: PUB'
+      tags:
+        - 'M02: Recipes, categories, groups and members'
+      parameters:
+        - in: path
+          name: username
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: 'OK. The authenticated user has access to all user information.'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  name:
+                    type: string
+                  username:
+                    type: string
+                  city:
+                    type: string
+                  country:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                      abbreviation:
+                        type: string
+                      name:
+                        type: string
+                  creationDate:
+                    type: string
+                    format: datetime
+                  score:
+                    type: number
+                  biography:
+                    type: string
+                  recipes:
+                    type: integer
+                  followers:
+                    type: integer
+                  following:
+                    type: integer
+                example:
+                  id: 2
+                  name: "Mark Hasmunsen"
+                  username: mark_h
+                  city: Bergen
+                  country:
+                    - id: 165
+                      abbreviation: "NO"
+                      name: Norway
+                  creationDate: "2019-05-09"
+                  score: 4.7
+                  biography: "Black metal fan making food, what could go wrong?"
+                  recipes: 14
+                  followers: 34
+                  following: 13
+        '201': # TODO: CHANGE THIS!!!!!!
+          description: "OK. The requested user is private and the authenticated user doesn't follow him."
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  name:
+                    type: string
+                  username:
+                    type: string
+                  recipes:
+                    type: integer
+                  followers:
+                    type: integer
+                  following:
+                    type: integer
+                example:
+                  id: 2
+                  name: Mark Hasmunsen
+                  username: mark_h
+                  recipes: 14
+                  followers: 34
+                  following: 13
+    put:
+      operationId: R2003
+      summary: 'R2003: Edit profile'
+      description: 'Edit member information. Access: OWN'
+      tags:
+        - 'M02: Recipes, categories, groups and members'
+
+      parameters:
+        - in: path
+          name: username
+          schema:
+            type: string
+          required: true
+
+      requestBody:
+        required: false
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                username:
+                  type: string
+                email:
+                  type: string
+                city:
+                  type: string
+                country:
+                  type: integer
+                password:
+                  type: string
+                biography:
+                  type: string
+                visibility:
+                  type: boolean
+                profileImage:
+                  type: string
+                  format: binary
+                coverImage:
+                  type: string
+                  format: binary
+      responses:
+        '200':
+          description: 'Updated User'
+        '400':
+          description: 'Invalid Request'
+        '403':
+          description: 'Forbidden Access'
+    delete:
+      operationId: R2004
+      summary: 'R2004: Delete member'
+      description: 'Delete a member account. Access: OWN, ADM'
+      tags:
+        - 'M02: Recipes, categories, groups and members'
+        - 'M05: Web resources associated with the administrator pages'
+      parameters:
+        - in: path
+          name: username
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: 'Deleted User'
+        '400':
+          description: 'Invalid Request'
+
+  /api/user/{username}/recipes:
+    get:
+      operationId: R2005
+      summary: 'R2005: Member recipes'
+      description: "Gets the member's recipes in JSON. Access: PUB"
+      tags:
+        - 'M02: Recipes, categories, groups and members'
+      parameters:
+        - in: path
+          name: username
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: 'OK'
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: string
+                    title:
+                      type: string
+                    description:
+                      type: string
+                    creationDate:
+                      type: string
+                      format: datetime
+                    rating:
+                      type: number
+                    numberOfReviews:
+                      type: integer
+                    category:
+                      type: string
+                    tags:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          id:
+                            type: integer
+                          name:
+                            type: string
+                    inFavourites:
+                      type: boolean
+                example:
+                  - id: 1
+                    title: Classic Tiramisu
+                    description: Classic Italian dessert made with ladyfingers and mascarpone cheese.
+                    creationDate: 22-01-2021
+                    rating: 4.5
+                    numberOfReviews: 5
+                    category: Dessert
+                    tags:
+                      - id: 45
+                        name: "Vegetarian"
+                      - id: 32
+                        name: "Zero sugar"
+                    inFavourites: false
+
+        '400':
+          description: 'Invalid Request'
+        '403':
+          description: "The authenticated user cannot access the requested information (the requested member is private and the authenticated user doesn't follow him)"
+        '404':
+          description: 'The user does not exist'
+
+  /api/user/{username}/reviews:
+    get:
+      operationId: R2006
+      summary: 'R2006: Member reviews'
+      description: "Gets the member's reviews in JSON. Access: PUB"
+      tags:
+        - 'M02: Recipes, categories, groups and members'
+      parameters:
+        - in: path
+          name: username
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: 'OK'
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    recipeTitle:
+                      type: string
+                    postTime:
+                      type: string
+                      format: datetime
+                    givenRating:
+                      type: integer
+                    givenComment:
+                      type: string
+                    recipeRating:
+                      type: number
+                    numberOfReviews:
+                      type: integer
+                example:
+                  - recipeTitle: Traditional Irish Stew
+                    postTime: 2 hours ago
+                    givenRating: 4
+                    givenComment: Absolutely delicious! Explosion of flavour...
+                    recipeRating: 4.6
+                    numberOfReviews: 20
+        '400':
+          description: 'Invalid Request'
+        '403':
+          description: "The authenticated user cannot access the requested information (the requested member is private and the authenticated user doesn't follow him)"
+        '404':
+          description: 'The user does not exist'
+
+  /api/user/{username}/favourites:
+    get:
+      operationId: R2007
+      summary: 'R2007: Member favourites'
+      description: 'Gets the members favourite recipes in JSON. Access: PUB'
+      tags:
+        - 'M02: Recipes, categories, groups and members'
+      parameters:
+        - in: path
+          name: username
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: 'OK'
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                    recipeTitle:
+                      type: string
+                    description:
+                      type: string
+                    creationTime:
+                      type: string
+                      format: datetime
+                    rating:
+                      type: number
+                    numberOfReviews:
+                      type: integer
+                    category:
+                      type: string
+                    tags:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          id:
+                            type: integer
+                          name:
+                            type: string
+                example:
+                  - id: 1
+                    recipeTitle: Classic Tiramisu
+                    description: Classic Italian dessert made with ladyfingers and mascarpone cheese.
+                    creationDate: 22-01-2021
+                    rating: 4.5
+                    numberOfReviews: 5
+                    category: Dessert
+                    tags:
+                      - id: 45
+                        name: "Vegetarian"
+                      - id: 32
+                        name: "Zero sugar"
+        '400':
+          description: 'Invalid Request'
+        '403':
+          description: "The authenticated user cannot access the requested information (the requested member is private and the authenticated user doesn't follow him)"
+        '404':
+          description: 'The user does not exist'
+
+  /api/user/{username}/following:
+    get:
+      operationId: R2008
+      summary: 'R2008: Members that the member is following'
+      description: 'Gets the members that the member is following in JSON. Access: PUB'
+      tags:
+        - 'M02: Recipes, categories, groups and members'
+      parameters:
+        - in: path
+          name: username
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: 'OK'
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                    name:
+                      type: string
+                    username:
+                      type: string
+                example:
+                  - id: 2
+                    name: Jamie Oliver
+                    username: jamieOliverChef
+                  - id: 3
+                    name: Kyren Wilson
+                    username: kyren77
+        '403':
+          description: "The authenticated user cannot access the requested information (the requested member is private and the authenticated user doesn't follow him)"
+        '404':
+          description: 'The user does not exist'
+
+  /api/user/{username}/followers:
+    get:
+      operationId: R2009
+      summary: 'R2009: Member''s followers'
+      description: "Gets the list of members that follow the user in JSON. Access: PUB"
+      tags:
+        - 'M02: Recipes, categories, groups and members'
+      parameters:
+        - in: path
+          name: username
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: 'OK'
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                    name:
+                      type: string
+                    username:
+                      type: string
+                example:
+                  - id: 4
+                    name: Judd Trump
+                    username: trump00
+                  - id: 5
+                    name: Paul Morphy
+                    username: _morphy_
+        '403':
+          description: "The authenticated user cannot access the requested information (the requested member is private and the authenticated user doesn't follow him)"
+        '404':
+          description: 'The user does not exist'
+
+  /api/user/{username}/groups:
+    get:
+      operationId: R2010
+      summary: "R2010: Member's groups"
+      description: 'Gets the groups that the member is part of in JSON. Access: PUB'
+      tags:
+        - 'M02: Recipes, categories, groups and members'
+      parameters:
+        - in: path
+          name: username
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: 'Success'
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                    name:
+                      type: string
+                example:
+                  - id: 1
+                    name: Oporto Vegetarians
+                  - id: 2
+                    name: Lisbon Vegetarians
+        '403':
+          description: "The authenticated user cannot access the requested information (the requested member is private and the authenticated user doesn't follow him)"
+        '404':
+          description: 'The user does not exist'
+
+  /api/user/{username}/request:
+    post:
+      operationId: R2011
+      summary: 'R2011: Create follow request'
+      description: 'Creates a follow request (if profile is public becomes a follower instantly). Access: MBR'
+      tags:
+        - 'M02: Recipes, categories, groups and members'
+      parameters:
+        - in: path
+          name: username
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: 'Created'
+        '400':
+          description: 'Invalid Request'
+        '404':
+          description: 'The user does not exist'
+
+  /api/user/request/{username}:
+    post:
+      operationId: R2012
+      summary: 'R2012: Accept follow request'
+      description: 'Accepts a follow request. Access: OWN'
+      tags:
+        - 'M02: Recipes, categories, groups and members'
+      parameters:
+        - in: path
+          name: username
+          schema:
+            type: string
+          required: true
+
+      responses:
+        '200':
+          description: 'Accepted'
+        '400':
+          description: 'Invalid Request'
+        '404':
+          description: 'The request does not exist'
+    delete:
+      operationId: R2013
+      summary: 'R2013: Decline follow request'
+      description: 'Declines a follow request. Access: OWN'
+      tags:
+        - 'M02: Recipes, categories, groups and members'
+      parameters:
+        - in: path
+          name: username
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: 'Deleted'
+        '400':
+          description: 'Invalid Request'
+
+  /api/users:
+    get:
+      operationId: R2014
+      summary: 'R2014: Get all members'
+      description: 'Gets all the registered members of the website in JSON. Access: ADM'
+      tags:
+        - 'M05: Web resources associated with the administrator pages'
+      responses:
+        '200':
+          description: "Success"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                    name:
+                      type: string
+                    username:
+                      type: string
+                    email:
+                      type: string
+                    country:
+                      type: string
+                    city:
+                      type: string
+                    numberOfPosts:
+                      type: integer
+                    numberOfComments:
+                      type: integer
+                    numberOfReports:
+                      type: integer
+                example:
+                  - id: 1
+                    name: Sarah Colbert
+                    username: sarahc
+                    email: sarah@gamil.com
+                    country: Portugal
+                    city: Porto
+                    numberOfPosts: 10
+                    numberOfComments: 20
+                    numberOfReports: 0
+                  - id: 2
+                    name: Biggus Dickus
+                    username: biggus_dickus
+                    email: biggus@dickus.mp
+                    country: Italy
+                    city: Rome
+                    numberOfPosts: 15
+                    numberOfComments: 69
+                    numberOfReports: 2
+
+        '400':
+          description: 'Invalid Request'
+
+  /api/recipe:
+    post:
+      operationId: R2101
+      summary: 'R2101: Create recipe'
+      description: 'Creates a new recipe. Access: MBR'
+      tags:
+        - 'M02: Recipes, categories, groups and members'
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                title:
+                  type: string
+                mainCategory:
+                  type: integer
+                description:
+                  type: string
+                tags:
+                  type: array
+                  items:
+                    type: integer
+                difficulty:
+                  type: string
+                servings:
+                  type: integer
+                images:
+                  type: array
+                  items:
+                    type: string
+                    format: binary
+                visibility:
+                  type: boolean
+                ingredients:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      quantity:
+                        type: number
+                      unit:
+                        type: integer
+                      name:
+                        type: string
+                    required:
+                      - quantity
+                      - unit
+                      - name
+                preparationTime:
+                  type: integer
+                cookingTime:
+                  type: integer
+                additionalTime:
+                  type: integer
+                steps:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      name:
+                        type: string
+                      description:
+                        type: string
+                      images:
+                        type: array
+                        items:
+                          type: string
+                          format: binary
+                    required:
+                      - name
+                      - description
+              required:
+                - title
+                - mainCategory
+                - description
+                - tags
+                - difficulty
+                - servings
+                - images
+                - visibility
+                - ingredients
+                - preparationTime
+                - cookingTime
+                - steps
+      responses:
+        '200':
+          description: 'Success'
+        '400':
+          description: 'Invalid Request'
+
+  /api/recipe/{recipeId}:
+    get:
+      operationId: R2102
+      summary: 'R2102: Get recipe'
+      description: "Gets the recipe's information in JSON. Access: PUB"
+      tags:
+        - 'M02: Recipes, categories, groups and members'
+      parameters:
+        - in: path
+          name: recipeId
+          schema:
+            type: integer
+          required: true
+      responses:
+        '200':
+          description: 'OK. The authenticated user has access to the recipe.'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  name:
+                    type: string
+                  difficulty:
+                    type: string
+                  description:
+                    type: string
+                  servings:
+                    type: integer
+                  preparation_time:
+                    type: integer
+                  cooking_time:
+                    type: integer
+                  additional_time:
+                    type: integer
+                  creation_time:
+                    type: string
+                    format: datetime
+                  creator:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                      name:
+                        type: string
+                  category:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                      name:
+                        type: string
+                  id_group:
+                    type: integer
+                  score:
+                    type: number
+                  ingredients:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        ingredient:
+                          type: object
+                          properties:
+                            id:
+                              type: integer
+                            name:
+                              type: string
+                        unit:
+                          type: object
+                          properties:
+                            id:
+                              type: integer
+                            name:
+                              type: string
+                        quantity:
+                          type: number
+                  tags:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                        name:
+                          type: string
+                  steps:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                        name:
+                          type: string
+                        description:
+                          type: string
+              example:
+                - id: 2
+                  name: Tofu à brás
+                  difficulty: easy
+                  description: "Tofu feito com batatas"
+                  servings: 5
+                  preparation_time: 10
+                  cooking_time: 40
+                  additional_time: 0
+                  creation_time: "2020-10-09 08:57"
+                  creator:
+                    id: 10
+                    name: "Ana Maria Braga"
+                  category:
+                    id: 1
+                    name: "Pratos principais"
+                  ingredients:
+                    - ingredient:
+                        id: 40
+                        name: tofu
+                      unit:
+                        id: 3
+                        name: kilograms
+                      quantity: 400
+                    - ingredient:
+                        id: 20
+                        name: potato
+                      unit:
+                        id: 3
+                        name: kilograms
+                      quantity: 600
+                  tags:
+                    - id: 30
+                      name: vegetarian
+                    - id: 45
+                      name: portuguese cuisine
+                  steps:
+                    - id: 354
+                      name: "Faça a receita"
+                      description: "Prepare o tofu à brás, depois disso pode comê-lo"
+        '404':
+          description: "The recipe does not exist or the authenticated user has no access to it"
+    put:
+      operationId: R2103
+      summary: 'R2103: Edit recipe'
+      description: "Alters the recipe's information. Access: OWN"
+      tags:
+        - 'M02: Recipes, categories, groups and members'
+      parameters:
+        - in: path
+          name: recipeId
+          schema:
+            type: integer
+          required: true
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                difficulty:
+                  type: string
+                description:
+                  type: string
+                servings:
+                  type: integer
+                preparation_time:
+                  type: integer
+                cooking_time:
+                  type: integer
+                additional_time:
+                  type: integer
+                creation_time:
+                  type: string
+                  format: datetime
+                creator:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                    name:
+                      type: string
+                category:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                    name:
+                      type: string
+                id_group:
+                  type: integer
+                score:
+                  type: number
+                ingredients:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      ingredient:
+                        type: object
+                        properties:
+                          id:
+                            type: integer
+                          name:
+                            type: string
+                      unit:
+                        type: object
+                        properties:
+                          id:
+                            type: integer
+                          name:
+                            type: string
+                      quantity:
+                        type: number
+                tags:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                      name:
+                        type: string
+                steps:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                      name:
+                        type: string
+                      description:
+                        type: string
+                      images:
+                        type: array
+                        items:
+                          type: string
+                          format: binary
+                images:
+                  type: array
+                  items:
+                    type: string
+                    format: binary
+
+      responses:
+        '200':
+          description: 'Updated Recipe'
+        '400':
+          description: 'Invalid Request'
+    delete:
+      operationId: R2104
+      summary: 'R2104: Delete recipe'
+      description: 'Deletes the recipe. Access: OWN, ADM'
+      tags:
+        - 'M02: Recipes, categories, groups and members'
+        - 'M05: Web resources associated with the administrator pages'
+      parameters:
+        - in: path
+          name: recipeId
+          schema:
+            type: integer
+          required: true
+      responses:
+        '200':
+          description: 'Deleted Recipe'
+        '400':
+          description: 'Invalid Request'
+
+  /api/recipe/{recipeId}/favourite:
+    post:
+      operationId: R2105
+      summary: 'R2105: Add a favourite recipe'
+      description: "Adds the recipe to the user's favourite list. Access: MBR"
+      tags:
+        - 'M02: Recipes, categories, groups and members'
+      parameters:
+        - in: path
+          name: recipeId
+          schema:
+            type: integer
+          required: true
+      responses:
+        '200':
+          description: 'Success'
+    delete:
+      operationId: R2106
+      summary: 'R2106: Remove a favourite recipe'
+      description: "Remove the recipe from the user's favourite list. Access: MBR"
+      tags:
+        - 'M02: Recipes, categories, groups and members'
+      parameters:
+        - in: path
+          name: recipeId
+          schema:
+            type: integer
+          required: true
+      responses:
+        '200':
+          description: 'Success'
+
+  /api/recipe/{recipeId}/report:
+    post:
+      operationId: R2107
+      summary: 'R2107: Creates a report of a recipe'
+      description: 'Creates a report of a recipe. Access: MBR'
+      tags:
+        - 'M05: Web resources associated with the administrator pages'
+      parameters:
+        - in: path
+          name: recipeId
+          schema:
+            type: integer
+          required: true
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: string        # Reason
+      responses:
+        '200':
+          description: 'Reported Recipe'
+        '400':
+          description: 'Invalid Request'
+
+  /api/group:
+    post:
+      operationId: R2201
+      summary: 'R2201: Create group'
+      description: 'Creates a group. Access: MBR'
+      tags:
+        - 'M02: Recipes, categories, groups and members'
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                description:
+                  type: string
+                visibility:
+                  type: boolean
+                groupImage:
+                  type: string
+                  format: binary
+                coverImage:
+                  type: string
+                  format: binary
+              required:
+                - name
+                - description
+                - visibility
+                - groupImage
+      responses:
+        '200':
+          description: 'Created Group'
+        '400':
+          description: 'Invalid Request'
+
+  /api/group/{groupId}:
+    get:
+      operationId: R2202
+      summary: 'R2202: Group information'
+      description: 'Gets the information about a group. Access: PUB'
+      tags:
+        - 'M02: Recipes, categories, groups and members'
+      parameters:
+        - in: path
+          name: groupId
+          schema:
+            type: integer
+          required: true
+      responses:
+        '200':
+          description: "OK. The authenticated user has access to the group''s' information."
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  name:
+                    type: string
+                  description:
+                    type: string
+                  visibility:
+                    type: boolean
+                  numberOfRecipes:
+                    type: integer
+                  numberOfMembers:
+                    type: integer
+                example:
+                  id: 2
+                  name: Vegetarianos do Porto
+                  description: Este é o melhor grupo de vegetarianos do Porto.
+                  visibility: false
+                  numberOfRecipes: 14
+                  numberOfMembers: 56
+        '201': #TODO: Change
+          description: "OK. The authenticated user has access to the group's information and membership requests."
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  name:
+                    type: string
+                  description:
+                    type: string
+                  visibility:
+                    type: boolean
+                  numberOfRecipes:
+                    type: integer
+                  numberOfMembers:
+                    type: integer
+                  membershipRequests:
+                    type: array
+                    items:
+                      type: integer
+                example:
+                  id: 2
+                  name: Vegetarianos do Porto
+                  description: Este é o melhor grupo de vegetarianos do Porto.
+                  visibility: true
+                  numberOfRecipes: 14
+                  numberOfMembers: 56
+                  requests:
+                    - 1
+                    - 5
+    put:
+      operationId: R2203
+      summary: 'R2203: Edit group'
+      description: 'Alters the groups information. Access: MOD'
+      tags:
+        - 'M02: Recipes, categories, groups and members'
+      parameters:
+        - in: path
+          name: groupId
+          schema:
+            type: integer
+          required: true
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                description:
+                  type: string
+                visibility:
+                  type: boolean
+                coverImage:
+                  type: string
+                  format: binary
+                profileImage:
+                  type: string
+                  format: binary
+      responses:
+        '200':
+          description: 'OK'
+        '400':
+          description: 'Bad request'
+    delete:
+      operationId: R2204
+      summary: 'R2204: Delete group'
+      description: 'Deletes the group. Access: MOD'
+      tags:
+        - 'M02: Recipes, categories, groups and members'
+      parameters:
+        - in: path
+          name: groupId
+          schema:
+            type: integer
+          required: true
+      responses:
+        '200':
+          description: 'OK'
+
+  /api/group/{groupId}/request:
+    post:
+      operationId: R2205
+      summary: 'R2205: Create membership request'
+      description: 'Creates a membership request (if group is public becomes a member instantly). Access: MBR'
+      tags:
+        - 'M02: Recipes, categories, groups and members'
+      parameters:
+        - in: path
+          name: groupId
+          schema:
+            type: integer
+          required: true
+      responses:
+        '200':
+          description: 'Success'
+        '400':
+          description: 'Invalid Request'
+
+  /api/group/{groupId}/request/{memberId}:
+    post:
+      operationId: R2206
+      summary: 'R2206: Accept membership request'
+      description: 'Accepts a membership request, adding the member to the group. Access: MOD'
+      tags:
+        - 'M02: Recipes, categories, groups and members'
+
+      parameters:
+        - in: path
+          name: groupId
+          schema:
+            type: integer
+          required: true
+        - in: path
+          name: memberId
+          schema:
+            type: integer
+          required: true
+
+      responses:
+        '200':
+          description: 'Accepted'
+        '400':
+          description: 'Invalid Request'
+        '404':
+          description: 'The request does not exist'
+    delete:
+      operationId: R2207
+      summary: 'R2207: Refuse membership request'
+      description: 'Refuses a membership request. Access: MOD'
+      tags:
+        - 'M02: Recipes, categories, groups and members'
+
+      parameters:
+        - in: path
+          name: groupId
+          schema:
+            type: integer
+          required: true
+        - in: path
+          name: memberId
+          schema:
+            type: integer
+          required: true
+
+      responses:
+        '200':
+          description: 'Deleted'
+        '400':
+          description: 'Invalid Request'
+
+  /api/group/{groupId}/moderator/{memberId}:
+    post:
+      operationId: R2208
+      summary: 'R2208: Turn group member into moderator'
+      description: 'Turn group member into moderator, adding it to the moderators group. Access: MOD'
+      tags:
+        - 'M02: Recipes, categories, groups and members'
+      parameters:
+        - in: path
+          name: groupId
+          schema:
+            type: integer
+          required: true
+        - in: path
+          name: memberId
+          schema:
+            type: integer
+          required: true
+      responses:
+        '200':
+          description: 'Member turned into moderator'
+        '400':
+          description: 'Invalid Request'
+
+  /api/group/{groupId}/member/{memberId}:
+    delete:
+      operationId: R2209
+      summary: 'R2209: Removes member from the group'
+      description: 'Removes member from the group. Access: MOD'
+      tags:
+        - 'M02: Recipes, categories, groups and members'
+      parameters:
+        - in: path
+          name: groupId
+          schema:
+            type: integer
+          required: true
+        - in: path
+          name: memberId
+          schema:
+            type: integer
+          required: true
+      responses:
+        '200':
+          description: 'Member removed from group'
+        '400':
+          description: 'Invalid Request'
+
+  /api/group/{groupId}/members:
+    get:
+      operationId: R2210
+      summary: 'R2210: Gets a list of the members of a group'
+      description: 'Returns a list of the members of the group in JSON Access: MOD'
+      tags:
+        - 'M02: Recipes, categories, groups and members'
+      parameters:
+        - in: path
+          name: groupId
+          schema:
+            type: integer
+          required: true
+      responses:
+        '200':
+          description: "Success"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                    name:
+                      type: string
+                    username:
+                      type: string
+                example:
+                  - id: 2
+                    name: Mark Hasmunsen
+                    username: mark_h
+                  - id: 3
+                    name: Kyren Wilson
+                    username: kyren77
+        '403':
+          description: "The authenticated user cannot access the requested information (the requested group is private and the authenticated user doesn't belong to it)"
+        '404':
+          description: 'The group does not exist'
+
+  /api/chat/{recipientId}:
+    get:
+      operationId: R2301
+      summary: 'R2301: Get chat'
+      description: 'Gets a chat between two members in JSON Access: MBR'
+      tags:
+        - 'M03: Chat'
+
+      parameters:
+        - in: path
+          name: recipientId
+          schema:
+            type: integer
+          required: true
+
+      responses:
+        '200':
+          description: "Success"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    text:
+                      type: string
+                    creationDate:
+                      type: string
+                      format: datetime
+                example:
+                  - text: That's nice!
+                    creationDate: 2019-05-09 16:19
+                  - text: Hello :)
+                    creationDate: 2019-05-12 13:09
+        '400':
+          description: 'Invalid Request'
+    post:
+      operationId: R2302
+      summary: 'R2302: Add message'
+      description: 'Adds a message to a chat between two users. Access: MBR'
+      tags:
+        - 'M03: Chat'
+
+      parameters:
+        - in: path
+          name: recipientId
+          schema:
+            type: integer
+          required: true
+
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                message:
+                  type: string
+              required:
+                - message
+
+      responses:
+        '200':
+          description: 'Success'
+        '400':
+          description: 'Invalid Request'
+
+  /api/chats:
+    get:
+      operationId: R2303
+      summary: 'R2303: Get the user conversations'
+      description: 'Gets a user''s chat in JSON. Access: OWN'
+      tags:
+        - 'M03: Chat'
+
+      responses:
+        '200':
+          description: 'Success'
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    userId:
+                      type: integer
+                    name:
+                      type: string
+                    username:
+                      type: string
+                    lastMessage:
+                      type: string
+                    read:
+                      type: boolean
+                    lastSenderName:
+                      type: string
+                example:
+                  - userId: 1
+                    name: Sarah Colbert
+                    username: sarahc
+                    lastMessage: That's nice!
+                    read: false
+                    lastSenderName: Sarah
+                  - userId: 2
+                    name: Biggus Dickus
+                    username: biggus_dickus
+                    lastMessage: Okay bro.
+                    read: true
+                    lastSenderName: You
+        '400':
+          description: 'Invalid Request'
+
+  /api/comment:
+    post:
+      operationId: R2401
+      summary: 'R2401: Create comment'
+      description: 'Adds a comment / review to a recipe. Access: MBR'
+      tags:
+        - 'M02: Recipes, categories, groups and members'
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                recipeId:
+                  type: integer
                 content:
-                    application/x-www-form-urlencoded:
-                        schema:
+                  type: string
+                rating:
+                  type: integer
+              required:
+                - recipeId
+                - content
+      responses:
+        '200':
+          description: 'Success'
+        '400':
+          description: 'Bad request'
+
+  /api/comment/{commentId}:
+    put:
+      operationId: R2402
+      summary: 'R2402: Edit comment'
+      description: 'Edits a comment. Access: OWN'
+      tags:
+        - 'M02: Recipes, categories, groups and members'
+      parameters:
+        - in: path
+          name: commentId
+          schema:
+            type: integer
+          required: true
+
+      requestBody:
+        required: false
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                text:
+                  type: string
+                rating:
+                  type: integer
+
+      responses:
+        '200':
+          description: 'Updated Comment'
+        '400':
+          description: 'Invalid Request'
+        '403':
+          description: 'Forbidden Access'
+
+    delete:
+      operationId: R2403
+      summary: 'R2403: Delete comment'
+      description: 'Deletes a comment. Access: OWN'
+      tags:
+        - 'M02: Recipes, categories, groups and members'
+        - 'M05: Web resources associated with the administrator pages'
+      parameters:
+        - in: path
+          name: commentId
+          schema:
+            type: integer
+          required: true
+      responses:
+        '200':
+          description: 'Deleted Comment'
+        '400':
+          description: 'Invalid Request'
+
+  /api/comment/{commentId}/report:
+    post:
+      operationId: R2404
+      summary: 'R2404: Creates a report of a comment'
+      description: 'Creates a report of a comment. Access: MBR'
+      tags:
+        - 'M05: Web resources associated with the administrator pages'
+      parameters:
+        - in: path
+          name: commentId
+          schema:
+            type: integer
+          required: true
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: string        # Reason
+      responses:
+        '200':
+          description: 'Reported Comment'
+        '400':
+          description: 'Invalid Request'
+
+  /api/feed:
+    get:
+      operationId: R2501
+      summary: "R2501: Get member's feed"
+      description: 'Gets the feed of a given member in JSON. Access: MBR'
+      tags:
+        - 'M02: Recipes, categories, groups and members'
+
+      parameters:
+        - in: query
+          name: sort
+          schema:
+            type: string
+          required: false
+        - in: query
+          name: sortparam
+          schema:
+            type: string
+          required: false
+        - in: query
+          name: category
+          schema:
+            type: string
+          required: false
+        - in: query
+          name: tag
+          schema:
+            type: string
+          required: false
+        - in: query
+          name: rating
+          schema:
+            type: string
+          required: false
+        - in: query
+          name: ingredient
+          schema:
+            type: string
+          required: false
+        - in: query
+          name: datetime
+          schema:
+            type: string
+          required: false
+        - in: query
+          name: duration
+          schema:
+            type: string
+          required: false
+        - in: query
+          name: difficulty
+          schema:
+            type: string
+          required: false
+
+
+      responses:
+        '200':
+          description: "Success"
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  recipes:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                        title:
+                          type: string
+                        description:
+                          type: string
+                        creationDate:
+                          type: string
+                          format: datetime
+                        rating:
+                          type: number
+                        numberOfReviews:
+                          type: integer
+                        category:
+                          type: string
+                        tags:
+                          type: array
+                          items:
                             type: object
                             properties:
-                                email:          
-                                    type: string
-                                password:   
-                                    type: string
-                            required:
-                                - email
-                                - password
-        
-            responses:
-                '302':
-                    description: 'Redirect after processing the login credentials.'
-                    headers:
-                        Location:
-                            schema:
+                              id:
+                                type: integer
+                              name:
                                 type: string
-                            examples:
-                                302Success:
-                                    description: 'Successful authentication. Redirect to feed.'
-                                    value: '/feed'
-                                302Error:
-                                    description: 'Failed authentication. Redirect to login form.'
-                                    value: '/login'
-
-    /register:
-        get: 
-            operationId: R1004
-            summary: 'R1004: Register form'
-            description: 'Provide register form. Access: PUB'
-            tags: 
-                - 'M01: Authentication and Individual Profile'
-            responses:    
-                '200':
-                    description: 'Ok. Show [UI03](http://lbaw2135-piu.lbaw-prod.fe.up.pt/pages/signUp.php)'
-        
-        post:
-            operationId: R1005
-            summary: 'R1005: Register Action'
-            description: 'Processes the register form submission. Access: PUB'
-            tags:
-                - 'M01: Authentication and Individual Profile'
-        
-            requestBody:
-                required: true
-                content:
-                    application/x-www-form-urlencoded:
-                        schema:
-                            type: object
-                            properties:
-                                username:
-                                    type: string
-                                email:          
-                                    type: string
-                                password:   
-                                    type: string
-                                name:   
-                                    type: string
-                                countryId:   
-                                    type: integer
-                                city:   
-                                    type: string
-                            required:
-                                - username
-                                - email
-                                - password
-                                - name
-                                - countryId        
-            responses:
-                '302':
-                    description: 'Redirect after processing the sign up.'
-                    headers:
-                        Location:
-                            schema:
-                                type: string
-                            examples:
-                                302Success:
-                                    description: 'Successful registration. Redirect to feed.'
-                                    value: '/feed'
-                                302Error:
-                                    description: 'Failed authentication. Redirect to register form.'
-                                    value: '/register'
-
-    /logout:
-        post:
-            operationId: R1006
-            summary: 'R1006: Logout Action'
-            description: 'Logout from an account. Access: MBR'
-            tags:
-                - 'M01: Authentication and Individual Profile'
-            responses:
-                '302':
-                    description: 'Redirect after processing logout, so user can login again.'
-                    headers:
-                        Location:
-                            schema:
-                                type: string
-                            examples:
-                                302Error:
-                                    description: 'Failed authentication. Redirect to login form.'
-                                    value: '/login'
-
-    /member/{username}/recipes:
-        get: 
-            operationId: R1007
-            summary: 'R1007: Member recipes'
-            description: 'Provide member recipes page. Access: PUB'
-            tags: 
-                - 'M02: Recipes, categories, groups and members'
-
-            parameters:
-                -   in: path
-                    name: username
-                    schema:
-                        type: string
-                    required: true
-
-            responses:    
-                '200':
-                    description: 'Ok. Show [UI09](http://lbaw2135-piu.lbaw-prod.fe.up.pt/pages/profile.php)'
-
-    /member/{username}/favourites:
-        get: 
-            operationId: R1008
-            summary: 'R1008: Member favourited recipes.'
-            description: 'Provide member favourited recipes page. Access: PUB'
-            tags: 
-                - 'M02: Recipes, categories, groups and members'
-
-            parameters:
-                -   in: path
-                    name: username
-                    schema:
-                        type: string
-                    required: true
-
-            responses:    
-                '200':
-                    description: 'Ok. Show [UI11](http://lbaw2135-piu.lbaw-prod.fe.up.pt/pages/profile_favourites.php)'
-
-    /member/{username}/reviews:
-        get:
-            operationId: R1009
-            summary: "R1009: Member's reviews."
-            description: "Provide member's reviews page. Access: PUB"
-            tags: 
-                - 'M02: Recipes, categories, groups and members'
-            parameters:
-                -   in: path
-                    name: username
-                    schema:
-                        type: string
-                    required: true
-            responses:    
-                '200':
-                    description: 'Ok. Show [UI10](https://lbaw2135-piu.lbaw-prod.fe.up.pt/pages/profile_reviews.php)'
-
-    /category/{categoryId}:
-        get: 
-            operationId: R1010
-            summary: 'R1010: Category page.'
-            description: 'Show a page with recipes of a certain category. Access: PUB'
-            tags: 
-                - 'M02: Recipes, categories, groups and members'
-
-            parameters:
-                -   in: path
-                    name: categoryId
-                    schema:
-                        type: integer
-                    required: true
-
-            responses:    
-                '200':
-                    description: 'Ok. Show [UI17](http://lbaw2135-piu.lbaw-prod.fe.up.pt/pages/category.php)'
-                '404':
-                    description: 'This page does not exist.'
-
-    /recipe/{recipeId}:
-        get:
-            operationId: R1011
-            summary: 'R1011: View recipes'
-            description: 'Show an individual recipe page. Access: PUB'
-            tags:
-                - 'M02: Recipes, categories, groups and members'
-            parameters:
-                -   in: path
-                    name: recipeId
-                    schema:
-                        type: integer
-                    required: true
-            responses:
-                '200':
-                    description: 'Ok. Show [UI22](http://lbaw2135-piu.lbaw-prod.fe.up.pt/pages/recipe.php)'
-
-    /recipe:
-        get:
-            operationId: R1012
-            summary: 'R1012: Create Recipe.'
-            description: 'Provides the create recipe page. Access: PUB'
-            tags: 
-                - 'M02: Recipes, categories, groups and members'
-            responses:    
-                '200':
-                    description: 'Ok. Show [UI19](http://lbaw2135-piu.lbaw-prod.fe.up.pt/pages/createRecipe.php)'
-
-    /group/{groupId}:
-        get: 
-            operationId: R1013
-            summary: 'R1013: Group page.'
-            description: 'Show a page with recipes and information of a certain group. Access: PUB.'
-            tags: 
-                - 'M02: Recipes, categories, groups and members'
-
-            parameters:
-                -   in: path
-                    name: groupId
-                    schema:
-                        type: integer
-                    required: true
-
-            responses:    
-                '200':
-                    description: 'Ok. Show [UI16](http://lbaw2135-piu.lbaw-prod.fe.up.pt/pages/group.php)'
-
-    /group:
-        post:
-            operationId: R1014
-            summary: 'R1014: Create group'
-            description: 'Create a new group. Access: MBR'
-            tags:
-                - 'M02: Recipes, categories, groups and members'
-            requestBody:
-                required: true
-                content:
-                    multipart/form-data:
-                        schema:
-                            type: object
-                            properties:
-                                profilePhoto:
-                                    type: string
-                                    format: binary
-                                name:
-                                    type: string
-                                description:
-                                    type: string
-                                visibility:
-                                    type: boolean
-                                coverPhoto:
-                                    type: string
-                                    format: binary
-                            required:
-                                - profilePhoto
-                                - name
-                                - description
-                                - visibility
-                                - coverPhoto
-            responses:
-                '302':
-                    description: 'Redirect after processing the group creation.'
-                    headers:
-                        Location:
-                            schema:
-                                type: string
-                            examples:
-                                302Success:
-                                    description: 'Successful group creation. Redirect to group page.'
-                                    value: '/group'
-                                302Error:
-                                    description: 'Failed creation. Redirect back to group creation page.'
-                                    value: '/create_group'
-
-    /feed:
-        get:
-            operationId: R1015
-            summary: 'R1015: Feed.'
-            description: 'Provides the feed page. Access: PUB'
-            tags: 
-                - 'M02: Recipes, categories, groups and members'
-            responses:    
-                '200':
-                    description: 'Ok. Show [UI18](http://lbaw2135-piu.lbaw-prod.fe.up.pt/pages/feed.php)'
-
-    /chat/{recipientId}:
-        get:
-            operationId: R1016
-            summary: 'R1016: Read messages'
-            description: 'Read private messages sent to another user. Access: MBR'
-            tags:
-                -   'M03: Chat'
-            parameters:
-                -   in: path
-                    name: recipientId
-                    schema:
-                        type: string
-                    required: true
-            responses:
-                '200':
-                    description: 'Ok. Show [UI08](http://lbaw2135-piu.lbaw-prod.fe.up.pt/pages/privateMessages.php)'
-
-    /search/{searchQuery}:
-        get: 
-            operationId: R1017
-            summary: 'R1017: Search results page'
-            description: 'Provide results from the performed search. Access: PUB'
-            tags: 
-                - 'M02: Recipes, categories, groups and members'
-            parameters:
-                -   in: path
-                    name: searchQuery
-                    schema:
-                        type: string
-                    required: true
-            responses:    
-                '200':
-                    description: 'Ok. Show [UI15](http://lbaw2135-piu.lbaw-prod.fe.up.pt/pages/search.php)'
-
-    /admin/reports:
-        get: 
-            operationId: R1018
-            summary: 'R1018: Reports page.'
-            description: 'Show all the comment and recipe reports to the admin. Access: ADM'
-            tags: 
-                - 'M05: Web resources associated with the administrator pages'
-            responses:    
-                '200':
-                    description: 'Ok. Show [UI15](http://lbaw2135-piu.lbaw-prod.fe.up.pt/pages/reportsManagement.php)'
-                '404':
-                    description: 'This page does not exist.' # non-admins should not know that this page exists
-
-    /admin/users:
-        get:
-            operationId: R1019
-            summary: 'R1019: Users management section.'
-            description: 'Provides the users management section. Access: PUB'
-            tags: 
-                - 'M02: Recipes, categories, groups and members'
-            responses:    
-                '200':
-                    description: 'Ok. Show [UI14](http://lbaw2135-piu.lbaw-prod.fe.up.pt/pages/usersManagement.php)'
-
-    /about:
-        get: 
-            operationId: R1020
-            summary: 'R1020: About page'
-            description: 'Provide information about TasteBuds. Access: PUB'
-            tags: 
-                - 'M04: Information'
-            responses:    
-                '200':
-                    description: 'Ok. Show [UI06](http://lbaw2135-piu.lbaw-prod.fe.up.pt/pages/about.php)'
-
-    /faq:
-        get: 
-            operationId: R1021
-            summary: 'R1021: FAQ page'
-            description: 'Provide FAQ page. Access: PUB'
-            tags: 
-                - 'M04: Information'
-
-            responses:    
-                '200':
-                    description: 'Ok. Show [UI07](http://lbaw2135-piu.lbaw-prod.fe.up.pt/pages/faq.php)'
-    
-    /api/user:
-        post:
-            operationId: R2001
-            summary: 'R2001: Member account'
-            description: 'Create a member account. Access: PUB'
-            tags: 
-                - 'M01: Authentication and Individual Profile'
-            requestBody:
-                required: true
-                content:
-                    multipart/form-data:
-                        schema:
-                            type: object
-                            properties:
-                                name:
-                                    type: string
-                                username:
-                                    type: string
-                                email:
-                                    type: string
-                                city:
-                                    type: string
-                                country:
-                                    type: integer
-                                password:
-                                    type: string
-                                profileImage:
-                                    type: string
-                                    format: binary
-                            required:
-                                - name
-                                - username
-                                - email
-                                - country
-                                - password
-            responses:
-                '200':
-                    description: 'OK'
-                '400':
-                    description: 'Invalid Request'
-
-    /api/user/{username}:
-        get:
-            operationId: R2002
-            summary: 'R2002: Member information'
-            description: 'Get member information in JSON. Access: PUB'
-            tags: 
-                - 'M02: Recipes, categories, groups and members'
-            parameters:
-                -   in: path
-                    name: username
-                    schema:
-                        type: string
-                    required: true
-            responses:    
-                '200':
-                    description: 'OK. The authenticated user has access to all user information.'
-                    content:
-                        application/json:
-                            schema:
-                                type: object
-                                properties:
-                                    id:
-                                        type: integer
-                                    name:
-                                        type: string
-                                    username:
-                                        type: string
-                                    city:
-                                        type: string
-                                    country:
-                                        type: object
-                                        properties:
-                                            id: 
-                                                type: integer
-                                            abbreviation:
-                                                type: string
-                                            name:
-                                                type: string
-                                    creationDate:
-                                        type: string
-                                        format: datetime
-                                    score:
-                                        type: number
-                                    biography:
-                                        type: string
-                                    recipes:
-                                        type: integer
-                                    followers:
-                                        type: integer
-                                    following:
-                                        type: integer
-                                example:
-                                    id: 2
-                                    name: "Mark Hasmunsen"
-                                    username: mark_h
-                                    city: Bergen
-                                    country: 
-                                        -   id: 165
-                                            abbreviation: "NO"
-                                            name: Norway
-                                    creationDate: "2019-05-09"
-                                    score: 4.7
-                                    biography: "Black metal fan making food, what could go wrong?"
-                                    recipes: 14
-                                    followers: 34
-                                    following: 13
-                '201': # TODO: CHANGE THIS!!!!!!
-                    description: "OK. The requested user is private and the authenticated user doesn't follow him."
-                    content:
-                        application/json:
-                            schema:
-                                type: object
-                                properties:
-                                    id:
-                                        type: integer
-                                    name:
-                                        type: string
-                                    username:
-                                        type: string
-                                    recipes:
-                                        type: integer
-                                    followers:
-                                        type: integer
-                                    following:
-                                        type: integer
-                                example:
-                                    id: 2
-                                    name: Mark Hasmunsen
-                                    username: mark_h
-                                    recipes: 14
-                                    followers: 34
-                                    following: 13      
-        put:
-            operationId: R2003
-            summary: 'R2003: Edit profile'
-            description: 'Edit member information. Access: OWN'
-            tags: 
-                - 'M02: Recipes, categories, groups and members'
-
-            parameters:
-                -   in: path
-                    name: username
-                    schema:
-                        type: string
-                    required: true
-
-            requestBody:
-                required: false
-                content:
-                    multipart/form-data:
-                        schema:
-                            type: object
-                            properties:
-                                name:
-                                    type: string
-                                username:
-                                    type: string
-                                email:
-                                    type: string
-                                city:
-                                    type: string
-                                country:
-                                    type: integer
-                                password:
-                                    type: string
-                                biography:
-                                    type: string
-                                visibility:
-                                    type: boolean
-                                profileImage:
-                                    type: string
-                                    format: binary
-                                coverImage:
-                                    type: string
-                                    format: binary
-            responses:
-                '200':
-                    description: 'Updated User'
-                '400':
-                    description: 'Invalid Request'
-                '403':
-                    description: 'Forbidden Access'
-        delete:
-            operationId: R2004
-            summary: 'R2004: Delete member'
-            description: 'Delete a member account. Access: OWN, ADM'
-            tags: 
-                - 'M02: Recipes, categories, groups and members'
-                - 'M05: Web resources associated with the administrator pages'
-            parameters:
-                -   in: path
-                    name: username
-                    schema:
-                        type: string
-                    required: true
-            responses:
-                '200':
-                    description: 'Deleted User'
-                '400':
-                    description: 'Invalid Request'
-
-    /api/user/{username}/recipes:
-        get:
-            operationId: R2005
-            summary: 'R2005: Member recipes'
-            description: "Gets the member's recipes in JSON. Access: PUB"
-            tags: 
-                - 'M02: Recipes, categories, groups and members'
-            parameters:
-                -   in: path
-                    name: username
-                    schema:
-                        type: string
-                    required: true
-            responses:
-                '200':
-                  description: 'OK'
-                  content:
-                      application/json:
-                          schema:
-                              type: array
-                              items:
-                                  type: object
-                                  properties:
-                                      id:
-                                          type: string
-                                      title:
-                                          type: string
-                                      description:
-                                          type: string
-                                      creationDate:
-                                          type: string
-                                          format: datetime
-                                      rating:
-                                          type: number
-                                      numberOfReviews:
-                                          type: integer
-                                      category:
-                                          type: string
-                                      tags:
-                                          type: array
-                                          items:
-                                              type: object
-                                              properties:
-                                                  id: 
-                                                      type: integer
-                                                  name:
-                                                      type: string
-                                      inFavourites:
-                                          type: boolean
-                              example:
-                                  -   id: 1
-                                      title: Classic Tiramisu
-                                      description: Classic Italian dessert made with ladyfingers and mascarpone cheese.
-                                      creationDate: 22-01-2021
-                                      rating: 4.5
-                                      numberOfReviews: 5
-                                      category: Dessert
-                                      tags: 
-                                          -   id: 45
-                                              name: "Vegetarian"
-                                          -   id: 32
-                                              name: "Zero sugar"
-                                      inFavourites: false
-                                        
-                '400':
-                    description: 'Invalid Request'
-                '403':
-                    description: "The authenticated user cannot access the requested information (the requested member is private and the authenticated user doesn't follow him)"
-                '404':
-                    description: 'The user does not exist'
-
-    /api/user/{username}/reviews:
-        get:
-            operationId: R2006
-            summary: 'R2006: Member reviews'
-            description: "Gets the member's reviews in JSON. Access: PUB"
-            tags: 
-                - 'M02: Recipes, categories, groups and members'
-            parameters:
-                -   in: path
-                    name: username
-                    schema:
-                        type: string
-                    required: true
-            responses:    
-                '200':
-                  description: 'OK'
-                  content:
-                      application/json:
-                          schema:
-                              type: array
-                              items:
-                                  type: object
-                                  properties:
-                                      recipeTitle:
-                                          type: string
-                                      postTime:
-                                          type: string
-                                          format: datetime
-                                      givenRating:
-                                          type: integer
-                                      givenComment:
-                                          type: string
-                                      recipeRating:
-                                          type: number
-                                      numberOfReviews:
-                                          type: integer
-                              example:
-                                  -   recipeTitle: Traditional Irish Stew
-                                      postTime: 2 hours ago
-                                      givenRating: 4
-                                      givenComment: Absolutely delicious! Explosion of flavour...
-                                      recipeRating: 4.6
-                                      numberOfReviews: 20
-                '400':
-                    description: 'Invalid Request'
-                '403':
-                    description: "The authenticated user cannot access the requested information (the requested member is private and the authenticated user doesn't follow him)"
-                '404':
-                    description: 'The user does not exist'
-
-    /api/user/{username}/favourites:
-        get:
-            operationId: R2007
-            summary: 'R2007: Member favourites'
-            description: 'Gets the members favourite recipes in JSON. Access: PUB'
-            tags: 
-                - 'M02: Recipes, categories, groups and members'
-            parameters:
-                -   in: path
-                    name: username
-                    schema:
-                        type: string
-                    required: true
-            responses:   
-                '200':
-                  description: 'OK'
-                  content:
-                      application/json:
-                          schema:
-                              type: array
-                              items:
-                                  type: object
-                                  properties:
-                                      id:
-                                          type: integer
-                                      recipeTitle:
-                                          type: string
-                                      description:
-                                          type: string
-                                      creationTime:
-                                          type: string
-                                          format: datetime
-                                      rating:
-                                          type: number
-                                      numberOfReviews:
-                                          type: integer
-                                      category:
-                                          type: string
-                                      tags:
-                                          type: array
-                                          items:
-                                              type: object
-                                              properties:
-                                                  id: 
-                                                      type: integer
-                                                  name:
-                                                      type: string
-                              example:
-                                  -   id: 1
-                                      recipeTitle: Classic Tiramisu
-                                      description: Classic Italian dessert made with ladyfingers and mascarpone cheese.
-                                      creationDate: 22-01-2021
-                                      rating: 4.5
-                                      numberOfReviews: 5
-                                      category: Dessert
-                                      tags: 
-                                          -   id: 45
-                                              name: "Vegetarian"
-                                          -   id: 32
-                                              name: "Zero sugar"                                      
-                '400':
-                    description: 'Invalid Request'
-                '403':
-                    description: "The authenticated user cannot access the requested information (the requested member is private and the authenticated user doesn't follow him)"
-                '404':
-                    description: 'The user does not exist'
-
-    /api/user/{username}/following:
-        get:
-            operationId: R2008
-            summary: 'R2008: Members that the member is following'
-            description: 'Gets the members that the member is following in JSON. Access: PUB'
-            tags: 
-                - 'M02: Recipes, categories, groups and members'
-            parameters:
-                -   in: path
-                    name: username
-                    schema:
-                        type: string
-                    required: true
-            responses:   
-                '200':
-                  description: 'OK'
-                  content:
-                      application/json:
-                          schema:
-                              type: array
-                              items:
-                                  type: object
-                                  properties:
-                                      id: 
-                                          type: integer
-                                      name: 
-                                          type: string
-                                      username: 
-                                          type: string
-                              example:
-                                  -   id: 2
-                                      name: Jamie Oliver
-                                      username: jamieOliverChef
-                                  -   id: 3
-                                      name: Kyren Wilson
-                                      username: kyren77
-                '403':
-                    description: "The authenticated user cannot access the requested information (the requested member is private and the authenticated user doesn't follow him)"
-                '404':
-                    description: 'The user does not exist'
-
-    /api/user/{username}/followers:
-        get:
-            operationId: R2009
-            summary: 'R2009: Member''s followers'
-            description: "Gets the list of members that follow the user in JSON. Access: PUB"
-            tags: 
-                - 'M02: Recipes, categories, groups and members'
-            parameters:
-                -   in: path
-                    name: username
-                    schema:
-                        type: string
-                    required: true
-            responses:   
-                '200':
-                    description: 'OK'
-                    content:
-                        application/json:
-                            schema:
-                                type: array
-                                items:
-                                    type: object
-                                    properties:
-                                        id: 
-                                            type: integer
-                                        name: 
-                                            type: string
-                                        username: 
-                                            type: string
-                                example:
-                                    -   id: 4
-                                        name: Judd Trump
-                                        username: trump00
-                                    -   id: 5
-                                        name: Paul Morphy
-                                        username: _morphy_
-                '403':
-                    description: "The authenticated user cannot access the requested information (the requested member is private and the authenticated user doesn't follow him)"
-                '404':
-                    description: 'The user does not exist'
-
-    /api/user/{username}/groups:
-        get:
-            operationId: R2010
-            summary: "R2010: Member's groups"
-            description: 'Gets the groups that the member is part of in JSON. Access: PUB'
-            tags: 
-                - 'M02: Recipes, categories, groups and members'
-            parameters:
-                -   in: path
-                    name: username
-                    schema:
-                        type: string
-                    required: true
-            responses:   
-                '200':
-                    description: 'Success'
-                    content:
-                        application/json:
-                            schema:
-                                type: array
-                                items:
-                                    type: object
-                                    properties:
-                                        id: 
-                                            type: integer
-                                        name: 
-                                            type: string
-                                example:
-                                    -   id: 1
-                                        name: Oporto Vegetarians
-                                    -   id: 2
-                                        name: Lisbon Vegetarians
-                '403':
-                    description: "The authenticated user cannot access the requested information (the requested member is private and the authenticated user doesn't follow him)"
-                '404':
-                    description: 'The user does not exist'
-
-    /api/user/{username}/request:
-        post:
-            operationId: R2011
-            summary: 'R2011: Create follow request'
-            description: 'Creates a follow request (if profile is public becomes a follower instantly). Access: MBR'
-            tags: 
-                - 'M02: Recipes, categories, groups and members'
-            parameters:
-                -   in: path
-                    name: username
-                    schema:
-                        type: string
-                    required: true
-            responses:
-                '200':
-                  description: 'Created'
-                '400':
-                  description: 'Invalid Request'
-                '404':
-                    description: 'The user does not exist'
-
-    /api/user/request/{username}:
-        post:
-            operationId: R2012
-            summary: 'R2012: Accept follow request'
-            description: 'Accepts a follow request. Access: OWN'
-            tags: 
-                - 'M02: Recipes, categories, groups and members'
-            parameters:
-                -   in: path
-                    name: username
-                    schema:
-                        type: string
-                    required: true
-
-            responses:
-                '200':
-                  description: 'Accepted'
-                '400':
-                  description: 'Invalid Request'
-                '404':
-                    description: 'The request does not exist'
-        delete:
-            operationId: R2013
-            summary: 'R2013: Decline follow request'
-            description: 'Declines a follow request. Access: OWN'
-            tags: 
-                - 'M02: Recipes, categories, groups and members'
-            parameters:
-                -   in: path
-                    name: username
-                    schema:
-                        type: string
-                    required: true
-            responses:
-                '200':
-                  description: 'Deleted'
-                '400':
-                  description: 'Invalid Request'
-
-    /api/users:
-        get:
-            operationId: R2014
-            summary: 'R2014: Get all members'
-            description: 'Gets all the registered members of the website in JSON. Access: ADM'
-            tags: 
-                - 'M05: Web resources associated with the administrator pages'
-            responses:
-                '200':
-                    description: "Success"
-                    content:
-                        application/json:
-                            schema:
-                                type: array
-                                items:
-                                    type: object
-                                    properties:
-                                        id: 
-                                            type: integer
-                                        name: 
-                                            type: string
-                                        username: 
-                                            type: string
-                                        email:
-                                            type: string
-                                        country:
-                                            type: string
-                                        city:
-                                            type: string
-                                        numberOfPosts:
-                                            type: integer
-                                        numberOfComments:
-                                            type: integer
-                                        numberOfReports:
-                                            type: integer
-                                example:
-                                    -   id: 1
-                                        name: Sarah Colbert
-                                        username: sarahc
-                                        email: sarah@gamil.com
-                                        country: Portugal
-                                        city: Porto
-                                        numberOfPosts: 10
-                                        numberOfComments: 20
-                                        numberOfReports: 0
-                                    -   id: 2
-                                        name: Biggus Dickus
-                                        username: biggus_dickus
-                                        email: biggus@dickus.mp
-                                        country: Italy
-                                        city: Rome
-                                        numberOfPosts: 15
-                                        numberOfComments: 69
-                                        numberOfReports: 2
-                
-                '400':
-                    description: 'Invalid Request'    
-
-    /api/recipe:
-        post:
-            operationId: R2101
-            summary: 'R2101: Create recipe'
-            description: 'Creates a new recipe. Access: MBR'
-            tags: 
-                - 'M02: Recipes, categories, groups and members'
-            requestBody:
-                required: true
-                content:
-                    multipart/form-data:
-                        schema:
-                            type: object
-                            properties:
-                                title:
-                                    type: string
-                                mainCategory:
-                                    type: integer
-                                description:
-                                    type: string
-                                tags:
-                                    type: array
-                                    items:
-                                        type: integer
-                                difficulty:
-                                    type: string
-                                servings:
-                                    type: integer
-                                images:
-                                    type: array
-                                    items:
-                                        type: string
-                                        format: binary
-                                visibility:
-                                    type: boolean
-                                ingredients:
-                                    type: array
-                                    items:
-                                        type: object
-                                        properties:
-                                            quantity:
-                                                type: number
-                                            unit:
-                                                type: integer
-                                            name:
-                                                type: string
-                                        required:
-                                            - quantity
-                                            - unit
-                                            - name
-                                preparationTime:
-                                    type: integer
-                                cookingTime:
-                                    type: integer
-                                additionalTime:
-                                    type: integer
-                                steps:
-                                    type: array
-                                    items:
-                                        type: object
-                                        properties:
-                                            name:
-                                                type: string
-                                            description:
-                                                type: string
-                                            images:
-                                                type: array
-                                                items:
-                                                    type: string
-                                                    format: binary
-                                        required:
-                                            - name
-                                            - description
-                            required:
-                                - title
-                                - mainCategory
-                                - description
-                                - tags
-                                - difficulty
-                                - servings
-                                - images
-                                - visibility
-                                - ingredients
-                                - preparationTime
-                                - cookingTime
-                                - steps
-            responses:
-                '200':
-                    description: 'Success'
-                '400':
-                    description: 'Invalid Request'
-
-    /api/recipe/{recipeId}:
-        get:
-            operationId: R2102
-            summary: 'R2102: Get recipe'
-            description: "Gets the recipe's information in JSON. Access: PUB"
-            tags: 
-                - 'M02: Recipes, categories, groups and members'
-            parameters:
-                -   in: path
-                    name: recipeId
-                    schema:
-                        type: integer
-                    required: true
-            responses:
-                '200':
-                    description: 'OK. The authenticated user has access to the recipe.'
-                    content:
-                        application/json:
-                            schema:
-                                type: object
-                                properties:
-                                    id:
-                                        type: integer
-                                    name:
-                                        type: string
-                                    difficulty:
-                                        type: string
-                                    description:
-                                        type: string
-                                    servings:
-                                        type: integer
-                                    preparation_time:
-                                        type: integer
-                                    cooking_time:
-                                        type: integer
-                                    additional_time:
-                                        type: integer
-                                    creation_time:
-                                        type: string
-                                        format: datetime
-                                    creator:
-                                        type: object
-                                        properties:
-                                            id:
-                                                type: integer
-                                            name:
-                                                type: string
-                                    category:
-                                        type: object
-                                        properties:
-                                            id:
-                                                type: integer
-                                            name:
-                                                type: string
-                                    id_group:
-                                        type: integer
-                                    score:
-                                        type: number
-                                    ingredients:
-                                        type: array
-                                        items:
-                                            type: object
-                                            properties:
-                                                ingredient:
-                                                    type: object
-                                                    properties:
-                                                        id:
-                                                            type: integer
-                                                        name:
-                                                            type: string
-                                                unit:
-                                                    type: object
-                                                    properties:
-                                                        id:
-                                                            type: integer
-                                                        name:
-                                                            type: string
-                                                quantity:
-                                                    type: number
-                                    tags:
-                                        type: array
-                                        items:
-                                            type: object
-                                            properties:
-                                                id:
-                                                    type: integer
-                                                name:
-                                                    type: string
-                                    steps:
-                                        type: array
-                                        items:
-                                            type: object
-                                            properties:
-                                                id:
-                                                    type: integer
-                                                name:
-                                                    type: string
-                                                description:
-                                                    type: string
-                            example:
-                                -   id: 2
-                                    name: Tofu à brás
-                                    difficulty: easy
-                                    description: "Tofu feito com batatas"
-                                    servings: 5
-                                    preparation_time: 10
-                                    cooking_time: 40
-                                    additional_time: 0
-                                    creation_time: "2020-10-09 08:57"
-                                    creator:
-                                        id: 10
-                                        name: "Ana Maria Braga"
-                                    category:
-                                        id: 1
-                                        name: "Pratos principais"
-                                    ingredients:
-                                        -   ingredient:
-                                                id: 40
-                                                name: tofu
-                                            unit:
-                                                id: 3
-                                                name: kilograms
-                                            quantity: 400
-                                        -   ingredient:
-                                                id: 20
-                                                name: potato
-                                            unit:
-                                                id: 3
-                                                name: kilograms
-                                            quantity: 600
-                                    tags:
-                                        -   id: 30
-                                            name: vegetarian
-                                        -   id: 45
-                                            name: portuguese cuisine
-                                    steps:
-                                        -   id: 354
-                                            name: "Faça a receita"
-                                            description: "Prepare o tofu à brás, depois disso pode comê-lo"
-                '404':
-                    description: "The recipe does not exist or the authenticated user has no access to it"
-        put:
-            operationId: R2103
-            summary: 'R2103: Edit recipe'
-            description: "Alters the recipe's information. Access: OWN"
-            tags: 
-                - 'M02: Recipes, categories, groups and members'
-            parameters:
-                -   in: path
-                    name: recipeId
-                    schema:
-                        type: integer
-                    required: true
-            requestBody:
-                required: true
-                content:
-                    multipart/form-data:
-                        schema:
-                            type: object
-                            properties:
-                                name:
-                                    type: string
-                                difficulty:
-                                    type: string
-                                description:
-                                    type: string
-                                servings:
-                                    type: integer
-                                preparation_time:
-                                    type: integer
-                                cooking_time:
-                                    type: integer
-                                additional_time:
-                                    type: integer
-                                creation_time:
-                                    type: string
-                                    format: datetime
-                                creator:
-                                    type: object
-                                    properties:
-                                        id:
-                                            type: integer
-                                        name:
-                                            type: string
-                                category:
-                                    type: object
-                                    properties:
-                                        id:
-                                            type: integer
-                                        name:
-                                            type: string
-                                id_group:
-                                    type: integer
-                                score:
-                                    type: number
-                                ingredients:
-                                    type: array
-                                    items:
-                                        type: object
-                                        properties:
-                                            ingredient:
-                                                type: object
-                                                properties:
-                                                    id:
-                                                        type: integer
-                                                    name:
-                                                        type: string
-                                            unit:
-                                                type: object
-                                                properties:
-                                                    id:
-                                                        type: integer
-                                                    name:
-                                                        type: string
-                                            quantity:
-                                                type: number
-                                tags:
-                                    type: array
-                                    items:
-                                        type: object
-                                        properties:
-                                            id:
-                                                type: integer
-                                            name:
-                                                type: string
-                                steps:
-                                    type: array
-                                    items:
-                                        type: object
-                                        properties:
-                                            id:
-                                                type: integer
-                                            name:
-                                                type: string
-                                            description:
-                                                type: string
-                                            images:
-                                                type: array
-                                                items:
-                                                    type: string
-                                                    format: binary
-                                images:
-                                    type: array
-                                    items:
-                                        type: string
-                                        format: binary
-                                    
-            responses:
-                '200':
-                    description: 'Updated Recipe'
-                '400':
-                    description: 'Invalid Request'
-        delete:
-            operationId: R2104
-            summary: 'R2104: Delete recipe'
-            description: 'Deletes the recipe. Access: OWN, ADM'
-            tags: 
-                - 'M02: Recipes, categories, groups and members'
-                - 'M05: Web resources associated with the administrator pages'
-            parameters:
-                -   in: path
-                    name: recipeId
-                    schema:
-                        type: integer
-                    required: true
-            responses:
-                '200':
-                    description: 'Deleted Recipe'
-                '400':
-                    description: 'Invalid Request'
-
-    /api/recipe/{recipeId}/favourite:
-        post:
-            operationId: R2105
-            summary: 'R2105: Add a favourite recipe'
-            description: "Adds the recipe to the user's favourite list. Access: MBR"
-            tags: 
-                - 'M02: Recipes, categories, groups and members'
-            parameters:
-                -   in: path
-                    name: recipeId
-                    schema:
-                        type: integer
-                    required: true
-            responses:   
-                '200':
-                    description: 'Success'
-        delete:
-            operationId: R2106
-            summary: 'R2106: Remove a favourite recipe'
-            description: "Remove the recipe from the user's favourite list. Access: MBR"
-            tags: 
-                - 'M02: Recipes, categories, groups and members'
-            parameters:
-                -   in: path
-                    name: recipeId
-                    schema:
-                        type: integer
-                    required: true
-            responses:
-                '200':
-                    description: 'Success'
-
-    /api/recipe/{recipeId}/report:
-        post:
-            operationId: R2107
-            summary: 'R2107: Creates a report of a recipe'
-            description: 'Creates a report of a recipe. Access: MBR'
-            tags: 
-                - 'M05: Web resources associated with the administrator pages'
-            parameters:
-                -   in: path
-                    name: recipeId
-                    schema:
-                        type: integer
-                    required: true
-            requestBody:
-                required: true
-                content:
-                    application/x-www-form-urlencoded:
-                        schema:
-                            type: string        # Reason
-            responses:
-                '200':
-                    description: 'Reported Recipe'
-                '400':
-                    description: 'Invalid Request'
-
-    /api/group:
-        post:
-            operationId: R2201
-            summary: 'R2201: Create group'
-            description: 'Creates a group. Access: MBR'
-            tags: 
-                - 'M02: Recipes, categories, groups and members'
-            requestBody:
-                required: true
-                content:
-                    multipart/form-data:
-                        schema:
-                            type: object
-                            properties:
-                                name:
-                                    type: string
-                                description:
-                                    type: string
-                                visibility:
-                                    type: boolean
-                                groupImage:
-                                    type: string
-                                    format: binary
-                                coverImage:
-                                    type: string
-                                    format: binary
-                            required:
-                                - name
-                                - description
-                                - visibility
-                                - groupImage
-            responses:
-                '200':
-                    description: 'Created Group'
-                '400':
-                    description: 'Invalid Request'
-
-    /api/group/{groupId}:
-        get:
-            operationId: R2202
-            summary: 'R2202: Group information'
-            description: 'Gets the information about a group. Access: PUB'
-            tags: 
-                - 'M02: Recipes, categories, groups and members'
-            parameters:
-                -   in: path
-                    name: groupId
-                    schema:
-                        type: integer
-                    required: true
-            responses:
-                '200':
-                    description: "OK. The authenticated user has access to the group''s' information."
-                    content:
-                        application/json:
-                            schema:
-                                type: object
-                                properties:
-                                    id:
-                                        type: integer
-                                    name:
-                                        type: string
-                                    description:
-                                        type: string
-                                    visibility:
-                                        type: boolean
-                                    numberOfRecipes:
-                                        type: integer
-                                    numberOfMembers:
-                                        type: integer
-                                example:
-                                    id: 2
-                                    name: Vegetarianos do Porto
-                                    description: Este é o melhor grupo de vegetarianos do Porto.
-                                    visibility: false
-                                    numberOfRecipes: 14
-                                    numberOfMembers: 56
-                '201': #TODO: Change
-                    description: "OK. The authenticated user has access to the group's information and membership requests."
-                    content:
-                        application/json:
-                            schema:
-                                type: object
-                                properties:
-                                    id:
-                                        type: integer
-                                    name:
-                                        type: string
-                                    description:
-                                        type: string
-                                    visibility:
-                                        type: boolean
-                                    numberOfRecipes:
-                                        type: integer
-                                    numberOfMembers:
-                                        type: integer
-                                    membershipRequests:
-                                        type: array
-                                        items:
-                                            type: integer
-                                example:
-                                    id: 2
-                                    name: Vegetarianos do Porto
-                                    description: Este é o melhor grupo de vegetarianos do Porto.
-                                    visibility: true
-                                    numberOfRecipes: 14
-                                    numberOfMembers: 56
-                                    requests:
-                                        - 1
-                                        - 5
-        put:
-            operationId: R2203
-            summary: 'R2203: Edit group'
-            description: 'Alters the groups information. Access: MOD'
-            tags: 
-                - 'M02: Recipes, categories, groups and members'
-            parameters:
-                -   in: path
-                    name: groupId
-                    schema:
-                        type: integer
-                    required: true
-            requestBody:
-                required: true
-                content:
-                    application/x-www-form-urlencoded:
-                        schema:
-                            type: object
-                            properties:
-                                name:
-                                    type: string
-                                description:
-                                    type: string
-                                visibility:
-                                    type: boolean
-                                coverImage:
-                                    type: string
-                                    format: binary
-                                profileImage:
-                                    type: string
-                                    format: binary
-            responses:
-                '200':
-                    description: 'OK'
-                '400':
-                    description: 'Bad request'
-        delete:
-            operationId: R2204
-            summary: 'R2204: Delete group'
-            description: 'Deletes the group. Access: MOD'
-            tags: 
-                - 'M02: Recipes, categories, groups and members'
-            parameters:
-                -   in: path
-                    name: groupId
-                    schema:
-                        type: integer
-                    required: true
-            responses:    
-                '200':
-                    description: 'OK'
-
-    /api/group/{groupId}/request:
-        post:
-            operationId: R2205
-            summary: 'R2205: Create membership request'
-            description: 'Creates a membership request (if group is public becomes a member instantly). Access: MBR'
-            tags: 
-                - 'M02: Recipes, categories, groups and members'
-            parameters:
-                -   in: path
-                    name: groupId
-                    schema:
-                        type: integer
-                    required: true
-            responses:    
-                '200':
-                    description: 'Success'
-                '400':
-                  description: 'Invalid Request'
-
-    /api/group/{groupId}/request/{memberId}:
-        post:
-            operationId: R2206
-            summary: 'R2206: Accept membership request'
-            description: 'Accepts a membership request, adding the member to the group. Access: MOD'
-            tags: 
-                - 'M02: Recipes, categories, groups and members'
-            
-            parameters:
-                -   in: path
-                    name: groupId
-                    schema:
-                        type: integer
-                    required: true
-                -   in: path
-                    name: memberId
-                    schema:
-                        type: integer
-                    required: true    
-            
-            responses:
-                '200':
-                  description: 'Accepted'
-                '400':
-                  description: 'Invalid Request'
-                '404':
-                    description: 'The request does not exist'
-        delete:
-            operationId: R2207
-            summary: 'R2207: Refuse membership request'
-            description: 'Refuses a membership request. Access: MOD'
-            tags: 
-                - 'M02: Recipes, categories, groups and members'
-
-            parameters:
-                -   in: path
-                    name: groupId
-                    schema:
-                        type: integer
-                    required: true
-                -   in: path
-                    name: memberId
-                    schema:
-                        type: integer
-                    required: true 
-
-            responses:
-                '200':
-                  description: 'Deleted'
-                '400':
-                  description: 'Invalid Request'
-
-    /api/group/{groupId}/moderator/{memberId}:
-        post:
-            operationId: R2208
-            summary: 'R2208: Turn group member into moderator'
-            description: 'Turn group member into moderator, adding it to the moderators group. Access: MOD'
-            tags: 
-                - 'M02: Recipes, categories, groups and members'
-            parameters:
-                -   in: path
-                    name: groupId
-                    schema:
-                        type: integer
-                    required: true
-                -   in: path
-                    name: memberId
-                    schema:
-                        type: integer
-                    required: true
-            responses:
-                '200':
-                    description: 'Member turned into moderator'
-                '400':
-                    description: 'Invalid Request'
-
-    /api/group/{groupId}/member/{memberId}:
-        delete:
-            operationId: R2209
-            summary: 'R2209: Removes member from the group'
-            description: 'Removes member from the group. Access: MOD'
-            tags: 
-                - 'M02: Recipes, categories, groups and members'
-            parameters:
-                -   in: path
-                    name: groupId
-                    schema:
-                        type: integer
-                    required: true
-                -   in: path
-                    name: memberId
-                    schema:
-                        type: integer
-                    required: true
-            responses:
-                '200':
-                    description: 'Member removed from group'
-                '400':
-                    description: 'Invalid Request'
-
-    /api/group/{groupId}/members:
-        get:
-            operationId: R2210
-            summary: 'R2210: Gets a list of the members of a group'
-            description: 'Returns a list of the members of the group in JSON Access: MOD'
-            tags: 
-                - 'M02: Recipes, categories, groups and members'
-            parameters:
-                -   in: path
-                    name: groupId
-                    schema:
-                        type: integer
-                    required: true
-            responses:
-                '200':
-                    description: "Success"
-                    content: 
-                        application/json:
-                            schema:
-                                type: array
-                                items:
-                                    type: object
-                                    properties:
-                                        id:
-                                            type: integer
-                                        name: 
-                                            type: string
-                                        username:
-                                            type: string
-                                example:
-                                    -   id: 2
-                                        name: Mark Hasmunsen              
-                                        username: mark_h
-                                    -   id: 3
-                                        name: Kyren Wilson
-                                        username: kyren77
-                '403':
-                    description: "The authenticated user cannot access the requested information (the requested group is private and the authenticated user doesn't belong to it)"
-                '404':
-                    description: 'The group does not exist'
-
-    /api/chat/{recipientId}:
-        get:
-            operationId: R2301
-            summary: 'R2301: Get chat'
-            description: 'Gets a chat between two members in JSON Access: MBR'
-            tags: 
-                - 'M03: Chat'
-
-            parameters:
-                -   in: path
-                    name: recipientId
-                    schema:
-                        type: integer
-                    required: true  
-
-            responses:    
-                '200':
-                    description: "Success"
-                    content:
-                        application/json:
-                            schema:
-                                type: array
-                                items:
-                                    type: object
-                                    properties:
-                                        text:
-                                            type: string
-                                        creationDate:
-                                            type: string
-                                            format: datetime
-                                example:
-                                    -   text: That's nice!
-                                        creationDate: 2019-05-09 16:19
-                                    -   text: Hello :)
-                                        creationDate: 2019-05-12 13:09
-                '400':
-                    description: 'Invalid Request'
-        post:
-            operationId: R2302
-            summary: 'R2302: Add message'
-            description: 'Adds a message to a chat between two users. Access: MBR'
-            tags: 
-                - 'M03: Chat'
-
-            parameters:
-                -   in: path
-                    name: recipientId
-                    schema:
-                        type: integer
-                    required: true  
-
-            requestBody:
-                required: true
-                content:
-                    application/x-www-form-urlencoded:
-                        schema:
-                            type: object
-                            properties:
-                                message:          
-                                    type: string
-                            required:
-                                - message
-
-            responses:    
-                '200':
-                    description: 'Success'
-                '400':
-                  description: 'Invalid Request'    
-
-    /api/chats:
-        get:
-            operationId: R2303
-            summary: 'R2303: Get the user conversations'
-            description: 'Gets a user''s chat in JSON. Access: OWN'
-            tags: 
-                - 'M03: Chat'
-
-            responses:    
-                '200':
-                    description: 'Success'
-                    content:
-                        application/json:
-                            schema:
-                                type: array
-                                items:
-                                    type: object
-                                    properties:
-                                        userId: 
-                                            type: integer
-                                        name: 
-                                            type: string
-                                        username:
-                                            type: string
-                                        lastMessage:
-                                            type: string    
-                                        read: 
-                                            type: boolean
-                                        lastSenderName:
-                                            type: string
-                                example:
-                                    -   userId: 1
-                                        name: Sarah Colbert
-                                        username: sarahc
-                                        lastMessage: That's nice!
-                                        read: false
-                                        lastSenderName: Sarah
-                                    -   userId: 2
-                                        name: Biggus Dickus
-                                        username: biggus_dickus
-                                        lastMessage: Okay bro.
-                                        read: true
-                                        lastSenderName: You    
-                '400':
-                    description: 'Invalid Request'
-
-    /api/comment:
-        post:
-            operationId: R2401                
-            summary: 'R2401: Create comment'
-            description: 'Adds a comment / review to a recipe. Access: MBR'
-            tags: 
-                - 'M02: Recipes, categories, groups and members'
-            requestBody:
-                required: true
-                content:
-                    application/x-www-form-urlencoded:
-                        schema:
-                            type: object
-                            properties:
-                                recipeId:
-                                    type: integer
-                                content:
-                                    type: string
-                                rating:
-                                    type: integer
-                            required:
-                                - recipeId
-                                - content
-            responses:    
-                '200':
-                    description: 'Success'
-                '400':
-                    description: 'Bad request'
-
-    /api/comment/{commentId}:
-        put:
-            operationId: R2402
-            summary: 'R2402: Edit comment'
-            description: 'Edits a comment. Access: OWN'
-            tags: 
-                - 'M02: Recipes, categories, groups and members'
-            parameters:
-                -   in: path
-                    name: commentId
-                    schema:
-                        type: integer
-                    required: true
-
-            requestBody:
-                required: false
-                content:
-                    multipart/form-data:
-                        schema:
-                            type: object
-                            properties:
-                                text:
-                                    type: string
-                                rating:
-                                    type: integer
-
-            responses:
-                '200':
-                    description: 'Updated Comment'
-                '400':
-                    description: 'Invalid Request'
-                '403':
-                    description: 'Forbidden Access'
-
-        delete:
-            operationId: R2403
-            summary: 'R2403: Delete comment'
-            description: 'Deletes a comment. Access: OWN'
-            tags: 
-                - 'M02: Recipes, categories, groups and members'
-                - 'M05: Web resources associated with the administrator pages'
-            parameters:
-                -   in: path
-                    name: commentId
-                    schema:
-                        type: integer
-                    required: true
-            responses:    
-                '200':
-                    description: 'Deleted Comment'
-                '400':
-                    description: 'Invalid Request' 
-
-    /api/comment/{commentId}/report:
-        post:
-            operationId: R2404
-            summary: 'R2404: Creates a report of a comment'
-            description: 'Creates a report of a comment. Access: MBR'
-            tags: 
-                - 'M05: Web resources associated with the administrator pages'
-            parameters:
-                -   in: path
-                    name: commentId
-                    schema:
-                        type: integer
-                    required: true
-            requestBody:
-                required: true
-                content:
-                    application/x-www-form-urlencoded:
-                        schema:
-                            type: string        # Reason
-            responses:
-                '200':
-                    description: 'Reported Comment'
-                '400':
-                    description: 'Invalid Request'
-
-    /api/feed:
-        get:
-            operationId: R2501
-            summary: "R2501: Get member's feed"
-            description: 'Gets the feed of a given member in JSON. Access: MBR'
-            tags: 
-                - 'M02: Recipes, categories, groups and members'
-
-            parameters:
-                -   in: query
-                    name: sort
-                    schema:
-                        type: string
-                    required: false
-                -   in: query
-                    name: sortparam
-                    schema:
-                        type: string
-                    required: false
-                -   in: query
-                    name: category
-                    schema:
-                        type: string
-                    required: false
-                -   in: query
-                    name: tag
-                    schema:
-                        type: string
-                    required: false
-                -   in: query
-                    name: rating
-                    schema:
-                        type: string
-                    required: false
-                -   in: query
-                    name: ingredient
-                    schema:
-                        type: string
-                    required: false
-                -   in: query
-                    name: datetime
-                    schema:
-                        type: string
-                    required: false
-                -   in: query
-                    name: duration
-                    schema:
-                        type: string
-                    required: false
-                -   in: query
-                    name: difficulty
-                    schema:
-                        type: string
-                    required: false
-
-
-            responses:
-                '200':
-                    description: "Success"
-                    content:
-                        application/json:
-                            schema:
-                                type: object
-                                properties:
-                                    recipes:
-                                        type: array
-                                        items:
-                                            type: object
-                                            properties:
-                                                id:
-                                                    type: string
-                                                title:
-                                                    type: string
-                                                description:
-                                                    type: string
-                                                creationDate:
-                                                    type: string
-                                                    format: datetime
-                                                rating:
-                                                    type: number
-                                                numberOfReviews:
-                                                    type: integer
-                                                category:
-                                                    type: string
-                                                tags:
-                                                    type: array
-                                                    items:
-                                                        type: object
-                                                        properties:
-                                                            id: 
-                                                                type: integer
-                                                            name:
-                                                                type: string
-                                    categories:
-                                        type: array
-                                        items:
-                                            type: object
-                                            properties:
-                                                id:
-                                                    type: integer
-                                                name: 
-                                                    type: string
-                                    tags:
-                                        type: array
-                                        items:
-                                            type: object
-                                            properties:
-                                                id:
-                                                    type: integer
-                                                name: 
-                                                    type: string 
-                                    trendingRecipes:
-                                        type: array
-                                        items:
-                                            type: object
-                                            properties:
-                                                id:
-                                                    type: integer
-                                                title: 
-                                                    type: string 
-                                example:
-                                    recipes:
-                                        -   id: 1
-                                            title: Classic Tiramisu
-                                            description: Classic Italian dessert made with ladyfingers and mascarpone cheese.
-                                            creationDate: 22-01-2021
-                                            rating: 4.5
-                                            numberOfReviews: 5
-                                            category: Dessert
-                                            tags: 
-                                                -   id: 45
-                                                    name: "Vegetarian"
-                                                -   id: 32
-                                                    name: "Zero sugar"  
-                                        -   id: 2
-                                            title: Francesinha
-                                            description: Portuguese delicious meal.
-                                            creationDate: 20-03-2020
-                                            rating: 4.8
-                                            numberOfReviews: 3
-                                            category: Lunch
-                                            tags: 
-                                                -   id: 45
-                                                    name: "Vegetarian"
-                                                -   id: 32
-                                                    name: "Zero sugar"  
-                                    categories:
-                                        -   id: 1
-                                            name: Lunch
-                                        -   id: 2
-                                            name: Breakfast
-                                    tags:
-                                        -   id: 1
-                                            name: Vegetarian
-                                        -   id: 2
-                                            name: Low carb
-                                    trendingRecipes:
-                                        -   id: 3
-                                            title: Cozido à portuguesa        
-                '400':
-                  description: 'Invalid Request' 
-
-    /api/search/{searchQuery}:
-        get:
-            operationId: R2601
-            summary: 'R2601: Search for a term'
-            description: "Searches for a search term, accepting sort and filter parameters, returning the result as JSON. Access: PUB"
-            tags: 
-                - 'M02: Recipes, categories, groups and members'
-            parameters:
-                -   in: path
-                    name: searchQuery
-                    schema:
-                        type: string
-                    required: true
-                -   in: query
-                    name: sort
-                    schema:
-                        type: string
-                    required: false
-                -   in: query
-                    name: sortparam
-                    schema:
-                        type: string
-                    required: false
-                -   in: query
-                    name: category
-                    schema:
-                        type: string
-                    required: false
-                -   in: query
-                    name: tag
-                    schema:
-                        type: string
-                    required: false
-                -   in: query
-                    name: rating
-                    schema:
-                        type: string
-                    required: false
-                -   in: query
-                    name: ingredient
-                    schema:
-                        type: string
-                    required: false
-                -   in: query
-                    name: date
-                    schema:
-                        type: string
-                    required: false
-                -   in: query
-                    name: duration
-                    schema:
-                        type: string
-                    required: false
-                -   in: query
-                    name: difficulty
-                    schema:
-                        type: string
-                    required: false
-            responses:
-                '200':
-                    description: 'OK'
-                    content:
-                        application/json:
-                            schema:
-                                type: object
-                                properties:
-                                    recipes:
-                                        type: array
-                                        items:
-                                            type: object
-                                            properties:
-                                                id:
-                                                    type: integer
-                                                title:
-                                                    type: string
-                                                authorName:
-                                                    type: string
-                                                rating:
-                                                    type: number
-                                                numberOfReviews:
-                                                    type: integer
-                                    users:
-                                        type: array
-                                        items:
-                                            type: object
-                                            properties:
-                                                id:
-                                                    type: integer
-                                                username:
-                                                    type: string
-                                                name:
-                                                    type: string
-                                                rating:
-                                                    type: number
-                                                numberOfRecipes:
-                                                    type: integer
-                                    groups:
-                                        type: array
-                                        items:
-                                            type: object
-                                            properties:
-                                                id:
-                                                    type: integer
-                                                name:
-                                                    type: string
-                                                numberOfRecipes:
-                                                    type: integer
-                                                numberOfMembers:
-                                                    type: integer
-                                    categories:
-                                        type: array
-                                        items:
-                                            type: object
-                                            properties:
-                                                id:
-                                                    type: integer
-                                                name:
-                                                    type: string
-                                    tags:
-                                        type: array
-                                        items:
-                                            type: object
-                                            properties:
-                                                id:
-                                                    type: integer
-                                                name:
-                                                    type: string
-
-                                example:
-                                    recipes:
-                                        -   id: 1
-                                            title: Classic Tiramisu
-                                            description: Classic Italian dessert made with ladyfingers and mascarpone cheese.
-                                            authorName: John Trousseau
-                                            rating: 4.5
-                                            numberOfReviews: 5 
-                                        -   id: 2
-                                            title: Francesinha
-                                            description: Portuguese delicious meal.
-                                            authorName: Jean Meileur
-                                            rating: 4.8
-                                            numberOfReviews: 3
-                                    users:
-                                        -   id: 1
-                                            username: sarahxcolbert
-                                            name: Sarah Colbert
-                                            rating: 4.5
-                                            numberOfRecipes: 10
-                                        -   id: 2
-                                            username: johnlul
-                                            name: John Lul
-                                            rating: 3.8
-                                            numberOfRecipes: 2
-                                    groups:
-                                        -   id: 1
-                                            name: Vegetarianos do Porto
-                                            numberOfRecipes: 7
-                                            numberOfMembers: 50
-                                        -   id: 1
-                                            name: Amantes de vegetais
-                                            numberOfRecipes: 15
-                                            numberOfMembers: 130
-                                    tags:
-                                        -   id: 1
-                                            name: Vegetarian
-                                        -   id: 2
-                                            name: Fresh
-                                    categories:
-                                        -   id: 1
-                                            name: Main Dish
-                                        -   id: 2
-                                            name: Dessert
-
-    /api/report/{reportId}:
-        delete:
-            operationId: R2701
-            summary: 'R2701: Dismiss report'
-            description: "Deletes a report from the list. Access: ADM"
-            tags: 
-                - 'M05: Web resources associated with the administrator pages'
-            parameters:
-                -   in: path
-                    name: reportId
-                    schema:
-                        type: integer
-                    required: true
-            responses:    
-                '200':
-                    description: 'Deleted Report'
-                '400':
-                    description: 'Invalid Request'    
-
-    /api/reports:
-        get:
-            operationId: R2702
-            summary: 'R2702: Get all reports'
-            description: 'Gets all the reports in JSON. Access: ADM'
-            tags: 
-                - 'M05: Web resources associated with the administrator pages'
-            responses:    
-                '200':
-                    description: "Success"
-                    content:
-                        application/json:
-                            schema: 
-                                type: array
-                                items:
-                                    type: object
-                                    properties:
-                                        type:    
-                                            type: string
-                                        id_reporter:
-                                            type: integer
-                                        reason: 
-                                            type: string
-                                        active:
-                                            type: boolean
-                                        id_comment:
-                                            type: integer
-                                        id_recipe:
-                                            type: integer
-                                example:
-                                    -   type: comment_report
-                                        id_reporter: 1
-                                        reason: Disrespectful
-                                        active: true
-                                        id_comment: 2
-                                        id_recipe: null
-                                    -   type: recipe_report
-                                        id_reporter: 54
-                                        reason: Disrespectful
-                                        active: true
-                                        id_comment: null
-                                        id_recipe: 4
-
-    /api/notifications:
-        get:
-            operationId: R2801
-            summary: 'R2801: Get notifications'
-            description: "Gets the logged in user's notifications in JSON. Access: MBR"
-            tags:
-                - 'M01: Authentication and Individual Profile'
-            responses:
-                '200':
-                    description: "Success"
-                    content:
-                        application/json:
-                            schema: 
-                                type: array
-                                items:
-                                    type: object
-                                    properties:
-                                        id:
-                                            type: integer
-                                        type:    
-                                            type: string
-                                        read:
-                                            type: boolean
-                                        commentId:
-                                            type: integer
-                                        recipeName:
-                                            type: string
-                                        recipeId:
-                                            type: integer
-                                        userId: 
-                                            type: integer
-                                        name:
-                                            type: string
-                                        username:
-                                            type: string
-                                    required:
-                                        - type
-                                        - read
-                                        - userId
-                                        - name
-                                        - username
-                                example:
-                                    -   type: followRequest
-                                        read: false
-                                        userId: 1
-                                        name: Sarah Colbert
-                                        username: sarahc 
-                                    -   id: 1
-                                        type: review
-                                        read: true
-                                        userId: 2
-                                        name: Biggus Dickus
-                                        username: biggus_dickus
-                                    -   type: follow
-                                        read: true
-                                        userId: 2
-                                        name: Biggus Dickus
-                                        username: biggus_dickus     
-                                    -   id: 1
-                                        type: comment
-                                        read: true
-                                        commentId: 3
-                                        userId: 2
-                                        name: Biggus Dickus
-                                        username: biggus_dickus 
-                                    -   id: 1
-                                        type: delete
-                                        read: false
-                                        recipeName: Scones
-                                        userId: 1
-                                        name: Sarah Colbert
-                                        username: sarahc  
-                                    -   id: 1
-                                        type: favourite
-                                        read: false
-                                        recipeId: 3
-                                        userId: 1
-                                        name: Sarah Colbert
-                                        username: sarahc   
-
-        put:
-            operationId: R2802
-            summary: 'R2802: Change notification state'
-            description: 'Change notification read state. Access: OWN'
-            tags: 
-                - 'M01: Authentication and Individual Profile'
-
-            requestBody:
-                required: false
-                content:
-                    application/x-www-form-urlencoded:
-                        schema:
-                            type: array
-                            items:
-                                type: object
-                                properties:
-                                    id: 
-                                        type: integer # Not required in follow and followRequest
-                                    type:    
-                                        type: string
-                                    read:
-                                        type: boolean
-                                    userId: 
-                                        type: integer # Only required in follow and followRequest
-                                required:
-                                    - type
-                                    - read
-            responses:
-                '200':
-                    description: 'Updated User'
-                '400':
-                    description: 'Invalid Request'          
-
-    /api/countries:
-        get:
-            operationId: R2901
-            summary: 'R2901: Get list of countries'
-            description: "Gets the list of existing countries in JSON. Access: PUB"
-            tags: 
-                - 'M04: Information'
-            responses:    
-                '200':
-                    description: "Success"
-                    content:
-                        application/json:
-                            schema: 
-                                type: array
-                                items:
-                                    type: object
-                                    properties:
-                                        id:    
-                                            type: integer
-                                        abbreviation:
-                                            type: string
-                                        name: 
-                                            type: string
-                                example:
-                                    -   integer: 1
-                                        abbreviation: PT
-                                        name: Portugal
-                                    -   integer: 2
-                                        abbreviation: ES
-                                        name: Spain
-                                    -   integer: 3
-                                        abbreviation: FR
-                                        name: France
-                                    -   integer: 4
-                                        abbreviation: USA
-                                        name: United States of America
+                  categories:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                        name:
+                          type: string
+                  tags:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                        name:
+                          type: string
+                  trendingRecipes:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                        title:
+                          type: string
+                example:
+                  recipes:
+                    - id: 1
+                      title: Classic Tiramisu
+                      description: Classic Italian dessert made with ladyfingers and mascarpone cheese.
+                      creationDate: 22-01-2021
+                      rating: 4.5
+                      numberOfReviews: 5
+                      category: Dessert
+                      tags:
+                        - id: 45
+                          name: "Vegetarian"
+                        - id: 32
+                          name: "Zero sugar"
+                    - id: 2
+                      title: Francesinha
+                      description: Portuguese delicious meal.
+                      creationDate: 20-03-2020
+                      rating: 4.8
+                      numberOfReviews: 3
+                      category: Lunch
+                      tags:
+                        - id: 45
+                          name: "Vegetarian"
+                        - id: 32
+                          name: "Zero sugar"
+                  categories:
+                    - id: 1
+                      name: Lunch
+                    - id: 2
+                      name: Breakfast
+                  tags:
+                    - id: 1
+                      name: Vegetarian
+                    - id: 2
+                      name: Low carb
+                  trendingRecipes:
+                    - id: 3
+                      title: Cozido à portuguesa
+        '400':
+          description: 'Invalid Request'
+
+  /api/search/{searchQuery}:
+    get:
+      operationId: R2601
+      summary: 'R2601: Search for a term'
+      description: "Searches for a search term, accepting sort and filter parameters, returning the result as JSON. Access: PUB"
+      tags:
+        - 'M02: Recipes, categories, groups and members'
+      parameters:
+        - in: path
+          name: searchQuery
+          schema:
+            type: string
+          required: true
+        - in: query
+          name: sort
+          schema:
+            type: string
+          required: false
+        - in: query
+          name: sortparam
+          schema:
+            type: string
+          required: false
+        - in: query
+          name: category
+          schema:
+            type: string
+          required: false
+        - in: query
+          name: tag
+          schema:
+            type: string
+          required: false
+        - in: query
+          name: rating
+          schema:
+            type: string
+          required: false
+        - in: query
+          name: ingredient
+          schema:
+            type: string
+          required: false
+        - in: query
+          name: date
+          schema:
+            type: string
+          required: false
+        - in: query
+          name: duration
+          schema:
+            type: string
+          required: false
+        - in: query
+          name: difficulty
+          schema:
+            type: string
+          required: false
+      responses:
+        '200':
+          description: 'OK'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  recipes:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                        title:
+                          type: string
+                        authorName:
+                          type: string
+                        rating:
+                          type: number
+                        numberOfReviews:
+                          type: integer
+                  users:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                        username:
+                          type: string
+                        name:
+                          type: string
+                        rating:
+                          type: number
+                        numberOfRecipes:
+                          type: integer
+                  groups:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                        name:
+                          type: string
+                        numberOfRecipes:
+                          type: integer
+                        numberOfMembers:
+                          type: integer
+                  categories:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                        name:
+                          type: string
+                  tags:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                        name:
+                          type: string
+
+                example:
+                  recipes:
+                    - id: 1
+                      title: Classic Tiramisu
+                      description: Classic Italian dessert made with ladyfingers and mascarpone cheese.
+                      authorName: John Trousseau
+                      rating: 4.5
+                      numberOfReviews: 5
+                    - id: 2
+                      title: Francesinha
+                      description: Portuguese delicious meal.
+                      authorName: Jean Meileur
+                      rating: 4.8
+                      numberOfReviews: 3
+                  users:
+                    - id: 1
+                      username: sarahxcolbert
+                      name: Sarah Colbert
+                      rating: 4.5
+                      numberOfRecipes: 10
+                    - id: 2
+                      username: johnlul
+                      name: John Lul
+                      rating: 3.8
+                      numberOfRecipes: 2
+                  groups:
+                    - id: 1
+                      name: Vegetarianos do Porto
+                      numberOfRecipes: 7
+                      numberOfMembers: 50
+                    - id: 1
+                      name: Amantes de vegetais
+                      numberOfRecipes: 15
+                      numberOfMembers: 130
+                  tags:
+                    - id: 1
+                      name: Vegetarian
+                    - id: 2
+                      name: Fresh
+                  categories:
+                    - id: 1
+                      name: Main Dish
+                    - id: 2
+                      name: Dessert
+
+  /api/report/{reportId}:
+    delete:
+      operationId: R2701
+      summary: 'R2701: Dismiss report'
+      description: "Deletes a report from the list. Access: ADM"
+      tags:
+        - 'M05: Web resources associated with the administrator pages'
+      parameters:
+        - in: path
+          name: reportId
+          schema:
+            type: integer
+          required: true
+      responses:
+        '200':
+          description: 'Deleted Report'
+        '400':
+          description: 'Invalid Request'
+
+  /api/reports:
+    get:
+      operationId: R2702
+      summary: 'R2702: Get all reports'
+      description: 'Gets all the reports in JSON. Access: ADM'
+      tags:
+        - 'M05: Web resources associated with the administrator pages'
+      responses:
+        '200':
+          description: "Success"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    type:
+                      type: string
+                    id_reporter:
+                      type: integer
+                    reason:
+                      type: string
+                    active:
+                      type: boolean
+                    id_comment:
+                      type: integer
+                    id_recipe:
+                      type: integer
+                example:
+                  - type: comment_report
+                    id_reporter: 1
+                    reason: Disrespectful
+                    active: true
+                    id_comment: 2
+                    id_recipe: null
+                  - type: recipe_report
+                    id_reporter: 54
+                    reason: Disrespectful
+                    active: true
+                    id_comment: null
+                    id_recipe: 4
+
+  /api/notifications:
+    get:
+      operationId: R2801
+      summary: 'R2801: Get notifications'
+      description: "Gets the logged in user's notifications in JSON. Access: MBR"
+      tags:
+        - 'M01: Authentication and Individual Profile'
+      responses:
+        '200':
+          description: "Success"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                    type:
+                      type: string
+                    read:
+                      type: boolean
+                    commentId:
+                      type: integer
+                    recipeName:
+                      type: string
+                    recipeId:
+                      type: integer
+                    userId:
+                      type: integer
+                    name:
+                      type: string
+                    username:
+                      type: string
+                  required:
+                    - type
+                    - read
+                    - userId
+                    - name
+                    - username
+                example:
+                  - type: followRequest
+                    read: false
+                    userId: 1
+                    name: Sarah Colbert
+                    username: sarahc
+                  - id: 1
+                    type: review
+                    read: true
+                    userId: 2
+                    name: Biggus Dickus
+                    username: biggus_dickus
+                  - type: follow
+                    read: true
+                    userId: 2
+                    name: Biggus Dickus
+                    username: biggus_dickus
+                  - id: 1
+                    type: comment
+                    read: true
+                    commentId: 3
+                    userId: 2
+                    name: Biggus Dickus
+                    username: biggus_dickus
+                  - id: 1
+                    type: delete
+                    read: false
+                    recipeName: Scones
+                    userId: 1
+                    name: Sarah Colbert
+                    username: sarahc
+                  - id: 1
+                    type: favourite
+                    read: false
+                    recipeId: 3
+                    userId: 1
+                    name: Sarah Colbert
+                    username: sarahc
+
+    put:
+      operationId: R2802
+      summary: 'R2802: Change notification state'
+      description: 'Change notification read state. Access: OWN'
+      tags:
+        - 'M01: Authentication and Individual Profile'
+
+      requestBody:
+        required: false
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: array
+              items:
+                type: object
+                properties:
+                  id:
+                    type: integer # Not required in follow and followRequest
+                  type:
+                    type: string
+                  read:
+                    type: boolean
+                  userId:
+                    type: integer # Only required in follow and followRequest
+                required:
+                  - type
+                  - read
+      responses:
+        '200':
+          description: 'Updated User'
+        '400':
+          description: 'Invalid Request'
+
+  /api/countries:
+    get:
+      operationId: R2901
+      summary: 'R2901: Get list of countries'
+      description: "Gets the list of existing countries in JSON. Access: PUB"
+      tags:
+        - 'M04: Information'
+      responses:
+        '200':
+          description: "Success"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                    abbreviation:
+                      type: string
+                    name:
+                      type: string
+                example:
+                  - id: 1
+                    abbreviation: PT
+                    name: Portugal
+                  - id: 2
+                    abbreviation: ES
+                    name: Spain
+                  - id: 3
+                    abbreviation: FR
+                    name: France
+                  - id: 4
+                    abbreviation: USA
+                    name: United States of America
+
+  /api/categories:
+    get:
+      operationId: R2902
+      summary: 'R2902: Get list of categories'
+      description: "Gets the list of existing categories in JSON. Access: PUB"
+      tags:
+        - 'M04: Information'
+      responses:
+        '200':
+          description: "Success"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                    name:
+                      type: string
+                example:
+                  - id: 1
+                    name: "Dessert"
+                  - id: 2
+                    name: "Appetizer"
+
+  /api/tags:
+    get:
+      operationId: R2903
+      summary: 'R2903: Get list of tags'
+      description: "Gets the list of existing tags in JSON. Access: PUB"
+      tags:
+        - 'M04: Information'
+      responses:
+        '200':
+          description: "Success"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                    name:
+                      type: string
+                example:
+                  - id: 1
+                    name: "Vegetarian"
+                  - id: 2
+                    name: "Low-carb"
+
+  /api/ingredients:
+    get:
+      operationId: R2904
+      summary: 'R2904: Get list of ingredients'
+      description: "Gets the list of existing ingredients in JSON. Access: PUB"
+      tags:
+        - 'M04: Information'
+      responses:
+        '200':
+          description: "Success"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                    name:
+                      type: string
+                example:
+                  - id: 1
+                    name: "Potato"
+                  - id: 2
+                    name: "Apple"
+
+  /api/units:
+    get:
+      operationId: R2905
+      summary: 'R2905: Get list of units'
+      description: "Gets the list of existing units in JSON. Access: PUB"
+      tags:
+        - 'M04: Information'
+      responses:
+        '200':
+          description: "Success"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                    name:
+                      type: string
+                example:
+                  - id: 1
+                    name: "kg"
+                  - id: 2
+                    name: "L"
