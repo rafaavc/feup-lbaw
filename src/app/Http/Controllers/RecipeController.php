@@ -128,8 +128,21 @@ class RecipeController extends Controller
      */
     public function edit($recipeId)
     {
-        if (!Auth::check()) return redirect('/recipe/' . $recipeId);
+        // if (!Auth::check()) return redirect('/recipe/' . $recipeId);
         // $this->autorize(...);
+        try {
+            $recipe = Recipe::findOrFail($recipeId);
+
+            return view('pages.editRecipe', [
+                'recipe' => $recipe,
+                'ingredients' => $recipe->ingredients,
+                'tags' => $recipe->tags,
+                'author' => $recipe->author,
+                'steps' => $recipe->steps,
+            ]);
+        } catch (\Exception $e) {
+            return response()->json(['message' => 'Invalid Request!'], 400);
+        }
     }
 
     /**

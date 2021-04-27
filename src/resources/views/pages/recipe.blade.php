@@ -12,8 +12,8 @@
 @endpush
 
 @push('js')
-    <script src="{{ asset('js/recipeYields.js') }}" defer></script>
-    <script src={{ asset('js/rating.js') }} defer></script>
+    <script src="{{ asset('js/progressBar.js') }}" defer></script>
+    <script src={{ asset('js/createRecipe.js') }} defer></script>
 @endpush
 
 @section('content')

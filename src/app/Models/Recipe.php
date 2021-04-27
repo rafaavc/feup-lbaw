@@ -20,7 +20,7 @@ class Recipe extends Model
     }
 
     public function tags() {
-        return $this->belongsToMany(Tag_Recipe::class, 'tb_tag_recipe', 'id_recipe', 'id_tag');
+        return $this->belongsToMany(Tag::class, 'tb_tag_recipe', 'id_recipe', 'id_tag');
     }
 
     public function membersWhoFavourited() {
