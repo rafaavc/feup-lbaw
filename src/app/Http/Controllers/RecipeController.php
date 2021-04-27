@@ -132,9 +132,17 @@ class RecipeController extends Controller
             $step_instance->description = $step['description'];
             $step_instance->id_recipe = $recipe->id;
             $step_instance->save();
+
+            // TODO: add images to file system
+            $target = "images/steps/" . $step_instance->id . ".jpg";
         }
 
-        // TODO: add images to file system
+        $photos = array();
+        $request->input('photos', $photos);
+        foreach ($photos as $index => $photo) {
+            // TODO: add images to file system
+            $target = "images/recipes/" . $recipe->id . "/" . $index . ".jpg";
+        }
 
         return $recipe;
     }
