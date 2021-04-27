@@ -83,6 +83,25 @@
             <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
                 <h3 class="mb-4">Ingredients</h3>
 
+                {{-- <script>
+                    async function fetchUnits() {
+                        let response = await fetch('/api/units');
+                        let jsonResponse = await response.json();
+                        console.log(jsonResponse);
+                        <option value="1" {{ isset($ingredient->pivot->id_unit) && $ingredient->pivot->id_unit == 1 ? "selected" : "" }}>teaspoon(s)</option>
+                        let selects = Array.from(document.querySelectorAll("select.form-select"));
+                        selects.forEach(select => {
+                            jsonResponse.units.forEach(unit => {
+                                let option = document.createElement("option");
+                                option.value = unit.id;
+                                option.innerText = unit.name;
+                                select.append(option);
+                            });
+                        });
+                    }
+
+                    fetchUnits();
+                </script> --}}
                 @foreach ($ingredients as $ingredient)
                     @include('partials.recipe.recipeIngredientRow', ['ingredient' => $ingredient])
                 @endforeach

@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Recipe;
 use App\Models\Step;
-
+use App\Models\Unit;
 
 class RecipeController extends Controller
 {
@@ -62,6 +62,7 @@ class RecipeController extends Controller
         // $this->autorize(...);
         try {
             $recipe = Recipe::findOrFail($recipeId);
+            $units = Unit::all();
 
             return view('pages.editRecipe', [
                 'recipe' => $recipe,
@@ -69,6 +70,7 @@ class RecipeController extends Controller
                 'tags' => $recipe->tags,
                 'author' => $recipe->author,
                 'steps' => $recipe->steps,
+                'units' => $units
             ]);
         } catch (\Exception $e) {
             return response()->json(['message' => 'Invalid Request!'], 400);

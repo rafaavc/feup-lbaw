@@ -10,12 +10,13 @@
             <div class="col-sm">
                 <div class="form-floating">
                     <select class="form-select" id="quantityUnitSelect" aria-label="Quantity unit">
-                        <option {{ !isset($ingredient->pivot->id_unit) ? "selected" : "" }}>-</option>
-                        <option value="1" {{ isset($ingredient->pivot->id_unit) && $ingredient->pivot->id_unit == 1 ? "selected" : "" }}>teaspoon(s)</option>
-                        <option value="2" {{ isset($ingredient->pivot->id_unit) && $ingredient->pivot->id_unit == 2 ? "selected" : "" }}>cup(s)</option>
-                        <option value="3" {{ isset($ingredient->pivot->id_unit) && $ingredient->pivot->id_unit == 3 ? "selected" : "" }}>ounce(s)</option>
-                        <option value="4" {{ isset($ingredient->pivot->id_unit) && $ingredient->pivot->id_unit == 4 ? "selected" : "" }}>gram(s)</option>
-                        <option value="5" {{ isset($ingredient->pivot->id_unit) && $ingredient->pivot->id_unit == 5 ? "selected" : "" }}>kilo(s)</option>
+                        @foreach ($units as $unit)
+                            @if($ingredient->pivot->id_unit == $unit->id)
+                                <option value="{{ $ingredient->pivot->id_unit }}" selected>{{ $unit->name }}</option>
+                            @else
+                                <option value="{{ $unit->id }}">{{ $unit->name }}</option>
+                            @endif
+                        @endforeach
                     </select>
                     <label for="quantityUnitSelect">Unit</label>
                 </div>

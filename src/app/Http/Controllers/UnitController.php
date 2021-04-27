@@ -16,7 +16,7 @@ class UnitController extends Controller
     {
         try {
             $units = Unit::all();
-            return response()->json(['units' => $units], 400);
+            return response()->json(['units' => $units], 200);
         } catch (\Exception $e) {
             return response()->json(['message' => 'Invalid Request!'], 400);
         }
