@@ -9,21 +9,21 @@
 | routes are loaded by the RouteServiceProvider within a group which
 | contains the "web" middleware group. Now create something great!
 |
-*/
-// Home
-Route::view('/', 'pages.index');
-Route::get('/recipe/{id}', 'RecipeController@view');
+/*/
 
 // Cards
-Route::get('cards', 'CardController@list');
-Route::get('cards/{id}', 'CardController@show');
+/*Route::get('cards', 'CardController@list');
+Route::get('cards/{id}', 'CardController@show');*/
 
 // API
-Route::put('api/cards', 'CardController@create');
+/*Route::put('api/cards', 'CardController@create');
 Route::delete('api/cards/{card_id}', 'CardController@delete');
 Route::put('api/cards/{card_id}/', 'ItemController@create');
 Route::post('api/item/{id}', 'ItemController@update');
-Route::delete('api/item/{id}', 'ItemController@delete');
+Route::delete('api/item/{id}', 'ItemController@delete');*/
+
+//Home
+Route::view('/', 'pages.index');
 
 // Authentication
 Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
@@ -31,3 +31,16 @@ Route::post('login', 'Auth\LoginController@login');
 Route::get('logout', 'Auth\LoginController@logout')->name('logout');
 Route::get('register', 'Auth\RegisterController@showRegistrationForm')->name('register');
 Route::post('register', 'Auth\RegisterController@register');
+
+// Content visualization
+Route::get('/recipe/{id}', 'RecipeController@view');
+
+// Content creation
+Route::get('/recipe', 'RecipeController@create');
+
+// Recipe API
+Route::post('api/recipe', 'RecipeController@insert');
+Route::get('api/recipe/{recipe_id}', 'RecipeController@select');
+Route::post('api/recipe/{recipe_id}', 'RecipeController@update');
+Route::delete('api/recipe/{recipe_id}', 'RecipeController@delete');
+
