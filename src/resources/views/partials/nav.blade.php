@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-lg fixed-top navbar-light bg-light content-general-padding">
     <div id="navbarContainer" class="container-fluid justify-content-between p-0">
         <!-- Logo -->
-        <a class="navbar-brand flex-lg-grow-1 normalize" href="">
+        <a class="navbar-brand flex-lg-grow-1 normalize" href="{{ url("") }}">
             <img class="logo" src="{{ asset('/images/tastebuds-dark.png') }}" height="50px" />
         </a>
 
