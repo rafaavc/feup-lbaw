@@ -16,7 +16,7 @@ class RecipeController extends Controller
      */
     public function view($recipeId)
     {
-        $recipe = Recipe::findOrFail($recipeId);
+        $recipe = $this->select($recipeId);
 
         $commentsWithFathers = $recipe->comments()->has('fatherComments')->get();
         $commentsWithFathersIds = array();
@@ -146,7 +146,7 @@ class RecipeController extends Controller
      */
     public function select($recipeId)
     {
-        $recipe = Item::find($recipeId);
+        $recipe = Recipe::findOrFail($recipeId);
         $this->authorize('select', $recipe);
         return $recipe;
     }
