@@ -1,12 +1,15 @@
 <div class="{{ $mobile ? "d-block d-xl-none" : "d-none d-xl-block" }}">
     <div class="media my-4 my-md-0">
-        <img class="img-fluid main" src="https://dpv87w1mllzh1.cloudfront.net/alitalia_discover/attachments/data/000/002/587/original/la-ricetta-classica-del-tiramisu-con-uova-savoiardi-e-mascarpone-1920x1080.jpg?1567093636">
+        <img class="img-fluid main" src="{{ asset('storage/images/recipes/'.$recipe->id.'/'.$images[0]->getBasename()) }}">
+        @if(sizeof($images) > 1)
         <div class="small-img d-flex">
-            <img class="col-3" src="https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fimages.media-allrecipes.com%2Fuserphotos%2F2270040.jpg&w=596&h=596&c=sc&poi=face&q=85">
-            <img class="col-3" src="https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fimages.media-allrecipes.com%2Fuserphotos%2F339568.jpg&w=595&h=595&c=sc&poi=face&q=85">
-            <img class="col-3" src="https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fimages.media-allrecipes.com%2Fuserphotos%2F378412.jpg&w=596&h=596&c=sc&poi=face&q=85">
-            <img class="col-3" src="https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fimages.media-allrecipes.com%2Fuserphotos%2F11110.jpg&w=596&h=399&c=sc&poi=face&q=85">
+            @foreach($images as $idx => $image)
+                @if(idx != 0)
+                    <img class="col-3" src="{{ asset('storage/images/recipes/'.$recipe->id.'/'.$image->getBasename()) }}">
+                @endif
+            @endforeach
         </div>
+        @endif
     </div>
     <div class="row mt-5">
         <div class="col-sm-6">
