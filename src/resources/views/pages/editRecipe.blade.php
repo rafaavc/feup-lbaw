@@ -14,7 +14,13 @@
 
 @section('content')
 
-@include('partials.breadcrumb', ['pages' => ["Recipes", !$create ? $recipe->category->name : "create", !$create ? $recipe->name : ""], 'withoutMargin' => false])
+@php
+    $breadcrumbPages = ["Recipes", !$create ? $recipe->category->name : "Create Recipe"];
+    if (!$create)
+        array_push($breadcrumbPages, $recipe->name);
+@endphp
+
+@include('partials.breadcrumb', ['pages' => $breadcrumbPages, 'withoutMargin' => false])
 
 <h1 id="pageTitle" class="content-general-margin mt-3">Edit Recipe</h1>
 <div id="create-recipe-stepper" class="content-general-margin mt-4 margin-to-footer card p-4">
@@ -47,7 +53,7 @@
                 </div>
                 <div class="form-floating mb-3">
                     <textarea class="form-control" placeholder="Your awesome description here..." id="floatingTextarea2" style="height: 7rem">{{ !$create ? $recipe->description : "" }}</textarea>
-                    <label for="floatingTextarea2"><span class='form-required'></span></label>
+                    <label for="floatingTextarea2">Description <span class='form-required'></span></label>
                 </div>
                 <div class="row g-3 mb-4">
                     <div class="col-sm">
@@ -70,15 +76,15 @@
                     <div class="col-lg">
                         <div class="form-floating">
                             <select class="form-select" id="tagSelect" aria-label="Quantity unit">
-                                <option value="3">Tags</option>
+                                <option value="3">Choose the tags</option>
                             </select>
 
-                            <label for="floatingInput">Tags<span class='form-required'></span></label>
+                            <label for="floatingInput">Tags <span class='form-required'></span></label>
                         </div>
                     </div>
                     <div class="search-div collapse navbar-collapse justify-content-center flex-grow-1 normalize mt-0" id="navbarSearch" data-bs-parent="#navbarContainer">
                         <div class="d-flex">
-                            <input type="text" class="searchBox-text form-control rounded-0" placeholder="Search..." aria-label="Recipient's username" aria-describedby="basic-addon2">
+                            <input type="text" class="searchBox-text form-control rounded-0" placeholder="Search tag..." aria-label="Recipes's tags" aria-describedby="basic-addon2">
                         </div>
                         <div class="searchBox-tag">
                             @foreach ($totalTags as $tTag)
