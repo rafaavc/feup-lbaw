@@ -100,6 +100,23 @@ class RecipeController extends Controller
     }
 
     /**
+     * RX: /recipe/{recipeId}/edit
+     *
+     * @param int $recipeId
+     * @return \Illuminate\Http\Response
+     */
+    public function editPost(Request $request)
+    {
+        // if (!Auth::check()) return redirect('/recipe/' . $recipeId);
+        // $this->autorize(...);
+        try {
+            return response()->json(['message' => $request->input()], 200);
+        } catch (\Exception $e) {
+            return response()->json(['message' => 'Invalid Request!'], 400);
+        }
+    }
+
+    /**
      * R2101: /api/recipe
      *
      * @param \Illuminate\Http\Request $request
