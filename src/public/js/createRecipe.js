@@ -1,4 +1,3 @@
-
 const addIngredientButton = document.querySelector('#addIngredientButton');
 addIngredientButton.addEventListener('click', () => {
     const elem = document.createElement('template');
@@ -151,4 +150,6 @@ function removeTagListeners() {
     }
 }
 
-
+document.querySelector("a.submit-recipe-form").addEventListener("click", (event) => {
+    document.querySelector("form.recipe-form").submit();
+});
