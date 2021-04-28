@@ -42,3 +42,17 @@
     transform: scale(1.2);
     transition: transform .2s;
 }
+
+div.searchBox-ingredient {
+    overflow-y: scroll;
+    max-height: 100px;
+    border-bottom: 1px solid #ced4da;
+}
+
+.show-searchBox {
+    display: block !important;
+}
+
+.searchBox-text:focus {
+    box-shadow: none !important;
+}

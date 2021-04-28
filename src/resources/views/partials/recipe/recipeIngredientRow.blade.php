@@ -25,8 +25,22 @@
     </div>
     <div class="col-lg">
         <div class="form-floating">
-            <input type="text" class="form-control" id="floatingInput" placeholder="Tomato" value="{{ isset($ingredient->name) ? $ingredient->name : "" }}">
+            <select class="form-select" id="ingredientSelect" aria-label="Quantity unit">
+                <option value="3">Tags</option>
+            </select>
+
+            {{-- <input type="text" class="form-control" id="floatingInput" placeholder="Tomato" value="{{ isset($ingredient->name) ? $ingredient->name : "" }}"> --}}
             <label for="floatingInput">Name <span class='form-required'></span></label>
+        </div>
+    </div>
+    <div class="search-div collapse navbar-collapse justify-content-center flex-grow-1 normalize mt-0" id="navbarSearch" data-bs-parent="#navbarContainer">
+        <div class="d-flex">
+            <input type="text" class="searchBox-text form-control rounded-0" placeholder="Search..." aria-label="Recipient's username" aria-describedby="basic-addon2">
+        </div>
+        <div class="searchBox-ingredient">
+            @foreach ($totalIngredients as $tIngredient)
+                <a class="list-group-item list-group-item-action ingredient" value="{{ $tIngredient->id }}">{{ $tIngredient->name }}</a>
+            @endforeach
         </div>
     </div>
 </div>

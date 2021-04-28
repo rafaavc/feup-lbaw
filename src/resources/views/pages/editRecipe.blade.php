@@ -84,7 +84,7 @@
                 <h3 class="mb-4">Ingredients</h3>
 
                 @foreach ($ingredients as $ingredient)
-                    @include('partials.recipe.recipeIngredientRow', ['ingredient' => $ingredient, 'units' => $units])
+                    @include('partials.recipe.recipeIngredientRow', ['ingredient' => $ingredient, 'units' => $units, 'totalIngredients' => $totalIngredients])
                 @endforeach
 
                 <button type="button" class="btn btn-secondary" id="addIngredientButton"><i class="fas fa-plus"></i> Add Ingredient</button>
