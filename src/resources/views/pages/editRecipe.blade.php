@@ -115,6 +115,8 @@
                     @foreach ($ingredients as $ingredient)
                         @include('partials.recipe.recipeIngredientRow', ['ingredient' => $ingredient, 'units' => $units, 'totalIngredients' => $totalIngredients])
                     @endforeach
+                @else
+                    @include('partials.recipe.recipeIngredientRow', ['units' => $units, 'totalIngredients' => $totalIngredients])
                 @endif
 
                 <button type="button" class="btn btn-secondary" id="addIngredientButton"><i class="fas fa-plus"></i> Add Ingredient</button>
@@ -151,6 +153,8 @@
                     @foreach ($steps as $step)
                         @include('partials.recipe.step', ['step' => $step, 'index' => $loop->index + 1])
                     @endforeach
+                @else
+                    @include('partials.recipe.step', ['index' => 1])
                 @endif
 
                 <button type="button" class="btn btn-secondary" id="addStepButton"><i class="fas fa-plus"></i> Add Step</button>
