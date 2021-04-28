@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Edit Recipe')
+@section('title', isset($recipe) ? "Edit Recipe" : "Create Recipe")
 
 @push('css')
     <link href="{{ asset('css/createRecipe.css') }}" rel="stylesheet" />
@@ -14,9 +14,15 @@
 
 @section('content')
 
-@include('partials.breadcrumb', ['pages' => ["Recipes", $recipe->category->name, $recipe->name], 'withoutMargin' => false])
+@php
+    $breadcrumbPages = ["Recipes", isset($recipe) ? $recipe->category->name : "Create Recipe"];
+    if (isset($recipe))
+        array_push($breadcrumbPages, $recipe->name);
+@endphp
 
-<h1 id="pageTitle" class="content-general-margin mt-3">Edit Recipe</h1>
+@include('partials.breadcrumb', ['pages' => $breadcrumbPages, 'withoutMargin' => false])
+
+<h1 id="pageTitle" class="content-general-margin mt-3">{{ isset($recipe) ? "Edit Recipe" : "Create Recipe" }}</h1>
 <div id="create-recipe-stepper" class="content-general-margin mt-4 margin-to-footer card p-4">
     <div class="card-body">
         @include('partials.progressBar')
@@ -28,7 +34,7 @@
                         <div class="row g-3 mb-3">
                             <div class="col-lg">
                                 <div class="form-floating">
-                                    <input type="text" class="form-control" id="floatingInput" placeholder="Baked Potatoes" value="{{ $recipe->name }}">
+                                    <input type="text" class="form-control" id="floatingInput" placeholder="Baked Potatoes" value="{{ isset($recipe) ? $recipe->name : ""}}">
                                     <label for="floatingInput">Recipe title <span class='form-required'></span></label>
                                 </div>
                             </div>
@@ -36,7 +42,7 @@
                                 <div class="form-floating">
                                     <select class="form-select" id="floatingSelectGrid" aria-label="Main category">
                                         @foreach ($categories as $category)
-                                            @if($recipe->category->id === $category->id)
+                                            @if(isset($recipe) && $recipe->category->id === $category->id)
                                                 <option value="{{ $category->id }}" selected>{{ $category->name }}</option>
                                             @else
                                                 <option value="{{ $category->id }}">{{ $category->name }}</option>
@@ -48,16 +54,16 @@
                             </div>
                         </div>
                         <div class="form-floating mb-3">
-                            <textarea class="form-control" placeholder="Your awesome description here..." id="floatingTextarea2" style="height: 7rem">Classic Italian dessert made with ladyfingers and mascarpone cheese. It can be made in a trifle bowl or a springform pan.</textarea>
-                            <label for="floatingTextarea2"> {{ $recipe->description }} <span class='form-required'></span></label>
+                            <textarea class="form-control" placeholder="Your awesome description here..." id="floatingTextarea2" style="height: 7rem">{{ isset($recipe) ? $recipe->description : "" }}</textarea>
+                            <label for="floatingTextarea2"> Description <span class='form-required'></span></label>
                         </div>
                         <div class="row g-3 mb-4">
                             <div class="col-sm">
                                 <div class="form-floating">
                                     <select class="form-select" id="floatingSelectGrid" aria-label="Difficulty">
-                                        <option value="1" {{ ($recipe->difficulty === "Easy") ? "selected" : "" }}>Easy</option>
-                                        <option value="2" {{ ($recipe->difficulty === "Medium") ? "selected" : "" }}>Medium</option>
-                                        <option value="3" {{ ($recipe->difficulty === "Hard") ? "selected" : "" }}>Hard</option>
+                                        <option value="1" {{ (isset($recipe) && $recipe->difficulty === "Easy") ? "selected" : "" }}>Easy</option>
+                                        <option value="2" {{ (isset($recipe) && $recipe->difficulty === "Medium") ? "selected" : "" }}>Medium</option>
+                                        <option value="3" {{ (isset($recipe) && $recipe->difficulty === "Hard") ? "selected" : "" }}>Hard</option>
                                     </select>
                                     <label for="floatingSelectGrid">Difficulty <span class='form-required'></span></label>
                                 </div>
@@ -65,7 +71,7 @@
 
                             <div class="col-lg">
                                 <div class="form-floating">
-                                    <input type="number" class="form-control" id="floatingInput" placeholder="Baked Potatoes" value="{{ $recipe->servings }}">
+                                    <input type="number" class="form-control" id="floatingInput" placeholder="Baked Potatoes" value="{{isset($recipe) ? $recipe->servings : 0 }}">
                                     <label for="floatingInput">Number of servings <span class='form-required'></span></label>
                                 </div>
                             </div>
@@ -91,10 +97,12 @@
                         </div>
                         <div class="col-lg tags-collection mb-3">
                             <ul class="tag-list mt-2 mb-4">
-                                @foreach ($recipe->tags as $tag)
-                                    <li value="{{ $tag->id }}">{{ $tag->name }}<span class="close">&times;</span></li>
-                                    <input name="tag[]" value="{{ $tag->id }}" class="d-none">
-                                @endforeach
+                                @if (isset($recipe))
+                                    @foreach ($recipe->tags as $tag)
+                                        <li value="{{ $tag->id }}">{{ $tag->name }}<span class="close">&times;</span></li>
+                                        <input name="tag[]" value="{{ $tag->id }}" class="d-none">
+                                    @endforeach
+                                @endif
                             </ul>
                         </div>
 
@@ -106,48 +114,56 @@
                     <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
                         <h3 class="mb-4">Ingredients</h3>
 
-                        @foreach ($ingredients as $ingredient)
-                            @include('partials.recipe.recipeIngredientRow', ['ingredient' => $ingredient, 'units' => $units, 'totalIngredients' => $totalIngredients])
-                        @endforeach
+                        @if(isset($recipe))
+                            @foreach ($ingredients as $ingredient)
+                                @include('partials.recipe.recipeIngredientRow', ['ingredient' => $ingredient, 'units' => $units, 'totalIngredients' => $totalIngredients])
+                            @endforeach
+                        @else
+                            @include('partials.recipe.recipeIngredientRow', ['units' => $units, 'totalIngredients' => $totalIngredients])
+                        @endif
 
                         <button type="button" class="btn btn-secondary" id="addIngredientButton"><i class="fas fa-plus"></i> Add Ingredient</button>
                         <button type="button" class="btn btn-primary next-step" style="float: right;">Next</button>
                     </div>
-                    <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
-                        <h3 class="mb-4">Method</h3>
+                <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
+                <h3 class="mb-4">Method</h3>
 
-                        <span class="d-block mb-3"><h5 class="d-inline">Duration</h6> <small>(in minutes)</small></span>
-                        <div class="row g-3">
-                            <div class="col-lg">
-                                <div class="form-floating">
-                                    <input type="number" class="form-control" id="preparationTime" placeholder="Preparation Time" value="{{ $recipe->preparation_time }}">
-                                    <label for="preparationTime">Preparation <span class='form-required'></span></label>
-                                </div>
-                            </div>
-                            <div class="col-lg">
-                                <div class="form-floating">
-                                    <input type="number" class="form-control" id="cookingTime" placeholder="Cooking Time" value="{{ $recipe->cooking_time }}">
-                                    <label for="cookingTime">Cooking <span class='form-required'></span></label>
-                                </div>
-                            </div>
-                            <div class="col-lg">
-                                <div class="form-floating">
-                                    <input type="number" class="form-control" id="additionalTime" placeholder="Additional Time" value="{{ $recipe->additional_time }}">
-                                    <label for="additionalTime">Additional</label>
-                                </div>
-                            </div>
+                <span class="d-block mb-3"><h5 class="d-inline">Duration</h6> <small>(in minutes)</small></span>
+                <div class="row g-3">
+                    <div class="col-lg">
+                        <div class="form-floating">
+                            <input type="number" class="form-control" id="preparationTime" placeholder="Preparation Time" value="{{isset($recipe) ? $recipe->preparation_time : 0}}">
+                            <label for="preparationTime">Preparation <span class='form-required'></span></label>
                         </div>
+                    </div>
+                    <div class="col-lg">
+                        <div class="form-floating">
+                            <input type="number" class="form-control" id="cookingTime" placeholder="Cooking Time" value="{{isset($recipe) ?  $recipe->cooking_time : 0 }}">
+                            <label for="cookingTime">Cooking <span class='form-required'></span></label>
+                        </div>
+                    </div>
+                    <div class="col-lg">
+                        <div class="form-floating">
+                            <input type="number" class="form-control" id="additionalTime" placeholder="Additional Time" value="{{isset($recipe) ? $recipe->additional_time : 0 }}">
+                            <label for="additionalTime">Additional</label>
+                        </div>
+                    </div>
+                </div>
 
-                        <h4 class="mt-5 mb-4">Steps</h4>
+                    <h4 class="mt-5 mb-4">Steps</h4>
 
+                    @if(isset($recipe))
                         @foreach ($steps as $step)
                             @include('partials.recipe.step', ['step' => $step, 'index' => $loop->index + 1])
                         @endforeach
+                    @else
+                        @include('partials.recipe.step', ['index' => 1])
+                    @endif
 
-                        <button type="button" class="btn btn-secondary" id="addStepButton"><i class="fas fa-plus"></i> Add Step</button>
-                        <a type="submit" role="button" class="submit-recipe-form btn btn-primary next-step" style="float: right;">Edit Recipe</a>
+                    <button type="button" class="btn btn-secondary" id="addStepButton"><i class="fas fa-plus"></i> Add Step</button>
+                    <a type="submit" role="button" class="submit-recipe-form btn btn-primary next-step" style="float: right;">Edit Recipe</a>
 
-                    </div>
+                </div>
             </div>
         </form>
     </div>
