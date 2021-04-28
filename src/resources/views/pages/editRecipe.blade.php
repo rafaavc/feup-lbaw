@@ -50,13 +50,6 @@
                     <label for="floatingTextarea2"> {{ $recipe->description }} <span class='form-required'></span></label>
                 </div>
                 <div class="row g-3 mb-4">
-                    <div class="col-lg">
-                        <div class="form-floating">
-                            {{-- Get Tags --}}
-                            <input type="text" class="form-control" id="floatingInput" placeholder="Baked Potatoes" value="Low carb, Vegetarian">
-                            <label for="floatingInput">Tags <span class='form-required'></span></label>
-                        </div>
-                    </div>
                     <div class="col-sm">
                         <div class="form-floating">
                             <select class="form-select" id="floatingSelectGrid" aria-label="Difficulty">
@@ -67,12 +60,39 @@
                             <label for="floatingSelectGrid">Difficulty <span class='form-required'></span></label>
                         </div>
                     </div>
+
                     <div class="col-lg">
                         <div class="form-floating">
                             <input type="number" class="form-control" id="floatingInput" placeholder="Baked Potatoes" value="{{ $recipe->servings }}">
                             <label for="floatingInput">Number of servings <span class='form-required'></span></label>
                         </div>
                     </div>
+                    <div class="col-lg">
+                        <div class="form-floating">
+                            <select class="form-select" id="tagSelect" aria-label="Quantity unit">
+                                <option value="3">Tags</option>
+                            </select>
+
+                            <label for="floatingInput">Tags<span class='form-required'></span></label>
+                        </div>
+                    </div>
+                    <div class="search-div collapse navbar-collapse justify-content-center flex-grow-1 normalize mt-0" id="navbarSearch" data-bs-parent="#navbarContainer">
+                        <div class="d-flex">
+                            <input type="text" class="searchBox-text form-control rounded-0" placeholder="Search..." aria-label="Recipient's username" aria-describedby="basic-addon2">
+                        </div>
+                        <div class="searchBox-tag">
+                            @foreach ($totalTags as $tTag)
+                                <a class="list-group-item list-group-item-action tag" value="{{ $tTag->id }}">{{ $tTag->name }}</a>
+                            @endforeach
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg tags-collection mb-3">
+                    <ul class="tag-list mt-2 mb-4">
+                        @foreach ($recipe->tags as $tag)
+                            <li value="{{ $tag->id }}">{{ $tag->name }}<span class="close">&times;</span></li>
+                        @endforeach
+                    </ul>
                 </div>
 
                 <h6 class="mb-3 d-inline-block">End Product Photos</h6> <span class='form-required'></span>

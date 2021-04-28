@@ -5,10 +5,20 @@ addIngredientButton.addEventListener('click', () => {
     elem.innerHTML = addIngredientButton.previousElementSibling.outerHTML;
     addIngredientButton.parentNode.insertBefore(elem.content.firstElementChild, addIngredientButton);
     registerEventListeners();
+
+    // JS's bug...
+    const tagSelect = document.querySelector("select#tagSelect");
+    tagSelect.addEventListener('mousedown', (event) => {
+        event.preventDefault();
+        let target = event.target;
+        let searchDiv = target.closest("div.col-lg").nextElementSibling;
+        searchDiv.classList.toggle("show-searchBox");
+    });
 })
 
 let stepCounter = 1;
 registerEventListeners();
+removeTagListeners();
 
 const addStepButton = document.querySelector('#addStepButton');
 addStepButton.addEventListener('click', () => {
@@ -45,12 +55,25 @@ function registerEventListeners() {
     const searchBoxTexts = Array.from(document.querySelectorAll("input.searchBox-text"));
     searchBoxTexts.forEach(searchBox => {
         searchBox.addEventListener('keyup', (event) => {
-            updateIngredients(event.target);
+            updateSearchItems(event.target);
         });
+    });
+
+    const tagAnchors = Array.from(document.querySelectorAll("a.tag"));
+    tagAnchors.forEach(ingredient => {
+        ingredient.addEventListener('click', tagSelected);
+    });
+
+    const tagSelect = document.querySelector("select#tagSelect");
+    tagSelect.addEventListener('mousedown', (event) => {
+        event.preventDefault();
+        let target = event.target;
+        let searchDiv = target.closest("div.col-lg").nextElementSibling;
+        searchDiv.classList.toggle("show-searchBox");
     });
 }
 
-function updateIngredients(target) {
+function updateSearchItems(target) {
     let filter = target.value.toUpperCase();
     let searchBoxIngredients = target.parentElement.nextElementSibling;
     let ingredients = searchBoxIngredients.getElementsByTagName("a");
@@ -64,7 +87,11 @@ function updateIngredients(target) {
 }
 
 function ingredientSelected(event) {
-    let target = event.target;
+    let searchInput = updateBox(event.target);
+    updateSearchItems(searchInput);
+}
+
+function updateBox(target) {
     let parent = target.closest("div.search-div").previousElementSibling;
     let ingredientOption = parent.querySelector("select.form-select option");
     ingredientOption.value = target.getAttribute("value")
@@ -72,5 +99,48 @@ function ingredientSelected(event) {
     target.closest("div.search-div").classList.toggle("show-searchBox");
     let searchInput = target.parentElement.previousElementSibling.firstElementChild;
     searchInput.value = "";
-    updateIngredients(searchInput);
+    return searchInput;
 }
+
+function tagSelected(event) {
+    let searchInput = updateBox(event.target);
+    updateSearchItems(searchInput);
+    let tagList = event.target.closest(".row").nextElementSibling.querySelector(".tag-list");
+    if(checkNotRepeatedTag(event.target.getAttribute("value"), tagList)) {
+        let li = document.createElement("li");
+        li.value = event.target.getAttribute("value");
+        li.textContent = event.target.textContent;
+        let span = document.createElement("span");
+        span.classList.add("close");
+        span.innerHTML = "&times;";
+        li.appendChild(span);
+        tagList.append(li);
+
+        span.addEventListener("click", function() {
+            this.parentElement.parentElement.removeChild(this.parentElement);
+        });
+    }
+}
+
+function checkNotRepeatedTag(tagId, tagList) {
+    let children = Array.from(tagList.children);
+    for(let i = 0; i < children.length; i++) {
+        if(children[i].getAttribute("value") == tagId)
+            return false;
+    }
+
+    return true;
+}
+
+function removeTagListeners() {
+    let closebtns = document.getElementsByClassName("close");
+    let i;
+
+    for (i = 0; i < closebtns.length; i++) {
+        closebtns[i].addEventListener("click", function() {
+            this.parentElement.parentElement.removeChild(this.parentElement);
+        });
+    }
+}
+
+

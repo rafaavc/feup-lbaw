@@ -10,6 +10,7 @@ use App\Models\Recipe;
 use App\Models\Step;
 use App\Models\Unit;
 use App\Models\Ingredient;
+use App\Models\Tag;
 
 class RecipeController extends Controller
 {
@@ -67,6 +68,7 @@ class RecipeController extends Controller
             $units = Unit::all();
             $categories = Category::all();
             $ingredients = Ingredient::all();
+            $tags = Tag::all();
 
             return view('pages.editRecipe', [
                 'recipe' => $recipe,
@@ -76,7 +78,8 @@ class RecipeController extends Controller
                 'steps' => $recipe->steps,
                 'units' => $units,
                 'categories' => $categories,
-                'totalIngredients' => $ingredients
+                'totalIngredients' => $ingredients,
+                'totalTags' => $tags
             ]);
         } catch (\Exception $e) {
             return response()->json(['message' => 'Invalid Request!'], 400);

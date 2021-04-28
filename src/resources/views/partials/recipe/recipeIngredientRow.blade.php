@@ -26,11 +26,11 @@
     <div class="col-lg">
         <div class="form-floating">
             <select class="form-select" id="ingredientSelect" aria-label="Quantity unit">
-                <option value="3">Tags</option>
+                <option value="{{ $ingredient->id }}">{{ $ingredient->name }}</option>
             </select>
 
             {{-- <input type="text" class="form-control" id="floatingInput" placeholder="Tomato" value="{{ isset($ingredient->name) ? $ingredient->name : "" }}"> --}}
-            <label for="floatingInput">Name <span class='form-required'></span></label>
+            <label for="floatingInput">Ingredient Name<span class='form-required'></span></label>
         </div>
     </div>
     <div class="search-div collapse navbar-collapse justify-content-center flex-grow-1 normalize mt-0" id="navbarSearch" data-bs-parent="#navbarContainer">
