@@ -26,7 +26,7 @@
     <div class="col-lg">
         <div class="form-floating">
             <select class="form-select" id="ingredientSelect" aria-label="Quantity unit">
-                <option value="3">Ingredients</option>
+                <option value="{{ $ingredient->id }}">{{ $ingredient->name }}</option>
             </select>
 
             {{-- <input type="text" class="form-control" id="floatingInput" placeholder="Tomato" value="{{ isset($ingredient->name) ? $ingredient->name : "" }}"> --}}

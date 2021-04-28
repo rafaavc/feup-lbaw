@@ -81,14 +81,20 @@ ul.tag-list li {
     color: black;
     display: inline-block;
     position: relative;
-    width: 28%;
+    width: auto;
     height: 30px;
     bottom: 0 !important;
     margin: 0.25em;
+    vertical-align: middle;
+    font-size: 1em;
+    padding-right: 2em;
+    padding-left: 1em;
+    transition: all 0.5s ease;
 }
 
 ul.tag-list li:hover {
-    background-color: lightgray;
+    background-color: var(--accent-color);
+    color: white !important;
 }
 
 .close {
@@ -101,4 +107,6 @@ ul.tag-list li:hover {
     overflow: hidden;
 }
 
-.close:hover {background: #bbb;}
+.close:hover {
+    background: lightgray;
+}
