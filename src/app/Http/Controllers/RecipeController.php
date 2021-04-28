@@ -49,8 +49,22 @@ class RecipeController extends Controller
      */
     public function create()
     {
-        return response()->json(['message' => 'Succeed!'], 200);
-        //
+        try {
+            $units = Unit::all();
+            $categories = Category::all();
+            $ingredients = Ingredient::all();
+            $tags = Tag::all();
+
+            return view('pages.editRecipe', [
+                'create' => true,
+                'units' => $units,
+                'categories' => $categories,
+                'totalIngredients' => $ingredients,
+                'totalTags' => $tags
+            ]);
+        } catch (\Exception $e) {
+            return response()->json(['message' => 'Invalid Request!'], 400);
+        }
     }
 
     /**
@@ -71,6 +85,7 @@ class RecipeController extends Controller
             $tags = Tag::all();
 
             return view('pages.editRecipe', [
+                'create' => false,
                 'recipe' => $recipe,
                 'ingredients' => $recipe->ingredients,
                 'tags' => $recipe->tags,

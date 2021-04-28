@@ -14,7 +14,7 @@
 
 @section('content')
 
-@include('partials.breadcrumb', ['pages' => ["Recipes", $recipe->category->name, $recipe->name], 'withoutMargin' => false])
+@include('partials.breadcrumb', ['pages' => ["Recipes", !$create ? $recipe->category->name : "create", !$create ? $recipe->name : ""], 'withoutMargin' => false])
 
 <h1 id="pageTitle" class="content-general-margin mt-3">Edit Recipe</h1>
 <div id="create-recipe-stepper" class="content-general-margin mt-4 margin-to-footer card p-4">
@@ -26,7 +26,7 @@
                 <div class="row g-3 mb-3">
                     <div class="col-lg">
                         <div class="form-floating">
-                            <input type="text" class="form-control" id="floatingInput" placeholder="Baked Potatoes" value="{{ $recipe->name }}">
+                            <input type="text" class="form-control" id="floatingInput" placeholder="Baked Potatoes" value="{{ !$create ? $recipe->name : ""}}">
                             <label for="floatingInput">Recipe title <span class='form-required'></span></label>
                         </div>
                     </div>
@@ -34,7 +34,7 @@
                         <div class="form-floating">
                             <select class="form-select" id="floatingSelectGrid" aria-label="Main category">
                                 @foreach ($categories as $category)
-                                    @if($recipe->category->id === $category->id)
+                                    @if(!$create && $recipe->category->id === $category->id)
                                         <option value="{{ $category->id }}" selected>{{ $category->name }}</option>
                                     @else
                                         <option value="{{ $category->id }}">{{ $category->name }}</option>
@@ -46,16 +46,16 @@
                     </div>
                 </div>
                 <div class="form-floating mb-3">
-                    <textarea class="form-control" placeholder="Your awesome description here..." id="floatingTextarea2" style="height: 7rem">Classic Italian dessert made with ladyfingers and mascarpone cheese. It can be made in a trifle bowl or a springform pan.</textarea>
-                    <label for="floatingTextarea2"> {{ $recipe->description }} <span class='form-required'></span></label>
+                    <textarea class="form-control" placeholder="Your awesome description here..." id="floatingTextarea2" style="height: 7rem">{{ !$create ? $recipe->description : "" }}</textarea>
+                    <label for="floatingTextarea2"><span class='form-required'></span></label>
                 </div>
                 <div class="row g-3 mb-4">
                     <div class="col-sm">
                         <div class="form-floating">
                             <select class="form-select" id="floatingSelectGrid" aria-label="Difficulty">
-                                <option value="1" {{ ($recipe->difficulty === "Easy") ? "selected" : "" }}>Easy</option>
-                                <option value="2" {{ ($recipe->difficulty === "Medium") ? "selected" : "" }}>Medium</option>
-                                <option value="3" {{ ($recipe->difficulty === "Hard") ? "selected" : "" }}>Hard</option>
+                                <option value="1" {{ (!$create && $recipe->difficulty === "Easy") ? "selected" : "" }}>Easy</option>
+                                <option value="2" {{ (!$create && $recipe->difficulty === "Medium") ? "selected" : "" }}>Medium</option>
+                                <option value="3" {{ (!$create && $recipe->difficulty === "Hard") ? "selected" : "" }}>Hard</option>
                             </select>
                             <label for="floatingSelectGrid">Difficulty <span class='form-required'></span></label>
                         </div>
@@ -63,7 +63,7 @@
 
                     <div class="col-lg">
                         <div class="form-floating">
-                            <input type="number" class="form-control" id="floatingInput" placeholder="Baked Potatoes" value="{{ $recipe->servings }}">
+                            <input type="number" class="form-control" id="floatingInput" placeholder="Baked Potatoes" value="{{!$create ? $recipe->servings : 0 }}">
                             <label for="floatingInput">Number of servings <span class='form-required'></span></label>
                         </div>
                     </div>
@@ -89,9 +89,11 @@
                 </div>
                 <div class="col-lg tags-collection mb-3">
                     <ul class="tag-list mt-2 mb-4">
-                        @foreach ($recipe->tags as $tag)
-                            <li value="{{ $tag->id }}">{{ $tag->name }}<span class="close">&times;</span></li>
-                        @endforeach
+                        @if (!$create)
+                            @foreach ($recipe->tags as $tag)
+                                <li value="{{ $tag->id }}">{{ $tag->name }}<span class="close">&times;</span></li>
+                            @endforeach
+                        @endif
                     </ul>
                 </div>
 
@@ -103,9 +105,11 @@
             <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
                 <h3 class="mb-4">Ingredients</h3>
 
-                @foreach ($ingredients as $ingredient)
-                    @include('partials.recipe.recipeIngredientRow', ['ingredient' => $ingredient, 'units' => $units, 'totalIngredients' => $totalIngredients])
-                @endforeach
+                @if(!$create)
+                    @foreach ($ingredients as $ingredient)
+                        @include('partials.recipe.recipeIngredientRow', ['ingredient' => $ingredient, 'units' => $units, 'totalIngredients' => $totalIngredients])
+                    @endforeach
+                @endif
 
                 <button type="button" class="btn btn-secondary" id="addIngredientButton"><i class="fas fa-plus"></i> Add Ingredient</button>
                 <button type="button" class="btn btn-primary next-step" style="float: right;">Next</button>
@@ -117,19 +121,19 @@
                 <div class="row g-3">
                     <div class="col-lg">
                         <div class="form-floating">
-                            <input type="number" class="form-control" id="preparationTime" placeholder="Preparation Time" value="{{ $recipe->preparation_time }}">
+                            <input type="number" class="form-control" id="preparationTime" placeholder="Preparation Time" value="{{!$create ? $recipe->preparation_time : 0}}">
                             <label for="preparationTime">Preparation <span class='form-required'></span></label>
                         </div>
                     </div>
                     <div class="col-lg">
                         <div class="form-floating">
-                            <input type="number" class="form-control" id="cookingTime" placeholder="Cooking Time" value="{{ $recipe->cooking_time }}">
+                            <input type="number" class="form-control" id="cookingTime" placeholder="Cooking Time" value="{{!$create ?  $recipe->cooking_time : 0 }}">
                             <label for="cookingTime">Cooking <span class='form-required'></span></label>
                         </div>
                     </div>
                     <div class="col-lg">
                         <div class="form-floating">
-                            <input type="number" class="form-control" id="additionalTime" placeholder="Additional Time" value="{{ $recipe->additional_time }}">
+                            <input type="number" class="form-control" id="additionalTime" placeholder="Additional Time" value="{{!$create ? $recipe->additional_time : 0 }}">
                             <label for="additionalTime">Additional</label>
                         </div>
                     </div>
@@ -137,12 +141,14 @@
 
                 <h4 class="mt-5 mb-4">Steps</h4>
 
-                @foreach ($steps as $step)
-                    @include('partials.recipe.step', ['step' => $step, 'index' => $loop->index + 1])
-                @endforeach
+                @if(!$create)
+                    @foreach ($steps as $step)
+                        @include('partials.recipe.step', ['step' => $step, 'index' => $loop->index + 1])
+                    @endforeach
+                @endif
 
                 <button type="button" class="btn btn-secondary" id="addStepButton"><i class="fas fa-plus"></i> Add Step</button>
-                <a role="button" href=" {{ url('/recipe/' . $recipe->id) }}" class="btn btn-primary next-step" style="float: right;">Edit Recipe</a>
+                <a role="button" href=" {{ !$create ? url('/recipe/' . $recipe->id) : url('/') }}" class="btn btn-primary next-step" style="float: right;">{{ !$create ? "Edit " : "Create " }}Recipe</a>
 
             </div>
         </div>
