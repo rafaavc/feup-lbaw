@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Edit Recipe')
+@section('title', isset($recipe) ? "Edit Recipe" : "Create Recipe")
 
 @push('css')
     <link href="{{ asset('css/createRecipe.css') }}" rel="stylesheet" />
@@ -22,7 +22,7 @@
 
 @include('partials.breadcrumb', ['pages' => $breadcrumbPages, 'withoutMargin' => false])
 
-<h1 id="pageTitle" class="content-general-margin mt-3">Edit Recipe</h1>
+<h1 id="pageTitle" class="content-general-margin mt-3">{{ isset($recipe) ? "Edit Recipe" : "Create Recipe" }}</h1>
 <div id="create-recipe-stepper" class="content-general-margin mt-4 margin-to-footer card p-4">
     <div class="card-body">
         @include('partials.progressBar')
