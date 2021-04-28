@@ -91,6 +91,7 @@
                     <ul class="tag-list mt-2 mb-4">
                         @foreach ($recipe->tags as $tag)
                             <li value="{{ $tag->id }}">{{ $tag->name }}<span class="close">&times;</span></li>
+                            <input name="tag[]" value="{{ $tag->id }}" class="d-none">
                         @endforeach
                     </ul>
                 </div>

@@ -108,15 +108,22 @@ function tagSelected(event) {
     let tagList = event.target.closest(".row").nextElementSibling.querySelector(".tag-list");
     if(checkNotRepeatedTag(event.target.getAttribute("value"), tagList)) {
         let li = document.createElement("li");
-        li.value = event.target.getAttribute("value");
+        // li.value = event.target.getAttribute("value");
         li.textContent = event.target.textContent;
         let span = document.createElement("span");
         span.classList.add("close");
         span.innerHTML = "&times;";
         li.appendChild(span);
         tagList.append(li);
+        let hiddenInput = document.createElement("input");
+        hiddenInput.classList.add("d-none");
+        hiddenInput.setAttribute("value", event.target.getAttribute("value"));
+        hiddenInput.setAttribute("name", "tag[]");
+        tagList.appendChild(hiddenInput);
+
 
         span.addEventListener("click", function() {
+            this.parentElement.parentElement.removeChild(this.parentElement.nextElementSibling);
             this.parentElement.parentElement.removeChild(this.parentElement);
         });
     }
@@ -138,6 +145,7 @@ function removeTagListeners() {
 
     for (i = 0; i < closebtns.length; i++) {
         closebtns[i].addEventListener("click", function() {
+            this.parentElement.parentElement.removeChild(this.parentElement.nextElementSibling);
             this.parentElement.parentElement.removeChild(this.parentElement);
         });
     }
