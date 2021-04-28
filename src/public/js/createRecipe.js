@@ -9,6 +9,7 @@ addIngredientButton.addEventListener('click', () => {
 
 let stepCounter = 1;
 registerEventListeners();
+removeTagListeners();
 
 const addStepButton = document.querySelector('#addStepButton');
 addStepButton.addEventListener('click', () => {
@@ -45,12 +46,17 @@ function registerEventListeners() {
     const searchBoxTexts = Array.from(document.querySelectorAll("input.searchBox-text"));
     searchBoxTexts.forEach(searchBox => {
         searchBox.addEventListener('keyup', (event) => {
-            updateIngredients(event.target);
+            updateSearchItems(event.target);
         });
+    });
+
+    const tagAnchors = Array.from(document.querySelectorAll("a.tag"));
+    tagAnchors.forEach(ingredient => {
+        ingredient.addEventListener('click', tagSelected);
     });
 }
 
-function updateIngredients(target) {
+function updateSearchItems(target) {
     let filter = target.value.toUpperCase();
     let searchBoxIngredients = target.parentElement.nextElementSibling;
     let ingredients = searchBoxIngredients.getElementsByTagName("a");
@@ -64,7 +70,11 @@ function updateIngredients(target) {
 }
 
 function ingredientSelected(event) {
-    let target = event.target;
+    let searchInput = updateBox(event.target);
+    updateSearchItems(searchInput);
+}
+
+function updateBox(target) {
     let parent = target.closest("div.search-div").previousElementSibling;
     let ingredientOption = parent.querySelector("select.form-select option");
     ingredientOption.value = target.getAttribute("value")
@@ -72,5 +82,34 @@ function ingredientSelected(event) {
     target.closest("div.search-div").classList.toggle("show-searchBox");
     let searchInput = target.parentElement.previousElementSibling.firstElementChild;
     searchInput.value = "";
-    updateIngredients(searchInput);
+    return searchInput;
 }
+
+function tagSelected(event) {
+    let searchInput = updateBox(event.target);
+    updateSearchItems(searchInput);
+    let tagList = event.target.closest(".row").nextElementSibling.querySelector(".tag-list");
+    let li = document.createElement("li");
+    console.log(searchInput);
+    li.value = event.target.getAttribute("value");
+    li.textContent = event.target.textContent;
+    let span = document.createElement("span");
+    span.classList.add("close");
+    span.innerHTML = "&times;";
+    li.appendChild(span);
+    tagList.append(li);
+    removeTagListeners();
+}
+
+function removeTagListeners() {
+    let closebtns = document.getElementsByClassName("close");
+    let i;
+
+    for (i = 0; i < closebtns.length; i++) {
+        closebtns[i].addEventListener("click", function() {
+            this.parentElement.style.display = 'none';
+        });
+    }
+}
+
+
