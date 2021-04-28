@@ -5,6 +5,15 @@ addIngredientButton.addEventListener('click', () => {
     elem.innerHTML = addIngredientButton.previousElementSibling.outerHTML;
     addIngredientButton.parentNode.insertBefore(elem.content.firstElementChild, addIngredientButton);
     registerEventListeners();
+
+    // JS's bug...
+    const tagSelect = document.querySelector("select#tagSelect");
+    tagSelect.addEventListener('mousedown', (event) => {
+        event.preventDefault();
+        let target = event.target;
+        let searchDiv = target.closest("div.col-lg").nextElementSibling;
+        searchDiv.classList.toggle("show-searchBox");
+    });
 })
 
 let stepCounter = 1;
@@ -54,6 +63,14 @@ function registerEventListeners() {
     tagAnchors.forEach(ingredient => {
         ingredient.addEventListener('click', tagSelected);
     });
+
+    const tagSelect = document.querySelector("select#tagSelect");
+    tagSelect.addEventListener('mousedown', (event) => {
+        event.preventDefault();
+        let target = event.target;
+        let searchDiv = target.closest("div.col-lg").nextElementSibling;
+        searchDiv.classList.toggle("show-searchBox");
+    });
 }
 
 function updateSearchItems(target) {
@@ -89,16 +106,30 @@ function tagSelected(event) {
     let searchInput = updateBox(event.target);
     updateSearchItems(searchInput);
     let tagList = event.target.closest(".row").nextElementSibling.querySelector(".tag-list");
-    let li = document.createElement("li");
-    console.log(searchInput);
-    li.value = event.target.getAttribute("value");
-    li.textContent = event.target.textContent;
-    let span = document.createElement("span");
-    span.classList.add("close");
-    span.innerHTML = "&times;";
-    li.appendChild(span);
-    tagList.append(li);
-    removeTagListeners();
+    if(checkNotRepeatedTag(event.target.getAttribute("value"), tagList)) {
+        let li = document.createElement("li");
+        li.value = event.target.getAttribute("value");
+        li.textContent = event.target.textContent;
+        let span = document.createElement("span");
+        span.classList.add("close");
+        span.innerHTML = "&times;";
+        li.appendChild(span);
+        tagList.append(li);
+
+        span.addEventListener("click", function() {
+            this.parentElement.parentElement.removeChild(this.parentElement);
+        });
+    }
+}
+
+function checkNotRepeatedTag(tagId, tagList) {
+    let children = Array.from(tagList.children);
+    for(let i = 0; i < children.length; i++) {
+        if(children[i].getAttribute("value") == tagId)
+            return false;
+    }
+
+    return true;
 }
 
 function removeTagListeners() {
@@ -107,7 +138,7 @@ function removeTagListeners() {
 
     for (i = 0; i < closebtns.length; i++) {
         closebtns[i].addEventListener("click", function() {
-            this.parentElement.style.display = 'none';
+            this.parentElement.parentElement.removeChild(this.parentElement);
         });
     }
 }

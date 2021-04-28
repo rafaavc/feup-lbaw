@@ -69,7 +69,7 @@
                     </div>
                     <div class="col-lg">
                         <div class="form-floating">
-                            <select class="form-select" id="ingredientSelect" aria-label="Quantity unit">
+                            <select class="form-select" id="tagSelect" aria-label="Quantity unit">
                                 <option value="3">Tag Name</option>
                             </select>
 
