@@ -70,10 +70,9 @@
                     <div class="col-lg">
                         <div class="form-floating">
                             <select class="form-select" id="tagSelect" aria-label="Quantity unit">
-                                <option value="3">Tag Name</option>
+                                <option value="3">Tags</option>
                             </select>
 
-                            {{-- <input type="text" class="form-control" id="floatingInput" placeholder="Tomato" value="{{ isset($ingredient->name) ? $ingredient->name : "" }}"> --}}
                             <label for="floatingInput">Tags<span class='form-required'></span></label>
                         </div>
                     </div>
@@ -89,7 +88,11 @@
                     </div>
                 </div>
                 <div class="col-lg tags-collection mb-3">
-                    <ul class="tag-list mt-2 mb-4"></ul>
+                    <ul class="tag-list mt-2 mb-4">
+                        @foreach ($recipe->tags as $tag)
+                            <li value="{{ $tag->id }}">{{ $tag->name }}<span class="close">&times;</span></li>
+                        @endforeach
+                    </ul>
                 </div>
 
                 <h6 class="mb-3 d-inline-block">End Product Photos</h6> <span class='form-required'></span>
