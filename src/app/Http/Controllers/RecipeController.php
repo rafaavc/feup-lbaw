@@ -56,7 +56,6 @@ class RecipeController extends Controller
             $tags = Tag::all();
 
             return view('pages.editRecipe', [
-                'create' => true,
                 'units' => $units,
                 'categories' => $categories,
                 'totalIngredients' => $ingredients,
@@ -85,7 +84,6 @@ class RecipeController extends Controller
             $tags = Tag::all();
 
             return view('pages.editRecipe', [
-                'create' => false,
                 'recipe' => $recipe,
                 'ingredients' => $recipe->ingredients,
                 'tags' => $recipe->tags,
