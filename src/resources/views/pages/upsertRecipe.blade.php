@@ -26,7 +26,7 @@
 <div id="create-recipe-stepper" class="content-general-margin mt-4 margin-to-footer card p-4">
     <div class="card-body">
         @include('partials.progressBar')
-        <form class="recipe-form" method="POST" action="{{ url('/recipe/' . $recipe->id . '/edit') }}">
+        <form class="recipe-form" method="POST" action="{{ url('/recipe/' . (isset($recipe) ? ($recipe->id . '/edit') : '')) }}">
             {{ csrf_field() }}
             <div class="tab-content" id="pills-tabContent">
                     <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
@@ -161,7 +161,7 @@
                     @endif
 
                     <button type="button" class="btn btn-secondary" id="addStepButton"><i class="fas fa-plus"></i> Add Step</button>
-                    <a type="submit" role="button" class="submit-recipe-form btn btn-primary next-step" style="float: right;">Edit Recipe</a>
+                    <a type="submit" role="button" class="submit-recipe-form btn btn-primary next-step" style="float: right;">{{ isset($recipe) ? "Edit Recipe" : "Create Recipe" }}</a>
 
                 </div>
             </div>

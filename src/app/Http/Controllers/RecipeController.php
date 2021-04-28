@@ -55,7 +55,7 @@ class RecipeController extends Controller
             $ingredients = Ingredient::all();
             $tags = Tag::all();
 
-            return view('pages.editRecipe', [
+            return view('pages.upsertRecipe', [
                 'units' => $units,
                 'categories' => $categories,
                 'totalIngredients' => $ingredients,
@@ -83,7 +83,7 @@ class RecipeController extends Controller
             $ingredients = Ingredient::all();
             $tags = Tag::all();
 
-            return view('pages.editRecipe', [
+            return view('pages.upsertRecipe', [
                 'recipe' => $recipe,
                 'ingredients' => $recipe->ingredients,
                 'tags' => $recipe->tags,
