@@ -10,4 +10,5 @@
     </div>
     <h6 class="mb-3">Step Photos</h6>
     <input name="steps[{{ $index - 1 }}][image]" type="file" class="form-control mb-5">
+    {{-- <input name="steps" type="file" class="form-control mb-5"> --}}
 </div>

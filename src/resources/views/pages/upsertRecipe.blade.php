@@ -26,7 +26,7 @@
 <div id="create-recipe-stepper" class="content-general-margin mt-4 margin-to-footer card p-4">
     <div class="card-body">
         @include('partials.progressBar')
-        <form class="recipe-form" method="POST" action="{{ url('/recipe/' . (isset($recipe) ? ($recipe->id . '/edit') : '')) }}">
+        <form class="recipe-form" enctype="multipart/form-data" method="POST" action="{{ url('/recipe/' . (isset($recipe) ? ($recipe->id . '/edit') : '')) }}">
             {{ csrf_field() }}
             <div class="tab-content" id="pills-tabContent">
                     <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">

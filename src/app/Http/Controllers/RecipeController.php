@@ -12,6 +12,8 @@ use App\Models\Unit;
 use App\Models\Ingredient;
 use App\Models\Tag;
 use Exception;
+use Illuminate\Support\Facades\Storage;
+use Mockery\CountValidator\Exact;
 
 class RecipeController extends Controller
 {
@@ -110,11 +112,16 @@ class RecipeController extends Controller
     {
         // if (!Auth::check()) return redirect('/recipe/' . $recipeId);
         // $this->autorize(...);
+
         try {
+
+            // $files = $request->file('steps');
+            // $file = $files[0]['image'];
+            // $file->storeAs('public/images/steps/','1.jpeg');
             return $this->update($request, $recipeId);
-            return response()->json(['message' => $request->input()], 200);
+            return response()->json(['message' => 'Succeed!'], 200);
         } catch (\Exception $e) {
-            return response()->json(['message' => 'Invalid Request!'], 400);
+            return response()->json(['message' => 'Invalid Request'], 400);
         }
     }
 
@@ -242,6 +249,9 @@ class RecipeController extends Controller
             $numUserSteps = count($requestSteps);
 
             // Delete Step Images
+            foreach($recipe->steps()->get() as $step)
+                Storage::delete('public/images/steps/' . $step->id . '.jpeg');
+
             $recipe->steps()->forceDelete();
 
             for ($i = 0; $i < $numUserSteps; $i++) {
@@ -251,9 +261,11 @@ class RecipeController extends Controller
                 ]);
                 $step = $recipe->steps()->save($step);
 
-                // Save Step images
-            }
+                // Save step images
 
+                if($request->hasFile("steps." . $i))
+                    $request->file('steps')[$i]['image']->storeAs('public/images/steps/', $step->id . '.jpeg');
+            }
 
             // Ingredients
             $requestIngredients = $request->input('ingredients');
