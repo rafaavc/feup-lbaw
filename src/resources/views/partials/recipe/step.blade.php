@@ -1,4 +1,4 @@
-<h5 class="mb-3">Step {{ $index }}</h5>
+<h5 class="mb-3 step-number">Step {{ $index }}</h5>
 <div>
     <div class="form-floating mb-3">
         <input name="step[{{ $index - 1 }}][name]" type="text" class="form-control" id="stepName" placeholder="Preparation Time" value="{{ isset($step->name) ? $step->name : "" }}">

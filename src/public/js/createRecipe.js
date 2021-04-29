@@ -15,7 +15,8 @@ addIngredientButton.addEventListener('click', () => {
     });
 })
 
-let stepCounter = 1;
+let steps = document.querySelectorAll("h5.step-number");
+let stepCounter = steps[steps.length - 1].textContent.slice(-1);
 registerEventListeners();
 removeTagListeners();
 
