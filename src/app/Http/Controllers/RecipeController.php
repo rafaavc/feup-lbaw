@@ -11,6 +11,7 @@ use App\Models\Step;
 use App\Models\Unit;
 use App\Models\Ingredient;
 use App\Models\Tag;
+use Exception;
 
 class RecipeController extends Controller
 {
@@ -105,11 +106,12 @@ class RecipeController extends Controller
      * @param int $recipeId
      * @return \Illuminate\Http\Response
      */
-    public function editPost(Request $request)
+    public function editPost(Request $request, $recipeId)
     {
         // if (!Auth::check()) return redirect('/recipe/' . $recipeId);
         // $this->autorize(...);
         try {
+            return $this->update($request, $recipeId);
             return response()->json(['message' => $request->input()], 200);
         } catch (\Exception $e) {
             return response()->json(['message' => 'Invalid Request!'], 400);
@@ -220,20 +222,18 @@ class RecipeController extends Controller
             $recipe->description = $request->input('description');
             $recipe->difficulty = $request->input('difficulty');
             $recipe->servings = $request->input('servings');
-
             // Handle End Product Photos
 
             // Category
-            $category = Category::findOrFail($request->input('category')['id']);
+            $category = Category::findOrFail($request->input('category'));
             $recipe->category()->associate($category);
-
             // Tags
             $requestTags = $request->input('tags');
             $numUserTags = count($requestTags);
 
             $tagIds = array();
             for ($i = 0; $i < $numUserTags; $i++)
-                array_push($tagIds, $requestTags[$i]['id']);
+                array_push($tagIds, $requestTags[$i]);
 
             $recipe->tags()->sync($tagIds);
 
@@ -246,24 +246,25 @@ class RecipeController extends Controller
 
             for ($i = 0; $i < $numUserSteps; $i++) {
                 $step = new Step([
-                    'name' => $requestSteps[$i]->name,
-                    'description' => $requestSteps[$i]->description,
+                    'name' => $requestSteps[$i]["name"],
+                    'description' => $requestSteps[$i]["description"],
                 ]);
                 $step = $recipe->steps()->save($step);
 
                 // Save Step images
             }
 
+
             // Ingredients
             $requestIngredients = $request->input('ingredients');
             $numUserIngredients = count($requestIngredients);
 
-            $recipe->ingredients()->forceDelete();
+            $recipe->ingredients()->detach();
 
             for ($i = 0; $i < $numUserIngredients; $i++) {
-                $ingredientId = $requestIngredients[$i]['ingredient']['id'];
-                $recipe->ingredients->attach($ingredientId, [
-                    'id_unit' => $requestIngredients[$i]['unit']['id'],
+                $ingredientId = $requestIngredients[$i]['id'];
+                $recipe->ingredients()->attach($ingredientId, [
+                    'id_unit' => $requestIngredients[$i]['unit'],
                     'quantity' => $requestIngredients[$i]['quantity']
                 ]);
             }
@@ -275,7 +276,8 @@ class RecipeController extends Controller
             // return response()->json(['message' => 'Succeed!'], 200);
         } catch(\Exception $e) {
             DB::rollback();
-            return response()->json(['message' => 'Invalid Request!'], 400);
+            //return response()->json(['message' => $e->getMessage()], 400);
+            echo $e->getMessage();
         }
 
 

@@ -25,7 +25,7 @@
     </div>
     <div class="col-lg">
         <div class="form-floating">
-            <select name="ingredients[{{ $index }}][name]" class="form-select" id="ingredientSelect" aria-label="Quantity unit">
+            <select name="ingredients[{{ $index }}][id]" class="form-select" id="ingredientSelect" aria-label="Quantity unit">
                 <option value="{{ isset($ingredient) ?$ingredient->id : 0}}">{{ isset($ingredient) ? $ingredient->name : "" }}</option>
             </select>
 
