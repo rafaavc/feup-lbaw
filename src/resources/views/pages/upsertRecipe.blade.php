@@ -108,7 +108,7 @@
                         </div>
 
                         <h6 class="mb-3 d-inline-block">End Product Photos</h6> <span class='form-required'></span>
-                        <input name="images" type="file" class="form-control mb-3">
+                        <input name="images[]" type="file" class="form-control mb-3" multiple>
 
                         <button type="button" class="btn btn-primary next-step" style="float: right;">Next</button>
                     </div>

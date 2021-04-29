@@ -13,7 +13,8 @@ use App\Models\Ingredient;
 use App\Models\Tag;
 use Exception;
 use Illuminate\Support\Facades\Storage;
-use Mockery\CountValidator\Exact;
+use Illuminate\Support\Facades\File;
+
 
 class RecipeController extends Controller
 {
@@ -229,7 +230,13 @@ class RecipeController extends Controller
             $recipe->description = $request->input('description');
             $recipe->difficulty = $request->input('difficulty');
             $recipe->servings = $request->input('servings');
+
             // Handle End Product Photos
+            File::deleteDirectory(storage_path('app/public/images/recipes/' . $recipe->id));
+            if($request->hasFile('images')) {
+                foreach($request->file('images') as $file)
+                    $file->storeAs('public/images/recipes/'. $recipe->id, date('mdYHis') . uniqid() . '.jpeg');
+            }
 
             // Category
             $category = Category::findOrFail($request->input('category'));
@@ -262,7 +269,6 @@ class RecipeController extends Controller
                 $step = $recipe->steps()->save($step);
 
                 // Save step images
-
                 if($request->hasFile("steps." . $i))
                     $request->file('steps')[$i]['image']->storeAs('public/images/steps/', $step->id . '.jpeg');
             }
