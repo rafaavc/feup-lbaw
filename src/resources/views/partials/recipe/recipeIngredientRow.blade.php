@@ -3,13 +3,13 @@
         <div class="row g-3">
             <div class="col-sm">
                 <div class="form-floating">
-                    <input type="number" class="form-control" placeholder="0" aria-label="Quantity" id="quantityInput" value="{{ isset($ingredient->pivot->quantity) ? $ingredient->pivot->quantity : "" }}">
+                    <input name="ingredients[{{ $index }}][quantity]" type="number" class="form-control" placeholder="0" aria-label="Quantity" id="quantityInput" value="{{ isset($ingredient->pivot->quantity) ? $ingredient->pivot->quantity : "" }}">
                     <label for="quantityInput">Quantity <span class='form-required'></span></label>
                 </div>
             </div>
             <div class="col-sm">
                 <div class="form-floating">
-                    <select class="form-select" id="quantityUnitSelect" aria-label="Quantity unit">
+                    <select name="ingredients[{{ $index }}][unit]" class="form-select" id="quantityUnitSelect" aria-label="Quantity unit">
                         @foreach ($units as $unit)
                             @if(isset($ingredient) && $ingredient->pivot->id_unit === $unit->id)
                                 <option value="{{ $ingredient->pivot->id_unit }}" selected>{{ $unit->name }}</option>
@@ -25,7 +25,7 @@
     </div>
     <div class="col-lg">
         <div class="form-floating">
-            <select class="form-select" id="ingredientSelect" aria-label="Quantity unit">
+            <select name="ingredients[{{ $index }}][name]" class="form-select" id="ingredientSelect" aria-label="Quantity unit">
                 <option value="{{ isset($ingredient) ?$ingredient->id : 0}}">{{ isset($ingredient) ? $ingredient->name : "" }}</option>
             </select>
 

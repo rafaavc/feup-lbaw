@@ -34,13 +34,13 @@
                         <div class="row g-3 mb-3">
                             <div class="col-lg">
                                 <div class="form-floating">
-                                    <input type="text" class="form-control" id="floatingInput" placeholder="Baked Potatoes" value="{{ isset($recipe) ? $recipe->name : ""}}">
+                                    <input name="name" type="text" class="form-control" id="floatingInput" placeholder="Baked Potatoes" value="{{ isset($recipe) ? $recipe->name : ""}}">
                                     <label for="floatingInput">Recipe title <span class='form-required'></span></label>
                                 </div>
                             </div>
                             <div class="col-md">
                                 <div class="form-floating">
-                                    <select class="form-select" id="floatingSelectGrid" aria-label="Main category">
+                                    <select name="category" class="form-select" id="floatingSelectGrid" aria-label="Main category">
                                         @foreach ($categories as $category)
                                             @if(isset($recipe) && $recipe->category->id === $category->id)
                                                 <option value="{{ $category->id }}" selected>{{ $category->name }}</option>
@@ -54,16 +54,16 @@
                             </div>
                         </div>
                         <div class="form-floating mb-3">
-                            <textarea class="form-control" placeholder="Your awesome description here..." id="floatingTextarea2" style="height: 7rem">{{ isset($recipe) ? $recipe->description : "" }}</textarea>
+                            <textarea name="description" class="form-control" placeholder="Your awesome description here..." id="floatingTextarea2" style="height: 7rem">{{ isset($recipe) ? $recipe->description : "" }}</textarea>
                             <label for="floatingTextarea2"> Description <span class='form-required'></span></label>
                         </div>
                         <div class="row g-3 mb-4">
                             <div class="col-sm">
                                 <div class="form-floating">
                                     <select class="form-select" id="floatingSelectGrid" aria-label="Difficulty">
-                                        <option value="1" {{ (isset($recipe) && $recipe->difficulty === "Easy") ? "selected" : "" }}>Easy</option>
-                                        <option value="2" {{ (isset($recipe) && $recipe->difficulty === "Medium") ? "selected" : "" }}>Medium</option>
-                                        <option value="3" {{ (isset($recipe) && $recipe->difficulty === "Hard") ? "selected" : "" }}>Hard</option>
+                                        <option name="difficulty" value="1" {{ (isset($recipe) && $recipe->difficulty === "Easy") ? "selected" : "" }}>Easy</option>
+                                        <option name="difficulty" value="2" {{ (isset($recipe) && $recipe->difficulty === "Medium") ? "selected" : "" }}>Medium</option>
+                                        <option name="difficulty" value="3" {{ (isset($recipe) && $recipe->difficulty === "Hard") ? "selected" : "" }}>Hard</option>
                                     </select>
                                     <label for="floatingSelectGrid">Difficulty <span class='form-required'></span></label>
                                 </div>
@@ -71,7 +71,7 @@
 
                             <div class="col-lg">
                                 <div class="form-floating">
-                                    <input type="number" class="form-control" id="floatingInput" placeholder="Baked Potatoes" value="{{isset($recipe) ? $recipe->servings : 0 }}">
+                                    <input name="servings" type="number" class="form-control" id="floatingInput" placeholder="Baked Potatoes" value="{{isset($recipe) ? $recipe->servings : 0 }}">
                                     <label for="floatingInput">Number of servings <span class='form-required'></span></label>
                                 </div>
                             </div>
@@ -107,7 +107,7 @@
                         </div>
 
                         <h6 class="mb-3 d-inline-block">End Product Photos</h6> <span class='form-required'></span>
-                        <input type="file" class="form-control mb-3">
+                        <input name="images" type="file" class="form-control mb-3">
 
                         <button type="button" class="btn btn-primary next-step" style="float: right;">Next</button>
                     </div>
@@ -116,7 +116,7 @@
 
                         @if(isset($recipe))
                             @foreach ($ingredients as $ingredient)
-                                @include('partials.recipe.recipeIngredientRow', ['ingredient' => $ingredient, 'units' => $units, 'totalIngredients' => $totalIngredients])
+                                @include('partials.recipe.recipeIngredientRow', ['ingredient' => $ingredient, 'units' => $units, 'totalIngredients' => $totalIngredients, 'index' => $loop->index])
                             @endforeach
                         @else
                             @include('partials.recipe.recipeIngredientRow', ['units' => $units, 'totalIngredients' => $totalIngredients])
@@ -132,19 +132,19 @@
                 <div class="row g-3">
                     <div class="col-lg">
                         <div class="form-floating">
-                            <input type="number" class="form-control" id="preparationTime" placeholder="Preparation Time" value="{{isset($recipe) ? $recipe->preparation_time : 0}}">
+                            <input name="preparation_time" type="number" class="form-control" id="preparationTime" placeholder="Preparation Time" value="{{ isset($recipe) ? $recipe->preparation_time : 0}}">
                             <label for="preparationTime">Preparation <span class='form-required'></span></label>
                         </div>
                     </div>
                     <div class="col-lg">
                         <div class="form-floating">
-                            <input type="number" class="form-control" id="cookingTime" placeholder="Cooking Time" value="{{isset($recipe) ?  $recipe->cooking_time : 0 }}">
+                            <input name="cooking_time" type="number" class="form-control" id="cookingTime" placeholder="Cooking Time" value="{{ isset($recipe) ?  $recipe->cooking_time : 0 }}">
                             <label for="cookingTime">Cooking <span class='form-required'></span></label>
                         </div>
                     </div>
                     <div class="col-lg">
                         <div class="form-floating">
-                            <input type="number" class="form-control" id="additionalTime" placeholder="Additional Time" value="{{isset($recipe) ? $recipe->additional_time : 0 }}">
+                            <input name="additional_time" type="number" class="form-control" id="additionalTime" placeholder="Additional Time" value="{{ isset($recipe) ? $recipe->additional_time : 0 }}">
                             <label for="additionalTime">Additional</label>
                         </div>
                     </div>
