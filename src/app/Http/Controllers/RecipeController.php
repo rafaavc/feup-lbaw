@@ -12,6 +12,8 @@ use App\Models\Unit;
 use App\Models\Ingredient;
 use App\Models\Tag;
 use Exception;
+use Illuminate\Contracts\Queue\Job;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Validator;
@@ -79,8 +81,9 @@ class RecipeController extends Controller
      */
     public function edit($recipeId)
     {
-        // if (!Auth::check()) return redirect('/recipe/' . $recipeId);
-        // $this->autorize(...);
+        if (!Auth::check()) return redirect('/recipe/' . $recipeId);
+        $this->authorize('update', Recipe::findOrFail($recipeId));
+
         try {
             $recipe = Recipe::findOrFail($recipeId);
             $units = Unit::all();
@@ -100,7 +103,7 @@ class RecipeController extends Controller
                 'totalTags' => $tags
             ]);
         } catch (\Exception $e) {
-            return response()->json(['message' => 'Invalid Request!'], 400);
+            abort(403, 'Database Exception');
         }
     }
 
@@ -112,8 +115,8 @@ class RecipeController extends Controller
      */
     public function editPost(Request $request, $recipeId)
     {
-        // if (!Auth::check()) return redirect('/recipe/' . $recipeId);
-        // $this->autorize(...);
+        if (!Auth::check()) return redirect('/recipe/' . $recipeId);
+        $this->authorize('update', Recipe::findOrFail($recipeId));
 
         $this->validate($request, [
             'name' => 'required|string',
@@ -127,24 +130,28 @@ class RecipeController extends Controller
             'ingredients.*.quantity' => 'required|numeric|min:0',
             'ingredients.*.id_unit' => 'required|integer|exists:App\Models\Unit,id',
             'ingredients.*.id' => 'required|integer|exists:App\Models\Ingredient,id',
-            'preparation_time' => 'required|integer|min:1',
-            'cooking_time' => 'required|integer|min:1',
-            'additional_time' => 'required|integer|min:1',
+            'preparation_time' => 'required|integer|min:0',
+            'cooking_time' => 'required|integer|min:0',
+            'additional_time' => 'required|integer|min:0',
             'steps'  => 'required|array',
             'steps.*.name' => 'required|string',
         ], [
-            'tags.*.*' => 'Invalid Tag(s).',
+            'tags.*.*' => 'Invalid Tag.',
             'ingredients.*.quantity.*' => 'Invalid quantity.',
-            'ingredients.*.id_unit.*' => 'Invalid unit(s).',
-            'ingredients.*.id.*' => 'Invalid ingredient(s).',
+            'ingredients.*.id_unit.*' => 'Invalid unit.',
+            'ingredients.*.id.*' => 'Invalid ingredient.',
             'steps.*.name.*' => 'Invalid Step name.'
         ]);
 
         try {
-            return $this->update($request, $recipeId);
-            return response()->json(['message' => 'Succeed!'], 200);
+            $apiMessage = $this->update($request, $recipeId);
+
+            if($apiMessage->status() != 200)
+                throw new Exception('Database Exception');
+
+            return redirect('/recipe/' . $recipeId);
         } catch (\Exception $e) {
-            return response()->json(['message' => 'Invalid Request'], 400);
+            return redirect()->back()->withErrors('Database Exception!');
         }
     }
 
@@ -241,6 +248,8 @@ class RecipeController extends Controller
      */
     public function update(Request $request, $recipeId)
     {
+        // Still missing token verification
+
         DB::beginTransaction();
         try {
             $recipe = Recipe::findOrFail($recipeId);
@@ -313,16 +322,12 @@ class RecipeController extends Controller
 
             DB::commit();
             return response()->json(['message' => 'Succeed!'], 200);
-            // return response()->json(['message' => 'Succeed!'], 200);
+            // return json_encode(['message' => 'Succeed!'], 200);
         } catch(\Exception $e) {
             DB::rollback();
-            //return response()->json(['message' => $e->getMessage()], 400);
-            echo $e->getMessage();
+            return response()->json(['error' => 'Invalid Request'], 400);
+            // return json_encode(['error' => 'Invalid Request'], 400);
         }
-
-
-
-        // $this->autorize(...);
     }
 
     /**
