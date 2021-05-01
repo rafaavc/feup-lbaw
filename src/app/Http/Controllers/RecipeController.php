@@ -147,11 +147,11 @@ class RecipeController extends Controller
             $apiMessage = $this->update($request, $recipeId);
 
             if($apiMessage->status() != 200)
-                throw new Exception('Database Exception');
+                throw new Exception('Database Exception!');
 
-            return redirect('/recipe/' . $recipeId);
+            return redirect('/recipe/' . $recipeId)->with('message', 'Recipe successfully updated!');
         } catch (\Exception $e) {
-            return redirect()->back()->withErrors('Database Exception!');
+            return redirect()->back()->withErrors($e->getMessage());
         }
     }
 
@@ -325,7 +325,7 @@ class RecipeController extends Controller
             // return json_encode(['message' => 'Succeed!'], 200);
         } catch(\Exception $e) {
             DB::rollback();
-            return response()->json(['error' => 'Invalid Request'], 400);
+            return response()->json(['error' => 'Invalid Request!'], 400);
             // return json_encode(['error' => 'Invalid Request'], 400);
         }
     }
