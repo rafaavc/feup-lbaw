@@ -117,25 +117,27 @@ class RecipeController extends Controller
 
         $this->validate($request, [
             'name' => 'required|string',
-            'category' => 'required|integer|between:1,7',
+            'category' => 'required|integer|exists:App\Models\Category,id',
             'description' => 'required|string',
             'difficulty' => 'required|string|in:easy,medium,hard,very hard',
             'servings' => 'required|integer|min:1',
             'tags'  => 'required|array',
-            'tags.*' => 'integer|min:1',
+            'tags.*' => 'integer|exists:App\Models\Tag,id',
             'ingredients' => 'required|array',
-            'ingredients.*.*' => 'required|numeric|min:0',
+            'ingredients.*.quantity' => 'required|numeric|min:0',
+            'ingredients.*.unit' => 'required|integer|exists:App\Models\Unit,id',
+            'ingredients.*.id' => 'required|integer|exists:App\Models\Ingredient,id',
             'preparation_time' => 'required|integer|min:1',
             'cooking_time' => 'required|integer|min:1',
             'additional_time' => 'required|integer|min:1',
             'steps'  => 'required|array',
             'steps.*.name' => 'required|string',
         ], [
-            'tags.*' => 'Invalid Tag(s).',
-            'ingredients.*.quantity' => 'Invalid quantity.',
-            'ingredients.*.unit' => 'Invalid unit.',
-            'ingredients.*.id' => 'Invalid ingredient.',
-            'steps.*.name' => 'Invalid Step name.'
+            'tags.*.*' => 'Invalid Tag(s).',
+            'ingredients.*.quantity.*' => 'Invalid quantity.',
+            'ingredients.*.unit.*' => 'Invalid unit(s).',
+            'ingredients.*.id.*' => 'Invalid ingredient(s).',
+            'steps.*.name.*' => 'Invalid Step name.'
         ]);
 
         try {
