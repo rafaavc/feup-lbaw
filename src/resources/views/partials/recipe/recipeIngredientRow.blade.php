@@ -1,3 +1,8 @@
+@php
+    if (!isset($index))
+        $index = 0;
+@endphp
+
 <div class="row g-3 mb-3">
     <div class="col-lg">
         <div class="row g-3">

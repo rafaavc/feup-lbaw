@@ -56,6 +56,7 @@ class RecipeController extends Controller
      */
     public function create()
     {
+        if (!Auth::check()) return redirect('/feed');
         try {
             $units = Unit::all();
             $categories = Category::all();
@@ -69,7 +70,53 @@ class RecipeController extends Controller
                 'totalTags' => $tags
             ]);
         } catch (\Exception $e) {
-            return response()->json(['message' => 'Invalid Request!'], 400);
+            abort(403, 'Database Exception');
+        }
+    }
+
+    /**
+     * R1012: /recipe
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function createRecipe(Request $request)
+    {
+        if (!Auth::check()) return redirect('/feed');
+
+        $this->validate($request, [
+            'name' => 'required|string',
+            'category' => 'required|integer|exists:App\Models\Category,id',
+            'description' => 'required|string',
+            'difficulty' => 'required|string|in:easy,medium,hard,very hard',
+            'servings' => 'required|integer|min:1',
+            'tags'  => 'required|array',
+            'tags.*' => 'integer|exists:App\Models\Tag,id',
+            'ingredients' => 'required|array',
+            'ingredients.*.quantity' => 'required|numeric|min:0',
+            'ingredients.*.id_unit' => 'required|integer|exists:App\Models\Unit,id',
+            'ingredients.*.id' => 'required|integer|exists:App\Models\Ingredient,id',
+            'preparation_time' => 'required|integer|min:0',
+            'cooking_time' => 'required|integer|min:0',
+            'additional_time' => 'required|integer|min:0',
+            'steps'  => 'required|array',
+            'steps.*.name' => 'required|string',
+        ], [
+            'tags.*.*' => 'Invalid Tag.',
+            'ingredients.*.quantity.*' => 'Invalid quantity.',
+            'ingredients.*.id_unit.*' => 'Invalid unit.',
+            'ingredients.*.id.*' => 'Invalid ingredient.',
+            'steps.*.name.*' => 'Invalid Step name.'
+        ]);
+
+        try {
+            $apiMessage = $this->create($request);
+
+            if($apiMessage->status() != 200)
+                throw new Exception('Database Exception!');
+
+            return redirect('/recipe/1')->with('message', 'Recipe successfully updated!'); // TODO: change to the created recipe page
+        } catch (\Exception $e) {
+            return redirect()->back()->withErrors($e->getMessage());
         }
     }
 
@@ -163,6 +210,8 @@ class RecipeController extends Controller
      */
     public function insert(Request $request)
     {
+
+        dd("CREATED!!!!!!!!!!!!!!!!!!");
         DB::beginTransaction();
         try {
             $recipe = new Recipe();
@@ -221,7 +270,6 @@ class RecipeController extends Controller
 
             DB::commit();
             return response()->json(['message' => 'Succeed!'], 200);
-            // return response()->json(['message' => 'Succeed!'], 200);
         } catch(\Exception $e) {
             DB::rollback();
             return response()->json(['message' => 'Invalid Request!'], 400);
