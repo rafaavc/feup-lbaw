@@ -125,20 +125,24 @@ class RecipeController extends Controller
             'difficulty' => 'required|string|in:easy,medium,hard,very hard',
             'servings' => 'required|integer|min:1',
             'tags'  => 'required|array',
-            'tags.*' => 'integer|exists:App\Models\Tag,id',
+            'tags.*' => 'integer|exists:App\Models\Tag,id|distinct',
             'ingredients' => 'required|array',
             'ingredients.*.quantity' => 'required|numeric|min:0',
             'ingredients.*.id_unit' => 'required|integer|exists:App\Models\Unit,id',
-            'ingredients.*.id' => 'required|integer|exists:App\Models\Ingredient,id',
+            'ingredients.*.id' => 'required|integer|exists:App\Models\Ingredient,id|distinct',
             'preparation_time' => 'required|integer|min:0',
             'cooking_time' => 'required|integer|min:0',
             'additional_time' => 'required|integer|min:0',
             'steps'  => 'required|array',
             'steps.*.name' => 'required|string',
+            'steps.*.photo' => 'nullable|file|image',
+            'images.*' => 'nullable|file|image'
         ], [
+            'tags.*.distinct' => 'Repeated tags are not allowed.',
             'tags.*.*' => 'Invalid Tag.',
             'ingredients.*.quantity.*' => 'Invalid quantity.',
             'ingredients.*.id_unit.*' => 'Invalid unit.',
+            'ingredients.*.id.distinct' => 'Repeated ingredients are not allowed.',
             'ingredients.*.id.*' => 'Invalid ingredient.',
             'steps.*.name.*' => 'Invalid Step name.'
         ]);
@@ -249,6 +253,35 @@ class RecipeController extends Controller
     public function update(Request $request, $recipeId)
     {
         // Still missing token verification
+
+        $this->validate($request, [
+            'name' => 'required|string',
+            'category' => 'required|integer|exists:App\Models\Category,id',
+            'description' => 'required|string',
+            'difficulty' => 'required|string|in:easy,medium,hard,very hard',
+            'servings' => 'required|integer|min:1',
+            'tags'  => 'required|array',
+            'tags.*' => 'integer|exists:App\Models\Tag,id|distinct',
+            'ingredients' => 'required|array',
+            'ingredients.*.quantity' => 'required|numeric|min:0',
+            'ingredients.*.id_unit' => 'required|integer|exists:App\Models\Unit,id',
+            'ingredients.*.id' => 'required|integer|exists:App\Models\Ingredient,id|distinct',
+            'preparation_time' => 'required|integer|min:0',
+            'cooking_time' => 'required|integer|min:0',
+            'additional_time' => 'required|integer|min:0',
+            'steps'  => 'required|array',
+            'steps.*.name' => 'required|string',
+            'steps.*.photo' => 'nullable|file|image',
+            'images.*' => 'nullable|file|image'
+        ], [
+            'tags.*.distinct' => 'Repeated tags are not allowed.',
+            'tags.*.*' => 'Invalid Tag.',
+            'ingredients.*.quantity.*' => 'Invalid quantity.',
+            'ingredients.*.id_unit.*' => 'Invalid unit.',
+            'ingredients.*.id.distinct' => 'Repeated ingredients are not allowed.',
+            'ingredients.*.id.*' => 'Invalid ingredient.',
+            'steps.*.name.*' => 'Invalid Step name.'
+        ]);
 
         DB::beginTransaction();
         try {
