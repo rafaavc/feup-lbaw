@@ -14,6 +14,7 @@ use App\Models\Tag;
 use Exception;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Validator;
 
 
 class RecipeController extends Controller
@@ -114,11 +115,30 @@ class RecipeController extends Controller
         // if (!Auth::check()) return redirect('/recipe/' . $recipeId);
         // $this->autorize(...);
 
-        try {
+        $this->validate($request, [
+            'name' => 'required|string',
+            'category' => 'required|integer|between:1,7',
+            'description' => 'required|string',
+            'difficulty' => 'required|string|in:easy,medium,hard,very hard',
+            'servings' => 'required|integer|min:1',
+            'tags'  => 'required|array',
+            'tags.*' => 'integer|min:1',
+            'ingredients' => 'required|array',
+            'ingredients.*.*' => 'required|numeric|min:0',
+            'preparation_time' => 'required|integer|min:1',
+            'cooking_time' => 'required|integer|min:1',
+            'additional_time' => 'required|integer|min:1',
+            'steps'  => 'required|array',
+            'steps.*.name' => 'required|string',
+        ], [
+            'tags.*' => 'Invalid Tag(s).',
+            'ingredients.*.quantity' => 'Invalid quantity.',
+            'ingredients.*.unit' => 'Invalid unit.',
+            'ingredients.*.id' => 'Invalid ingredient.',
+            'steps.*.name' => 'Invalid Step name.'
+        ]);
 
-            // $files = $request->file('steps');
-            // $file = $files[0]['image'];
-            // $file->storeAs('public/images/steps/','1.jpeg');
+        try {
             return $this->update($request, $recipeId);
             return response()->json(['message' => 'Succeed!'], 200);
         } catch (\Exception $e) {

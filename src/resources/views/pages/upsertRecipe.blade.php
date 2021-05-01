@@ -24,6 +24,15 @@
 
 <h1 id="pageTitle" class="content-general-margin mt-3">{{ isset($recipe) ? "Edit Recipe" : "Create Recipe" }}</h1>
 <div id="create-recipe-stepper" class="content-general-margin mt-4 margin-to-footer card p-4">
+
+    @if($errors->any())
+        <div class="alert alert-danger" role="alert">
+            @foreach($errors->all() as $error)
+                {{ $error }}<br/>
+            @endforeach
+        </div>
+    @endif
+
     <div class="card-body">
         @include('partials.progressBar')
         <form class="recipe-form" enctype="multipart/form-data" method="POST" action="{{ url('/recipe/' . (isset($recipe) ? ($recipe->id . '/edit') : '')) }}">
