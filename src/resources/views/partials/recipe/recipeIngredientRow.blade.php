@@ -9,7 +9,7 @@
             </div>
             <div class="col-sm">
                 <div class="form-floating">
-                    <select name="ingredients[{{ $index }}][unit]" class="form-select" id="quantityUnitSelect" aria-label="Quantity unit">
+                    <select name="ingredients[{{ $index }}][id_unit]" class="form-select" id="quantityUnitSelect" aria-label="Quantity unit">
                         @foreach ($units as $unit)
                             @if(isset($ingredient) && $ingredient->pivot->id_unit === $unit->id)
                                 <option value="{{ $ingredient->pivot->id_unit }}" selected>{{ $unit->name }}</option>

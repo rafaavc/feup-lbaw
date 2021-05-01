@@ -125,7 +125,7 @@ class RecipeController extends Controller
             'tags.*' => 'integer|exists:App\Models\Tag,id',
             'ingredients' => 'required|array',
             'ingredients.*.quantity' => 'required|numeric|min:0',
-            'ingredients.*.unit' => 'required|integer|exists:App\Models\Unit,id',
+            'ingredients.*.id_unit' => 'required|integer|exists:App\Models\Unit,id',
             'ingredients.*.id' => 'required|integer|exists:App\Models\Ingredient,id',
             'preparation_time' => 'required|integer|min:1',
             'cooking_time' => 'required|integer|min:1',
@@ -135,7 +135,7 @@ class RecipeController extends Controller
         ], [
             'tags.*.*' => 'Invalid Tag(s).',
             'ingredients.*.quantity.*' => 'Invalid quantity.',
-            'ingredients.*.unit.*' => 'Invalid unit(s).',
+            'ingredients.*.id_unit.*' => 'Invalid unit(s).',
             'ingredients.*.id.*' => 'Invalid ingredient(s).',
             'steps.*.name.*' => 'Invalid Step name.'
         ]);
@@ -304,7 +304,7 @@ class RecipeController extends Controller
             for ($i = 0; $i < $numUserIngredients; $i++) {
                 $ingredientId = $requestIngredients[$i]['id'];
                 $recipe->ingredients()->attach($ingredientId, [
-                    'id_unit' => $requestIngredients[$i]['unit'],
+                    'id_unit' => $requestIngredients[$i]['id_unit'],
                     'quantity' => $requestIngredients[$i]['quantity']
                 ]);
             }
