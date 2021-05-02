@@ -18,6 +18,7 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Validator;
 
+use File;
 
 class RecipeController extends Controller
 {
@@ -38,6 +39,8 @@ class RecipeController extends Controller
             array_push($commentsWithFathersIds, $comment->id);
         }
 
+        $images = File::files(storage_path('app/public/images/recipes/'.$recipe->id.'/'));
+
         return view('pages.recipe', [
             'recipe' => $recipe,
             'ingredients' => $recipe->ingredients,
@@ -45,6 +48,7 @@ class RecipeController extends Controller
             'comments' => $recipe->comments()->whereNotIn('id', $commentsWithFathersIds)->get(),
             'author' => $recipe->author,
             'steps' => $recipe->steps,
+            'images' => $images,
             'suggested' => []
         ]);
     }

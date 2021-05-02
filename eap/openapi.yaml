@@ -253,7 +253,7 @@ paths:
         get:
             operationId: R1012
             summary: 'R1012: Create Recipe.'
-            description: 'Provides the create recipe page. Access: PUB'
+            description: 'Provides the create recipe page. Access: MBR'
             tags: 
                 - 'M02: Recipes, categories, groups and members'
             responses:    

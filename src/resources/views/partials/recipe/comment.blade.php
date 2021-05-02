@@ -1,7 +1,7 @@
 <div class="card comment <?= $depth !== 0 ? "subcomment" : "" ?>">
     <div class="row g-0 p-3">
         <div class="col">
-            <img class="d-inline-block rounded-circle" src="{{ asset('images/people/'. $comment->owner->id .'.jpeg') }}" alt="...">
+            <img class="d-inline-block rounded-circle" src="{{ asset('storage/images/people/'. $comment->owner->id .'.jpeg') }}" alt="...">
         </div>
         <div class="col-5 card-body">
             <h6 class="card-title"><a href="{{ url('/member/'.$comment->owner->username.'/recipes') }}">{{ $comment->owner->name }}</a> {{ isset($comment->rating) ? "reviewed" : "commented" }}:</h6>
