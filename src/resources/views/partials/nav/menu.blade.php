@@ -33,6 +33,8 @@ $adminDropdown = [
     ]
 ];
 
+$loggedInName = Auth::check() ? Auth::user()->name : "nonexistant";
+
 $member = [
     "notifications" => [
         "icon" => "bell",
@@ -42,7 +44,7 @@ $member = [
         "icon" => "comments",
         "popover" => "This is the content of the second popover"
     ],
-    "jamie oliver" => [
+    $loggedInName => [
         "icon" => "user-circle",
         "drop" => $dropdown
     ]

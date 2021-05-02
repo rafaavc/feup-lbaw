@@ -106,7 +106,7 @@ CREATE TABLE tb_recipe (
     additional_time integer,
     creation_time datetime NOT NULL,
     id_member integer NOT NULL,
-    id_category integer,
+    id_category integer NOT NULL,
     id_group integer,
     score real DEFAULT 0,
 

@@ -14,6 +14,10 @@ class Recipe extends Model
         'cooking_time', 'additional_time', 'creation_time'
     ];
 
+    protected $cast = [
+        'creation_time' => 'datetime'
+    ];
+
     public function ingredients() {
         return $this->belongsToMany(Ingredient::class, 'tb_ingredient_recipe', 'id_recipe', 'id_ingredient')
             ->withPivot("id_unit", "quantity");
