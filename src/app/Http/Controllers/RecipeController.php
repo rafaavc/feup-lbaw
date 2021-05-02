@@ -219,13 +219,6 @@ class RecipeController extends Controller
 
             $recipe->save();
 
-            // Handle End Product Photos
-
-            if($request->hasFile('images')) {
-                foreach($request->file('images') as $file)
-                    $file->storeAs('public/images/recipes/'. $recipe->id, date('mdYHis') . uniqid() . '.jpeg');
-            }
-
             // Tags
             $requestTags = $request->input('tags');
             $numUserTags = count($requestTags);
@@ -235,6 +228,20 @@ class RecipeController extends Controller
                 array_push($tagIds, $requestTags[$i]);
 
             $recipe->tags()->sync($tagIds);
+
+            // Ingredients
+            $requestIngredients = $request->input('ingredients');
+            $numUserIngredients = count($requestIngredients);
+
+            $recipe->ingredients()->detach();
+
+            for ($i = 0; $i < $numUserIngredients; $i++) {
+                $ingredientId = $requestIngredients[$i]['id'];
+                $recipe->ingredients()->attach($ingredientId, [
+                    'id_unit' => $requestIngredients[$i]['id_unit'],
+                    'quantity' => $requestIngredients[$i]['quantity']
+                ]);
+            }
 
             // Steps
             $requestSteps = $request->input('steps');
@@ -254,25 +261,16 @@ class RecipeController extends Controller
                     $request->file('steps')[$i]['image']->storeAs('public/images/steps/', $step->id . '.jpeg');
             }
 
-            // Ingredients
-            $requestIngredients = $request->input('ingredients');
-            $numUserIngredients = count($requestIngredients);
+            // Handle End Product Photos
 
-            $recipe->ingredients()->detach();
-
-            for ($i = 0; $i < $numUserIngredients; $i++) {
-                $ingredientId = $requestIngredients[$i]['id'];
-                $recipe->ingredients()->attach($ingredientId, [
-                    'id_unit' => $requestIngredients[$i]['id_unit'],
-                    'quantity' => $requestIngredients[$i]['quantity']
-                ]);
+            if($request->hasFile('images')) {
+                foreach($request->file('images') as $file)
+                    $file->storeAs('public/images/recipes/'. $recipe->id, date('mdYHis') . uniqid() . '.jpeg');
             }
 
             DB::commit();
             return response()->json(['message' => 'Succeed!', 'recipe_id' => $recipe->id], 200);
         } catch(\Exception $e) {
-
-
             DB::rollback();
             return response()->json(['message' => 'Invalid Request!'], 400);
         }
@@ -287,7 +285,7 @@ class RecipeController extends Controller
     public function select($recipeId)
     {
         $recipe = Recipe::findOrFail($recipeId);
-        $this->authorize('select', $recipe);
+        // $this->authorize('select', $recipe);
         return $recipe;
     }
 
@@ -316,13 +314,6 @@ class RecipeController extends Controller
             $recipe->difficulty = $request->input('difficulty');
             $recipe->servings = $request->input('servings');
 
-            // Handle End Product Photos
-            File::cleanDirectory(storage_path('app/public/images/recipes/' . $recipe->id));
-            if($request->hasFile('images')) {
-                foreach($request->file('images') as $file)
-                    $file->storeAs('public/images/recipes/'. $recipe->id, date('mdYHis') . uniqid() . '.jpeg');
-            }
-
             // Category
             $category = Category::findOrFail($request->input('category'));
             $recipe->category()->associate($category);
@@ -335,6 +326,20 @@ class RecipeController extends Controller
                 array_push($tagIds, $requestTags[$i]);
 
             $recipe->tags()->sync($tagIds);
+
+            // Ingredients
+            $requestIngredients = $request->input('ingredients');
+            $numUserIngredients = count($requestIngredients);
+
+            $recipe->ingredients()->detach();
+
+            for ($i = 0; $i < $numUserIngredients; $i++) {
+                $ingredientId = $requestIngredients[$i]['id'];
+                $recipe->ingredients()->attach($ingredientId, [
+                    'id_unit' => $requestIngredients[$i]['id_unit'],
+                    'quantity' => $requestIngredients[$i]['quantity']
+                ]);
+            }
 
             // Steps
             $requestSteps = $request->input('steps');
@@ -358,29 +363,19 @@ class RecipeController extends Controller
                     $request->file('steps')[$i]['image']->storeAs('public/images/steps/', $step->id . '.jpeg');
             }
 
-            // Ingredients
-            $requestIngredients = $request->input('ingredients');
-            $numUserIngredients = count($requestIngredients);
-
-            $recipe->ingredients()->detach();
-
-            for ($i = 0; $i < $numUserIngredients; $i++) {
-                $ingredientId = $requestIngredients[$i]['id'];
-                $recipe->ingredients()->attach($ingredientId, [
-                    'id_unit' => $requestIngredients[$i]['id_unit'],
-                    'quantity' => $requestIngredients[$i]['quantity']
-                ]);
+            // Handle End Product Photos
+            File::cleanDirectory(storage_path('app/public/images/recipes/' . $recipe->id));
+            if($request->hasFile('images')) {
+                foreach($request->file('images') as $file)
+                    $file->storeAs('public/images/recipes/'. $recipe->id, date('mdYHis') . uniqid() . '.jpeg');
             }
-
             $recipe->save();
 
             DB::commit();
             return response()->json(['message' => 'Succeed!'], 200);
-            // return json_encode(['message' => 'Succeed!'], 200);
         } catch(\Exception $e) {
             DB::rollback();
             return response()->json(['error' => 'Invalid Request!'], 400);
-            // return json_encode(['error' => 'Invalid Request'], 400);
         }
     }
 
