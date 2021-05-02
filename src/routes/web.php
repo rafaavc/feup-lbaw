@@ -35,9 +35,3 @@ Route::get('/recipe/{id}', 'RecipeController@view');
 // Content creation
 Route::get('/recipe', 'RecipeController@create');
 
-// Recipe API
-Route::post('api/recipe', 'RecipeController@insert');
-Route::get('api/recipe/{recipe_id}', 'RecipeController@select');
-Route::post('api/recipe/{recipe_id}', 'RecipeController@update');
-Route::delete('api/recipe/{recipe_id}', 'RecipeController@delete');
-
