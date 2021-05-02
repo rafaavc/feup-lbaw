@@ -234,6 +234,11 @@ class RecipeController extends Controller
 
             $recipe->save();
 
+            if($request->hasFile('images')) {
+                foreach($request->file('images') as $file)
+                    $file->storeAs('public/images/recipes/'. $recipe->id, date('mdYHis') . uniqid() . '.jpeg');
+            }
+
             // Category
             $category = Category::findOrFail($request->input('category'));
             $recipe->category()->associate($category);
