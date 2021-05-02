@@ -81,6 +81,7 @@ class RecipeController extends Controller
      */
     public function createRecipe(Request $request)
     {
+
         if (!Auth::check()) return redirect('/feed');
 
         $this->validate($request, [
@@ -109,7 +110,7 @@ class RecipeController extends Controller
         ]);
 
         try {
-            $apiMessage = $this->create($request);
+            $apiMessage = $this->insert($request);
 
             if($apiMessage->status() != 200)
                 throw new Exception('Database Exception!');
@@ -214,8 +215,6 @@ class RecipeController extends Controller
      */
     public function insert(Request $request)
     {
-
-        dd("CREATED!!!!!!!!!!!!!!!!!!");
         DB::beginTransaction();
         try {
             $recipe = new Recipe();
@@ -230,47 +229,99 @@ class RecipeController extends Controller
 
             // Handle End Product Photos
 
+
             // Category
-            $category = Category::findOrFail($request->input('category')['id']);
+            $category = Category::findOrFail($request->input('category'));
             $recipe->category()->associate($category);
 
-            // Tags
+
+            $recipe->tags = [1,2];
+
+
+
+
+
+            /* $recipe->tags = $request->input('servings');
+            $recipe->tags()->detach();
+
+
+
+
+ */
+
+
+            /* // Tags
             $requestTags = $request->input('tags');
             $numUserTags = count($requestTags);
 
-            $tagIds = array();
-            for ($i = 0; $i < $numUserTags; $i++)
-                array_push($tagIds, $requestTags[$i]['id']);
 
-            $recipe->tags()->sync($tagIds);
+
+            for ($i = 0; $i < $numUserTags; $i++) {
+                $tagId = $requestTags[$i];
+                var_dump($tagId);exit(1);
+                $recipe->tags()->attach($tagId, [
+                    'id_tag' => $requestTags[$i][0]
+                ]);
+                //array_push($tagIds, $requestTags[$i]);
+            }
+
+            var_dump($requestTags);exit(1); */
 
             // Steps
             $requestSteps = $request->input('steps');
             $numUserSteps = count($requestSteps);
 
+
+            // $recipe->steps()->forceDelete();
+
+            // $recipe->steps()->save();
+
+            $steps = array();
+
             for ($i = 0; $i < $numUserSteps; $i++) {
                 $step = new Step([
-                    'name' => $requestSteps[$i]->name,
-                    'description' => $requestSteps[$i]->description,
+                    'name' => $requestSteps[$i]["name"],
+                    'description' => $requestSteps[$i]["description"],
                 ]);
-                $step = $recipe->steps()->save($step);
 
-                // Save Step images
+                array_push($steps, $step);
+
+                // Save step images
+                /* if($request->hasFile("steps." . $i))
+                    $request->file('steps')[$i]['image']->storeAs('public/images/steps/', $step->id . '.jpeg'); */
             }
+
+            $recipe->steps = $steps;
+
+
+
+             $recipe->ingredients = [1,2];
+
+
+
 
             // Ingredients
-            $requestIngredients = $request->input('ingredients');
+            /* $requestIngredients = $request->input('ingredients');
             $numUserIngredients = count($requestIngredients);
 
+            $ingredients = array();
+
             for ($i = 0; $i < $numUserIngredients; $i++) {
-                $ingredientId = $requestIngredients[$i]['ingredient']['id'];
-                $recipe->ingredients->attach($ingredientId, [
-                    'id_unit' => $requestIngredients[$i]['unit']['id'],
+                $ingredientId = $requestIngredients[$i]['id'];
+                $recipe->ingredients()->attach($ingredientId, [
+                    'id_unit' => $requestIngredients[$i]['id_unit'],
                     'quantity' => $requestIngredients[$i]['quantity']
                 ]);
-            }
+            } */
 
-            $recipe->save();
+
+
+
+            $result = $recipe->save();
+
+            var_dump($result);
+            exit(1);
+
 
             DB::commit();
             return response()->json(['message' => 'Succeed!'], 200);
