@@ -42,7 +42,7 @@ class RecipeController extends Controller
         $images = $this->getRecipeImages($recipe->id);
 
         $suggested = Recipe::inRandomOrder()->where('id', '!=', $recipe->id)->limit(4)->get();
-        foreach ($suggested as $idx => $recipeCard) {
+        foreach ($suggested as $recipeCard) {
             $recipeCard->image = $this->getRecipeImages($recipeCard->id)[0];
             $recipeCard->owner = $recipeCard->author->name;
         }

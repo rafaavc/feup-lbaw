@@ -26,19 +26,7 @@
             <h1 class="col-11">{{ $recipe->name }}</h1>
             <div class="col-9">
                 <div class="rating">
-                    <span class="small me-2">
-                        @if($recipe->score == 0)
-                            No ratings
-                        @else
-                            {{ $recipe->score }} ({{ $recipe->num_rating }} ratings)
-                        @endif
-                    </span>
-                    @php
-                        $rounded = round($recipe->score);
-                    @endphp
-                    @for($i = 0; $i < 5; $i++)
-                        <i class="fas fa-star{{ $i < $rounded ? " active" : "" }}"></i>
-                    @endfor
+                    @include('partials.rating', [ 'score' => $recipe->score, 'num_rating' => $recipe->num_rating ])
                 </div>
                 <div class="row g-0 py-2 text-center text-md-start">
                     <table>

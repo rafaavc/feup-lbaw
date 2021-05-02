@@ -10,6 +10,6 @@
             <small><i class="fas fa-paper-plane me-2"></i>
                 Comment</small>
         </button>
-        @include('partials.rating')
+        @include('partials.ratinginput')
     </div>
 </section>
