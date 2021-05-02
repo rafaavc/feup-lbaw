@@ -449,8 +449,18 @@ class RecipeController extends Controller
     {
         $recipe = Recipe::find($recipeId);
         $this->authorize('delete', $recipe);
-        $recipe->delete();
+
+        foreach ($recipe->steps as $step) {
+            $imgPath = storage_path('app/public/images/steps/' . $step->id . '.jpeg');
+            if (File::exists(storage_path($imgPath))) {
+                File::delete($imgPath);
+            }
+        }
+
         File::deleteDirectory(storage_path('app/public/images/recipes/' . $recipe->id));
+
+        $recipe->delete();
+
         return $recipe;
     }
 }
