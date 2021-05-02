@@ -115,7 +115,7 @@ class RecipeController extends Controller
             if($apiMessage->status() != 200)
                 throw new Exception('Database Exception!');
 
-            return redirect('/recipe/1')->with('message', 'Recipe successfully updated!'); // TODO: change to the created recipe page
+            return redirect('/recipe/' . $apiMessage->getOriginalContent()['recipe_id'])->with('message', 'Recipe successfully created!'); // TODO: change to the created recipe page
         } catch (\Exception $e) {
             return redirect()->back()->withErrors($e->getMessage());
         }
@@ -226,14 +226,15 @@ class RecipeController extends Controller
             $recipe->description = $request->input('description');
             $recipe->difficulty = $request->input('difficulty');
             $recipe->servings = $request->input('servings');
+            $recipe->author()->associate(Auth::user()->id);
 
             // Handle End Product Photos
 
+            $recipe->save();
 
             // Category
             $category = Category::findOrFail($request->input('category'));
             $recipe->category()->associate($category);
-
 
             // Tags
             $requestTags = $request->input('tags');
@@ -243,14 +244,12 @@ class RecipeController extends Controller
             for ($i = 0; $i < $numUserTags; $i++)
                 array_push($tagIds, $requestTags[$i]);
 
-            // TODO: CREATE TAGS!!!!!!
             $recipe->tags()->sync($tagIds);
 
             // Steps
             $requestSteps = $request->input('steps');
             $numUserSteps = count($requestSteps);
 
-            // TODO: CREATE STEPS!!!!!!
             $recipe->steps()->forceDelete();
 
             for ($i = 0; $i < $numUserSteps; $i++) {
@@ -269,7 +268,6 @@ class RecipeController extends Controller
             $requestIngredients = $request->input('ingredients');
             $numUserIngredients = count($requestIngredients);
 
-            // TODO: CREATE INGREDIENTS!!!!!!
             $recipe->ingredients()->detach();
 
             for ($i = 0; $i < $numUserIngredients; $i++) {
@@ -280,12 +278,13 @@ class RecipeController extends Controller
                 ]);
             }
 
-
-            $recipe->save();
-
             DB::commit();
-            return response()->json(['message' => 'Succeed!'], 200);
+            return response()->json(['message' => 'Succeed!', 'recipe_id' => $recipe->id], 200);
         } catch(\Exception $e) {
+
+            var_dump($e->getMessage());
+            exit(1);
+
             DB::rollback();
             return response()->json(['message' => 'Invalid Request!'], 400);
         }
