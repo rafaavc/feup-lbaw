@@ -13,7 +13,7 @@
 // Home
 Route::view('/', 'pages.index');
 Route::get('/recipe/{id}', 'RecipeController@view');
-Route::post('/action/recipe/{id}/delete', 'RecipeController@deleteAction');
+Route::post('/recipe/{id}/delete', 'RecipeController@deleteAction');
 Route::get('/recipe/{recipeId}/edit', 'RecipeController@edit');
 Route::post('/recipe/{recipeId}/edit', 'RecipeController@editPost');
 Route::get('/recipe', 'RecipeController@create');

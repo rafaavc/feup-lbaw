@@ -86,7 +86,7 @@
                     </li>
                     @if($canDelete)
                         <li class="list-group-item">
-                            <form id="deleteRecipeForm" method="POST" action="{{ url("/action/recipe/".$recipe->id."/delete") }}">
+                            <form id="deleteRecipeForm" method="POST" action="{{ url("/recipe/".$recipe->id."/delete") }}">
                                 {{ csrf_field() }}
                             </form>
                             <button role="a" data-bs-toggle="modal" data-bs-target="#recipeDeleteConfirmationModal">
