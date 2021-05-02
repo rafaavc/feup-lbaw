@@ -450,6 +450,7 @@ class RecipeController extends Controller
         $recipe = Recipe::find($recipeId);
         $this->authorize('delete', $recipe);
         $recipe->delete();
+        File::deleteDirectory(storage_path('app/public/images/recipes/' . $recipe->id));
         return $recipe;
     }
 }
