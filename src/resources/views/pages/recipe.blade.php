@@ -79,11 +79,13 @@
                             <span class="legend">Share</span><i class="fas fa-share-alt"></i>
                         </a>
                     </li>
-                    <li class="list-group-item">
-                        <a href="#">
-                            <span class="legend">Favourite</span><i class="fas fa-heart"></i>
-                        </a>
-                    </li>
+                    @if(Auth::check())
+                        <li class="list-group-item">
+                            <button role="a" class="add-to-favourites-recipe-button" data-favourite-state="{{ $isFavourited ? "true" : "false" }}" data-recipe-id="{{ $recipe->id }}">
+                                <span class="legend">Favourite</span><i class="fas fa-heart"></i>
+                            </a>
+                        </li>
+                    @endif
                     @if($canDelete)
                         <li class="list-group-item">
                             <form id="deleteRecipeForm" method="POST" action="{{ url("/recipe/".$recipe->id."/delete") }}">

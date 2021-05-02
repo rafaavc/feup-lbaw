@@ -15,6 +15,7 @@ use Exception;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Gate;
+use Laravel\Ui\ControllersCommand;
 
 class RecipeController extends Controller
 {
@@ -110,6 +111,12 @@ class RecipeController extends Controller
             if ($image != null) $step->image = $image;
         }
 
+        $isFavourited = false;
+        if (Auth::check()) {
+            $membersWhoFavourited = $recipe->membersWhoFavourited()->where('id_member', '=', Auth::user()->id)->get();
+            if (sizeof($membersWhoFavourited) != 0) $isFavourited = true;
+        }
+
         return view('pages.recipe', [
             'recipe' => $recipe,
             'ingredients' => $recipe->ingredients,
@@ -120,7 +127,8 @@ class RecipeController extends Controller
             'images' => $images,
             'suggested' => $suggested,
             'canEdit' => $canEdit,
-            'canDelete' => $canDelete
+            'canDelete' => $canDelete,
+            'isFavourited' => $isFavourited
         ]);
     }
 
@@ -457,5 +465,37 @@ class RecipeController extends Controller
         $recipe->delete();
 
         return $recipe;
+    }
+
+
+    /**
+     * R2105: POST /api/recipe/{recipeId}/favourite
+     *
+     * @param int $recipeId
+     * @return void
+     */
+    public function addToFavourites($recipeId) {
+        if (!Auth::check()) {
+            return response()->json(['error' => 'Forbidden! Not logged in.'], 403);
+        }
+        $recipe = Recipe::findOrFail($recipeId);
+        $recipe->membersWhoFavourited()->attach(Auth::user()->id);
+        return response()->json(['message' => 'Success'], 200);
+    }
+
+
+    /**
+     * R2106: DELETE /api/recipe/{recipeId}/favourite
+     *
+     * @param int $recipeId
+     * @return void
+     */
+    public function removeFromFavourites($recipeId) {
+        if (!Auth::check()) {
+            return response()->json(['error' => 'Forbidden! Not logged in.'], 403);
+        }
+        $recipe = Recipe::findOrFail($recipeId);
+        $recipe->membersWhoFavourited()->detach(Auth::user()->id);
+        return response()->json(['message' => 'Success'], 200);
     }
 }
