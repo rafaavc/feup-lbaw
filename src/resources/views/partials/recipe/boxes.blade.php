@@ -1,14 +1,19 @@
 <div class="{{ $mobile ? "d-block d-xl-none" : "d-none d-xl-block" }}">
     <div class="media my-4 my-md-0">
-        <img class="img-fluid main" src="{{ asset('storage/images/recipes/'.$recipe->id.'/'.$images[0]->getBasename()) }}">
+        @if(sizeof($images) > 0)
+            <img class="img-fluid main" src="{{ asset('storage/images/recipes/'.$recipe->id.'/'.$images[0]->getBasename()) }}">
+        @else
+            <img class="img-fluid main" src="{{ asset('storage/images/no_image.jpg') }}">
+        @endif
+
         @if(sizeof($images) > 1)
-        <div class="small-img d-flex">
-            @foreach($images as $idx => $image)
-                @if(idx != 0)
-                    <img class="col-3" src="{{ asset('storage/images/recipes/'.$recipe->id.'/'.$image->getBasename()) }}">
-                @endif
-            @endforeach
-        </div>
+            <div class="small-img d-flex">
+                @foreach($images as $idx => $image)
+                    @if(idx != 0)
+                        <img class="col-3" src="{{ asset('storage/images/recipes/'.$recipe->id.'/'.$image->getBasename()) }}">
+                    @endif
+                @endforeach
+            </div>
         @endif
     </div>
     <div class="row mt-5">
