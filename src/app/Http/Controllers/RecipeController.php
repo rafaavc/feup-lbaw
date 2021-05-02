@@ -125,6 +125,19 @@ class RecipeController extends Controller
     }
 
     /**
+     * Action for deleting recipe
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function deleteAction($recipeId)
+    {
+        $recipeName = Recipe::find($recipeId)->name;
+        $this->delete($recipeId);
+        $rndRecipeId = Recipe::limit(1)->get()[0]->id;
+        return redirect('/recipe/'.$rndRecipeId)->with('message', 'Recipe "'. $recipeName .'" successfully deleted!');
+    }
+
+    /**
      * R1012: /recipe
      *
      * @return \Illuminate\Http\Response

@@ -86,9 +86,12 @@
                     </li>
                     @if($canDelete)
                         <li class="list-group-item">
-                            <a href="#">
+                            <form id="deleteRecipeForm" method="POST" action="{{ url("/action/recipe/".$recipe->id."/delete") }}">
+                                {{ csrf_field() }}
+                            </form>
+                            <button role="a" data-bs-toggle="modal" data-bs-target="#recipeDeleteConfirmationModal">
                                 <span class="legend">Delete</span><i class="fas fa-trash"></i>
-                            </a>
+                            </button>
                         </li>
                     @endif
                 </ul>
@@ -105,14 +108,22 @@
             <div class="suggested mt-5">
                 <h4 class="text-center">Suggested</h4>
                 <div class="row">
-                    @foreach($suggested as $idx => $recipe)
+                    @foreach($suggested as $idx => $r)
                         <div class="col">
-                            @include('partials.recipe.card', $recipe)
+                            @include('partials.recipe.card', $r)
                         </div>
                     @endforeach
                 </div>
             </div>
         </aside>
     </main>
+    @include('partials.confirmation', [
+        'modalId' => 'recipeDeleteConfirmationModal',
+        'modalTitle' => 'Delete recipe "'.$recipe->name.'"',
+        'modalMessage' => 'Do you really want to delete this recipe?',
+        'modalYesFunction' => 'document.querySelector("#deleteRecipeForm").submit()',
+        'modalYesText' => 'Yes',
+        'modalNoText' => 'No'
+    ])
 
 @endsection
