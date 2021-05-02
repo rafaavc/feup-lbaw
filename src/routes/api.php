@@ -26,3 +26,7 @@ Route::post('recipe/{recipe_id}', 'RecipeController@update');
 Route::delete('recipe/{recipe_id}', 'RecipeController@delete');
 
 Route::get('units', [UnitController::class, 'index']);
+
+
+Route::post('recipe/{recipeId}/favourite', 'RecipeController@addToFavourites');
+Route::delete('recipe/{recipeId}/favourite', 'RecipeController@removeFromFavourites');

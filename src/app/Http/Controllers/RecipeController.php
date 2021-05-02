@@ -348,7 +348,7 @@ class RecipeController extends Controller
     public function select($recipeId)
     {
         $recipe = Recipe::findOrFail($recipeId);
-        // $this->authorize('select', $recipe);
+        $this->authorize('select', $recipe);
         return $recipe;
     }
 

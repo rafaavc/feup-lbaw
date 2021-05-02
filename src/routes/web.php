@@ -35,7 +35,3 @@ Route::get('/recipe/{id}', 'RecipeController@view');
 // Content creation
 Route::get('/recipe', 'RecipeController@create');
 
-
-// This is here because wasn't working on the api.php file (TODO)
-Route::post('api/recipe/{recipeId}/favourite', 'RecipeController@addToFavourites');
-Route::delete('api/recipe/{recipeId}/favourite', 'RecipeController@removeFromFavourites');
