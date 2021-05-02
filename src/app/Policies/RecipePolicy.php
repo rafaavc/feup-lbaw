@@ -28,12 +28,12 @@ class RecipePolicy
     public function update(Member $user, Recipe $recipe)
     {
         // Only a recipe owner can update it
-        return $user->id === $recipe->author->id;
+        return $user->id == $recipe->author->id;
     }
 
     public function delete(Member $user, Recipe $recipe)
     {
         // Only recipe card owner and an administrator can delete it
-        return $user->id == $recipe->author()->id;
+        return $user->id == $recipe->author->id;
     }
 }

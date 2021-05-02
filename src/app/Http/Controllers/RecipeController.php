@@ -22,6 +22,37 @@ class RecipeController extends Controller
 {
     protected $table = "tb_recipe";
 
+    private static $validation = [
+            'name' => 'required|string',
+            'category' => 'required|integer|exists:App\Models\Category,id',
+            'description' => 'required|string',
+            'difficulty' => 'required|string|in:easy,medium,hard,very hard',
+            'servings' => 'required|integer|min:1',
+            'tags'  => 'required|array',
+            'tags.*' => 'integer|exists:App\Models\Tag,id|distinct',
+            'ingredients' => 'required|array',
+            'ingredients.*.quantity' => 'required|numeric|min:0',
+            'ingredients.*.id_unit' => 'required|integer|exists:App\Models\Unit,id',
+            'ingredients.*.id' => 'required|integer|exists:App\Models\Ingredient,id|distinct',
+            'preparation_time' => 'required|integer|min:0',
+            'cooking_time' => 'required|integer|min:0',
+            'additional_time' => 'required|integer|min:0',
+            'steps'  => 'required|array',
+            'steps.*.name' => 'required|string',
+            'steps.*.image' => 'nullable|file|image',
+            'images.*' => 'nullable|file|image'
+    ];
+
+    private static $errorMessages = [
+            'tags.*.distinct' => 'Repeated tags are not allowed.',
+            'tags.*.*' => 'Invalid Tag.',
+            'ingredients.*.quantity.*' => 'Invalid quantity.',
+            'ingredients.*.id_unit.*' => 'Invalid unit.',
+            'ingredients.*.id.distinct' => 'Repeated ingredients are not allowed.',
+            'ingredients.*.id.*' => 'Invalid ingredient.',
+            'steps.*.name.*' => 'Invalid Step name.'
+    ];
+
     /**
      * R1011: /recipe/{recipeId}
      *
@@ -29,11 +60,11 @@ class RecipeController extends Controller
      */
     public function view($recipeId)
     {
-        $recipe = Recipe::findOrFail($recipeId);
+        $recipe = $this->select($recipeId);
 
         $commentsWithFathers = $recipe->comments()->has('fatherComments')->get();
         $commentsWithFathersIds = array();
-        foreach($commentsWithFathers as $comment) {
+        foreach ($commentsWithFathers as $comment) {
             array_push($commentsWithFathersIds, $comment->id);
         }
 
@@ -86,30 +117,7 @@ class RecipeController extends Controller
 
         if (!Auth::check()) return redirect('/feed');
 
-        $this->validate($request, [
-            'name' => 'required|string',
-            'category' => 'required|integer|exists:App\Models\Category,id',
-            'description' => 'required|string',
-            'difficulty' => 'required|string|in:easy,medium,hard,very hard',
-            'servings' => 'required|integer|min:1',
-            'tags'  => 'required|array',
-            'tags.*' => 'integer|exists:App\Models\Tag,id',
-            'ingredients' => 'required|array',
-            'ingredients.*.quantity' => 'required|numeric|min:0',
-            'ingredients.*.id_unit' => 'required|integer|exists:App\Models\Unit,id',
-            'ingredients.*.id' => 'required|integer|exists:App\Models\Ingredient,id',
-            'preparation_time' => 'required|integer|min:0',
-            'cooking_time' => 'required|integer|min:0',
-            'additional_time' => 'required|integer|min:0',
-            'steps'  => 'required|array',
-            'steps.*.name' => 'required|string',
-        ], [
-            'tags.*.*' => 'Invalid Tag.',
-            'ingredients.*.quantity.*' => 'Invalid quantity.',
-            'ingredients.*.id_unit.*' => 'Invalid unit.',
-            'ingredients.*.id.*' => 'Invalid ingredient.',
-            'steps.*.name.*' => 'Invalid Step name.'
-        ]);
+        $this->validate($request, RecipeController::$validation, RecipeController::$errorMessages);
 
         try {
             $apiMessage = $this->insert($request);
@@ -168,34 +176,7 @@ class RecipeController extends Controller
         if (!Auth::check()) return redirect('/recipe/' . $recipeId);
         $this->authorize('update', Recipe::findOrFail($recipeId));
 
-        $this->validate($request, [
-            'name' => 'required|string',
-            'category' => 'required|integer|exists:App\Models\Category,id',
-            'description' => 'required|string',
-            'difficulty' => 'required|string|in:easy,medium,hard,very hard',
-            'servings' => 'required|integer|min:1',
-            'tags'  => 'required|array',
-            'tags.*' => 'integer|exists:App\Models\Tag,id|distinct',
-            'ingredients' => 'required|array',
-            'ingredients.*.quantity' => 'required|numeric|min:0',
-            'ingredients.*.id_unit' => 'required|integer|exists:App\Models\Unit,id',
-            'ingredients.*.id' => 'required|integer|exists:App\Models\Ingredient,id|distinct',
-            'preparation_time' => 'required|integer|min:0',
-            'cooking_time' => 'required|integer|min:0',
-            'additional_time' => 'required|integer|min:0',
-            'steps'  => 'required|array',
-            'steps.*.name' => 'required|string',
-            'steps.*.photo' => 'nullable|file|image',
-            'images.*' => 'nullable|file|image'
-        ], [
-            'tags.*.distinct' => 'Repeated tags are not allowed.',
-            'tags.*.*' => 'Invalid Tag.',
-            'ingredients.*.quantity.*' => 'Invalid quantity.',
-            'ingredients.*.id_unit.*' => 'Invalid unit.',
-            'ingredients.*.id.distinct' => 'Repeated ingredients are not allowed.',
-            'ingredients.*.id.*' => 'Invalid ingredient.',
-            'steps.*.name.*' => 'Invalid Step name.'
-        ]);
+        $this->validate($request, RecipeController::$validation, RecipeController::$errorMessages);
 
         try {
             $apiMessage = $this->update($request, $recipeId);
@@ -213,10 +194,12 @@ class RecipeController extends Controller
      * R2101: /api/recipe
      *
      * @param \Illuminate\Http\Request $request
-     * @return \Illuminate\Http\Response
+     * @return Recipe
      */
     public function insert(Request $request)
     {
+        $this->validate($request, RecipeController::$validation, RecipeController::$errorMessages);
+
         DB::beginTransaction();
         try {
             $recipe = new Recipe();
@@ -230,18 +213,18 @@ class RecipeController extends Controller
             $recipe->servings = $request->input('servings');
             $recipe->author()->associate(Auth::user()->id);
 
-            // Handle End Product Photos
+            // Category
+            $category = Category::findOrFail($request->input('category'));
+            $recipe->category()->associate($category);
 
             $recipe->save();
+
+            // Handle End Product Photos
 
             if($request->hasFile('images')) {
                 foreach($request->file('images') as $file)
                     $file->storeAs('public/images/recipes/'. $recipe->id, date('mdYHis') . uniqid() . '.jpeg');
             }
-
-            // Category
-            $category = Category::findOrFail($request->input('category'));
-            $recipe->category()->associate($category);
 
             // Tags
             $requestTags = $request->input('tags');
@@ -289,8 +272,6 @@ class RecipeController extends Controller
             return response()->json(['message' => 'Succeed!', 'recipe_id' => $recipe->id], 200);
         } catch(\Exception $e) {
 
-            var_dump($e->getMessage());
-            exit(1);
 
             DB::rollback();
             return response()->json(['message' => 'Invalid Request!'], 400);
@@ -301,11 +282,13 @@ class RecipeController extends Controller
      * R2102: /api/recipe/{recipeId}
      *
      * @param int $recipeId
-     * @return \Illuminate\Http\Response
+     * @return Recipe
      */
     public function select($recipeId)
     {
-        //
+        $recipe = Recipe::findOrFail($recipeId);
+        $this->authorize('select', $recipe);
+        return $recipe;
     }
 
     /**
@@ -319,34 +302,7 @@ class RecipeController extends Controller
     {
         // Still missing token verification
 
-        $this->validate($request, [
-            'name' => 'required|string',
-            'category' => 'required|integer|exists:App\Models\Category,id',
-            'description' => 'required|string',
-            'difficulty' => 'required|string|in:easy,medium,hard,very hard',
-            'servings' => 'required|integer|min:1',
-            'tags'  => 'required|array',
-            'tags.*' => 'integer|exists:App\Models\Tag,id|distinct',
-            'ingredients' => 'required|array',
-            'ingredients.*.quantity' => 'required|numeric|min:0',
-            'ingredients.*.id_unit' => 'required|integer|exists:App\Models\Unit,id',
-            'ingredients.*.id' => 'required|integer|exists:App\Models\Ingredient,id|distinct',
-            'preparation_time' => 'required|integer|min:0',
-            'cooking_time' => 'required|integer|min:0',
-            'additional_time' => 'required|integer|min:0',
-            'steps'  => 'required|array',
-            'steps.*.name' => 'required|string',
-            'steps.*.photo' => 'nullable|file|image',
-            'images.*' => 'nullable|file|image'
-        ], [
-            'tags.*.distinct' => 'Repeated tags are not allowed.',
-            'tags.*.*' => 'Invalid Tag.',
-            'ingredients.*.quantity.*' => 'Invalid quantity.',
-            'ingredients.*.id_unit.*' => 'Invalid unit.',
-            'ingredients.*.id.distinct' => 'Repeated ingredients are not allowed.',
-            'ingredients.*.id.*' => 'Invalid ingredient.',
-            'steps.*.name.*' => 'Invalid Step name.'
-        ]);
+        $this->validate($request, RecipeController::$validation, RecipeController::$errorMessages);
 
         DB::beginTransaction();
         try {
@@ -361,7 +317,7 @@ class RecipeController extends Controller
             $recipe->servings = $request->input('servings');
 
             // Handle End Product Photos
-            File::deleteDirectory(storage_path('app/public/images/recipes/' . $recipe->id));
+            File::cleanDirectory(storage_path('app/public/images/recipes/' . $recipe->id));
             if($request->hasFile('images')) {
                 foreach($request->file('images') as $file)
                     $file->storeAs('public/images/recipes/'. $recipe->id, date('mdYHis') . uniqid() . '.jpeg');
@@ -432,10 +388,13 @@ class RecipeController extends Controller
      * R2104: /api/recipe/{recipeId}
      *
      * @param int $recipeId
-     * @return \Illuminate\Http\Response
+     * @return Recipe
      */
     public function delete($recipeId)
     {
-        //
+        $recipe = Recipe::find($recipeId);
+        $this->authorize('delete', $recipe);
+        $recipe->delete();
+        return $recipe;
     }
 }
