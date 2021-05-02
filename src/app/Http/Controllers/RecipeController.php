@@ -25,6 +25,19 @@ class RecipeController extends Controller
     }
 
     /**
+     * Gets a given step's image (url)
+     *
+     * @return string
+     */
+    public function getStepImage($stepId) {
+        if (File::exists(storage_path('app/public/images/steps/'.$stepId.'.jpeg'))) {
+            return asset('storage/images/steps/'.$stepId.'.jpeg');  // TODO change for any extension
+        }
+        return null;
+    }
+
+
+    /**
      * R1011: /recipe/{recipeId}
      *
      * @return \Illuminate\Http\Response
@@ -49,6 +62,12 @@ class RecipeController extends Controller
 
         $canEdit = false; // TODO $this->inspect('')
         $canDelete = false; // TODO $this->inspect('')
+
+        $steps = $recipe->steps;
+        foreach($steps as $idx => $step) {
+            $image = $this->getStepImage($step->id);
+            if ($image != null) $step->image = $image;
+        }
 
         return view('pages.recipe', [
             'recipe' => $recipe,
