@@ -118,7 +118,7 @@ function tagSelected(event) {
         let hiddenInput = document.createElement("input");
         hiddenInput.classList.add("d-none");
         hiddenInput.setAttribute("value", event.target.getAttribute("value"));
-        hiddenInput.setAttribute("name", "tag[]");
+        hiddenInput.setAttribute("name", "tags[]");
         tagList.appendChild(hiddenInput);
 
 

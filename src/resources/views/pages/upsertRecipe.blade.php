@@ -112,9 +112,6 @@
                                         <li value="{{ $tag->id }}">{{ $tag->name }}<span class="close">&times;</span></li>
                                         <input name="tags[]" value="{{ $tag->id }}" class="d-none">
                                     @endforeach
-                                @else
-                                    <input name="tags[]" value="1" class="d-none"> {{-- TODO: change this; cannot add tag with id 1 --}}
-                                    <input name="tags[]" value="2" class="d-none"> {{-- TODO: change this; cannot add tag with id 1 --}}
                                 @endif
                             </ul>
                         </div>

@@ -235,76 +235,42 @@ class RecipeController extends Controller
             $recipe->category()->associate($category);
 
 
-            $recipe->tags = [1,2];
-
-
-
-
-
-            /* $recipe->tags = $request->input('servings');
-            $recipe->tags()->detach();
-
-
-
-
- */
-
-
-            /* // Tags
+            // Tags
             $requestTags = $request->input('tags');
             $numUserTags = count($requestTags);
 
+            $tagIds = array();
+            for ($i = 0; $i < $numUserTags; $i++)
+                array_push($tagIds, $requestTags[$i]);
 
-
-            for ($i = 0; $i < $numUserTags; $i++) {
-                $tagId = $requestTags[$i];
-                var_dump($tagId);exit(1);
-                $recipe->tags()->attach($tagId, [
-                    'id_tag' => $requestTags[$i][0]
-                ]);
-                //array_push($tagIds, $requestTags[$i]);
-            }
-
-            var_dump($requestTags);exit(1); */
+            // TODO: CREATE TAGS!!!!!!
+            $recipe->tags()->sync($tagIds);
 
             // Steps
             $requestSteps = $request->input('steps');
             $numUserSteps = count($requestSteps);
 
-
-            // $recipe->steps()->forceDelete();
-
-            // $recipe->steps()->save();
-
-            $steps = array();
+            // TODO: CREATE STEPS!!!!!!
+            $recipe->steps()->forceDelete();
 
             for ($i = 0; $i < $numUserSteps; $i++) {
                 $step = new Step([
                     'name' => $requestSteps[$i]["name"],
                     'description' => $requestSteps[$i]["description"],
                 ]);
-
-                array_push($steps, $step);
+                $step = $recipe->steps()->save($step);
 
                 // Save step images
-                /* if($request->hasFile("steps." . $i))
-                    $request->file('steps')[$i]['image']->storeAs('public/images/steps/', $step->id . '.jpeg'); */
+                if($request->hasFile("steps." . $i))
+                    $request->file('steps')[$i]['image']->storeAs('public/images/steps/', $step->id . '.jpeg');
             }
 
-            $recipe->steps = $steps;
-
-
-
-             $recipe->ingredients = [1,2];
-
-
-
-
             // Ingredients
-            /* $requestIngredients = $request->input('ingredients');
+            $requestIngredients = $request->input('ingredients');
             $numUserIngredients = count($requestIngredients);
 
-            $ingredients = array();
+            // TODO: CREATE INGREDIENTS!!!!!!
+            $recipe->ingredients()->detach();
 
             for ($i = 0; $i < $numUserIngredients; $i++) {
                 $ingredientId = $requestIngredients[$i]['id'];
@@ -312,16 +278,10 @@ class RecipeController extends Controller
                     'id_unit' => $requestIngredients[$i]['id_unit'],
                     'quantity' => $requestIngredients[$i]['quantity']
                 ]);
-            } */
+            }
 
 
-
-
-            $result = $recipe->save();
-
-            var_dump($result);
-            exit(1);
-
+            $recipe->save();
 
             DB::commit();
             return response()->json(['message' => 'Succeed!'], 200);
