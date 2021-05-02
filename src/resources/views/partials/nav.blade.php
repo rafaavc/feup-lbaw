@@ -1,3 +1,4 @@
+
 <nav class="navbar navbar-expand-lg fixed-top navbar-light bg-light content-general-padding">
     <div id="navbarContainer" class="container-fluid justify-content-between p-0">
         <!-- Logo -->
@@ -15,7 +16,7 @@
 
         <!-- Search box -->
         <div class="collapse navbar-collapse justify-content-center flex-grow-1 normalize" id="navbarSearch" data-bs-parent="#navbarContainer">
-            <form action="<?=url("/pages/search.php")?>">
+            <form action="{{ url("/search") }}">
                 <div class="d-flex">
                     <input type="text" class="form-control icon-right" placeholder="Search" aria-label="Recipient's username" aria-describedby="basic-addon2">
                     <i class="fas fa-search fa-icon-right"></i>
@@ -26,7 +27,7 @@
         <!-- Right buttons -->
         <div class="collapse navbar-collapse justify-content-end flex-grow-1 normalize" id="navbarText" data-bs-parent="#navbarContainer">
             <ul class="navbar-nav mb-2 mb-lg-0">
-                aaa
+                @include('partials.nav.menu')
             </ul>
         </div>
     </div>

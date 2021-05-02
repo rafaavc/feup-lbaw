@@ -26,6 +26,7 @@
         <link href="{{ asset('css/styles.css') }}" rel="stylesheet">
         <link href="{{ asset('css/components/footer.css') }}" rel="stylesheet">
         <link href="{{ asset('css/components/nav.css') }}" rel="stylesheet">
+        <link href="{{ asset('css/components/navPopups.css') }}" rel="stylesheet">
         @stack('css')
 
         <script src="{{ asset('js/general.js') }}" defer></script>

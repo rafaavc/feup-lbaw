@@ -47,6 +47,9 @@ class RecipeController extends Controller
             $recipeCard->owner = $recipeCard->author->name;
         }
 
+        $canEdit = false; // TODO $this->inspect('')
+        $canDelete = false; // TODO $this->inspect('')
+
         return view('pages.recipe', [
             'recipe' => $recipe,
             'ingredients' => $recipe->ingredients,
@@ -55,7 +58,9 @@ class RecipeController extends Controller
             'author' => $recipe->author,
             'steps' => $recipe->steps,
             'images' => $images,
-            'suggested' => $suggested
+            'suggested' => $suggested,
+            'canEdit' => $canEdit,
+            'canDelete' => $canDelete
         ]);
     }
 
