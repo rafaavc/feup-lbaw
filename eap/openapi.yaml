@@ -281,7 +281,7 @@ paths:
     post:
       operationId: R2101
       summary: 'R2101: Create recipe'
-      description: 'Creates a new recipe Action. Access: MBR'
+      description: 'Create new recipe Action. Access: MBR'
       tags:
         - 'M02: Recipes, categories, groups and members'
       responses:
