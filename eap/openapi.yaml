@@ -426,7 +426,7 @@ paths:
       summary: 'R1019: Users management section.'
       description: 'Provides the users management section. Access: PUB'
       tags:
-        - 'M02: Recipes, categories, groups and members'
+        - 'M05: Web resources associated with the administrator pages'
       responses:
         '200':
           description: 'Ok. Show [UI14](http://lbaw2135-piu.lbaw-prod.fe.up.pt/pages/usersManagement.php)'
@@ -1984,7 +1984,7 @@ paths:
       requestBody:
         required: false
         content:
-          multipart/form-data:
+          application/x-www-form-urlencoded:
             schema:
               type: object
               properties:
