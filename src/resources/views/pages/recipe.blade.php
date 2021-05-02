@@ -17,7 +17,7 @@
 
 @section('content')
 
-    @include('partials.breadcrumb', ['pages' => ["Recipes", "Desserts", "Classic Tiramisu"], 'withoutMargin' => false])
+    @include('partials.breadcrumb', ['pages' => ["Recipes", $recipe->category->name, $recipe->name], 'withoutMargin' => false])
 
 <main class="row content-general-margin margin-to-footer">
     @if(session()->has('message'))
@@ -75,11 +75,9 @@
                 </div>
                 <ul class="col-3 text-end">
                     <li class="list-group-item bg-light" style="border-radius: .5rem">
-                        @if($this->authorize('update', $recipe))
-                            <a href="{{ url('/recipe/'.$recipe->id.'/edit') }}">
-                                <span class="legend">Edit Recipe</span><i class="fas fa-edit ms-2"></i>
-                            </a>
-                        @endif
+                        <a href="{{ url('/recipe/'.$recipe->id.'/edit') }}">
+                            <span class="legend">Edit Recipe</span><i class="fas fa-edit ms-2"></i>
+                        </a>
                     </li>
                     <li class="list-group-item">
                         <a href="#">

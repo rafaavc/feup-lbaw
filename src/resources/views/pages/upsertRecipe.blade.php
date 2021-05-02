@@ -14,10 +14,15 @@
 
 @section('content')
 
+
+
 @php
+
     $breadcrumbPages = ["Recipes", isset($recipe) ? $recipe->category->name : "Create Recipe"];
-    if (isset($recipe))
+    if (isset($recipe)) {
+
         array_push($breadcrumbPages, $recipe->name);
+    }
 @endphp
 
 @include('partials.breadcrumb', ['pages' => $breadcrumbPages, 'withoutMargin' => false])
