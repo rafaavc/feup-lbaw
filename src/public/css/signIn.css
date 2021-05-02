@@ -7,7 +7,7 @@
 }
 
 div.sign-img {
-    background-image: url("../images/signIn.jpg");
+    background-image: url("../storage/images/signIn.jpg");
     background-size: cover;
     background-repeat: no-repeat;
     position: relative;
