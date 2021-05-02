@@ -2129,6 +2129,13 @@ paths:
                           type: integer
                         category:
                           type: string
+                        author:
+                          type: object
+                          properties:
+                            id:
+                              type: integer
+                            name:
+                              type: string
                         tags:
                           type: array
                           items:
@@ -2138,16 +2145,7 @@ paths:
                                 type: integer
                               name:
                                 type: string
-                  categories:
-                    type: array
-                    items:
-                      type: object
-                      properties:
-                        id:
-                          type: integer
-                        name:
-                          type: string
-                  tags:
+                  trendingTags:
                     type: array
                     items:
                       type: object
@@ -2174,6 +2172,9 @@ paths:
                       rating: 4.5
                       numberOfReviews: 5
                       category: Dessert
+                      author:
+                        id: 2
+                        name: Jessica Worfield
                       tags:
                         - id: 45
                           name: "Vegetarian"
@@ -2186,17 +2187,15 @@ paths:
                       rating: 4.8
                       numberOfReviews: 3
                       category: Lunch
+                      author:
+                        id: 6
+                        name: Johnson Wassum
                       tags:
                         - id: 45
                           name: "Vegetarian"
                         - id: 32
                           name: "Zero sugar"
-                  categories:
-                    - id: 1
-                      name: Lunch
-                    - id: 2
-                      name: Breakfast
-                  tags:
+                  trendingTags:
                     - id: 1
                       name: Vegetarian
                     - id: 2
