@@ -11,6 +11,20 @@ class RecipeController extends Controller
     protected $table = "tb_recipe";
 
     /**
+     * Gets a given recipe's images (urls)
+     *
+     * @return string[]
+     */
+    public function getRecipeImages($recipeId) {
+        $paths = File::files(storage_path('app/public/images/recipes/'.$recipeId.'/'));
+        $images = array();
+        foreach($paths as $idx => $path) {
+            array_push($images, asset('storage/images/recipes/'.$recipeId.'/'.$path->getBasename()));
+        }
+        return $images;
+    }
+
+    /**
      * R1011: /recipe/{recipeId}
      *
      * @return \Illuminate\Http\Response
@@ -25,7 +39,13 @@ class RecipeController extends Controller
             array_push($commentsWithFathersIds, $comment->id);
         }
 
-        $images = File::files(storage_path('app/public/images/recipes/'.$recipe->id.'/'));
+        $images = $this->getRecipeImages($recipe->id);
+
+        $suggested = Recipe::inRandomOrder()->where('id', '!=', $recipe->id)->limit(4)->get();
+        foreach ($suggested as $idx => $recipeCard) {
+            $recipeCard->image = $this->getRecipeImages($recipeCard->id)[0];
+            $recipeCard->owner = $recipeCard->author->name;
+        }
 
         return view('pages.recipe', [
             'recipe' => $recipe,
@@ -35,7 +55,7 @@ class RecipeController extends Controller
             'author' => $recipe->author,
             'steps' => $recipe->steps,
             'images' => $images,
-            'suggested' => []
+            'suggested' => $suggested
         ]);
     }
 

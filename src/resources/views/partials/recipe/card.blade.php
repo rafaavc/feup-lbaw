@@ -8,7 +8,7 @@
                 <i class="fas fa-star active"></i>
                 <i class="fas fa-star active"></i>
                 <i class="fas fa-star active"></i>
-                <i class="fas fa-star active"></i> | {{ $nReviews }} reviews</p>
+                <i class="fas fa-star active"></i> | {{ $num_rating }} reviews</p>
             <p class="card-text mt-2">by {{ $owner }}</p>
         </div>
     </a>
