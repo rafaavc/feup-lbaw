@@ -1,8 +1,11 @@
+@php
+    $showRatingCount = !isset($showRatingCount) || $showRatingCount == true;
+@endphp
 <span class="small me-2">
     @if($score == 0)
-        No ratings
+        {{ $showRatingCount ? 'No ratings' : '' }}
     @else
-        {{ round($score, 1) }} ({{ $num_rating }} {{$num_rating == 1 ? 'rating' : 'ratings'}})
+        {{ round($score, 1) }} {{ $showRatingCount ? ('(' . $num_rating . ' ' . ($num_rating == 1 ? 'review' : 'reviews')) . ')' : '' }}
     @endif
 </span>
 @php
