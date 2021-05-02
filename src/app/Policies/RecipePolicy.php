@@ -7,6 +7,7 @@ use App\Models\Recipe;
 
 use Illuminate\Auth\Access\HandlesAuthorization;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Response;
 
 class RecipePolicy
 {

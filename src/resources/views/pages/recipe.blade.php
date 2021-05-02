@@ -12,20 +12,24 @@
 @endpush
 
 @push('js')
-    <script src="{{ asset('js/recipeYields.js') }}" defer></script>
-    <script src={{ asset('js/rating.js') }} defer></script>
+    <script src="{{ asset('js/progressBar.js') }}" defer></script>
 @endpush
 
 @section('content')
 
     @include('partials.breadcrumb', ['pages' => ["Recipes", "Desserts", "Classic Tiramisu"], 'withoutMargin' => false])
 
-    <main class="row content-general-margin margin-to-footer">
-        <article id="recipe" class="col-xl-8 p-0 pe-xl-4">
-            <header class="row text-left pt-3 pb-3 mb-md-3 shadow-sm mt-5 mt-xl-0">
-                <h1 class="col-11">{{ $recipe->name }}</h1>
-                <div class="col-9">
-                    <div class="rating">
+<main class="row content-general-margin margin-to-footer">
+    @if(session()->has('message'))
+        <div class="alert alert-success">
+            {{ session()->get('message') }}
+        </div>
+    @endif
+    <article id="recipe" class="col-xl-8 p-0 pe-xl-4">
+        <header class="row text-left pt-3 pb-3 mb-md-3 shadow-sm mt-5 mt-xl-0">
+            <h1 class="col-11">{{ $recipe->name }}</h1>
+            <div class="col-9">
+                <div class="rating">
                     <span class="small me-2">
                         @if($recipe->score == 0)
                             No ratings
@@ -45,8 +49,7 @@
                             <tbody>
                             <tr>
                                 <td class="col-2 col-md-1 image-container">
-                                    <img class="rounded-circle"
-                                         src="https://mdbootstrap.com/img/Photos/Avatars/img%20(31).jpg" alt="...">
+                                    <img class="rounded-circle" src="{{ asset('storage/images/people/'.$author->id.'.jpeg') }}" alt="...">
                                 </td>
                                 <td class="align-middle">
                                     <div class="col-md-5 card-body p-0 m-0 ms-2 text-start">

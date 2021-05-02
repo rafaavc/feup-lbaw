@@ -2,7 +2,7 @@
     <div id="navbarContainer" class="container-fluid justify-content-between p-0">
         <!-- Logo -->
         <a class="navbar-brand flex-lg-grow-1 normalize" href="{{ url("") }}">
-            <img class="logo" src="{{ asset('/images/tastebuds-dark.png') }}" height="50px" />
+            <img class="logo" src="{{ asset('storage/images/tastebuds-dark.png') }}" height="50px" />
         </a>
 
         <!-- Togglers -->
