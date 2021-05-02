@@ -249,6 +249,25 @@ paths:
         '200':
           description: 'Ok. Show [UI22](http://lbaw2135-piu.lbaw-prod.fe.up.pt/pages/recipe.php)'
 
+  /recipe/{recipeId}/edit:
+     post:
+      operationId: R2103
+      summary: 'R2103: Edit recipe'
+      description: "Edit Recipe Action. Access: OWN"
+      tags:
+        - 'M02: Recipes, categories, groups and members'
+      responses:
+        '302':
+          description: 'Redirect after processing recipe update.'
+          headers:
+            Location:
+              schema:
+                type: string
+              examples:
+                302Error:
+                  description: 'Failed recipe update.'
+                  value: '/recipe/{recipeId}/edit'
+
   /recipe:
     get:
       operationId: R1012
@@ -259,6 +278,23 @@ paths:
       responses:
         '200':
           description: 'Ok. Show [UI19](http://lbaw2135-piu.lbaw-prod.fe.up.pt/pages/createRecipe.php)'
+    post:
+      operationId: R2101
+      summary: 'R2101: Create recipe'
+      description: 'Creates a new recipe Action. Access: MBR'
+      tags:
+        - 'M02: Recipes, categories, groups and members'
+      responses:
+        '302':
+          description: 'Redirect after processing recipe creation.'
+          headers:
+            Location:
+              schema:
+                type: string
+              examples:
+                302Error:
+                  description: 'Failed recipe creation.'
+                  value: '/recipe'
 
   /group/{groupId}:
     get:
