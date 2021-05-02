@@ -25,7 +25,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/cards';
+    protected $redirectTo = '/recipe/1'; // TODO: change to feed
 
     /**
      * Create a new controller instance.

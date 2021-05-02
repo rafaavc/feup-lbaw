@@ -4,6 +4,8 @@
     <link href="{{ asset('css/index.css') }}" rel="stylesheet" />
 @endpush
 
+
+
 @section('content')
 
 <main class="margin-to-footer">
