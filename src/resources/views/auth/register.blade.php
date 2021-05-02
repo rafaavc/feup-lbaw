@@ -31,6 +31,13 @@
                 </div>
             </div>
             <div class="col-xl-6 sign-form">
+                @if($errors->any())
+                    <div class="alert alert-danger" id="error-messages" role="alert">
+                        @foreach($errors->all() as $error)
+                            {{ $error }}<br/>
+                        @endforeach
+                    </div>
+                @endif
                 <div class="position-relative d-none sign-up-stepper">
                     <div class="progress">
                         <div class="progress-bar" role="progressbar" style="width: 0%;" aria-valuenow="0"
@@ -68,20 +75,21 @@
                         </li>
                     </ul>
                 </div>
-                <div class="tab-content" id="pills-tabContent">
+                <form class="tab-content" id="pills-tabContent" method="post" enctype="multipart/form-data">
+                    @csrf
                     <div class="tab-pane fade show active" id="pills-home" role="tabpanel"
                          aria-labelledby="pills-home-tab">
                         <h1>Sign Up</h1>
                         <h3>Please enter your account details.</h3>
 
                         <span class='d-block mt-4'>Username <span class='form-required'></span></span>
-                        @include('partials.inputIcon', ['icon' => 'user', 'name' => 'username'])
+                        @include('partials.inputIcon', ['icon' => 'user', 'name' => 'username', 'required' => true])
                         <span class='d-block mt-4'>Email Address <span class='form-required'></span></span>
-                        @include('partials.inputIcon', ['icon' => 'envelope', 'name' => 'email'])
+                        @include('partials.inputIcon', ['icon' => 'envelope', 'name' => 'email', 'required' => true, 'type' => 'email'])
                         <span class='d-block mt-4'>Password <span class='form-required'></span></span>
-                        @include('partials.inputIcon', ['icon' => 'lock', 'name' => 'password'])
+                        @include('partials.inputIcon', ['icon' => 'lock', 'name' => 'password', 'required' => true, 'type' => 'password'])
                         <span class='d-block mt-4'>Repeat Password <span class='form-required'></span></span>
-                        @include('partials.inputIcon', ['icon' => 'lock', 'name' => 'repeat-password'])
+                        @include('partials.inputIcon', ['icon' => 'lock', 'name' => 'repeat-password', 'required' => true, 'type' => 'password'])
 
                         <div class="d-grid gap-2 col-6 mx-auto">
                             <button type="button" class="btn btn-primary d-block next-step" id="first-step">Sign Up
@@ -95,14 +103,21 @@
                         <h1>Sign Up</h1>
                         <h3>Please enter your personal details.</h3>
                         <span class='d-block mt-4'>Name <span class='form-required'></span></span>
-                        @include('partials.inputIcon', ['icon' => 'user', 'name' => 'name'])
-                        <span class='d-block mt-4'>Country <span class='form-required'></span></span>
-                        @include('partials.inputIcon', ['icon' => 'flag', 'name' => 'country'])
+                        @include('partials.inputIcon', ['icon' => 'user', 'name' => 'name', 'required' => true])
+                        <label>
+                            <span class='d-block mt-4'>Country <span class='form-required'></span></span>
+                            <!--include('partials.inputIcon', ['icon' => 'flag', 'name' => 'country', 'required' => true])-->
+                            <select name="country" id="country">
+                                @foreach(App\Models\Country::all() as $country)
+                                    <option value="{{$country->id}}">{{$country->name}}</option>
+                                @endforeach
+                            </select>
+                        </label>
                         <span class='d-block mt-4'>City</span>
                         @include('partials.inputIcon', ['icon' => 'map-marker-alt', 'name' => 'city'])
                         <span class='d-block mt-4'>Profile Photo <span class='form-required'></span></span>
                         <img src="../images/noImage.png" class="rounded-circle mx-auto d-block file-input" alt="...">
-                        <input type="file" name="myfile" class="d-none"/>
+                        <input type="file" name="profile-image" class="d-none"/>
                         <div class="d-grid gap-2 col-6 mx-auto my-2">
                             <button type="button" class="btn btn-primary d-block mt-3 next-step">Next</button>
                         </div>
@@ -113,11 +128,11 @@
                             <p class="mb-5"><strong class="finish-msg">YOU'RE IN!</strong></p>
                             <img src="https://thumbs.gfycat.com/ShyCautiousAfricanpiedkingfisher-max-1mb.gif" alt="...">
                             <div class="d-grid gap-2 col-6 mx-auto mt-5">
-                                <a href="{{ url('/feed') }}" role="button" class="btn btn-primary d-block">Finish</a>
+                                <input type="submit" class="btn btn-primary d-block">Finish</input>
                             </div>
                         </div>
                     </div>
-                </div>
+                </form>
             </div>
         </div>
 @endsection

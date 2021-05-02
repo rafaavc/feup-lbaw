@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Models\Member;
 use App\Http\Controllers\Controller;
+use http\Env\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 
@@ -53,25 +54,30 @@ class RegisterController extends Controller
             'password' => 'required|string',
             'name' => 'required|string',
             'country' => 'required|integer|exists:App\Models\Country,id',
-            'city' => 'string',
+            'city' => 'nullable|string',
+            'profile-image' => 'nullable|file|image'
         ]);
     }
 
     /**
      * Create a new user instance after a valid registration.
      *
-     * @param array $data
+     * @param array $request
      * @return \App\Models\Member
      */
-    protected function create(array $data)
+    protected function create(array $request)
     {
-        return Member::create([
-            'username' => $data['username'],
-            'email' => $data['email'],
-            'password' => bcrypt($data['password']),
-            'name' => $data['name'],
-            'country' => $data['country'],
-            'city' => $data['city']
-        ]);
+        $this->validator($request);
+
+        $member = new Member();
+        $member->username = $request['username'];
+        $member->email = $request['email'];
+        $member->password = bcrypt($request['password']);
+        $member->name = $request['name'];
+        $member->city = $request['city'];
+        $member->country()->associate($request['country']);
+
+        $member->save();
+        return $member;
     }
 }

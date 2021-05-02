@@ -31,7 +31,13 @@ class Member extends Authenticatable
         'password', 'email'
     ];
 
-    public function recipes() {
+    public function recipes()
+    {
         return $this->hasMany('App\Models\Recipe', 'id_member', 'id');
+    }
+
+    public function country()
+    {
+        return $this->belongsTo(Country::class, 'id_country', 'id');
     }
 }
