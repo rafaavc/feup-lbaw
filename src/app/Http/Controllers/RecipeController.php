@@ -18,8 +18,6 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Validator;
 
-use File;
-
 class RecipeController extends Controller
 {
     protected $table = "tb_recipe";
