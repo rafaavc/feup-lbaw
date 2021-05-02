@@ -27,7 +27,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/cards';
+    protected $redirectTo = '/recipe/1'; // TODO: change to feed
 
     /**
      * Create a new controller instance.
@@ -42,30 +42,36 @@ class RegisterController extends Controller
     /**
      * Get a validator for an incoming registration request.
      *
-     * @param  array  $data
+     * @param array $data
      * @return \Illuminate\Contracts\Validation\Validator
      */
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:tb_member',
-            'password' => 'required|string|min:6|confirmed',
+            'username' => 'required|string|unique:tb_member',
+            'email' => 'required|string|email|unique:tb_member',
+            'password' => 'required|string',
+            'name' => 'required|string',
+            'country' => 'required|integer|exists:App\Models\Country,id',
+            'city' => 'string',
         ]);
     }
 
     /**
      * Create a new user instance after a valid registration.
      *
-     * @param  array  $data
+     * @param array $data
      * @return \App\Models\Member
      */
     protected function create(array $data)
     {
         return Member::create([
-            'name' => $data['name'],
+            'username' => $data['username'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
+            'name' => $data['name'],
+            'country' => $data['country'],
+            'city' => $data['city']
         ]);
     }
 }
