@@ -12,11 +12,10 @@ use App\Models\Unit;
 use App\Models\Ingredient;
 use App\Models\Tag;
 use Exception;
-use Illuminate\Contracts\Queue\Job;
-use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File;
-use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Gate;
+use Laravel\Ui\ControllersCommand;
 
 class RecipeController extends Controller
 {
@@ -54,6 +53,50 @@ class RecipeController extends Controller
     ];
 
     /**
+     * Gets a given recipe's images (urls)
+     *
+     * @return string[]
+     */
+    public function getRecipeImages($recipeId) {
+        $paths = File::files(storage_path('app/public/images/recipes/'.$recipeId.'/'));
+        $images = array();
+        foreach($paths as $idx => $path) {
+            array_push($images, asset('storage/images/recipes/'.$recipeId.'/'.$path->getBasename()));
+        }
+        return $images;
+    }
+
+    public function getStepImage($stepId, $allStepImages = null) {
+        if ($allStepImages == null) $allStepImages = Storage::files('public/images/steps/');
+        $matchingFiles = preg_grep("/\/".$stepId."\./", $allStepImages);
+
+        foreach($matchingFiles as $file) return $file;
+        return null;
+    }
+
+    public function deleteRecipeStepsImages($steps) {
+        $allStepImages = Storage::files('public/images/steps');
+        foreach ($steps as $step) {
+            $imgPath = $this->getStepImage($step->id, $allStepImages);
+            var_dump($imgPath);
+
+            if ($imgPath != null) File::delete(storage_path('app/'.$imgPath));
+        }
+    }
+
+    /**
+     * Gets a given step's image (url)
+     *
+     * @return string
+     */
+    public function getStepImageForClient($stepId) {
+        $path = str_replace("public/", "storage/", $this->getStepImage($stepId));
+        if ($path != null) return asset($path);
+        return null;
+    }
+
+
+    /**
      * R1011: /recipe/{recipeId}
      *
      * @return \Illuminate\Http\Response
@@ -68,7 +111,28 @@ class RecipeController extends Controller
             array_push($commentsWithFathersIds, $comment->id);
         }
 
-        $images = File::files(storage_path('app/public/images/recipes/'.$recipe->id.'/'));
+        $images = $this->getRecipeImages($recipe->id);
+
+        $suggested = Recipe::inRandomOrder()->where('id', '!=', $recipe->id)->limit(4)->get();
+        foreach ($suggested as $recipeCard) {
+            $recipeCard->image = $this->getRecipeImages($recipeCard->id)[0];
+            $recipeCard->owner = $recipeCard->author->name;
+        }
+
+        $canEdit = Gate::inspect('update', $recipe)->allowed();
+        $canDelete = Gate::inspect('delete', $recipe)->allowed();
+
+        $steps = $recipe->steps;
+        foreach($steps as $step) {
+            $image = $this->getStepImageForClient($step->id);
+            if ($image != null) $step->image = $image;
+        }
+
+        $isFavourited = false;
+        if (Auth::check()) {
+            $membersWhoFavourited = $recipe->membersWhoFavourited()->where('id_member', '=', Auth::user()->id)->get();
+            if (sizeof($membersWhoFavourited) != 0) $isFavourited = true;
+        }
 
         return view('pages.recipe', [
             'recipe' => $recipe,
@@ -78,8 +142,24 @@ class RecipeController extends Controller
             'author' => $recipe->author,
             'steps' => $recipe->steps,
             'images' => $images,
-            'suggested' => []
+            'suggested' => $suggested,
+            'canEdit' => $canEdit,
+            'canDelete' => $canDelete,
+            'isFavourited' => $isFavourited
         ]);
+    }
+
+    /**
+     * Action for deleting recipe
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function deleteAction($recipeId)
+    {
+        $recipeName = Recipe::find($recipeId)->name;
+        $this->delete($recipeId);
+        $rndRecipeId = Recipe::limit(1)->get()[0]->id;
+        return redirect('/recipe/'.$rndRecipeId)->with('message', 'Recipe "'. $recipeName .'" successfully deleted!');
     }
 
     /**
@@ -257,15 +337,17 @@ class RecipeController extends Controller
                 $step = $recipe->steps()->save($step);
 
                 // Save step images
-                if($request->hasFile("steps." . $i))
-                    $request->file('steps')[$i]['image']->storeAs('public/images/steps/', $step->id . '.jpeg');
+                if($request->hasFile("steps." . $i)) {
+                    $stepImageFile = $request->file('steps')[$i]['image'];
+                    $stepImageFile->storeAs('public/images/steps/', $step->id . '.' . $stepImageFile->extension());
+                }
             }
 
             // Handle End Product Photos
 
             if($request->hasFile('images')) {
                 foreach($request->file('images') as $file)
-                    $file->storeAs('public/images/recipes/'. $recipe->id, date('mdYHis') . uniqid() . '.jpeg');
+                    $file->storeAs('public/images/recipes/'. $recipe->id, date('mdYHis') . uniqid() . '.' . $file->extension());
             }
 
             DB::commit();
@@ -285,7 +367,7 @@ class RecipeController extends Controller
     public function select($recipeId)
     {
         $recipe = Recipe::findOrFail($recipeId);
-        // $this->authorize('select', $recipe);
+        $this->authorize('select', $recipe);
         return $recipe;
     }
 
@@ -345,9 +427,9 @@ class RecipeController extends Controller
             $requestSteps = $request->input('steps');
             $numUserSteps = count($requestSteps);
 
+
             // Delete Step Images
-            foreach($recipe->steps()->get() as $step)
-                Storage::delete('public/images/steps/' . $step->id . '.jpeg');
+            $this->deleteRecipeStepsImages($recipe->steps);
 
             $recipe->steps()->forceDelete();
 
@@ -359,15 +441,17 @@ class RecipeController extends Controller
                 $step = $recipe->steps()->save($step);
 
                 // Save step images
-                if($request->hasFile("steps." . $i))
-                    $request->file('steps')[$i]['image']->storeAs('public/images/steps/', $step->id . '.jpeg');
+                if ($request->hasFile("steps." . $i)) {
+                    $stepImageFile = $request->file('steps')[$i]['image'];
+                    $stepImageFile->storeAs('public/images/steps/', $step->id . '.' . $stepImageFile->extension());
+                }
             }
 
             // Handle End Product Photos
             File::cleanDirectory(storage_path('app/public/images/recipes/' . $recipe->id));
             if($request->hasFile('images')) {
                 foreach($request->file('images') as $file)
-                    $file->storeAs('public/images/recipes/'. $recipe->id, date('mdYHis') . uniqid() . '.jpeg');
+                    $file->storeAs('public/images/recipes/'. $recipe->id, date('mdYHis') . uniqid() . '.' . $file->extension());
             }
             $recipe->save();
 
@@ -389,7 +473,45 @@ class RecipeController extends Controller
     {
         $recipe = Recipe::find($recipeId);
         $this->authorize('delete', $recipe);
+
+        $this->deleteRecipeStepsImages($recipe->steps);
+
+        File::deleteDirectory(storage_path('app/public/images/recipes/' . $recipe->id));
+
         $recipe->delete();
+
         return $recipe;
+    }
+
+
+    /**
+     * R2105: POST /api/recipe/{recipeId}/favourite
+     *
+     * @param int $recipeId
+     * @return void
+     */
+    public function addToFavourites($recipeId) {
+        if (!Auth::check()) {
+            return response()->json(['error' => 'Forbidden! Not logged in.'], 403);
+        }
+        $recipe = Recipe::findOrFail($recipeId);
+        $recipe->membersWhoFavourited()->attach(Auth::user()->id);
+        return response()->json(['message' => 'Success'], 200);
+    }
+
+
+    /**
+     * R2106: DELETE /api/recipe/{recipeId}/favourite
+     *
+     * @param int $recipeId
+     * @return void
+     */
+    public function removeFromFavourites($recipeId) {
+        if (!Auth::check()) {
+            return response()->json(['error' => 'Forbidden! Not logged in.'], 403);
+        }
+        $recipe = Recipe::findOrFail($recipeId);
+        $recipe->membersWhoFavourited()->detach(Auth::user()->id);
+        return response()->json(['message' => 'Success'], 200);
     }
 }

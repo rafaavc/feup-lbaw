@@ -1,5 +1,16 @@
-<div class="rating-input">
-    @for ($i = 1; $i <= 5; $i++)
-        <span onmouseover="starmark(this)" onclick="starmark(this)" id="{{ $i }}one" class="fas fa-star rating-input-star"></span>
-    @endfor
-</div>
+@php
+    $showRatingCount = !isset($showRatingCount) || $showRatingCount == true;
+@endphp
+<span class="small me-2">
+    @if($score == 0)
+        {{ $showRatingCount ? 'No ratings' : '' }}
+    @else
+        {{ round($score, 1) }} {{ $showRatingCount ? ('(' . $num_rating . ' ' . ($num_rating == 1 ? 'review' : 'reviews')) . ')' : '' }}
+    @endif
+</span>
+@php
+    $rounded = round($score);
+@endphp
+@for($i = 0; $i < 5; $i++)
+    <i class="fas fa-star{{ $i < $rounded ? " active" : "" }}"></i>
+@endfor
