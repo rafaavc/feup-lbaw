@@ -30,6 +30,13 @@
                 </div>
             </div>
             <div class="col-xl-6 sign-form">
+                @if($errors->any())
+                    <div class="alert alert-danger" id="error-messages" role="alert">
+                        @foreach($errors->all() as $error)
+                            {{ $error }}<br/>
+                        @endforeach
+                    </div>
+                @endif
                 <h1>Sign In</h1>
                 <h3>Please enter your account details.</h3>
 
@@ -39,21 +46,11 @@
                     <div class="d-flex mb-3">
                         <i class='fas fa-envelope fa-icon-left'></i>
                         <input id="email" type="email" name="email" required autofocus class="form-control icon-left me-2" aria-label="Member's email" aria-describedby="basic-addon2">
-                        @if ($errors->has('email'))
-                            <span class="error">
-                            {{ $errors->first('email') }}
-                            </span>
-                        @endif
                     </div>
                     <span class='d-block mt-4'>Password</span>
                     <div class="d-flex mb-3">
                         <i class='fas fa-lock fa-icon-left'></i>
                         <input id="password" type="password" name="password" required class="form-control icon-left me-2" aria-label="Member's password" aria-describedby="basic-addon2">
-                        @if ($errors->has('password'))
-                            <span class="error">
-                                {{ $errors->first('password') }}
-                            </span>
-                        @endif
                     </div>
                     <div class="d-grid gap-2 col-6 mx-auto">
                         <button type="submit" class="btn btn-primary d-block">
