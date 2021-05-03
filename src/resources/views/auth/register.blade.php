@@ -116,10 +116,10 @@
                         </div>
                         <span class='d-block mt-4'>City</span>
                         @include('partials.inputIcon', ['icon' => 'map-marker-alt', 'name' => 'city'])
-                        <span class='d-block mt-4'>Profile Photo <span class='form-required'></span></span>
+                        <span class='d-block mt-4'>Profile Photo (jpeg)<span class='form-required'></span></span>
                         <img src="{{ asset('storage/images/noImage.png') }}"
                              class="rounded-circle mx-auto d-block file-input" alt="...">
-                        <input type="file" name="profileImage" class="d-none"/>
+                        <input type="file" name="profileImage" class="d-none" accept=".jpeg,.jpg"/>
                         <div class="d-grid gap-2 col-6 mx-auto my-2">
                             <button type="button" class="btn btn-primary d-block mt-3 next-step">Next</button>
                         </div>
