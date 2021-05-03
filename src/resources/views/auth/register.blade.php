@@ -95,7 +95,7 @@
                             <button type="button" class="btn btn-primary d-block next-step" id="first-step">Sign Up
                             </button>
                         </div>
-                        <span class="d-block text-center mt-3">Already have an account? &nbsp;
+                        <span class="d-block text-center mt-3">Already have an account?&nbsp;
                             <a href="#" class="signUp-a">Sign In</a>
                         </span>
                     </div>
@@ -130,7 +130,7 @@
                             <p class="mb-5"><strong class="finish-msg">YOU'RE IN!</strong></p>
                             <img src="https://thumbs.gfycat.com/ShyCautiousAfricanpiedkingfisher-max-1mb.gif" alt="...">
                             <div class="d-grid gap-2 col-6 mx-auto mt-5">
-                                <input type="submit" class="btn btn-primary d-block">Finish</input>
+                                <input type="submit" class="btn btn-primary d-block" name="Finish"></input>
                             </div>
                         </div>
                     </div>
