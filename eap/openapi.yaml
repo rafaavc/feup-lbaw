@@ -6,7 +6,7 @@ info:
   description: 'Web Resources Specification (A7) for TasteBuds'
 
 servers:
-  - url: http://lbaw2135-prod.fe.up.pt
+  - url: http://lbaw2135.lbaw-prod.fe.up.pt
     description: Production server
 
 externalDocs:
@@ -155,6 +155,9 @@ paths:
                 302Error:
                   description: 'Failed authentication. Redirect to login form.'
                   value: '/login'
+                302Success:
+                  description: 'Authentication success.'
+                  value: '/'
 
   /member/{username}/recipes:
     get:
@@ -210,11 +213,115 @@ paths:
       responses:
         '200':
           description: 'Ok. Show [UI10](https://lbaw2135-piu.lbaw-prod.fe.up.pt/pages/profile_reviews.php)'
+  
+  /member/{username}/edit:
+    get:
+      operationId: R1010
+      summary: "R1010: Edit member's profile."
+      description: "Provide member's profile edition page. Access: OWN"
+      tags:
+        - 'M02: Recipes, categories, groups and members'
+      parameters:
+        - in: path
+          name: username
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: 'Ok. Show [UI12](http://lbaw2135-piu.lbaw-prod.fe.up.pt/pages/edit_profile.php)'
+    post:
+      operationId: R1011
+      summary: 'R1011: Edit profile action'
+      description: 'Processes the edit profile form submission. Access: OWN'
+      tags:
+        - 'M02: Recipes, categories, groups and members'
+
+      parameters:
+        - in: path
+          name: username
+          schema:
+            type: string
+          required: true
+
+      requestBody:
+        required: false
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                username:
+                  type: string
+                email:
+                  type: string
+                city:
+                  type: string
+                country:
+                  type: integer
+                password:
+                  type: string
+                biography:
+                  type: string
+                visibility:
+                  type: boolean
+                profileImage:
+                  type: string
+                  format: binary
+                coverImage:
+                  type: string
+                  format: binary
+      responses:
+        '302':
+          description: 'Redirect after processing the edit profile form.'
+          headers:
+            Location:
+              schema:
+                type: string
+              examples:
+                302Success:
+                  description: 'Successful edition. Redirect to profile.'
+                  value: '/member/{username}/recipes'
+                302Error:
+                  description: 'Failed edition. Redirect to edit profile form.'
+                  value: '/member/{username}/edit'
+
+  /member/{username}/delete:
+    post:
+      operationId: R1012
+      summary: 'R1012: Delete account action'
+      description: 'Processes the account deletion. Access: OWN, ADM'
+      tags:
+        - 'M02: Recipes, categories, groups and members'
+
+      parameters:
+        - in: path
+          name: username
+          schema:
+            type: string
+          required: true
+
+      responses:
+        '302':
+          description: 'Redirect after processing the account deletion.'
+          headers:
+            Location:
+              schema:
+                type: string
+              examples:
+                302Success:
+                  description: 'Successful deletion. Redirect to homepage.'
+                  value: '/'
+                302Error:
+                  description: 'Failed deletion. Redirect to edit profile form.'
+                  value: '/member/{username}/edit'
 
   /category/{categoryId}:
     get:
-      operationId: R1010
-      summary: 'R1010: Category page.'
+      operationId: R1013
+      summary: 'R1013: Category page.'
       description: 'Show a page with recipes of a certain category. Access: PUB'
       tags:
         - 'M02: Recipes, categories, groups and members'
@@ -229,13 +336,11 @@ paths:
       responses:
         '200':
           description: 'Ok. Show [UI17](http://lbaw2135-piu.lbaw-prod.fe.up.pt/pages/category.php)'
-        '404':
-          description: 'This page does not exist.'
 
   /recipe/{recipeId}:
     get:
-      operationId: R1011
-      summary: 'R1011: View recipes'
+      operationId: R1014
+      summary: 'R1014: View recipes'
       description: 'Show an individual recipe page. Access: PUB'
       tags:
         - 'M02: Recipes, categories, groups and members'
@@ -250,12 +355,132 @@ paths:
           description: 'Ok. Show [UI22](http://lbaw2135-piu.lbaw-prod.fe.up.pt/pages/recipe.php)'
 
   /recipe/{recipeId}/edit:
-     post:
-      operationId: R2103
-      summary: 'R2103: Edit recipe'
+    get:
+      operationId: R1015
+      summary: 'R1015: Edit recipe page.'
+      description: 'Show the recipe edition page. Access: OWN'
+      tags:
+        - 'M02: Recipes, categories, groups and members'
+
+      parameters:
+        - in: path
+          name: recipeId
+          schema:
+            type: integer
+          required: true
+
+      responses:
+        '200':
+          description: 'Ok. Show [UI23](http://lbaw2135-piu.lbaw-prod.fe.up.pt/pages/createRecipe.php)'
+    post:
+      operationId: R1016
+      summary: 'R1016: Edit recipe action'
       description: "Edit Recipe Action. Access: OWN"
       tags:
         - 'M02: Recipes, categories, groups and members'
+
+      parameters:
+        - in: path
+          name: recipeId
+          schema:
+            type: integer
+          required: true
+      
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                difficulty:
+                  type: string
+                description:
+                  type: string
+                servings:
+                  type: integer
+                preparation_time:
+                  type: integer
+                cooking_time:
+                  type: integer
+                additional_time:
+                  type: integer
+                creation_time:
+                  type: string
+                  format: datetime
+                creator:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                    name:
+                      type: string
+                category:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                    name:
+                      type: string
+                id_group:
+                  type: integer
+                score:
+                  type: number
+                ingredients:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      ingredient:
+                        type: object
+                        properties:
+                          id:
+                            type: integer
+                          name:
+                            type: string
+                      unit:
+                        type: object
+                        properties:
+                          id:
+                            type: integer
+                          name:
+                            type: string
+                      quantity:
+                        type: number
+                tags:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                      name:
+                        type: string
+                steps:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                      name:
+                        type: string
+                      description:
+                        type: string
+                      images:
+                        type: array
+                        items:
+                          type: string
+                          format: binary
+                images:
+                  type: array
+                  items:
+                    type: string
+                    format: binary
+
+      
       responses:
         '302':
           description: 'Redirect after processing recipe update.'
@@ -267,11 +492,45 @@ paths:
                 302Error:
                   description: 'Failed recipe update.'
                   value: '/recipe/{recipeId}/edit'
+                302Success:
+                  description: 'Recipe successfully updated.'
+                  value: '/recipe/{recipeId}'
+
+  /recipe/{recipeId}/delete:
+    post:
+      operationId: R1017
+      summary: 'R1017: Delete recipe action'
+      description: 'Processes the recipe deletion. Access: OWN, ADM'
+      tags:
+        - 'M02: Recipes, categories, groups and members'
+
+      parameters:
+        - in: path
+          name: recipeId
+          schema:
+            type: integer
+          required: true
+
+      responses:
+        '302':
+          description: 'Redirect after processing the recipe deletion.'
+          headers:
+            Location:
+              schema:
+                type: string
+              examples:
+                302Success:
+                  description: 'Successful deletion. Redirect to homepage.'
+                  value: '/'
+                302Error:
+                  description: 'Failed deletion. Redirect to recipe page.'
+                  value: '/recipe/{recipeId}'
+
 
   /recipe:
     get:
-      operationId: R1012
-      summary: 'R1012: Create Recipe.'
+      operationId: R1018
+      summary: 'R1018: Create Recipe.'
       description: 'Provides the create recipe page. Access: PUB'
       tags:
         - 'M02: Recipes, categories, groups and members'
@@ -279,11 +538,92 @@ paths:
         '200':
           description: 'Ok. Show [UI19](http://lbaw2135-piu.lbaw-prod.fe.up.pt/pages/createRecipe.php)'
     post:
-      operationId: R2101
-      summary: 'R2101: Create recipe'
-      description: 'Create new recipe Action. Access: MBR'
+      operationId: R1019
+      summary: 'R1019: Create recipe action'
+      description: 'Create new recipe action. Access: MBR'
       tags:
         - 'M02: Recipes, categories, groups and members'
+
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                title:
+                  type: string
+                mainCategory:
+                  type: integer
+                description:
+                  type: string
+                tags:
+                  type: array
+                  items:
+                    type: integer
+                difficulty:
+                  type: string
+                servings:
+                  type: integer
+                images:
+                  type: array
+                  items:
+                    type: string
+                    format: binary
+                visibility:
+                  type: boolean
+                ingredients:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      quantity:
+                        type: number
+                      unit:
+                        type: integer
+                      name:
+                        type: string
+                    required:
+                      - quantity
+                      - unit
+                      - name
+                preparationTime:
+                  type: integer
+                cookingTime:
+                  type: integer
+                additionalTime:
+                  type: integer
+                steps:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      name:
+                        type: string
+                      description:
+                        type: string
+                      images:
+                        type: array
+                        items:
+                          type: string
+                          format: binary
+                    required:
+                      - name
+                      - description
+              required:
+                - title
+                - mainCategory
+                - description
+                - tags
+                - difficulty
+                - servings
+                - images
+                - visibility
+                - ingredients
+                - preparationTime
+                - cookingTime
+                - steps
+
       responses:
         '302':
           description: 'Redirect after processing recipe creation.'
@@ -295,11 +635,14 @@ paths:
                 302Error:
                   description: 'Failed recipe creation.'
                   value: '/recipe'
+                302Success:
+                  description: 'Recipe successfully created.'
+                  value: '/recipe/{recipeId}'
 
   /group/{groupId}:
     get:
-      operationId: R1013
-      summary: 'R1013: Group page.'
+      operationId: R1020
+      summary: 'R1020: Group page.'
       description: 'Show a page with recipes and information of a certain group. Access: PUB.'
       tags:
         - 'M02: Recipes, categories, groups and members'
@@ -314,12 +657,116 @@ paths:
       responses:
         '200':
           description: 'Ok. Show [UI16](http://lbaw2135-piu.lbaw-prod.fe.up.pt/pages/group.php)'
+  
+  /group/{groupId}/edit:
+    get:
+      operationId: R1021
+      summary: 'R1021: Edit group page.'
+      description: 'Shows the group edition page. Access: MOD.'
+      tags:
+        - 'M02: Recipes, categories, groups and members'
+
+      parameters:
+        - in: path
+          name: groupId
+          schema:
+            type: integer
+          required: true
+
+      responses:
+        '200':
+          description: 'Ok. Show [UI24](http://lbaw2135-piu.lbaw-prod.fe.up.pt/pages/edit_group.php)'
+    post:
+      operationId: R1022
+      summary: 'R1022: Edit group action'
+      description: 'Processes the group edition form submission. Access: MOD'
+      tags:
+        - 'M02: Recipes, categories, groups and members'
+      parameters:
+        - in: path
+          name: groupId
+          schema:
+            type: integer
+          required: true
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                description:
+                  type: string
+                visibility:
+                  type: boolean
+                coverImage:
+                  type: string
+                  format: binary
+                profileImage:
+                  type: string
+                  format: binary
+      responses:
+        '302':
+          description: 'Redirect after processing the group edition.'
+          headers:
+            Location:
+              schema:
+                type: string
+              examples:
+                302Success:
+                  description: 'Successful group edition. Redirect to group page.'
+                  value: '/group/{groupId}'
+                302Error:
+                  description: 'Failed edition. Redirect back to group edition page.'
+                  value: '/group/{groupId}/edit'
+
+  /group/{groupId}/delete:
+    post:
+      operationId: R1023
+      summary: 'R1023: Delete group action'
+      description: 'Processes the group deletion. Access: OWN'
+      tags:
+        - 'M02: Recipes, categories, groups and members'
+
+      parameters:
+        - in: path
+          name: groupId
+          schema:
+            type: integer
+          required: true
+      
+      responses:
+        '302':
+          description: 'Redirect after processing the group deletion.'
+          headers:
+            Location:
+              schema:
+                type: string
+              examples:
+                302Success:
+                  description: 'Successful group deletion. Redirect to home page.'
+                  value: '/'
+                302Error:
+                  description: 'Failed creation. Redirect back to group edition page.'
+                  value: '/group/{groupId}/edit'
 
   /group:
+    get:
+      operationId: R1024
+      summary: 'R1024: Create group page.'
+      description: 'Show the group creation page. Access: MBR.'
+      tags:
+        - 'M02: Recipes, categories, groups and members'
+
+      responses:
+        '200':
+          description: 'Ok. Show [UI24](http://lbaw2135-piu.lbaw-prod.fe.up.pt/pages/edit_group.php)'
     post:
-      operationId: R1014
-      summary: 'R1014: Create group'
-      description: 'Create a new group. Access: MBR'
+      operationId: R1025
+      summary: 'R1025: Create group action'
+      description: 'Creates a new group. Access: MBR'
       tags:
         - 'M02: Recipes, categories, groups and members'
       requestBody:
@@ -357,15 +804,15 @@ paths:
               examples:
                 302Success:
                   description: 'Successful group creation. Redirect to group page.'
-                  value: '/group'
+                  value: '/group/{groupId}'
                 302Error:
                   description: 'Failed creation. Redirect back to group creation page.'
-                  value: '/create_group'
+                  value: '/group'
 
   /feed:
     get:
-      operationId: R1015
-      summary: 'R1015: Feed.'
+      operationId: R1026
+      summary: 'R1026: Feed.'
       description: 'Provides the feed page. Access: PUB'
       tags:
         - 'M02: Recipes, categories, groups and members'
@@ -375,8 +822,8 @@ paths:
 
   /chat/{recipientId}:
     get:
-      operationId: R1016
-      summary: 'R1016: Read messages'
+      operationId: R1027
+      summary: 'R1027: Read messages'
       description: 'Read private messages sent to another user. Access: MBR'
       tags:
         - 'M03: Chat'
@@ -392,8 +839,8 @@ paths:
 
   /search/{searchQuery}:
     get:
-      operationId: R1017
-      summary: 'R1017: Search results page'
+      operationId: R1028
+      summary: 'R1028: Search results page'
       description: 'Provide results from the performed search. Access: PUB'
       tags:
         - 'M02: Recipes, categories, groups and members'
@@ -403,38 +850,81 @@ paths:
           schema:
             type: string
           required: true
+        - in: query
+          name: sort
+          schema:
+            type: string
+          required: false
+        - in: query
+          name: sortparam
+          schema:
+            type: string
+          required: false
+        - in: query
+          name: category
+          schema:
+            type: string
+          required: false
+        - in: query
+          name: tag
+          schema:
+            type: string
+          required: false
+        - in: query
+          name: rating
+          schema:
+            type: string
+          required: false
+        - in: query
+          name: ingredient
+          schema:
+            type: string
+          required: false
+        - in: query
+          name: date
+          schema:
+            type: string
+          required: false
+        - in: query
+          name: duration
+          schema:
+            type: string
+          required: false
+        - in: query
+          name: difficulty
+          schema:
+            type: string
+          required: false
       responses:
         '200':
           description: 'Ok. Show [UI15](http://lbaw2135-piu.lbaw-prod.fe.up.pt/pages/search.php)'
 
   /admin/reports:
     get:
-      operationId: R1018
-      summary: 'R1018: Reports page.'
+      operationId: R1029
+      summary: 'R1029: Reports page.'
       description: 'Show all the comment and recipe reports to the admin. Access: ADM'
       tags:
         - 'M05: Web resources associated with the administrator pages'
       responses:
         '200':
           description: 'Ok. Show [UI15](http://lbaw2135-piu.lbaw-prod.fe.up.pt/pages/reportsManagement.php)'
-        '404':
-          description: 'This page does not exist.' # non-admins should not know that this page exists
 
   /admin/users:
     get:
-      operationId: R1019
-      summary: 'R1019: Users management section.'
+      operationId: R1030
+      summary: 'R1030: Users management section.'
       description: 'Provides the users management section. Access: PUB'
       tags:
-        - 'M02: Recipes, categories, groups and members'
+        - 'M05: Web resources associated with the administrator pages'
       responses:
         '200':
           description: 'Ok. Show [UI14](http://lbaw2135-piu.lbaw-prod.fe.up.pt/pages/usersManagement.php)'
 
   /about:
     get:
-      operationId: R1020
-      summary: 'R1020: About page'
+      operationId: R1031
+      summary: 'R1031: About page'
       description: 'Provide information about TasteBuds. Access: PUB'
       tags:
         - 'M04: Information'
@@ -444,8 +934,8 @@ paths:
 
   /faq:
     get:
-      operationId: R1021
-      summary: 'R1021: FAQ page'
+      operationId: R1032
+      summary: 'R1032: FAQ page'
       description: 'Provide FAQ page. Access: PUB'
       tags:
         - 'M04: Information'
@@ -492,8 +982,6 @@ paths:
       responses:
         '200':
           description: 'OK'
-        '400':
-          description: 'Invalid Request'
 
   /api/user/{username}:
     get:
@@ -633,10 +1121,6 @@ paths:
       responses:
         '200':
           description: 'Updated User'
-        '400':
-          description: 'Invalid Request'
-        '403':
-          description: 'Forbidden Access'
     delete:
       operationId: R2004
       summary: 'R2004: Delete member'
@@ -653,8 +1137,6 @@ paths:
       responses:
         '200':
           description: 'Deleted User'
-        '400':
-          description: 'Invalid Request'
 
   /api/user/{username}/recipes:
     get:
@@ -720,13 +1202,6 @@ paths:
                         name: "Zero sugar"
                     inFavourites: false
 
-        '400':
-          description: 'Invalid Request'
-        '403':
-          description: "The authenticated user cannot access the requested information (the requested member is private and the authenticated user doesn't follow him)"
-        '404':
-          description: 'The user does not exist'
-
   /api/user/{username}/reviews:
     get:
       operationId: R2006
@@ -770,12 +1245,6 @@ paths:
                     givenComment: Absolutely delicious! Explosion of flavour...
                     recipeRating: 4.6
                     numberOfReviews: 20
-        '400':
-          description: 'Invalid Request'
-        '403':
-          description: "The authenticated user cannot access the requested information (the requested member is private and the authenticated user doesn't follow him)"
-        '404':
-          description: 'The user does not exist'
 
   /api/user/{username}/favourites:
     get:
@@ -837,12 +1306,6 @@ paths:
                         name: "Vegetarian"
                       - id: 32
                         name: "Zero sugar"
-        '400':
-          description: 'Invalid Request'
-        '403':
-          description: "The authenticated user cannot access the requested information (the requested member is private and the authenticated user doesn't follow him)"
-        '404':
-          description: 'The user does not exist'
 
   /api/user/{username}/following:
     get:
@@ -880,10 +1343,6 @@ paths:
                   - id: 3
                     name: Kyren Wilson
                     username: kyren77
-        '403':
-          description: "The authenticated user cannot access the requested information (the requested member is private and the authenticated user doesn't follow him)"
-        '404':
-          description: 'The user does not exist'
 
   /api/user/{username}/followers:
     get:
@@ -921,10 +1380,6 @@ paths:
                   - id: 5
                     name: Paul Morphy
                     username: _morphy_
-        '403':
-          description: "The authenticated user cannot access the requested information (the requested member is private and the authenticated user doesn't follow him)"
-        '404':
-          description: 'The user does not exist'
 
   /api/user/{username}/groups:
     get:
@@ -958,10 +1413,6 @@ paths:
                     name: Oporto Vegetarians
                   - id: 2
                     name: Lisbon Vegetarians
-        '403':
-          description: "The authenticated user cannot access the requested information (the requested member is private and the authenticated user doesn't follow him)"
-        '404':
-          description: 'The user does not exist'
 
   /api/user/{username}/request:
     post:
@@ -979,10 +1430,6 @@ paths:
       responses:
         '200':
           description: 'Created'
-        '400':
-          description: 'Invalid Request'
-        '404':
-          description: 'The user does not exist'
 
   /api/user/request/{username}:
     post:
@@ -1001,10 +1448,6 @@ paths:
       responses:
         '200':
           description: 'Accepted'
-        '400':
-          description: 'Invalid Request'
-        '404':
-          description: 'The request does not exist'
     delete:
       operationId: R2013
       summary: 'R2013: Decline follow request'
@@ -1020,8 +1463,6 @@ paths:
       responses:
         '200':
           description: 'Deleted'
-        '400':
-          description: 'Invalid Request'
 
   /api/users:
     get:
@@ -1077,9 +1518,6 @@ paths:
                     numberOfPosts: 15
                     numberOfComments: 69
                     numberOfReports: 2
-
-        '400':
-          description: 'Invalid Request'
 
   /api/recipe:
     post:
@@ -1170,8 +1608,6 @@ paths:
       responses:
         '200':
           description: 'Success'
-        '400':
-          description: 'Invalid Request'
 
   /api/recipe/{recipeId}:
     get:
@@ -1312,8 +1748,6 @@ paths:
                     - id: 354
                       name: "Faça a receita"
                       description: "Prepare o tofu à brás, depois disso pode comê-lo"
-        '404':
-          description: "The recipe does not exist or the authenticated user has no access to it"
     put:
       operationId: R2103
       summary: 'R2103: Edit recipe'
@@ -1423,8 +1857,6 @@ paths:
       responses:
         '200':
           description: 'Updated Recipe'
-        '400':
-          description: 'Invalid Request'
     delete:
       operationId: R2104
       summary: 'R2104: Delete recipe'
@@ -1441,8 +1873,6 @@ paths:
       responses:
         '200':
           description: 'Deleted Recipe'
-        '400':
-          description: 'Invalid Request'
 
   /api/recipe/{recipeId}/favourite:
     post:
@@ -1498,8 +1928,6 @@ paths:
       responses:
         '200':
           description: 'Reported Recipe'
-        '400':
-          description: 'Invalid Request'
 
   /api/group:
     post:
@@ -1535,8 +1963,6 @@ paths:
       responses:
         '200':
           description: 'Created Group'
-        '400':
-          description: 'Invalid Request'
 
   /api/group/{groupId}:
     get:
@@ -1645,8 +2071,6 @@ paths:
       responses:
         '200':
           description: 'OK'
-        '400':
-          description: 'Bad request'
     delete:
       operationId: R2204
       summary: 'R2204: Delete group'
@@ -1679,8 +2103,6 @@ paths:
       responses:
         '200':
           description: 'Success'
-        '400':
-          description: 'Invalid Request'
 
   /api/group/{groupId}/request/{memberId}:
     post:
@@ -1705,10 +2127,7 @@ paths:
       responses:
         '200':
           description: 'Accepted'
-        '400':
-          description: 'Invalid Request'
-        '404':
-          description: 'The request does not exist'
+
     delete:
       operationId: R2207
       summary: 'R2207: Refuse membership request'
@@ -1731,8 +2150,6 @@ paths:
       responses:
         '200':
           description: 'Deleted'
-        '400':
-          description: 'Invalid Request'
 
   /api/group/{groupId}/moderator/{memberId}:
     post:
@@ -1755,8 +2172,6 @@ paths:
       responses:
         '200':
           description: 'Member turned into moderator'
-        '400':
-          description: 'Invalid Request'
 
   /api/group/{groupId}/member/{memberId}:
     delete:
@@ -1779,8 +2194,6 @@ paths:
       responses:
         '200':
           description: 'Member removed from group'
-        '400':
-          description: 'Invalid Request'
 
   /api/group/{groupId}/members:
     get:
@@ -1818,10 +2231,6 @@ paths:
                   - id: 3
                     name: Kyren Wilson
                     username: kyren77
-        '403':
-          description: "The authenticated user cannot access the requested information (the requested group is private and the authenticated user doesn't belong to it)"
-        '404':
-          description: 'The group does not exist'
 
   /api/chat/{recipientId}:
     get:
@@ -1858,8 +2267,6 @@ paths:
                     creationDate: 2019-05-09 16:19
                   - text: Hello :)
                     creationDate: 2019-05-12 13:09
-        '400':
-          description: 'Invalid Request'
     post:
       operationId: R2302
       summary: 'R2302: Add message'
@@ -1889,8 +2296,6 @@ paths:
       responses:
         '200':
           description: 'Success'
-        '400':
-          description: 'Invalid Request'
 
   /api/chats:
     get:
@@ -1935,8 +2340,6 @@ paths:
                     lastMessage: Okay bro.
                     read: true
                     lastSenderName: You
-        '400':
-          description: 'Invalid Request'
 
   /api/comment:
     post:
@@ -1964,8 +2367,6 @@ paths:
       responses:
         '200':
           description: 'Success'
-        '400':
-          description: 'Bad request'
 
   /api/comment/{commentId}:
     put:
@@ -1984,7 +2385,7 @@ paths:
       requestBody:
         required: false
         content:
-          multipart/form-data:
+          application/x-www-form-urlencoded:
             schema:
               type: object
               properties:
@@ -1996,10 +2397,6 @@ paths:
       responses:
         '200':
           description: 'Updated Comment'
-        '400':
-          description: 'Invalid Request'
-        '403':
-          description: 'Forbidden Access'
 
     delete:
       operationId: R2403
@@ -2017,8 +2414,6 @@ paths:
       responses:
         '200':
           description: 'Deleted Comment'
-        '400':
-          description: 'Invalid Request'
 
   /api/comment/{commentId}/report:
     post:
@@ -2042,8 +2437,6 @@ paths:
       responses:
         '200':
           description: 'Reported Comment'
-        '400':
-          description: 'Invalid Request'
 
   /api/feed:
     get:
@@ -2129,6 +2522,13 @@ paths:
                           type: integer
                         category:
                           type: string
+                        author:
+                          type: object
+                          properties:
+                            id:
+                              type: integer
+                            name:
+                              type: string
                         tags:
                           type: array
                           items:
@@ -2138,16 +2538,7 @@ paths:
                                 type: integer
                               name:
                                 type: string
-                  categories:
-                    type: array
-                    items:
-                      type: object
-                      properties:
-                        id:
-                          type: integer
-                        name:
-                          type: string
-                  tags:
+                  trendingTags:
                     type: array
                     items:
                       type: object
@@ -2174,6 +2565,9 @@ paths:
                       rating: 4.5
                       numberOfReviews: 5
                       category: Dessert
+                      author:
+                        id: 2
+                        name: Jessica Worfield
                       tags:
                         - id: 45
                           name: "Vegetarian"
@@ -2186,17 +2580,15 @@ paths:
                       rating: 4.8
                       numberOfReviews: 3
                       category: Lunch
+                      author:
+                        id: 6
+                        name: Johnson Wassum
                       tags:
                         - id: 45
                           name: "Vegetarian"
                         - id: 32
                           name: "Zero sugar"
-                  categories:
-                    - id: 1
-                      name: Lunch
-                    - id: 2
-                      name: Breakfast
-                  tags:
+                  trendingTags:
                     - id: 1
                       name: Vegetarian
                     - id: 2
@@ -2204,8 +2596,6 @@ paths:
                   trendingRecipes:
                     - id: 3
                       title: Cozido à portuguesa
-        '400':
-          description: 'Invalid Request'
 
   /api/search/{searchQuery}:
     get:
@@ -2396,8 +2786,6 @@ paths:
       responses:
         '200':
           description: 'Deleted Report'
-        '400':
-          description: 'Invalid Request'
 
   /api/reports:
     get:
@@ -2552,8 +2940,6 @@ paths:
       responses:
         '200':
           description: 'Updated User'
-        '400':
-          description: 'Invalid Request'
 
   /api/countries:
     get:
