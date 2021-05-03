@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Models\Member;
 use App\Http\Controllers\Controller;
+use http\Env\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 
@@ -27,7 +28,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/cards';
+    protected $redirectTo = '/recipe/1'; // TODO: change to feed
 
     /**
      * Create a new controller instance.
@@ -42,30 +43,45 @@ class RegisterController extends Controller
     /**
      * Get a validator for an incoming registration request.
      *
-     * @param  array  $data
+     * @param array $data
      * @return \Illuminate\Contracts\Validation\Validator
      */
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:tb_member',
-            'password' => 'required|string|min:6|confirmed',
+            'username' => 'required|string|unique:tb_member',
+            'email' => 'required|string|email|unique:tb_member',
+            'password' => 'required|string',
+            'name' => 'required|string',
+            'countryId' => 'required|integer|exists:App\Models\Country,id',
+            'city' => 'nullable|string',
+            'profileImage' => 'required|file|image|mimes:jpeg'
         ]);
     }
 
     /**
      * Create a new user instance after a valid registration.
      *
-     * @param  array  $data
+     * @param array $request
      * @return \App\Models\Member
      */
-    protected function create(array $data)
+    protected function create(array $request)
     {
-        return Member::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => bcrypt($data['password']),
-        ]);
+        $this->validator($request);
+
+        $member = new Member();
+        $member->username = $request['username'];
+        $member->email = $request['email'];
+        $member->password = bcrypt($request['password']);
+        $member->name = $request['name'];
+        $member->city = $request['city'];
+        $member->country()->associate($request['countryId']);
+
+        $member->save();
+
+        $file = $request['profileImage'];
+        $file->storeAs('public/images/people/', $member->id . ".jpeg");
+
+        return $member;
     }
 }

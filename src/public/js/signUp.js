@@ -8,7 +8,7 @@ function fileUploadListeners() {
         fileUpload.addEventListener('click', fileUploadHandler);
     });
 
-    let fileInputs = document.querySelectorAll("input[name='myfile']");
+    let fileInputs = document.querySelectorAll("input[name='profileImage']");
     fileInputs.forEach((fileInput) => {
         fileInput.addEventListener('change', fileInputHandler);
     })
@@ -29,6 +29,7 @@ function fileInputHandler(event) {
 
 // Display Progress Stepper after filling first form
 
-document.querySelector('#first-step').addEventListener('click', function() {
+document.querySelector('#first-step').addEventListener('click', function () {
     document.querySelector('div.progress').parentNode.classList.remove('d-none');
+    document.getElementById('error-messages').classList.add('d-none');
 });

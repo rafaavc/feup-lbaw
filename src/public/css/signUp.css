@@ -20,7 +20,7 @@ div.progress + ul > li > button {
 div.progress + ul > li > button[active] {
     transform: scale(1.2);
     transition: transform .2s;
-} 
+}
 
 div.progress + ul > li > button[disabled] {
     opacity: 1;
@@ -28,12 +28,17 @@ div.progress + ul > li > button[disabled] {
 
 div.progress + ul > li > button[disabled] {
     background-color: var(--bs-secondary);
-} 
+}
 
 img.file-input {
     height: 6vw !important;
     width: 6vw !important;
-    object-fit: cover;    
+    object-fit: cover;
+}
+
+img.file-input:hover {
+    cursor: pointer;
+    opacity: 0.9;
 }
 
 strong.finish-msg {
