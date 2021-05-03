@@ -53,9 +53,9 @@ class RegisterController extends Controller
             'email' => 'required|string|email|unique:tb_member',
             'password' => 'required|string',
             'name' => 'required|string',
-            'country' => 'required|integer|exists:App\Models\Country,id',
+            'countryId' => 'required|integer|exists:App\Models\Country,id',
             'city' => 'nullable|string',
-            'profile-image' => 'nullable|file|image'
+            'profileImage' => 'required|file|image|mimes:jpeg'
         ]);
     }
 
@@ -75,9 +75,13 @@ class RegisterController extends Controller
         $member->password = bcrypt($request['password']);
         $member->name = $request['name'];
         $member->city = $request['city'];
-        $member->country()->associate($request['country']);
+        $member->country()->associate($request['countryId']);
 
         $member->save();
+
+        $file = $request['profileImage'];
+        $file->storeAs('public/images/people/', $member->id . ".jpeg");
+
         return $member;
     }
 }

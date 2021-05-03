@@ -107,7 +107,7 @@
                         <label>
                             <span class='d-block mt-4'>Country <span class='form-required'></span></span>
                             <!--include('partials.inputIcon', ['icon' => 'flag', 'name' => 'country', 'required' => true])-->
-                            <select name="country" id="country">
+                            <select name="countryId" id="country">
                                 @foreach(App\Models\Country::all() as $country)
                                     <option value="{{$country->id}}">{{$country->name}}</option>
                                 @endforeach
@@ -117,7 +117,7 @@
                         @include('partials.inputIcon', ['icon' => 'map-marker-alt', 'name' => 'city'])
                         <span class='d-block mt-4'>Profile Photo <span class='form-required'></span></span>
                         <img src="../images/noImage.png" class="rounded-circle mx-auto d-block file-input" alt="...">
-                        <input type="file" name="profile-image" class="d-none"/>
+                        <input type="file" name="profileImage" class="d-none"/>
                         <div class="d-grid gap-2 col-6 mx-auto my-2">
                             <button type="button" class="btn btn-primary d-block mt-3 next-step">Next</button>
                         </div>
