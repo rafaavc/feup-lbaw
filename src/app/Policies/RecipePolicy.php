@@ -19,7 +19,7 @@ class RecipePolicy
         return Auth::check();
     }
 
-    public function select(Member $user, Recipe $recipe)
+    public function select(?Member $user, Recipe $recipe)
     {
         // TODO: verify if the recipe was posted in a group and the user is part of it or it is an administrator
         return true;

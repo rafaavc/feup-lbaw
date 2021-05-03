@@ -26,9 +26,10 @@
         <link href="{{ asset('css/styles.css') }}" rel="stylesheet">
         <link href="{{ asset('css/components/footer.css') }}" rel="stylesheet">
         <link href="{{ asset('css/components/nav.css') }}" rel="stylesheet">
+        <link href="{{ asset('css/components/navPopups.css') }}" rel="stylesheet">
         @stack('css')
 
-        <script src="{{ asset('js/general.js') }}" defer></script>
+        <script src="{{ asset('js/general.js') }}" type="module" defer></script>
         <script src="{{ asset('js/navPopups.js') }}" defer></script>
         @stack('js')
 
@@ -37,7 +38,7 @@
             // See: http://stackoverflow.com/questions/18943276/html-5-autofocus-messes-up-css-loading/18945951#18945951
         </script>
     </head>
-    <body>
+    <body data-root-url="{{ url("") }}" data-csrf-token="{{ csrf_token() }}">
         @include('partials.nav')
         @yield('content')
         @include('partials.footer')
