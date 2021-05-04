@@ -2,11 +2,11 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Casts\AsArrayObject;
-use Illuminate\Notifications\Notifiable;
-use Illuminate\Foundation\Auth\User as Authenticatable;
-use App\Models\Country;
 use App\Models\Comment;
+use App\Models\Country;
+use App\Models\Recipe;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
 
 class Member extends Authenticatable
 {
@@ -48,7 +48,7 @@ class Member extends Authenticatable
 
     public function recipes()
     {
-        return $this->hasMany('App\Models\Recipe', 'id_member', 'id');
+        return $this->hasMany(Recipe::class, 'id_member', 'id');
     }
 
     public function comments()
@@ -59,6 +59,11 @@ class Member extends Authenticatable
     public function country()
     {
         return $this->belongsTo(Country::class, 'id_country');
+    }
+
+    public function favourites()
+    {
+        return $this->belongsToMany(Recipe::class, 'tb_favourite', 'id_member', 'id_recipe');
     }
 
     public function following()

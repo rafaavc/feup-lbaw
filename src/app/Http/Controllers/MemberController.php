@@ -32,6 +32,7 @@ class MemberController extends Controller
         $reviews = array();
         foreach ($user->comments as $comment) {
             $comment = $comment->load('fatherComments');
+            // Reviews are comments that do not have a father
             if (sizeof($comment->fatherComments) == 0)
                 $reviews[] = $comment;
         }
@@ -40,7 +41,7 @@ class MemberController extends Controller
 
     public function getFavourites(Member $user)
     {
-        //
+        return $user->favourites;
     }
 
     public function getFollowing(Member $user)
