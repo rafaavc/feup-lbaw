@@ -30,3 +30,15 @@ Route::get('units', [UnitController::class, 'index']);
 
 Route::post('recipe/{recipeId}/favourite', 'RecipeController@addToFavourites');
 Route::delete('recipe/{recipeId}/favourite', 'RecipeController@removeFromFavourites');
+
+// User pages
+Route::post('/api/user', 'MemberController@insert');
+Route::get('/api/user/{username}', 'MemberController@select');
+Route::put('/api/user/{username}', 'MemberController@update');
+Route::delete('/api/user/{username}', 'MemberController@delete');
+Route::get('/api/user/{username}/recipes', 'MemberController@selectRecipes');
+Route::get('/api/user/{username}/reviews', 'MemberController@selectReviews');
+Route::get('/api/user/{username}/favourites', 'MemberController@selectFavourites');
+Route::get('/api/user/{username}/following', 'MemberController@selectFollowing');
+Route::get('/api/user/{username}/followers', 'MemberController@selectFollowers');
+Route::get('/api/user/{username}/groups', 'MemberController@selectGroups');

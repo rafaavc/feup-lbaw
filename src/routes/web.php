@@ -34,4 +34,3 @@ Route::get('/recipe/{id}', 'RecipeController@view');
 
 // Content creation
 Route::get('/recipe', 'RecipeController@create');
-
