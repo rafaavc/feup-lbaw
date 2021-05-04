@@ -46,17 +46,17 @@ class MemberController extends Controller
 
     public function getFollowing(Member $user)
     {
-        //
+        return $user->following;
     }
 
     public function getFollowers(Member $user)
     {
-        //
+        return $user->followers;
     }
 
     public function getGroups(Member $user)
     {
-        //
+        return $user->groups;
     }
 
     public function put(Request $request, Member $user)

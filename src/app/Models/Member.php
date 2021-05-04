@@ -78,6 +78,11 @@ class Member extends Authenticatable
             ->withPivot("state", "timestamp");
     }
 
+    public function groups()
+    {
+        return $this->belongsToMany(Groups::class, 'tb_group_member', 'id_member', 'id_group');
+    }
+
     public function getBiographyAttribute()
     {
         return $this->attributes['bio'];
