@@ -109,16 +109,20 @@ class MemberController extends Controller
 
     public function update(Member $user)
     {
-        //
+        return view('pages.user.edit', [
+            'user' => $this->get($user)
+        ]);
     }
 
-    public function updateAction(Member $user)
+    public function updateAction(Request $request, Member $user)
     {
-        //
+        $this->put($request, $user);
+        return redirect("/user/$user->username");
     }
 
     public function deleteAction(Member $user)
     {
-        //
+        $this->remove($user);
+        return redirect("/login");
     }
 }
