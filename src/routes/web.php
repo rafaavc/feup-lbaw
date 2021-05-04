@@ -42,5 +42,5 @@ Route::get('/user/{username}/recipes', 'MemberController@readRecipes');
 Route::get('/user/{username}/favourites', 'MemberController@readFavourites');
 Route::get('/user/{username}/reviews', 'MemberController@readReviews');
 Route::get('/user/{username}/edit', 'MemberController@update');
-Route::post('/user/{username}/edit', 'MemberController@updatePost');
-Route::post('/user/{username}/delete', 'MemberController@delete');
+Route::post('/user/{username}/edit', 'MemberController@updateAction');
+Route::post('/user/{username}/delete', 'MemberController@deleteAction');

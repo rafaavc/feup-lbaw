@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\MemberController;
 use App\Http\Controllers\RecipeController;
 use App\Http\Controllers\UnitController;
 use Illuminate\Http\Request;
