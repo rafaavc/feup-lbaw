@@ -171,17 +171,7 @@ class RecipeController extends Controller
     {
         if (!Auth::check()) return redirect('/feed');
         try {
-            $units = Unit::all();
-            $categories = Category::all();
-            $ingredients = Ingredient::all();
-            $tags = Tag::all();
-
-            return view('pages.upsertRecipe', [
-                'units' => $units,
-                'categories' => $categories,
-                'totalIngredients' => $ingredients,
-                'totalTags' => $tags
-            ]);
+            return view('pages.upsertRecipe');
         } catch (\Exception $e) {
             abort(403, 'Database Exception');
         }
@@ -225,9 +215,6 @@ class RecipeController extends Controller
         try {
             $recipe = Recipe::findOrFail($recipeId);
             $units = Unit::all();
-            $categories = Category::all();
-            $ingredients = Ingredient::all();
-            $tags = Tag::all();
 
             return view('pages.upsertRecipe', [
                 'recipe' => $recipe,
@@ -235,10 +222,6 @@ class RecipeController extends Controller
                 'tags' => $recipe->tags,
                 'author' => $recipe->author,
                 'steps' => $recipe->steps,
-                'units' => $units,
-                'categories' => $categories,
-                'totalIngredients' => $ingredients,
-                'totalTags' => $tags
             ]);
         } catch (\Exception $e) {
             abort(403, 'Database Exception');

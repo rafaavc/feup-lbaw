@@ -1,14 +1,15 @@
-@php
-    if (!isset($index))
-        $index = 0;
-@endphp
-
 <div class="row g-3 mb-3">
     <div class="col-lg">
         <div class="row g-3">
             <div class="col-sm">
                 <div class="form-floating">
-                    <input name="ingredients[{{ $index }}][quantity]" type="number" class="form-control" placeholder="0" aria-label="Quantity" id="quantityInput" step="0.1" value="{{ isset($ingredient->pivot->quantity) ? $ingredient->pivot->quantity : "" }}">
+                    @if($hasErrors)
+                        <input name="ingredients[{{ $index }}][quantity]" type="number" class="form-control" placeholder="0" aria-label="Quantity" id="quantityInput" step="0.1"
+                        value="{{ $ingredient['quantity'] }}">
+                    @else
+                        <input name="ingredients[{{ $index }}][quantity]" type="number" class="form-control" placeholder="0" aria-label="Quantity" id="quantityInput" step="0.1"
+                            value="{{ (isset($ingredient->pivot->quantity)) ? $ingredient->pivot->quantity : "" }}">
+                    @endif
                     <label for="quantityInput">Quantity <span class='form-required'></span></label>
                 </div>
             </div>
@@ -16,8 +17,8 @@
                 <div class="form-floating">
                     <select name="ingredients[{{ $index }}][id_unit]" class="form-select" id="quantityUnitSelect" aria-label="Quantity unit">
                         @foreach ($units as $unit)
-                            @if(isset($ingredient) && $ingredient->pivot->id_unit === $unit->id)
-                                <option value="{{ $ingredient->pivot->id_unit }}" selected>{{ $unit->name }}</option>
+                            @if((!$hasErrors && isset($ingredient) && $ingredient->pivot->id_unit === $unit->id) || ($hasErrors && $ingredient['id_unit'] == $unit->id))
+                                <option value="{{ $unit->id }}" selected>{{ $unit->name }}</option>
                             @else
                                 <option value="{{ $unit->id }}">{{ $unit->name }}</option>
                             @endif
@@ -30,8 +31,12 @@
     </div>
     <div class="col-lg">
         <div class="form-floating">
-            <select name="ingredients[{{ $index }}][id]" class="form-select" id="ingredientSelect" aria-label="Quantity unit">
-                <option value="{{ isset($ingredient) ?$ingredient->id : 0}}">{{ isset($ingredient) ? $ingredient->name : "" }}</option>
+            <select name="ingredients[{{ $index }}][id]" class="form-select" id="ingredientSelect" aria-label="Quantity unit" required>
+                @if($hasErrors && \App\Models\Ingredient::where('id', $ingredient['id'])->exists())
+                    <option value="{{ $ingredient['id'] }}">{{ \App\Models\Ingredient::find($ingredient['id'])->name }}</option>
+                @else
+                    <option value="{{ (isset($ingredient) && !$hasErrors) ? $ingredient->id : 0}}">{{ (isset($ingredient) && !$hasErrors) ? $ingredient->name : "" }}</option>
+                @endif
             </select>
 
             {{-- <input type="text" class="form-control" id="floatingInput" placeholder="Tomato" value="{{ isset($ingredient->name) ? $ingredient->name : "" }}"> --}}
