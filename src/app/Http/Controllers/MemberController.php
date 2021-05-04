@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Member;
+use App\Models\Recipe;
 
 class MemberController extends Controller
 {
@@ -18,17 +19,23 @@ class MemberController extends Controller
 
     public function get(Member $user)
     {
-        return $user;
+        return $user->load('country');
     }
 
     public function getRecipes(Member $user)
     {
-        //
+        return $user->recipes;
     }
 
     public function getReviews(Member $user)
     {
-        //
+        $reviews = array();
+        foreach ($user->comments as $comment) {
+            $comment = $comment->load('fatherComments');
+            if (sizeof($comment->fatherComments) == 0)
+                $reviews[] = $comment;
+        }
+        return $reviews;
     }
 
     public function getFavourites(Member $user)

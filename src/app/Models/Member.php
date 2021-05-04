@@ -34,9 +34,7 @@ class Member extends Authenticatable
         'password', 'email', 'search', 'num_rating', 'is_banned', 'visibility', 'bio', 'id_country'
     ];
 
-    protected $appends = ['biography', 'recipes', 'followers', 'following'];
-
-    protected $with = ['country'];
+    protected $appends = ['biography', 'number_of_recipes', 'number_of_followers', 'number_of_following'];
 
     /**
      * Get the route key for the model.
@@ -80,17 +78,17 @@ class Member extends Authenticatable
         return $this->attributes['bio'];
     }
 
-    public function getRecipesAttribute()
+    public function getNumberOfRecipesAttribute()
     {
         return $this->recipes()->count();
     }
 
-    public function getFollowersAttribute()
+    public function getNumberOfFollowersAttribute()
     {
         return $this->followers()->count();
     }
 
-    public function getFollowingAttribute()
+    public function getNumberOfFollowingAttribute()
     {
         return $this->following()->count();
     }
