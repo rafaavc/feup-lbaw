@@ -80,25 +80,31 @@ class MemberController extends Controller
         return redirect("/user/$user->username/recipes");
     }
 
-    public function readRecipes(Member $user)
+    private function renderMemberView(Member $user, string $tab, $items)
     {
-        return view('pages.user.recipes', [
+        return view('pages.user.' . $tab, [
             'user' => $this->get($user),
-            'recipes' => $this->getRecipes($user),
             'groups' => $this->getGroups($user),
+            'tab' => strtolower($tab),
+            $tab => $items,
             'canEdit' => Gate::inspect('update', $user)->allowed(),
             'canDelete' => Gate::inspect('delete', $user)->allowed(),
         ]);
     }
 
+    public function readRecipes(Member $user)
+    {
+        return $this->renderMemberView($user, 'recipes', $this->getRecipes($user));
+    }
+
     public function readFavourites(Member $user)
     {
-        //
+        return $this->renderMemberView($user, 'favourites', $this->getFavourites($user));
     }
 
     public function readReviews(Member $user)
     {
-        //
+        return $this->renderMemberView($user, 'reviews', $this->getReviews($user));
     }
 
     public function update(Member $user)

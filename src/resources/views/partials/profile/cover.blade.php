@@ -10,7 +10,7 @@
             <div class="col-md-2 image-container">
                 <img class="rounded-circle mx-auto"
                      src="{{ asset("storage/images/people/$user->id.jpeg") }}"
-                     alt="Profile image of {{$user->name}}" style="border: 0">
+                     alt=" Profile image of {{$user->name}}" style="border: 0">
             </div>
             <div class="col-md-6 ms-md-4 card-body m-0">
                 <h1 class="card-title">{{$user->name}}</h1>
@@ -34,7 +34,8 @@
                     <a href="{{url("/user/$user->username/edit")}}" class=" btn btn-outline-dark"><i
                             class="fas fa-edit"></i>Edit</a>
                     <?php } else { ?>
-                    <button type="button" class="btn btn-outline-dark"><i class="fas fa-user-plus"></i>Follow</button>
+                    <button type="button" class="btn btn-outline-dark"><i class="fas fa-user-plus"></i>Follow
+                    </button>
                     <button type="button" class="btn btn-outline-dark"><i class="fas fa-comments"></i>Chat</button>
                     <?php } ?>
                 </div>
@@ -54,15 +55,15 @@
             </div>
             <ul class="nav nav-tabs col-md-9 ps-md-3">
                 <li class="nav-item">
-                    <a class="nav-link <?=!isset($section) ? "active" : "" ?>" aria-current="page"
+                    <a class="nav-link {{$tab === "recipes" ? "active" : ""}}" aria-current="page"
                        href="{{url("/user/$user->username/recipes")}}">Recipes</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link <?=isset($section) && $section == 2 ? "active" : ""?>"
+                    <a class="nav-link {{$tab === "reviews" ? "active" : ""}}"
                        href="{{url("/user/$user->username/reviews")}}">Reviews</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link <?=isset($section) && $section == 3 ? "active" : ""?>"
+                    <a class="nav-link {{$tab === "favourites" ? "active" : ""}}"
                        href="{{url("/user/$user->username/favourites")}}">Favourites</a>
                 </li>
             </ul>
