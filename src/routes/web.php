@@ -38,3 +38,4 @@ Route::get('/user/{user}/reviews', 'MemberController@readReviews')->middleware('
 Route::get('/user/{user}/edit', 'MemberController@update')->middleware('can:view,user');
 Route::post('/user/{user}/edit', 'MemberController@updateAction')->middleware('can:update,user');
 Route::post('/user/{user}/delete', 'MemberController@deleteAction')->middleware('can:delete,user');
+Route::get('/user/{user}/{any?}', 'MemberController@redirect')->where('any', '.*')->middleware('can:view,user');

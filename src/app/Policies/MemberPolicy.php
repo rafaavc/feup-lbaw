@@ -27,7 +27,7 @@ class MemberPolicy
      * @param \App\Models\Member $argument
      * @return mixed
      */
-    public function view(Member $member, Member $argument)
+    public function view(?Member $member, Member $argument)
     {
         return true;
     }

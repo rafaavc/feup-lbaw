@@ -56,7 +56,8 @@ class MemberController extends Controller
 
     public function getGroups(Member $user)
     {
-        return $user->groups;
+        return [];
+        //return $user->groups;
     }
 
     public function put(Request $request, Member $user)
@@ -73,9 +74,18 @@ class MemberController extends Controller
     // Pages
     // ----------------------------------------------------------------
 
+    public function redirect(Member $user)
+    {
+        return redirect("/user/$user->username/recipes");
+    }
+
     public function readRecipes(Member $user)
     {
-        //
+        return view('pages.user.recipes', [
+            'user' => $this->get($user),
+            'recipes' => $this->getRecipes($user),
+            'groups' => $this->getGroups($user)
+        ]);
     }
 
     public function readFavourites(Member $user)

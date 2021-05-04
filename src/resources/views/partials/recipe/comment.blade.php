@@ -4,7 +4,7 @@
             <img class="d-inline-block rounded-circle" src="{{ asset('storage/images/people/'. $comment->owner->id .'.jpeg') }}" alt="...">
         </div>
         <div class="col-5 card-body">
-            <h6 class="card-title"><a href="{{ url('/member/'.$comment->owner->username.'/recipes') }}">{{ $comment->owner->name }}</a> {{ isset($comment->rating) ? "reviewed" : "commented" }}:</h6>
+            <h6 class="card-title"><a href="{{ url('/user/'.$comment->owner->username) }}">{{ $comment->owner->name }}</a> {{ isset($comment->rating) ? "reviewed" : "commented" }}:</h6>
             @if (isset($comment->rating))
                 <div class="rating mb-3">
                     @for($i = 0; $i < 5; $i++)
