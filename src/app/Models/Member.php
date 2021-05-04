@@ -2,8 +2,11 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Casts\AsArrayObject;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use App\Models\Country;
+use App\Models\Comment;
 
 class Member extends Authenticatable
 {
@@ -19,7 +22,7 @@ class Member extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'username', 'city', 'bio', 'visibility', 'is_banned', 'id_country', 'score'
+        'name', 'email', 'password', 'username', 'city', 'bio'
     ];
 
     /**
@@ -28,8 +31,12 @@ class Member extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        'password', 'email'
+        'password', 'email', 'search', 'num_rating', 'is_banned', 'visibility', 'bio', 'id_country'
     ];
+
+    protected $appends = ['biography', 'recipes', 'followers', 'following'];
+
+    protected $with = ['country'];
 
     /**
      * Get the route key for the model.
@@ -46,8 +53,45 @@ class Member extends Authenticatable
         return $this->hasMany('App\Models\Recipe', 'id_member', 'id');
     }
 
+    public function comments()
+    {
+        return $this->hasMany(Comment::class, 'id_member', 'id');
+    }
+
     public function country()
     {
-        return $this->belongsTo(Country::class, 'id_country', 'id');
+        return $this->belongsTo(Country::class, 'id_country');
+    }
+
+    public function following()
+    {
+        return $this->belongsToMany(Member::class, 'tb_following', 'id_following', 'id_followed')
+            ->withPivot("state", "timestamp");
+    }
+
+    public function followers()
+    {
+        return $this->belongsToMany(Member::class, 'tb_following', 'id_followed', 'id_following')
+            ->withPivot("state", "timestamp");
+    }
+
+    public function getBiographyAttribute()
+    {
+        return $this->attributes['bio'];
+    }
+
+    public function getRecipesAttribute()
+    {
+        return $this->recipes()->count();
+    }
+
+    public function getFollowersAttribute()
+    {
+        return $this->followers()->count();
+    }
+
+    public function getFollowingAttribute()
+    {
+        return $this->following()->count();
     }
 }

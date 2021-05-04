@@ -16,7 +16,7 @@ class MemberController extends Controller
         //
     }
 
-    public function get(Member $user): Member
+    public function get(Member $user)
     {
         return $user;
     }
