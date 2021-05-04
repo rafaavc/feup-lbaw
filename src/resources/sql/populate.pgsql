@@ -3791,10 +3791,10 @@ INSERT INTO tb_group_request (id_member, id_group) VALUES(8,48);
 INSERT INTO tb_group_request (id_member, id_group) VALUES(103,49);
 
 
-INSERT INTO tb_admin (email, password, name, username) VALUES ('alex@github.io', 'ngV7WrRe66gR', 'Alexandre Abreu', 'a3brx');
-INSERT INTO tb_admin (email, password, name, username) VALUES ('rafa@github.io', 'kcYNpe9nUENq', 'Rafael Cristino', 'rafaavc');
-INSERT INTO tb_admin (email, password, name, username) VALUES ('2dukes@github.io', 'qkuC8zv9YQ9v', 'Rui Pinto', '2dukes');
-INSERT INTO tb_admin (email, password, name, username) VALUES ('tiago@github.io', 'TD7gEHRAr', 'Tiago Gomes', 'TiagooGomess');
+INSERT INTO tb_admin (email, password, name, username) VALUES ('alex@github.io', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Alexandre Abreu', 'a3brx');
+INSERT INTO tb_admin (email, password, name, username) VALUES ('rafa@github.io', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Rafael Cristino', 'rafaavc');
+INSERT INTO tb_admin (email, password, name, username) VALUES ('2dukes@github.io', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Rui Pinto', '2dukes');
+INSERT INTO tb_admin (email, password, name, username) VALUES ('tiago@github.io', '$2y$12$KD9Du7xdOL1Ed1FELEh1iu7r3FO2mxYTWu73eM9Zv9dJ6N.rUuwnu', 'Tiago Gomes', 'TiagooGomess');
 
 INSERT INTO tb_following (id_following, id_followed) VALUES (300,36);
 INSERT INTO tb_following (id_following, id_followed) VALUES (62,273);
