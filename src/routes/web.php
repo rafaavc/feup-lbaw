@@ -34,3 +34,13 @@ Route::get('/recipe/{id}', 'RecipeController@view');
 
 // Content creation
 Route::get('/recipe', 'RecipeController@create');
+
+// ----------------------------------------------------------------
+// User pages
+// ----------------------------------------------------------------
+Route::get('/user/{username}/recipes', 'MemberController@readRecipes');
+Route::get('/user/{username}/favourites', 'MemberController@readFavourites');
+Route::get('/user/{username}/reviews', 'MemberController@readReviews');
+Route::get('/user/{username}/edit', 'MemberController@update');
+Route::post('/user/{username}/edit', 'MemberController@updatePost');
+Route::post('/user/{username}/delete', 'MemberController@delete');
