@@ -7,7 +7,6 @@ use App\Models\Recipe;
 
 use Illuminate\Auth\Access\HandlesAuthorization;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Response;
 
 class RecipePolicy
 {
@@ -35,5 +34,15 @@ class RecipePolicy
     {
         // Only recipe card owner and an administrator can delete it
         return $user->id == $recipe->author->id;
+    }
+
+    public function addToFavourites(Member $user, Recipe $recipe)
+    {
+        return !$recipe->membersWhoFavourited->contains($user->id);
+    }
+
+    public function removeFromFavourites(Member $user, Recipe $recipe)
+    {
+        return $recipe->membersWhoFavourited->contains($user->id);
     }
 }
