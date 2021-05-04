@@ -1021,9 +1021,6 @@ paths:
                         type: string
                       name:
                         type: string
-                  creationDate:
-                    type: string
-                    format: datetime
                   score:
                     type: number
                   biography:
