@@ -46,11 +46,12 @@
                 <span class="small d-block">Average rating</span>
                 <div class="rating">
                     <span class="value me-1">{{$user->score}}</span>
-                    <i class="fas fa-star active"></i>
-                    <i class="fas fa-star active"></i>
-                    <i class="fas fa-star active"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
+                    @for($i = 1; $i < round($user->score); ++$i)
+                        <i class="fas fa-star active"></i>
+                    @endfor
+                    @for($i = $user->score; $i < 5; ++$i)
+                        <i class="fas fa-star"></i>
+                    @endfor
                 </div>
             </div>
             <ul class="nav nav-tabs col-md-9 ps-md-3">
