@@ -29,18 +29,12 @@ Route::get('logout', 'Auth\LoginController@logout')->name('logout');
 Route::get('register', 'Auth\RegisterController@showRegistrationForm')->name('register');
 Route::post('register', 'Auth\RegisterController@register');
 
-// Content visualization
-Route::get('/recipe/{id}', 'RecipeController@view');
-
-// Content creation
-Route::get('/recipe', 'RecipeController@create');
-
 // ----------------------------------------------------------------
 // User pages
 // ----------------------------------------------------------------
-Route::get('/user/{username}/recipes', 'MemberController@readRecipes');
-Route::get('/user/{username}/favourites', 'MemberController@readFavourites');
-Route::get('/user/{username}/reviews', 'MemberController@readReviews');
-Route::get('/user/{username}/edit', 'MemberController@update');
-Route::post('/user/{username}/edit', 'MemberController@updateAction');
-Route::post('/user/{username}/delete', 'MemberController@deleteAction');
+Route::get('/user/{user}/recipes', 'MemberController@readRecipes')->middleware('can:view,user');
+Route::get('/user/{user}/favourites', 'MemberController@readFavourites')->middleware('can:view,user');
+Route::get('/user/{user}/reviews', 'MemberController@readReviews')->middleware('can:view,user');
+Route::get('/user/{user}/edit', 'MemberController@update')->middleware('can:view,user');
+Route::post('/user/{user}/edit', 'MemberController@updateAction')->middleware('can:update,user');
+Route::post('/user/{user}/delete', 'MemberController@deleteAction')->middleware('can:delete,user');

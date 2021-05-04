@@ -3,90 +3,94 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Member;
 
 class MemberController extends Controller
 {
-    public function store(Request $request)
-    {
-        //
-    }
+    // ----------------------------------------------------------------
+    // API
+    // ----------------------------------------------------------------
 
     public function post(Request $request)
     {
         //
     }
 
-    public function get(Request $request)
+    public function get(Member $user): Member
+    {
+        return $user;
+    }
+
+    public function getRecipes(Member $user)
     {
         //
     }
 
-    public function getRecipes(Request $request)
+    public function getReviews(Member $user)
     {
         //
     }
 
-    public function getReviews(Request $request)
+    public function getFavourites(Member $user)
     {
         //
     }
 
-    public function getFavourites(Request $request)
+    public function getFollowing(Member $user)
     {
         //
     }
 
-    public function getFollowing(Request $request)
+    public function getFollowers(Member $user)
     {
         //
     }
 
-    public function getFollowers(Request $request)
+    public function getGroups(Member $user)
     {
         //
     }
 
-    public function getGroups(Request $request)
+    public function put(Request $request, Member $user)
     {
         //
     }
 
-    public function put(Request $request)
+    public function remove(Member $user)
     {
         //
     }
 
-    public function remove(Request $request)
+    // ----------------------------------------------------------------
+    // Pages
+    // ----------------------------------------------------------------
+
+    public function readRecipes(Member $user)
     {
         //
     }
 
-    public function readRecipes(Request $request)
+    public function readFavourites(Member $user)
     {
         //
     }
 
-    public function readFavourites(Request $request)
+    public function readReviews(Member $user)
     {
         //
     }
 
-    public function readReviews(Request $request)
+    public function update(Member $user)
     {
         //
     }
 
-    public function update(Request $request)
+    public function updateAction(Member $user)
     {
         //
     }
 
-    public function updateAction(Request $request)
-    {
-        //
-    }
-
-    public function deleteAction(Request $request)
+    public function deleteAction(Member $user)
     {
         //
     }

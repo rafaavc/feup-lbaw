@@ -32,15 +32,15 @@ Route::post('recipe/{recipeId}/favourite', 'RecipeController@addToFavourites');
 Route::delete('recipe/{recipeId}/favourite', 'RecipeController@removeFromFavourites');
 
 // ----------------------------------------------------------------
-// User pages
+// User API
 // ----------------------------------------------------------------
-Route::post('/api/user', 'MemberController@post');
-Route::get('/api/user/{username}', 'MemberController@get');
-Route::get('/api/user/{username}/recipes', 'MemberController@getRecipes');
-Route::get('/api/user/{username}/reviews', 'MemberController@getReviews');
-Route::get('/api/user/{username}/favourites', 'MemberController@getFavourites');
-Route::get('/api/user/{username}/following', 'MemberController@getFollowing');
-Route::get('/api/user/{username}/followers', 'MemberController@getFollowers');
-Route::get('/api/user/{username}/groups', 'MemberController@getGroups');
-Route::put('/api/user/{username}', 'MemberController@put');
-Route::delete('/api/user/{username}', 'MemberController@remove');
+Route::post('user', 'MemberController@post')->middleware('can:create,user');
+Route::get('user/{user}', 'MemberController@get');
+Route::get('user/{user}/recipes', 'MemberController@getRecipes')->middleware('can:view,user');
+Route::get('user/{user}/reviews', 'MemberController@getReviews')->middleware('can:view,user');
+Route::get('user/{user}/favourites', 'MemberController@getFavourites')->middleware('can:view,user');
+Route::get('user/{user}/following', 'MemberController@getFollowing')->middleware('can:view,user');
+Route::get('user/{user}/followers', 'MemberController@getFollowers')->middleware('can:view,user');
+Route::get('user/{user}/groups', 'MemberController@getGroups')->middleware('can:view,user');
+Route::put('user/{user}', 'MemberController@put')->middleware('can:update,user');
+Route::delete('user/{user}', 'MemberController@remove')->middleware('can:delete,user');
