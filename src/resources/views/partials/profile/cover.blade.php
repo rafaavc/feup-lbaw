@@ -1,6 +1,7 @@
 @push('css')
     <link href="{{ asset('css/components/profile_cover.css') }}" rel="stylesheet"/>
 @endpush
+
 <header class="cover">
     <img
         src="https://images-prod.healthline.com/hlcmsresource/images/AN_images/vegetarian-diet-plan-1296x728-feature.jpg"
@@ -30,14 +31,14 @@
             </div>
             <div class="col-md-3 card-body text-md-end m-0">
                 <div class="btn-group" role="group" aria-label="">
-                    <?php if ($canEdit) { ?>
-                    <a href="{{url("/user/$user->username/edit")}}" class=" btn btn-outline-dark"><i
-                            class="fas fa-edit"></i>Edit</a>
-                    <?php } else { ?>
-                    <button type="button" class="btn btn-outline-dark"><i class="fas fa-user-plus"></i>Follow
-                    </button>
-                    <button type="button" class="btn btn-outline-dark"><i class="fas fa-comments"></i>Chat</button>
-                    <?php } ?>
+                    @if ($canEdit)
+                        <a href="{{url("/user/$user->username/edit")}}" class=" btn btn-outline-dark"><i
+                                class="fas fa-edit"></i>Edit</a>
+                    @else
+                        <button type="button" class="btn btn-outline-dark"><i class="fas fa-user-plus"></i>Follow
+                        </button>
+                        <button type="button" class="btn btn-outline-dark"><i class="fas fa-comments"></i>Chat</button>
+                    @endif
                 </div>
             </div>
         </div>
@@ -46,12 +47,7 @@
                 <span class="small d-block">Average rating</span>
                 <div class="rating">
                     <span class="value me-1">{{$user->score}}</span>
-                    @for($i = 1; $i < round($user->score); ++$i)
-                        <i class="fas fa-star active"></i>
-                    @endfor
-                    @for($i = $user->score; $i < 5; ++$i)
-                        <i class="fas fa-star"></i>
-                    @endfor
+                    @include('partials.stars', ['rating' => $user->score])
                 </div>
             </div>
             <ul class="nav nav-tabs col-md-9 ps-md-3">

@@ -7,7 +7,6 @@
     <link href="{{ asset('css/components/search_results_cards.css') }}" rel="stylesheet"/>
     <link href="{{ asset('css/components/profile_cover.css') }}" rel="stylesheet"/>
     <link href="{{ asset('css/components/textareaWithButton.css') }}" rel="stylesheet"/>
-    <link href="{{ asset('css/components/breadcrumb.css') }}" rel="stylesheet"/>
     <link href="{{ asset('css/components/rating.css') }}" rel="stylesheet"/>
 @endpush
 

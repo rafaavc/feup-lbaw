@@ -53,6 +53,6 @@ class MemberPolicy
      */
     public function delete(Member $member, Member $argument)
     {
-        return true;
+        return $member->id === $argument->id;
     }
 }
