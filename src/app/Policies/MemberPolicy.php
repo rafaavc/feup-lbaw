@@ -41,7 +41,7 @@ class MemberPolicy
      */
     public function update(Member $member, Member $argument)
     {
-        return true;
+        return $member->id === $argument->id;
     }
 
     /**

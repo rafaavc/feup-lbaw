@@ -26,18 +26,7 @@
             </div>
             <div class="row group-body">
                 <div class="col-md-4 p-0 pe-md-4 mt-5">
-                    <div class="card m-0 mb-4 shadow-sm text-center p-3 personal-info">
-                        <h4>Personal Info</h4>
-                        <div class="text-start m-auto d-inline">
-                            <span><i class="fas fa-map-marker-alt"></i>Ruílhe, Portugal</span>
-                            <br>
-                            <span><i class="fas fa-birthday-cake"></i>Joined in Jul 2020</span>
-                        </div>
-                        <a class="btn btn-primary mt-2" href="{{url('/recipe')}}">Create
-                            Recipe</a>
-                        <a class="btn btn-primary mt-2" href="{{url('/group')}}">Create
-                            Group</a>
-                    </div>
+                    @include('partials.profile.personalInfo')
                     @include('partials.profile.peopleBox')
                     <div class="card shadow-sm people-box mt-4">
                         <div class="card-body">
@@ -63,7 +52,7 @@
                     <div class="row first-recipe-mt">
                         <h3>Recipes</h3>
                         @foreach($recipes as $recipe)
-                            @include('partials.preview.recipe', ['recipe' => $recipe])
+                            @include('partials.preview.recipe')
                         @endforeach
                     </div>
                     <div class="row">

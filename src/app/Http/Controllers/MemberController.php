@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\Member;
 use App\Models\Recipe;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 
 class MemberController extends Controller
 {
@@ -84,7 +85,9 @@ class MemberController extends Controller
         return view('pages.user.recipes', [
             'user' => $this->get($user),
             'recipes' => $this->getRecipes($user),
-            'groups' => $this->getGroups($user)
+            'groups' => $this->getGroups($user),
+            'canEdit' => Gate::inspect('update', $user)->allowed(),
+            'canDelete' => Gate::inspect('delete', $user)->allowed(),
         ]);
     }
 
