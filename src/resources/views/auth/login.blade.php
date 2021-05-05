@@ -1,12 +1,10 @@
-
 @extends('layouts.app')
 
 @section('title', 'Sign In')
 
 @push('css')
-    <link href="{{ asset('css/signIn.css') }}" rel="stylesheet" />
-    <link href="{{ asset('css/components/inputIcon.css') }}" rel="stylesheet" />
-    <link href="{{ asset('css/components/breadcrumb.css') }}" rel="stylesheet" />
+    <link href="{{ asset('css/signIn.css') }}" rel="stylesheet"/>
+    <link href="{{ asset('css/components/inputIcon.css') }}" rel="stylesheet"/>
 @endpush
 
 @push('js')
@@ -16,9 +14,9 @@
 
 @section('content')
 
-@include('partials.breadcrumb', ['pages' => ["Sign In"], 'withoutMargin' => false])
+    @include('partials.breadcrumb', ['pages' => ["Sign In"], 'withoutMargin' => false])
 
-<div class="content-general-margin mt-2 margin-to-footer">
+    <div class="content-general-margin mt-2 margin-to-footer">
         <div class="row">
             <div class="col-xl-6 sign-img">
                 <div class="d-grid gap-2 col-6 mx-auto mt-5 sign-left-text w-100 text-center">
@@ -45,12 +43,16 @@
                     <span class='d-block mt-4'>Email Address</span>
                     <div class="d-flex mb-3">
                         <i class='fas fa-envelope fa-icon-left'></i>
-                        <input id="email" type="email" name="email" required autofocus class="form-control icon-left me-2" aria-label="Member's email" aria-describedby="basic-addon2">
+                        <input id="email" type="email" name="email" required autofocus
+                               class="form-control icon-left me-2" aria-label="Member's email"
+                               aria-describedby="basic-addon2">
                     </div>
                     <span class='d-block mt-4'>Password</span>
                     <div class="d-flex mb-3">
                         <i class='fas fa-lock fa-icon-left'></i>
-                        <input id="password" type="password" name="password" required class="form-control icon-left me-2" aria-label="Member's password" aria-describedby="basic-addon2">
+                        <input id="password" type="password" name="password" required
+                               class="form-control icon-left me-2" aria-label="Member's password"
+                               aria-describedby="basic-addon2">
                     </div>
                     <div class="d-grid gap-2 col-6 mx-auto">
                         <button type="submit" class="btn btn-primary d-block">
@@ -59,7 +61,8 @@
                     </div>
                 </form>
 
-                <span class="d-block text-center mt-3">Don't have an account? &nbsp;<a href="{{ url('/register') }}" class="signUp-a">Sign Up</a></span>
+                <span class="d-block text-center mt-3">Don't have an account? &nbsp;<a href="{{ url('/register') }}"
+                                                                                       class="signUp-a">Sign Up</a></span>
                 <div class="separator mt-3">or</div>
 
                 <meta name="google-signin-client_id" content="YOUR_CLIENT_ID.apps.googleusercontent.com">
