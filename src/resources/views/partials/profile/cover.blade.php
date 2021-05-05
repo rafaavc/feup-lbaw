@@ -8,7 +8,7 @@
         class="cover-image" alt="...">
     <div class="card shadow-sm px-3">
         <div class="row g-0 p-3 text-center text-md-start" style="">
-            <div class="col-md-2 image-container">
+            <div class="col-md-2 image-container ">
                 <img class="rounded-circle mx-auto"
                      src="{{ $user->profileImage() }}"
                      alt=" Profile image of {{$user->name}}" style="border: 0">
