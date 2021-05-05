@@ -22,7 +22,7 @@ class MemberController extends Controller
         'country' => 'required|integer|exists:App\Models\Country,id',
         'password' => 'required|string',
         'biography' => 'required|string',
-        'visibility' => 'required|boolean',
+        'visibility' => 'required|string|in:public,private',
         'profileImage' => 'required|file|image|mimes:jpeg',
         'coverImage' => 'nullable|file|image|mimes:jpeg',
     ];
@@ -102,7 +102,7 @@ class MemberController extends Controller
             $user->email = $request->input('email');
             $user->city = $request->input('city');
             $user->bio = $request->input('biography');
-            $user->visibility = $request->input('visibility');
+            $user->visibility = $request->input('visibility') == "public";
             $user->country()->associate($request->input('country'));
             $user->password = bcrypt($request->input('password'));
             $user->save();
