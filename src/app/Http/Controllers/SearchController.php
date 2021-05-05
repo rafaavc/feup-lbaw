@@ -26,15 +26,19 @@ class SearchController extends Controller
      */
     public function show(Request $request)
     {
-        $searchQuery = $request->input('searchQuery');
+        // Recipes
+        $searchStr = preg_replace("/\s+/", " | ", $request->input('searchQuery'));
+
         $recipes = DB::table('recipes_fts_view')
-            ->selectRaw('*, search, ts_rank(search, to_tsquery(\'english\', ?)) AS rank', ['beef | egg'])
-            ->when($searchQuery, function($query, $searchQuery) {
+            ->selectRaw('*, search, ts_rank(search, to_tsquery(\'english\', ?)) AS rank', [$searchStr])
+            ->when($searchStr, function($query, $searchStr) {
                 return $query
-                            ->whereRaw('search @@ to_tsquery(\'english\', ?) AND member_id <> ? AND recipe_visibility(recipe_id, ?)', ['beef | egg', (Auth::check()) ? Auth::id() : 0, Auth::id()])
-                            ->orderByDesc('rank');
+                    ->whereRaw('search @@ to_tsquery(\'english\', ?) AND member_id <> ? AND recipe_visibility(recipe_id, ?) = TRUE', [$searchStr, (Auth::check()) ? Auth::id() : 0, Auth::id()])
+                    ->orderByDesc('rank');
             }, function ($query) {
-                return $query->orderBy('recipe_id');
+                return $query
+                    ->inRandomOrder()
+                    ->limit(20);
             })
             ->get();
         return $recipes;
