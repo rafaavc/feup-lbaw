@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\RecipeController;
 use App\Http\Controllers\UnitController;
+use App\Http\Controllers\SearchController;
 use Illuminate\Http\Request;
 
 /*
@@ -30,3 +31,5 @@ Route::post('recipe/{recipe}/favourite', 'RecipeController@addToFavourites')->mi
 Route::delete('recipe/{recipe}/favourite', 'RecipeController@removeFromFavourites')->middleware('can:removeFromFavourites,recipe');
 
 Route::post('comment', 'CommentController@insert')->middleware('can:insert,App\Models\Comment');
+
+Route::get('search/', 'SearchController@show');
