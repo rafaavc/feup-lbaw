@@ -23,7 +23,8 @@ $role = "member";
             @endforeach
         </div>
     @endif
-    <form class="card shadow-sm p-2 w-auto h-auto p-5 mt-4 edit-profile-card" method="post">
+    <form enctype="multipart/form-data" class="card shadow-sm p-2 w-auto h-auto p-5 mt-4 edit-profile-card"
+          method="post">
         @csrf
         <div class="row">
             <div class="col profile-photo-area mx-2">
@@ -43,7 +44,7 @@ $role = "member";
                                         <i class="fas fa-upload me-2"></i>
                                         Upload Image
                                     </a>
-                                    <input type="file" name="profileImage"/>
+                                    <input type="file" class="d-none" name="profileImage"/>
                                 </li>
                                 <li>
                                     <a class="dropdown-item file-delete">
@@ -56,7 +57,7 @@ $role = "member";
                     </div>
                 </div>
                 <img class="rounded-circle z-depth-2 profile-image"
-                     src="{{asset('storage/images/people/' . $user->id . '.jpeg')}}">
+                     src="{{$user->profileImage()}}">
             </div>
             <div class="col cover-photo-area mx-2">
                 <div class="row area-title-row row-with-image">
@@ -73,7 +74,7 @@ $role = "member";
                                 <li>
                                     <a class="dropdown-item file-input"><i class="fas fa-upload me-2"></i>Upload
                                         Image</a>
-                                    <input type="file" name="coverImage"/>
+                                    <input type="file" class="d-none" name="coverImage"/>
                                 </li>
                                 <li>
                                     <a class="dropdown-item file-delete"><i class="fas fa-eraser me-2"></i>Clear
@@ -91,17 +92,20 @@ $role = "member";
 
         <h6 class="area-title mt-4">Biography <span class='form-required'></span></h6>
         <div class="form-group">
-            <textarea name="biography" class="form-control mb-4 p-3 edit-profile-text-input" rows="3">{{$user->biography}}</textarea>
+            <textarea name="biography" class="form-control mb-4 p-3 edit-profile-text-input"
+                      rows="3">{{$user->biography}}</textarea>
         </div>
 
         <h6 class="area-title">Name <span class='form-required'></span></h6>
         <div class="form-group">
-            <textarea name="name" class="form-control mb-4 p-3 edit-profile-text-input" rows="1" style="resize: none;">{{$user->name}}</textarea>
+            <textarea name="name" class="form-control mb-4 p-3 edit-profile-text-input" rows="1"
+                      style="resize: none;">{{$user->name}}</textarea>
         </div>
 
         <h6 class="area-title">Country <span class='form-required'></span></h6>
         <div class="form-group">
-            <select name="country" id="country" class="form-select form-control me-2 form-control mb-4 p-3 edit-profile-text-input">
+            <select name="country" id="country"
+                    class="form-select form-control me-2 form-control mb-4 p-3 edit-profile-text-input">
                 @foreach(App\Models\Country::all() as $country)
                     <option
                         value="{{$country->id}}" {{$country->id == $user->country->id ? "selected" : ""}}>{{$country->name}}</option>
@@ -111,28 +115,33 @@ $role = "member";
 
         <h6 class="area-title">City</h6>
         <div class="form-group">
-            <textarea name="city" class="form-control mb-4 p-3 edit-profile-text-input" rows="1" style="resize: none;">{{$user->city}}</textarea>
+            <textarea name="city" class="form-control mb-4 p-3 edit-profile-text-input" rows="1"
+                      style="resize: none;">{{$user->city}}</textarea>
         </div>
 
         <h6 class="area-title">Email</h6>
         <div class="form-group">
-            <textarea name="email" class="form-control mb-4 p-3 edit-profile-text-input" rows="1" style="resize: none;">{{$user->email}}</textarea>
+            <textarea name="email" class="form-control mb-4 p-3 edit-profile-text-input" rows="1"
+                      style="resize: none;">{{$user->email}}</textarea>
         </div>
 
         <h6 class="area-title">Username</h6>
         <div class="form-group">
-            <textarea name="username" class="form-control mb-5 p-3 edit-profile-text-input" rows="1" style="resize: none;">{{$user->username}}</textarea>
+            <textarea name="username" class="form-control mb-5 p-3 edit-profile-text-input" rows="1"
+                      style="resize: none;">{{$user->username}}</textarea>
         </div>
 
         <h6 class="area-title">Profile Visibility <span class='form-required'></span></h6>
         <div class="form-check">
-            <input class="form-check-input" value="public" type="radio" name="visibility" id="flexRadioDefault1" {{$user->visibility === true ? "checked" : ""}}>
+            <input class="form-check-input" value="public" type="radio" name="visibility"
+                   id="flexRadioDefault1" {{$user->visibility === true ? "checked" : ""}}>
             <label class="form-check-label" for="flexRadioDefault1">
                 Public
             </label>
         </div>
         <div class="form-check mt-2">
-            <input class="form-check-input" value="private" type="radio" name="visibility" id="flexRadioDefault2" {{$user->visibility === false ? "checked" : ""}}>
+            <input class="form-check-input" value="private" type="radio" name="visibility"
+                   id="flexRadioDefault2" {{$user->visibility === false ? "checked" : ""}}>
             <label class="form-check-label" for="flexRadioDefault2">
                 Private
             </label>

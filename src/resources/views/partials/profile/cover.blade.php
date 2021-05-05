@@ -10,7 +10,7 @@
         <div class="row g-0 p-3 text-center text-md-start" style="">
             <div class="col-md-2 image-container">
                 <img class="rounded-circle mx-auto"
-                     src="{{ asset("storage/images/people/$user->id.jpeg") }}"
+                     src="{{ $user->profileImage() }}"
                      alt=" Profile image of {{$user->name}}" style="border: 0">
             </div>
             <div class="col-md-6 ms-md-4 card-body m-0">
@@ -37,7 +37,8 @@
                     @else
                         <button type="button" class="btn btn-outline-dark"><i class="fas fa-user-plus"></i>Follow
                         </button>
-                        <a href="{{url("/chat/$user->username")}}" type="button" class="btn btn-outline-dark"><i class="fas fa-comments"></i>Chat</a>
+                        <a href="{{url("/chat/$user->username")}}" type="button" class="btn btn-outline-dark"><i
+                                class="fas fa-comments"></i>Chat</a>
                     @endif
                 </div>
             </div>

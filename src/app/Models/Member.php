@@ -46,6 +46,22 @@ class Member extends Authenticatable
         return 'username';
     }
 
+    public function profileImage()
+    {
+        $path = "storage/images/people/$this->id.jpeg";
+        if (!file_exists($path))
+            return asset("storage/images/people/no_image.png");
+        return asset($path);
+    }
+
+    public function coverImage()
+    {
+        $path = "storage/images/people/cover/$this->id.jpeg";
+        if (!file_exists($path))
+            return asset("storage/images/people/cover/default.png");
+        return asset($path);
+    }
+
     public function recipes()
     {
         return $this->hasMany(Recipe::class, 'id_member', 'id');

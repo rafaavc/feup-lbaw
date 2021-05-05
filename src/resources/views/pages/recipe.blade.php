@@ -37,7 +37,7 @@
                             <tr>
                                 <td class="col-2 col-md-1 image-container">
                                     <img class="rounded-circle"
-                                         src="{{ asset('storage/images/people/'.$author->id.'.jpeg') }}" alt="...">
+                                         src="{{ $author->profileImage() }}" alt="...">
                                 </td>
                                 <td class="align-middle">
                                     <div class="col-md-5 card-body p-0 m-0 ms-2 text-start">

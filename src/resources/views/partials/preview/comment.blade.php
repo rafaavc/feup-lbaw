@@ -26,7 +26,7 @@
         <div class="row user-info">
             <div class="col avatar-image mb-2">
                 <img class="rounded-circle z-depth-2"
-                     src="{{asset('storage/images/people/' . $comment->owner->id . '.jpeg')}}">
+                     src="{{$comment->owner->profileImage()}}">
             </div>
             <div class="col col-sm name-and-date ms-4">
                 <div>

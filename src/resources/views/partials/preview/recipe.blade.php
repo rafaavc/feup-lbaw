@@ -27,7 +27,7 @@
         <div class="row user-info">
             <div class="col avatar-image">
                 <img class="rounded-circle z-depth-2"
-                     src="{{asset('storage/images/people/' . $recipe->author->id . '.jpeg')}}">
+                     src="{{$recipe->author->profileImage()}}">
             </div>
             <div class="col name-and-date ms-4">
                 <div>

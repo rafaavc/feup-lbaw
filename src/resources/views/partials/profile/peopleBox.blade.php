@@ -6,7 +6,7 @@
                 <div class="col">
                     <a class="btn small-profile-photo has-tooltip"
                        href="{{url("/user/$person->username")}}"
-                       style="background-image: url('{{asset("storage/images/people/".$person->id.".jpeg")}}')"
+                       style="background-image: url('{{ $person->profileImage() }}')"
                        data-bs-container="body" data-bs-toggle="tooltip" data-bs-placement="bottom"
                        title="{{$person->name}}
                        @if(isset($groupModerator) && $groupModerator)

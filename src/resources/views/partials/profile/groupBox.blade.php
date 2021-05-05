@@ -5,7 +5,7 @@
             @foreach($groups as $group)
                 <div class="mt-4">
                     <button onClick="window.location.href = '{{$group->id}}"
-                            style="background-image: url({{asset('storage/images/people/'.$group->id.'.jpeg')}})"
+                            style="background-image: url({{$group->profileImage()}})"
                             class="btn small-profile-photo small-group-photo d-inline"></button>
                     <span class="name">{{$group->name}}</span>
                 </div>
