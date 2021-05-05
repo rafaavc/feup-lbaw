@@ -20,6 +20,15 @@ class LoginController extends Controller
     |
     */
 
+    /**
+     * Where to redirect users after login.
+     *
+     * @var string
+     */
+    protected $redirectTo = '/recipe/1'; // TODO: change to feed
+
+    private $isAdmin = false;
+
     use AuthenticatesUsers;
 
     /**
@@ -49,32 +58,20 @@ class LoginController extends Controller
         return Auth::guard('admin');
     }
 
-    /**
-     * Handle an authentication attempt.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function login(Request $request)
+    protected function attemptLogin(Request $request)
     {
         $credentials = $request->only('username', 'password');
 
-        if (Auth::attempt($credentials)) {
-            $request->session()->regenerate();
-
-            return redirect()->intended('/recipe/1'); // TODO: change to feed
-        }
+        if (Auth::attempt($credentials))
+            return true;
 
         if (Auth::guard('admin')->attempt($credentials)) {
-            $request->session()->regenerate();
-
-            return redirect()->intended('users_management');
+            $this->redirectTo = '/users_management';
+            $this->isAdmin = true;
+            return true;
         }
-
-        return back()->withErrors([
-            'username' => 'The provided credentials do not match our records.',
-        ]);
     }
+
 }
 
 
