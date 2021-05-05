@@ -7,6 +7,7 @@ use App\Models\Recipe;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 
 class MemberController extends Controller
@@ -15,16 +16,17 @@ class MemberController extends Controller
     // Upsert Validation
     // ----------------------------------------------------------------
     private static $validation = [
-        'name' => 'required|string',
-        'username' => 'required|string|unique:tb_member',
-        'email' => 'required|string|email|unique:tb_member',
-        'city' => 'nullable|string',
-        'country' => 'required|integer|exists:App\Models\Country,id',
-        'password' => 'required|string',
-        'biography' => 'required|string',
-        'visibility' => 'required|string|in:public,private',
-        'profileImage' => 'required|file|image|mimes:jpeg',
-        'coverImage' => 'nullable|file|image|mimes:jpeg',
+        'put' => [
+            'name' => 'required|string',
+            'username' => 'required|string',
+            'email' => 'required|string|email',
+            'city' => 'nullable|string',
+            'country' => 'required|integer|exists:App\Models\Country,id',
+            'biography' => 'required|string',
+            'visibility' => 'required|string|in:public,private',
+            'profileImage' => 'nullable|file|image|mimes:jpeg,jpg',
+            'coverImage' => 'nullable|file|image|mimes:jpeg,jpg',
+        ]
     ];
 
     private static $errorMessages = [
@@ -86,7 +88,7 @@ class MemberController extends Controller
 
     public function put(Request $request, Member $user)
     {
-        $validator = Validator::make($request->all(), MemberController::$validation, MemberController::$errorMessages);
+        $validator = Validator::make($request->all(), MemberController::$validation['put'], MemberController::$errorMessages);
         if ($validator->fails()) {
             $message = "";
             foreach ($validator->messages()->getMessages() as $msgArr) {
@@ -94,7 +96,7 @@ class MemberController extends Controller
             }
             return response()->json(['message' => $message], 400);
         }
-        $this->validate($request, MemberController::$validation, MemberController::$errorMessages);
+        $this->validate($request, MemberController::$validation['put'], MemberController::$errorMessages);
 
         try {
             $user->name = $request->input('name');
@@ -105,11 +107,19 @@ class MemberController extends Controller
             $user->visibility = $request->input('visibility') == "public";
             $user->country()->associate($request->input('country'));
             $user->password = bcrypt($request->input('password'));
+
+            // Profile Image
+            Storage::delete("public/images/people/$user->id.jpeg");
+            if ($request->hasFile('profileImage')) {
+                $file = $request->file('profileImage');
+                $file->storeAs("public/images/people/$user->id", ".jpeg");
+            }
+
             $user->save();
 
             return response()->json(['message' => 'Success!', 'member_id' => $user->id], 200);
         } catch (Exception $e) {
-            return response()->json(['message' => 'Invalid Request!'], 400);
+            return response()->json(['message' => $e->getMessage()], 400);
         }
 
     }
@@ -168,8 +178,8 @@ class MemberController extends Controller
         $apiReponse = $this->put($request, $user);
         if ($apiReponse->status() == 200)
             return redirect("/user/$user->username")->with('message', 'User updated successfully!');
-        else
-            return redirect("/user/$user->username/edit")->withErrors("Could not update user");
+        $array = json_decode($apiReponse->getContent(), true);
+        return redirect("/user/$user->username/edit")->withErrors($array['message']);
     }
 
     public function deleteAction(Member $user)
