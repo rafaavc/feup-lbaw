@@ -51,7 +51,7 @@
                         <p>
                             <small class="text-muted">{{$recipe->score}}
                                 @include('partials.stars', ['rating' => $recipe->score])
-                                | 563 reviews
+                                | {{$recipe->reviews()->count()}} reviews
                             </small>
                         </p>
                     </div>

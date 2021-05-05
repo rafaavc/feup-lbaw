@@ -59,7 +59,7 @@
                     <p class="m-0 p-0"><small class="text-muted">
                             {{$comment->recipe->score}}
                             @include('partials.stars', ["rating" => $comment->recipe->score])
-                            | 563 reviews</small>
+                            | {{$comment->recipe->reviews()->count()}} reviews</small>
                     </p>
                 </div>
             </div>

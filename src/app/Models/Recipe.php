@@ -18,40 +18,54 @@ class Recipe extends Model
         'creation_time' => 'datetime'
     ];
 
-    public function ingredients() {
+    public function ingredients()
+    {
         return $this->belongsToMany(Ingredient::class, 'tb_ingredient_recipe', 'id_recipe', 'id_ingredient')
             ->withPivot("id_unit", "quantity");
     }
 
-    public function tags() {
+    public function tags()
+    {
         return $this->belongsToMany(Tag::class, 'tb_tag_recipe', 'id_recipe', 'id_tag');
     }
 
-    public function membersWhoFavourited() {
+    public function membersWhoFavourited()
+    {
         return $this->belongsToMany(Member::class, 'tb_favourite', 'id_recipe', 'id_member');
     }
 
-    public function comments() {
+    public function comments()
+    {
         return $this->hasMany(Comment::class, 'id_recipe');
     }
 
-    public function steps() {
+    public function reviews()
+    {
+        return $this->comments()->where('rating', '<>', null);
+    }
+
+    public function steps()
+    {
         return $this->hasMany(Step::class, 'id_recipe');
     }
 
-    public function reports() {
+    public function reports()
+    {
         return $this->hasMany(Recipe_Report::class, 'id_recipe');
     }
 
-    public function author() {
+    public function author()
+    {
         return $this->belongsTo(Member::class, 'id_member');
     }
 
-    public function category() {
+    public function category()
+    {
         return $this->belongsTo(Category::class, 'id_category');
     }
 
-    public function group() {
+    public function group()
+    {
         return $this->belongsTo(Group::class, 'id_group');
     }
 
