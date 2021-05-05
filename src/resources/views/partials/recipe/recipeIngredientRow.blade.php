@@ -35,7 +35,7 @@
                 @if($hasErrors && \App\Models\Ingredient::where('id', $ingredient['id'])->exists())
                     <option value="{{ $ingredient['id'] }}">{{ \App\Models\Ingredient::find($ingredient['id'])->name }}</option>
                 @else
-                    <option value="{{ (isset($ingredient) && !$hasErrors) ? $ingredient->id : 0}}">{{ (isset($ingredient) && !$hasErrors) ? $ingredient->name : "" }}</option>
+                    <option value="{{ (isset($ingredient) && !$hasErrors) ? $ingredient->id : ""}}">{{ (isset($ingredient) && !$hasErrors) ? $ingredient->name : "" }}</option>
                 @endif
             </select>
 

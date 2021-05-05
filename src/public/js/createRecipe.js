@@ -151,6 +151,49 @@ function removeTagListeners() {
     }
 }
 
-document.querySelector("a.submit-recipe-form").addEventListener("click", (event) => {
-    document.querySelector("form.recipe-form").submit();
+document.querySelector("a.submit-recipe-form").addEventListener('click', (event) => {
+    let valid = true;
+    valid &= setInvalidElement(document.querySelector("[name='name']"));
+    valid &= setInvalidElement(document.querySelector("[name='category']"));
+    valid &= setInvalidElement(document.querySelector("[name='description']"));
+    valid &= setInvalidElement(document.querySelector("[name='difficulty']"));
+    valid &= setInvalidElement(document.querySelector("[name='servings']"));
+    valid &= setInvalidElement(document.querySelector("[name='preparation_time']"));
+    valid &= setInvalidElement(document.querySelector("[name='cooking_time']"));
+    valid &= setInvalidElement(document.querySelector("[name='additional_time']"));
+
+    if(!setInvalidElement(document.querySelector("[name='tags[]']"))) {
+        setInvalidElement(document.querySelector("#tagSelect"));
+        valid = false;
+    }
+
+    Array.from(document.querySelectorAll("[name^='steps']")).forEach((elem) => {
+        if(!elem.getAttribute("name").includes("image"))
+            valid &= setInvalidElement(elem);
+    });
+    Array.from(document.querySelectorAll("[name^='ingredients']")).forEach((elem) => {
+        valid &= setInvalidElement(elem);
+    });
+
+    if(valid)
+        document.querySelector("form.recipe-form").submit();
+    else {
+        let alert = document.createElement("div");
+        alert.classList.add("alert");
+        alert.classList.add("alert-danger");
+        alert.setAttribute("role", "danger");
+        alert.innerHTML = "Empty field(s) detected!";
+        document.querySelector("#create-recipe-stepper").prepend(alert, document.querySelector("div.card-body"));
+    }
+
 });
+
+function setInvalidElement(elem) {
+    if(elem != null) {
+        if(elem.value == "")
+            elem.style.borderColor = "red";
+        else
+            return true;
+    }
+    return false;
+}

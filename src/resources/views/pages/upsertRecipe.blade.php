@@ -94,7 +94,7 @@
                             <div class="col-lg">
                                 <div class="form-floating">
                                     <select class="form-select" id="tagSelect" aria-label="Quantity unit">
-                                        <option>Tags</option>
+                                        <option></option>
                                     </select>
                                     <label for="floatingInput">Tags<span class='form-required'></span></label>
                                 </div>
