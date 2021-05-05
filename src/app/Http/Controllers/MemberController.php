@@ -112,7 +112,7 @@ class MemberController extends Controller
             Storage::delete("public/images/people/$user->id.jpeg");
             if ($request->hasFile('profileImage')) {
                 $file = $request->file('profileImage');
-                $file->storeAs("public/images/people/$user->id", ".jpeg");
+                $file->storeAs("public/images/people/", "$user->id.jpeg");
             }
 
             $user->save();
