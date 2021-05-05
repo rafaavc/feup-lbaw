@@ -16,7 +16,13 @@ $role = "member";
 @include('partials.breadcrumb', ['pages' => ["Users", $user->name, "Edit Profile"], 'withoutMargin' => false])
 <div class="container content-general-margin margin-to-footer">
     <h1 class="mt-5">Edit Profile</h1>
-
+    @if($errors->any())
+        <div class="alert alert-danger" id="error-messages" role="alert">
+            @foreach($errors->all() as $error)
+                {{ $error }}<br/>
+            @endforeach
+        </div>
+    @endif
     <form class="card shadow-sm p-2 w-auto h-auto p-5 mt-4 edit-profile-card" method="post">
         @csrf
         <div class="row">

@@ -17,6 +17,11 @@
 
 @section('content')
     <main class="content-general-padding margin-to-footer">
+        @if(session()->has('message'))
+            <div class="alert alert-success">
+                {{ session()->get('message') }}
+            </div>
+        @endif
         @include('partials.breadcrumb', ['pages' => ["Users", $user->name], 'withoutMargin' => true])
         <div>
             @include('partials.profile.cover')
