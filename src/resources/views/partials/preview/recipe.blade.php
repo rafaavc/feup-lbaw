@@ -75,10 +75,12 @@
         </div>
     </div>
     <div class="btn-group col-sm d-flex justify-content-center text-center">
-        <button type="button" class="btn post-button add-to-favourites-button">
-            <i class="fas fa-heart me-2 {{$recipe->membersWhoFavourited()->where('id_member', '=', Auth::user()->id)->count() == 1 ? "added" : "" }}"></i>
-            <span class="button-caption">Add to Favourites</span>
-        </button>
+        @if(Auth::user() != null)
+            <button type="button" class="btn post-button add-to-favourites-button">
+                <i class="fas fa-heart me-2 {{$recipe->membersWhoFavourited()->where('id_member', '=', Auth::user()->id)->count() == 1 ? "added" : "" }}"></i>
+                <span class="button-caption">Add to Favourites</span>
+            </button>
+        @endif
         <a type="button" href="{{url("recipe/$recipe->id")}}" class="btn post-button">
             <i class="fas fa-eye me-2"></i>
             <span class="button-caption">View Recipe</span>
