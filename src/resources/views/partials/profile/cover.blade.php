@@ -37,7 +37,7 @@
                     @else
                         <button type="button" class="btn btn-outline-dark"><i class="fas fa-user-plus"></i>Follow
                         </button>
-                        <button type="button" class="btn btn-outline-dark"><i class="fas fa-comments"></i>Chat</button>
+                        <a href="{{url("/chat/$user->username")}}" type="button" class="btn btn-outline-dark"><i class="fas fa-comments"></i>Chat</a>
                     @endif
                 </div>
             </div>

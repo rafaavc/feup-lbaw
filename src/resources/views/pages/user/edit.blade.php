@@ -133,7 +133,7 @@ $role = "member";
         </div>
         <div class="row d-flex justify-content-around justify-content-md-between my-5">
 
-            <button class="btn btn-primary submit-button my-2">Submit</button>
+            <input type="submit" class="btn btn-primary submit-button my-2" value="Submit">
 
             <button class="btn btn-secondary submit-button my-2">
                 <i class="far fa-edit"></i>
@@ -141,10 +141,10 @@ $role = "member";
             </button>
 
 
-            <button class="btn btn-danger submit-button my-2">
+            <a href="{{url('user/' . $user->username . '/delete')}}" class="btn btn-danger submit-button my-2">
                 <i class="fas fa-trash me-3"></i>
                 Delete Profile
-            </button>
+            </a>
 
         </div>
     </form>
