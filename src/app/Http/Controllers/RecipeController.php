@@ -15,7 +15,6 @@ use Exception;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Gate;
-use Laravel\Ui\ControllersCommand;
 
 class RecipeController extends Controller
 {
@@ -101,10 +100,8 @@ class RecipeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function view($recipeId)
+    public function view(Recipe $recipe)
     {
-        $recipe = $this->select($recipeId);
-
         $commentsWithFathers = $recipe->comments()->has('fatherComments')->get();
         $commentsWithFathersIds = array();
         foreach ($commentsWithFathers as $comment) {
@@ -154,10 +151,10 @@ class RecipeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function deleteAction($recipeId)
+    public function deleteAction(Recipe $recipe)
     {
-        $recipeName = Recipe::find($recipeId)->name;
-        $this->delete($recipeId);
+        $recipeName = $recipe->name;
+        $this->delete($recipe);
         $rndRecipeId = Recipe::limit(1)->get()[0]->id;
         return redirect('/recipe/'.$rndRecipeId)->with('message', 'Recipe "'. $recipeName .'" successfully deleted!');
     }
@@ -169,7 +166,6 @@ class RecipeController extends Controller
      */
     public function create()
     {
-        if (!Auth::check()) return redirect('/feed');
         try {
             $units = Unit::all();
             $categories = Category::all();
@@ -194,9 +190,6 @@ class RecipeController extends Controller
      */
     public function createRecipe(Request $request)
     {
-
-        if (!Auth::check()) return redirect('/feed');
-
         $this->validate($request, RecipeController::$validation, RecipeController::$errorMessages);
 
         try {
@@ -217,13 +210,9 @@ class RecipeController extends Controller
      * @param int $recipeId
      * @return \Illuminate\Http\Response
      */
-    public function edit($recipeId)
+    public function edit(Recipe $recipe)
     {
-        if (!Auth::check()) return redirect('/recipe/' . $recipeId);
-        $this->authorize('update', Recipe::findOrFail($recipeId));
-
         try {
-            $recipe = Recipe::findOrFail($recipeId);
             $units = Unit::all();
             $categories = Category::all();
             $ingredients = Ingredient::all();
@@ -251,20 +240,17 @@ class RecipeController extends Controller
      * @param int $recipeId
      * @return \Illuminate\Http\Response
      */
-    public function editPost(Request $request, $recipeId)
+    public function editPost(Request $request, Recipe $recipe)
     {
-        if (!Auth::check()) return redirect('/recipe/' . $recipeId);
-        $this->authorize('update', Recipe::findOrFail($recipeId));
-
         $this->validate($request, RecipeController::$validation, RecipeController::$errorMessages);
 
         try {
-            $apiMessage = $this->update($request, $recipeId);
+            $apiMessage = $this->update($request, $recipe);
 
             if($apiMessage->status() != 200)
                 throw new Exception('Database Exception!');
 
-            return redirect('/recipe/' . $recipeId)->with('message', 'Recipe successfully updated!');
+            return redirect('/recipe/' . $recipe->id)->with('message', 'Recipe successfully updated!');
         } catch (\Exception $e) {
             return redirect()->back()->withErrors($e->getMessage());
         }
@@ -364,10 +350,8 @@ class RecipeController extends Controller
      * @param int $recipeId
      * @return Recipe
      */
-    public function select($recipeId)
+    public function select(Recipe $recipe)
     {
-        $recipe = Recipe::findOrFail($recipeId);
-        $this->authorize('select', $recipe);
         return $recipe;
     }
 
@@ -378,16 +362,13 @@ class RecipeController extends Controller
      * @param int $recipeId
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $recipeId)
+    public function update(Request $request, Recipe $recipe)
     {
         // Still missing token verification
-
         $this->validate($request, RecipeController::$validation, RecipeController::$errorMessages);
 
         DB::beginTransaction();
         try {
-            $recipe = Recipe::findOrFail($recipeId);
-
             $recipe->preparation_time = $request->input('preparation_time');
             $recipe->cooking_time = $request->input('cooking_time');
             $recipe->additional_time = $request->input('additional_time');
@@ -469,11 +450,8 @@ class RecipeController extends Controller
      * @param int $recipeId
      * @return Recipe
      */
-    public function delete($recipeId)
+    public function delete(Recipe $recipe)
     {
-        $recipe = Recipe::find($recipeId);
-        $this->authorize('delete', $recipe);
-
         $this->deleteRecipeStepsImages($recipe->steps);
 
         File::deleteDirectory(storage_path('app/public/images/recipes/' . $recipe->id));
@@ -490,11 +468,7 @@ class RecipeController extends Controller
      * @param int $recipeId
      * @return void
      */
-    public function addToFavourites($recipeId) {
-        if (!Auth::check()) {
-            return response()->json(['error' => 'Forbidden! Not logged in.'], 403);
-        }
-        $recipe = Recipe::findOrFail($recipeId);
+    public function addToFavourites(Recipe $recipe) {
         $recipe->membersWhoFavourited()->attach(Auth::user()->id);
         return response()->json(['message' => 'Success'], 200);
     }
@@ -506,11 +480,7 @@ class RecipeController extends Controller
      * @param int $recipeId
      * @return void
      */
-    public function removeFromFavourites($recipeId) {
-        if (!Auth::check()) {
-            return response()->json(['error' => 'Forbidden! Not logged in.'], 403);
-        }
-        $recipe = Recipe::findOrFail($recipeId);
+    public function removeFromFavourites(Recipe $recipe) {
         $recipe->membersWhoFavourited()->detach(Auth::user()->id);
         return response()->json(['message' => 'Success'], 200);
     }
