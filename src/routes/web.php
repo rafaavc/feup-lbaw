@@ -12,15 +12,14 @@
 */
 // Home
 Route::view('/', 'pages.index');
-Route::get('/recipe/{id}', 'RecipeController@view');
-Route::post('/recipe/{id}/delete', 'RecipeController@deleteAction');
-Route::get('/recipe/{recipeId}/edit', 'RecipeController@edit');
-Route::post('/recipe/{recipeId}/edit', 'RecipeController@editPost');
-Route::get('/recipe', 'RecipeController@create');
-Route::post('/recipe', 'RecipeController@createRecipe');
 
-//Home
-Route::view('/', 'pages.index');
+// Recipe
+Route::get('/recipe/{recipe}', 'RecipeController@view')->middleware('can:select,recipe');
+Route::post('/recipe/{recipe}/delete', 'RecipeController@deleteAction')->middleware('can:delete,recipe');
+Route::get('/recipe/{recipe}/edit', 'RecipeController@edit')->middleware('can:update,recipe');
+Route::post('/recipe/{recipe}/edit', 'RecipeController@editPost')->middleware('can:update,recipe');
+Route::get('/recipe', 'RecipeController@create')->middleware('can:insert,App\Models\Recipe');
+Route::post('/recipe', 'RecipeController@createRecipe')->middleware('can:insert,App\Models\Recipe');
 
 // Authentication
 Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
@@ -28,10 +27,4 @@ Route::post('login', 'Auth\LoginController@login');
 Route::get('logout', 'Auth\LoginController@logout')->name('logout');
 Route::get('register', 'Auth\RegisterController@showRegistrationForm')->name('register');
 Route::post('register', 'Auth\RegisterController@register');
-
-// Content visualization
-Route::get('/recipe/{id}', 'RecipeController@view');
-
-// Content creation
-Route::get('/recipe', 'RecipeController@create');
 
