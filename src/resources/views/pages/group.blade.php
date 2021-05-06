@@ -47,7 +47,15 @@
                 </div>
 
                 <div class="col-md-8 posts-area ps-md-4 mt-5">
-                    @yield('body')
+                    <div class="row first-recipe-mt">
+                        <h3>Recipes</h3>
+                        @foreach($group->recipes as $recipe)
+                            @include('partials.preview.recipe', ['canDelete' => false])
+                        @endforeach
+                    </div>
+                    <!--<div class="row">
+                        <button type="button" class="btn btn-dark load-more w-25 mt-5 mx-auto">Load More</button>
+                    </div>-->
                 </div>
             </div>
         </div>
