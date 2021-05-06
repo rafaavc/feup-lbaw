@@ -23,6 +23,8 @@ class RecipePolicy
     {
         if (Auth::guard('admin')->check())
             return true;
+        if (Auth::check() && $user->id === $recipe->author->id)
+            return true;
         if ($recipe->group !== null)
             return $recipe->group->visibility;
         return $recipe->author->visibility;
