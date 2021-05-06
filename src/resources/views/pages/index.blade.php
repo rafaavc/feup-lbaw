@@ -42,13 +42,13 @@
                     </div>
                 </div>
                 <div class="col-lg-6">
-                    <img src="{{ asset('storage/images/findRecipes.jpg') }}" class="d-block w-75 h-100" alt="...">
+                    <img src="{{ asset('storage/images/findRecipes.jpg') }}" class="d-block w-75 h-100">
                 </div>
             </div>
             <hr class="mt-5 w-100">
             <div class="row mt-5">
                 <div class="col-lg-6">
-                    <img src="{{ asset('storage/images/shareRecipes.jpg') }}" class="d-block float-end w-75 h-100" alt="...">
+                    <img src="{{ asset('storage/images/shareRecipes.jpg') }}" class="d-block float-end w-75 h-100">
                 </div>
                 <div class="col-lg-6">
                     <div class="d-flex flex-column bd-highlight content-align">
@@ -78,7 +78,7 @@
             <div class="card-group g-5 text-center p-0">
                 <div class="col-md my-3">
                     <div class="card h-100 me-md-3">
-                        <img src="{{ asset('storage/images/follow.jpg') }}" class="card-img-top" alt="...">
+                        <img src="{{ asset('storage/images/follow.jpg') }}" class="card-img-top">
                         <div class="card-body">
                             <h5 class="card-title">Follow</h5>
                             <p class="card-text">Follow people to get updates about them and the new recipes they publish!</p>
@@ -87,7 +87,7 @@
                 </div>
                 <div class="col-md my-3">
                     <div class="card h-100 me-md-3">
-                        <img src="{{ asset('storage/images/group.jpg') }}" class="card-img-top" alt="...">
+                        <img src="{{ asset('storage/images/group.jpg') }}" class="card-img-top">
                         <div class="card-body">
                             <h5 class="card-title">Group</h5>
                             <p class="card-text">Create or join private or public groups!</p>
@@ -96,7 +96,7 @@
                 </div>
                 <div class="col-md my-3">
                     <div class="card h-100">
-                        <img src="{{ asset('storage/images/chat.jpg') }}" class="card-img-top" alt="...">
+                        <img src="{{ asset('storage/images/chat.jpg') }}" class="card-img-top">
                         <div class="card-body">
                             <h5 class="card-title">Chat</h5>
                             <p class="card-text">Need more information? Want to know the person behind the recipe? Send them a message!</p>

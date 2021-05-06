@@ -29,11 +29,11 @@
         <link href="{{ asset('css/components/navPopups.css') }}" rel="stylesheet">
         @stack('css')
 
-        <script src="{{ asset('js/general.js') }}" type="module" defer></script>
+        <script src="{{ asset('js/general.js') }}" type="module"></script>
         <script src="{{ asset('js/navPopups.js') }}" defer></script>
         @stack('js')
 
-        <script type="text/javascript">
+        <script>
             // Fix for Firefox autofocus CSS bug
             // See: http://stackoverflow.com/questions/18943276/html-5-autofocus-messes-up-css-loading/18945951#18945951
         </script>

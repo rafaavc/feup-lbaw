@@ -5,7 +5,7 @@
 <header class="cover">
     <img
         src="https://images-prod.healthline.com/hlcmsresource/images/AN_images/vegetarian-diet-plan-1296x728-feature.jpg"
-        class="cover-image" alt="...">
+        class="cover-image">
     <div class="card shadow-sm px-3">
         <div class="row g-0 p-3 text-center text-md-start" style="">
             <div class="col-md-2 image-container ">
