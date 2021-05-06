@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Group;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
 
 class GroupController extends Controller
 {
@@ -28,7 +30,7 @@ class GroupController extends Controller
 
     public function get(Group $group)
     {
-
+        return $group;
     }
 
     public function request(Group $group)
@@ -92,6 +94,11 @@ class GroupController extends Controller
 
     public function view(Group $group)
     {
-
+        $user = Auth::user();
+        return view('pages.group', [
+            'group' => $this->get($group),
+            'canEdit' => Gate::inspect('update', $user)->allowed(),
+            'canDelete' => Gate::inspect('delete', $user)->allowed(),
+        ]);
     }
 }
