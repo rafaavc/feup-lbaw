@@ -94,7 +94,6 @@ class GroupController extends Controller
 
     public function view(Group $group)
     {
-        $user = Auth::user();
         return view('pages.group', [
             'group' => $this->get($group),
         ]);
