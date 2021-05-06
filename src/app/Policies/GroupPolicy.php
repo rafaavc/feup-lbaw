@@ -5,6 +5,7 @@ namespace App\Policies;
 use App\Models\Group;
 use App\Models\Member;
 use Illuminate\Auth\Access\HandlesAuthorization;
+use Illuminate\Support\Facades\Auth;
 
 class GroupPolicy
 {
