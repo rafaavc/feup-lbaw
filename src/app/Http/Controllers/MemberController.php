@@ -82,8 +82,7 @@ class MemberController extends Controller
 
     public function getGroups(Member $user)
     {
-        return [];
-        //return $user->groups;
+        return $user->groups;
     }
 
     public function put(Request $request, Member $user)

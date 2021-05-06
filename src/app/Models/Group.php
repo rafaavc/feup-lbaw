@@ -35,4 +35,22 @@ class Group extends Model
     {
         return $this->hasMany(Recipe::class, 'id_group', 'id');
     }
+
+    public function profileImage()
+    {
+        $path = "storage/images/groups/$this->id.jpeg";
+        if (!file_exists($path))
+            return asset("storage/images/groups/no_image.png");
+        return asset($path);
+    }
+
+    public function getNumberOfRecipesAttribute()
+    {
+        return $this->recipes()->count();
+    }
+
+    public function getNumberOfMembersAttribute()
+    {
+        return $this->members()->count();
+    }
 }

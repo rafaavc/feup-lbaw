@@ -45,7 +45,7 @@
                     @include('partials.profile.personalInfo')
                     @include('partials.profile.peopleBox', ['name' => 'Following', 'people' => $user->following])
                     @include('partials.profile.peopleBox', ['name' => 'Followers', 'people' => $user->followers])
-                    @include('partials.profile.groupBox', ['name'=> 'Groups', 'groups' => []])
+                    @include('partials.profile.groupBox', ['name'=> 'Groups', 'groups' => $user->groups])
                 </div>
 
                 <div class="col-md-8 posts-area ps-md-4 mt-5">

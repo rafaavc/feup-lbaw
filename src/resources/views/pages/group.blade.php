@@ -26,6 +26,21 @@
         @endif
         @include('partials.breadcrumb', ['pages' => ["Groups", $group->name], 'withoutMargin' => true])
         <div>
+            @include('partials.profile.cover', [
+                                                    'name' => $group->name,
+                                                    'image' => $group->profileImage(),
+                                                    'text' => $group->description,
+                                                    'numbers' => [
+                                                        'Recipes' => $group->number_of_recipes,
+                                                        'Members' => $group->number_of_members,
+                                                    ],
+                                                    'editLink' => url("/group/$group->id/edit"),
+                                                    'actions' => [
+                                                        'Join' => ['#', 'user-plus'],
+                                                    ],
+                                                    'group' => true,
+                                                    'groupModerator' => $canEdit
+                                                ])
             <div class="row group-body">
                 <div class="col-md-4 p-0 pe-md-4 mt-5">
                     @include('partials.profile.peopleBox', ['name' => 'Members', 'people' => $group->members])
