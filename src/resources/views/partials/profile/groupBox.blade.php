@@ -10,8 +10,8 @@
                 </a>
             @endforeach
         </div>
-        <button type="button" class="btn btn-outline-secondary">
+        <!--<button type="button" class="btn btn-outline-secondary">
             <small><i class="fas fa-plus me-2"></i> See all groups</small>
-        </button>
+        </button>-->
     </div>
 </div>

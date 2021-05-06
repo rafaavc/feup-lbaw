@@ -20,8 +20,8 @@
                 </div>
             @endforeach
         </div>
-        <button type="button" class="btn btn-outline-secondary">
+    <!--<button type="button" class="btn btn-outline-secondary">
             <small><i class="fas fa-plus me-2"></i> See all <?= strtolower($name) ?></small>
-        </button>
+        </button>-->
     </div>
 </div>
