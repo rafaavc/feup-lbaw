@@ -12,7 +12,7 @@ class RecipePolicy
 {
     use HandlesAuthorization;
 
-    public function insert(Member $user)
+    public function insert(?Member $user)
     {
         if (Auth::guard('admin')->check())
             return false;
@@ -28,30 +28,38 @@ class RecipePolicy
         return $recipe->author->visibility;
     }
 
-    public function update(Member $user, Recipe $recipe)
+    public function update(?Member $user, Recipe $recipe)
     {
         if (Auth::guard('admin')->check())
+            return false;
+        if (!Auth::check())
             return false;
         return $user->id == $recipe->author->id;
     }
 
-    public function delete(Member $user, Recipe $recipe)
+    public function delete(?Member $user, Recipe $recipe)
     {
         if (Auth::guard('admin')->check())
             return true;
+        if (!Auth::check())
+            return false;
         return $user->id == $recipe->author->id;
     }
 
-    public function addToFavourites(Member $user, Recipe $recipe)
+    public function addToFavourites(?Member $user, Recipe $recipe)
     {
         if (Auth::guard('admin')->check())
+            return false;
+        if (!Auth::check())
             return false;
         return !$recipe->membersWhoFavourited->contains($user->id);
     }
 
-    public function removeFromFavourites(Member $user, Recipe $recipe)
+    public function removeFromFavourites(?Member $user, Recipe $recipe)
     {
         if (Auth::guard('admin')->check())
+            return false;
+        if (!Auth::check())
             return false;
         return $recipe->membersWhoFavourited->contains($user->id);
     }
