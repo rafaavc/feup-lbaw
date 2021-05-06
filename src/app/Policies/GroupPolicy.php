@@ -10,6 +10,11 @@ class GroupPolicy
 {
     use HandlesAuthorization;
 
+    public function create(Member $member)
+    {
+        return true;
+    }
+
     public function view(?Member $member, Group $group)
     {
         return true;
@@ -20,17 +25,12 @@ class GroupPolicy
         return true;
     }
 
-    public function create(Member $member)
+    public function update(Member $member, Group $group)
     {
         return true;
     }
 
     public function delete(Member $member, Group $group)
-    {
-        return true;
-    }
-
-    public function update(Member $member, Group $group)
     {
         return true;
     }
