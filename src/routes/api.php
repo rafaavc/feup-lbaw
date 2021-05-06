@@ -20,16 +20,17 @@ Route::middleware('auth:api')->get('/user', 'Auth\LoginController@getUser');
 
 // API - TasteBuds
 
-Route::put('recipe/{recipeId}', [RecipeController::class, 'update']);
-Route::post('recipe', 'RecipeController@insert');
-Route::get('recipe/{recipe_id}', 'RecipeController@select');
-Route::post('recipe/{recipe_id}', 'RecipeController@update');
-Route::delete('recipe/{recipe_id}', 'RecipeController@delete');
+Route::post('recipe', 'RecipeController@insert')->middleware('can:insert,App\Models\Recipe');
+Route::get('recipe/{recipe}', 'RecipeController@select')->middleware('can:select,recipe');
+Route::put('recipe/{recipe}', 'RecipeController@update')->middleware('can:update,recipe');
+Route::delete('recipe/{recipe}', 'RecipeController@delete')->middleware('can:delete,recipe');
 
-Route::get('units', [UnitController::class, 'index']);
+Route::get('units', 'UnitController@index');
 
-Route::post('recipe/{recipeId}/favourite', 'RecipeController@addToFavourites');
-Route::delete('recipe/{recipeId}/favourite', 'RecipeController@removeFromFavourites');
+Route::post('recipe/{recipe}/favourite', 'RecipeController@addToFavourites')->middleware('can:addToFavourites,recipe');
+Route::delete('recipe/{recipe}/favourite', 'RecipeController@removeFromFavourites')->middleware('can:removeFromFavourites,recipe');
+
+Route::post('comment', 'CommentController@insert')->middleware('can:insert,App\Models\Comment');
 
 // ----------------------------------------------------------------
 // User API
