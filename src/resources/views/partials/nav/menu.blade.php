@@ -32,47 +32,41 @@
             "href" => url("/logout")
         ]
     ];
-
-    $loggedInName = Auth::check() ? Auth::user()->name : "nonexistant";
-
-    $member = [
-        "notifications" => [
-            "icon" => "bell",
-            "popover" => "This is the content of the first popover"
-        ],
-        "messages" => [
-            "icon" => "comments",
-            "popover" => "This is the content of the second popover"
-        ],
-        $loggedInName => [
-            "icon" => "user-circle",
-            "drop" => $dropdown
-        ]
-    ];
-
-    $admin = [
-        "reports" => [
-            "icon" => "exclamation-triangle",
-            "href" => url("/admin/reports")
-        ],
-        "users" => [
-            "icon" => "users",
-            "href" => url("/admin/users")
-        ],
-        Auth::guard('admin')->user()->username => [
-            "icon" => "user-circle",
-            "drop" => $adminDropdown
-        ]
-    ];
 @endphp
 
 @if(Auth::guard('admin')->check())
     @php
-        $menu = $admin;
+        $menu = [
+            "reports" => [
+                "icon" => "exclamation-triangle",
+                "href" => url("/admin/reports")
+            ],
+            "users" => [
+                "icon" => "users",
+                "href" => url("/admin/users")
+            ],
+            Auth::guard('admin')->user()->username => [
+                "icon" => "user-circle",
+                "drop" => $adminDropdown
+            ]
+        ];
     @endphp
 @elseif(Auth::check())
     @php
-        $menu = $member;
+        $menu = [
+            "notifications" => [
+                "icon" => "bell",
+                "popover" => "This is the content of the first popover"
+            ],
+            "messages" => [
+                "icon" => "comments",
+                "popover" => "This is the content of the second popover"
+            ],
+            Auth::user()->name => [
+                "icon" => "user-circle",
+                "drop" => $dropdown
+            ]
+        ];
     @endphp
 @else
     @php
