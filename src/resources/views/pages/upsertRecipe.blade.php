@@ -16,10 +16,10 @@
 
 
 @php
-
+    $hasErrors = $errors->any();
+    $old = ($hasErrors) ? \Illuminate\Support\Facades\Request::old() : '';
     $breadcrumbPages = ["Recipes", isset($recipe) ? $recipe->category->name : "Create Recipe"];
     if (isset($recipe)) {
-
         array_push($breadcrumbPages, $recipe->name);
     }
 @endphp
@@ -29,7 +29,7 @@
 <h1 id="pageTitle" class="content-general-margin mt-3">{{ isset($recipe) ? "Edit Recipe" : "Create Recipe" }}</h1>
 <div id="create-recipe-stepper" class="content-general-margin mt-4 margin-to-footer card p-4">
 
-    @if($errors->any())
+    @if($hasErrors)
         <div class="alert alert-danger" role="alert">
             @foreach($errors->all() as $error)
                 {{ $error }}<br/>
@@ -47,15 +47,17 @@
                         <div class="row g-3 mb-3">
                             <div class="col-lg">
                                 <div class="form-floating">
-                                    <input name="name" type="text" class="form-control" id="floatingInput" placeholder="Baked Potatoes" value="{{ isset($recipe) ? $recipe->name : ""}}">
+                                    <input name="name" type="text" class="form-control" id="floatingInput" placeholder="Baked Potatoes"
+                                        value="{{ (!$hasErrors) ? ((isset($recipe)) ? $recipe->name : "") : ((isset($old['name'])) ? old('name') : '') }}">
                                     <label for="floatingInput">Recipe title <span class='form-required'></span></label>
                                 </div>
                             </div>
                             <div class="col-md">
                                 <div class="form-floating">
                                     <select name="category" class="form-select" id="floatingSelectGrid" aria-label="Main category">
-                                        @foreach ($categories as $category)
-                                            @if(isset($recipe) && $recipe->category->id === $category->id)
+                                        @foreach (\App\Models\Category::all() as $category)
+                                            @if((!$hasErrors && isset($recipe) && $recipe->category->id == $category->id) ||
+                                                ($hasErrors && isset($old['category']) && old('category') == $category->id))
                                                 <option value="{{ $category->id }}" selected>{{ $category->name }}</option>
                                             @else
                                                 <option value="{{ $category->id }}">{{ $category->name }}</option>
@@ -67,34 +69,32 @@
                             </div>
                         </div>
                         <div class="form-floating mb-3">
-                            <textarea name="description" class="form-control" placeholder="Your awesome description here..." id="floatingTextarea2" style="height: 7rem">{{ isset($recipe) ? $recipe->description : "" }}</textarea>
+                            <textarea name="description" class="form-control" placeholder="Your awesome description here..." id="floatingTextarea2" style="height: 7rem">{{ (!$hasErrors) ? ((isset($recipe)) ? $recipe->description : "") : ((isset($old['description'])) ? old('description') : '') }}</textarea>
                             <label for="floatingTextarea2"> Description <span class='form-required'></span></label>
                         </div>
                         <div class="row g-3 mb-4">
                             <div class="col-sm">
                                 <div class="form-floating">
                                     <select name="difficulty" class="form-select" id="floatingSelectGrid" aria-label="Difficulty">
-                                        <option name="difficulty" value="easy" {{ (isset($recipe) && $recipe->difficulty === "easy") ? "selected" : "" }}>Easy</option>
-                                        <option name="difficulty" value="medium" {{ (isset($recipe) && $recipe->difficulty === "medium") ? "selected" : "" }}>Medium</option>
-                                        <option name="difficulty" value="hard" {{ (isset($recipe) && $recipe->difficulty === "hard") ? "selected" : "" }}>Hard</option>
-                                        <option name="difficulty" value="very hard" {{ (isset($recipe) && $recipe->difficulty === "very hard") ? "selected" : "" }}>Very Hard</option>
+                                        <option name="difficulty" value="easy" {{ ((isset($recipe) && $recipe->difficulty === "easy") || ( $hasErrors && isset($old['difficulty']) && old('difficulty') === "easy")) ? "selected" : "" }}>Easy</option>
+                                        <option name="difficulty" value="medium" {{ ((isset($recipe) && $recipe->difficulty === "medium") || ($hasErrors && isset($old['difficulty']) && old('difficulty') === "medium")) ? "selected" : "" }}>Medium</option>
+                                        <option name="difficulty" value="hard" {{ ((isset($recipe) && $recipe->difficulty === "hard") || ($hasErrors && isset($old['difficulty']) && old('difficulty') === "hard")) ? "selected" : "" }}>Hard</option>
+                                        <option name="difficulty" value="very hard" {{ ((isset($recipe) && $recipe->difficulty === "very hard") || ($hasErrors && isset($old['difficulty']) && old('difficulty') === "very hard")) ? "selected" : "" }}>Very Hard</option>
                                     </select>
                                     <label for="floatingSelectGrid">Difficulty <span class='form-required'></span></label>
                                 </div>
                             </div>
-
                             <div class="col-lg">
                                 <div class="form-floating">
-                                    <input name="servings" type="number" class="form-control" id="floatingInput" placeholder="Baked Potatoes" value="{{isset($recipe) ? $recipe->servings : 0 }}">
+                                    <input name="servings" type="number" class="form-control" id="floatingInput" placeholder="Baked Potatoes" value="{{ (!$hasErrors) ? ((isset($recipe)) ? $recipe->servings : 0) : ((isset($old['servings'])) ? old('servings') : '') }}">
                                     <label for="floatingInput">Number of servings <span class='form-required'></span></label>
                                 </div>
                             </div>
                             <div class="col-lg">
                                 <div class="form-floating">
                                     <select class="form-select" id="tagSelect" aria-label="Quantity unit">
-                                        <option value="3">Tags</option>
+                                        <option></option>
                                     </select>
-
                                     <label for="floatingInput">Tags<span class='form-required'></span></label>
                                 </div>
                             </div>
@@ -103,7 +103,7 @@
                                     <input type="text" class="searchBox-text form-control rounded-0" placeholder="Search..." aria-label="Recipient's username" aria-describedby="basic-addon2">
                                 </div>
                                 <div class="searchBox-tag">
-                                    @foreach ($totalTags as $tTag)
+                                    @foreach (\App\Models\Tag::all() as $tTag)
                                         <a class="list-group-item list-group-item-action tag" value="{{ $tTag->id }}">{{ $tTag->name }}</a>
                                     @endforeach
                                 </div>
@@ -111,10 +111,17 @@
                         </div>
                         <div class="col-lg tags-collection mb-3">
                             <ul class="tag-list mt-2 mb-4">
-                                @if (isset($recipe))
+                                @if($hasErrors && isset($old['tags']))
+                                    @foreach (old('tags') as $tagId)
+                                        @if(\App\Models\Tag::where('id', $tagId)->exists())
+                                            <li value="{{ $tagId }}">{{ \App\Models\Tag::find($tagId)->name }}<span class="close">&times;</span></li>
+                                            <input name="tags[]" value="{{ $tagId }}" class="d-none">
+                                        @endif
+                                    @endforeach
+                                @elseif (isset($recipe) && !$errors->has('tags'))
                                     @foreach ($recipe->tags as $tag)
-                                        <li value="{{ $tag->id }}">{{ $tag->name }}<span class="close">&times;</span></li>
-                                        <input name="tags[]" value="{{ $tag->id }}" class="d-none">
+                                            <li value="{{ $tag->id }}">{{ $tag->name }}<span class="close">&times;</span></li>
+                                            <input name="tags[]" value="{{ $tag->id }}" class="d-none">
                                     @endforeach
                                 @endif
                             </ul>
@@ -128,12 +135,16 @@
                     <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
                         <h3 class="mb-4">Ingredients</h3>
 
-                        @if(isset($recipe))
+                        @if($hasErrors && isset($old['ingredients']))
+                            @foreach(old('ingredients') as $ingredient)
+                                    @include('partials.recipe.recipeIngredientRow', ['ingredient' => $ingredient, 'units' => \App\Models\Unit::all(), 'totalIngredients' => \App\Models\Ingredient::all(), 'index' => $loop->index, 'hasErrors' => true])
+                            @endforeach
+                        @elseif(isset($recipe))
                             @foreach ($ingredients as $ingredient)
-                                @include('partials.recipe.recipeIngredientRow', ['ingredient' => $ingredient, 'units' => $units, 'totalIngredients' => $totalIngredients, 'index' => $loop->index])
+                                @include('partials.recipe.recipeIngredientRow', ['ingredient' => $ingredient, 'units' => \App\Models\Unit::all(), 'totalIngredients' => \App\Models\Ingredient::all(), 'index' => $loop->index, 'hasErrors' => false])
                             @endforeach
                         @else
-                            @include('partials.recipe.recipeIngredientRow', ['units' => $units, 'totalIngredients' => $totalIngredients])
+                            @include('partials.recipe.recipeIngredientRow', ['units' => \App\Models\Unit::all(), 'totalIngredients' => \App\Models\Ingredient::all(), 'index' => 0, 'hasErrors' => false])
                         @endif
 
                         <button type="button" class="btn btn-secondary" id="addIngredientButton"><i class="fas fa-plus"></i> Add Ingredient</button>
@@ -166,12 +177,16 @@
 
                 <h4 class="mt-5 mb-4">Steps</h4>
 
-                @if(isset($recipe))
+                @if($hasErrors && isset($old['steps']))
+                    @foreach(old('steps') as $step)
+                        @include('partials.recipe.step', ['step' => $step, 'index' => $loop->index + 1, 'hasErrors' => true])
+                    @endforeach
+                @elseif(isset($recipe))
                     @foreach ($steps as $step)
-                        @include('partials.recipe.step', ['step' => $step, 'index' => $loop->index + 1])
+                        @include('partials.recipe.step', ['step' => $step, 'index' => $loop->index + 1, 'hasErrors' => false])
                     @endforeach
                 @else
-                    @include('partials.recipe.step', ['index' => 1])
+                    @include('partials.recipe.step', ['index' => 1, 'hasErrors' => false])
                 @endif
 
                 <button type="button" class="btn btn-secondary" id="addStepButton"><i class="fas fa-plus"></i> Add Step</button>
