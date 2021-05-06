@@ -62,7 +62,7 @@
                     @endforeach
                 </div>
                 <ul class="col-3 text-end">
-                    @if($canEdit)
+                    @if(Gate::inspect('update', $recipe)->allowed())
                         <li class="list-group-item bg-light" style="border-radius: .5rem">
                             <a href="{{ url('/recipe/'.$recipe->id.'/edit') }}">
                                 <span class="legend">Edit Recipe</span><i class="fas fa-edit ms-2"></i>
@@ -88,7 +88,7 @@
                                 </a>
                         </li>
                     @endif
-                    @if($canDelete)
+                    @if(Gate::inspect('delete', $recipe)->allowed())
                         <li class="list-group-item">
                             <form id="deleteRecipeForm" method="POST"
                                   action="{{ url("/recipe/".$recipe->id."/delete") }}">
