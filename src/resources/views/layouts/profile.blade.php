@@ -33,6 +33,7 @@
                                                         'Followers' => $user->number_of_followers,
                                                         'Following' => $user->number_of_following,
                                                     ],
+                                                    'canEdit' => Gate::inspect('update', $user)->allowed(),
                                                     'editLink' => url("/user/$user->username/edit"),
                                                     'actions' => [
                                                         'Follow' => ['#', 'user-plus'],

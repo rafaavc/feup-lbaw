@@ -25,6 +25,11 @@ class GroupPolicy
         return true;
     }
 
+    public function post(Member $member, Group $group)
+    {
+        return $group->members->where('id', '=', $member->id)->count() == 1;
+    }
+
     public function update(Member $member, Group $group)
     {
         return $group->moderators->where('id', '=', $member->id)->count() == 1;

@@ -145,9 +145,7 @@ class MemberController extends Controller
             'user' => $this->get($user),
             'groups' => $this->getGroups($user),
             'tab' => strtolower($tab),
-            $tab => $items,
-            'canEdit' => Gate::inspect('update', $user)->allowed(),
-            'canDelete' => Gate::inspect('delete', $user)->allowed(),
+            $tab => $items,z
         ]);
     }
 
