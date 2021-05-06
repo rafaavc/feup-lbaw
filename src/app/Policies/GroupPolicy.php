@@ -27,12 +27,12 @@ class GroupPolicy
 
     public function update(Member $member, Group $group)
     {
-        return true;
+        return $group->moderators->where('id', '=', $member->id)->count() == 1;
     }
 
     public function delete(Member $member, Group $group)
     {
-        return true;
+        return $group->moderators->where('id', '=', $member->id)->count() == 1;
     }
 }
 

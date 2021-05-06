@@ -39,14 +39,15 @@
                                                         'Join' => ['#', 'user-plus'],
                                                     ],
                                                     'group' => true,
-                                                    'groupModerator' => $canEdit
                                                 ])
             <div class="row group-body">
                 <div class="col-md-4 p-0 pe-md-4 mt-5">
-                    @include('partials.profile.peopleBox', ['name' => 'Members', 'people' => $group->members])
-                    @include('partials.profile.requestBox', ['name' => 'Member Requests',
-                                                             'requests' => $group->requests,
-                                                             'new' => true])
+                    @include('partials.profile.peopleBox', ['name' => 'Members', 'people' => $group->members, 'groupModerator' => $canEdit])
+                    @if($canEdit)
+                        @include('partials.profile.requestBox', ['name' => 'Member Requests',
+                                                                 'requests' => $group->requests,
+                                                                 'new' => true])
+                    @endif
                 </div>
 
                 <div class="col-md-8 posts-area ps-md-4 mt-5">

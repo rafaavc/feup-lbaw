@@ -97,7 +97,7 @@ class GroupController extends Controller
         $user = Auth::user();
         return view('pages.group', [
             'group' => $this->get($group),
-            'canEdit' => Gate::inspect('update', $user)->allowed(),
+            'canEdit' => Gate::inspect('update', $group)->allowed(),
         ]);
     }
 }
