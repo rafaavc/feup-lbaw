@@ -88,7 +88,7 @@ Route::put('notifications', 'NotificationsController@put');
 // ----------------------------------------------------------------
 // Comment API
 // ----------------------------------------------------------------
-Route::post('comment', 'CommentController@insert')->middleware('can:insert,App\Models\Comment');
+Route::post('comment', 'CommentController@insert')->middleware('can:create,App\Models\Comment');
 Route::put('comment/{comment}', 'CommentController@put')->middleware('can:update,comment');
 Route::delete('comment/{comment}', 'CommentController@remove')->middleware('can:delete,comment');
 Route::post('comment/{comment}/report', 'CommentController@report');
