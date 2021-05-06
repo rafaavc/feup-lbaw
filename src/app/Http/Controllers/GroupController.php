@@ -60,7 +60,7 @@ class GroupController extends Controller
 
     public function getMembers(Group $group)
     {
-
+        return $group->members;
     }
 
     // ----------------------------------------------------------------
