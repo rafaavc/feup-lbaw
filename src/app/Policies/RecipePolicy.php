@@ -2,9 +2,9 @@
 
 namespace App\Policies;
 
+use App\Models\Admin;
 use App\Models\Member;
 use App\Models\Recipe;
-
 use Illuminate\Auth\Access\HandlesAuthorization;
 use Illuminate\Support\Facades\Auth;
 
@@ -14,35 +14,45 @@ class RecipePolicy
 
     public function insert(Member $user)
     {
-        // Any user can create a new recipe
+        if (Auth::guard('admin')->check())
+            return false;
         return Auth::check();
     }
 
     public function select(?Member $user, Recipe $recipe)
     {
-        // TODO: verify if the recipe was posted in a group and the user is part of it or it is an administrator
-        return true;
+        if (Auth::guard('admin')->check())
+            return true;
+        if ($recipe->group !== null)
+            return $recipe->group->visibility;
+        return $recipe->author->visibility;
     }
 
     public function update(Member $user, Recipe $recipe)
     {
-        // Only a recipe owner can update it
+        if (Auth::guard('admin')->check())
+            return false;
         return $user->id == $recipe->author->id;
     }
 
     public function delete(Member $user, Recipe $recipe)
     {
-        // Only recipe card owner and an administrator can delete it
+        if (Auth::guard('admin')->check())
+            return true;
         return $user->id == $recipe->author->id;
     }
 
     public function addToFavourites(Member $user, Recipe $recipe)
     {
+        if (Auth::guard('admin')->check())
+            return false;
         return !$recipe->membersWhoFavourited->contains($user->id);
     }
 
     public function removeFromFavourites(Member $user, Recipe $recipe)
     {
+        if (Auth::guard('admin')->check())
+            return false;
         return $recipe->membersWhoFavourited->contains($user->id);
     }
 }
