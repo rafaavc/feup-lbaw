@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Request;
 
 class LoginController extends Controller
 {
@@ -18,14 +20,16 @@ class LoginController extends Controller
     |
     */
 
-    use AuthenticatesUsers;
-
     /**
      * Where to redirect users after login.
      *
      * @var string
      */
     protected $redirectTo = '/recipe/1'; // TODO: change to feed
+
+    private $isAdmin = false;
+
+    use AuthenticatesUsers;
 
     /**
      * Create a new controller instance.
@@ -47,4 +51,29 @@ class LoginController extends Controller
         return redirect('login');
     }
 
+    public function username() {
+        return 'username';
+    }
+
+    protected function guard()
+    {
+        return Auth::guard('admin');
+    }
+
+    protected function attemptLogin(Request $request)
+    {
+        $credentials = $request->only('username', 'password');
+
+        if (Auth::attempt($credentials))
+            return true;
+
+        if (Auth::guard('admin')->attempt($credentials)) {
+            $this->redirectTo = '/users_management';
+            $this->isAdmin = true;
+            return true;
+        }
+    }
+
 }
+
+

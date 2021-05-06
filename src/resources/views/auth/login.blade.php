@@ -40,12 +40,10 @@
 
                 <form method="POST" action="{{ route('login') }}">
                     {{ csrf_field() }}
-                    <span class='d-block mt-4'>Email Address</span>
+                    <span class='d-block mt-4'>Username</span>
                     <div class="d-flex mb-3">
-                        <i class='fas fa-envelope fa-icon-left'></i>
-                        <input id="email" type="email" name="email" required autofocus
-                               class="form-control icon-left me-2" aria-label="Member's email"
-                               aria-describedby="basic-addon2">
+                        <i class='fas fa-at fa-icon-left'></i>
+                        <input id="username" type="text" name="username" required autofocus class="form-control icon-left me-2" aria-label="Member's username" aria-describedby="basic-addon2">
                     </div>
                     <span class='d-block mt-4'>Password</span>
                     <div class="d-flex mb-3">
