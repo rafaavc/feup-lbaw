@@ -24,7 +24,22 @@
         @endif
         @include('partials.breadcrumb', ['pages' => ["Users", $user->name], 'withoutMargin' => true])
         <div>
-            @include('partials.profile.cover')
+            @include('partials.profile.cover', [
+                                                    'name' => $user->name,
+                                                    'image' => $user->profileImage(),
+                                                    'text' => $user->biography,
+                                                    'numbers' => [
+                                                        'Recipes' => $user->number_of_recipes,
+                                                        'Followers' => $user->number_of_followers,
+                                                        'Following' => $user->number_of_following,
+                                                    ],
+                                                    'editLink' => url("/user/$user->username/edit"),
+                                                    'actions' => [
+                                                        'Follow' => ['#', 'user-plus'],
+                                                        'Chat' => [url("/chat/$user->username"), 'comments'],
+                                                    ],
+                                                    'group' => false
+                                                ])
             <div class="row group-body">
                 <div class="col-md-4 p-0 pe-md-4 mt-5">
                     @include('partials.profile.personalInfo')

@@ -98,7 +98,6 @@ class GroupController extends Controller
         return view('pages.group', [
             'group' => $this->get($group),
             'canEdit' => Gate::inspect('update', $user)->allowed(),
-            'canDelete' => Gate::inspect('delete', $user)->allowed(),
         ]);
     }
 }
