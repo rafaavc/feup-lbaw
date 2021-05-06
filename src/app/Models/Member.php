@@ -31,6 +31,11 @@ class Member extends Authenticatable
         'password', 'email'
     ];
 
+    public function comments()
+    {
+        return $this->hasMany('App\Models\Comment', 'id_member', 'id');
+    }
+
     public function recipes()
     {
         return $this->hasMany('App\Models\Recipe', 'id_member', 'id');

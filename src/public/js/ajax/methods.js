@@ -4,7 +4,7 @@ function encodeForAjax(data) {
     }).join('&')
 }
 
-export const makeRequest = (requestUrl, method, body) => new Promise((resolve) => {
+export const makeRequest = (requestUrl, method, body) => new Promise((resolve, reject) => {
     const requestBody = { ...body, _token: document.body.dataset.csrfToken };
 
     fetch(requestUrl, {
@@ -15,10 +15,16 @@ export const makeRequest = (requestUrl, method, body) => new Promise((resolve) =
         },
         body: method == 'POST' || method == 'PUT' ? encodeForAjax(requestBody) : undefined
     })
-        .then((response) => {
-            return {response: response, content: response.json()};
+        .then(async (response) => {
+            const content = await response.json();
+            return {response, content};
         })
         .then((result) => {
+            console.log(`Received result of ${method} to ${requestUrl}:`, result.content);
             resolve(result);
+        })
+        .catch((error) => {
+            console.error(`Received error of ${method} to ${requestUrl}:`, error);
+            reject(error);
         })
 })

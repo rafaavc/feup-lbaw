@@ -8,11 +8,11 @@
     <link href="{{ asset('css/components/profile_cover.css') }}" rel="stylesheet"/>
     <link href="{{ asset('css/components/textareaWithButton.css') }}" rel="stylesheet"/>
     <link href="{{ asset('css/components/breadcrumb.css') }}" rel="stylesheet"/>
-    <link href="{{ asset('css/components/rating.css') }}" rel="stylesheet"/>
 @endpush
 
 @push('js')
     <script src="{{ asset('js/progressBar.js') }}" defer></script>
+    <script src="{{ asset('js/recipe.js') }}" type="module"></script>
 @endpush
 
 @section('content')

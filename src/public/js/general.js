@@ -27,7 +27,7 @@ const interval = setInterval(() => {
     document.body.style.paddingTop = newHeight;
     console.log(`Updated body top padding (${last}).`);
     if (calculationCounter > 2) clearInterval(interval);
-}, 200);  // sometimes there was problems in the calculation
+}, 200);  // sometimes there were problems in the calculation
 
 
 /**

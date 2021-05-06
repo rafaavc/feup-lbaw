@@ -11,8 +11,13 @@ h1 {
     padding-left: 1rem;
 }
 
-/* Box with icon at the top component */
 
+.createCommentFormErrors {
+    margin: 0 1rem;
+    text-align: left;
+}
+
+/* Box with icon at the top component */
 .icon-box {
     margin-top: 0.5em;
     padding: 0px;
@@ -193,4 +198,22 @@ aside .search-card {
     position: absolute;
     right: 0.5rem;
     top: 0.5rem;
+}
+
+#ratingInputCancel {
+    cursor: pointer;
+    margin-right: .5rem;
+    transition: color .15s;
+}
+#ratingInputCancel:hover {
+    color: grey;
+}
+
+.rating-input-star {
+    cursor: pointer;
+    transition: color .15s;
+}
+
+.rating-input-star.hover:not(.active) {
+    color: grey;
 }
