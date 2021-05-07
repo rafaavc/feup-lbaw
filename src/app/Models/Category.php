@@ -12,4 +12,8 @@ class Category extends Model
     public function recipes() {
         return $this->hasMany('App\Models\Recipe', 'id_category', 'id');
     }
+
+    public function getNumRecipes() {
+        return $this->recipes()->count();
+    }
 }

@@ -48,6 +48,7 @@ class SearchController extends Controller
 
         // Groups
         // $groups = $this->getGroups($searchStr);
+
         $numResults = $recipes->count() + $users->count() + $categories->count(); // $groups->count();
 
         // return response()->json([
@@ -63,6 +64,8 @@ class SearchController extends Controller
             'numResults' => $numResults,
             'recipes' => $recipes,
             'users' => $users,
+            'categories' => $categories,
+            // 'groups' => $groups
         ]);
     }
 
