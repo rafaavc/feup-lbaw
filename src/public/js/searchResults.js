@@ -4,10 +4,12 @@ import { getRootUrl } from './utils/getRootUrl.js';
 
 const nextButtons = Array.from(document.querySelectorAll('a.page-link'));
 const urlParams = new URLSearchParams(window.location.search);
-let searchQuery = urlParams.get('searchQuery') || "";
+const searchResultForm = document.querySelector('form.search-result-form');
 const itemsPerSelection = 3;
 
-export const registerListeners = () => {
+let searchQuery = urlParams.get('searchQuery') || "";
+
+const registerListeners = () => {
     nextButtons.forEach((nextBtn) => {
         nextBtn.addEventListener('click', (event) => {
         const target = event.target;
@@ -19,6 +21,7 @@ export const registerListeners = () => {
             returnAux = changePageNumber(target.parentElement.nextElementSibling.firstElementChild, -1);
 
         if(returnAux.valid) {
+            document.querySelector('li.last-breadcrumb').firstElementChild.innerHTML = searchQuery;
             const typeSearch = target.closest('div.row').previousElementSibling.innerHTML.toLowerCase();
             const data = {
                 'searchQuery': searchQuery,
@@ -63,11 +66,6 @@ const searchRequest = (typeSearch, requestURL, incrementTotalResults) => {
     });
 }
 
-const searchResultForm = document.querySelector('form.search-result-form');
-searchResultForm.addEventListener('submit', handleSearchSubmit);
-
-handleSearchSubmit();
-
 function handleSearchSubmit(event) {
     totalResults = 0;
 
@@ -80,12 +78,13 @@ function handleSearchSubmit(event) {
     };
 
     searchQuery = data.searchQuery;
+    document.querySelector('li.last-breadcrumb').firstElementChild.innerHTML = searchQuery;
 
     // Recipes
     searchRequest('recipes', getRootUrl() + '/api/search/recipes?' + encodeForAjax(data), true);
     searchRequest('people', getRootUrl() + '/api/search/people?' + encodeForAjax(data), true);
     searchRequest('categories', getRootUrl() + '/api/search/categories?' + encodeForAjax(data), true);
-    searchRequest('groups', getRootUrl() + '/api/search/groups?' + encodeForAjax(data), true);
+    // searchRequest('groups', getRootUrl() + '/api/search/groups?' + encodeForAjax(data), true);
 
     document.querySelector('strong.search-result').textContent = data.searchQuery;
 }
@@ -110,4 +109,7 @@ const changePageNumber = (target, pageNumber) => {
     };
 };
 
+searchResultForm.addEventListener('submit', handleSearchSubmit);
+
+handleSearchSubmit();
 registerListeners();
