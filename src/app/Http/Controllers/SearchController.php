@@ -61,7 +61,8 @@ class SearchController extends Controller
         return view('pages.search', [
             'searchStr' => $searchStr,
             'numResults' => $numResults,
-            'recipes' => $recipes
+            'recipes' => $recipes,
+            'users' => $users,
         ]);
     }
 
