@@ -66,6 +66,27 @@ class SearchController extends Controller
         ], 200);
     }
 
+    public function getCategoriesPaginate(Request $request) {
+        $searchStr = preg_replace("/\s+/", " | ", $request->query('searchQuery'));
+        $page = $request->query('page');
+        $numResults = 0;
+        $categories = $this->getCategories($searchStr, $numResults, $page);
+
+        $responseCategories = array();
+        $counter = 0;
+        foreach($categories as $category) {
+            $responseCategories[$counter] = view('partials.search.categoryCard', [
+                'category' => $category])->render();
+            $counter++;
+        }
+
+        return response()->json([
+            'message' => 'Success!',
+            'result' => $responseCategories,
+            'numResults' => $numResults
+        ], 200);
+    }
+
     public function getRecipes($searchStr, &$numResults, $page = 1, $itemsPerPage = 3) {
         $recipeQuery = DB::table('recipes_fts_view')
             ->selectRaw('*, search, ts_rank(search, to_tsquery(\'english\', ?)) AS rank', [$searchStr])
@@ -108,21 +129,24 @@ class SearchController extends Controller
         $numResults += $userQuery->count();
         $users = $userQuery->skip(($page - 1) * $itemsPerPage)->take($itemsPerPage)->get();
 
-        return $userQuery->get();
+        return $users;
     }
 
-    public function getCategories($searchStr) {
-        $categories = Category::selectRaw('*, search, ts_rank(search, to_tsquery(\'english\', ?)) AS rank', [$searchStr])
+    public function getCategories($searchStr, &$numResults, $page = 1, $itemsPerPage = 3) {
+        $categoryQuery = Category::selectRaw('*, search, ts_rank(search, to_tsquery(\'english\', ?)) AS rank', [$searchStr])
             ->when($searchStr, function($query, $searchStr) {
                 return $query
                     ->whereRaw('search @@ to_tsquery(\'english\', ?)', [$searchStr])
-                    ->orderByDesc('rank');
+                    ->orderByDesc('rank')
+                    ->orderByDesc('id');
             }, function($query) {
                 return $query
                     ->inRandomOrder()
                     ->limit(20);
-            })
-            ->get();
+            });
+
+        $numResults += $categoryQuery->count();
+        $categories = $categoryQuery->skip(($page - 1) * $itemsPerPage)->take($itemsPerPage)->get();
 
         return $categories;
     }
