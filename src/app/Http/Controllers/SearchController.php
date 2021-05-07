@@ -20,92 +20,72 @@ class SearchController extends Controller
      */
     public function view(Request $request)
     {
-        try {
-            $apiResponse = $this->show($request);
-
-            if($apiResponse->status() != 200)
-                    throw new Exception('Database Exception!');
-
-            return $apiResponse->getOriginalContent()['searchResults'];
-        } catch(Exception $e) {
-            return redirect()->back()->withErrors($e->getMessage());
-        }
+        return view('pages.search', [
+            'searchStr' => $request->query('searchQuery')
+        ]);
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Request $request)
-    {
-        try {
-            $searchStr = preg_replace("/\s+/", " | ", $request->query('searchQuery'));
+    public function getRecipesPaginate(Request $request) {
+        $searchStr = preg_replace("/\s+/", " | ", $request->query('searchQuery'));
+        $page = $request->query('page');
+        $numResults = 0;
+        $recipes = $this->getRecipes($searchStr, $numResults, $page);
 
-            // Recipes
-            $recipes = $this->getRecipes($searchStr);
-
-            // Users
-            $users = $this->getUsers($searchStr);
-
-            // Categories
-            $categories = $this->getCategories($searchStr);
-
-            // Groups
-            // $groups = $this->getGroups($searchStr);
-
-            $numResults = $recipes->count() + $users->count() + $categories->count(); // $groups->count();
-
-            return response()->json(['message' => 'Success!', 'searchResults' => view('pages.search', [
-                'searchStr' => $searchStr,
-                'numResults' => $numResults,
-                'recipes' => $recipes,
-                'users' => $users,
-                'categories' => $categories,
-                // 'groups' => $groups
-            ])->render()], 200);
-
-        } catch(Exception $e) {
-            return response()->json(['error' => $e->getMessage()], 400);
+        $responseRecipes = array();
+        $counter = 0;
+        foreach($recipes as $recipe) {
+            $responseRecipes[$counter] = view('partials.search.recipeCard', [
+                'recipe' => $recipe])->render();
+            $counter++;
         }
+        return response()->json([
+            'message' => 'Success!',
+            'result' => $responseRecipes,
+            'numResults' => $numResults
+        ], 200);
     }
 
-    public function getRecipes($searchStr) {
-        $recipes = DB::table('recipes_fts_view')
-        ->selectRaw('*, search, ts_rank(search, to_tsquery(\'english\', ?)) AS rank', [$searchStr])
-        ->when($searchStr, function($query, $searchStr) {
-            if(true || Auth::guard('admin')->check()) {
+    public function getRecipes($searchStr, &$numResults, $page = 1, $itemsPerPage = 3) {
+        $recipeQuery = DB::table('recipes_fts_view')
+            ->selectRaw('*, search, ts_rank(search, to_tsquery(\'english\', ?)) AS rank', [$searchStr])
+            ->when($searchStr, function($query, $searchStr) {
+                if(true || Auth::guard('admin')->check()) {
+                    return $query
+                        ->whereRaw('search @@ to_tsquery(\'english\', ?)', [$searchStr])
+                        ->orderByDesc('rank')
+                        ->orderByDesc('recipe_id');
+
+                } else {
+                    return $query
+                        ->whereRaw('search @@ to_tsquery(\'english\', ?) AND member_id <> ? AND recipe_visibility(recipe_id, ?) = TRUE', [$searchStr, (Auth::check()) ? Auth::id() : 0, Auth::id()])
+                        ->orderByDesc('rank');
+                }
+            }, function ($query) {
                 return $query
-                    ->whereRaw('search @@ to_tsquery(\'english\', ?)', [$searchStr])
-                    ->orderByDesc('rank');
-            } else {
-                return $query
-                    ->whereRaw('search @@ to_tsquery(\'english\', ?) AND member_id <> ? AND recipe_visibility(recipe_id, ?) = TRUE', [$searchStr, (Auth::check()) ? Auth::id() : 0, Auth::id()])
-                    ->orderByDesc('rank');
-            }
-        }, function ($query) {
-            return $query
-                ->inRandomOrder()
-                ->limit(20);
-        })
-        ->get();
+                    ->inRandomOrder();
+            });
+
+        $numResults += $recipeQuery->count();
+        $recipes = $recipeQuery->skip(($page - 1) * $itemsPerPage)->take($itemsPerPage)->get();
 
         return $recipes;
     }
 
-    public function getUsers($searchStr) {
-        $users = Member::selectRaw('*, search, ts_rank(search, to_tsquery(\'simple\', ?)) AS rank', [$searchStr])
+    public function getUsers($searchStr, &$numResults, $page = 1, $itemsPerPage = 3) {
+        $userQuery = Member::selectRaw('*, search, ts_rank(search, to_tsquery(\'simple\', ?)) AS rank', [$searchStr])
             ->when($searchStr, function($query, $searchStr) {
                 return $query
                     ->whereRaw('search @@ to_tsquery(\'english\', ?) AND id <> ?', [$searchStr, (Auth::check()) ? Auth::id() : 0])
-                    ->orderByDesc('rank');
+                    ->orderByDesc('rank')
+                    ->orderByDesc('id');
             }, function($query) {
                 return $query
                     ->inRandomOrder()
                     ->limit(20);
-            })
-            ->get();
+            });
+
+        $numResults += $userQuery->count();
+        $users = $userQuery->skip(($page - 1) * $itemsPerPage)->take($itemsPerPage)->get();
 
         return $users;
     }
