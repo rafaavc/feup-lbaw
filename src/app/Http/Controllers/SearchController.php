@@ -20,8 +20,16 @@ class SearchController extends Controller
      */
     public function view(Request $request)
     {
-        $apiResponse = $this->show($request);
-        return $apiResponse->getOriginalContent()['searchResults'];
+        try {
+            $apiResponse = $this->show($request);
+
+            if($apiResponse->status() != 200)
+                    throw new Exception('Database Exception!');
+
+            return $apiResponse->getOriginalContent()['searchResults'];
+        } catch(Exception $e) {
+            return redirect()->back()->withErrors($e->getMessage());
+        }
     }
 
     /**
@@ -32,38 +40,35 @@ class SearchController extends Controller
      */
     public function show(Request $request)
     {
-        $searchStr = preg_replace("/\s+/", " | ", $request->query('searchQuery'));
+        try {
+            $searchStr = preg_replace("/\s+/", " | ", $request->query('searchQuery'));
 
-        // Recipes
-        $recipes = $this->getRecipes($searchStr);
+            // Recipes
+            $recipes = $this->getRecipes($searchStr);
 
-        // Users
-        $users = $this->getUsers($searchStr);
+            // Users
+            $users = $this->getUsers($searchStr);
 
-        // Categories
-        $categories = $this->getCategories($searchStr);
+            // Categories
+            $categories = $this->getCategories($searchStr);
 
-        // Groups
-        // $groups = $this->getGroups($searchStr);
+            // Groups
+            // $groups = $this->getGroups($searchStr);
 
-        $numResults = $recipes->count() + $users->count() + $categories->count(); // $groups->count();
+            $numResults = $recipes->count() + $users->count() + $categories->count(); // $groups->count();
 
-        // return response()->json([
-        //     'recipes' => $recipes,
-        //     'users' => $users,
-        //     'categories' => $categories,
-        //     'numResults' => $numResults
-        //     // 'groups' => $groups
-        // ]);
+            return response()->json(['message' => 'Success!', 'searchResults' => view('pages.search', [
+                'searchStr' => $searchStr,
+                'numResults' => $numResults,
+                'recipes' => $recipes,
+                'users' => $users,
+                'categories' => $categories,
+                // 'groups' => $groups
+            ])->render()], 200);
 
-        return response()->json(['message' => 'Success!', 'searchResults' => view('pages.search', [
-            'searchStr' => $searchStr,
-            'numResults' => $numResults,
-            'recipes' => $recipes,
-            'users' => $users,
-            'categories' => $categories,
-            // 'groups' => $groups
-        ])->render()], 200);
+        } catch(Exception $e) {
+            return response()->json(['error' => 'Invalid Request!'], 400);
+        }
     }
 
     public function getRecipes($searchStr) {
