@@ -20,11 +20,8 @@ class SearchController extends Controller
      */
     public function view(Request $request)
     {
-        return view('pages.search', [
-            'searchStr' => $request->query('searchQuery'),
-            'numResults' => 123,
-            'recipes' => Recipe::inRandomOrder()->limite(3)->get(),
-        ]);
+        $apiResponse = $this->show($request);
+        return $apiResponse->getOriginalContent()['searchResults'];
     }
 
     /**
@@ -59,14 +56,14 @@ class SearchController extends Controller
         //     // 'groups' => $groups
         // ]);
 
-        return view('pages.search', [
+        return response()->json(['message' => 'Success!', 'searchResults' => view('pages.search', [
             'searchStr' => $searchStr,
             'numResults' => $numResults,
             'recipes' => $recipes,
             'users' => $users,
             'categories' => $categories,
             // 'groups' => $groups
-        ]);
+        ])->render()], 200);
     }
 
     public function getRecipes($searchStr) {
