@@ -159,7 +159,7 @@ paths:
                   description: 'Authentication success.'
                   value: '/'
 
-  /member/{username}/recipes:
+  /user/{username}/recipes:
     get:
       operationId: R1007
       summary: 'R1007: Member recipes'
@@ -178,7 +178,7 @@ paths:
         '200':
           description: 'Ok. Show [UI09](http://lbaw2135-piu.lbaw-prod.fe.up.pt/pages/profile.php)'
 
-  /member/{username}/favourites:
+  /user/{username}/favourites:
     get:
       operationId: R1008
       summary: 'R1008: Member favourited recipes.'
@@ -197,7 +197,7 @@ paths:
         '200':
           description: 'Ok. Show [UI11](http://lbaw2135-piu.lbaw-prod.fe.up.pt/pages/profile_favourites.php)'
 
-  /member/{username}/reviews:
+  /user/{username}/reviews:
     get:
       operationId: R1009
       summary: "R1009: Member's reviews."
@@ -214,7 +214,7 @@ paths:
         '200':
           description: 'Ok. Show [UI10](https://lbaw2135-piu.lbaw-prod.fe.up.pt/pages/profile_reviews.php)'
   
-  /member/{username}/edit:
+  /user/{username}/edit:
     get:
       operationId: R1010
       summary: "R1010: Edit member's profile."
@@ -283,12 +283,12 @@ paths:
               examples:
                 302Success:
                   description: 'Successful edition. Redirect to profile.'
-                  value: '/member/{username}/recipes'
+                  value: '/user/{username}/recipes'
                 302Error:
                   description: 'Failed edition. Redirect to edit profile form.'
-                  value: '/member/{username}/edit'
+                  value: '/user/{username}/edit'
 
-  /member/{username}/delete:
+  /user/{username}/delete:
     post:
       operationId: R1012
       summary: 'R1012: Delete account action'
@@ -316,7 +316,7 @@ paths:
                   value: '/'
                 302Error:
                   description: 'Failed deletion. Redirect to edit profile form.'
-                  value: '/member/{username}/edit'
+                  value: '/user/{username}/edit'
 
   /category/{categoryId}:
     get:
@@ -1021,9 +1021,6 @@ paths:
                         type: string
                       name:
                         type: string
-                  creationDate:
-                    type: string
-                    format: datetime
                   score:
                     type: number
                   biography:
@@ -2104,7 +2101,7 @@ paths:
         '200':
           description: 'Success'
 
-  /api/group/{groupId}/request/{memberId}:
+  /api/group/{groupId}/request/{userId}:
     post:
       operationId: R2206
       summary: 'R2206: Accept membership request'
@@ -2119,7 +2116,7 @@ paths:
             type: integer
           required: true
         - in: path
-          name: memberId
+          name: userId
           schema:
             type: integer
           required: true

@@ -8,7 +8,7 @@ function fileUploadListeners() {
         fileUpload.addEventListener('click', fileUploadHandler);
     });
 
-    let fileInputs = document.querySelectorAll("input[name='myfile']");
+    let fileInputs = document.querySelectorAll("input[name='profileImage']");
     fileInputs.forEach((fileInput) => {
         fileInput.addEventListener('change', fileInputHandler);
     })
@@ -28,7 +28,7 @@ function fileInputHandler(event) {
     }
 }
 
-// Clear Image 
+// Clear Image
 
 clearImageListeners();
 
@@ -42,5 +42,5 @@ function clearImageListeners() {
 function fileDeleteHandler(event) {
     let target = event.target;
     let img = target.closest('div.row.row-with-image').nextElementSibling;
-    img.src = "../images/noImage.png";
+    img.src = "storage/images/people/no_image.png";
 }

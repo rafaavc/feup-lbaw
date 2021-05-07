@@ -4,7 +4,6 @@
 
 @push('css')
     <link href="{{ asset('css/createRecipe.css') }}" rel="stylesheet" />
-    <link href="{{ asset('css/components/breadcrumb.css') }}" rel="stylesheet" />
 @endpush
 
 @push('js')

@@ -2,8 +2,11 @@
 
 namespace App\Models;
 
-use Illuminate\Notifications\Notifiable;
+use App\Models\Comment;
+use App\Models\Country;
+use App\Models\Recipe;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
 
 class Member extends Authenticatable
 {
@@ -19,7 +22,7 @@ class Member extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'username', 'city', 'bio', 'visibility', 'is_banned', 'id_country', 'score'
+        'name', 'email', 'password', 'username', 'city', 'bio'
     ];
 
     /**
@@ -28,16 +31,91 @@ class Member extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        'password', 'email'
+        'password', 'email', 'search', 'num_rating', 'is_banned', 'visibility', 'bio', 'id_country'
     ];
+
+    protected $appends = ['biography', 'number_of_recipes', 'number_of_followers', 'number_of_following'];
+
+    /**
+     * Get the route key for the model.
+     *
+     * @return string
+     */
+    public function getRouteKeyName()
+    {
+        return 'username';
+    }
+
+    public function profileImage()
+    {
+        $path = "storage/images/people/$this->id.jpeg";
+        if (!file_exists($path))
+            return asset("storage/images/people/no_image.png");
+        return asset($path);
+    }
+
+    public function coverImage()
+    {
+        $path = "storage/images/people/cover/$this->id.jpeg";
+        if (!file_exists($path))
+            return asset("storage/images/people/cover/default.png");
+        return asset($path);
+    }
 
     public function recipes()
     {
-        return $this->hasMany('App\Models\Recipe', 'id_member', 'id');
+        return $this->hasMany(Recipe::class, 'id_member', 'id');
+    }
+
+    public function comments()
+    {
+        return $this->hasMany(Comment::class, 'id_member', 'id');
     }
 
     public function country()
     {
-        return $this->belongsTo(Country::class, 'id_country', 'id');
+        return $this->belongsTo(Country::class, 'id_country');
+    }
+
+    public function favourites()
+    {
+        return $this->belongsToMany(Recipe::class, 'tb_favourite', 'id_member', 'id_recipe');
+    }
+
+    public function following()
+    {
+        return $this->belongsToMany(Member::class, 'tb_following', 'id_following', 'id_followed')
+            ->withPivot("state", "timestamp");
+    }
+
+    public function followers()
+    {
+        return $this->belongsToMany(Member::class, 'tb_following', 'id_followed', 'id_following')
+            ->withPivot("state", "timestamp");
+    }
+
+    public function groups()
+    {
+        return $this->belongsToMany(Groups::class, 'tb_group_member', 'id_member', 'id_group');
+    }
+
+    public function getBiographyAttribute()
+    {
+        return $this->attributes['bio'];
+    }
+
+    public function getNumberOfRecipesAttribute()
+    {
+        return $this->recipes()->count();
+    }
+
+    public function getNumberOfFollowersAttribute()
+    {
+        return $this->followers()->count();
+    }
+
+    public function getNumberOfFollowingAttribute()
+    {
+        return $this->following()->count();
     }
 }

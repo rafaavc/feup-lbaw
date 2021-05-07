@@ -1,3 +1,7 @@
+@push('css')
+    <link href="{{ asset('css/components/breadcrumb.css') }}" rel="stylesheet"/>
+@endpush
+
 @php
     $navClass = '';
     if (!$withoutMargin) $navClass = 'content-general-margin';

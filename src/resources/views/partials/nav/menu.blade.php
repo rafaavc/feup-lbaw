@@ -18,7 +18,7 @@ $visitor = [
 $dropdown = [
     "my profile" => [
         "icon" => "address-card",
-        "href" => url("/member/".(Auth::check() ? Auth::user()->username : 'error')."/recipes")
+        "href" => url("/user/".(Auth::check() ? Auth::user()->username : 'error'))
     ],
     "sign out" => [
         "icon" => "sign-out-alt",
