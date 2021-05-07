@@ -85,6 +85,7 @@ function handleSearchSubmit(event) {
     searchRequest('recipes', getRootUrl() + '/api/search/recipes?' + encodeForAjax(data), true);
     searchRequest('people', getRootUrl() + '/api/search/people?' + encodeForAjax(data), true);
     searchRequest('categories', getRootUrl() + '/api/search/categories?' + encodeForAjax(data), true);
+    searchRequest('groups', getRootUrl() + '/api/search/groups?' + encodeForAjax(data), true);
 
     document.querySelector('strong.search-result').textContent = data.searchQuery;
 }

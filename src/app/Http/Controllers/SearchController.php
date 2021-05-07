@@ -87,6 +87,27 @@ class SearchController extends Controller
         ], 200);
     }
 
+    // public function getGroupsPaginate(Request $request) {
+    //     $searchStr = preg_replace("/\s+/", " | ", $request->query('searchQuery'));
+    //     $page = $request->query('page');
+    //     $numResults = 0;
+    //     $groups = $this->getGroups($searchStr, $numResults, $page);
+
+    //     $responseGroups = array();
+    //     $counter = 0;
+    //     foreach($groups as $group) {
+    //         $responseGroups[$counter] = view('partials.search.groupCard', [
+    //             'group' => $group])->render();
+    //         $counter++;
+    //     }
+
+    //     return response()->json([
+    //         'message' => 'Success!',
+    //         'result' => $responseGroups,
+    //         'numResults' => $numResults
+    //     ], 200);
+    // }
+
     public function getRecipes($searchStr, &$numResults, $page = 1, $itemsPerPage = 3) {
         $recipeQuery = DB::table('recipes_fts_view')
             ->selectRaw('*, search, ts_rank(search, to_tsquery(\'english\', ?)) AS rank', [$searchStr])
@@ -96,15 +117,15 @@ class SearchController extends Controller
                         ->whereRaw('search @@ to_tsquery(\'english\', ?)', [$searchStr])
                         ->orderByDesc('rank')
                         ->orderByDesc('recipe_id');
-
                 } else {
                     return $query
                         ->whereRaw('search @@ to_tsquery(\'english\', ?) AND member_id <> ? AND recipe_visibility(recipe_id, ?) = TRUE', [$searchStr, (Auth::check()) ? Auth::id() : 0, Auth::id()])
-                        ->orderByDesc('rank');
+                        ->orderByDesc('rank')
+                        ->orderByDesc('recipe_id');
                 }
             }, function ($query) {
                 return $query
-                    ->inRandomOrder();
+                    ->orderByDesc('recipe_id');
             });
 
         $numResults += $recipeQuery->count();
@@ -122,8 +143,7 @@ class SearchController extends Controller
                     ->orderByDesc('id');
             }, function($query) {
                 return $query
-                    ->inRandomOrder()
-                    ->limit(20);
+                    ->orderByDesc('id');
             });
 
         $numResults += $userQuery->count();
@@ -141,8 +161,7 @@ class SearchController extends Controller
                     ->orderByDesc('id');
             }, function($query) {
                 return $query
-                    ->inRandomOrder()
-                    ->limit(20);
+                    ->orderByDesc('id');
             });
 
         $numResults += $categoryQuery->count();
@@ -151,18 +170,20 @@ class SearchController extends Controller
         return $categories;
     }
 
-    // public function getGroups($searchStr) {
-    //     $groups = Group::selectRaw('*, search, ts_rank(search, to_tsquery(\'english\', ?)) AS rank', [$searchStr])
+    // public function getGroups($searchStr, &$numResults, $page = 1, $itemsPerPage = 3) {
+    //     $groupQuery = Group::selectRaw('*, search, ts_rank(search, to_tsquery(\'english\', ?)) AS rank', [$searchStr])
     //         ->when($searchStr, function($query, $searchStr) {
     //             return $query
     //                 ->whereRaw('search @@ to_tsquery(\'english\', ?)', [$searchStr])
-    //                 ->orderByDesc('rank');
+    //                 ->orderByDesc('rank')
+    //                 ->orderByDesc('id');
     //         }, function($query) {
     //             return $query
-    //                 ->inRandomOrder()
-    //                 ->limit(20);
-    //         })
-    //         ->get();
+    //                 ->orderByDesc('id');
+    //         });
+
+    //     $numResults += $groupQuery->count();
+    //     $groups = $groupQuery->skip(($page - 1) * $itemsPerPage)->take($itemsPerPage)->get();
 
     //     return $groups;
     // }

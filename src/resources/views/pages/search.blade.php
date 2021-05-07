@@ -55,7 +55,7 @@
                 <div class="row gx-2 gy-5 justify-content-around justify-content-md-between items mx-0 people-box">
                     <nav aria-label="Page navigation">
                         <ul class="pagination justify-content-center mt-4">
-                            <li class="page-item disabled">
+                            <li class="page-item">
                                 <a class="page-link" aria-label="Previous">
                                     &laquo;
                                 </a>
@@ -75,7 +75,7 @@
                 <div class="row gx-2 gy-5 justify-content-around justify-content-md-between items mx-0 categories-box">
                     <nav aria-label="Page navigation">
                         <ul class="pagination justify-content-center mt-4">
-                            <li class="page-item disabled">
+                            <li class="page-item">
                                 <a class="page-link" aria-label="Previous">
                                     &laquo;
                                 </a>
@@ -90,35 +90,26 @@
                     </nav>
                 </div>
             </div>
-            <div class="card shadow-sm p-2 w-auto h-auto search-area searched-recipes p-sm-4 my-5">
+            {{-- <div class="card shadow-sm p-2 w-auto h-auto search-area searched-recipes p-sm-4 my-5">
                 <h3 class="section-title ps-2 mb-4 text-center text-md-start">Groups</h3>
-                <div class="row gx-2 gy-5 justify-content-around justify-content-md-between items mx-0">
-                    {{-- @if(count($groups) > 0)
-                        @foreach ($groups as $group)
-                            <div class="col-lg-1 col-md-6 w-auto">
-                                @include('partials.search.groupCard', ['group' => $group])
-                            </div>
-                        @endforeach
-                        <nav aria-label="Page navigation">
-                            <ul class="pagination justify-content-center mt-4">
-                                <li class="page-item disabled">
-                                    <a class="page-link" href="#" aria-label="Previous">
-                                        &laquo;
-                                    </a>
-                                </li>
-                                <li class="page-item"><a class="page-link" href="#">Page 1 of of {{ round(count($groups) / $itemsPerSection) }}</a></li>
-                                <li class="page-item">
-                                    <a class="page-link" href="#" aria-label="Next">
-                                        &raquo;
-                                    </a>
-                                </li>
-                            </ul>
-                        </nav>
-                    @else
-                        <h3>No results found.</h3>
-                    @endif --}}
+                <div class="row gx-2 gy-5 justify-content-around justify-content-md-between items mx-0 groups-box">
+                    <nav aria-label="Page navigation">
+                        <ul class="pagination justify-content-center mt-4">
+                            <li class="page-item">
+                                <a class="page-link" href="#" aria-label="Previous">
+                                    &laquo;
+                                </a>
+                            </li>
+                            <li class="page-item"><a class="page-link groups-page" href="#">Page 1 of of {{ round(count($groups) / $itemsPerSection) }}</a></li>
+                            <li class="page-item">
+                                <a class="page-link" href="#" aria-label="Next">
+                                    &raquo;
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
                 </div>
-            </div>
+            </div> --}}
         </div>
     </div>
 @endsection
