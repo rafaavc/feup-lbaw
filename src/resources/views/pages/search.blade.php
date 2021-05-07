@@ -8,7 +8,7 @@
 @endpush
 
 @push('js')
-    <script src="{{ asset('js/searchResults.js') }}" type="module"></script>
+    <script src="{{ asset('js/searchResults.js') }}" type="module" defer></script>
 @endpush
 
 @section('content')
@@ -18,6 +18,7 @@
         $hasSearch = $searchStr != null;
         ($hasSearch) ? array_push($breadcrumbArgs, "Recipe", $searchStr) : array_push($breadcrumbArgs, "Recipe");
     @endphp
+
     @include('partials.breadcrumb', ['pages' => $breadcrumbArgs, 'withoutMargin' => false])
 
     <div class="container search-page content-general-margin mt-5 margin-to-footer">
@@ -33,7 +34,7 @@
             <div class="card shadow-sm w-auto h-auto search-area searched-recipes p-2 p-sm-4 mb-5 mt-3">
                 <h3 class="section-title ps-2 mb-4 text-center text-md-start">Recipes</h3>
                 <div class="row gx-2 gy-5 justify-content-around justify-content-md-between items mx-0 recipes-box">
-                    <nav aria-label="Page navigation">
+                    <nav aria-label="Page navigation" class="recipes-navigation">
                         <ul class="pagination justify-content-center mt-4">
                             <li class="page-item">
                                 <a class="page-link" aria-label="Previous">
@@ -53,7 +54,7 @@
             <div class="card shadow-sm p-2 w-auto h-auto search-area searched-recipes p-sm-4 my-5">
                 <h3 class="section-title ps-2 mb-4 text-center text-md-start">People</h3>
                 <div class="row gx-2 gy-5 justify-content-around justify-content-md-between items mx-0 people-box">
-                    <nav aria-label="Page navigation">
+                    <nav aria-label="Page navigation" class="people-navigation">
                         <ul class="pagination justify-content-center mt-4">
                             <li class="page-item">
                                 <a class="page-link" aria-label="Previous">
@@ -73,7 +74,7 @@
             <div class="card shadow-sm p-2 w-auto h-auto search-area searched-recipes p-sm-4 my-5">
                 <h3 class="section-title ps-2 mb-4 text-center text-md-start">Categories</h3>
                 <div class="row gx-2 gy-5 justify-content-around justify-content-md-between items mx-0 categories-box">
-                    <nav aria-label="Page navigation">
+                    <nav aria-label="Page navigation" class="categories-navigation">
                         <ul class="pagination justify-content-center mt-4">
                             <li class="page-item">
                                 <a class="page-link" aria-label="Previous">
@@ -93,7 +94,7 @@
             {{-- <div class="card shadow-sm p-2 w-auto h-auto search-area searched-recipes p-sm-4 my-5">
                 <h3 class="section-title ps-2 mb-4 text-center text-md-start">Groups</h3>
                 <div class="row gx-2 gy-5 justify-content-around justify-content-md-between items mx-0 groups-box">
-                    <nav aria-label="Page navigation">
+                    <nav aria-label="Page navigation groups-navigation">
                         <ul class="pagination justify-content-center mt-4">
                             <li class="page-item">
                                 <a class="page-link" href="#" aria-label="Previous">
