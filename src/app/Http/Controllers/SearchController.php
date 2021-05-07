@@ -45,6 +45,27 @@ class SearchController extends Controller
         ], 200);
     }
 
+    public function getUsersPaginate(Request $request) {
+        $searchStr = preg_replace("/\s+/", " | ", $request->query('searchQuery'));
+        $page = $request->query('page');
+        $numResults = 0;
+        $users = $this->getUsers($searchStr, $numResults, $page);
+
+        $responseUsers = array();
+        $counter = 0;
+        foreach($users as $user) {
+            $responseUsers[$counter] = view('partials.search.userCard', [
+                'user' => $user])->render();
+            $counter++;
+        }
+
+        return response()->json([
+            'message' => 'Success!',
+            'result' => $responseUsers,
+            'numResults' => $numResults
+        ], 200);
+    }
+
     public function getRecipes($searchStr, &$numResults, $page = 1, $itemsPerPage = 3) {
         $recipeQuery = DB::table('recipes_fts_view')
             ->selectRaw('*, search, ts_rank(search, to_tsquery(\'english\', ?)) AS rank', [$searchStr])
@@ -87,7 +108,7 @@ class SearchController extends Controller
         $numResults += $userQuery->count();
         $users = $userQuery->skip(($page - 1) * $itemsPerPage)->take($itemsPerPage)->get();
 
-        return $users;
+        return $userQuery->get();
     }
 
     public function getCategories($searchStr) {

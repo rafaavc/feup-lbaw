@@ -9,7 +9,6 @@ const itemsPerSelection = 3;
 
 export const registerListeners = () => {
     nextButtons.forEach((nextBtn) => {
-        console.log(nextBtn)
         nextBtn.addEventListener('click', (event) => {
         const target = event.target;
         let returnAux;
@@ -54,8 +53,8 @@ const searchRequest = (typeSearch, requestURL, incrementTotalResults) => {
 
             if(incrementTotalResults) {
                 totalResults += result.content.numResults;
-                let pageNum = document.querySelector('a.recipe-page').textContent;
-                document.querySelector('a.recipe-page').textContent = pageNum.replace(/Page (\d+) of (\d+)/, 'Page 1 of ' + Math.ceil(result.content.numResults / itemsPerSelection))
+                let pageNum = document.querySelector('a.' + typeSearch + '-page').textContent;
+                document.querySelector('a.' + typeSearch + '-page').textContent = pageNum.replace(/Page (\d+) of (\d+)/, 'Page 1 of ' + Math.ceil(result.content.numResults / itemsPerSelection))
             }
             document.querySelector('strong.total-results').textContent = totalResults;
         } else {
@@ -84,13 +83,15 @@ function handleSearchSubmit(event) {
 
     // Recipes
     searchRequest('recipes', getRootUrl() + '/api/search/recipes?' + encodeForAjax(data), true);
+    searchRequest('people', getRootUrl() + '/api/search/people?' + encodeForAjax(data), true);
 
     document.querySelector('strong.search-result').textContent = data.searchQuery;
 }
 
 const changePageNumber = (target, pageNumber) => {
     const pageTxt = target.textContent;
-    const match = /Page (\d)+ of (\d+)/.exec(pageTxt);
+    const match = /Page (\d+) of (\d+)/.exec(pageTxt);
+    console.log(match)
     const firstDigit = parseInt(match[1]);
     const secondDigit = parseInt(match[2]);
     if(!(firstDigit + pageNumber >= 1 && firstDigit + pageNumber <= secondDigit))

@@ -51,3 +51,4 @@ Route::delete('user/{user}', 'MemberController@remove')->middleware('can:delete,
 // Search API
 // ----------------------------------------------------------------
 Route::get('search/recipes', 'SearchController@getRecipesPaginate');
+Route::get('search/people', 'SearchController@getUsersPaginate');
