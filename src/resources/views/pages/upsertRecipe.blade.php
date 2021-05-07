@@ -13,8 +13,6 @@
 
 @section('content')
 
-
-
 @php
     $hasErrors = $errors->any();
     $old = ($hasErrors) ? \Illuminate\Support\Facades\Request::old() : '';

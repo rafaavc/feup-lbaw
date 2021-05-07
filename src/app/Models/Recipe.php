@@ -44,6 +44,10 @@ class Recipe extends Model
         return $this->comments()->where('rating', '<>', null);
     }
 
+    public function getNumReviews() {
+        return $this->reviews()->count();
+    }
+
     public function steps()
     {
         return $this->hasMany(Step::class, 'id_recipe');

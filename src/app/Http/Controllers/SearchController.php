@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Member;
 use App\Models\Category;
+use App\Models\Recipe;
+use Exception;
 use Illuminate\Foundation\Auth\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -16,9 +18,13 @@ class SearchController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function view()
+    public function view(Request $request)
     {
-        //
+        return view('pages.search', [
+            'searchStr' => $request->query('searchQuery'),
+            'numResults' => 123,
+            'recipes' => Recipe::inRandomOrder()->limite(3)->get(),
+        ]);
     }
 
     /**
@@ -29,7 +35,7 @@ class SearchController extends Controller
      */
     public function show(Request $request)
     {
-        $searchStr = preg_replace("/\s+/", " | ", $request->input('searchQuery'));
+        $searchStr = preg_replace("/\s+/", " | ", $request->query('searchQuery'));
 
         // Recipes
         $recipes = $this->getRecipes($searchStr);
@@ -42,12 +48,20 @@ class SearchController extends Controller
 
         // Groups
         // $groups = $this->getGroups($searchStr);
+        $numResults = $recipes->count() + $users->count() + $categories->count(); // $groups->count();
 
-        return response()->json([
-            'recipes' => $recipes,
-            'users' => $users,
-            'categories' => $categories,
-            // 'groups' => $groups
+        // return response()->json([
+        //     'recipes' => $recipes,
+        //     'users' => $users,
+        //     'categories' => $categories,
+        //     'numResults' => $numResults
+        //     // 'groups' => $groups
+        // ]);
+
+        return view('pages.search', [
+            'searchStr' => $searchStr,
+            'numResults' => $numResults,
+            'recipes' => $recipes
         ]);
     }
 

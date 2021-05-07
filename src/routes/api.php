@@ -33,7 +33,6 @@ Route::delete('recipe/{recipe}/favourite', 'RecipeController@removeFromFavourite
 
 Route::post('comment', 'CommentController@insert')->middleware('can:insert,App\Models\Comment');
 
-Route::get('search/', 'SearchController@show');
 // ----------------------------------------------------------------
 // User API
 // ----------------------------------------------------------------
@@ -47,3 +46,8 @@ Route::get('user/{user}/followers', 'MemberController@getFollowers')->middleware
 Route::get('user/{user}/groups', 'MemberController@getGroups')->middleware('can:view,user');
 Route::put('user/{user}', 'MemberController@put')->middleware('can:update,user');
 Route::delete('user/{user}', 'MemberController@remove')->middleware('can:delete,user');
+
+// ----------------------------------------------------------------
+// Search API
+// ----------------------------------------------------------------
+Route::get('search/', 'SearchController@show');
