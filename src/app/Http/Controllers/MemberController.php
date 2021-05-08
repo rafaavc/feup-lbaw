@@ -142,6 +142,21 @@ class MemberController extends Controller
 
     private function renderMemberView(Member $user, string $tab, $items)
     {
+        $profileVisibility = $this->get($user)->visibility;
+
+        if (!$profileVisibility) {
+            // TODO: check if logged in user follows the member with private profile
+
+            return view('pages.user.' . $tab, [
+                'user' => $this->get($user),
+                'canEdit' => false,
+                'canDelete' => false,
+                'private' => true,
+                'tab' => strtolower($tab),
+                $tab => [],
+            ]);
+        }
+
         return view('pages.user.' . $tab, [
             'user' => $this->get($user),
             'groups' => $this->getGroups($user),
