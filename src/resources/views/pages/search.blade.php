@@ -34,81 +34,25 @@
             <div class="card shadow-sm w-auto h-auto search-area searched-recipes p-2 p-sm-4 mb-5 mt-3">
                 <h3 class="section-title ps-2 mb-4 text-center text-md-start">Recipes</h3>
                 <div class="row gx-2 gy-5 justify-content-around justify-content-md-between items mx-0 recipes-box">
-                    <nav aria-label="Page navigation" class="recipes-navigation">
-                        <ul class="pagination justify-content-center mt-4">
-                            <li class="page-item">
-                                <a class="page-link" aria-label="Previous">
-                                    &laquo;
-                                </a>
-                            </li>
-                            <li class="page-item"><a class="page-link recipes-page" href="#">Page 1 of 1</a></li>
-                            <li class="page-item">
-                                <a class="page-link" aria-label="Next">
-                                    &raquo;
-                                </a>
-                            </li>
-                        </ul>
-                    </nav>
+                    @include('partials.search.pagination', ['navigationClass' => 'recipes-navigation', 'paginationClass' => 'recipes-page'])
                 </div>
             </div>
             <div class="card shadow-sm p-2 w-auto h-auto search-area searched-recipes p-sm-4 my-5">
                 <h3 class="section-title ps-2 mb-4 text-center text-md-start">People</h3>
                 <div class="row gx-2 gy-5 justify-content-around justify-content-md-between items mx-0 people-box">
-                    <nav aria-label="Page navigation" class="people-navigation">
-                        <ul class="pagination justify-content-center mt-4">
-                            <li class="page-item">
-                                <a class="page-link" aria-label="Previous">
-                                    &laquo;
-                                </a>
-                            </li>
-                            <li class="page-item"><a class="page-link people-page" href="#">Page 1 of 1</a></li>
-                            <li class="page-item">
-                                <a class="page-link" aria-label="Next">
-                                    &raquo;
-                                </a>
-                            </li>
-                        </ul>
-                    </nav>
+                    @include('partials.search.pagination', ['navigationClass' => 'people-navigation', 'paginationClass' => 'people-page'])
                 </div>
             </div>
             <div class="card shadow-sm p-2 w-auto h-auto search-area searched-recipes p-sm-4 my-5">
                 <h3 class="section-title ps-2 mb-4 text-center text-md-start">Categories</h3>
                 <div class="row gx-2 gy-5 justify-content-around justify-content-md-between items mx-0 categories-box">
-                    <nav aria-label="Page navigation" class="categories-navigation">
-                        <ul class="pagination justify-content-center mt-4">
-                            <li class="page-item">
-                                <a class="page-link" aria-label="Previous">
-                                    &laquo;
-                                </a>
-                            </li>
-                            <li class="page-item"><a class="page-link categories-page" href="#">Page 1 of 1</a></li>
-                            <li class="page-item">
-                                <a class="page-link" aria-label="Next">
-                                    &raquo;
-                                </a>
-                            </li>
-                        </ul>
-                    </nav>
+                    @include('partials.search.pagination', ['navigationClass' => 'categories-navigation', 'paginationClass' => 'categories-page'])
                 </div>
             </div>
             {{-- <div class="card shadow-sm p-2 w-auto h-auto search-area searched-recipes p-sm-4 my-5">
                 <h3 class="section-title ps-2 mb-4 text-center text-md-start">Groups</h3>
                 <div class="row gx-2 gy-5 justify-content-around justify-content-md-between items mx-0 groups-box">
-                    <nav aria-label="Page navigation groups-navigation">
-                        <ul class="pagination justify-content-center mt-4">
-                            <li class="page-item">
-                                <a class="page-link" href="#" aria-label="Previous">
-                                    &laquo;
-                                </a>
-                            </li>
-                            <li class="page-item"><a class="page-link groups-page" href="#">Page 1 of of {{ round(count($groups) / $itemsPerSection) }}</a></li>
-                            <li class="page-item">
-                                <a class="page-link" href="#" aria-label="Next">
-                                    &raquo;
-                                </a>
-                            </li>
-                        </ul>
-                    </nav>
+                    @include('partials.search.pagination', ['navigationClass' => 'groups-navigation', 'paginationClass' => 'groups-page'])
                 </div>
             </div> --}}
         </div>
