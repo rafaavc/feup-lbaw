@@ -38,3 +38,6 @@ Route::get('user/{user}/edit', 'MemberController@update')->middleware('can:view,
 Route::post('user/{user}/edit', 'MemberController@updateAction')->middleware('can:update,user');
 Route::get('user/{user}/delete', 'MemberController@deleteAction')->middleware('can:delete,user');
 Route::get('user/{user}/{any?}', 'MemberController@redirect')->where('any', '.*')->middleware('can:view,user');
+
+// Frequently Asked Questions
+Route::get('faq', 'FaqController@view');
