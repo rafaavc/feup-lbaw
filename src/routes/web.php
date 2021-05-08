@@ -41,3 +41,6 @@ Route::get('user/{user}/{any?}', 'MemberController@redirect')->where('any', '.*'
 
 // Frequently Asked Questions
 Route::get('faq', 'FaqController@view');
+
+// About
+Route::get('about', 'AboutController@view');
