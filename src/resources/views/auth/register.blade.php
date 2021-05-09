@@ -6,7 +6,6 @@
     <link href="{{ asset('css/signIn.css') }}" rel="stylesheet"/>
     <link href="{{ asset('css/signUp.css') }}" rel="stylesheet"/>
     <link href="{{ asset('css/components/inputIcon.css') }}" rel="stylesheet"/>
-    <link href="{{ asset('css/components/breadcrumb.css') }}" rel="stylesheet"/>
 @endpush
 
 @push('js')

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\MemberController;
 use App\Http\Controllers\RecipeController;
 use App\Http\Controllers\UnitController;
 use Illuminate\Http\Request;
@@ -30,3 +31,17 @@ Route::post('recipe/{recipe}/favourite', 'RecipeController@addToFavourites')->mi
 Route::delete('recipe/{recipe}/favourite', 'RecipeController@removeFromFavourites')->middleware('can:removeFromFavourites,recipe');
 
 Route::post('comment', 'CommentController@insert')->middleware('can:insert,App\Models\Comment');
+
+// ----------------------------------------------------------------
+// User API
+// ----------------------------------------------------------------
+Route::post('user', 'MemberController@post')->middleware('can:create,user');
+Route::get('user/{user}', 'MemberController@get');
+Route::get('user/{user}/recipes', 'MemberController@getRecipes')->middleware('can:view,user');
+Route::get('user/{user}/reviews', 'MemberController@getReviews')->middleware('can:view,user');
+Route::get('user/{user}/favourites', 'MemberController@getFavourites')->middleware('can:view,user');
+Route::get('user/{user}/following', 'MemberController@getFollowing')->middleware('can:view,user');
+Route::get('user/{user}/followers', 'MemberController@getFollowers')->middleware('can:view,user');
+Route::get('user/{user}/groups', 'MemberController@getGroups')->middleware('can:view,user');
+Route::put('user/{user}', 'MemberController@put')->middleware('can:update,user');
+Route::delete('user/{user}', 'MemberController@remove')->middleware('can:delete,user');

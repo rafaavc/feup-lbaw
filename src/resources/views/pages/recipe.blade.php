@@ -19,30 +19,31 @@
 
     @include('partials.breadcrumb', ['pages' => ["Recipes", $recipe->category->name, $recipe->name], 'withoutMargin' => false])
 
-<main class="row content-general-margin margin-to-footer">
-    @if(session()->has('message'))
-        <div class="alert alert-success">
-            {{ session()->get('message') }}
-        </div>
-    @endif
-    <article id="recipe" class="col-xl-8 p-0 pe-xl-4">
-        <header class="row text-left pt-3 pb-3 mb-md-3 shadow-sm mt-5 mt-xl-0">
-            <h1 class="col-11">{{ $recipe->name }}</h1>
-            <div class="col-9">
-                <div class="rating">
-                    @include('partials.rating', [ 'score' => $recipe->score, 'num_rating' => $recipe->num_rating ])
-                </div>
-                <div class="row g-0 py-2 text-center text-md-start">
-                    <table>
-                        <tbody>
+    <main class="row content-general-margin margin-to-footer">
+        @if(session()->has('message'))
+            <div class="alert alert-success">
+                {{ session()->get('message') }}
+            </div>
+        @endif
+        <article id="recipe" class="col-xl-8 p-0 pe-xl-4">
+            <header class="row text-left pt-3 pb-3 mb-md-3 shadow-sm mt-5 mt-xl-0">
+                <h1 class="col-11">{{ $recipe->name }}</h1>
+                <div class="col-9">
+                    <div class="rating">
+                        @include('partials.rating', [ 'score' => $recipe->score, 'num_rating' => $recipe->num_rating ])
+                    </div>
+                    <div class="row g-0 py-2 text-center text-md-start">
+                        <table>
+                            <tbody>
                             <tr>
                                 <td class="col-2 col-md-1 image-container">
-                                    <img class="rounded-circle" src="{{ asset('storage/images/people/'.$author->id.'.jpeg') }}" alt="...">
+                                    <img class="rounded-circle"
+                                         src="{{ $author->profileImage() }}" alt="...">
                                 </td>
                                 <td class="align-middle">
                                     <div class="col-md-5 card-body p-0 m-0 ms-2 text-start">
                                         by <a
-                                            href="{{ url('/member/'.$author->username.'/recipes') }}">{{ $author->name }}</a>
+                                            href="{{ url('/user/'.$author->username) }}">{{ $author->name }}</a>
                                     </div>
                                 </td>
                             </tr>
@@ -81,14 +82,17 @@
                     </li>
                     @if(Auth::check())
                         <li class="list-group-item">
-                            <button role="a" class="add-to-favourites-recipe-button" data-favourite-state="{{ $isFavourited ? "true" : "false" }}" data-recipe-id="{{ $recipe->id }}">
+                            <button role="a" class="add-to-favourites-recipe-button"
+                                    data-favourite-state="{{ $isFavourited ? "true" : "false" }}"
+                                    data-recipe-id="{{ $recipe->id }}">
                                 <span class="legend">Favourite</span><i class="fas fa-heart"></i>
-                            </a>
+                                </a>
                         </li>
                     @endif
                     @if($canDelete)
                         <li class="list-group-item">
-                            <form id="deleteRecipeForm" method="POST" action="{{ url("/recipe/".$recipe->id."/delete") }}">
+                            <form id="deleteRecipeForm" method="POST"
+                                  action="{{ url("/recipe/".$recipe->id."/delete") }}">
                                 {{ csrf_field() }}
                             </form>
                             <button role="a" data-bs-toggle="modal" data-bs-target="#recipeDeleteConfirmationModal">

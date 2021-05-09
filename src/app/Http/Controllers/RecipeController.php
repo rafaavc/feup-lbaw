@@ -3,18 +3,18 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
+use App\Models\Ingredient;
 use App\Models\Recipe;
 use App\Models\Step;
-use App\Models\Unit;
-use App\Models\Ingredient;
 use App\Models\Tag;
+use App\Models\Unit;
 use Exception;
-use Illuminate\Support\Facades\Storage;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Facades\Storage;
 
 class RecipeController extends Controller
 {
@@ -170,17 +170,7 @@ class RecipeController extends Controller
     public function create()
     {
         try {
-            $units = Unit::all();
-            $categories = Category::all();
-            $ingredients = Ingredient::all();
-            $tags = Tag::all();
-
-            return view('pages.upsertRecipe', [
-                'units' => $units,
-                'categories' => $categories,
-                'totalIngredients' => $ingredients,
-                'totalTags' => $tags
-            ]);
+            return view('pages.upsertRecipe');
         } catch (\Exception $e) {
             abort(403, 'Database Exception');
         }
@@ -217,9 +207,6 @@ class RecipeController extends Controller
     {
         try {
             $units = Unit::all();
-            $categories = Category::all();
-            $ingredients = Ingredient::all();
-            $tags = Tag::all();
 
             return view('pages.upsertRecipe', [
                 'recipe' => $recipe,
@@ -227,10 +214,6 @@ class RecipeController extends Controller
                 'tags' => $recipe->tags,
                 'author' => $recipe->author,
                 'steps' => $recipe->steps,
-                'units' => $units,
-                'categories' => $categories,
-                'totalIngredients' => $ingredients,
-                'totalTags' => $tags
             ]);
         } catch (\Exception $e) {
             abort(403, 'Database Exception');
