@@ -161,8 +161,8 @@ const getCreateReplyFormHTML = (parentComment) => {
                 <input type="hidden" name="recipeId" value="${recipeId}" />
                 <input type="hidden" name="parentCommentId" value="${parentCommentId}" />
                 <input type="hidden" name="depth" value="${parentCommentDepth+1}" />
-                <textarea name="content" id="commentContent" class="form-control" placeholder="Leave a comment here" style="height: 6rem"></textarea>
-                <label for="commentContent">Your comment</label>
+                <textarea name="content" id="replyContent" class="form-control" placeholder="Leave a comment here" style="height: 6rem"></textarea>
+                <label for="replyContent">Your comment</label>
                 <button type="submit" class="btn btn-primary position-absolute py-1 send">
                     <small>
                         <i class="fas fa-paper-plane me-2"></i>
@@ -184,7 +184,7 @@ const showRecipeReplyForm = (event) => {
 
 
     comment.insertAdjacentHTML('beforeend', getCreateReplyFormHTML(comment));
-    const form = comment.lastElementChild;
+    const form = comment.lastElementChild.lastElementChild;
     scrollToTargetCustom(form, window.innerHeight/3);
     const submitButton = form.querySelector('button[type=submit]');
     submitButton.addEventListener('click', (event) => handleReplyFormSubmit(event, form, comment));

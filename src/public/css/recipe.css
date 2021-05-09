@@ -16,6 +16,10 @@ h1 {
     margin: 0 1rem;
     text-align: left;
 }
+.createReplyFormErrors {
+    margin: 0 1rem;
+    text-align: left;
+}
 
 /* Box with icon at the top component */
 .icon-box {
