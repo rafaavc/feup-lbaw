@@ -4,9 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Member;
 use App\Models\Category;
-use App\Models\Recipe;
-use Exception;
-use Illuminate\Foundation\Auth\User;
+use App\Models\Tag;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
@@ -21,7 +19,9 @@ class SearchController extends Controller
     public function view(Request $request)
     {
         return view('pages.search', [
-            'searchStr' => $request->query('searchQuery')
+            'searchStr' => $request->query('searchQuery'),
+            'categories' => Category::all(),
+            'tags' => Tag::all()
         ]);
     }
 
@@ -29,7 +29,7 @@ class SearchController extends Controller
         $searchStr = preg_replace("/\s+/", " | ", $request->query('searchQuery'));
         $page = $request->query('page');
         $numResults = 0;
-        $recipes = $this->getRecipes($searchStr, $numResults, $page);
+        $recipes = $this->getRecipes($request, $searchStr, $numResults, $page);
 
         $responseRecipes = array();
         $counter = 0;
@@ -108,25 +108,29 @@ class SearchController extends Controller
     //     ], 200);
     // }
 
-    public function getRecipes($searchStr, &$numResults, $page = 1, $itemsPerPage = 3) {
+    public function getRecipes(Request $request, $searchStr, &$numResults, $page = 1, $itemsPerPage = 3) {
         $recipeQuery = DB::table('recipes_fts_view')
             ->selectRaw('*, search, ts_rank(search, to_tsquery(\'english\', ?)) AS rank', [$searchStr])
             ->when($searchStr, function($query, $searchStr) {
-                if(true || Auth::guard('admin')->check()) {
-                    return $query
-                        ->whereRaw('search @@ to_tsquery(\'english\', ?)', [$searchStr])
-                        ->orderByDesc('rank')
-                        ->orderByDesc('recipe_id');
+                if (false && Auth::guard('admin')->check()) {  // TODO remove false when admin guard is defined
+                    $query = $query
+                        ->whereRaw('search @@ to_tsquery(\'english\', ?)', [$searchStr]);
+                } else if (Auth::check()) {
+                    $query = $query
+                        ->whereRaw('search @@ to_tsquery(\'english\', ?) AND member_id <> ? AND recipe_visibility(recipe_id, ?) = TRUE', [$searchStr, (Auth::check()) ? Auth::id() : 0, Auth::id()]);
                 } else {
-                    return $query
-                        ->whereRaw('search @@ to_tsquery(\'english\', ?) AND member_id <> ? AND recipe_visibility(recipe_id, ?) = TRUE', [$searchStr, (Auth::check()) ? Auth::id() : 0, Auth::id()])
-                        ->orderByDesc('rank')
-                        ->orderByDesc('recipe_id');
+                    $query = $query
+                        ->whereRaw('search @@ to_tsquery(\'english\', ?) AND recipe_visibility(recipe_id, NULL) = TRUE', [$searchStr]);
                 }
+                return $query
+                    ->orderByDesc('rank')
+                    ->orderByDesc('recipe_id');
             }, function ($query) {
                 return $query
                     ->orderByDesc('recipe_id');
             });
+
+        $recipeQuery = FilterController::filter($request, $recipeQuery, true);
 
         $numResults += $recipeQuery->count();
         $recipes = $recipeQuery->skip(($page - 1) * $itemsPerPage)->take($itemsPerPage)->get();

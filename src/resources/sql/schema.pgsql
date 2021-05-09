@@ -511,6 +511,20 @@ DECLARE
     author_visibility boolean;
     id_author integer;
 BEGIN
+    SELECT tb_member.visibility INTO author_visibility
+    FROM tb_recipe
+    JOIN tb_member ON tb_recipe.id_member = tb_member.id
+    WHERE tb_recipe.id = id_recipe;
+
+    IF id_user IS NULL THEN
+        RETURN author_visibility = TRUE;
+    END IF;
+
+	-- Recipe's author profile visibility if public
+    IF author_visibility = TRUE THEN
+        RETURN TRUE;
+    END IF;
+
     SELECT tb_recipe.id_group INTO _id_group
     FROM tb_recipe
     WHERE tb_recipe.id = id_recipe;
@@ -528,20 +542,10 @@ BEGIN
         END IF;
     END IF;
 
-    SELECT tb_member.visibility INTO author_visibility
-    FROM tb_recipe
-    JOIN tb_member ON tb_recipe.id_member = tb_member.id
-    WHERE tb_recipe.id = id_recipe;
-
     SELECT tb_recipe.id_member INTO id_author
     FROM tb_recipe
     JOIN tb_member ON tb_recipe.id_member = tb_member.id
     WHERE tb_recipe.id = id_recipe;
-
-	-- Recipe's author profile visibility if public
-    IF author_visibility = TRUE THEN
-        RETURN TRUE;
-    END IF;
 
 	-- User follows recipe's author
     IF EXISTS (

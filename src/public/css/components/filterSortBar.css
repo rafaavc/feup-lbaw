@@ -25,6 +25,12 @@
     transition: background-color .2s;
 }
 
+#tagFilterDropdown {
+    min-height: 5rem;
+    max-height: 40vh;
+    overflow-y: auto;
+}
+
 button.accordion-button::after {
    display: none;
 }
@@ -33,7 +39,7 @@ button.accordion-button::after {
 @media (min-width: 1200px) {  /* this value may need to be adjusted */
     #sortBar, #filterBar {
         display: flex;
-    } 
+    }
     #sortBarMobile, #sortBarMobileHeading, #filterBarMobile, #filterBarMobileHeading {
         display: none;
     }

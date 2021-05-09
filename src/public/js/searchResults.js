@@ -1,5 +1,6 @@
 import { makeRequest } from './ajax/methods.js'
 import { encodeForAjax } from './ajax/methods.js'
+import { getFilterSortBarData } from './utils/getFilterSortBarData.js';
 import { getRootUrl } from './utils/getRootUrl.js';
 
 const nextButtons = Array.from(document.querySelectorAll('a.page-link'));
@@ -28,15 +29,15 @@ const registerListeners = () => {
             };
 
             console.log("Sending search:", data);
-            let requestURL = getRootUrl() + '/api/search/' + typeSearch + '?' + encodeForAjax(data);
-            searchRequest(typeSearch, requestURL);
+            let requestURL = getRootUrl() + '/api/search/' + typeSearch;
+            searchRequest(typeSearch, requestURL, data);
         }
     });
 })};
 
 let totalResults = 0;
 
-const searchRequest = (typeSearch, requestURL, incrementTotalResults) => {
+const searchRequest = (typeSearch, requestURL, query, incrementTotalResults) => {
     const lastBreadcrumArg = document.querySelector('li.last-breadcrumb').firstElementChild.innerHTML
     if(lastBreadcrumArg != "Recipe")
         document.querySelector('li.last-breadcrumb').firstElementChild.innerHTML = searchQuery;
@@ -51,7 +52,7 @@ const searchRequest = (typeSearch, requestURL, incrementTotalResults) => {
         li.appendChild(a);
         document.querySelector('ol.breadcrumb').insertAdjacentElement('beforeend', li);
     }
-    makeRequest(requestURL, 'GET')
+    makeRequest(requestURL, 'GET', null, query)
     .then((result) => {
         if (result.response.status == 200) {
             const boxContent = document.querySelector('div.' + typeSearch + "-box");
@@ -92,21 +93,22 @@ const searchRequest = (typeSearch, requestURL, incrementTotalResults) => {
 async function handleSearchSubmit(event) {
     totalResults = 0;
 
-    if(event)
+    if (event)
         event.preventDefault();
 
     const data = {
         'searchQuery': (event) ? document.querySelector('input[name=searchQuery]').value : searchQuery,
-        'page': 1
+        'page': 1,
+        ...getFilterSortBarData()
     };
 
     searchQuery = data.searchQuery;
 
     // Recipes
-    searchRequest('recipes', getRootUrl() + '/api/search/recipes?' + encodeForAjax(data), true);
-    searchRequest('people', getRootUrl() + '/api/search/people?' + encodeForAjax(data), true);
-    searchRequest('categories', getRootUrl() + '/api/search/categories?' + encodeForAjax(data), true);
-    // searchRequest('groups', getRootUrl() + '/api/search/groups?' + encodeForAjax(data), true);
+    searchRequest('recipes', getRootUrl() + '/api/search/recipes', data, true);
+    searchRequest('people', getRootUrl() + '/api/search/people', data, true);
+    searchRequest('categories', getRootUrl() + '/api/search/categories', data, true);
+    // searchRequest('groups', getRootUrl() + '/api/search/groups', data, true);
 
     document.querySelector('strong.search-result').textContent = data.searchQuery;
 }

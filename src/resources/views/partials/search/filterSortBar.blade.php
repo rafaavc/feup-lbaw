@@ -6,134 +6,110 @@
     <script src="{{ asset('js/filterSortBar.js') }}" defer></script>
 @endpush
 
-<div id="filterBar" class="input-group">
-    <span class="input-group-text" id="inputGroup-sizing-sm"><i class="fas fa-filter me-2"></i> Filter by</span>
-    <select class="form-select clickable" aria-label="Category">
-        <option selected>Category</option>
-        <option value="1">Breakfast</option>
-        <option value="2">Dessert</option>
-        <option value="3">Main Dish</option>
-        <option value="4">Beverage</option>
-        <option value="5">Snack</option>
-    </select>
-    <button class="form-select text-left-align" type="button" data-bs-toggle="dropdown" aria-expanded="false">Tags</button>
-    <ul class="dropdown-menu">
-        <form class="px-3 py-2">
-            <div class="form-check">
-                <label class="form-check-label">
-                    <input class="form-check-input" type="checkbox">
-                    Vegetarian
-                </label>
-            </div>
-            <div class="form-check">
-                <label class="form-check-label">
-                    <input class="form-check-input" type="checkbox">
-                    Sandwich
-                </label>
-            </div>
-            <div class="form-check">
-                <label class="form-check-label">
-                    <input class="form-check-input" type="checkbox">
-                    Low-carb
-                </label>
-            </div>
-            <div class="form-check">
-                <label class="form-check-label">
-                    <input class="form-check-input" type="checkbox">
-                    Zero sugar
-                </label>
-            </div>
-            <div class="form-check">
-                <label class="form-check-label">
-                    <input class="form-check-input" type="checkbox">
-                    French Cuisine
-                </label>
-            </div>
+<form name="filterBar">
+    <div id="filterBar" class="input-group">
+        <span class="input-group-text" id="inputGroup-sizing-sm"><i class="fas fa-filter me-2"></i> Filter by</span>
+        <select class="form-select clickable" name="category" aria-label="Category">
+            <option selected value="0">-- Category --</option>
+            @foreach($categories as $category)
+                <option value="{{ $category->id }}">{{ $category->name }}</option>
+            @endforeach
+        </select>
+        <button class="form-select text-left-align" type="button" data-bs-toggle="dropdown" aria-expanded="false">Tags</button>
+        <ul id="tagFilterDropdown" class="dropdown-menu">
+            @foreach($tags as $tag)
+                <div class="form-check">
+                    <label class="form-check-label">
+                        <input class="form-check-input tag-filter-checkbox" name="tag{{ $tag->id }}" data-id="{{ $tag->id }}" type="checkbox">
+                        {{ $tag->name }}
+                    </label>
+                </div>
+            @endforeach
             <button type="submit" class="btn btn-primary mt-3">Filter</button>
-        </form>
-    </ul>
-    <button class="form-select text-left-align" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Rating">Rating</button>
-    <ul class="dropdown-menu">
-        <form class="px-3 py-2">
-            <div class="mb-3">
-                <label for="filterRatingMinInputDesktop" class="form-label visually-hidden">From</label>
-                <div>From <span>0</span></div>
-                <input type="range" class="form-range filter-rating-min-input" min="0" max="5" step="0.1" value="0" id="filterRatingMinInputDesktop">
-            </div>
-            <div class="mb-3">
-                <label for="filterRatingMaxInputDesktop" class="form-label visually-hidden">To</label>
-                <div>To <span>5</span></div>
-                <input type="range" class="form-range filter-rating-max-input" min="0" max="5" step="0.1" value="5" class="form-control" id="filterRatingMaxInputDesktop">
-            </div>
-            <button type="submit" class="btn btn-primary">Filter</button>
-        </form>
-    </ul>
-    <button class="form-select text-left-align" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Ingredients">Ingredients</button>
-    <ul class="dropdown-menu">
-        <form class="px-3 py-2">
-            <div class="form-check">
-                <label class="form-check-label">
-                    <input class="form-check-input" type="checkbox">
-                    Tomatoes
-                </label>
-            </div>
-            <div class="form-check">
-                <label class="form-check-label">
-                    <input class="form-check-input" type="checkbox">
-                    Potatoes
-                </label>
-            </div>
-            <div class="form-check">
-                <label class="form-check-label">
-                    <input class="form-check-input" type="checkbox">
-                    Lettuce
-                </label>
-            </div>
-            <button type="submit" class="btn btn-primary mt-3">Filter</button>
-        </form>
-    </ul>
-    <button class="form-select text-left-align" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Publication date">Date</button>
-    <ul class="dropdown-menu">
-        <form class="px-3 py-2">
-            <div class="mb-3">
-                <label class="form-label">
-                    From
-                    <input type="date" class="form-control filter-date-min-input">
-                </label>
-            </div>
-            <div class="mb-3">
-                <label class="form-label">
-                    To
-                    <input type="date" class="form-control filter-date-max-input">
-                </label>
-            </div>
-            <button type="submit" class="btn btn-primary">Filter</button>
-        </form>
-    </ul>
-    <button class="form-select text-left-align" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Duration">Duration</button>
-    <ul class="dropdown-menu">
-        <form class="px-3 py-2">
-            <div class="mb-3">
-                <label for="filterDurationMinInputDesktop" class="form-label visually-hidden">From</label>
-                <div>From <span>5min</span></div>
-                <input type="range" class="form-range time-in-mins filter-duration-min-input" min="5" max="300" value="0" step="5" id="filterDurationMinInputDesktop">
-            </div>
-            <div class="mb-3">
-                <label for="filterDurationMaxInputDesktop" class="form-label visually-hidden">To</label>
-                <div>To <span>5h</span></div>
-                <input type="range" class="form-range time-in-mins filter-duration-max-input" min="5" max="300" value="600" step="5" id="filterDurationMaxInputDesktop">
-            </div>
-            <button type="submit" class="btn btn-primary">Filter</button>
-        </form>
-    </ul>
-    <select class="form-select clickable" aria-label="Difficulty">
-        <option selected>Difficulty</option>
-        <option value="1">Beginner</option>
-        <option value="2">Pro</option>
-        <option value="3">Trivial</option>
-        <option value="4">Intermediate</option>
-    </select>
-</div>
+        </ul>
+        <button class="form-select text-left-align" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Rating">Rating</button>
+        <ul class="dropdown-menu">
+            <form class="px-3 py-2">
+                <div class="mb-3">
+                    <label for="filterRatingMinInputDesktop" class="form-label visually-hidden">From</label>
+                    <div>From <span>0</span></div>
+                    <input type="range" class="form-range filter-rating-min-input" min="0" max="5" step="0.1" value="0" id="filterRatingMinInputDesktop">
+                </div>
+                <div class="mb-3">
+                    <label for="filterRatingMaxInputDesktop" class="form-label visually-hidden">To</label>
+                    <div>To <span>5</span></div>
+                    <input type="range" class="form-range filter-rating-max-input" min="0" max="5" step="0.1" value="5" class="form-control" id="filterRatingMaxInputDesktop">
+                </div>
+                <button type="submit" class="btn btn-primary">Filter</button>
+            </form>
+        </ul>
+        <button class="form-select text-left-align" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Ingredients">Ingredients</button>
+        <ul class="dropdown-menu">
+            <form class="px-3 py-2">
+                <div class="form-check">
+                    <label class="form-check-label">
+                        <input class="form-check-input" type="checkbox">
+                        Tomatoes
+                    </label>
+                </div>
+                <div class="form-check">
+                    <label class="form-check-label">
+                        <input class="form-check-input" type="checkbox">
+                        Potatoes
+                    </label>
+                </div>
+                <div class="form-check">
+                    <label class="form-check-label">
+                        <input class="form-check-input" type="checkbox">
+                        Lettuce
+                    </label>
+                </div>
+                <button type="submit" class="btn btn-primary mt-3">Filter</button>
+            </form>
+        </ul>
+        <button class="form-select text-left-align" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Publication date">Date</button>
+        <ul class="dropdown-menu">
+            <form class="px-3 py-2">
+                <div class="mb-3">
+                    <label class="form-label">
+                        From
+                        <input type="date" class="form-control filter-date-min-input">
+                    </label>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">
+                        To
+                        <input type="date" class="form-control filter-date-max-input">
+                    </label>
+                </div>
+                <button type="submit" class="btn btn-primary">Filter</button>
+            </form>
+        </ul>
+        <button class="form-select text-left-align" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Duration">Duration</button>
+        <ul class="dropdown-menu">
+            <form class="px-3 py-2">
+                <div class="mb-3">
+                    <label for="filterDurationMinInputDesktop" class="form-label visually-hidden">From</label>
+                    <div>From <span>5min</span></div>
+                    <input type="range" class="form-range time-in-mins filter-duration-min-input" min="5" max="300" value="0" step="5" id="filterDurationMinInputDesktop">
+                </div>
+                <div class="mb-3">
+                    <label for="filterDurationMaxInputDesktop" class="form-label visually-hidden">To</label>
+                    <div>To <span>5h</span></div>
+                    <input type="range" class="form-range time-in-mins filter-duration-max-input" min="5" max="300" value="600" step="5" id="filterDurationMaxInputDesktop">
+                </div>
+                <button type="submit" class="btn btn-primary">Filter</button>
+            </form>
+        </ul>
+        <select class="form-select clickable" aria-label="Difficulty">
+            <option selected>Difficulty</option>
+            <option value="1">Beginner</option>
+            <option value="2">Pro</option>
+            <option value="3">Trivial</option>
+            <option value="4">Intermediate</option>
+        </select>
+    </div>
+</form>
 
 <div id="sortBar" class="input-group mt-3">
     <span class="input-group-text" id="inputGroup-sizing-sm"><i class="fas fa-sort me-2"></i>Sort by</span>

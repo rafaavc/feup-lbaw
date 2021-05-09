@@ -4,10 +4,10 @@ export function encodeForAjax(data) {
     }).join('&')
 }
 
-export const makeRequest = (requestUrl, method, body) => new Promise((resolve, reject) => {
+export const makeRequest = (requestUrl, method, body, query) => new Promise((resolve, reject) => {
     const requestBody = { ...body, _token: document.body.dataset.csrfToken };
 
-    fetch(requestUrl, {
+    fetch(requestUrl + (query ? '?' + encodeForAjax(query) : ''), {
         method,
         headers: {
             'Content-Type': 'application/x-www-form-urlencoded',
