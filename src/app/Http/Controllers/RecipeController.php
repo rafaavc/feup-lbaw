@@ -119,6 +119,8 @@ class RecipeController extends Controller
         $canEdit = Gate::inspect('update', $recipe)->allowed();
         $canDelete = Gate::inspect('delete', $recipe)->allowed();
 
+        $hasMadeReview = sizeof(Auth::user()->comments()->where('id_recipe', '=', $recipe->id)->whereNotNull('rating')->get()) != 0;
+
         $steps = $recipe->steps;
         foreach($steps as $step) {
             $image = $this->getStepImageForClient($step->id);
@@ -142,7 +144,8 @@ class RecipeController extends Controller
             'suggested' => $suggested,
             'canEdit' => $canEdit,
             'canDelete' => $canDelete,
-            'isFavourited' => $isFavourited
+            'isFavourited' => $isFavourited,
+            'hasMadeReview' => $hasMadeReview
         ]);
     }
 

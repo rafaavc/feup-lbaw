@@ -8,6 +8,8 @@ const ratingInputCancel = document.querySelector('#ratingInputCancel');
 
 ratingInputCancel.style.display = 'none';
 
+// TODO IF COMMENT WITH RATING IS DELETED, PUT DISPLAY = 'BLOCK' NO .rating-input
+
 const starmark = (event) => {
     const count = event.target.id[0];
     if (event.type == 'click') {
@@ -61,6 +63,11 @@ const setErrorMessage = (message) => {
     }
 }
 
+const removeCommentErrorMessage = () => {
+    const errorElements = document.querySelectorAll('.createCommentFormErrors');
+    for (const elem of errorElements) elem.remove();
+}
+
 const handleCommentFormSubmit = (event) => {
     event.preventDefault();
     const rating = createCommentForm.querySelector('input[name=rating]').value;
@@ -69,16 +76,22 @@ const handleCommentFormSubmit = (event) => {
         'recipeId': createCommentForm.querySelector('input[name=recipeId]').value,
         'content': textarea.value
     };
-    if (rating != '0') body.rating = rating;
-    console.log("Sending comment:", body);
+
+    let hasRating = false;
+    if (rating != '0' && rating != null) {
+        body.rating = rating;
+        hasRating = true;
+    }
+    console.log("Sending comment", body);
     makeRequest(getRootUrl() + '/api/comment', 'POST', body)
         .then((result) => {
             if (result.response.status == 200) {
                 createCommentForm.insertAdjacentHTML('beforebegin', result.content.comment);
                 textarea.value = '';
+                if (hasRating) document.querySelector('.rating-input').style.display = 'none';
+                removeCommentErrorMessage();
                 removeRating();
             } else {
-                // TODO add error message and not let user give rating when it already has given one.
                 setErrorMessage(result.content.message);
             }
         });
