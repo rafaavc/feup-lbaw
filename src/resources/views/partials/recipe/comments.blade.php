@@ -1,12 +1,13 @@
-<section class="icon-box mt-5 shadow-sm" id="comments">
+<section class="icon-box mt-5 shadow-sm text-start" id="comments">
     <i class="fas fa-comments"></i>
     @foreach ($comments as $i => $comment)
         @include('partials.recipe.comment', [ 'comment' => $comment, 'depth' => 0 ])
     @endforeach
+    <h3 class="mt-4">Comment on the recipe</h3>
     @if(Auth::check())
         <form name="createCommentForm" class="form-floating m-3 position-relative">
             <input type="hidden" name="recipeId" value="{{ $recipe->id }}" />
-            <textarea name="content" id="commentContent" class="form-control" placeholder="Leave a comment here" id="commentTextarea" style="height: 6rem"></textarea>
+            <textarea name="content" id="commentContent" class="form-control" placeholder="Leave a comment here" style="height: 6rem"></textarea>
             <label for="commentContent">Your comment</label>
             <button type="submit" class="btn btn-primary position-absolute py-1 send">
                 <small>

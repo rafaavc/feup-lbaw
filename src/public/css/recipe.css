@@ -138,6 +138,14 @@ h1 {
     margin: 1em;
 }
 
+#comments > h3 {
+    margin-left: 1rem;
+}
+
+.comment > h3, .createReplyFormWrapper > h5 {
+    margin-left: 1rem;
+}
+
 #ingredients table {
     border: 1px solid rgba(0, 0, 0, .125);
     border-radius: .25rem;

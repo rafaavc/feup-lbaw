@@ -80,9 +80,16 @@ class CommentController extends Controller
             $comment->owner()->associate(Auth::user()->id);
             $comment->save();
 
+            if (null != $request->input('parentCommentId'))
+                $comment->fatherComments()->sync($request->input('parentCommentId'));
+
             DB::commit();
 
-            return response()->json(['message' => 'Success!', 'comment' => view('partials.recipe.comment', ['comment' => $comment, 'depth' => 0])->render(), 'comment_id' => $comment->id], 200);
+            $depth = $request->input('depth');
+            if ($depth == null)
+                $depth = 0;
+
+            return response()->json(['message' => 'Success!', 'comment' => view('partials.recipe.comment', ['comment' => $comment, 'depth' => $depth])->render(), 'comment_id' => $comment->id], 200);
         } catch(\Exception $e) {
             DB::rollback();
             return response()->json(['message' => $e->getMessage()], 400);
