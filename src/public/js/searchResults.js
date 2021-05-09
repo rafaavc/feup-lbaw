@@ -1,7 +1,6 @@
 import { makeRequest } from './ajax/methods.js'
-import { encodeForAjax } from './ajax/methods.js'
 import { getFilterSortBarData } from './utils/getFilterSortBarData.js';
-import { getRootUrl } from './utils/getRootUrl.js';
+import { url } from './utils/url.js';
 
 const nextButtons = Array.from(document.querySelectorAll('a.page-link'));
 const urlParams = new URLSearchParams(window.location.search);
@@ -29,7 +28,7 @@ const registerListeners = () => {
             };
 
             console.log("Sending search:", data);
-            let requestURL = getRootUrl() + '/api/search/' + typeSearch;
+            let requestURL = url('/api/search/' + typeSearch);
             searchRequest(typeSearch, requestURL, data);
         }
     });
@@ -105,10 +104,10 @@ async function handleSearchSubmit(event) {
     searchQuery = data.searchQuery;
 
     // Recipes
-    searchRequest('recipes', getRootUrl() + '/api/search/recipes', data, true);
-    searchRequest('people', getRootUrl() + '/api/search/people', data, true);
-    searchRequest('categories', getRootUrl() + '/api/search/categories', data, true);
-    // searchRequest('groups', getRootUrl() + '/api/search/groups', data, true);
+    searchRequest('recipes', url('/api/search/recipes'), data, true);
+    searchRequest('people', url('/api/search/people'), data, true);
+    searchRequest('categories', url('/api/search/categories'), data, true);
+    // searchRequest('groups', url('/api/search/groups'), data, true);
 
     document.querySelector('strong.search-result').textContent = data.searchQuery;
 }

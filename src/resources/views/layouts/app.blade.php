@@ -29,7 +29,7 @@
         <link href="{{ asset('css/components/navPopups.css') }}" rel="stylesheet">
         @stack('css')
 
-        <script src="{{ asset('js/general.js') }}" type="module" defer></script>
+        <script src="{{ asset('js/general.js') }}" type="module"></script>
         <script src="{{ asset('js/navPopups.js') }}" defer></script>
         @stack('js')
 

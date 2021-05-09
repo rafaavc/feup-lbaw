@@ -60,26 +60,39 @@ class CommentController extends Controller
             }
             return response()->json(['message' => $message], 400);
         }
-        $this->validate($request, CommentController::$validation, CommentController::$errorMessages);
 
         DB::beginTransaction();
 
         try {
+            $hasRating = null != $request->input('rating') || $request->input('rating') == '0';
+
+            if ($hasRating && sizeof(Auth::user()->comments()->where('id_recipe', '=', $request->input('recipeId'))->whereNotNull('rating')->get()) != 0) {
+                throw new \Exception("The user has already made a review for the given recipe.");
+            }
+
             $comment = new Comment();
 
             $comment->text = $request->input('content');
-            if (null != $request->input('rating')) {
+            if ($hasRating) {
                 $comment->rating = $request->input('rating');
             }
             $comment->recipe()->associate($request->input('recipeId'));
             $comment->owner()->associate(Auth::user()->id);
             $comment->save();
 
+            if (null != $request->input('parentCommentId'))
+                $comment->fatherComments()->sync($request->input('parentCommentId'));
+
             DB::commit();
-            return response()->json(['message' => 'Success!', 'comment_id' => $comment->id], 200);
+
+            $depth = $request->input('depth');
+            if ($depth == null)
+                $depth = 0;
+
+            return response()->json(['message' => 'Success!', 'comment' => view('partials.recipe.comment', ['comment' => $comment, 'depth' => $depth])->render(), 'comment_id' => $comment->id], 200);
         } catch(\Exception $e) {
             DB::rollback();
-            return response()->json(['message' => 'Invalid Request!'], 400);
+            return response()->json(['message' => $e->getMessage()], 400);
         }
     }
 
