@@ -138,7 +138,7 @@ class SearchController extends Controller
         $userQuery = Member::selectRaw('*, search, ts_rank(search, to_tsquery(\'simple\', ?)) AS rank', [$searchStr])
             ->when($searchStr, function($query, $searchStr) {
                 return $query
-                    ->whereRaw('search @@ to_tsquery(\'english\', ?) AND id <> ?', [$searchStr, (Auth::check()) ? Auth::id() : 0])
+                    ->whereRaw('search @@ to_tsquery(\'simple\', ?)', [$searchStr])
                     ->orderByDesc('rank')
                     ->orderByDesc('id');
             }, function($query) {
