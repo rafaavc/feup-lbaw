@@ -2,6 +2,10 @@
     <link href="{{ asset('css/components/profile_cover.css') }}" rel="stylesheet"/>
 @endpush
 
+@push('js')
+    <script src="{{ asset('js/profile.js') }}" type="module"></script>
+@endpush
+
 <header class="cover">
     <img
         src="https://images-prod.healthline.com/hlcmsresource/images/AN_images/vegetarian-diet-plan-1296x728-feature.jpg"
@@ -32,10 +36,21 @@
             <div class="col-md-3 card-body text-md-end m-0">
                 <div class="btn-group" role="group" aria-label="">
                     @if ($canEdit)
-                        <a href="{{url("/user/$user->username/edit")}}" class=" btn btn-outline-dark"><i
+                        <a href="{{url("/user/$user->username/edit")}}" class="btn btn-no-shadow btn-outline-dark"><i
                                 class="fas fa-edit"></i>Edit</a>
                     @else
-                        <button type="button" class="btn btn-outline-dark" user-followed="false"><i class="fas fa-user-plus"></i>Follow
+                        <button type="button" class="btn shadow-none btn-outline-dark user-follow">
+                            <i class="fas fa-user-times {{ ($followState != 'accepted') ? 'd-none' : '' }}"></i>
+                            <i class="fas fa-user-plus {{ ($followState == 'rejected' || $followState == 'Follow' || $followState == null) ? '' : 'd-none' }}"></i>
+                            @if ($followState == 'pending')
+                                {{ "Pending Request" }}
+                            @elseif ($followState == 'accepted')
+                                {{-- <i class="fas fa-user-times"></i> --}}
+                                {{ "Unfollow" }}
+                            @else {{-- Rejected or no record found --}}
+                                {{-- <i class="fas fa-user-plus"></i> --}}
+                                {{ "Follow" }}
+                            @endif
                         </button>
                         <a href="{{url("/chat/$user->username")}}" type="button" class="btn btn-outline-dark"><i
                                 class="fas fa-comments"></i>Chat</a>

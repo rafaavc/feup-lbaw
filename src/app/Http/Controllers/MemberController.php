@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class MemberController extends Controller
 {
@@ -132,10 +133,20 @@ class MemberController extends Controller
         return response()->json(['message' => 'Success!', 'member_id' => $user->id], 200);
     }
 
-    public function followRequest(Request $request, Member $user) {
+    public function followRequest(Member $user) {
         try {
             Auth::user()->following()->attach($user->id);
-            return response()->json(['message' => 'Success!'], 200);
+            $newState = Auth::user()->following()->where('id_followed', $user->id)->orderByDesc('timestamp')->first()->pivot->state;
+            return response()->json(['message' => 'Success!', 'newState' => $newState], 200);
+        } catch(Exception $e) {
+            return response()->json(['message' => $e->getMessage()], 400);
+        }
+    }
+
+    public function deleteFollowRequest(Member $user) {
+        try {
+            Auth::user()->following()->detach($user->id);
+            return response()->json(['message' => 'Success!', 'newState' => 'Follow'], 200);
         } catch(Exception $e) {
             return response()->json(['message' => $e->getMessage()], 400);
         }
@@ -152,6 +163,18 @@ class MemberController extends Controller
 
     private function renderMemberView(Member $user, string $tab, $items)
     {
+        $followState = 'Follow';
+        if(Auth::user()->following->contains($user->id)) {
+            $followState = DB::table('tb_following')
+                ->select('state')
+                ->where('id_following', Auth::user()->id)
+                ->where('id_followed', $user->id)
+                ->orderByDesc('timestamp')
+                ->limit(1)
+                ->get();
+            $followState = json_decode($followState, true)[0]['state'];
+        }
+
         return view('pages.user.' . $tab, [
             'user' => $this->get($user),
             'groups' => $this->getGroups($user),
@@ -159,6 +182,7 @@ class MemberController extends Controller
             $tab => $items,
             'canEdit' => Gate::inspect('update', $user)->allowed(),
             'canDelete' => Gate::inspect('delete', $user)->allowed(),
+            'followState' => $followState
         ]);
     }
 

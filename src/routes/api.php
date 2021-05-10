@@ -47,6 +47,7 @@ Route::get('user/{user}/groups', 'MemberController@getGroups')->middleware('can:
 Route::put('user/{user}', 'MemberController@put')->middleware('can:update,user');
 Route::delete('user/{user}', 'MemberController@remove')->middleware('can:delete,user');
 Route::post('user/{user}/request', 'MemberController@followRequest')->middleware('can:follow,user');
+Route::delete('user/{user}/request', 'MemberController@deleteFollowRequest')->middleware('can:deleteFollow,user');
 
 // ----------------------------------------------------------------
 // Search API

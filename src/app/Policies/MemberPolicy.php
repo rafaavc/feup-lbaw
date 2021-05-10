@@ -65,6 +65,28 @@ class MemberPolicy
      */
     public function follow(Member $member, Member $argument)
     {
-        return !$member->following->contains('username', $argument->username);
+        $followRequest = $member->following()->where('id_followed', $argument->id)->orderByDesc('timestamp')->first();
+        $state = null;
+        if($followRequest != null)
+            $state = $followRequest->pivot->state;
+        return !$member->following->contains($argument->id) ||
+            ($state == 'rejected');
+    }
+
+    /**
+     * Determine whether the user can follow another.
+     *
+     * @param \App\Models\Member $member
+     * @param \App\Models\Member $argument
+     * @return mixed
+     */
+    public function deleteFollow(Member $member, Member $argument)
+    {
+        $followRequest = $member->following()->where('id_followed', $argument->id)->orderByDesc('timestamp')->first();
+        $state = null;
+        if($followRequest != null)
+            $state = $followRequest->pivot->state;
+        return $member->following->contains($argument->id) &&
+            ($state == 'accepted');
     }
 }
