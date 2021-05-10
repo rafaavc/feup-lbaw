@@ -35,7 +35,7 @@
                         <a href="{{url("/user/$user->username/edit")}}" class=" btn btn-outline-dark"><i
                                 class="fas fa-edit"></i>Edit</a>
                     @else
-                        <button type="button" class="btn btn-outline-dark"><i class="fas fa-user-plus"></i>Follow
+                        <button type="button" class="btn btn-outline-dark" user-followed="false"><i class="fas fa-user-plus"></i>Follow
                         </button>
                         <a href="{{url("/chat/$user->username")}}" type="button" class="btn btn-outline-dark"><i
                                 class="fas fa-comments"></i>Chat</a>

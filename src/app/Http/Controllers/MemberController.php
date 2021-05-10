@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Auth;
 
 class MemberController extends Controller
 {
@@ -129,6 +130,15 @@ class MemberController extends Controller
         Storage::delete("public/images/people/$user->id.jpeg");
         $user->delete();
         return response()->json(['message' => 'Success!', 'member_id' => $user->id], 200);
+    }
+
+    public function followRequest(Request $request, Member $user) {
+        try {
+            Auth::user()->following()->attach($user->id);
+            return response()->json(['message' => 'Success!'], 200);
+        } catch(Exception $e) {
+            return response()->json(['message' => $e->getMessage()], 400);
+        }
     }
 
     // ----------------------------------------------------------------

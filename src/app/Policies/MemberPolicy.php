@@ -55,4 +55,16 @@ class MemberPolicy
     {
         return $member->id === $argument->id;
     }
+
+    /**
+     * Determine whether the user can follow another.
+     *
+     * @param \App\Models\Member $member
+     * @param \App\Models\Member $argument
+     * @return mixed
+     */
+    public function follow(Member $member, Member $argument)
+    {
+        return !$member->following->contains('username', $argument->username);
+    }
 }
