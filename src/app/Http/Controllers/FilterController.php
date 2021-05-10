@@ -61,7 +61,7 @@ class FilterController
                 if (!is_numeric($durationParts[0]) || !is_numeric($durationParts[1])) return $query;
 
                 if ($durationParts[1] == 300) {
-                    return $query->where('total_duration', '>', $durationParts[0]);
+                    return $query->where('total_duration', '>=', $durationParts[0]);
                 }
 
                 return $query->whereBetween('total_duration', [$durationParts[0], $durationParts[1]]);

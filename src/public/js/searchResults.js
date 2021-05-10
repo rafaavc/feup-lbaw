@@ -36,7 +36,8 @@ const registerListeners = () => {
             const typeSearch = target.closest('div.row').previousElementSibling.innerHTML.toLowerCase();
             const data = {
                 'searchQuery': searchQuery,
-                'page': returnAux.page
+                'page': returnAux.page,
+                ...getFilterBarData()
             };
 
             console.log("Sending search:", data);
