@@ -135,3 +135,18 @@ searchResultForm.addEventListener('submit', handleSearchSubmit);
 
 handleSearchSubmit();
 registerListeners();
+
+
+/* FILTERS */
+
+const filterBarForm = document.querySelector('form[name=filterBar]');
+
+const categorySelect = filterBarForm.querySelector('select[name=category]');
+const difficultySelect = filterBarForm.querySelector('select[name=difficulty]');
+
+filterBarForm.addEventListener('submit', handleSearchSubmit);
+categorySelect.addEventListener('change', handleSearchSubmit);
+difficultySelect.addEventListener('change', handleSearchSubmit);
+
+
+

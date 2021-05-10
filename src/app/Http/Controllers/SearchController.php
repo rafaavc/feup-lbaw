@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Member;
 use App\Models\Category;
+use App\Models\Ingredient;
 use App\Models\Tag;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -21,7 +22,9 @@ class SearchController extends Controller
         return view('pages.search', [
             'searchStr' => $request->query('searchQuery'),
             'categories' => Category::all(),
-            'tags' => Tag::all()
+            'tags' => Tag::all(),
+            'ingredients' => Ingredient::all(),
+            'showSortBar' => false
         ]);
     }
 

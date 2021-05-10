@@ -32,8 +32,16 @@ class FilterController
                 // TODO
                 return $query;
             })
-            ->when($request->query('ingredient'), function($query, $ingredient) {
-                // TODO
+            ->when($request->query('ingredients'), function($query, $ingredients) {
+                $ingredientList = explode(',', $ingredients);
+                foreach($ingredientList as $ingredient) {
+                    $query = $query->whereExists(function($query) use($ingredient) {
+                        $query->select(DB::raw(1))
+                            ->from('tb_ingredient_recipe')
+                            ->where('id_ingredient', '=', $ingredient)
+                            ->whereColumn('id_recipe', 'recipe_id');
+                    });
+                }
                 return $query;
             })
             ->when($request->query('date'), function($query, $date) {
@@ -45,8 +53,7 @@ class FilterController
                 return $query;
             })
             ->when($request->query('difficulty'), function($query, $difficulty) {
-                // TODO
-                return $query;
+                return $query->where('difficulty', '=', $difficulty);
             });
     }
 }

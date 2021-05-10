@@ -7,10 +7,19 @@ export const getFilterSortBarData = () => {
         if (tag.checked) tags.push(tag.dataset.id);
     }
 
+    const ingredients = [];
+    const allIngredients = [...document.querySelectorAll('.ingredient-filter-checkbox')];
+    for (const ingredient of allIngredients) {
+        if (ingredient.checked) ingredients.push(ingredient.dataset.id);
+    }
+
     const data = {};
-    if (allTags.length != 0) data.tags = tags.join(',');
+    if (tags.length != 0) data.tags = tags.join(',');
+    if (ingredients.length != 0) data.ingredients = ingredients.join(',');
     const category = filterBarForm.querySelector('select[name=category]')?.value;
     if (category) data.category = category;
-    console.log("Filter bar data: ", data, category, tags);
+    const difficulty = filterBarForm.querySelector('select[name=difficulty]')?.value;
+    if (difficulty) data.difficulty = difficulty;
+
     return data;
 }
