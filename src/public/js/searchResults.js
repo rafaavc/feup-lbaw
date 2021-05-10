@@ -131,7 +131,7 @@ async function handleSearchSubmit(event) {
         .then(() => {
             const url = new URL(window.location);
             url.searchParams.set('searchQuery', searchQuery);
-            window.history.pushState({ html: document.body.innerHTML }, document.title, url);
+            window.history.pushState({ html: document.querySelector('.search-page').innerHTML }, document.title, url);
         });
 
     document.querySelector('strong.search-result').textContent = data.searchQuery;
@@ -175,7 +175,7 @@ difficultySelect.addEventListener('change', handleSearchSubmit);
 
 window.onpopstate = function(e) {
     if (e.state){
-        document.body.innerHTML = e.state.html;
+        document.querySelector('.search-page').innerHTML = e.state.html;
     }
     refreshSearchQuery();
 }
