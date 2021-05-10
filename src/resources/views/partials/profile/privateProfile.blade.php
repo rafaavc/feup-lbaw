@@ -4,7 +4,10 @@
 
 <div class="private-profile">
     <i class="fas fa-lock fa-10x private-profile-icon"></i>
+    <div class="private-profile-text-title">
+        This account is private
+    </div>
     <div class="private-profile-text">
-        Private Profile
+        Follow this account to see their content
     </div>
 </div>

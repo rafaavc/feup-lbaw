@@ -150,6 +150,8 @@ class MemberController extends Controller
             if (Auth::check()) {
                 $followers = $user->followers()->where('id', "=", Auth::user()->id)->get();
                 if (sizeof($followers) != 0) $canViewProfile = true;
+
+                if (Auth::user()->id === $user->id) $canViewProfile = true;
             }
 
             if (!$canViewProfile)
