@@ -16,7 +16,7 @@
 
         <!-- Search box -->
         <div class="collapse navbar-collapse justify-content-center flex-grow-1 normalize" id="navbarSearch" data-bs-parent="#navbarContainer">
-            <form class="search-result-form">
+            <form class="search-result-form" method="GET" action="{{ url('/search') }}">
                 <div class="d-flex">
                     <input type="text" name="searchQuery" class="form-control icon-right" placeholder="Search" aria-label="Recipient's username" aria-describedby="basic-addon2">
                     <i class="fas fa-search fa-icon-right"></i>

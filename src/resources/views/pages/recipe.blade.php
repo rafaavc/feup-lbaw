@@ -55,6 +55,11 @@
 
                     <span class="d-block mb-3"><small>Difficulty: {{ $recipe->difficulty }}</small></span>
                     <span class="d-inline-block me-3">Tags: </span>
+
+                    <a role="button" class="btn btn-sm btn-primary d-inline-block me-2 mb-2"
+                        href="/category/{{ $category->id }}">
+                        {{ $category->name }}
+                    </a>
                     @foreach($tags as $idx => $tag)
                         <a role="button" class="btn btn-sm btn-secondary d-inline-block me-2 mb-2"
                            href="/category/{{ $tag->id }}">

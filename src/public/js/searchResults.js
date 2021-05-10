@@ -1,13 +1,25 @@
 import { makeRequest } from './ajax/methods.js'
-import { getFilterSortBarData } from './utils/getFilterSortBarData.js';
+import { getFilterBarForm, getFilterBarData } from './utils/getFilterSortBarData.js';
 import { url } from './utils/url.js';
 
 const nextButtons = Array.from(document.querySelectorAll('a.page-link'));
-const urlParams = new URLSearchParams(window.location.search);
+let urlParams = null;
+const searchQueryInput = document.querySelector('input[name=searchQuery]');
 const searchResultForm = document.querySelector('form.search-result-form');
 const itemsPerSelection = 3;
 
-let searchQuery = urlParams.get('searchQuery') || "";
+let searchQuery = "";
+
+const refreshSearchQuery = () => {
+    urlParams = new URLSearchParams(window.location.search);
+    searchQuery = urlParams.get('searchQuery') || searchQuery;
+
+    if (searchQuery != "") {
+        searchQueryInput.value = searchQuery;
+    }
+}
+
+refreshSearchQuery();
 
 const registerListeners = () => {
     nextButtons.forEach((nextBtn) => {
@@ -24,7 +36,8 @@ const registerListeners = () => {
             const typeSearch = target.closest('div.row').previousElementSibling.innerHTML.toLowerCase();
             const data = {
                 'searchQuery': searchQuery,
-                'page': returnAux.page
+                'page': returnAux.page,
+                ...getFilterBarData()
             };
 
             console.log("Sending search:", data);
@@ -36,7 +49,7 @@ const registerListeners = () => {
 
 let totalResults = 0;
 
-const searchRequest = (typeSearch, requestURL, query, incrementTotalResults) => {
+const searchRequest = (typeSearch, requestURL, query, incrementTotalResults) => new Promise((resolve, reject) => {
     const lastBreadcrumArg = document.querySelector('li.last-breadcrumb').firstElementChild.innerHTML
     if(lastBreadcrumArg != "Recipe")
         document.querySelector('li.last-breadcrumb').firstElementChild.innerHTML = searchQuery;
@@ -51,43 +64,46 @@ const searchRequest = (typeSearch, requestURL, query, incrementTotalResults) => 
         li.appendChild(a);
         document.querySelector('ol.breadcrumb').insertAdjacentElement('beforeend', li);
     }
+
     makeRequest(requestURL, 'GET', null, query)
-    .then((result) => {
-        if (result.response.status == 200) {
-            const boxContent = document.querySelector('div.' + typeSearch + "-box");
+        .then((result) => {
+            if (result.response.status == 200) {
+                const boxContent = document.querySelector('div.' + typeSearch + "-box");
 
-            Array.from(boxContent.querySelectorAll('div.col-lg-1')).forEach((div) => {
-                boxContent.removeChild(div);
-            });
-
-            let noResults = boxContent.querySelector('h5.no-results') == null;
-            if(result.content.numResults == 0 && noResults) {
-                document.querySelector('nav.' + typeSearch + '-navigation').classList.add('d-none');
-                boxContent.insertAdjacentHTML('afterbegin', `<h5 class="no-results">No results found.</h5>`);
-            } else if(result.content.numResults > 0) {
-                if(!noResults)
-                    boxContent.removeChild(boxContent.querySelector('h5.no-results'));
-                document.querySelector('nav.' + typeSearch + '-navigation').classList.remove('d-none');
-
-                let recipes = "";
-                result.content.result.reverse().forEach((result) => {
-                    recipes += `<div class="col-lg-1 col-md-6 w-auto">` + result + `</div>`;
+                Array.from(boxContent.querySelectorAll('div.col-lg-1')).forEach((div) => {
+                    boxContent.removeChild(div);
                 });
 
-                boxContent.insertAdjacentHTML('afterbegin', recipes);
-            }
+                let noResults = boxContent.querySelector('h5.no-results') == null;
+                if(result.content.numResults == 0 && noResults) {
+                    document.querySelector('nav.' + typeSearch + '-navigation').classList.add('d-none');
+                    boxContent.insertAdjacentHTML('afterbegin', `<h5 class="no-results">No results found.</h5>`);
+                } else if(result.content.numResults > 0) {
+                    if(!noResults)
+                        boxContent.removeChild(boxContent.querySelector('h5.no-results'));
+                    document.querySelector('nav.' + typeSearch + '-navigation').classList.remove('d-none');
 
-            if(incrementTotalResults) {
-                totalResults += result.content.numResults;
-                let pageNum = document.querySelector('a.' + typeSearch + '-page').textContent;
-                document.querySelector('a.' + typeSearch + '-page').textContent = pageNum.replace(/Page (\d+) of (\d+)/, 'Page 1 of ' + Math.ceil(result.content.numResults / itemsPerSelection))
+                    let recipes = "";
+                    result.content.result.reverse().forEach((result) => {
+                        recipes += `<div class="col-lg-1 col-md-6 w-auto">` + result + `</div>`;
+                    });
+
+                    boxContent.insertAdjacentHTML('afterbegin', recipes);
+                }
+
+                if(incrementTotalResults) {
+                    totalResults += result.content.numResults;
+                    let pageNum = document.querySelector('a.' + typeSearch + '-page').textContent;
+                    document.querySelector('a.' + typeSearch + '-page').textContent = pageNum.replace(/Page (\d+) of (\d+)/, 'Page 1 of ' + Math.ceil(result.content.numResults / itemsPerSelection))
+                }
+                document.querySelector('strong.total-results').textContent = totalResults;
+                resolve();
+            } else {
+                console.log(result.error);
+                reject();
             }
-            document.querySelector('strong.total-results').textContent = totalResults;
-        } else {
-            console.log(result.error);
-        }
-    });
-}
+        });
+});
 
 async function handleSearchSubmit(event) {
     totalResults = 0;
@@ -96,18 +112,27 @@ async function handleSearchSubmit(event) {
         event.preventDefault();
 
     const data = {
-        'searchQuery': (event) ? document.querySelector('input[name=searchQuery]').value : searchQuery,
+        'searchQuery': (event) ? searchQueryInput.value : searchQuery,
         'page': 1,
-        ...getFilterSortBarData()
+        ...getFilterBarData()
     };
 
     searchQuery = data.searchQuery;
 
     // Recipes
-    searchRequest('recipes', url('/api/search/recipes'), data, true);
-    searchRequest('people', url('/api/search/people'), data, true);
-    searchRequest('categories', url('/api/search/categories'), data, true);
+    const promises = [
+        searchRequest('recipes', url('/api/search/recipes'), data, true),
+        searchRequest('people', url('/api/search/people'), data, true),
+        searchRequest('categories', url('/api/search/categories'), data, true)
+    ];
     // searchRequest('groups', url('/api/search/groups'), data, true);
+
+    Promise.all(promises)
+        .then(() => {
+            const url = new URL(window.location);
+            url.searchParams.set('searchQuery', searchQuery);
+            window.history.pushState({ html: document.querySelector('.search-page').innerHTML }, document.title, url);
+        });
 
     document.querySelector('strong.search-result').textContent = data.searchQuery;
 }
@@ -135,3 +160,22 @@ searchResultForm.addEventListener('submit', handleSearchSubmit);
 
 handleSearchSubmit();
 registerListeners();
+
+
+/* FILTERS */
+
+const filterBarForm = getFilterBarForm();
+const categorySelect = filterBarForm.querySelector('select[name=category]');
+const difficultySelect = filterBarForm.querySelector('select[name=difficulty]');
+
+
+filterBarForm.addEventListener('submit', handleSearchSubmit);
+categorySelect.addEventListener('change', handleSearchSubmit);
+difficultySelect.addEventListener('change', handleSearchSubmit);
+
+window.onpopstate = function(e) {
+    if (e.state){
+        document.querySelector('.search-page').innerHTML = e.state.html;
+    }
+    refreshSearchQuery();
+}

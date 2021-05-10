@@ -25,10 +25,14 @@
     transition: background-color .2s;
 }
 
-#tagFilterDropdown {
+#tagFilterDropdown, #ingredientFilterDropdown {
     min-height: 5rem;
     max-height: 40vh;
     overflow-y: auto;
+}
+
+.dropdown-menu {
+    padding: 1rem;
 }
 
 button.accordion-button::after {

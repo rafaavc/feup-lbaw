@@ -140,6 +140,7 @@ class RecipeController extends Controller
             'comments' => $recipe->comments()->whereNotIn('id', $commentsWithFathersIds)->get(),
             'author' => $recipe->author,
             'steps' => $recipe->steps,
+            'category' => $recipe->category,
             'images' => $images,
             'suggested' => $suggested,
             'canEdit' => $canEdit,
