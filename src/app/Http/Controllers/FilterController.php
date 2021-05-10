@@ -47,8 +47,7 @@ class FilterController
             ->when($request->query('difficulty'), function($query, $difficulty) {
                 // TODO
                 return $query;
-            })
-            ;
+            });
     }
 }
 
