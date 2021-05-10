@@ -1,5 +1,5 @@
 import { makeRequest } from './ajax/methods.js'
-import { getFilterSortBarData } from './utils/getFilterSortBarData.js';
+import { getFilterBarForm, getFilterBarData } from './utils/getFilterSortBarData.js';
 import { url } from './utils/url.js';
 
 const nextButtons = Array.from(document.querySelectorAll('a.page-link'));
@@ -98,7 +98,7 @@ async function handleSearchSubmit(event) {
     const data = {
         'searchQuery': (event) ? document.querySelector('input[name=searchQuery]').value : searchQuery,
         'page': 1,
-        ...getFilterSortBarData()
+        ...getFilterBarData()
     };
 
     searchQuery = data.searchQuery;
@@ -139,10 +139,10 @@ registerListeners();
 
 /* FILTERS */
 
-const filterBarForm = document.querySelector('form[name=filterBar]');
-
+const filterBarForm = getFilterBarForm();
 const categorySelect = filterBarForm.querySelector('select[name=category]');
 const difficultySelect = filterBarForm.querySelector('select[name=difficulty]');
+
 
 filterBarForm.addEventListener('submit', handleSearchSubmit);
 categorySelect.addEventListener('change', handleSearchSubmit);

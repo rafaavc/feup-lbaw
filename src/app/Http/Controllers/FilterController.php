@@ -29,7 +29,7 @@ class FilterController
                 return $query;
             })
             ->when($request->query('rating'), function($query, $rating) {
-                $ratingParts = explode('-', $rating);
+                $ratingParts = explode(',', $rating);
                 if (sizeof($ratingParts) != 2) return $query;
 
                 if (!is_numeric($ratingParts[0]) || !is_numeric($ratingParts[1])) return $query;
@@ -49,12 +49,18 @@ class FilterController
                 return $query;
             })
             ->when($request->query('date'), function($query, $date) {
-                // TODO
-                return $query;
+                $dateParts = explode(',', $date);
+                if (sizeof($dateParts) != 2) return $query;
+
+                return $query->whereBetween('creation_time', [$dateParts[0], $dateParts[1]]);
             })
             ->when($request->query('duration'), function($query, $duration) {
-                // TODO
-                return $query;
+                $durationParts = explode(',', $duration);
+                if (sizeof($durationParts) != 2) return $query;
+
+                if (!is_numeric($durationParts[0]) || !is_numeric($durationParts[1])) return $query;
+
+                return $query->whereBetween('total_duration', [$durationParts[0], $durationParts[1]]);
             })
             ->when($request->query('difficulty'), function($query, $difficulty) {
                 return $query->where('difficulty', '=', $difficulty);

@@ -4,8 +4,13 @@
 
 DROP MATERIALIZED VIEW IF EXISTS recipes_fts_view;
 CREATE MATERIALIZED VIEW recipes_fts_view AS
-    SELECT tb_recipe.id AS recipe_id, tb_recipe.score as score, tb_recipe.id_category as id_category, tb_recipe.difficulty as difficulty, tb_recipe.name AS recipe_name, tb_member.id AS member_id, tb_member.name AS member_name,
+    SELECT tb_recipe.id AS recipe_id, tb_recipe.score as score,
+        tb_recipe.id_category as id_category, tb_recipe.difficulty as difficulty,
+        tb_recipe.name AS recipe_name, tb_member.id AS member_id, tb_member.name AS member_name,
         tb_category.name AS category, string_agg(tb_tag.name, ' ') AS tag,
+        tb_recipe.creation_time AS creation_time,
+        coalesce(tb_recipe.cooking_time, 0) + coalesce(tb_recipe.additional_time, 0) + coalesce(tb_recipe.preparation_time, 0) AS total_duration,
+
         (setweight(to_tsvector('english', tb_recipe.name), 'A') ||
         setweight(to_tsvector('english', tb_category.name), 'B') ||
         setweight(to_tsvector('english', coalesce(string_agg(tb_tag.name, ' '), '')), 'B') ||

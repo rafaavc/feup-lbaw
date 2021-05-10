@@ -58,13 +58,13 @@
             <div class="mb-3">
                 <label class="form-label">
                     From
-                    <input type="date" class="form-control filter-date-min-input">
+                    <input type="date" name="filterDateMinInput" class="form-control filter-date-min-input">
                 </label>
             </div>
             <div class="mb-3">
                 <label class="form-label">
                     To
-                    <input type="date" class="form-control filter-date-max-input">
+                    <input type="date" name="filterDateMaxInput" class="form-control filter-date-max-input">
                 </label>
             </div>
             <button type="submit" class="btn btn-primary">Filter</button>
@@ -74,12 +74,12 @@
             <div class="mb-3">
                 <label for="filterDurationMinInputDesktop" class="form-label visually-hidden">From</label>
                 <div>From <span>5min</span></div>
-                <input type="range" class="form-range time-in-mins filter-duration-min-input" min="5" max="300" value="0" step="5" id="filterDurationMinInputDesktop">
+                <input type="range" name="filterDurationMinInput" class="form-range time-in-mins filter-duration-min-input" min="5" max="300" value="0" step="5" id="filterDurationMinInputDesktop">
             </div>
             <div class="mb-3">
                 <label for="filterDurationMaxInputDesktop" class="form-label visually-hidden">To</label>
                 <div>To <span>5h</span></div>
-                <input type="range" class="form-range time-in-mins filter-duration-max-input" min="5" max="300" value="600" step="5" id="filterDurationMaxInputDesktop">
+                <input type="range" name="filterDurationMaxInput" class="form-range time-in-mins filter-duration-max-input" min="5" max="300" value="600" step="5" id="filterDurationMaxInputDesktop">
             </div>
             <button type="submit" class="btn btn-primary">Filter</button>
         </ul>
