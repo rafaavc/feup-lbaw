@@ -32,12 +32,12 @@
             <div class="mb-3">
                 <label for="filterRatingMinInputDesktop" class="form-label visually-hidden">From</label>
                 <div>From <span>0</span></div>
-                <input type="range" class="form-range filter-rating-min-input" min="0" max="5" step="0.1" value="0" id="filterRatingMinInputDesktop">
+                <input type="range" name="filterRatingMinInput" class="form-range filter-rating-min-input" min="0" max="5" step="0.1" value="0" id="filterRatingMinInputDesktop">
             </div>
             <div class="mb-3">
                 <label for="filterRatingMaxInputDesktop" class="form-label visually-hidden">To</label>
                 <div>To <span>5</span></div>
-                <input type="range" class="form-range filter-rating-max-input" min="0" max="5" step="0.1" value="5" class="form-control" id="filterRatingMaxInputDesktop">
+                <input type="range" name="filterRatingMaxInput" class="form-range filter-rating-max-input form-control" min="0" max="5" step="0.1" value="5" id="filterRatingMaxInputDesktop">
             </div>
             <button type="submit" class="btn btn-primary">Filter</button>
         </ul>

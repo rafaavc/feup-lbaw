@@ -29,8 +29,12 @@ class FilterController
                 return $query;
             })
             ->when($request->query('rating'), function($query, $rating) {
-                // TODO
-                return $query;
+                $ratingParts = explode('-', $rating);
+                if (sizeof($ratingParts) != 2) return $query;
+
+                if (!is_numeric($ratingParts[0]) || !is_numeric($ratingParts[1])) return $query;
+
+                return $query->whereBetween('score', [$ratingParts[0], $ratingParts[1]]);
             })
             ->when($request->query('ingredients'), function($query, $ingredients) {
                 $ingredientList = explode(',', $ingredients);
