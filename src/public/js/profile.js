@@ -14,10 +14,10 @@ const registerListeners = () => {
 const followBtnHandler = (event) => {
     let requestURL = url('/api/user/' + profileName + "/request");
     console.log(requestURL);
-    followBtn.classList.toggle('user-follow');
     makeRequest(requestURL, (followState == 'Follow') ? 'POST' : 'DELETE')
         .then((result) => {
             if(result.response.status == 200) {
+                followBtn.classList.toggle('user-follow');
                 const newFollowState = result.content.newState;
                 followBtn.removeChild(followBtn.lastChild);
 

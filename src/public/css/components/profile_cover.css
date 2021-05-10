@@ -100,7 +100,3 @@ button.user-follow:hover {
     background-color: transparent;
     color: var(--bs-gray-dark);
 }
-
-button.user-follow:active {
-    box-shadow: none;
-}
