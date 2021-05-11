@@ -3,6 +3,7 @@
 use App\Http\Controllers\MemberController;
 use App\Http\Controllers\RecipeController;
 use App\Http\Controllers\UnitController;
+use App\Http\Controllers\SearchController;
 use Illuminate\Http\Request;
 
 /*
@@ -31,7 +32,8 @@ Route::get('user/{user}/following', 'MemberController@getFollowing')->middleware
 Route::get('user/{user}/followers', 'MemberController@getFollowers')->middleware('can:view,user');
 Route::get('user/{user}/groups', 'MemberController@getGroups')->middleware('can:view,user');
 Route::get('users', 'MemberController@index');
-Route::post('user/{user}/request', 'FollowController@post');
+Route::post('user/{user}/request', 'MemberController@followRequest')->middleware('can:follow,user');
+Route::delete('user/{user}/request', 'MemberController@deleteFollowRequest')->middleware('can:deleteFollow,user');
 Route::post('user/request/{user}', 'FollowController@accept');
 Route::delete('user/request/{user}', 'FollowController@decline');
 
@@ -64,7 +66,10 @@ Route::get('group/{group}/members', 'GroupController@getMembers')->middleware('c
 // List API
 // ----------------------------------------------------------------
 Route::get('feed', 'FeedController@get');
-Route::get('search/{query}', 'SearchController@get');
+Route::get('search/recipes', 'SearchController@getRecipesPaginate');
+Route::get('search/people', 'SearchController@getUsersPaginate');
+Route::get('search/categories', 'SearchController@getCategoriesPaginate');
+// Route::get('search/groups', 'SearchController@getGroupsPaginate');
 
 // ----------------------------------------------------------------
 // Chat API

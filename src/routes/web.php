@@ -68,7 +68,7 @@ Route::post('group', 'GroupController@createAction')->middleware('can:create,gro
 // ----------------------------------------------------------------
 Route::get('category/{category}', 'CategoryController@view')->middleware('can:view,category');
 Route::get('feed', 'FeedController@view');
-Route::get('search/{query}', 'SearchController@view');
+Route::get('search', 'SearchController@view');
 
 // ----------------------------------------------------------------
 // Chat pages

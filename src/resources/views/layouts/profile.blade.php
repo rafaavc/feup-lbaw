@@ -41,21 +41,21 @@
                                             ],
                                             'group' => false
                                         ])
-            @if(!isset($private))
-                <div class="row group-body">
+            <div class="row group-body">
+                @if(!isset($private))
                     <div class="col-md-4 p-0 pe-md-4 mt-5">
                         @include('partials.profile.personalInfo')
                         @include('partials.profile.peopleBox', ['name' => 'Following', 'people' => $user->following])
                         @include('partials.profile.peopleBox', ['name' => 'Followers', 'people' => $user->followers])
                         @include('partials.profile.groupBox', ['name'=> 'Groups', 'groups' => $user->groups])
                     </div>
-                    <div class="col-md-8 posts-area ps-md-4 mt-5">
-                        @yield('body')
-                    </div>
+                <div class="col-md-8 posts-area ps-md-4 mt-5">
+                @else
+                    <div class="posts-area ps-md-4 mt-5 w100">
+                @endif
+                    @yield('body')
                 </div>
-            @else
-                @include('partials.profile.privateProfile')
-            @endif
+            </div>
         </div>
     </main>
 @endsection
