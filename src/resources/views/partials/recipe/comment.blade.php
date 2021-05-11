@@ -1,4 +1,5 @@
-<div class="card comment <?= $depth !== 0 ? "subcomment" : "" ?>">
+<div data-comment-id="{{ $comment->id }}" data-depth="{{ $depth }}" class="card comment <?= $depth !== 0 ? "subcomment" : "" ?>">
+
     <div class="row g-0 p-3">
         <div class="col">
             <img class="d-inline-block rounded-circle" src="{{ $comment->owner->profileImage() }}">
@@ -19,9 +20,11 @@
                 </small>
             </p>
         </div>
-        <div class="col-md text-end position-relative">
-            <button class="btn btn-sm btn-outline-secondary p-1 m-1"><i class="fas fa-reply me-1"></i>Reply</button>
-        </div>
+        @if(Auth::check())
+            <div class="col-md text-end position-relative">
+                <button class="btn btn-sm btn-outline-secondary p-1 m-1 recipe-comment-reply-button"><i class="fas fa-reply me-1"></i>Reply</button>
+            </div>
+        @endif
     </div>
     @foreach($comment->replies as $idx => $reply)
         @include('partials.recipe.comment', [ 'comment' => $reply, 'depth' => $depth + 1 ])

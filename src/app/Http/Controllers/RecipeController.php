@@ -120,6 +120,9 @@ class RecipeController extends Controller
             $recipeCard->owner = $recipeCard->author->name;
         }
 
+
+        $hasMadeReview = sizeof(Auth::user()->comments()->where('id_recipe', '=', $recipe->id)->whereNotNull('rating')->get()) != 0;
+
         $steps = $recipe->steps;
         foreach ($steps as $step) {
             $image = $this->getStepImageForClient($step->id);
@@ -141,6 +144,7 @@ class RecipeController extends Controller
             'steps' => $recipe->steps,
             'images' => $images,
             'suggested' => $suggested,
+            'hasMadeReview' => $hasMadeReview,
             'isFavourited' => $isFavourited
         ]);
     }
