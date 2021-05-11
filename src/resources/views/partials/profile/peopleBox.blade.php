@@ -1,4 +1,4 @@
-<div class="card shadow-sm people-box">
+<div class="card shadow-sm people-box mt-4">
     <div class="card-body">
         <h5 class="card-title mb-4">{{$name}}</h5>
         <div class="row g-5 mb-5">
@@ -20,8 +20,8 @@
                 </div>
             @endforeach
         </div>
-        <button type="button" class="btn btn-outline-secondary">
+    <!--<button type="button" class="btn btn-outline-secondary">
             <small><i class="fas fa-plus me-2"></i> See all <?= strtolower($name) ?></small>
-        </button>
+        </button>-->
     </div>
 </div>

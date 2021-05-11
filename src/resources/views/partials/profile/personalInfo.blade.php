@@ -9,7 +9,7 @@
         </span>
         <br>
     </div>
-    @if($canEdit)
+    @if(Gate::inspect('update', $user)->allowed())
         <a class="btn btn-primary mt-2" href="{{url('/recipe')}}">Create
             Recipe</a>
         <a class="btn btn-primary mt-2" href="{{url('/group')}}">Create
