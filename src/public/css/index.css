@@ -52,7 +52,7 @@
 }
 
 .home-slide .display-2 {
-    background-color: var(--accent-color); 
+    background-color: var(--accent-color);
     color: var(--bs-light);
     padding: 0 1rem;
     margin-right: 2vw;
@@ -92,10 +92,10 @@ a.btn-large {
     div.fs-4, strong.fs-1 {
         text-align: center;
     }
-    
+
     button.btn-dark-large {
         margin: auto;
-    } 
+    }
 
     div.content-align {
         padding: 10px 10px !important;
@@ -105,7 +105,7 @@ a.btn-large {
     div img.w-75 {
         margin: auto;
         float: none !important;
-    }    
+    }
 
     h2.display-4 {
         width: 85%;

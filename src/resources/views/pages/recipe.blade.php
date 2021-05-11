@@ -37,7 +37,7 @@
                             <tr>
                                 <td class="col-2 col-md-1 image-container">
                                     <img class="rounded-circle"
-                                         src="{{ $author->profileImage() }}" alt="...">
+                                         src="{{ $author->profileImage() }}">
                                 </td>
                                 <td class="align-middle">
                                     <div class="col-md-5 card-body p-0 m-0 ms-2 text-start">
@@ -62,7 +62,7 @@
                     @endforeach
                 </div>
                 <ul class="col-3 text-end">
-                    @if($canEdit)
+                    @if(Gate::inspect('update', $recipe)->allowed())
                         <li class="list-group-item bg-light" style="border-radius: .5rem">
                             <a href="{{ url('/recipe/'.$recipe->id.'/edit') }}">
                                 <span class="legend">Edit Recipe</span><i class="fas fa-edit ms-2"></i>
@@ -88,7 +88,7 @@
                                 </a>
                         </li>
                     @endif
-                    @if($canDelete)
+                    @if(Gate::inspect('delete', $recipe)->allowed())
                         <li class="list-group-item">
                             <form id="deleteRecipeForm" method="POST"
                                   action="{{ url("/recipe/".$recipe->id."/delete") }}">
