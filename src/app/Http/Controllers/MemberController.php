@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Auth;
 
 class MemberController extends Controller
 {
@@ -141,6 +142,28 @@ class MemberController extends Controller
 
     private function renderMemberView(Member $user, string $tab, $items)
     {
+        $profileVisibility = $this->get($user)->visibility;
+
+        if (!$profileVisibility) {
+            $canViewProfile = false;
+            if (Auth::check()) {
+                $followers = $user->followers()->where('id', "=", Auth::user()->id)->get();
+                if (sizeof($followers) != 0) $canViewProfile = true;
+
+                if (Auth::user()->id === $user->id) $canViewProfile = true;
+            }
+
+            if (!$canViewProfile)
+                return view('pages.user.' . $tab, [
+                    'user' => $this->get($user),
+                    'canEdit' => false,
+                    'canDelete' => false,
+                    'private' => true,
+                    'tab' => strtolower($tab),
+                    $tab => [],
+                ]);
+        }
+
         return view('pages.user.' . $tab, [
             'user' => $this->get($user),
             'groups' => $this->getGroups($user),

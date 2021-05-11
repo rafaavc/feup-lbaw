@@ -191,7 +191,7 @@ class RecipeController extends Controller
             if ($apiMessage->status() != 200)
                 throw new Exception('Database Exception!');
 
-            return redirect('/recipe/' . $apiMessage->getOriginalContent()['recipe_id'])->with('message', 'Recipe successfully created!'); // TODO: change to the created recipe page
+            return redirect('/recipe/' . $apiMessage->getOriginalContent()['recipe_id'])->with('message', 'Recipe successfully created!');
         } catch (\Exception $e) {
             return redirect()->back()->withErrors($e->getMessage());
         }
