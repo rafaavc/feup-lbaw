@@ -164,7 +164,9 @@ class MemberController extends Controller
     private function renderMemberView(Member $user, string $tab, $items)
     {
         $followState = 'Follow';
-        if(Auth::user()->following->contains($user->id)) {
+        if(!Auth::check() || Auth::guard('admin')->check())
+            $followState = 'External';
+        else if(Auth::user()->following->contains($user->id)) {
             $followState = DB::table('tb_following')
                 ->select('state')
                 ->where('id_following', Auth::user()->id)
