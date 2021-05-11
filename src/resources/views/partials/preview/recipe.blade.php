@@ -10,10 +10,10 @@
                 <i class="fas fa-ellipsis-h"></i>
             </button>
             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton1">
-                @if($canEdit)
+                @if(Gate::inspect('update', $recipe)->allowed())
                     <li><a class="dropdown-item" href="#">Edit Post</a></li>
                 @endif
-                @if($canDelete)
+                @if(Gate::inspect('delete', $recipe)->allowed())
                     <li><a class="dropdown-item" href="#">Delete Post</a></li>
                 @else
                     <li><a class="dropdown-item" href="#">Report Post</a></li>
