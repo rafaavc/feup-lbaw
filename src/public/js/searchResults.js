@@ -2,12 +2,11 @@ import { makeRequest } from './ajax/methods.js'
 import { getFilterBarForm, getFilterBarData } from './utils/getFilterSortBarData.js';
 import { url } from './utils/url.js';
 
-const nextButtons = Array.from(document.querySelectorAll('a.page-link'));
-let urlParams = null;
 const searchQueryInput = document.querySelector('input[name=searchQuery]');
 const searchResultForm = document.querySelector('form.search-result-form');
 const itemsPerSelection = 3;
 
+let urlParams = null;
 let searchQuery = "";
 
 const refreshSearchQuery = () => {
@@ -22,6 +21,7 @@ const refreshSearchQuery = () => {
 refreshSearchQuery();
 
 const registerListeners = () => {
+    const nextButtons = Array.from(document.querySelectorAll('a.page-link'));
     nextButtons.forEach((nextBtn) => {
         nextBtn.addEventListener('click', (event) => {
         const target = event.target;
@@ -178,4 +178,5 @@ window.onpopstate = function(e) {
         document.querySelector('.search-page').innerHTML = e.state.html;
     }
     refreshSearchQuery();
+    registerListeners();
 }
