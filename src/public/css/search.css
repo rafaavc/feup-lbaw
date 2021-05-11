@@ -24,3 +24,11 @@
     cursor: pointer;
     user-select: none;
 }
+
+.search-area {
+    transition: opacity .3s;
+}
+
+.dropdown-menu {
+    user-select: none;
+}

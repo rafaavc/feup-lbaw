@@ -6,6 +6,7 @@ const searchQueryInput = document.querySelector('input[name=searchQuery]');
 const searchResultForm = document.querySelector('form.search-result-form');
 const itemsPerSelection = 3;
 
+
 let urlParams = null;
 let searchQuery = "";
 
@@ -18,7 +19,22 @@ const refreshSearchQuery = () => {
     }
 }
 
+let searchAreas = null;
+
+const refreshSearchAreas = () => {
+    searchAreas = document.querySelectorAll('.search-area');
+}
+
 refreshSearchQuery();
+refreshSearchAreas();
+
+const startWaitingForSearch = () => {
+    searchAreas.forEach((area) => area.style.opacity = 0.3);
+}
+
+const stopWaitingForSearch = () => {
+    searchAreas.forEach((area) => area.style.opacity = 1);
+}
 
 const registerListeners = () => {
     const nextButtons = Array.from(document.querySelectorAll('a.page-link'));
@@ -107,7 +123,7 @@ const searchRequest = (typeSearch, requestURL, query, incrementTotalResults) => 
 
 async function handleSearchSubmit(event) {
     totalResults = 0;
-
+    startWaitingForSearch();
     if (event)
         event.preventDefault();
 
@@ -132,6 +148,7 @@ async function handleSearchSubmit(event) {
             const url = new URL(window.location);
             url.searchParams.set('searchQuery', searchQuery);
             window.history.pushState({ html: document.querySelector('.search-page').innerHTML }, document.title, url);
+            stopWaitingForSearch();
         });
 
     document.querySelector('strong.search-result').textContent = data.searchQuery;
@@ -165,13 +182,25 @@ registerListeners();
 /* FILTERS */
 
 const filterBarForm = getFilterBarForm();
-const categorySelect = filterBarForm.querySelector('select[name=category]');
-const difficultySelect = filterBarForm.querySelector('select[name=difficulty]');
 
+const filterBarInputs = filterBarForm.querySelectorAll('.filter-bar-input');
+
+let filterTimeout = null;
+const handleFilterBarInputChange = (event) => {
+    console.log("FILTER BAR INPUT CHANGE");
+    if (filterTimeout != null) {
+        clearTimeout(filterTimeout);
+        filterTimeout = null;
+    }
+    startWaitingForSearch();
+    filterTimeout = window.setTimeout(() => {
+        filterTimeout = null;
+        handleSearchSubmit(event);
+    }, 2000);
+}
 
 filterBarForm.addEventListener('submit', handleSearchSubmit);
-categorySelect.addEventListener('change', handleSearchSubmit);
-difficultySelect.addEventListener('change', handleSearchSubmit);
+filterBarInputs.forEach((input) => input.addEventListener('change', handleFilterBarInputChange));
 
 window.onpopstate = function(e) {
     if (e.state){
@@ -179,4 +208,5 @@ window.onpopstate = function(e) {
     }
     refreshSearchQuery();
     registerListeners();
+    refreshSearchAreas();
 }

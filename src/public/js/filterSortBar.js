@@ -4,10 +4,15 @@
 */
 
 const updateInnerTextWithTimeFromMins = (element, minsValue) => {
+    console.log(minsValue);
     const num = Number(minsValue)
     const hours = Math.floor(num / 60)
     const mins = num % 60
 
+    if (hours == 0 && mins == 0) {
+        element.innerText = "0min";
+        return;
+    }
     element.innerText = (hours != 0 ? hours + "h" : "") + (mins != 0 ? mins + "min" : "")
 }
 
@@ -85,3 +90,57 @@ durationMinInputs.forEach((inp) => inp.addEventListener('input', () => {
     }
     durationMaxInputs.forEach((input) => input.min = inp.value);
 }));
+
+
+const clearParentsCheckboxes = document.querySelectorAll('.clear-parents-checkboxes');
+
+clearParentsCheckboxes.forEach((button) => {
+    button.addEventListener('click', (event) => {
+        event.preventDefault();
+        const checkboxes = button.parentElement.querySelectorAll('input[type=checkbox]');
+        checkboxes.forEach((checkbox) => {
+            if (checkbox.checked) {
+                checkbox.checked = false;
+                checkbox.dispatchEvent(new Event('change'));
+            }
+        });
+    });
+});
+
+const clearFilterDuration = document.querySelector('#clearFilterDuration');
+const clearFilterDate = document.querySelector('#clearFilterDate');
+const clearFilterRating = document.querySelector('#clearFilterRating');
+
+clearFilterDuration.addEventListener('click', () => {
+    durationMinInputs.forEach(input => {
+        input.value = 0;
+        input.dispatchEvent(new Event('input'));
+    });
+    durationMaxInputs.forEach(input => {
+        input.value = input.max;
+        input.dispatchEvent(new Event('input'));
+    });
+});
+
+
+clearFilterDate.addEventListener('click', () => {
+    dateMinInputs.forEach(input => {
+        input.value = "";
+        input.dispatchEvent(new Event('input'));
+    });
+    dateMaxInputs.forEach(input => {
+        input.value = input.max;
+        input.dispatchEvent(new Event('input'));
+    });
+});
+
+clearFilterRating.addEventListener('click', () => {
+    ratingMinInputs.forEach(input => {
+        input.value = input.min;
+        input.dispatchEvent(new Event('input'));
+    });
+    ratingMaxInputs.forEach(input => {
+        input.value = input.max;
+        input.dispatchEvent(new Event('input'));
+    });
+});

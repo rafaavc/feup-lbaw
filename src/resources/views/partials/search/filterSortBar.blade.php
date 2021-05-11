@@ -9,7 +9,7 @@
 <form name="filterBar">
     <div id="filterBar" class="input-group">
         <span class="input-group-text" id="inputGroup-sizing-sm"><i class="fas fa-filter me-2"></i> Filter by</span>
-        <select class="form-select clickable" name="category" aria-label="Category">
+        <select class="form-select clickable filter-bar-input" name="category" aria-label="Category">
             <option selected value="0">-- Category --</option>
             @foreach($categories as $category)
                 <option value="{{ $category->id }}">{{ $category->name }}</option>
@@ -17,73 +17,78 @@
         </select>
         <button class="form-select text-left-align" type="button" data-bs-toggle="dropdown" aria-expanded="false">Tags</button>
         <ul id="tagFilterDropdown" class="dropdown-menu">
+            <button type="submit" class="btn btn-primary mb-3 me-2">Filter</button>
+            <button class="btn btn-outline-secondary mb-3 clear-parents-checkboxes">Clear</button>
             @foreach($tags as $tag)
                 <div class="form-check">
                     <label class="form-check-label">
-                        <input class="form-check-input tag-filter-checkbox" name="tag{{ $tag->id }}" data-id="{{ $tag->id }}" type="checkbox">
+                        <input class="form-check-input tag-filter-checkbox filter-bar-input" name="tag{{ $tag->id }}" data-id="{{ $tag->id }}" type="checkbox">
                         {{ $tag->name }}
                     </label>
                 </div>
             @endforeach
-            <button type="submit" class="btn btn-primary mt-3">Filter</button>
         </ul>
         <button class="form-select text-left-align" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Rating">Rating</button>
         <ul class="dropdown-menu">
             <div class="mb-3">
                 <label for="filterRatingMinInputDesktop" class="form-label visually-hidden">From</label>
                 <div>From <span>0</span></div>
-                <input type="range" name="filterRatingMinInput" class="form-range filter-rating-min-input" min="0" max="5" step="0.1" value="0" id="filterRatingMinInputDesktop">
+                <input type="range" name="filterRatingMinInput" class="form-range filter-rating-min-input filter-bar-input" min="0" max="5" step="0.1" value="0" id="filterRatingMinInputDesktop">
             </div>
             <div class="mb-3">
                 <label for="filterRatingMaxInputDesktop" class="form-label visually-hidden">To</label>
                 <div>To <span>5</span></div>
-                <input type="range" name="filterRatingMaxInput" class="form-range filter-rating-max-input form-control" min="0" max="5" step="0.1" value="5" id="filterRatingMaxInputDesktop">
+                <input type="range" name="filterRatingMaxInput" class="form-range filter-rating-max-input form-control filter-bar-input" min="0" max="5" step="0.1" value="5" id="filterRatingMaxInputDesktop">
             </div>
-            <button type="submit" class="btn btn-primary">Filter</button>
+            <button type="submit" class="btn btn-primary me-2">Filter</button>
+            <button id="clearFilterRating" class="btn btn-outline-secondary">Clear</button>
         </ul>
         <button class="form-select text-left-align" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Ingredients">Ingredients</button>
         <ul id="ingredientFilterDropdown" class="dropdown-menu">
+            <button type="submit" class="btn btn-primary mb-3 me-2">Filter</button>
+            <button class="btn btn-outline-secondary mb-3 clear-parents-checkboxes">Clear</button>
             @foreach($ingredients as $ingredient)
                 <div class="form-check">
                     <label class="form-check-label">
-                        <input class="form-check-input ingredient-filter-checkbox" name="ingredient{{ $ingredient->id }}" data-id="{{ $ingredient->id }}" type="checkbox">
+                        <input class="form-check-input ingredient-filter-checkbox filter-bar-input" name="ingredient{{ $ingredient->id }}" data-id="{{ $ingredient->id }}" type="checkbox">
                         {{ $ingredient->name }}
                     </label>
                 </div>
             @endforeach
-            <button type="submit" class="btn btn-primary mt-3">Filter</button>
         </ul>
         <button class="form-select text-left-align" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Publication date">Date</button>
         <ul class="dropdown-menu">
             <div class="mb-3">
                 <label class="form-label">
                     From
-                    <input type="date" name="filterDateMinInput" class="form-control filter-date-min-input">
+                    <input type="date" name="filterDateMinInput" class="form-control filter-date-min-input filter-bar-input">
                 </label>
             </div>
             <div class="mb-3">
                 <label class="form-label">
                     To
-                    <input type="date" name="filterDateMaxInput" class="form-control filter-date-max-input">
+                    <input type="date" name="filterDateMaxInput" max="{{ date('Y-m-d') }}" value="{{ date('Y-m-d') }}" class="form-control filter-date-max-input filter-bar-input">
                 </label>
             </div>
-            <button type="submit" class="btn btn-primary">Filter</button>
+            <button type="submit" class="btn btn-primary me-2">Filter</button>
+            <button id="clearFilterDate" class="btn btn-outline-secondary">Clear</button>
         </ul>
         <button class="form-select text-left-align" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Duration">Duration</button>
         <ul class="dropdown-menu">
             <div class="mb-3">
                 <label for="filterDurationMinInputDesktop" class="form-label visually-hidden">From</label>
                 <div>From <span>0min</span></div>
-                <input type="range" name="filterDurationMinInput" class="form-range time-in-mins filter-duration-min-input" min="0" max="300" value="0" step="5" id="filterDurationMinInputDesktop">
+                <input type="range" name="filterDurationMinInput" class="form-range time-in-mins filter-duration-min-input filter-bar-input" min="0" max="300" value="0" step="5" id="filterDurationMinInputDesktop">
             </div>
             <div class="mb-3">
                 <label for="filterDurationMaxInputDesktop" class="form-label visually-hidden">To</label>
                 <div>To <span>5h</span></div>
-                <input type="range" name="filterDurationMaxInput" class="form-range time-in-mins filter-duration-max-input" min="0" max="300" value="600" step="5" id="filterDurationMaxInputDesktop">
+                <input type="range" name="filterDurationMaxInput" class="form-range time-in-mins filter-duration-max-input filter-bar-input" min="0" max="300" value="600" step="5" id="filterDurationMaxInputDesktop">
             </div>
-            <button type="submit" class="btn btn-primary">Filter</button>
+            <button type="submit" class="btn btn-primary me-2">Filter</button>
+            <button id="clearFilterDuration" class="btn btn-outline-secondary">Clear</button>
         </ul>
-        <select class="form-select clickable" name="difficulty" aria-label="Difficulty">
+        <select class="form-select clickable filter-bar-input" name="difficulty" aria-label="Difficulty">
             <option value="0" selected>-- Difficulty --</option>
             <option value="easy">Easy</option>
             <option value="medium">Medium</option>
@@ -293,12 +298,12 @@
                             <div class="mb-3">
                                 <label for="filterDurationMinInputMobile" class="form-label visually-hidden">From</label>
                                 <div>From <span>5min</span></div>
-                                <input type="range" class="form-range time-in-mins filter-duration-min-input" min="5" max="300" value="0" step="5" id="filterDurationMinInputMobile">
+                                <input type="range" class="form-range time-in-mins filter-duration-min-input" min="0" max="300" value="0" step="5" id="filterDurationMinInputMobile">
                             </div>
                             <div class="mb-3">
                                 <label for="filterDurationMaxInputMobile" class="form-label visually-hidden">To</label>
                                 <div>To <span>5h</span></div>
-                                <input type="range" class="form-range time-in-mins filter-duration-max-input" min="5" max="300" value="600" step="5" class="form-control" id="filterDurationMaxInputMobile">
+                                <input type="range" class="form-range time-in-mins filter-duration-max-input" min="0" max="300" value="600" step="5" class="form-control" id="filterDurationMaxInputMobile">
                             </div>
                         </form>
                     </div>
