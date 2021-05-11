@@ -83,8 +83,7 @@ class MemberController extends Controller
 
     public function getGroups(Member $user)
     {
-        return [];
-        //return $user->groups;
+        return $user->groups;
     }
 
     public function put(Request $request, Member $user)
@@ -170,8 +169,6 @@ class MemberController extends Controller
             'groups' => $this->getGroups($user),
             'tab' => strtolower($tab),
             $tab => $items,
-            'canEdit' => Gate::inspect('update', $user)->allowed(),
-            'canDelete' => Gate::inspect('delete', $user)->allowed(),
         ]);
     }
 
