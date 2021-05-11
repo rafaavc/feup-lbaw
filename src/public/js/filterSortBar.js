@@ -4,7 +4,6 @@
 */
 
 const updateInnerTextWithTimeFromMins = (element, minsValue) => {
-    console.log(minsValue);
     const num = Number(minsValue)
     const hours = Math.floor(num / 60)
     const mins = num % 60
