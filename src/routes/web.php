@@ -14,8 +14,12 @@
 // Static pages
 // ----------------------------------------------------------------
 Route::view('/', 'pages.index');
-Route::view('about', 'pages.about');
-Route::view('faq', 'pages.faq');
+
+// Frequently Asked Questions
+Route::get('faq', 'FaqController@view');
+
+// About
+Route::get('about', 'AboutController@view');
 
 // ----------------------------------------------------------------
 // Authentication pages
@@ -36,6 +40,7 @@ Route::get('user/{user}/edit', 'MemberController@update')->middleware('can:view,
 Route::post('user/{user}/edit', 'MemberController@updateAction')->middleware('can:update,user');
 Route::get('user/{user}/delete', 'MemberController@deleteAction')->middleware('can:delete,user');
 Route::get('user/{user}/{any?}', 'MemberController@redirect')->where('any', '.*')->middleware('can:view,user');
+
 Route::get('admin/users', 'MemberController@list');
 
 // ----------------------------------------------------------------
@@ -74,3 +79,4 @@ Route::get('chat/{user}', 'ChatController@view');
 // Report pages
 // ----------------------------------------------------------------
 Route::get('admin/reports', 'ReportController@list');
+

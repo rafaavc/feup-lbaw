@@ -1,8 +1,4 @@
 
-input[name="myfile"] {
-    display: none;
-}
-
 img:not(.logo) {
     height: 10vw !important;
     width: 10vw !important;
