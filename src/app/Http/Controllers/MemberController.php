@@ -84,8 +84,7 @@ class MemberController extends Controller
 
     public function getGroups(Member $user)
     {
-        return [];
-        //return $user->groups;
+        return $user->groups;
     }
 
     public function put(Request $request, Member $user)
@@ -177,13 +176,17 @@ class MemberController extends Controller
             $followState = json_decode($followState, true)[0]['state'];
         }
 
+        if (Gate::inspect('viewInfo', $user)->denied())
+            return view('pages.user.privateProfile', [
+                'user' => $this->get($user),
+                'followState' => $followState
+            ]);
+
         return view('pages.user.' . $tab, [
             'user' => $this->get($user),
             'groups' => $this->getGroups($user),
             'tab' => strtolower($tab),
             $tab => $items,
-            'canEdit' => Gate::inspect('update', $user)->allowed(),
-            'canDelete' => Gate::inspect('delete', $user)->allowed(),
             'followState' => $followState
         ]);
     }

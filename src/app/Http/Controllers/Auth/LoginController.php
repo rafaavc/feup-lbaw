@@ -51,7 +51,8 @@ class LoginController extends Controller
         return redirect('login');
     }
 
-    public function username() {
+    public function username()
+    {
         return 'username';
     }
 
@@ -68,7 +69,7 @@ class LoginController extends Controller
             return true;
 
         if (Auth::guard('admin')->attempt($credentials)) {
-            $this->redirectTo = '/users_management';
+            $this->redirectTo = url('reports');
             $this->isAdmin = true;
             return true;
         }

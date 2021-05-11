@@ -96,7 +96,7 @@ class Member extends Authenticatable
 
     public function groups()
     {
-        return $this->belongsToMany(Groups::class, 'tb_group_member', 'id_member', 'id_group');
+        return $this->belongsToMany(Group::class, 'tb_group_member', 'id_member', 'id_group');
     }
 
     public function getBiographyAttribute()

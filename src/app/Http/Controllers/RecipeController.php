@@ -21,34 +21,34 @@ class RecipeController extends Controller
     protected $table = "tb_recipe";
 
     private static $validation = [
-            'name' => 'required|string',
-            'category' => 'required|integer|exists:App\Models\Category,id',
-            'description' => 'required|string',
-            'difficulty' => 'required|string|in:easy,medium,hard,very hard',
-            'servings' => 'required|integer|min:1',
-            'tags'  => 'required|array',
-            'tags.*' => 'integer|exists:App\Models\Tag,id|distinct',
-            'ingredients' => 'required|array',
-            'ingredients.*.quantity' => 'required|numeric|min:0',
-            'ingredients.*.id_unit' => 'required|integer|exists:App\Models\Unit,id',
-            'ingredients.*.id' => 'required|integer|exists:App\Models\Ingredient,id|distinct',
-            'preparation_time' => 'required|integer|min:0',
-            'cooking_time' => 'required|integer|min:0',
-            'additional_time' => 'required|integer|min:0',
-            'steps'  => 'required|array',
-            'steps.*.name' => 'required|string',
-            'steps.*.image' => 'nullable|file|image',
-            'images.*' => 'nullable|file|image'
+        'name' => 'required|string',
+        'category' => 'required|integer|exists:App\Models\Category,id',
+        'description' => 'required|string',
+        'difficulty' => 'required|string|in:easy,medium,hard,very hard',
+        'servings' => 'required|integer|min:1',
+        'tags' => 'required|array',
+        'tags.*' => 'integer|exists:App\Models\Tag,id|distinct',
+        'ingredients' => 'required|array',
+        'ingredients.*.quantity' => 'required|numeric|min:0',
+        'ingredients.*.id_unit' => 'required|integer|exists:App\Models\Unit,id',
+        'ingredients.*.id' => 'required|integer|exists:App\Models\Ingredient,id|distinct',
+        'preparation_time' => 'required|integer|min:0',
+        'cooking_time' => 'required|integer|min:0',
+        'additional_time' => 'required|integer|min:0',
+        'steps' => 'required|array',
+        'steps.*.name' => 'required|string',
+        'steps.*.image' => 'nullable|file|image',
+        'images.*' => 'nullable|file|image'
     ];
 
     private static $errorMessages = [
-            'tags.*.distinct' => 'Repeated tags are not allowed.',
-            'tags.*.*' => 'Invalid Tag.',
-            'ingredients.*.quantity.*' => 'Invalid quantity.',
-            'ingredients.*.id_unit.*' => 'Invalid unit.',
-            'ingredients.*.id.distinct' => 'Repeated ingredients are not allowed.',
-            'ingredients.*.id.*' => 'Invalid ingredient.',
-            'steps.*.name.*' => 'Invalid Step name.'
+        'tags.*.distinct' => 'Repeated tags are not allowed.',
+        'tags.*.*' => 'Invalid Tag.',
+        'ingredients.*.quantity.*' => 'Invalid quantity.',
+        'ingredients.*.id_unit.*' => 'Invalid unit.',
+        'ingredients.*.id.distinct' => 'Repeated ingredients are not allowed.',
+        'ingredients.*.id.*' => 'Invalid ingredient.',
+        'steps.*.name.*' => 'Invalid Step name.'
     ];
 
     /**
@@ -56,30 +56,33 @@ class RecipeController extends Controller
      *
      * @return string[]
      */
-    public function getRecipeImages($recipeId) {
-        $paths = File::files(storage_path('app/public/images/recipes/'.$recipeId.'/'));
+    public function getRecipeImages($recipeId)
+    {
+        $paths = File::files(storage_path('app/public/images/recipes/' . $recipeId . '/'));
         $images = array();
-        foreach($paths as $idx => $path) {
-            array_push($images, asset('storage/images/recipes/'.$recipeId.'/'.$path->getBasename()));
+        foreach ($paths as $idx => $path) {
+            array_push($images, asset('storage/images/recipes/' . $recipeId . '/' . $path->getBasename()));
         }
         return $images;
     }
 
-    public function getStepImage($stepId, $allStepImages = null) {
+    public function getStepImage($stepId, $allStepImages = null)
+    {
         if ($allStepImages == null) $allStepImages = Storage::files('public/images/steps/');
-        $matchingFiles = preg_grep("/\/".$stepId."\./", $allStepImages);
+        $matchingFiles = preg_grep("/\/" . $stepId . "\./", $allStepImages);
 
-        foreach($matchingFiles as $file) return $file;
+        foreach ($matchingFiles as $file) return $file;
         return null;
     }
 
-    public function deleteRecipeStepsImages($steps) {
+    public function deleteRecipeStepsImages($steps)
+    {
         $allStepImages = Storage::files('public/images/steps');
         foreach ($steps as $step) {
             $imgPath = $this->getStepImage($step->id, $allStepImages);
             var_dump($imgPath);
 
-            if ($imgPath != null) File::delete(storage_path('app/'.$imgPath));
+            if ($imgPath != null) File::delete(storage_path('app/' . $imgPath));
         }
     }
 
@@ -88,7 +91,8 @@ class RecipeController extends Controller
      *
      * @return string
      */
-    public function getStepImageForClient($stepId) {
+    public function getStepImageForClient($stepId)
+    {
         $path = str_replace("public/", "storage/", $this->getStepImage($stepId));
         if ($path != null) return asset($path);
         return null;
@@ -116,13 +120,11 @@ class RecipeController extends Controller
             $recipeCard->owner = $recipeCard->author->name;
         }
 
-        $canEdit = Gate::inspect('update', $recipe)->allowed();
-        $canDelete = Gate::inspect('delete', $recipe)->allowed();
 
         $hasMadeReview = sizeof(Auth::user()->comments()->where('id_recipe', '=', $recipe->id)->whereNotNull('rating')->get()) != 0;
 
         $steps = $recipe->steps;
-        foreach($steps as $step) {
+        foreach ($steps as $step) {
             $image = $this->getStepImageForClient($step->id);
             if ($image != null) $step->image = $image;
         }
@@ -143,10 +145,8 @@ class RecipeController extends Controller
             'category' => $recipe->category,
             'images' => $images,
             'suggested' => $suggested,
-            'canEdit' => $canEdit,
-            'canDelete' => $canDelete,
-            'isFavourited' => $isFavourited,
-            'hasMadeReview' => $hasMadeReview
+            'hasMadeReview' => $hasMadeReview,
+            'isFavourited' => $isFavourited
         ]);
     }
 
@@ -160,7 +160,7 @@ class RecipeController extends Controller
         $recipeName = $recipe->name;
         $this->delete($recipe);
         $rndRecipeId = Recipe::limit(1)->get()[0]->id;
-        return redirect('/recipe/'.$rndRecipeId)->with('message', 'Recipe "'. $recipeName .'" successfully deleted!');
+        return redirect('/recipe/' . $rndRecipeId)->with('message', 'Recipe "' . $recipeName . '" successfully deleted!');
     }
 
     /**
@@ -189,10 +189,10 @@ class RecipeController extends Controller
         try {
             $apiMessage = $this->insert($request);
 
-            if($apiMessage->status() != 200)
+            if ($apiMessage->status() != 200)
                 throw new Exception('Database Exception!');
 
-            return redirect('/recipe/' . $apiMessage->getOriginalContent()['recipe_id'])->with('message', 'Recipe successfully created!'); // TODO: change to the created recipe page
+            return redirect('/recipe/' . $apiMessage->getOriginalContent()['recipe_id'])->with('message', 'Recipe successfully created!');
         } catch (\Exception $e) {
             return redirect()->back()->withErrors($e->getMessage());
         }
@@ -234,7 +234,7 @@ class RecipeController extends Controller
         try {
             $apiMessage = $this->update($request, $recipe);
 
-            if($apiMessage->status() != 200)
+            if ($apiMessage->status() != 200)
                 throw new Exception('Database Exception!');
 
             return redirect('/recipe/' . $recipe->id)->with('message', 'Recipe successfully updated!');
@@ -310,7 +310,7 @@ class RecipeController extends Controller
                 $step = $recipe->steps()->save($step);
 
                 // Save step images
-                if($request->hasFile("steps." . $i)) {
+                if ($request->hasFile("steps." . $i)) {
                     $stepImageFile = $request->file('steps')[$i]['image'];
                     $stepImageFile->storeAs('public/images/steps/', $step->id . '.' . $stepImageFile->extension());
                 }
@@ -318,14 +318,14 @@ class RecipeController extends Controller
 
             // Handle End Product Photos
 
-            if($request->hasFile('images')) {
-                foreach($request->file('images') as $file)
-                    $file->storeAs('public/images/recipes/'. $recipe->id, date('mdYHis') . uniqid() . '.' . $file->extension());
+            if ($request->hasFile('images')) {
+                foreach ($request->file('images') as $file)
+                    $file->storeAs('public/images/recipes/' . $recipe->id, date('mdYHis') . uniqid() . '.' . $file->extension());
             }
 
             DB::commit();
             return response()->json(['message' => 'Succeed!', 'recipe_id' => $recipe->id], 200);
-        } catch(\Exception $e) {
+        } catch (\Exception $e) {
             DB::rollback();
             return response()->json(['message' => 'Invalid Request!'], 400);
         }
@@ -417,15 +417,15 @@ class RecipeController extends Controller
 
             // Handle End Product Photos
             File::cleanDirectory(storage_path('app/public/images/recipes/' . $recipe->id));
-            if($request->hasFile('images')) {
-                foreach($request->file('images') as $file)
-                    $file->storeAs('public/images/recipes/'. $recipe->id, date('mdYHis') . uniqid() . '.' . $file->extension());
+            if ($request->hasFile('images')) {
+                foreach ($request->file('images') as $file)
+                    $file->storeAs('public/images/recipes/' . $recipe->id, date('mdYHis') . uniqid() . '.' . $file->extension());
             }
             $recipe->save();
 
             DB::commit();
             return response()->json(['message' => 'Succeed!'], 200);
-        } catch(\Exception $e) {
+        } catch (\Exception $e) {
             DB::rollback();
             return response()->json(['error' => 'Invalid Request!'], 400);
         }
@@ -455,7 +455,8 @@ class RecipeController extends Controller
      * @param int $recipeId
      * @return void
      */
-    public function addToFavourites(Recipe $recipe) {
+    public function addToFavourites(Recipe $recipe)
+    {
         $recipe->membersWhoFavourited()->attach(Auth::user()->id);
         return response()->json(['message' => 'Success'], 200);
     }
@@ -467,7 +468,8 @@ class RecipeController extends Controller
      * @param int $recipeId
      * @return void
      */
-    public function removeFromFavourites(Recipe $recipe) {
+    public function removeFromFavourites(Recipe $recipe)
+    {
         $recipe->membersWhoFavourited()->detach(Auth::user()->id);
         return response()->json(['message' => 'Success'], 200);
     }
