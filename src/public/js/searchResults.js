@@ -187,7 +187,6 @@ const filterBarInputs = filterBarForm.querySelectorAll('.filter-bar-input');
 
 let filterTimeout = null;
 const handleFilterBarInputChange = (event) => {
-    console.log("FILTER BAR INPUT CHANGE");
     if (filterTimeout != null) {
         clearTimeout(filterTimeout);
         filterTimeout = null;
