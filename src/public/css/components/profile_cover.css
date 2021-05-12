@@ -90,3 +90,13 @@ header.cover .btn-group i {
 header .rating-box {
     margin-top: -1em;
 }
+
+button.user-follow {
+    background-color: var(--bs-dark);
+    color: white;
+}
+
+button.user-follow:hover {
+    background-color: transparent;
+    color: var(--bs-gray-dark);
+}
