@@ -50,9 +50,8 @@
                         </div>
                     @endif
                     @include('partials.profile.peopleBox', ['name' => 'Members', 'people' => $group->members])
-                    @if(Gate::inspect('update', $group)->allowed())
+                    @if(Gate::inspect('update', $group)->allowed() && sizeof($requests) > 0)
                         @include('partials.profile.requestBox', ['name' => 'Member Requests',
-                                                                 'requests' => $group->requests,
                                                                  'new' => true])
                     @endif
                 </div>
@@ -60,9 +59,13 @@
                 <div class="col-md-8 posts-area ps-md-4 mt-5">
                     <div class="row first-recipe-mt">
                         <h3>Recipes</h3>
-                        @foreach($group->recipes as $recipe)
-                            @include('partials.preview.recipe')
-                        @endforeach
+                        @if(sizeof($group->recipes) == 0)
+                            <p>This group has no recipes yet. Create your own!</p>
+                        @else
+                            @foreach($group->recipes as $recipe)
+                                @include('partials.preview.recipe')
+                            @endforeach
+                        @endif
                     </div>
                     <!--<div class="row">
                         <button type="button" class="btn btn-dark load-more w-25 mt-5 mx-auto">Load More</button>
