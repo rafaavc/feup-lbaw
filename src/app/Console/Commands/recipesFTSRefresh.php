@@ -14,7 +14,7 @@ class recipesFTSRefresh extends Command
      *
      * @var string
      */
-    protected $signature = 'recipesFTS:daily';
+    protected $signature = 'recipesFTS:hourly';
 
     /**
      * The console command description.
