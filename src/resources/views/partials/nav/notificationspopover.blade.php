@@ -8,8 +8,12 @@
         <div class="notif-quantity-indicator-mobile"><small>3</small></div>
     </button>
     <div id="notificationsPopupContent" class="collapse p-2 d-lg-none">
-        @foreach ($followRequests as $followRequest)
-            @include('partials.nav.followInfo', ['name' => $followRequest['name'], 'id' => $followRequest['id'], 'state' => $followRequest['state']])
-        @endforeach
+        @if(count($followRequests) > 0)
+            @foreach ($followRequests as $followRequest)
+                @include('partials.nav.followInfo', ['username' => $followRequest['username'], 'id' => $followRequest['id'], 'state' => $followRequest['state']])
+            @endforeach
+        @else
+            <b>You don't have any new notifications.</b>
+        @endif
     </div>
 </li>

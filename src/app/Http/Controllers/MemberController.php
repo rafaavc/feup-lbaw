@@ -164,7 +164,7 @@ class MemberController extends Controller
 
     public function declineFollowRequest(Member $user) {
         try {
-            Auth::user()->followers()->wherePivot('state', 'pending')->dettach($user->id);
+            Auth::user()->followers()->wherePivot('state', 'pending')->detach($user->id);
             return response()->json(['message' => 'Success!'], 200);
         } catch(Exception $e) {
             return response()->json(['message' => $e->getMessage()], 400);

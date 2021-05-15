@@ -1,4 +1,7 @@
 
+import { makeRequest } from './ajax/methods.js'
+import { url } from './utils/url.js';
+
 // const messagesPopupButton = document.querySelector('#messagesPopupButton');
 // messagesPopupButton.dataset.bsContent = ;
 
@@ -26,8 +29,22 @@ for (const button of popoverButtons) {
 document.querySelector('#showPopOver').addEventListener('shown.bs.popover', () => {
     let followRequestBtns = Array.from(document.querySelectorAll('button.follow-request-button'));
     followRequestBtns.forEach((followRequestBtn) => {
-        followRequestBtn.addEventListener('mousedown', (followBtn) => {
-            followBtn.preventDefault();
+        followRequestBtn.addEventListener('mousedown', (event) => {
+            event.preventDefault();
+            const target = event.currentTarget;
+            const targetUsername = target.parentElement.previousElementSibling.querySelector('a').textContent
+            const requestType = target.getAttribute('data-state') == 'accept' ? 'PUT' : 'DELETE';
+            let requestURL = url('/api/user/request/' + targetUsername);
+            console.log(requestURL);
+            console.log(requestType);
+        makeRequest(requestURL, requestType)
+            .then((result) => {
+                console.log(result);
+                // if(result.response.status == 200) {
+
+                // }
+            })
+
             console.log("Click Test");
         });
     });

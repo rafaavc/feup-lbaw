@@ -54,10 +54,10 @@
 @elseif(Auth::check())
     @php
         $followRequests = array();
-        $userRequests = Illuminate\Support\Facades\DB::table('tb_following')->where('id_followed', 87)->where('state', '!=', 'rejected')->orderByDesc('timestamp')->get();
+        $userRequests = Illuminate\Support\Facades\DB::table('tb_following')->where('id_followed', Auth::user()->id)->where('state', '!=', 'rejected')->orderByDesc('timestamp')->get();
         foreach ($userRequests as $request) {
             $userFollowing = App\Models\Member::find($request->id_following);
-            array_push($followRequests, ['name' => $userFollowing->name, 'id' => $userFollowing->id, 'state' => $request->state]);
+            array_push($followRequests, ['username' => $userFollowing->username, 'id' => $userFollowing->id, 'state' => $request->state]);
         }
         $menu = [
             "notifications" => [
