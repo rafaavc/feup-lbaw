@@ -19,3 +19,16 @@ for (const button of popoverButtons) {
         else if (popover._hoverState === "") popover.show()          // if the button is already focused and is clicked while the popup is not open
     })
 }
+
+
+// ------------------------ Follow Requests ------------------------ //
+
+document.querySelector('#showPopOver').addEventListener('shown.bs.popover', () => {
+    let followRequestBtns = Array.from(document.querySelectorAll('button.follow-request-button'));
+    followRequestBtns.forEach((followRequestBtn) => {
+        followRequestBtn.addEventListener('mousedown', (followBtn) => {
+            followBtn.preventDefault();
+            console.log("Click Test");
+        });
+    });
+});

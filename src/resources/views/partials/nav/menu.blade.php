@@ -99,19 +99,3 @@
     @endif
 @endforeach
 
-
-<script defer>
-    document.querySelector('#showPopOver').addEventListener('shown.bs.popover', () => {
-        console.log('')
-        let abc = Array.from(document.querySelectorAll('button.follow-request-button'));
-        console.log(abc[0]);
-        abc.forEach((each) => {
-            each.addEventListener('mousedown', (e) => {
-                e.preventDefault();
-                console.log("Click Test");
-            }, false);
-        });
-    });
-
-</script>
-

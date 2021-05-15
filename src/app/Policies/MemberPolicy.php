@@ -96,7 +96,7 @@ class MemberPolicy
     }
 
     /**
-     * Determine whether the user can follow another.
+     * Determine whether the user can unfollow another.
      *
      * @param \App\Models\Member $member
      * @param \App\Models\Member $argument
@@ -110,5 +110,18 @@ class MemberPolicy
             $state = $followRequest->pivot->state;
         return $member->following->contains($argument->id) &&
             ($state == 'accepted');
+    }
+
+    /**
+     * Determine whether the user can accept/decline a follow request.
+     *
+     * @param \App\Models\Member $member
+     * @param \App\Models\Member $argument
+     * @return mixed
+     */
+    public function acceptOrDeclineFollow(Member $member, Member $argument)
+    {
+        $followRequest = $member->followers()->where('id_following', $argument->id)->wherePivot('state', 'pending')->exists();
+        return $followRequest;
     }
 }
