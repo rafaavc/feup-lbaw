@@ -1,4 +1,4 @@
-<ul class="p-0 m-0">
+<ul class="p-0 m-0" data-follow="follow-{{ $id }}">
     <li class="card p-2 mb-2">
         <div class="row g-5">
             <div class="col-2">

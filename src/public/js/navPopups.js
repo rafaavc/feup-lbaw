@@ -6,7 +6,7 @@ import { url } from './utils/url.js';
 // messagesPopupButton.dataset.bsContent = ;
 
 const popoverButtons = document.querySelectorAll('.nav-popover');
-const allPopovers = [];
+let notificationPopOver;
 
 for (const button of popoverButtons) {
     let content = button.dataset.popoverContent ? document.querySelector(button.dataset.popoverContent).innerHTML : '';
@@ -17,8 +17,8 @@ for (const button of popoverButtons) {
         content,
         sanitize: false
     })
-
-    allPopovers.push(popover);
+    if(button.id == 'showPopOver')
+    notificationPopOver = popover;
 
     button.addEventListener('click', () => {
         if (popover._hoverState === null) popover.hide()        // if the popup is open
@@ -28,19 +28,23 @@ for (const button of popoverButtons) {
 
 
 // ------------------------ Follow Requests ------------------------ //
-
 let numPopOvers = 0;
 
-document.querySelector('#showPopOver').addEventListener('shown.bs.popover', () => {
+const notifications = document.querySelector('#notificationsPopupContent');
+const numNotifications = document.querySelector('div.notif-quantity-indicator').firstElementChild;
+
+document.querySelector('#showPopOver').addEventListener('shown.bs.popover', (event) => {
     let followRequestBtns = Array.from(document.querySelectorAll('button.follow-request-button'));
     followRequestBtns.forEach((followRequestBtn) => {
         followRequestBtn.addEventListener('mousedown', (event) => {
             event.preventDefault();
             const target = event.currentTarget;
-            const targetUsername = target.parentElement.previousElementSibling.querySelector('a').textContent
+            const targetUsername = target.parentElement.previousElementSibling.querySelector('a').textContent;
             const requestType = target.getAttribute('data-state') == 'accept' ? 'PUT' : 'DELETE';
             let requestURL = url('/api/user/request/' + targetUsername);
             const notificationBox = target.closest('ul');
+
+            let followId = /follow-(\d+)/.exec(notificationBox.getAttribute('data-follow'))[1];
 
             let fadeOutNotification = setInterval(async () => {
                 if (!notificationBox.style.opacity)
@@ -48,9 +52,12 @@ document.querySelector('#showPopOver').addEventListener('shown.bs.popover', () =
                 if (notificationBox.style.opacity > 0)
                     notificationBox.style.opacity -= 0.1;
                 else {
+                    notifications.removeChild(notifications.querySelector('[data-follow=follow-' + followId));
+                    notificationPopOver.config.content = notifications.innerHTML;
+
                     if(numPopOvers == 0) {
-                        for (const popOver of allPopovers)
-                            popOver.hide();
+                        notificationPopOver.config.content = '<b>You don\'t have any new notifications.</b>';
+                        notificationPopOver.hide();
                     } else
                         notificationBox.classList.add('d-none');
 
@@ -60,12 +67,13 @@ document.querySelector('#showPopOver').addEventListener('shown.bs.popover', () =
 
             makeRequest(requestURL, requestType)
                 .then((result) => {
-                    if(result.response.status == 200)
+                    if(result.response.status == 200) {
+                        numNotifications.textContent = parseInt(numNotifications.textContent) - 1;
                         numPopOvers -= 1;
+                    }
                 })
             });
     });
 
     numPopOvers = document.querySelector('#notificationsPopupContent').childElementCount;
-    console.log(numPopOvers)
 });
