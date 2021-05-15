@@ -43,7 +43,7 @@ class MemberPolicy
             return false;
         if ($member->id === $argument->id)
             return true;
-        return $argument->followers->where('id', $member->id)->where('state', 'accepted')->count() == 1;
+        return $argument->followers()->where('id', $member->id)->where('state', 'accepted')->count() == 1;
     }
 
     /**
