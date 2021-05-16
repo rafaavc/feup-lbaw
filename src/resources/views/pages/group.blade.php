@@ -15,6 +15,7 @@
     <script src="{{ asset('js/membersFollowingBoxes.js') }}" defer></script>
     <script src="{{ asset('js/navPopups.js') }}" defer></script>
     <script src="{{ asset('js/addToFavourites.js') }}" defer></script>
+    <script src="{{ asset('js/group.js') }}" type="module"></script>
 @endpush
 
 @section('content')
@@ -49,7 +50,14 @@
                                 Recipe</a>
                         </div>
                     @endif
-                    @include('partials.profile.peopleBox', ['name' => 'Members', 'people' => $group->members])
+                    @include('partials.profile.peopleBox', [
+                                            'name' => 'Members (<span class="group-member-amount">' . $group->members()->count() . '</span>)',
+                                            'people' => $group->members()->limit(6)->get(),
+                                            'actions' => '<button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#seeAllGroupMembersModal">
+                                                                <i class="fas fa-plus me-2"></i>
+                                                                View all
+                                                            </button>'
+                                        ])
                     @if(Gate::inspect('update', $group)->allowed() && sizeof($requests) > 0)
                         @include('partials.profile.requestBox', ['name' => 'Member Requests',
                                                                  'new' => true])
@@ -74,4 +82,10 @@
             </div>
         </div>
     </main>
+    @include('partials.confirmation', [
+        'modalId' => 'seeAllGroupMembersModal',
+        'modalTitle' => 'Members of ' . $group->name . ' (<span class="group-member-amount">' . $group->members()->count() . '</span>)',
+        'modalMessage' => view('partials.profile.groupMembersList', ['group' => $group, 'offset' => 0]),
+        'modalNoText' => 'Close'
+    ])
 @endsection

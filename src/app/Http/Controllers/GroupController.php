@@ -72,11 +72,29 @@ class GroupController extends Controller
 
     public function removeMember(Group $group, Member $user)
     {
+        $group->members()->detach($user->id);
 
+        return response()->json(['message' => 'The member was removed from the group.'], 200);
     }
 
-    public function getMembers(Group $group)
+    public function getMembers(Request $request, Group $group)
     {
+        $offset = $request->input('offset');
+        $amount = $request->input('amount');
+        $html = $request->input('html');
+        if ($offset && $amount) {
+            $members = $group->members()->skip($offset)->take($amount)->get();
+            $count = $group->members()->count() - $offset;
+            if ($html) {
+                return response()->json([
+                    'html' => view('partials.profile.groupMembersListContent', [
+                            'groupMembers' => $members,
+                            'group' => $group
+                        ])->render(),
+                    'end' => $count <= $amount
+                ], 200);
+            } else return $members;
+        }
         return $group->members;
     }
 

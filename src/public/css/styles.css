@@ -216,3 +216,8 @@ body, html {
 .first-recipe-mt > .recipe-post:first-of-type {
     margin-top: 1rem !important;
 }
+
+.modal-body {
+    max-height: 60vh;
+    overflow-y: auto;
+}

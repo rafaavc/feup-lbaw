@@ -9,7 +9,9 @@ const dealWithMembershipRequest = (event, accept) => {
     const button = event.target.tagName == "I" ? event.target.parentElement.parentElement : event.target;
     const group = button.dataset.group;
     const member = button.dataset.member;
+
     let requestUrl = url(`api/group/${group}/request/${member}`), requestMethod = '';
+
     if (accept) requestMethod = 'POST';
     else requestMethod = 'DELETE';
 
@@ -46,3 +48,67 @@ acceptButtons.forEach(button => {
 rejectButtons.forEach(button => {
     button.addEventListener('click', (event) => dealWithMembershipRequest(event, false));
 })
+
+
+const loadMembersButton = document.querySelector('#loadMoreMembersButton');
+const memberAmount = document.querySelectorAll('.group-member-amount');
+
+const decrementMemberAmount = () => {
+    memberAmount.forEach(el => {
+        const value = el.innerText;
+        const newValue = Number(value) - 1;
+        el.innerText = newValue;
+    })
+}
+
+const loadMoreMembers = () => {
+    makeRequest(url(`api/group/${loadMembersButton.dataset.group}/members`), 'GET', {
+        html: true,
+        offset: Number(loadMembersButton.dataset.offset),
+        amount: 10
+    })
+        .then(res => {
+            if (res.response.status != 200) {
+                console.error("Error when retrieving group members!");
+            } else {
+                loadMembersButton.parentElement.previousElementSibling.firstElementChild.insertAdjacentHTML('beforeend', res.content.html);
+                if (res.content.end) loadMembersButton.remove();
+                else loadMembersButton.dataset.offset = Number(loadMembersButton.dataset.offset) + 10;
+                refreshRemoveMemberButtons();
+            }
+        })
+}
+
+if (loadMembersButton) loadMembersButton.addEventListener('click', loadMoreMembers);
+
+
+const removeMember = (button) => {
+    const member = button.dataset.member;
+    const group = button.dataset.group;
+    makeRequest(url(`api/group/${group}/member/${member}`), 'DELETE')
+        .then((res) => {
+            if (res.response.status != 200) {
+                console.error("ERROR removing member from group!");
+            } else {
+                button.parentElement.parentElement.remove();
+                decrementMemberAmount();
+                // TODO add feedback
+            }
+        })
+}
+
+
+let removeMemberButtons = [];
+
+const refreshRemoveMemberButtons = () => {
+    const newButtons = document.querySelectorAll('.remove-group-member-button');
+    for (const button of newButtons) {
+        if (!removeMemberButtons.includes(button)) {
+            button.addEventListener('click', () => removeMember(button));
+        }
+    }
+    removeMemberButtons = [...newButtons];
+}
+
+refreshRemoveMemberButtons();
+
