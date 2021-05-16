@@ -52,7 +52,7 @@ class GroupController extends Controller
 
         DB::commit();
 
-        return response()->json(['message' => 'The member was accepted into the group.'], 200);
+        return response()->json(['message' => 'The member was accepted into the group.', 'html' => view('partials.profile.peopleBoxEntry', [ 'person' => $user, 'group' => $group ])->render()], 200);
     }
 
     public function decline(Group $group, Member $user)
