@@ -69,7 +69,7 @@ class LoginController extends Controller
             return true;
 
         if (Auth::guard('admin')->attempt($credentials)) {
-            $this->redirectTo = url('reports');
+            $this->redirectTo = url('admin/users');
             $this->isAdmin = true;
             return true;
         }

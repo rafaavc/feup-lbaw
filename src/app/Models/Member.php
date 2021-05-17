@@ -5,6 +5,9 @@ namespace App\Models;
 use App\Models\Comment;
 use App\Models\Country;
 use App\Models\Recipe;
+use App\Models\RecipeReport;
+use App\Models\CommentReport;
+
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
@@ -34,7 +37,15 @@ class Member extends Authenticatable
         'password', 'email', 'search', 'num_rating', 'is_banned', 'visibility', 'bio', 'id_country'
     ];
 
-    protected $appends = ['biography', 'number_of_recipes', 'number_of_followers', 'number_of_following'];
+    protected $appends = [
+        'biography',
+        'number_of_recipes',
+        'number_of_followers',
+        'number_of_following',
+        'number_of_posted_recipes',
+        'number_of_posted_comments',
+        'number_of_reports'
+    ];
 
     /**
      * Get the route key for the model.
@@ -117,5 +128,18 @@ class Member extends Authenticatable
     public function getNumberOfFollowingAttribute()
     {
         return $this->following()->count();
+    }
+
+    public function getNumberOfPostedRecipesAttribute() {
+        return $this->recipes()->count();
+    }
+
+    public function getNumberOfPostedCommentsAttribute() {
+        return $this->comments()->count();
+    }
+
+    public function getNumberOfReportsAttribute() {
+        return RecipeReport::all()->where('id_reporter', $this->id)->count() +
+            CommentReport::all()->where('id_reporter', $this->id)->count();
     }
 }

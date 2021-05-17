@@ -55,7 +55,7 @@ class Recipe extends Model
 
     public function reports()
     {
-        return $this->hasMany(Recipe_Report::class, 'id_recipe');
+        return $this->hasMany(RecipeReport::class, 'id_recipe');
     }
 
     public function author()

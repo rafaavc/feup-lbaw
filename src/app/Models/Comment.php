@@ -24,4 +24,8 @@ class Comment extends Model
     public function recipe() {
         return $this->belongsTo('App\Models\Recipe', 'id_recipe', 'id');
     }
+
+    public function reports() {
+        return $this->hasMany(CommentReport::class, 'id_comment');
+    }
 }

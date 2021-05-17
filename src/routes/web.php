@@ -41,7 +41,7 @@ Route::post('user/{user}/edit', 'MemberController@updateAction')->middleware('ca
 Route::get('user/{user}/delete', 'MemberController@deleteAction')->middleware('can:delete,user');
 Route::get('user/{user}/{any?}', 'MemberController@redirect')->where('any', '.*')->middleware('can:view,user');
 
-Route::get('admin/users', 'MemberController@list');
+Route::get('admin/users', 'MemberController@list')->middleware('IsAdmin');
 
 // ----------------------------------------------------------------
 // Recipe pages
