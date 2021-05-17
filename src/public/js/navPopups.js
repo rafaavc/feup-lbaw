@@ -30,50 +30,57 @@ for (const button of popoverButtons) {
 // ------------------------ Follow Requests ------------------------ //
 let numPopOvers = 0;
 
-const notifications = document.querySelector('#notificationsPopupContent');
-const numNotifications = document.querySelector('div.notif-quantity-indicator').firstElementChild;
+let notifications;
+let numNotifications;
 
-document.querySelector('#showPopOver').addEventListener('shown.bs.popover', (event) => {
-    let followRequestBtns = Array.from(document.querySelectorAll('button.follow-request-button'));
-    followRequestBtns.forEach((followRequestBtn) => {
-        followRequestBtn.addEventListener('mousedown', (event) => {
-            event.preventDefault();
-            const target = event.currentTarget;
-            const targetUsername = target.parentElement.previousElementSibling.querySelector('a').textContent;
-            const requestType = target.getAttribute('data-state') == 'accept' ? 'PUT' : 'DELETE';
-            let requestURL = url('/api/user/request/' + targetUsername);
-            const notificationBox = target.closest('ul');
+if(document.body.contains(document.querySelector('#showPopOver'))) {
+    notifications = document.querySelector('#notificationsPopupContent');
+    numNotifications = document.querySelector('div.notif-quantity-indicator').firstElementChild;
 
-            let followId = /follow-(\d+)/.exec(notificationBox.getAttribute('data-follow'))[1];
+    document.querySelector('#showPopOver').addEventListener('shown.bs.popover', (event) => {
+        let followRequestBtns = Array.from(document.querySelectorAll('button.follow-request-button'));
+        followRequestBtns.forEach((followRequestBtn) => {
+            followRequestBtn.addEventListener('mousedown', (event) => {
+                event.preventDefault();
+                const target = event.currentTarget;
+                const targetUsername = target.parentElement.previousElementSibling.querySelector('a').textContent;
+                const requestType = target.getAttribute('data-state') == 'accept' ? 'PUT' : 'DELETE';
+                let requestURL = url('/api/user/request/' + targetUsername);
+                const notificationBox = target.closest('ul');
 
-            let fadeOutNotification = setInterval(async () => {
-                if (!notificationBox.style.opacity)
-                    notificationBox.style.opacity = 1;
-                if (notificationBox.style.opacity > 0)
-                    notificationBox.style.opacity -= 0.1;
-                else {
-                    notifications.removeChild(notifications.querySelector('[data-follow=follow-' + followId));
-                    notificationPopOver.config.content = notifications.innerHTML;
+                let followId = /follow-(\d+)/.exec(notificationBox.getAttribute('data-follow'))[1];
 
-                    if(numPopOvers == 0) {
-                        notificationPopOver.config.content = '<b>You don\'t have any new notifications.</b>';
-                        notificationPopOver.hide();
-                    } else
-                        notificationBox.classList.add('d-none');
+                let fadeOutNotification = setInterval(async () => {
+                    if (!notificationBox.style.opacity)
+                        notificationBox.style.opacity = 1;
+                    if (notificationBox.style.opacity > 0)
+                        notificationBox.style.opacity -= 0.1;
+                    else {
+                        notifications.removeChild(notifications.querySelector('[data-follow=follow-' + followId));
+                        notificationPopOver.config.content = notifications.innerHTML;
 
-                    clearInterval(fadeOutNotification);
-                }
-            }, 35)
+                        if(numPopOvers == 0) {
+                            notificationPopOver.config.content = '<b>You don\'t have any new notifications.</b>';
+                            notificationPopOver.hide();
+                        } else
+                            notificationBox.classList.add('d-none');
 
-            makeRequest(requestURL, requestType)
-                .then((result) => {
-                    if(result.response.status == 200) {
-                        numNotifications.textContent = parseInt(numNotifications.textContent) - 1;
-                        numPopOvers -= 1;
+                        clearInterval(fadeOutNotification);
                     }
-                })
-            });
-    });
+                }, 35)
 
-    numPopOvers = document.querySelector('#notificationsPopupContent').childElementCount;
-});
+                makeRequest(requestURL, requestType)
+                    .then((result) => {
+                        if(result.response.status == 200) {
+                            numNotifications.textContent = parseInt(numNotifications.textContent) - 1;
+                            numPopOvers -= 1;
+                        }
+                    })
+                });
+        });
+
+        numPopOvers = document.querySelector('#notificationsPopupContent').childElementCount;
+    });
+}
+
+
