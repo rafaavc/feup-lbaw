@@ -1,9 +1,25 @@
 import { url } from './utils/url.js';
 import { makeRequest } from './ajax/methods.js';
 import { instantiateToolTip } from './utils/tooltip.js';
+import { Feedback } from './feedback/Feedback.js';
+
+
+const memberAmount = document.querySelectorAll('.group-member-amount');
+
+const changeMemberAmount = (amount) => {
+    memberAmount.forEach(el => {
+        const value = el.innerText;
+        const newValue = Number(value) + amount;
+        el.innerText = newValue;
+    })
+}
 
 const acceptButtons = document.querySelectorAll('.group-request-accept');
 const rejectButtons = document.querySelectorAll('.group-request-reject');
+
+const requestBox = document.querySelector('#memberRequests');
+const membershipRequestsFeedback = new Feedback(requestBox, 'mt-4');
+
 
 const dealWithMembershipRequest = (event, accept) => {
     const button = event.target.tagName == "I" ? event.target.parentElement.parentElement : event.target;
@@ -19,23 +35,28 @@ const dealWithMembershipRequest = (event, accept) => {
         .then(res => {
             if (res.response.status != 200) {
                 console.error('Error dealing with membership request:', res.content.message);
+                membershipRequestsFeedback.showMessage('Error ' + res.response.status, 'danger');
             } else {
                 console.log('Dealt with membership request successfully!');
+
+                membershipRequestsFeedback.showMesssage(accept ? "The member has joined the group." : "The membership request was rejected.", 'success');
+
                 const listItem = button.parentElement.parentElement.parentElement.parentElement.parentElement;
                 const unorderedList = listItem.parentElement;
 
                 if (unorderedList.children.length == 1) {
-                    unorderedList.parentElement.parentElement.remove();
+                    requestBox.remove();
                 } else {
                     listItem.remove();
                 }
 
                 if (accept) {
                     const peopleBox = document.querySelector('#peopleBox');
-                    peopleBox.firstElementChild.lastElementChild.insertAdjacentHTML('afterbegin', res.content.html);
+                    peopleBox.firstElementChild.firstElementChild.nextElementSibling.insertAdjacentHTML('afterbegin', res.content.html);
 
-                    const tooltipEl = peopleBox.firstElementChild.lastElementChild.firstElementChild.firstElementChild;
+                    const tooltipEl = peopleBox.firstElementChild.firstElementChild.nextElementSibling.firstElementChild.firstElementChild;
                     instantiateToolTip(tooltipEl);
+                    changeMemberAmount(1);
                 }
             }
         });
@@ -49,17 +70,10 @@ rejectButtons.forEach(button => {
     button.addEventListener('click', (event) => dealWithMembershipRequest(event, false));
 })
 
-
 const loadMembersButton = document.querySelector('#loadMoreMembersButton');
-const memberAmount = document.querySelectorAll('.group-member-amount');
-
-const decrementMemberAmount = () => {
-    memberAmount.forEach(el => {
-        const value = el.innerText;
-        const newValue = Number(value) - 1;
-        el.innerText = newValue;
-    })
-}
+const membersModal = document.querySelector('#seeAllGroupMembersModal');
+const table = membersModal.firstElementChild.firstElementChild.firstElementChild.nextElementSibling.firstElementChild;
+const removeMemberFeedback = new Feedback(table, "mb-2");
 
 const loadMoreMembers = () => {
     makeRequest(url(`api/group/${loadMembersButton.dataset.group}/members`), 'GET', {
@@ -89,10 +103,11 @@ const removeMember = (button) => {
         .then((res) => {
             if (res.response.status != 200) {
                 console.error("ERROR removing member from group!");
+                removeMemberFeedback.showMesssage('Error ' + res.response.status, 'danger');
             } else {
                 button.parentElement.parentElement.remove();
-                decrementMemberAmount();
-                // TODO add feedback
+                changeMemberAmount(-1);
+                removeMemberFeedback.showMesssage('Member removed successfully.', 'success');
             }
         })
 }

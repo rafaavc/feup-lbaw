@@ -11,15 +11,15 @@
                 {{ $member->name }}
             </a>
         </td>
-        @if(Gate::inspect('update', $group)->allowed())
+        @if(Gate::inspect('update', $group)->allowed() && $member->id != Auth::user()->id)
             <td>
                 <button class='btn btn-danger btn-sm has-tooltip ms-3 remove-group-member-button'
-                   data-bs-toggle='tooltip'
-                   data-member='{{ $member->username }}' data-group='{{$group->id}}'
-                   data-bs-placement='bottom' title='Remove user from group'>
+                   data-member='{{ $member->username }}' data-group='{{$group->id}}'>
                    <i class='fas fa-trash'></i>
                 </button>
             </td>
+        @else
+            <td></td>
         @endif
     </tr>
 @endforeach

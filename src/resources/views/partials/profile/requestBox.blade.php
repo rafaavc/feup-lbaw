@@ -1,4 +1,4 @@
-<div id="memberRequests" class="card shadow-sm people-box mt-5">
+<div id="memberRequests" class="card shadow-sm people-box mt-4">
     <div class="card-body m-0">
         <h5 class="card-title mb-4">Member Requests</h5>
 
