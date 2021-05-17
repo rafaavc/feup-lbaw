@@ -64,6 +64,41 @@ class GroupController extends Controller
         }
     }
 
+    public function edit(Request $request, Group $group)
+    {
+        $this->validate($request, GroupController::$validation);
+
+        DB::beginTransaction();
+        try {
+            $group->name = $request->input('name');
+            $group->description = $request->input('description');
+            $group->visibility = $request->input('visibility');
+
+            $group->save();
+
+            $group->moderators()->sync(Auth::user()->id);
+            $group->members()->sync(Auth::user()->id);
+
+            // Handle Group Photos
+
+            if ($request->hasFile('profileImage')) {
+                $file = $request->file('profileImage');
+                $file->storeAs("public/images/groups/profile/","$group->id.jpg");
+            }
+
+            if ($request->hasFile('coverImage')) {
+                $file = $request->file('coverImage');
+                $file->storeAs("public/images/groups/cover/", "$group->id.jpg");
+            }
+
+            DB::commit();
+            return response()->json(['message' => 'Succeed!', 'group_id' => $group->id], 200);
+        } catch (\Exception $e) {
+            DB::rollback();
+            return response()->json(['message' => 'Invalid Request!'], 400);
+        }
+    }
+
     public function post(Request $request, Group $group)
     {
 
@@ -145,12 +180,29 @@ class GroupController extends Controller
 
     public function update(Group $group)
     {
-
+        try {
+            return view('pages.upsertGroup', [
+                'group' => $this->get($group),
+            ]);
+        } catch (\Exception $e) {
+            abort(403, 'Database Exception');
+        }
     }
 
     public function updateAction(Request $request, Group $group)
     {
+        $this->validate($request, GroupController::$validation);
 
+        try {
+            $apiMessage = $this->edit($request, $group);
+
+            if ($apiMessage->status() != 200)
+                throw new Exception('Database Exception!');
+
+            return redirect('/group/' . $apiMessage->getOriginalContent()['group_id'])->with('message', 'Group successfully updated!');
+        } catch (\Exception $e) {
+            return redirect()->back()->withErrors($e->getMessage());
+        }
     }
 
     public function deleteAction(Group $group)
