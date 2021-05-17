@@ -3,6 +3,10 @@ import {url} from './utils/url.js';
 import { instantiateToolTip } from './utils/tooltip.js';
 import { Feedback } from './feedback/Feedback.js';
 
+// ----------------------------------------
+// Join
+// ----------------------------------------
+
 const joinButton = document.querySelector('button.group-join');
 let joinState = joinButton.textContent.trim();
 const groupPath = new URL(window.location.href).pathname;
@@ -58,6 +62,7 @@ registerListeners();
 // ----------------------------------------
 // Members
 // ----------------------------------------
+
 const memberAmount = document.querySelectorAll('.group-member-amount');
 
 const changeMemberAmount = (amount) => {
