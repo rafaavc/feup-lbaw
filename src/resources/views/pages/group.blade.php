@@ -74,6 +74,18 @@
                             <button type="button" class="btn btn-dark load-more w-25 mt-5 mx-auto">Load More</button>
                         </div>-->
                     </div>
+                @else
+                    <div class="d-flex justify-content-center mt-4">
+                        <div class="text-center">
+                            <i class="fas fa-lock fa-10x private-profile-icon mb-4"></i>
+                            <div class="private-profile-text-title">
+                                This account is private
+                            </div>
+                            <div class="private-profile-text">
+                                Follow this account to see their content
+                            </div>
+                        </div>
+                    </div>
                 @endif
             </div>
         </div>
