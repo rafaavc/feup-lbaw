@@ -70,9 +70,21 @@ class GroupController extends Controller
 
     }
 
-    public function removeMember(Group $group, Member $user)
+    public function removeMember(Request $request, Group $group, Member $user)
     {
+        $banned = $request->input('banned');
+
+        DB::beginTransaction();
+
+        if ($banned) {
+            $group->requests()->updateExistingPivot($user->id, ['state' => 'rejected']);
+        } else {
+            $group->requests()->detach($user->id);
+        }
+
         $group->members()->detach($user->id);
+
+        DB::commit();
 
         return response()->json(['message' => 'The member was removed from the group.'], 200);
     }

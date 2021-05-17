@@ -105,7 +105,7 @@ const removeMember = (button) => {
                 console.error("ERROR removing member from group!");
                 removeMemberFeedback.showMesssage('Error ' + res.response.status, 'danger');
             } else {
-                button.parentElement.parentElement.remove();
+                button.parentElement.parentElement.parentElement.remove();
                 changeMemberAmount(-1);
                 removeMemberFeedback.showMesssage('Member removed successfully.', 'success');
             }
