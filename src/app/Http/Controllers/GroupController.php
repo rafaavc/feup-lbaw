@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Storage;
 
 class GroupController extends Controller
 {
@@ -28,7 +29,7 @@ class GroupController extends Controller
 
     public function insert(Request $request)
     {
-        //$this->validate($request, GroupController::$validation);
+        $this->validate($request, GroupController::$validation);
 
         DB::beginTransaction();
         try {
@@ -47,20 +48,13 @@ class GroupController extends Controller
 
             if ($request->hasFile('profileImage')) {
                 $file = $request->file('profileImage');
-                //dd($file);
-                //$file->storeAs("public/images/groups/profile/", "$group->id.jpg");
-
-                //$file->storeAs('public/images/groups/profile/' . $group->id, date('mdYHis') . uniqid() . '.' . $file->extension());
+                $file->storeAs("public/images/groups/profile/","$group->id.jpg");
             }
-
-            //dd("step3");
 
             if ($request->hasFile('coverImage')) {
                 $file = $request->file('coverImage');
-                //$file->storeAs("public/images/groups/cover/", "$group->id.jpeg");
+                $file->storeAs("public/images/groups/cover/", "$group->id.jpg");
             }
-
-
 
             DB::commit();
             return response()->json(['message' => 'Succeed!', 'group_id' => $group->id], 200);
@@ -135,7 +129,7 @@ class GroupController extends Controller
 
     public function createAction(Request $request)
     {
-        //$this->validate($request, GroupController::$validation);
+        $this->validate($request, GroupController::$validation);
 
         try {
             $apiMessage = $this->insert($request);
