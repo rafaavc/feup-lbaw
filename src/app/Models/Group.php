@@ -38,7 +38,7 @@ class Group extends Model
 
     public function profileImage()
     {
-        $path = "storage/images/groups/profile/$this->id.jpeg";
+        $path = "storage/images/groups/profile/$this->id.jpg";
         if (!file_exists($path))
             return asset("storage/images/groups/no_image.png");
         return asset($path);
@@ -46,7 +46,7 @@ class Group extends Model
 
     public function coverPhoto()
     {
-        $path = "storage/images/groups/cover/$this->id.jpeg";
+        $path = "storage/images/groups/cover/$this->id.jpg";
         if (!file_exists($path))
             return asset("storage/images/groups/no_image.png");
         return asset($path);

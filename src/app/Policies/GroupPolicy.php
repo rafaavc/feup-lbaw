@@ -47,7 +47,17 @@ class GroupPolicy
         return $group->members->where('id', '=', $member->id)->count() == 1;
     }
 
-    public function update(Member $member, Group $group)
+    public function insert(Member $member, Group $group)
+    {
+        if (Auth::guard('admin')->check())
+            return false;
+        if (!Auth::check())
+            return false;
+        return true;
+    }
+
+
+    public function update(?Member $member, Group $group)
     {
         if (Auth::guard('admin')->check())
             return false;

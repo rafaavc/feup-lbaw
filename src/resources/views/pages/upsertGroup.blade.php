@@ -7,7 +7,7 @@
 @endpush
 
 @push('js')
-    <script src="{{ asset('js/edit_profile.js') }}" defer></script>
+    <script src="{{ asset('js/upsert_group.js') }}" defer></script>
 @endpush
 
 @section('content')
@@ -30,7 +30,7 @@
         </div>
     @endif
     <form enctype="multipart/form-data" class="card shadow-sm p-2 w-auto h-auto p-5 mt-4 edit-profile-card"
-          method="post">
+          method="post" action="{{ url('/group/' . (isset($group) ? ($group->id . '/edit') : '')) }}">
         @csrf
         <div class="row">
             <div class="col profile-photo-area mx-2">
@@ -50,7 +50,7 @@
                                         <i class="fas fa-upload me-2"></i>
                                         Upload Image
                                     </a>
-                                    <input type="file" class="d-none" name="profileImage"/>
+                                    <input type="file" class="d-none myFile" name="profileImage"/>
                                 </li>
                                 <li>
                                     <a class="dropdown-item file-delete">
@@ -80,7 +80,7 @@
                                 <li>
                                     <a class="dropdown-item file-input"><i class="fas fa-upload me-2"></i>Upload
                                         Image</a>
-                                    <input type="file" class="d-none" name="coverImage"/>
+                                    <input type="file" class="d-none myFile" name="coverImage"/>
                                 </li>
                                 <li>
                                     <a class="dropdown-item file-delete"><i class="fas fa-eraser me-2"></i>Clear
@@ -110,14 +110,14 @@
 
         <h6 class="area-title">Group Visibility <span class='form-required'></span></h6>
         <div class="form-check">
-            <input class="form-check-input" value="public" type="radio" name="visibility" required
+            <input class="form-check-input" value="1" type="radio" name="visibility" required
                    id="flexRadioDefault1" {{ isset($group) && $group->visibility ? "checked" : "" }}>
             <label class="form-check-label" for="flexRadioDefault1">
                 Public
             </label>
         </div>
         <div class="form-check mt-2">
-            <input class="form-check-input" value="private" type="radio" name="visibility" required
+            <input class="form-check-input" value="0" type="radio" name="visibility" required
                    id="flexRadioDefault2" {{ isset($group) && !$group->visibility ? "checked" : "" }}>
             <label class="form-check-label" for="flexRadioDefault2">
                 Private

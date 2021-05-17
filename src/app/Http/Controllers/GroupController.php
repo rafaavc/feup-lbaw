@@ -8,7 +8,7 @@ use App\Models\Member;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Facades\File;
 
 class GroupController extends Controller
 {
@@ -28,7 +28,7 @@ class GroupController extends Controller
 
     public function insert(Request $request)
     {
-        $this->validate($request, GroupController::$validation);
+        //$this->validate($request, GroupController::$validation);
 
         DB::beginTransaction();
         try {
@@ -40,17 +40,27 @@ class GroupController extends Controller
 
             $group->save();
 
+            $group->moderators()->sync(Auth::user()->id);
+            $group->members()->sync(Auth::user()->id);
+
             // Handle Group Photos
 
             if ($request->hasFile('profileImage')) {
                 $file = $request->file('profileImage');
-                $file->storeAs("public/images/groups/profile/", "$group->id.jpeg");
+                //dd($file);
+                //$file->storeAs("public/images/groups/profile/", "$group->id.jpg");
+
+                //$file->storeAs('public/images/groups/profile/' . $group->id, date('mdYHis') . uniqid() . '.' . $file->extension());
             }
+
+            //dd("step3");
 
             if ($request->hasFile('coverImage')) {
                 $file = $request->file('coverImage');
-                $file->storeAs("public/images/groups/cover/", "$group->id.jpeg");
+                //$file->storeAs("public/images/groups/cover/", "$group->id.jpeg");
             }
+
+
 
             DB::commit();
             return response()->json(['message' => 'Succeed!', 'group_id' => $group->id], 200);
@@ -58,6 +68,11 @@ class GroupController extends Controller
             DB::rollback();
             return response()->json(['message' => 'Invalid Request!'], 400);
         }
+    }
+
+    public function post(Request $request, Group $group)
+    {
+
     }
 
     public function put(Request $request, Group $group)
@@ -120,7 +135,7 @@ class GroupController extends Controller
 
     public function createAction(Request $request)
     {
-        $this->validate($request, GroupController::$validation);
+        //$this->validate($request, GroupController::$validation);
 
         try {
             $apiMessage = $this->insert($request);

@@ -29,6 +29,7 @@
             @include('partials.profile.cover', [
                                                     'name' => $group->name,
                                                     'image' => $group->profileImage(),
+                                                    'coverPhoto' => $group->coverPhoto(),
                                                     'text' => $group->description,
                                                     'numbers' => [
                                                         'Recipes' => $group->number_of_recipes,
