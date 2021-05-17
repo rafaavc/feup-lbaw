@@ -13,33 +13,20 @@ if (joinButton !== null) {
     const groupPath = new URL(window.location.href).pathname;
     const groupId = /\/.*\/(.*)/.exec(groupPath)[1];
 
-    const registerListeners = () => {
-        joinButton.addEventListener('click', joinButtonHandler),
-            checkStatePending(joinButton);
-    }
-
     const joinButtonHandler = (event) => {
         let requestURL = url('/api/group/' + groupId + "/request")
         let method = (joinState == 'Join') ? 'POST' : 'DELETE'
         if (joinState == 'Leave')
             return
-        console.log(requestURL);
+        console.log("Sending request to API's address: " + requestURL);
         makeRequest(requestURL, method)
             .then((result) => {
-                if (result.response.status == 200) {
+                if (result.response.status == 200)
                     location.reload();
-                }
             })
     }
 
-    const checkStatePending = (followBtn) => {
-        if (joinState == 'Pending Request')
-            followBtn.setAttribute('disabled', true);
-        else if (joinState == 'Join')
-            followBtn.classList.toggle('user-follow');
-    }
-
-    registerListeners();
+    joinButton.addEventListener('click', joinButtonHandler);
 }
 
 // ----------------------------------------
