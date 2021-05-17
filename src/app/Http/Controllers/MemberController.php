@@ -144,13 +144,32 @@ class MemberController extends Controller
 
     public function deleteFollowRequest(Member $user) {
         try {
-            Auth::user()->following()->detach($user->id);
+            Auth::user()->following()->wherePivot('state', 'accepted')->detach($user->id);
             return response()->json(['message' => 'Success!', 'newState' => 'Follow'], 200);
         } catch(Exception $e) {
             return response()->json(['message' => $e->getMessage()], 400);
         }
     }
 
+    public function acceptFollowRequest(Member $user) {
+        try {
+            Auth::user()->followers()->updateExistingPivot($user->id, [
+                'state' => 'accepted'
+            ]);
+            return response()->json(['message' => 'Success!'], 200);
+        } catch(Exception $e) {
+            return response()->json(['message' => $e->getMessage()], 400);
+        }
+    }
+
+    public function declineFollowRequest(Member $user) {
+        try {
+            Auth::user()->followers()->wherePivot('state', 'pending')->detach($user->id);
+            return response()->json(['message' => 'Success!'], 200);
+        } catch(Exception $e) {
+            return response()->json(['message' => $e->getMessage()], 400);
+        }
+    }
     // ----------------------------------------------------------------
     // Pages
     // ----------------------------------------------------------------
