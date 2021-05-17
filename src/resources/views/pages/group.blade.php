@@ -3,17 +3,12 @@
 @section('title', $group->name)
 
 @push('css')
-    <link href="{{ asset('css/navPopups.css') }}" rel="stylesheet"/>
-    <link href="{{ asset('css/profile_cover.css') }}" rel="stylesheet"/>
-    <link href="{{ asset('css/post.css') }}" rel="stylesheet"/>
     <link href="{{ asset('css/components/membersFollowingBoxes.css') }}" rel="stylesheet"/>
-    <link href="{{ asset('css/breadcrumb.css') }}" rel="stylesheet"/>
     <link href="{{ asset('css/group.css') }}" rel="stylesheet"/>
 @endpush
 
 @push('js')
     <script src="{{ asset('js/membersFollowingBoxes.js') }}" defer></script>
-    <script src="{{ asset('js/navPopups.js') }}" defer></script>
     <script src="{{ asset('js/addToFavourites.js') }}" defer></script>
 @endpush
 
@@ -39,35 +34,36 @@
                                                     'actions' => [
                                                         'Join' => ['#', 'user-plus'],
                                                     ],
-                                                    'group' => true,
                                                 ])
             <div class="row group-body">
-                <div class="col-md-4 p-0 pe-md-4 mt-5">
-                    @if(Gate::inspect('post', $group)->allowed())
-                        <div class="card m-0 mb-4 shadow-sm text-center p-3 personal-info">
-                            <a class="btn btn-primary mt-2" href="{{url('/recipe')}}">Create
-                                Recipe</a>
-                        </div>
-                    @endif
-                    @include('partials.profile.peopleBox', ['name' => 'Members', 'people' => $group->members])
-                    @if(Gate::inspect('update', $group)->allowed())
-                        @include('partials.profile.requestBox', ['name' => 'Member Requests',
-                                                                 'requests' => $group->requests,
-                                                                 'new' => true])
-                    @endif
-                </div>
-
-                <div class="col-md-8 posts-area ps-md-4 mt-5">
-                    <div class="row first-recipe-mt">
-                        <h3>Recipes</h3>
-                        @foreach($group->recipes as $recipe)
-                            @include('partials.preview.recipe')
-                        @endforeach
+                @if(Gate::inspect('view', $group)->allowed())
+                    <div class="col-md-4 p-0 pe-md-4 mt-5">
+                        @if(Gate::inspect('post', $group)->allowed())
+                            <div class="card m-0 mb-4 shadow-sm text-center p-3 personal-info">
+                                <a class="btn btn-primary mt-2" href="{{url('/recipe')}}">Create
+                                    Recipe</a>
+                            </div>
+                        @endif
+                        @include('partials.profile.peopleBox', ['name' => 'Members', 'people' => $group->members])
+                        @if(Gate::inspect('update', $group)->allowed())
+                            @include('partials.profile.requestBox', ['name' => 'Member Requests',
+                                                                     'requests' => $group->requests,
+                                                                     'new' => true])
+                        @endif
                     </div>
-                    <!--<div class="row">
-                        <button type="button" class="btn btn-dark load-more w-25 mt-5 mx-auto">Load More</button>
-                    </div>-->
-                </div>
+
+                    <div class="col-md-8 posts-area ps-md-4 mt-5">
+                        <div class="row first-recipe-mt">
+                            <h3>Recipes</h3>
+                            @foreach($group->recipes as $recipe)
+                                @include('partials.preview.recipe')
+                            @endforeach
+                        </div>
+                        <!--<div class="row">
+                            <button type="button" class="btn btn-dark load-more w-25 mt-5 mx-auto">Load More</button>
+                        </div>-->
+                    </div>
+                @endif
             </div>
         </div>
     </main>

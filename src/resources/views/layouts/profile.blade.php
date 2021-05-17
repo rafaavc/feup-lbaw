@@ -11,7 +11,6 @@
 
 @push('js')
     <script src="{{ asset('js/membersFollowingBoxes.js') }}" defer></script>
-    <script src="{{ asset('js/navPopups.js') }}" defer></script>
     <script src="{{ asset('js/addToFavourites.js') }}" defer></script>
 @endpush
 
@@ -39,7 +38,6 @@
                                                 'Follow' => ['#', 'user-plus'],
                                                 'Chat' => [url("/chat/$user->username"), 'comments'],
                                             ],
-                                            'group' => false
                                         ])
             <div class="row group-body">
                 @if(!isset($private))

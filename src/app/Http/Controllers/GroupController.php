@@ -35,7 +35,25 @@ class GroupController extends Controller
 
     public function request(Group $group)
     {
+        try {
+            $user = Auth::user();
+            $group->requests()->attach($user);
+            $newState = $group->requests()->where('id_member', $user->id)->first()->pivot->state;
+            return response()->json(['message' => 'Success!', 'newState' => $newState], 200);
+        } catch (Exception $e) {
+            return response()->json(['message' => $e->getMessage()], 400);
+        }
+    }
 
+    public function cancelRequest(Group $group)
+    {
+        try {
+            $user = Auth::user();
+            $group->requests()->detach($user);
+            return response()->json(['message' => 'Success!', 'newState' => 'join'], 200);
+        } catch (Exception $e) {
+            return response()->json(['message' => $e->getMessage()], 400);
+        }
     }
 
     public function accept(Group $group, Member $user)
