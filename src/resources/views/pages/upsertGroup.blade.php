@@ -31,7 +31,7 @@
     @endif
     <form enctype="multipart/form-data" class="card shadow-sm p-2 w-auto h-auto p-5 mt-4 edit-profile-card"
           method="post" action="{{ url('/group/' . (isset($group) ? ($group->id . '/edit') : '')) }}">
-        @csrf
+        {{ csrf_field() }}
         <div class="row">
             <div class="col profile-photo-area mx-2">
                 <div class="row row-with-image">

@@ -56,6 +56,13 @@ class GroupPolicy
         return true;
     }
 
+    public function edit(?Member $member, Group $group)
+    {
+        if (Auth::guard('admin')->check())
+            return false;
+        return $group->moderators->where('id', '=', $member->id)->count() == 1;
+    }
+
 
     public function update(?Member $member, Group $group)
     {
