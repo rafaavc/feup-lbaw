@@ -23,6 +23,30 @@ class GroupController extends Controller
         'cover_photo' => 'nullable|file|image'
     ];
 
+    public function deleteGroupProfileImage($group) {
+        $groupProfileImagePath = "public/images/groups/profile/" . "$group->id.jpg";
+        $hasProfileImage = File::delete(storage_path("app/public/images/groups/profile/" . "$group->id.jpg"));
+        if (!$hasProfileImage)
+            $groupProfileImagePath = null;
+        if ($groupProfileImagePath != null)
+            File::delete(storage_path($groupProfileImagePath));
+    }
+
+    public function deleteGroupCoverImage($group) {
+        $groupCoverImagePath = "public/images/groups/cover/" . "$group->id.jpg";
+        $hasCoverImage = File::delete(storage_path("app/public/images/groups/cover/" . "$group->id.jpg"));
+        if (!$hasCoverImage)
+            $groupCoverImagePath = null;
+        if ($groupCoverImagePath != null)
+            File::delete(storage_path($groupCoverImagePath));
+    }
+
+    public function deleteGroupImages($group)
+    {
+        $this->deleteGroupProfileImage($group);
+        $this->deleteGroupCoverImage($group);
+    }
+
     // ----------------------------------------------------------------
     // API
     // ----------------------------------------------------------------
@@ -97,6 +121,14 @@ class GroupController extends Controller
             DB::rollback();
             return response()->json(['message' => 'Invalid Request!'], 400);
         }
+    }
+
+    public function delete(Group $group) {
+        $this->deleteGroupImages($group);
+
+        $group->delete();
+
+        return $group;
     }
 
     public function post(Request $request, Group $group)
@@ -207,7 +239,10 @@ class GroupController extends Controller
 
     public function deleteAction(Group $group)
     {
-
+        $groupName = $group->name;
+        $this->delete($group);
+        $memberUsername = Auth::user()->username;
+        return redirect('/user/' . $memberUsername)->with('message', 'Group "' . $groupName . '" successfully deleted!');
     }
 
     public function view(Group $group)

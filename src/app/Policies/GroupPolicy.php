@@ -77,5 +77,6 @@ class GroupPolicy
             return true;
         return $group->moderators->where('id', '=', $member->id)->count() == 1;
     }
+
 }
 

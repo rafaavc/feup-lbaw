@@ -14,7 +14,6 @@
 
 @php
     $hasErrors = $errors->any();
-    $old = ($hasErrors) ? \Illuminate\Support\Facades\Request::old() : '';
     $breadcrumbPages = ["Groups", isset($group) ? $group->name : "Create Group"];
 @endphp
 
@@ -124,7 +123,18 @@
             </label>
         </div>
 
-        <input type="submit" class="btn btn-primary submit-button mt-5" value='{{ isset($group) ? "Edit Group" : "Create Group" }}'>
+        <div class="row d-flex justify-content-around justify-content-md-between my-5">
+
+            <input type="submit" class="btn btn-primary submit-button mt-5" value='{{ isset($group) ? "Edit Group" : "Create Group" }}'>
+
+            @if (isset($group))
+                <a href="{{url('group/' . $group->id . '/delete')}}" class="btn btn-danger submit-button mt-5">
+                    <i class="fas fa-trash me-3"></i> Delete Group</a>
+            @endif
+
+        </div>
+
+
 
     </form>
 
