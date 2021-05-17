@@ -27,26 +27,7 @@ if (joinButton !== null) {
         makeRequest(requestURL, method)
             .then((result) => {
                 if (result.response.status == 200) {
-                    joinButton.classList.toggle('user-follow');
-                    const newFollowState = result.content.newState;
-                    joinButton.removeChild(joinButton.lastChild);
-
-                    if (newFollowState == "pending") {
-                        joinState = 'Pending Request';
-                        joinButton.querySelector('.fa-user-plus').classList.add('d-none');
-                        joinButton.querySelector('.fa-user-times').classList.add('d-none');
-                        joinButton.setAttribute('disabled', 'true');
-                    } else if (newFollowState == "accepted") {
-                        joinState = 'Leave';
-                        joinButton.querySelector('.fa-user-plus').classList.add('d-none');
-                        joinButton.querySelector('.fa-user-times').classList.remove('d-none');
-                    } else {
-                        joinState = 'Join';
-                        joinButton.querySelector('.fa-user-plus').classList.remove('d-none');
-                        joinButton.querySelector('.fa-user-times').classList.add('d-none');
-                    }
-
-                    joinButton.append(joinState);
+                    location.reload();
                 }
             })
     }

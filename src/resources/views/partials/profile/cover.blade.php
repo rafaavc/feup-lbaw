@@ -47,19 +47,16 @@
                     @elseif(isset($group))
                         @if(Gate::inspect('removeRequest', $group)->allowed())
                             <button type="button" class="btn shadow-none btn-outline-dark group-join">
-                                <i class="fas fa-user-plus d-none"></i>
                                 <i class="fas fa-user-times"></i>
-                                Join
+                                Cancel Request
                             </button>
                         @elseif(Gate::inspect('join', $group)->allowed())
                             <button type="button" class="btn shadow-none btn-outline-dark group-join">
                                 <i class="fas fa-user-plus"></i>
-                                <i class="fas fa-user-times d-none"></i>
                                 Join
                             </button>
                         @elseif(Gate::inspect('leave', $group)->allowed())
                             <button type="button" class="btn shadow-none btn-outline-dark group-join">
-                                <i class="fas fa-user-plus d-none"></i>
                                 <i class="fas fa-user-times"></i>
                                 Leave
                             </button>

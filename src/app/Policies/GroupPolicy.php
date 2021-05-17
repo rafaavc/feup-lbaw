@@ -61,7 +61,7 @@ class GroupPolicy
         return $group->moderators->where('id', $member->id)->count() == 1;
     }
 
-    public function join(Member $member, Group $group)
+    public function join(?Member $member, Group $group)
     {
         if (Auth::guard('admin')->check())
             return false;
@@ -76,16 +76,16 @@ class GroupPolicy
         return true;
     }
 
-    public function removeRequest(Member $member, Group $group)
+    public function removeRequest(?Member $member, Group $group)
     {
         if (Auth::guard('admin')->check())
             return false;
         if (!Auth::check())
             return false;
-        return $group->requests->where('id_member', $member->id)->where('state', 'pending')->count() == 1;
+        return $group->requests()->where('id_member', $member->id)->where('state', 'pending')->count() == 1;
     }
 
-    public function leave(Member $member, Group $group)
+    public function leave(?Member $member, Group $group)
     {
         if (Auth::guard('admin')->check())
             return false;
