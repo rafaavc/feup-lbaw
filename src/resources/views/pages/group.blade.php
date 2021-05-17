@@ -63,7 +63,11 @@
                         <div class="row first-recipe-mt">
                             <h3>Recipes</h3>
                             @if(sizeof($group->recipes) == 0)
-                                <p>This group has no recipes yet. Create your own!</p>
+                                <p>This group has no recipes yet.
+                                    @if(Gate::inspect('post', $group)->allowed())
+                                        Create your own!
+                                    @endif
+                                </p>
                             @else
                                 @foreach($group->recipes as $recipe)
                                     @include('partials.preview.recipe')
