@@ -198,7 +198,7 @@ class MemberController extends Controller
             $followState = json_decode($followState, true)[0]['state'];
         }
 
-        if (Gate::inspect('viewInfo', $user)->denied())
+        if (Gate::inspect('view', $user)->denied())
             return view('pages.user.privateProfile', [
                 'user' => $this->get($user),
                 'followState' => $followState

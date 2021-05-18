@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', "Edit " . $user->name)
+@section('title', "Edit " . htmlentities($user->name))
 
 @push('css')
     <link href="{{ asset('css/edit_profile.css') }}" rel="stylesheet"/>

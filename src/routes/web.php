@@ -10,15 +10,12 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+
 // ----------------------------------------------------------------
 // Static pages
 // ----------------------------------------------------------------
 Route::view('/', 'pages.index');
-
-// Frequently Asked Questions
 Route::get('faq', 'FaqController@view');
-
-// About
 Route::get('about', 'AboutController@view');
 
 // ----------------------------------------------------------------
@@ -33,15 +30,14 @@ Route::post('register', 'Auth\RegisterController@register');
 // ----------------------------------------------------------------
 // User pages
 // ----------------------------------------------------------------
-Route::get('user/{user}/recipes', 'MemberController@readRecipes')->middleware('can:view,user');
-Route::get('user/{user}/favourites', 'MemberController@readFavourites')->middleware('can:view,user');
-Route::get('user/{user}/reviews', 'MemberController@readReviews')->middleware('can:view,user');
-Route::get('user/{user}/edit', 'MemberController@update')->middleware('can:view,user');
+Route::get('user/{user}/recipes', 'MemberController@readRecipes');
+Route::get('user/{user}/favourites', 'MemberController@readFavourites');
+Route::get('user/{user}/reviews', 'MemberController@readReviews');
+Route::get('user/{user}/edit', 'MemberController@update')->middleware('can:update,user');
 Route::post('user/{user}/edit', 'MemberController@updateAction')->middleware('can:update,user');
 Route::get('user/{user}/delete', 'MemberController@deleteAction')->middleware('can:delete,user');
-Route::get('user/{user}/{any?}', 'MemberController@redirect')->where('any', '.*')->middleware('can:view,user');
-
-Route::get('admin/users', 'MemberController@list');
+Route::get('user/{user}/{any?}', 'MemberController@redirect')->where('any', '.*');
+Route::get('admin/users', 'MemberController@list')->middleware('can:list,App\Models\Member');
 
 // ----------------------------------------------------------------
 // Recipe pages
@@ -66,7 +62,7 @@ Route::post('group', 'GroupController@createAction')->middleware('can:create,App
 // ----------------------------------------------------------------
 // List pages
 // ----------------------------------------------------------------
-Route::get('category/{category}', 'CategoryController@view')->middleware('can:view,category');
+Route::get('category/{category}', 'CategoryController@view');
 Route::get('feed', 'FeedController@view');
 Route::get('search', 'SearchController@view');
 

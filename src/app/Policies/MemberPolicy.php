@@ -21,11 +21,6 @@ class MemberPolicy
         return $member == null;
     }
 
-    public function view(?Member $member)
-    {
-        return true;
-    }
-
     /**
      * Determine whether the user can view the model.
      *
@@ -33,7 +28,7 @@ class MemberPolicy
      * @param \App\Models\Member $argument
      * @return mixed
      */
-    public function viewInfo(?Member $member, Member $argument)
+    public function view(?Member $member, Member $argument)
     {
         if (Auth::guard('admin')->check())
             return true;
@@ -89,7 +84,7 @@ class MemberPolicy
     {
         $followRequest = $member->following()->where('id_followed', $argument->id)->orderByDesc('timestamp')->first();
         $state = null;
-        if($followRequest != null)
+        if ($followRequest != null)
             $state = $followRequest->pivot->state;
         return !$member->following->contains($argument->id) ||
             ($state == 'rejected');
@@ -106,7 +101,7 @@ class MemberPolicy
     {
         $followRequest = $member->following()->where('id_followed', $argument->id)->orderByDesc('timestamp')->first();
         $state = null;
-        if($followRequest != null)
+        if ($followRequest != null)
             $state = $followRequest->pivot->state;
         return $member->following->contains($argument->id) &&
             ($state == 'accepted');
@@ -123,5 +118,10 @@ class MemberPolicy
     {
         $followRequest = $member->followers()->where('id_following', $argument->id)->wherePivot('state', 'pending')->exists();
         return $followRequest;
+    }
+
+    public function list(?Member $member)
+    {
+        return Auth::guard('admin')->check();
     }
 }

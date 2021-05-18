@@ -45,7 +45,7 @@
                             </td>
                         </tr>
                     </table>
-                    <input type="range" class="form-range" min="1" max="10" id="yieldsInput<?= $mobile ? "-mobile" : "" ?>" value="3">
+                    <input type="range" class="form-range" min="1" max="10" id="yieldsInput{{ $mobile ? "-mobile" : "" }}" value="3">
                     <input type="reset" class="btn btn-sm btn-outline-secondary mt-3" onclick="calculateQuantities()" value="Reset servings">
                 </form>
             </section>

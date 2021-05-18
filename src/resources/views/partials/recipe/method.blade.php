@@ -8,7 +8,7 @@
             </h3>
             <div class="collapse show" id="instruction{{ $idx+1 }}">
                 <div class="d-md-flex">
-                    <div class="col-md-<?= !isset($step['image']) ? "12" : "8" ?> card card-body d-inline-block p-0 mt-3">
+                    <div class="col-md-{{ !isset($step['image']) ? "12" : "8" }} card card-body d-inline-block p-0 mt-3">
                         {{ $step->description }}
                     </div>
                     <?php if (isset($step['image'])) { ?>
