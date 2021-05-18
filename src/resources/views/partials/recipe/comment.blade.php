@@ -1,4 +1,4 @@
-<div data-comment-id="{{ $comment->id }}" data-depth="{{ $depth }}" class="card comment <?= $depth !== 0 ? "subcomment" : "" ?>">
+<div data-comment-id="{{ $comment->id }}" data-depth="{{ $depth }}" class="card comment {{$depth !== 0 ? "subcomment" : "" }}">
 
     <div class="row g-0 p-3">
         <div class="col">
