@@ -125,22 +125,33 @@ class SearchController extends Controller
 
     public function getRecipes(Request $request, $searchStr, &$numResults, $page = 1, $itemsPerPage = 3) {
         $recipeQuery = DB::table('recipes_fts_view')
-            ->selectRaw('*, search, ts_rank(search, to_tsquery(\'english\', ?)) AS rank', [$searchStr])
+            ->selectRaw('*, search, ts_rank(search, to_tsquery(\'english\', ?)) AS rank, recipe_visibility(recipe_id, ?) as visibility', [$searchStr, Auth::id()])
             ->when($searchStr, function($query, $searchStr) {
                 if (false && Auth::guard('admin')->check()) {  // TODO remove false when admin guard is defined
                     $query = $query
-                        ->whereRaw('search @@ to_tsquery(\'english\', ?)', [$searchStr]);
+                        ->whereRaw('search @@ to_tsquery(\'english\', ?) ', [$searchStr]);
                 } else if (Auth::check()) {
                     $query = $query
-                        ->whereRaw('search @@ to_tsquery(\'english\', ?) AND member_id <> ? AND recipe_visibility(recipe_id, ?) = TRUE', [$searchStr, (Auth::check()) ? Auth::id() : 0, Auth::id()]);
+                        ->whereRaw('search @@ to_tsquery(\'english\', ?) AND member_id <> ? AND recipe_visibility(recipe_id, ?)', [$searchStr, (Auth::check()) ? Auth::id() : 0, Auth::id()]);
                 } else {
                     $query = $query
-                        ->whereRaw('search @@ to_tsquery(\'english\', ?) AND recipe_visibility(recipe_id, NULL) = TRUE', [$searchStr]);
+                        ->whereRaw('search @@ to_tsquery(\'english\', ?) AND recipe_visibility(recipe_id, NULL)', [$searchStr]);
                 }
+
                 return $query
                     ->orderByDesc('rank')
                     ->orderByDesc('recipe_id');
             }, function ($query) {
+                if (false && Auth::guard('admin')->check()) {  // TODO remove false when admin guard is defined
+                    return $query;
+                } else if (Auth::check()) {
+                    $query = $query
+                        ->whereRaw('member_id <> ? AND recipe_visibility(recipe_id, ?)', [(Auth::check()) ? Auth::id() : 0, Auth::id()]);
+                } else {
+                    $query = $query
+                        ->whereRaw('recipe_visibility(recipe_id, NULL)');
+                }
+
                 return $query
                     ->orderByDesc('recipe_id');
             });

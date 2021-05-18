@@ -16,7 +16,6 @@ function fileUploadListeners() {
 
 function fileUploadHandler(event) {
     let target = event.target;
-    console.log(target);
     target.nextElementSibling.click();
 }
 

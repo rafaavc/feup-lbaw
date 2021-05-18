@@ -111,11 +111,14 @@ class MemberController extends Controller
             $user->country()->associate($request->input('country'));
             $user->password = bcrypt($request->input('password'));
 
-            // Profile Image
-            Storage::delete("public/images/people/$user->id.jpeg");
             if ($request->hasFile('profileImage')) {
                 $file = $request->file('profileImage');
                 $file->storeAs("public/images/people/", "$user->id.jpeg");
+            }
+
+            if ($request->hasFile('coverImage')) {
+                $file = $request->file('coverImage');
+                $file->storeAs("public/images/people/cover", "$user->id.jpeg");
             }
 
             $user->save();
@@ -197,7 +200,7 @@ class MemberController extends Controller
             $followState = json_decode($followState, true)[0]['state'];
         }
 
-        if (Gate::inspect('viewInfo', $user)->denied())
+        if (Gate::inspect('view', $user)->denied())
             return view('pages.user.privateProfile', [
                 'user' => $this->get($user),
                 'followState' => $followState

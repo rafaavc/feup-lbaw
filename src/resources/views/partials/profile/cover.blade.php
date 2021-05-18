@@ -2,13 +2,19 @@
     <link href="{{ asset('css/components/profile_cover.css') }}" rel="stylesheet"/>
 @endpush
 
-@push('js')
-    <script src="{{ asset('js/profile.js') }}" type="module"></script>
-@endpush
+@if(isset($group))
+    @push('js')
+        <script src="{{ asset('js/group.js') }}" type="module"></script>
+    @endpush
+@else
+    @push('js')
+        <script src="{{ asset('js/profile.js') }}" type="module"></script>
+    @endpush
+@endif
 
 <header class="cover">
     <img
-        src="https://images-prod.healthline.com/hlcmsresource/images/AN_images/vegetarian-diet-plan-1296x728-feature.jpg"
+        src="{{isset($coverPhoto) ? $coverPhoto : 'https://images-prod.healthline.com/hlcmsresource/images/AN_images/vegetarian-diet-plan-1296x728-feature.jpg'}}"
         class="cover-image">
     <div class="card shadow-sm px-3">
         <div class="row g-0 p-3 text-center text-md-start" style="">
@@ -38,12 +44,23 @@
                     @if ($canEdit)
                         <a href="{{ $editLink }}" class="btn btn-no-shadow btn-outline-dark"><i
                                 class="fas fa-edit"></i>Edit</a>
-                    @elseif($group)
-                        @foreach($actions as $key => $value)
-                            <a href="{{$value[0]}}" type="button" class="btn btn-outline-dark">
-                                <i class="fas fa-{{$value[1]}}"></i>{{$key}}
-                            </a>
-                        @endforeach
+                    @elseif(isset($group))
+                        @if(Gate::inspect('removeRequest', $group)->allowed())
+                            <button type="button" class="btn shadow-none btn-outline-dark group-join">
+                                <i class="fas fa-user-times"></i>
+                                Cancel Request
+                            </button>
+                        @elseif(Gate::inspect('join', $group)->allowed())
+                            <button type="button" class="btn shadow-none btn-outline-dark group-join">
+                                <i class="fas fa-user-plus"></i>
+                                Join
+                            </button>
+                        @elseif(Gate::inspect('leave', $group)->allowed())
+                            <button type="button" class="btn shadow-none btn-outline-dark group-join">
+                                <i class="fas fa-user-times"></i>
+                                Leave
+                            </button>
+                        @endif
                     @elseif($followState != 'External')
                         <button type="button" class="btn shadow-none btn-outline-dark user-follow">
                             <i class="fas fa-user-times {{ ($followState != 'accepted') ? 'd-none' : '' }}"></i>
@@ -62,7 +79,7 @@
                 </div>
             </div>
         </div>
-        @if(!$group && !isset($private))
+        @if(!isset($group) && !isset($private))
             <div class="row" style="position: relative; bottom: -1px">
                 <div class="rating-box col-md-3 order-md-2 text-center mb-3 mb-md-0">
                     <span class="small d-block">Average rating</span>

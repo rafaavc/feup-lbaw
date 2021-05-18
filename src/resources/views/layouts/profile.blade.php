@@ -27,6 +27,7 @@
             @include('partials.profile.cover', [
                                             'name' => $user->name,
                                             'image' => $user->profileImage(),
+                                            'coverPhoto' => $user->coverImage(),
                                             'text' => $user->biography,
                                             'numbers' => [
                                                 'Recipes' => $user->number_of_recipes,
@@ -39,7 +40,6 @@
                                                 'Follow' => ['#', 'user-plus'],
                                                 'Chat' => [url("/chat/$user->username"), 'comments'],
                                             ],
-                                            'group' => false
                                         ])
             <div class="row group-body">
                 @if(!isset($private))

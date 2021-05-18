@@ -1,4 +1,5 @@
 export const filterBarForm = document.querySelector('form[name=filterBar]');
+export const mobileFilterBar = document.querySelector('#filterBarMobile');
 
 export const getFilterBarData = () => {
     const tags = [];
@@ -49,3 +50,4 @@ export const getFilterBarData = () => {
 
 
 export const getFilterBarForm = () => filterBarForm;
+export const getMobileFilterBar = () => mobileFilterBar;

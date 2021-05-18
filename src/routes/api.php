@@ -17,7 +17,7 @@ use Illuminate\Http\Request;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
-Route::middleware('auth:api')->get('/user', 'Auth\LoginController@getUser');
+Route::middleware('auth:api')->get('user', 'Auth\LoginController@getUser');
 
 // ----------------------------------------------------------------
 // User API
@@ -56,12 +56,13 @@ Route::post('recipe/{recipe}/report', 'RecipeController@report');
 Route::post('group', 'GroupController@post')->middleware('can:create,App\Models\Group');
 Route::put('group/{group}', 'GroupController@put')->middleware('can:update,group');
 Route::delete('group/{group}', 'GroupController@remove')->middleware('can:delete,group');
-Route::get('group/{group}', 'GroupController@get')->middleware('can:view,group');
-Route::post('group/{group}/request', 'GroupController@request')->middleware('can:request,group');
+Route::get('group/{group}', 'GroupController@get');
+Route::post('group/{group}/request', 'GroupController@request')->middleware('can:join,group');
+Route::delete('group/{group}/request', 'GroupController@cancelRequest')->middleware('can:removeRequest,group');
 Route::post('group/{group}/request/{user}', 'GroupController@accept')->middleware('can:update,group');
 Route::delete('group/{group}/request/{user}', 'GroupController@decline')->middleware('can:update,group');
 Route::post('group/{group}/moderator/{user}', 'GroupController@addModerator')->middleware('can:update,group');
-Route::delete('group/{group}/member/{user}', 'GroupController@removeMember')->middleware('can:update,group');
+Route::delete('group/{group}/member/{user}', 'GroupController@removeMember')->middleware('can:removeUser,group,user');
 Route::get('group/{group}/members', 'GroupController@getMembers')->middleware('can:view,group');
 
 // ----------------------------------------------------------------

@@ -31,6 +31,11 @@
     overflow-y: auto;
 }
 
+#ingredientsBody, #tagsBody {
+    max-height: 60vh;
+    overflow-y: auto;
+}
+
 .dropdown-menu {
     padding: 1rem;
 }

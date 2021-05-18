@@ -1,31 +1,36 @@
 @extends('layouts.app')
 
-@section('title', "Edit " . htmlentities($user->name))
+@section('title', isset($group) ? "Edit Group" : "Create Group")
 
 @push('css')
-    <link href="{{ asset('css/edit_profile.css') }}" rel="stylesheet"/>
+    <link href="{{ asset('css/edit_profile.css') }}" rel="stylesheet" />
 @endpush
 
 @push('js')
-    <script src="{{ asset('js/edit_profile.js') }}" defer></script>
+    <script src="{{ asset('js/upsert_group.js') }}" defer></script>
 @endpush
 
-<?php
-$role = "member";
-?>
-@include('partials.breadcrumb', ['pages' => ["Users", $user->name, "Edit Profile"], 'withoutMargin' => false])
+@section('content')
+
+@php
+    $hasErrors = $errors->any();
+    $breadcrumbPages = ["Groups", isset($group) ? $group->name : "Create Group"];
+@endphp
+
+@include('partials.breadcrumb', ['pages' => $breadcrumbPages, 'withoutMargin' => false])
+
 <div class="container content-general-margin margin-to-footer">
-    <h1 class="mt-5">Edit Profile</h1>
+    <h1 class="mt-5">{{ isset($group) ? "Edit Group" : "Create Group" }}</h1>
     @if($errors->any())
-        <div class="alert alert-danger" id="error-messages" role="alert">
+        <div class="alert alert-danger" id="error-messages">
             @foreach($errors->all() as $error)
                 {{ $error }}<br/>
             @endforeach
         </div>
     @endif
     <form enctype="multipart/form-data" class="card shadow-sm p-2 w-auto h-auto p-5 mt-4 edit-profile-card"
-          method="post">
-        @csrf
+          method="post" action="{{ url('/group/' . (isset($group) ? ($group->id . '/edit') : '')) }}">
+        {{ csrf_field() }}
         <div class="row">
             <div class="col profile-photo-area mx-2">
                 <div class="row row-with-image">
@@ -57,7 +62,7 @@ $role = "member";
                     </div>
                 </div>
                 <img class="rounded-circle z-depth-2 profile-image"
-                     src="{{$user->profileImage()}}">
+                     src='{{isset($group) ? $group->profileImage() : asset('storage/images/people/no_image.png')}}'>
             </div>
             <div class="col cover-photo-area mx-2">
                 <div class="row area-title-row row-with-image">
@@ -85,83 +90,54 @@ $role = "member";
                     </div>
                 </div>
                 <img
-                    src="{{ $user->coverImage() }}"
+                    src='{{ isset($group) ? $group->coverPhoto() : asset('storage/images/people/no_image.png') }}'
                     class="bd-placeholder-img">
             </div>
         </div>
 
-        <h6 class="area-title mt-4">Biography <span class='form-required'></span></h6>
+        <h6 class="area-title mt-4">Group Name <span class='form-required'></span></h6>
         <div class="form-group">
-            <textarea name="biography" class="form-control mb-4 p-3 edit-profile-text-input"
-                      rows="3">{{$user->biography}}</textarea>
+            <textarea name="name" class="form-control mb-4 p-3 edit-profile-text-input" rows="1" required
+                      style="resize: none;">{{ isset($group) ? $group->name : "" }}</textarea>
         </div>
 
-        <h6 class="area-title">Name <span class='form-required'></span></h6>
+        <h6 class="area-title">Group Description <span class='form-required'></span></h6>
         <div class="form-group">
-            <textarea name="name" class="form-control mb-4 p-3 edit-profile-text-input" rows="1"
-                      style="resize: none;">{{$user->name}}</textarea>
+            <textarea name="description" class="form-control mb-4 p-3 edit-profile-text-input" required
+                      rows="3">{{ isset($group) ? $group->description : "" }}</textarea>
         </div>
 
-        <h6 class="area-title">Country <span class='form-required'></span></h6>
-        <div class="form-group">
-            <select name="country" id="country"
-                    class="form-select form-control me-2 form-control mb-4 p-3 edit-profile-text-input">
-                @foreach(App\Models\Country::all() as $country)
-                    <option
-                        value="{{$country->id}}" {{$country->id == $user->country->id ? "selected" : ""}}>{{$country->name}}</option>
-                @endforeach
-            </select>
-        </div>
-
-        <h6 class="area-title">City</h6>
-        <div class="form-group">
-            <textarea name="city" class="form-control mb-4 p-3 edit-profile-text-input" rows="1"
-                      style="resize: none;">{{$user->city}}</textarea>
-        </div>
-
-        <h6 class="area-title">Email</h6>
-        <div class="form-group">
-            <textarea name="email" class="form-control mb-4 p-3 edit-profile-text-input" rows="1"
-                      style="resize: none;">{{$user->email}}</textarea>
-        </div>
-
-        <h6 class="area-title">Username</h6>
-        <div class="form-group">
-            <textarea name="username" class="form-control mb-5 p-3 edit-profile-text-input" rows="1"
-                      style="resize: none;">{{$user->username}}</textarea>
-        </div>
-
-        <h6 class="area-title">Profile Visibility <span class='form-required'></span></h6>
+        <h6 class="area-title">Group Visibility <span class='form-required'></span></h6>
         <div class="form-check">
-            <input class="form-check-input" value="public" type="radio" name="visibility"
-                   id="flexRadioDefault1" {{$user->visibility === true ? "checked" : ""}}>
+            <input class="form-check-input" value="1" type="radio" name="visibility" required
+                   id="flexRadioDefault1" {{ isset($group) && $group->visibility ? "checked" : "" }}>
             <label class="form-check-label" for="flexRadioDefault1">
                 Public
             </label>
         </div>
         <div class="form-check mt-2">
-            <input class="form-check-input" value="private" type="radio" name="visibility"
-                   id="flexRadioDefault2" {{$user->visibility === false ? "checked" : ""}}>
+            <input class="form-check-input" value="0" type="radio" name="visibility" required
+                   id="flexRadioDefault2" {{ isset($group) && !$group->visibility ? "checked" : "" }}>
             <label class="form-check-label" for="flexRadioDefault2">
                 Private
             </label>
         </div>
+
         <div class="row d-flex justify-content-around justify-content-md-between my-5">
 
-            <input type="submit" class="btn btn-primary submit-button my-2" value="Submit">
+            <input type="submit" class="btn btn-primary submit-button mt-5" value='{{ isset($group) ? "Edit Group" : "Create Group" }}'>
 
-            <button class="btn btn-secondary submit-button my-2">
-                <i class="far fa-edit"></i>
-                &nbsp; Change Password
-            </button>
-
-
-            <a href="{{url('user/' . $user->username . '/delete')}}" class="btn btn-danger submit-button my-2">
-                <i class="fas fa-trash me-3"></i>
-                Delete Profile
-            </a>
+            @if (isset($group))
+                <a href="{{url('group/' . $group->id . '/delete')}}" class="btn btn-danger submit-button mt-5">
+                    <i class="fas fa-trash me-3"></i> Delete Group</a>
+            @endif
 
         </div>
+
+
+
     </form>
 
 </div>
+
+@endsection

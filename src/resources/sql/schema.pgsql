@@ -516,10 +516,6 @@ BEGIN
     JOIN tb_member ON tb_recipe.id_member = tb_member.id
     WHERE tb_recipe.id = id_recipe;
 
-    IF id_user IS NULL THEN
-        RETURN author_visibility = TRUE;
-    END IF;
-
 	-- Recipe's author profile visibility if public
     IF author_visibility = TRUE THEN
         RETURN TRUE;
@@ -721,10 +717,17 @@ DROP FUNCTION IF EXISTS group_request() CASCADE;
 CREATE FUNCTION group_request() RETURNS TRIGGER AS
 $BODY$
 DECLARE
+    already_belongs_to_group integer := (SELECT count(*) FROM tb_group_member WHERE id_group = NEW.id_group AND id_member = NEW.id_member);
     group_visibility boolean := (SELECT visibility FROM tb_group WHERE id = NEW.id_group);
 BEGIN
+    IF already_belongs_to_group > 0 THEN
+        NEW.state = 'accepted';
+        RETURN NEW;
+    END IF;
+
     IF group_visibility = TRUE THEN
         NEW.state := 'accepted';
+        INSERT INTO tb_group_member VALUES(NEW.id_member, NEW.id_group);
     ELSE
         NEW.state := 'pending';
     END IF;
@@ -736,7 +739,7 @@ LANGUAGE plpgsql;
 
 DROP TRIGGER IF EXISTS group_request_tg ON tb_group_request;
 CREATE TRIGGER group_request_tg
-    BEFORE INSERT OR UPDATE ON tb_group_request
+    BEFORE INSERT ON tb_group_request
     FOR EACH ROW
     EXECUTE PROCEDURE group_request();
 
