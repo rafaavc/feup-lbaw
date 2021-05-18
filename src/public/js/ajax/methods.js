@@ -7,7 +7,13 @@ function encodeForAjax(data) {
 export const makeRequest = (requestUrl, method, body, query) => new Promise((resolve, reject) => {
     const requestBody = { ...body, _token: document.body.dataset.csrfToken };
 
-    fetch(requestUrl + (query ? '?' + encodeForAjax(query) : ''), {
+    let urlParams;
+    if (method == 'GET') urlParams = {...body, ...query};
+    else urlParams = {...query};
+
+    console.log("url params = ", urlParams)
+
+    fetch(requestUrl + (Object.keys(urlParams).length ? '?' + encodeForAjax(urlParams) : ''), {
         method,
         headers: {
             'Content-Type': 'application/x-www-form-urlencoded',

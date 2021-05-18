@@ -1,10 +1,7 @@
-@push('css')
-
-@endpush
-
-<div id="memberRequests" class="card shadow-sm people-box mt-5">
+<div id="memberRequests" class="card shadow-sm people-box mt-4">
     <div class="card-body m-0">
         <h5 class="card-title mb-4">Member Requests</h5>
+
         <ul class="p-0 m-0">
             @foreach($requests as $request)
                 <li class="card p-2 mb-2">
@@ -31,10 +28,16 @@
                                         @if($new)
                                     </div>
                                     <div class="col-1">
-                                        <button class="btn btn-outline-secondary follow-request-button"><small><i
-                                                    class="fas fa-check"></i></small></button>
-                                        <button class="btn btn-outline-secondary follow-request-button"><small><i
-                                                    class="fas fa-times"></i></small></button>
+                                        <button data-group="{{$group->id}}" data-member="{{$request->username}}" class="btn btn-outline-secondary follow-request-button group-request-accept">
+                                            <small>
+                                                <i class="fas fa-check"></i>
+                                            </small>
+                                        </button>
+                                        <button data-group="{{$group->id}}" data-member="{{$request->username}}" class="btn btn-outline-secondary follow-request-button group-request-reject">
+                                            <small>
+                                                <i class="fas fa-times"></i>
+                                            </small>
+                                        </button>
                                     </div>
                                 </div>
                             @endif

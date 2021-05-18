@@ -1,4 +1,5 @@
 import { makeRequest } from "./ajax/methods.js";
+import { instantiateToolTip } from "./utils/tooltip.js";
 
 document.body.style.minHeight = window.innerHeight + "px";
 
@@ -8,7 +9,7 @@ window.addEventListener('resize', () => {
 });
 
 const tooltips = Array.from(document.querySelectorAll('.has-tooltip'));
-tooltips.forEach(elem => new bootstrap.Tooltip(elem, { container: 'body', placement: 'bottom', boundary: 'window', html: true, sanitize: false }));
+tooltips.forEach(elem => instantiateToolTip(elem));
 
 
 const header = document.querySelector('body > nav.navbar');
@@ -58,3 +59,7 @@ for (const button of favouriteButtons) {
 
 }
 
+
+const dropdownMenus = document.querySelectorAll('.dropdown-menu');
+
+dropdownMenus.forEach(menu => menu.addEventListener('click', event => event.stopPropagation()));  // clicks inside the dropdown menu don't cause it to close
