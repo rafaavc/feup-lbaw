@@ -15,7 +15,7 @@
 
     @include('partials.breadcrumb', ['pages' => ["Users Management"], 'withoutMargin' => false])
 
-    <div class="content-general-margin mt-5 margin-to-footer">
+    <div class="content-general-margin user-search-page mt-5 margin-to-footer">
         <h1 class="mb-4">Users Management</h1>
         <form class="search-users-form" method="GET">
             <div class="d-flex admin-search-input">

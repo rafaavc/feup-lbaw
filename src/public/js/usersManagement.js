@@ -1,17 +1,20 @@
 import { makeRequest } from './ajax/methods.js'
 import { url } from './utils/url.js';
 
-const searchQueryInput = document.querySelector('input[name=searchUser]');
-const searchResultForm = document.querySelector('form.search-users-form');
-const nextButtons = [...document.querySelectorAll('a.page-link')];
+let searchQueryInput,searchResultForm, nextButtons, usersTable, tableDiv, paginationNav;
 const itemsPerSelection = 7;
-const usersTable = document.querySelector('tbody');
-const tableDiv = document.querySelector('table');
-const paginationNav = document.querySelector('nav.users-navigation');
+
 
 let searchQuery = "";
 
 const registerListeners = () => {
+    searchQueryInput = document.querySelector('input[name=searchUser]');
+    searchResultForm = document.querySelector('form.search-users-form');
+    nextButtons = [...document.querySelectorAll('a.page-link')];
+    usersTable = document.querySelector('tbody');
+    tableDiv = document.querySelector('table');
+    paginationNav = document.querySelector('nav.users-navigation');
+
     nextButtons.forEach((nextBtn) => {
         nextBtn.addEventListener('click', (event) => {
         const target = event.target;
@@ -36,7 +39,7 @@ const registerListeners = () => {
     });
 })};
 
-const searchRequest = (requestURL, query, incrementTotalResults) => {
+const searchRequest = (requestURL, query, incrementTotalResults) => new Promise((resolve, reject) => {
     makeRequest(requestURL, 'GET', null, query)
         .then((result) => {
             if(result.response.status == 200) {
@@ -65,8 +68,9 @@ const searchRequest = (requestURL, query, incrementTotalResults) => {
                     tableDiv.parentElement.insertAdjacentHTML('afterbegin','<h5 style="text-align: center;">No results found.</h5>')
                 }
             }
+            resolve();
         });
-};
+});
 
 const changePageNumber = (target, pageNumber) => {
     const pageTxt = target.textContent;
@@ -99,10 +103,25 @@ async function handleSearchSubmit(event) {
 
     searchQuery = data.searchQuery;
 
-    searchRequest(url('/api/search/people'), data, true);
+    searchRequest(url('/api/search/people'), data, true)
+        .then(() => {
+            const url = new URL(window.location);
+            url.searchParams.set('searchQuery', searchQuery);
+            window.history.pushState({ html: document.querySelector('.user-search-page').innerHTML }, document.title, url);
+        })
 }
 
-searchResultForm.addEventListener('submit', handleSearchSubmit);
-
-handleSearchSubmit();
 registerListeners();
+searchResultForm.addEventListener('submit', handleSearchSubmit);
+handleSearchSubmit();
+
+window.onpopstate = function(e) {
+    if (e.state){
+        document.querySelector('.user-search-page').innerHTML = e.state.html;
+        let urlParams = new URLSearchParams(window.location.search);
+        searchQuery = urlParams.get('searchQuery');
+    }
+
+    registerListeners();
+    searchResultForm.addEventListener('submit', handleSearchSubmit);
+}

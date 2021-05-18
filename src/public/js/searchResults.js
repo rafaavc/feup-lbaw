@@ -178,4 +178,5 @@ window.onpopstate = function(e) {
         document.querySelector('.search-page').innerHTML = e.state.html;
     }
     refreshSearchQuery();
+    registerListeners();
 }
