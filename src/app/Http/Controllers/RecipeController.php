@@ -121,7 +121,6 @@ class RecipeController extends Controller
         }
 
 
-        $hasMadeReview = sizeof(Auth::user()->comments()->where('id_recipe', '=', $recipe->id)->whereNotNull('rating')->get()) != 0;
 
         $steps = $recipe->steps;
         foreach ($steps as $step) {
@@ -130,9 +129,11 @@ class RecipeController extends Controller
         }
 
         $isFavourited = false;
+        $hasMadeReview = false;
         if (Auth::check()) {
             $membersWhoFavourited = $recipe->membersWhoFavourited()->where('id_member', '=', Auth::user()->id)->get();
             if (sizeof($membersWhoFavourited) != 0) $isFavourited = true;
+            $hasMadeReview = sizeof(Auth::user()->comments()->where('id_recipe', '=', $recipe->id)->whereNotNull('rating')->get()) != 0;
         }
 
         return view('pages.recipe', [

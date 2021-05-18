@@ -58,3 +58,7 @@ for (const button of favouriteButtons) {
 
 }
 
+
+const dropdownMenus = document.querySelectorAll('.dropdown-menu');
+
+dropdownMenus.forEach(menu => menu.addEventListener('click', event => event.stopPropagation()));  // clicks inside the dropdown menu don't cause it to close
