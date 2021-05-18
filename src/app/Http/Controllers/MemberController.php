@@ -257,7 +257,7 @@ class MemberController extends Controller
         $numResults = 0;
 
         // Possibly pass search column? Will need to change database
-        $users = SearchController::getUsers($searchStr, $numResults, $page, 10);
+        $users = SearchController::getUsers($searchStr, $numResults, $page, 7);
 
         $responseUsers = array();
         $counter = 0;
@@ -276,7 +276,7 @@ class MemberController extends Controller
 
     public function list() {
         return view('pages.admin.usersManagement', [
-            'users' => Member::with('country')->take(3)->get()
+            'users' => Member::with('country')->get()
         ]);
     }
 }

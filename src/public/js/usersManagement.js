@@ -4,7 +4,8 @@ import { url } from './utils/url.js';
 const searchQueryInput = document.querySelector('input[name=searchUser]');
 const searchResultForm = document.querySelector('form.search-users-form');
 const nextButtons = [...document.querySelectorAll('a.page-link')];
-let searchQuery = "", totalResults = 0;
+const itemsPerSelection = 7;
+let searchQuery = "";
 
 const registerListeners = () => {
     nextButtons.forEach((nextBtn) => {
@@ -25,16 +26,28 @@ const registerListeners = () => {
 
             console.log("Sending search:", data);
             let requestURL = url('/api/admin/users');
-            searchRequest(requestURL, data);
+            searchRequest(requestURL, data, false);
         }
     });
 })};
 
-const searchRequest = (requestURL, query) => {
+const searchRequest = (requestURL, query, incrementTotalResults) => {
     makeRequest(requestURL, 'GET', null, query)
         .then((result) => {
             if(result.response.status == 200) {
+                if(incrementTotalResults) {
+                    let pageNum = document.querySelector('a.users-page').textContent;
+                    document.querySelector('a.users-page').textContent = pageNum.replace(/Page (\d+) of (\d+)/, 'Page 1 of ' + Math.ceil(result.content.numResults / itemsPerSelection))
+                }
 
+                let users = "";
+                result.content.result.forEach((result) => {
+                    users += result;
+                });
+
+                let usersTable = document.querySelector('tbody');
+                usersTable.innerHTML = '';
+                usersTable.insertAdjacentHTML('beforeend', users);
             }
         });
 };
@@ -59,8 +72,6 @@ const changePageNumber = (target, pageNumber) => {
 };
 
 async function handleSearchSubmit(event) {
-    totalResults = 0;
-
     if (event)
         event.preventDefault();
 
@@ -71,7 +82,7 @@ async function handleSearchSubmit(event) {
 
     searchQuery = data.searchQuery;
 
-    searchRequest(url('/api/admin/users'), data);
+    searchRequest(url('/api/admin/users'), data, true);
 }
 
 searchResultForm.addEventListener('submit', handleSearchSubmit);
