@@ -141,7 +141,7 @@ class SearchController extends Controller
         return $recipes;
     }
 
-    public function getUsers($searchStr, &$numResults, $page = 1, $itemsPerPage = 3) {
+    public static function getUsers($searchStr, &$numResults, $page = 1, $itemsPerPage = 3) {
         $userQuery = Member::selectRaw('*, search, ts_rank(search, to_tsquery(\'simple\', ?)) AS rank', [$searchStr])
             ->when($searchStr, function($query, $searchStr) {
                 return $query

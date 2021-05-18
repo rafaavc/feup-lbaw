@@ -7,16 +7,22 @@
     <link href="{{ asset('css/adminArea.css') }}" rel="stylesheet"/>
 @endpush
 
+@push('js')
+    <script src="{{ asset('js/usersManagement.js') }}" type="module"></script>
+@endpush
+
 @section('content')
 
     @include('partials.breadcrumb', ['pages' => ["Users Management"], 'withoutMargin' => false])
 
     <div class="content-general-margin mt-5 margin-to-footer">
         <h1 class="mb-4">Users Management</h1>
-        <div class="d-flex admin-search-input">
-            <input type="text" class="form-control icon-right mb-3" placeholder="Search" aria-label="User Search Query">
-            <i class="fas fa-search fa-icon-right"></i>
-        </div>
+        <form class="search-users-form" method="GET">
+            <div class="d-flex admin-search-input">
+                <input type="text" class="form-control icon-right mb-3" placeholder="Search" aria-label="User Search Query" name="searchUser">
+                <i class="fas fa-search fa-icon-right"></i>
+            </div>
+        </form>
         <div class="card">
             <div class="card-body table-responsive">
                 @if(count($users) > 0)
@@ -42,6 +48,7 @@
                             @endif
                         </tbody>
                     </table>
+                    @include('partials.search.pagination', ['navigationClass' => 'userss-navigation', 'paginationClass' => 'users-page'])
                 @else
                     <h1>No users to be shown.<h1>
                 @endif

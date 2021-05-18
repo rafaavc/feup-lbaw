@@ -250,9 +250,33 @@ class MemberController extends Controller
         return redirect("/login");
     }
 
+    // admin/users/...
+    public function getUsersPaginate(Request $request) {
+        $searchStr = preg_replace("/\s+/", " | ", $request->query('searchQuery'));
+        $page = $request->query('page');
+        $numResults = 0;
+
+        // Possibly pass search column? Will need to change database
+        $users = SearchController::getUsers($searchStr, $numResults, $page, 10);
+
+        $responseUsers = array();
+        $counter = 0;
+        foreach($users as $user) {
+            $responseUsers[$counter] = view('partials.admin.userRow', [
+                'user' => $user])->render();
+            $counter++;
+        }
+
+        return response()->json([
+            'message' => 'Success!',
+            'result' => $responseUsers,
+            'numResults' => $numResults
+        ], 200);
+    }
+
     public function list() {
         return view('pages.admin.usersManagement', [
-            'users' => Member::with('country')->get()
+            'users' => Member::with('country')->take(3)->get()
         ]);
     }
 }

@@ -106,3 +106,8 @@ Route::get('categories', 'CategoryController@index');
 Route::get('tags', 'TagController@index');
 Route::get('ingredients', 'IngredientController@index');
 Route::get('units', 'UnitController@index');
+
+// ----------------------------------------------------------------
+// Admin API
+// ----------------------------------------------------------------
+Route::get('admin/users', 'MemberController@getUsersPaginate');
