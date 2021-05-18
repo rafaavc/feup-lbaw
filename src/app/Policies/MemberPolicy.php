@@ -21,11 +21,6 @@ class MemberPolicy
         return $member == null;
     }
 
-    public function view(?Member $member)
-    {
-        return true;
-    }
-
     /**
      * Determine whether the user can view the model.
      *
@@ -33,7 +28,7 @@ class MemberPolicy
      * @param \App\Models\Member $argument
      * @return mixed
      */
-    public function viewInfo(?Member $member, Member $argument)
+    public function view(?Member $member, Member $argument)
     {
         if (Auth::guard('admin')->check())
             return true;

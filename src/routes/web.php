@@ -30,13 +30,13 @@ Route::post('register', 'Auth\RegisterController@register');
 // ----------------------------------------------------------------
 // User pages
 // ----------------------------------------------------------------
-Route::get('user/{user}/recipes', 'MemberController@readRecipes')->middleware('can:view,user');
-Route::get('user/{user}/favourites', 'MemberController@readFavourites')->middleware('can:view,user');
-Route::get('user/{user}/reviews', 'MemberController@readReviews')->middleware('can:view,user');
-Route::get('user/{user}/edit', 'MemberController@update')->middleware('can:view,user');
+Route::get('user/{user}/recipes', 'MemberController@readRecipes');
+Route::get('user/{user}/favourites', 'MemberController@readFavourites');
+Route::get('user/{user}/reviews', 'MemberController@readReviews');
+Route::get('user/{user}/edit', 'MemberController@update')->middleware('can:update,user');
 Route::post('user/{user}/edit', 'MemberController@updateAction')->middleware('can:update,user');
 Route::get('user/{user}/delete', 'MemberController@deleteAction')->middleware('can:delete,user');
-Route::get('user/{user}/{any?}', 'MemberController@redirect')->where('any', '.*')->middleware('can:view,user');
+Route::get('user/{user}/{any?}', 'MemberController@redirect')->where('any', '.*');
 Route::get('admin/users', 'MemberController@list');
 
 // ----------------------------------------------------------------
