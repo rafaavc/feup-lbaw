@@ -84,7 +84,7 @@ class MemberPolicy
     {
         $followRequest = $member->following()->where('id_followed', $argument->id)->orderByDesc('timestamp')->first();
         $state = null;
-        if($followRequest != null)
+        if ($followRequest != null)
             $state = $followRequest->pivot->state;
         return !$member->following->contains($argument->id) ||
             ($state == 'rejected');
@@ -101,7 +101,7 @@ class MemberPolicy
     {
         $followRequest = $member->following()->where('id_followed', $argument->id)->orderByDesc('timestamp')->first();
         $state = null;
-        if($followRequest != null)
+        if ($followRequest != null)
             $state = $followRequest->pivot->state;
         return $member->following->contains($argument->id) &&
             ($state == 'accepted');
@@ -118,5 +118,10 @@ class MemberPolicy
     {
         $followRequest = $member->followers()->where('id_following', $argument->id)->wherePivot('state', 'pending')->exists();
         return $followRequest;
+    }
+
+    public function list(?Member $member)
+    {
+        return Auth::guard('admin')->check();
     }
 }
