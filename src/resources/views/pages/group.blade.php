@@ -98,7 +98,7 @@
     </main>
     @include('partials.confirmation', [
         'modalId' => 'seeAllGroupMembersModal',
-        'modalTitle' => 'Members of ' . $group->name . ' (<span class="group-member-amount">' . $group->members()->count() . '</span>)',
+        'modalTitle' => 'Members of ' . htmlentities($group->name) . ' (<span class="group-member-amount">' . $group->members()->count() . '</span>)',
         'modalMessage' => view('partials.profile.groupMembersList', ['group' => $group, 'offset' => 0]),
         'modalNoText' => 'Close'
     ])
