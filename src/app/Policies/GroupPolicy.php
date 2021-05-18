@@ -60,6 +60,8 @@ class GroupPolicy
     {
         if (Auth::guard('admin')->check())
             return false;
+        if (!Auth::check())
+            return false;
         return $group->moderators->where('id', '=', $member->id)->count() == 1;
     }
 
@@ -68,6 +70,8 @@ class GroupPolicy
     {
         if (Auth::guard('admin')->check())
             return false;
+        if (!Auth::check())
+            return false;
         return $group->moderators->where('id', $member->id)->count() == 1;
     }
 
@@ -75,6 +79,8 @@ class GroupPolicy
     {
         if (Auth::guard('admin')->check())
             return true;
+        if (!Auth::check())
+            return false;
         return $group->moderators->where('id', $member->id)->count() == 1;
     }
 
@@ -114,6 +120,8 @@ class GroupPolicy
     public function removeUser(Member $member, Group $group, Member $user)
     {
         if (Auth::guard('admin')->check())
+            return false;
+        if (!Auth::check())
             return false;
         return $group->moderators->where('id', $member->id)->count() == 1 || $member->id == $user->id;
     }
