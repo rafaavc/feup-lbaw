@@ -58,7 +58,7 @@ class Member extends Authenticatable
     {
         $path = "storage/images/people/cover/$this->id.jpeg";
         if (!file_exists($path))
-            return asset("storage/images/people/cover/default.png");
+            return asset("storage/images/people/cover/default.jpg");
         return asset($path);
     }
 

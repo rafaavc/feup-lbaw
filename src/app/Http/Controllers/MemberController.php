@@ -109,11 +109,14 @@ class MemberController extends Controller
             $user->country()->associate($request->input('country'));
             $user->password = bcrypt($request->input('password'));
 
-            // Profile Image
-            Storage::delete("public/images/people/$user->id.jpeg");
             if ($request->hasFile('profileImage')) {
                 $file = $request->file('profileImage');
                 $file->storeAs("public/images/people/", "$user->id.jpeg");
+            }
+
+            if ($request->hasFile('coverImage')) {
+                $file = $request->file('coverImage');
+                $file->storeAs("public/images/people/cover", "$user->id.jpeg");
             }
 
             $user->save();

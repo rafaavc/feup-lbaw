@@ -27,6 +27,7 @@
             @include('partials.profile.cover', [
                                             'name' => $user->name,
                                             'image' => $user->profileImage(),
+                                            'coverPhoto' => $user->coverImage(),
                                             'text' => $user->biography,
                                             'numbers' => [
                                                 'Recipes' => $user->number_of_recipes,

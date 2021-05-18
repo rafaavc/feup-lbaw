@@ -8,7 +8,7 @@ function fileUploadListeners() {
         fileUpload.addEventListener('click', fileUploadHandler);
     });
 
-    let fileInputs = document.querySelectorAll("input[name='profileImage']");
+    let fileInputs = document.querySelectorAll("input.myFile");
     fileInputs.forEach((fileInput) => {
         fileInput.addEventListener('change', fileInputHandler);
     })
@@ -16,6 +16,7 @@ function fileUploadListeners() {
 
 function fileUploadHandler(event) {
     let target = event.target;
+    console.log(target);
     target.nextElementSibling.click();
 }
 

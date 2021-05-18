@@ -44,7 +44,7 @@ $role = "member";
                                         <i class="fas fa-upload me-2"></i>
                                         Upload Image
                                     </a>
-                                    <input type="file" class="d-none" name="profileImage"/>
+                                    <input type="file" class="d-none myFile" name="profileImage"/>
                                 </li>
                                 <li>
                                     <a class="dropdown-item file-delete">
@@ -74,7 +74,7 @@ $role = "member";
                                 <li>
                                     <a class="dropdown-item file-input"><i class="fas fa-upload me-2"></i>Upload
                                         Image</a>
-                                    <input type="file" class="d-none" name="coverImage"/>
+                                    <input type="file" class="d-none myFile" name="coverImage"/>
                                 </li>
                                 <li>
                                     <a class="dropdown-item file-delete"><i class="fas fa-eraser me-2"></i>Clear
@@ -85,7 +85,7 @@ $role = "member";
                     </div>
                 </div>
                 <img
-                    src="https://res.cloudinary.com/sanitarium/image/fetch/q_auto/https://www.sanitarium.com.au/getmedia%2Fae51f174-984f-4a70-ad3d-3f6b517b6da1%2Ffruits-vegetables-healthy-fats.jpg%3Fwidth%3D1180%26height%3D524%26ext%3D.jpg"
+                    src="{{ $user->coverImage() }}"
                     class="bd-placeholder-img">
             </div>
         </div>
