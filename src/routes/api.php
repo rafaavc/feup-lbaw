@@ -110,4 +110,3 @@ Route::get('units', 'UnitController@index');
 // ----------------------------------------------------------------
 // Admin API
 // ----------------------------------------------------------------
-Route::get('admin/users', 'MemberController@getUsersPaginate');

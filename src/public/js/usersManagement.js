@@ -26,10 +26,11 @@ const registerListeners = () => {
             const data = {
                 'searchQuery': searchQuery,
                 'page': returnAux.page,
+                'isAdmin': true
             };
 
             console.log("Sending search:", data);
-            let requestURL = url('/api/admin/users');
+            let requestURL = url('/api/search/people');
             searchRequest(requestURL, data, false);
         }
     });
@@ -46,10 +47,8 @@ const searchRequest = (requestURL, query, incrementTotalResults) => {
 
                 usersTable.innerHTML = '';
                 if(result.content.numResults > 0) {
-                    if(tableDiv.parentElement.firstChild.nodeName === "H5") {
-                        console.log('TEXT-NODE')
+                    if(tableDiv.parentElement.firstChild.nodeName === "H5")
                         tableDiv.parentElement.firstChild.remove();
-                    }
 
                     tableDiv.classList.remove('d-none');
                     paginationNav.classList.remove('d-none');
@@ -95,11 +94,12 @@ async function handleSearchSubmit(event) {
     const data = {
         'searchQuery': (event) ? searchQueryInput.value : searchQuery,
         'page': 1,
+        'isAdmin': true
     };
 
     searchQuery = data.searchQuery;
 
-    searchRequest(url('/api/admin/users'), data, true);
+    searchRequest(url('/api/search/people'), data, true);
 }
 
 searchResultForm.addEventListener('submit', handleSearchSubmit);

@@ -10,6 +10,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 
+use Exception;
+
 class SearchController extends Controller
 {
     /**
@@ -49,15 +51,25 @@ class SearchController extends Controller
     }
 
     public function getUsersPaginate(Request $request) {
+        if($request->query('isAdmin') == "true" && !Auth::guard('admin')->check())
+            return response()->json(['message' => 'Invalid Request!']);
+
+        $adminRequest = ($request->query('isAdmin') == "true" && Auth::guard('admin')->check());
+
+        $selectFields = $adminRequest ? ['*'] : ['id', 'name', 'username'];
+        $viewPath = $adminRequest ? 'partials.admin.userRow' : 'partials.search.userCard';
+        $itemsPerPage = $adminRequest ? 7 : 3;
+
         $searchStr = preg_replace("/\s+/", " | ", $request->query('searchQuery'));
         $page = $request->query('page');
         $numResults = 0;
-        $users = $this->getUsers($searchStr, $numResults, $page);
+
+        $users = $this->getUsers($searchStr, $numResults, $selectFields, $page, $itemsPerPage);
 
         $responseUsers = array();
         $counter = 0;
         foreach($users as $user) {
-            $responseUsers[$counter] = view('partials.search.userCard', [
+            $responseUsers[$counter] = view($viewPath, [
                 'user' => $user])->render();
             $counter++;
         }
@@ -141,8 +153,8 @@ class SearchController extends Controller
         return $recipes;
     }
 
-    public static function getUsers($searchStr, &$numResults, $page = 1, $itemsPerPage = 3) {
-        $userQuery = Member::selectRaw('*, search, ts_rank(search, to_tsquery(\'simple\', ?)) AS rank', [$searchStr])
+    public static function getUsers($searchStr, &$numResults, $selectFields, $page = 1, $itemsPerPage = 3) {
+        $userQuery = Member::select($selectFields)->selectRaw('search, ts_rank(search, to_tsquery(\'simple\', ?)) AS rank', [$searchStr])
             ->when($searchStr, function($query, $searchStr) {
                 return $query
                     ->whereRaw('search @@ to_tsquery(\'simple\', ?)', [$searchStr])
