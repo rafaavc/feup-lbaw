@@ -275,8 +275,6 @@ class MemberController extends Controller
     }
 
     public function list() {
-        return view('pages.admin.usersManagement', [
-            'users' => Member::with('country')->get()
-        ]);
+        return view('pages.admin.usersManagement');
     }
 }

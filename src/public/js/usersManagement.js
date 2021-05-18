@@ -5,6 +5,10 @@ const searchQueryInput = document.querySelector('input[name=searchUser]');
 const searchResultForm = document.querySelector('form.search-users-form');
 const nextButtons = [...document.querySelectorAll('a.page-link')];
 const itemsPerSelection = 7;
+const usersTable = document.querySelector('tbody');
+const tableDiv = document.querySelector('table');
+const paginationNav = document.querySelector('nav.users-navigation');
+
 let searchQuery = "";
 
 const registerListeners = () => {
@@ -40,14 +44,27 @@ const searchRequest = (requestURL, query, incrementTotalResults) => {
                     document.querySelector('a.users-page').textContent = pageNum.replace(/Page (\d+) of (\d+)/, 'Page 1 of ' + Math.ceil(result.content.numResults / itemsPerSelection))
                 }
 
-                let users = "";
-                result.content.result.forEach((result) => {
-                    users += result;
-                });
-
-                let usersTable = document.querySelector('tbody');
                 usersTable.innerHTML = '';
-                usersTable.insertAdjacentHTML('beforeend', users);
+                if(result.content.numResults > 0) {
+                    if(tableDiv.parentElement.firstChild.nodeName === "H5") {
+                        console.log('TEXT-NODE')
+                        tableDiv.parentElement.firstChild.remove();
+                    }
+
+                    tableDiv.classList.remove('d-none');
+                    paginationNav.classList.remove('d-none');
+
+                    let users = "";
+                    result.content.result.forEach((result) => {
+                        users += result;
+                    });
+
+                    usersTable.insertAdjacentHTML('beforeend', users);
+                } else if(tableDiv.parentElement.firstChild.nodeName !== "H5") {
+                    tableDiv.classList.add('d-none');
+                    paginationNav.classList.add('d-none');
+                    tableDiv.parentElement.insertAdjacentHTML('afterbegin','<h5 style="text-align: center;">No results found.</h5>')
+                }
             }
         });
 };

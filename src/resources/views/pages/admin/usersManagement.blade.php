@@ -25,33 +25,23 @@
         </form>
         <div class="card">
             <div class="card-body table-responsive">
-                @if(count($users) > 0)
-                    <table class="table align-middle table-striped table-hover users-table">
-                        <thead>
-                            <th style="padding: 0; padding-bottom: 0.5em;">Username</th>
-                            <th style="padding: 0; padding-bottom: 0.5em;">Name</th>
-                            <th style="padding: 0; padding-bottom: 0.5em;">E-Mail</th>
-                            <th style="padding: 0; padding-bottom: 0.5em;">Country</th>
-                            <th style="padding: 0; padding-bottom: 0.5em;">City</th>
-                            <th style="padding: 0; padding-bottom: 0.5em; padding-right: 1em;">N<sup>er</sup> of posts</th>
-                            <th style="padding: 0; padding-bottom: 0.5em; padding-right: 1em;">N<sup>er</sup> of Cmts.</th>
-                            <th style="padding: 0; padding-bottom: 0.5em; padding-right: 1em;">N<sup>er</sup> of reports</th>
-                            <th style="padding: 0; padding-bottom: 0.5em;" class="text-center">Actions</th>
-                        </thead>
-                        <tbody>
-                            @if(count($users) > 0)
-                                @foreach ($users as $user)
-                                    @include('partials.admin.userRow', ['user' => $user])
-                                @endforeach
-                            @else
-                                <h1>No users to be shown.<h1>
-                            @endif
-                        </tbody>
-                    </table>
-                    @include('partials.search.pagination', ['navigationClass' => 'userss-navigation', 'paginationClass' => 'users-page'])
-                @else
-                    <h1>No users to be shown.<h1>
-                @endif
+                <table class="table align-middle table-striped table-hover users-table">
+                    <thead>
+                        <th style="padding: 0; padding-bottom: 0.5em;">Username</th>
+                        <th style="padding: 0; padding-bottom: 0.5em;">Name</th>
+                        <th style="padding: 0; padding-bottom: 0.5em;">E-Mail</th>
+                        <th style="padding: 0; padding-bottom: 0.5em;">Country</th>
+                        <th style="padding: 0; padding-bottom: 0.5em;">City</th>
+                        <th style="padding: 0; padding-bottom: 0.5em; padding-right: 1em;">N<sup>er</sup> of posts</th>
+                        <th style="padding: 0; padding-bottom: 0.5em; padding-right: 1em;">N<sup>er</sup> of Cmts.</th>
+                        <th style="padding: 0; padding-bottom: 0.5em; padding-right: 1em;">N<sup>er</sup> of reports</th>
+                        <th style="padding: 0; padding-bottom: 0.5em;" class="text-center">Actions</th>
+                    </thead>
+                    <tbody>
+
+                    </tbody>
+                </table>
+                @include('partials.search.pagination', ['navigationClass' => 'users-navigation', 'paginationClass' => 'users-page'])
             </div>
         </div>
     </div>
