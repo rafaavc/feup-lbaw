@@ -111,5 +111,11 @@ class GroupPolicy
         return $group->members->where('id', $member->id)->count() == 1;
     }
 
+    public function removeUser(Member $member, Group $group, Member $user)
+    {
+        if (Auth::guard('admin')->check())
+            return false;
+        return $group->moderators->where('id', $member->id)->count() == 1 || $member->id == $user->id;
+    }
 }
 

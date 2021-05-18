@@ -60,7 +60,7 @@ Route::delete('group/{group}/request', 'GroupController@cancelRequest')->middlew
 Route::post('group/{group}/request/{user}', 'GroupController@accept')->middleware('can:update,group');
 Route::delete('group/{group}/request/{user}', 'GroupController@decline')->middleware('can:update,group');
 Route::post('group/{group}/moderator/{user}', 'GroupController@addModerator')->middleware('can:update,group');
-Route::delete('group/{group}/member/{user}', 'GroupController@removeMember')->middleware('can:removeMember,group,user');
+Route::delete('group/{group}/member/{user}', 'GroupController@removeMember')->middleware('can:removeUser,group,user');
 Route::get('group/{group}/members', 'GroupController@getMembers')->middleware('can:view,group');
 
 // ----------------------------------------------------------------
