@@ -18,7 +18,7 @@ class CheckBanned
     public function handle(Request $request, Closure $next)
     {
         if(Auth::check() && Auth::user()->is_banned)
-            return redirect('/')->with('message', 'We are sorry to anounce that your account is banned.');
+            return redirect('/')->with('message', 'Banned');
 
         return $next($request);
     }
