@@ -62,7 +62,7 @@ Route::post('group', 'GroupController@createAction')->middleware('can:create,App
 // ----------------------------------------------------------------
 // List pages
 // ----------------------------------------------------------------
-Route::get('category/{category}', 'CategoryController@view')->middleware('can:view,category');
+Route::get('category/{category}', 'CategoryController@view');
 Route::get('feed', 'FeedController@view');
 Route::get('search', 'SearchController@view');
 
