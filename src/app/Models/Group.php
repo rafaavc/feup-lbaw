@@ -38,7 +38,15 @@ class Group extends Model
 
     public function profileImage()
     {
-        $path = "storage/images/groups/$this->id.jpeg";
+        $path = "storage/images/groups/profile/$this->id.jpg";
+        if (!file_exists($path))
+            return asset("storage/images/groups/no_image.png");
+        return asset($path);
+    }
+
+    public function coverPhoto()
+    {
+        $path = "storage/images/groups/cover/$this->id.jpg";
         if (!file_exists($path))
             return asset("storage/images/groups/no_image.jpg");
         return asset($path);

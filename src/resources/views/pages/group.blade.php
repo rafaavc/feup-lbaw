@@ -9,6 +9,7 @@
 
 @push('js')
     <script src="{{ asset('js/membersFollowingBoxes.js') }}" defer></script>
+    <script src="{{ asset('js/navPopups.js') }}" type="module"></script>
     <script src="{{ asset('js/addToFavourites.js') }}" defer></script>
     <script src="{{ asset('js/group.js') }}" type="module"></script>
 @endpush
@@ -25,6 +26,7 @@
             @include('partials.profile.cover', [
                                                     'name' => $group->name,
                                                     'image' => $group->profileImage(),
+                                                    'coverPhoto' => $group->coverPhoto(),
                                                     'text' => $group->description,
                                                     'numbers' => [
                                                         'Recipes' => $group->number_of_recipes,

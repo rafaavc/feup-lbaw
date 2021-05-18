@@ -53,10 +53,16 @@
     @endphp
 @elseif(Auth::check())
     @php
+        $followRequests = array();
+        $userRequests = Illuminate\Support\Facades\DB::table('tb_following')->where('id_followed', Auth::user()->id)->where('state', '!=', 'rejected')->orderByDesc('timestamp')->get();
+        foreach ($userRequests as $request) {
+            $userFollowing = App\Models\Member::find($request->id_following);
+            array_push($followRequests, ['username' => $userFollowing->username, 'id' => $userFollowing->id, 'state' => $request->state]);
+        }
         $menu = [
             "notifications" => [
                 "icon" => "bell",
-                "popover" => "This is the content of the first popover"
+                "popover" => $followRequests
             ],
             "messages" => [
                 "icon" => "comments",
@@ -82,7 +88,7 @@
         </li>
     @elseif (key_exists("popover", $attributes))
         @if ($name == "notifications")
-            @include('partials.nav.notificationspopover')
+            @include('partials.nav.notificationspopover', ['followRequests' => $followRequests])
         @elseif ($name == "messages")
             @include('partials.nav.messagespopover')
         @endif
@@ -92,3 +98,4 @@
         @include('partials.nav.item', ['name' => ucwords($name), 'icon' => $attributes["icon"], 'link' => $attributes["href"], 'dropdown' => false])
     @endif
 @endforeach
+

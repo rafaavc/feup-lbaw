@@ -59,9 +59,9 @@ Route::post('/recipe', 'RecipeController@createRecipe')->middleware('can:insert,
 Route::get('group/{group}', 'GroupController@view');
 Route::get('group/{group}/edit', 'GroupController@update')->middleware('can:update,group');
 Route::post('group/{group}/edit', 'GroupController@updateAction')->middleware('can:update,group');
-Route::post('group/{group}/delete', 'GroupController@deleteAction')->middleware('can:delete,group');
+Route::get('group/{group}/delete', 'GroupController@deleteAction')->middleware('can:delete,group');
 Route::get('group', 'GroupController@create')->middleware('can:create,App\Models\Group');
-Route::post('group', 'GroupController@createAction')->middleware('can:create,group');
+Route::post('group', 'GroupController@createAction')->middleware('can:create,App\Models\Group');
 
 // ----------------------------------------------------------------
 // List pages
