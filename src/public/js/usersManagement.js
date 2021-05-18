@@ -1,27 +1,44 @@
 import { makeRequest } from './ajax/methods.js'
 import { url } from './utils/url.js';
 
-let searchQueryInput, searchResultForm, nextButtons, usersTable, tableDiv, paginationNav, banButtons;
+let searchQueryInput, searchResultForm, nextButtons, usersTable, tableDiv, paginationNav;
 const itemsPerSelection = 7;
 
 let searchQuery = "";
 
 const registerbanButtonListeners = () => {
-    banButtons = [...document.querySelectorAll('button.user-action.user-ban')];
+    let banButtons = [...document.querySelectorAll('button.user-action.user-ban')];
 
     banButtons.forEach((banBtn) => {
         banBtn.addEventListener('click', (event) => {
             let username = banBtn.closest('tr').firstElementChild.textContent;
             let requestURL = url('/api/user/' + username + '/ban');
+            let newBanState = event.target.getAttribute('data-ban');
             let data = {
-                ban: true
+                ban: newBanState
             };
 
             banRequest(requestURL, data);
 
-            banBtn.closest('tr').style.backgroundColor = 'var(--bs-red)';
+            if(newBanState == "true") {
+                swapBanButtonState(banBtn);
+                banBtn.setAttribute('data-ban', 'false');
+                banBtn.closest('tr').style.backgroundColor = 'var(--bs-red)';
+            }
+            else {
+                swapBanButtonState(banBtn);
+                banBtn.setAttribute('data-ban', 'true');
+                banBtn.closest('tr').style.backgroundColor = '';
+            }
         });
-    })
+    });
+}
+
+const swapBanButtonState = (banBtn) => {
+    banBtn.classList.toggle('btn-warning');
+    banBtn.classList.toggle('btn-success');
+    banBtn.firstElementChild.classList.toggle('fa-undo');
+    banBtn.firstElementChild.classList.toggle('fa-ban');
 }
 
 const registerListeners = () => {
