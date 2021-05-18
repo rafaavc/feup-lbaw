@@ -39,7 +39,6 @@
                                                 'Follow' => ['#', 'user-plus'],
                                                 'Chat' => [url("/chat/$user->username"), 'comments'],
                                             ],
-                                            'group' => false
                                         ])
             <div class="row group-body">
                 @if(!isset($private))

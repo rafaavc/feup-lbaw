@@ -1,8 +1,37 @@
-import { url } from './utils/url.js';
-import { makeRequest } from './ajax/methods.js';
-import { instantiateToolTip } from './utils/tooltip.js';
-import { Feedback } from './feedback/Feedback.js';
+import {makeRequest} from './ajax/methods.js'
+import {url} from './utils/url.js';
+import {instantiateToolTip} from './utils/tooltip.js';
+import {Feedback} from './feedback/Feedback.js';
 
+// ----------------------------------------
+// Join
+// ----------------------------------------
+
+const joinButton = document.querySelector('button.group-join');
+if (joinButton !== null) {
+    let joinState = joinButton.textContent.trim();
+    const groupPath = new URL(window.location.href).pathname;
+    const groupId = /\/.*\/(.*)/.exec(groupPath)[1];
+
+    const joinButtonHandler = (event) => {
+        let requestURL = url('/api/group/' + groupId + "/request")
+        let method = (joinState == 'Join') ? 'POST' : 'DELETE'
+        if (joinState == 'Leave')
+            return
+        console.log("Sending request to API's address: " + requestURL);
+        makeRequest(requestURL, method)
+            .then((result) => {
+                if (result.response.status == 200)
+                    location.reload();
+            })
+    }
+
+    joinButton.addEventListener('click', joinButtonHandler);
+}
+
+// ----------------------------------------
+// Members
+// ----------------------------------------
 
 const memberAmount = document.querySelectorAll('.group-member-amount');
 

@@ -48,7 +48,7 @@ class Group extends Model
     {
         $path = "storage/images/groups/cover/$this->id.jpg";
         if (!file_exists($path))
-            return asset("storage/images/groups/no_image.png");
+            return asset("storage/images/groups/no_image.jpg");
         return asset($path);
     }
 
