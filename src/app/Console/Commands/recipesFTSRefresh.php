@@ -45,10 +45,5 @@ class recipesFTSRefresh extends Command
         } catch(Exception $e) {
             exit($e);
         }
-        /*$schedule->call(function () {
-            DB::raw('REFRESH MATERIALIZED VIEW recipes_fts_view');
-        })
-            ->timezone('Europe/Portugal')
-            ->everyMinute();*/
     }
 }

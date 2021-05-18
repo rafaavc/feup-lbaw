@@ -4,6 +4,7 @@ use App\Http\Controllers\MemberController;
 use App\Http\Controllers\RecipeController;
 use App\Http\Controllers\UnitController;
 use App\Http\Controllers\SearchController;
+use App\Http\Middleware\IsAdmin;
 use Illuminate\Http\Request;
 
 /*
@@ -36,6 +37,7 @@ Route::post('user/{user}/request', 'MemberController@followRequest')->middleware
 Route::delete('user/{user}/request', 'MemberController@deleteFollowRequest')->middleware('can:deleteFollow,user');
 Route::put('user/request/{user}', 'MemberController@acceptFollowRequest')->middleware('can:acceptOrDeclineFollow,user');
 Route::delete('user/request/{user}', 'MemberController@declineFollowRequest')->middleware('can:acceptOrDeclineFollow,user');
+Route::put('user/{user}/ban', 'MemberController@banUser')->middleware('IsAdmin');
 
 // ----------------------------------------------------------------
 // Recipe API
@@ -106,7 +108,3 @@ Route::get('categories', 'CategoryController@index');
 Route::get('tags', 'TagController@index');
 Route::get('ingredients', 'IngredientController@index');
 Route::get('units', 'UnitController@index');
-
-// ----------------------------------------------------------------
-// Admin API
-// ----------------------------------------------------------------

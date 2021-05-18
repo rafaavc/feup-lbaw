@@ -1,11 +1,28 @@
 import { makeRequest } from './ajax/methods.js'
 import { url } from './utils/url.js';
 
-let searchQueryInput,searchResultForm, nextButtons, usersTable, tableDiv, paginationNav;
+let searchQueryInput, searchResultForm, nextButtons, usersTable, tableDiv, paginationNav, banButtons;
 const itemsPerSelection = 7;
 
-
 let searchQuery = "";
+
+const registerbanButtonListeners = () => {
+    banButtons = [...document.querySelectorAll('button.user-action.user-ban')];
+
+    banButtons.forEach((banBtn) => {
+        banBtn.addEventListener('click', (event) => {
+            let username = banBtn.closest('tr').firstElementChild.textContent;
+            let requestURL = url('/api/user/' + username + '/ban');
+            let data = {
+                ban: true
+            };
+
+            banRequest(requestURL, data);
+
+            banBtn.closest('tr').style.backgroundColor = 'var(--bs-red)';
+        });
+    })
+}
 
 const registerListeners = () => {
     searchQueryInput = document.querySelector('input[name=searchUser]');
@@ -39,6 +56,15 @@ const registerListeners = () => {
     });
 })};
 
+const banRequest = (requestURL, data) => {
+    makeRequest(requestURL, 'PUT', data)
+        .then((result) => {
+            if(result.response.status == 200) {
+
+            }
+        });
+};
+
 const searchRequest = (requestURL, query, incrementTotalResults) => new Promise((resolve, reject) => {
     makeRequest(requestURL, 'GET', null, query)
         .then((result) => {
@@ -68,6 +94,8 @@ const searchRequest = (requestURL, query, incrementTotalResults) => new Promise(
                     tableDiv.parentElement.insertAdjacentHTML('afterbegin','<h5 style="text-align: center;">No results found.</h5>')
                 }
             }
+
+            registerbanButtonListeners();
             resolve();
         });
 });
@@ -124,4 +152,5 @@ window.onpopstate = function(e) {
 
     registerListeners();
     searchResultForm.addEventListener('submit', handleSearchSubmit);
+    registerbanButtonListeners();
 }

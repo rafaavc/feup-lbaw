@@ -253,4 +253,10 @@ class MemberController extends Controller
     public function list() {
         return view('pages.admin.usersManagement');
     }
+
+    public function banUser(Request $request, Member $user) {
+        $user->is_banned = $request->input('ban');
+        $user->save();
+        return response()->json(['message' => 'Succeed!']);
+    }
 }
