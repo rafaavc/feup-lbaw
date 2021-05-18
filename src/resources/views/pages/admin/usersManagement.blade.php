@@ -4,7 +4,7 @@
 
 @push('css')
     <link href="{{ asset('css/components/breadcrumb.css') }}" rel="stylesheet"/>
-    <link href="{{ asset('css/components/adminArea.css') }}" rel="stylesheet"/>
+    <link href="{{ asset('css/adminArea.css') }}" rel="stylesheet"/>
 @endpush
 
 @section('content')
@@ -20,17 +20,17 @@
         <div class="card">
             <div class="card-body table-responsive">
                 @if(count($users) > 0)
-                    <table class="table align-middle table-striped table-hover">
+                    <table class="table align-middle table-striped table-hover users-table">
                         <thead>
-                            <th >Username</th>
-                            <th >Name</th>
-                            <th colspan="3">E-Mail</th>
-                            <th>Country</th>
-                            <th>City</th>
-                            <th>N<sup>er</sup> of posts</th>
-                            <th>N<sup>er</sup> of comments</th>
-                            <th>N<sup>er</sup> of reports</th>
-                            <th colspan="3">Actions</th>
+                            <th style="padding: 0; padding-bottom: 0.5em;">Username</th>
+                            <th style="padding: 0; padding-bottom: 0.5em;">Name</th>
+                            <th style="padding: 0; padding-bottom: 0.5em;">E-Mail</th>
+                            <th style="padding: 0; padding-bottom: 0.5em;">Country</th>
+                            <th style="padding: 0; padding-bottom: 0.5em;">City</th>
+                            <th style="padding: 0; padding-bottom: 0.5em; padding-right: 1em;">N<sup>er</sup> of posts</th>
+                            <th style="padding: 0; padding-bottom: 0.5em; padding-right: 1em;">N<sup>er</sup> of Cmts.</th>
+                            <th style="padding: 0; padding-bottom: 0.5em; padding-right: 1em;">N<sup>er</sup> of reports</th>
+                            <th style="padding: 0; padding-bottom: 0.5em;" class="text-center">Actions</th>
                         </thead>
                         <tbody>
                             @if(count($users) > 0)
