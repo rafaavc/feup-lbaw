@@ -516,10 +516,6 @@ BEGIN
     JOIN tb_member ON tb_recipe.id_member = tb_member.id
     WHERE tb_recipe.id = id_recipe;
 
-    IF id_user IS NULL THEN
-        RETURN author_visibility = TRUE;
-    END IF;
-
 	-- Recipe's author profile visibility if public
     IF author_visibility = TRUE THEN
         RETURN TRUE;
