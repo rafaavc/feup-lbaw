@@ -21,10 +21,10 @@ services:
 
   laravel:
     build: .
-    ports: 
+    ports:
       - "8000:80"
     volumes:
       - /var/www/vendor
       - .:/var/www/
-    depends_on: 
+    depends_on:
       - postgres

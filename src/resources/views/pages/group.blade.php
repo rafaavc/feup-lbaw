@@ -13,7 +13,7 @@
 
 @push('js')
     <script src="{{ asset('js/membersFollowingBoxes.js') }}" defer></script>
-    <script src="{{ asset('js/navPopups.js') }}" defer></script>
+    <script src="{{ asset('js/navPopups.js') }}" type="module"></script>
     <script src="{{ asset('js/addToFavourites.js') }}" defer></script>
 @endpush
 

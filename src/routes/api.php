@@ -34,8 +34,8 @@ Route::get('user/{user}/groups', 'MemberController@getGroups')->middleware('can:
 Route::get('users', 'MemberController@index');
 Route::post('user/{user}/request', 'MemberController@followRequest')->middleware('can:follow,user');
 Route::delete('user/{user}/request', 'MemberController@deleteFollowRequest')->middleware('can:deleteFollow,user');
-Route::post('user/request/{user}', 'FollowController@accept');
-Route::delete('user/request/{user}', 'FollowController@decline');
+Route::put('user/request/{user}', 'MemberController@acceptFollowRequest')->middleware('can:acceptOrDeclineFollow,user');
+Route::delete('user/request/{user}', 'MemberController@declineFollowRequest')->middleware('can:acceptOrDeclineFollow,user');
 
 // ----------------------------------------------------------------
 // Recipe API
