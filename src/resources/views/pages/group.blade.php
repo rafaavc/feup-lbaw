@@ -85,10 +85,10 @@
                         <div class="text-center">
                             <i class="fas fa-lock fa-10x private-profile-icon mb-4"></i>
                             <div class="private-profile-text-title">
-                                This account is private
+                                This group is private
                             </div>
                             <div class="private-profile-text">
-                                Follow this account to see their content
+                                Join this group to see its content
                             </div>
                         </div>
                     </div>
