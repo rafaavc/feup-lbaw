@@ -207,8 +207,5 @@ window.onpopstate = function(e) {
     }
     refreshSearchQuery();
     registerListeners();
-<<<<<<< HEAD
-=======
     refreshSearchAreas();
->>>>>>> d85e7354123ce01d96b2be3381456667631f5be9
 }
