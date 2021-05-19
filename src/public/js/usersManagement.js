@@ -18,7 +18,7 @@ const registerbanButtonListeners = () => {
                 ban: newBanState
             };
 
-            banRequest(requestURL, data);
+            makeRequest(requestURL, 'PUT', data);
 
             if(newBanState == "true") {
                 swapBanButtonState(banBtn);
@@ -72,15 +72,6 @@ const registerListeners = () => {
         }
     });
 })};
-
-const banRequest = (requestURL, data) => {
-    makeRequest(requestURL, 'PUT', data)
-        .then((result) => {
-            if(result.response.status == 200) {
-
-            }
-        });
-};
 
 const searchRequest = (requestURL, query, incrementTotalResults) => new Promise((resolve, reject) => {
     makeRequest(requestURL, 'GET', null, query)
