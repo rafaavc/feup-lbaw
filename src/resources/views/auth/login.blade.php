@@ -59,12 +59,16 @@
                     </div>
                 </form>
 
+                <span class="d-block text-center mt-3"><a href="{{ url('/forgot_password') }}"
+                                                                                       class="signUp-a">Forgot Password?</a></span>
+
                 <span class="d-block text-center mt-3">Don't have an account? &nbsp;<a href="{{ url('/register') }}"
                                                                                        class="signUp-a">Sign Up</a></span>
                 <div class="separator mt-3">or</div>
 
                 <meta name="google-signin-client_id" content="YOUR_CLIENT_ID.apps.googleusercontent.com">
                 <div class="g-signin2" data-width="200"></div>
+
             </div>
         </div>
     </div>

@@ -27,6 +27,11 @@ Route::get('logout', 'Auth\LoginController@logout')->name('logout');
 Route::get('register', 'Auth\RegisterController@showRegistrationForm')->name('register');
 Route::post('register', 'Auth\RegisterController@register');
 
+Route::get('forgot_password', 'Auth\ForgotPasswordController@viewforgot');
+Route::post('forgot_password', 'Auth\ForgotPasswordController@forgot');
+Route::get('reset_password/{token}', 'Auth\ForgotPasswordController@viewReset');
+Route::post('reset_password', 'Auth\ForgotPasswordController@reset');
+
 // ----------------------------------------------------------------
 // User pages
 // ----------------------------------------------------------------
