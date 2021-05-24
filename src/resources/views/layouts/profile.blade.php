@@ -22,6 +22,13 @@
                 {{ session()->get('message') }}
             </div>
         @endif
+        @if($errors->any())
+            <div class="alert alert-danger" id="error-messages" role="alert">
+                @foreach($errors->all() as $error)
+                    {{ $error }}<br/>
+                @endforeach
+            </div>
+        @endif
         @include('partials.breadcrumb', ['pages' => ["Users", $user->name], 'withoutMargin' => true])
         <div>
             @include('partials.profile.cover', [
