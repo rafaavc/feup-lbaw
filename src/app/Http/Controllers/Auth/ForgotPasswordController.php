@@ -29,10 +29,14 @@ class ForgotPasswordController extends Controller
             $user = DB::table('tb_member')
                 ->where('username', '=', $request->username)
                 ->first();
-
             if ($user->email !== $request->email) {
-                return redirect("/login")->withErrors(['message' => "The email does not correspond to the username."]);
+                return redirect("/forgot_password")->withErrors(['message' => "The email does not correspond to the username."]);
             }
+            } catch (Exception $e) {
+                return redirect("/forgot_password")->withErrors(['message' => "There is no user with username " . $request->username . "."]);
+            }
+
+        try {
 
             $token = Str::random(64);
 
@@ -48,9 +52,9 @@ class ForgotPasswordController extends Controller
                 $message->subject('Reset Password');
             });
 
-            return redirect("/login")->with(['message' => "Reset password link sent to your email."]);
+            return redirect("/login")->with("message", "Reset password link sent to your email.");
         } catch (Exception $e) {
-            return redirect("/login")->withErrors(['message' => $e->getMessage()]);
+            return redirect("/forgot_password")->withErrors(['message' => $e->getMessage()]);
         }
     }
 
@@ -71,10 +75,14 @@ class ForgotPasswordController extends Controller
             $user = DB::table('tb_member')
                 ->where('username', '=', $request->username)
                 ->first();
-
             if ($user->email !== $request->email) {
                 return redirect("/login")->withErrors(['message' => "The email does not correspond to the username."]);
             }
+        } catch (Exception $e) {
+            return redirect("/login")->withErrors(['message' => "There is no user with username " . $request->username . "."]);
+        }
+
+        try {
 
             $updatePassword = DB::table('password_resets')
                                 ->where([
@@ -93,7 +101,7 @@ class ForgotPasswordController extends Controller
 
             DB::table('password_resets')->where(['email'=> $request->email])->delete();
 
-            return redirect("/login")->with(['message' => "Password has been successfully changed."]);
+            return redirect("/login")->with("message", "Password has been successfully changed.");
         } catch (Exception $e) {
             return redirect("/login")->withErrors(['message' => $e->getMessage()]);
         }

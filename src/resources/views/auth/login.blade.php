@@ -28,6 +28,11 @@
                 </div>
             </div>
             <div class="col-xl-6 sign-form">
+                @if(session()->has('message'))
+                <div class="alert alert-success">
+                    {{ session()->get('message') }}
+                </div>
+                @endif
                 @if($errors->any())
                     <div class="alert alert-danger" id="error-messages" role="alert">
                         @foreach($errors->all() as $error)
