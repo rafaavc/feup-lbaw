@@ -39,7 +39,7 @@
                     <span class='d-block mt-4'>Username <span class='form-required'></span></span>
                     @include('partials.inputIcon', ['icon' => 'user', 'name' => 'username', 'required' => true, 'value' => request()->get('username')])
                     <span class='d-block mt-4'>Email Address <span class='form-required'></span></span>
-                    @include('partials.inputIcon', ['icon' => 'envelope', 'name' => 'email', 'required' => true, 'type' => 'text'])
+                    @include('partials.inputIcon', ['icon' => 'envelope', 'name' => 'email', 'required' => true, 'type' => 'email'])
                     <div class="d-grid gap-2 col-6 mx-auto">
                         <button type="submit" class="btn btn-primary d-block">
                             Recover Password

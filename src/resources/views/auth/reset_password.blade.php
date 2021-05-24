@@ -38,7 +38,7 @@
                     <span class='d-block mt-4'>Username <span class='form-required'></span></span>
                     @include('partials.inputIcon', ['icon' => 'user', 'name' => 'username', 'required' => true])
                     <span class='d-block mt-4'>Email Address <span class='form-required'></span></span>
-                        @include('partials.inputIcon', ['icon' => 'envelope', 'name' => 'email', 'required' => true, 'type' => 'text', 'value' => request()->get('username')])
+                        @include('partials.inputIcon', ['icon' => 'envelope', 'name' => 'email', 'required' => true, 'type' => 'email', 'value' => request()->get('username')])
                     <span class='d-block mt-4'>Password <span class='form-required'></span></span>
                     @include('partials.inputIcon', ['icon' => 'lock', 'name' => 'password', 'required' => true, 'type' => 'password'])
                     <span class='d-block mt-4'>Repeat Password <span class='form-required'></span></span>
