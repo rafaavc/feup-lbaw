@@ -65,7 +65,7 @@
                 </form>
 
                 <span class="d-block text-center mt-3"><a href="{{ url('/forgot_password') }}"
-                                                                                       class="signUp-a">Forgot Password?</a></span>
+                                                                                       class="forgot-password">Forgot Password?</a></span>
 
                 <span class="d-block text-center mt-3">Don't have an account? &nbsp;<a href="{{ url('/register') }}"
                                                                                        class="signUp-a">Sign Up</a></span>
