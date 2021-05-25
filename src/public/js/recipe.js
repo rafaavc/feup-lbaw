@@ -226,6 +226,7 @@ const getEditContentInput = (preexistingContent) => {
     return `<form class="edit-comment-form">
         <textarea name="content" required max="512" id="commentContent" class="form-control" placeholder="Leave a comment here" style="height: 6rem">${preexistingContent}</textarea>
         <button class="btn btn-primary mt-2" type="submit">Edit</button>
+        <button class="btn btn-outline-secondary cancel-edit mt-2 ms-2">Cancel</button>
     </form>`;
 }
 
@@ -247,6 +248,11 @@ const showCommentEditForm = (event) => {
     const form = commentContent.nextElementSibling;
 
     const commentFeedback = new Feedback(comment.firstElementChild, "mx-3 mt-4");
+
+    form.querySelector('.cancel-edit').addEventListener('click', () => {
+        form.remove();
+        commentContent.style.display = 'block';
+    });
 
     form.addEventListener('submit', (e) => {
         e.preventDefault();
