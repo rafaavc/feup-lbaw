@@ -225,8 +225,8 @@ const removeEditCommentForm = () => {
 const getEditContentInput = (preexistingContent) => {
     return `<form class="edit-comment-form">
         <textarea name="content" required max="512" id="commentContent" class="form-control" placeholder="Leave a comment here" style="height: 6rem">${preexistingContent}</textarea>
-        <button class="btn btn-primary mt-2" type="submit">Edit</button>
-        <button class="btn btn-outline-secondary cancel-edit mt-2 ms-2">Cancel</button>
+        <button class="btn btn-sm btn-primary mt-2" type="submit">Edit</button>
+        <button class="btn btn-sm btn-outline-secondary cancel-edit mt-2 ms-2">Cancel</button>
     </form>`;
 }
 
