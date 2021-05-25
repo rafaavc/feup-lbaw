@@ -7,7 +7,7 @@
     @if(Gate::inspect('create', $comment)->allowed())
         <form name="createCommentForm" class="form-floating m-3 position-relative">
             <input type="hidden" name="recipeId" value="{{ $recipe->id }}" />
-            <textarea name="content" id="commentContent" class="form-control" placeholder="Leave a comment here" style="height: 6rem"></textarea>
+            <textarea required name="content" id="commentContent" class="form-control" placeholder="Leave a comment here" style="height: 6rem"></textarea>
             <label for="commentContent">Your comment</label>
             <button type="submit" class="btn btn-primary position-absolute py-1 send">
                 <small>
