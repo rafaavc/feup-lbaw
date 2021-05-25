@@ -101,9 +101,6 @@ class GroupController extends Controller
 
             $group->save();
 
-            $group->moderators()->sync(Auth::user()->id);
-            $group->members()->sync(Auth::user()->id);
-
             // Handle Group Photos
 
             if ($request->hasFile('profileImage')) {
