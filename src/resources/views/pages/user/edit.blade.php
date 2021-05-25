@@ -155,12 +155,10 @@ $role = "member";
                 &nbsp; Change Password
             </button>
 
-
             <a href="" class="btn btn-danger submit-button my-2 deleteProfile">
                 <i class="fas fa-trash me-3"></i>
                 Delete Profile
             </a>
-
         </div>
     </form>
 

@@ -58,7 +58,7 @@ document.querySelector('.deleteProfile').addEventListener('click', () => {
     const username = /\/.*\/(.*)\/.*/.exec(urlPath)[1];
     let entireURL = window.location.href;
     let regex = new RegExp(`(.*?)user\/${username}\/edit`);
-    entireURL = entireURL.replace(regex , "$1");
+    entireURL = entireURL.replace(regex , "$1logout");
     entireURL += "?message=" + encodeURIComponent("Account successfully deleted!");
 
     makeRequest(url('/user/' + username + '/delete'), 'DELETE')

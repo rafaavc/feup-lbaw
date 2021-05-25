@@ -30,8 +30,7 @@
 
 @endif
 
-<div class="alert alert-success alert-dismissible fade show mt-2" role="alert" style="position: fixed; z-index: 5; text-align: center; left: 50%; transform: translateX(-50%);">
-    You should check in on some of those fields below.
+<div class="alert alert-success alert-dismissible fade show mt-2 d-none" role="alert" style="position: fixed; z-index: 5; text-align: center; left: 50%; transform: translateX(-50%);">
     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close" style="outline: 0"></button>
 </div>
 
