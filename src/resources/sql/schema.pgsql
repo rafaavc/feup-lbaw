@@ -313,6 +313,13 @@ CREATE TABLE tb_recipe_report (
     CONSTRAINT recipe_report_recipe_FK FOREIGN KEY (id_recipe) REFERENCES "tb_recipe" (id) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
+CREATE TABLE password_resets (
+    id SERIAL,
+    email text,
+    token text,
+    created_at datetime
+);
+
 
 -- INDEXES
 
