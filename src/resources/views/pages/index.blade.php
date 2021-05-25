@@ -30,6 +30,11 @@
 
 @endif
 
+<div class="alert alert-success alert-dismissible fade show mt-2" role="alert" style="position: fixed; z-index: 5; text-align: center; left: 50%; transform: translateX(-50%);">
+    You should check in on some of those fields below.
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close" style="outline: 0"></button>
+</div>
+
 <main class="margin-to-footer">
     <section>
         <div id="carouselExampleDark" class="carousel carousel-light slide carousel-fade"  data-bs-ride="carousel">

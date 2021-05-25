@@ -1,3 +1,6 @@
+import { makeRequest } from './ajax/methods.js'
+import { url } from './utils/url.js';
+
 // File Upload
 
 fileUploadListeners();
@@ -45,3 +48,26 @@ function fileDeleteHandler(event) {
     let img = target.closest('div.row.row-with-image').nextElementSibling;
     img.src = "storage/images/people/no_image.png";
 }
+
+
+// Delete Profile
+
+document.querySelector('.deleteProfile').addEventListener('click', () => {
+    event.preventDefault();
+    const urlPath = new URL(window.location.href).pathname;
+    const username = /\/.*\/(.*)\/.*/.exec(urlPath)[1];
+    let entireURL = window.location.href;
+    let regex = new RegExp(`(.*?)user\/${username}\/edit`);
+    entireURL = entireURL.replace(regex , "$1");
+    entireURL += "?message=" + encodeURIComponent("Account successfully deleted!");
+
+    makeRequest(url('/user/' + username + '/delete'), 'DELETE')
+        .then((result) => {
+            if (result.response.status == 200) {
+                console.log('Deleted profile successfully!');
+                window.location.href = entireURL;
+            }
+        });
+});
+
+
