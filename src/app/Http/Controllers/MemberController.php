@@ -121,8 +121,6 @@ class MemberController extends Controller
                 $file->storeAs("public/images/people/cover", "$user->id.jpeg");
             }
 
-            dd($request);
-
             $user->save();
 
             return response()->json(['message' => 'Success!', 'member_id' => $user->id], 200);
