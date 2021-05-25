@@ -1,4 +1,20 @@
+table.users-table {
+    border-collapse: collapse;
+}
 
-.admin-search-input {
-    max-width: 20rem;
+.page-link {
+    color: black;
+    font-size: 1.1em;
+    cursor: pointer;
+    user-select: none;
+}
+
+
+@media (max-width: 1700px) {
+    button.user-action {
+        display: block !important;
+        margin: auto !important;
+        margin-top: 0.25em !important;
+        margin-bottom: 0.25em !important;
+    }
 }

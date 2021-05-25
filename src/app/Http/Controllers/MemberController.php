@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Comment;
 use App\Models\Member;
 use App\Models\Recipe;
+
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
@@ -249,5 +251,15 @@ class MemberController extends Controller
     {
         $this->remove($user);
         return redirect("/login");
+    }
+
+    public function list() {
+        return view('pages.admin.usersManagement');
+    }
+
+    public function banUser(Request $request, Member $user) {
+        $user->is_banned = $request->input('ban');
+        $user->save();
+        return response()->json(['message' => 'Succeed!']);
     }
 }

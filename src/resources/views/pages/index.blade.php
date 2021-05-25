@@ -4,7 +4,31 @@
     <link href="{{ asset('css/index.css') }}" rel="stylesheet" />
 @endpush
 
+@push('js')
+    <script src="{{ asset('js/index.js') }}" defer></script>
+@endpush
+
 @section('content')
+
+@if(session()->has('message'))
+    <button class="btn btn-primary d-none" data-bs-toggle="modal" data-bs-target="#bannedMessageModal"></button>
+
+    <!-- Modal -->
+    <div class="modal fade" id="bannedMessageModal" tabindex="-1" aria-labelledby="bannedMessageModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title" id="bannedMessageModalLabel" style="color: var(--accent-color-darker);">Banned</h3>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <span style="color: var(--accent-color-darker);">TasteBuds</span> is sorry to anounce that your account is <b>banned</b> for undetermined time.
+                </div>
+            </div>
+        </div>
+    </div>
+
+@endif
 
 <main class="margin-to-footer">
     <section>
