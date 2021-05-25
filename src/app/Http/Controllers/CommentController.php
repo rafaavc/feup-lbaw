@@ -12,10 +12,14 @@ class CommentController extends Controller
 {
     protected $table = 'tb_comment';
 
-    private static $validation = [
+    private static $createValidation = [
         'recipeId' => 'required|integer|exists:App\Models\Recipe,id',
         'content' => 'required|string|max:512',
         'rating' => 'nullable|integer|min:1|max:5'
+    ];
+
+    private static $updateValidation = [
+        'content' => 'required|string|max:512'
     ];
 
     private static $errorMessages = [
@@ -24,24 +28,17 @@ class CommentController extends Controller
         'rating' => 'Invalid rating.'
     ];
 
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+    public function makeValidatorAndGetMessage(Request $request, $validation, $errors) {
+        $validator = Validator::make($request->all(), $validation, $errors);
+        if ($validator->fails()) {
+            $message = "";
+            foreach($validator->messages()->getMessages() as $msgArr) {
+                foreach($msgArr as $msg) $message .= $msg." ";
+            }
+            return $message;
+        }
+        return null;
     }
 
     /**
@@ -52,14 +49,8 @@ class CommentController extends Controller
      */
     public function insert(Request $request)
     {
-        $validator = Validator::make($request->all(), CommentController::$validation, CommentController::$errorMessages);
-        if ($validator->fails()) {
-            $message = "";
-            foreach($validator->messages()->getMessages() as $msgArr) {
-                foreach($msgArr as $msg) $message .= $msg." ";
-            }
-            return response()->json(['message' => $message], 400);
-        }
+        $message = $this->makeValidatorAndGetMessage($request, CommentController::$createValidation, CommentController::$errorMessages);
+        if (!is_null($message)) return response()->json(['message' => $message], 400);
 
         DB::beginTransaction();
 
@@ -97,37 +88,28 @@ class CommentController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function put(Request $request, Comment $comment)
     {
-        //
+        $message = $this->makeValidatorAndGetMessage($request, CommentController::$updateValidation, CommentController::$errorMessages);
+        if (!is_null($message)) return response()->json(['message' => $message], 400);
+
+        try
+        {
+            $comment->text = $request->input('content');
+            $comment->save();
+
+            return response()->json(['message' => 'Success!']);
+        }
+        catch(\Exception $e)
+        {
+            return response()->json(['message' => $e->getMessage()], 400);
+        }
     }
 
     /**

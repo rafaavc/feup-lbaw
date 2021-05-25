@@ -4,7 +4,7 @@
         @include('partials.recipe.comment', [ 'comment' => $comment, 'depth' => 0 ])
     @endforeach
     <h3 class="mt-4">Comment on the recipe</h3>
-    @if(Auth::check())
+    @if(Gate::inspect('create', $comment)->allowed())
         <form name="createCommentForm" class="form-floating m-3 position-relative">
             <input type="hidden" name="recipeId" value="{{ $recipe->id }}" />
             <textarea name="content" id="commentContent" class="form-control" placeholder="Leave a comment here" style="height: 6rem"></textarea>

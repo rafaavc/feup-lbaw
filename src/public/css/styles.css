@@ -36,6 +36,13 @@ a:hover, button[role=a]:hover {
     color: var(--accent-color-darker);
 }
 
+button[role=a]:focus,
+button[role=a].active:focus,
+button[role=a]:active:focus {
+    color: var(--accent-color-lighter);
+    box-shadow: none !important;
+}
+
 .margin-from-nav {
     margin-top: var(--margin-from-nav);
 }

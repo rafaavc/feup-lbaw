@@ -174,13 +174,19 @@ const getCreateReplyFormHTML = (parentComment) => {
     `;
 }
 
+const getCommentElementFromActionButton = (action) => {
+    let comment;
+    if (action.tagName == 'I') comment = action.parentElement;  // makes element equal to the button
+    else comment = action;
+
+    return comment.parentElement.parentElement.parentElement.parentElement;
+}
+
 const showRecipeReplyForm = (event) => {
     removeCreateReplyForm();
-    let comment;
-    if (event.target.tagName == 'I') comment = event.target.parentElement;  // makes element equal to the button
-    else comment = event.target;
+    removeEditCommentForm();
 
-    comment = comment.parentElement.parentElement.parentElement;
+    const comment = getCommentElementFromActionButton(event.target);
 
 
     comment.insertAdjacentHTML('beforeend', getCreateReplyFormHTML(comment));
@@ -204,3 +210,22 @@ const refreshCommentReplyButtons = () => {
 }
 
 refreshCommentReplyButtons();
+
+const removeEditCommentForm = () => {
+    console.warn("TODO: removeEditCommentForm");
+}
+
+const showCommentEditForm = (event) => {
+    removeCreateReplyForm();
+    removeEditCommentForm();
+
+    const comment = getCommentElementFromActionButton(event.target);
+
+    console.warn("TODO: insert form in DOM");
+    console.warn("TODO: deal with update request");
+}
+
+const editButtons = document.querySelctorAll('.recipe-comment-edit-button');
+for (const button of editButtons) {
+    button.addEventListener('click', showCommentEditForm);
+}
