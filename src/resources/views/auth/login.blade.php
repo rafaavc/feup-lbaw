@@ -28,6 +28,11 @@
                 </div>
             </div>
             <div class="col-xl-6 sign-form">
+                @if(session()->has('message'))
+                <div class="alert alert-success">
+                    {{ session()->get('message') }}
+                </div>
+                @endif
                 @if($errors->any())
                     <div class="alert alert-danger" id="error-messages" role="alert">
                         @foreach($errors->all() as $error)
@@ -59,12 +64,16 @@
                     </div>
                 </form>
 
+                <span class="d-block text-center mt-3"><a href="{{ url('/forgot_password') }}"
+                                                                                       class="forgot-password">Forgot Password?</a></span>
+
                 <span class="d-block text-center mt-3">Don't have an account? &nbsp;<a href="{{ url('/register') }}"
                                                                                        class="signUp-a">Sign Up</a></span>
                 <div class="separator mt-3">or</div>
 
                 <meta name="google-signin-client_id" content="YOUR_CLIENT_ID.apps.googleusercontent.com">
                 <div class="g-signin2" data-width="200"></div>
+
             </div>
         </div>
     </div>

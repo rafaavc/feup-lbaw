@@ -29,6 +29,16 @@ div.sign-form {
     padding-left: 5em;
 }
 
+.forgot-password {
+    text-decoration: none;
+    color: rgb(100, 100, 100);
+    font-weight: 500;
+}
+
+.forgot-password:hover {
+    color: black;
+}
+
 .signUp-a {
     text-decoration: none;
 }
