@@ -115,8 +115,8 @@ class CommentController extends Controller
     /**
      * Calculate recursively the comment Ids to remove.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param  array  $commentIds
+     * @return array
      */
     public function fetchCommentIds(array $commentIds): array {
         $ids = DB::table('tb_answer')->select('id_comment')->whereIn('father_comment', $commentIds)->get();
