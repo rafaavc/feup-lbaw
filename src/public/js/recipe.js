@@ -111,6 +111,7 @@ const handleCommentFormSubmit = (event) => {
                 removeRating();
                 refreshCommentReplyButtons();
                 refreshCommentEditButtons();
+                refreshCommentDeleteButtons();
             } else {
                 setErrorMessage(result.content.message);
             }
@@ -139,6 +140,7 @@ const handleReplyFormSubmit = (event, form, comment) => {
                 removeReplyErrorMessage();
                 refreshCommentReplyButtons();
                 refreshCommentEditButtons();
+                refreshCommentDeleteButtons();
             } else {
                 setReplyErrorMessage(form, result.content.message);
             }
@@ -285,3 +287,37 @@ const refreshCommentEditButtons = () => {
 }
 
 refreshCommentEditButtons();
+
+
+// ------------- DELETE COMMENT/REVIEW ------------- //
+
+let recipeCommentDeleteButtons = [];
+
+const refreshCommentDeleteButtons = () => {
+    const newButtons = document.querySelectorAll('.recipe-comment-delete-button');
+    for (const button of newButtons) {
+        if (!recipeCommentDeleteButtons.includes(button)) {
+            button.addEventListener('click', (event) => {
+                const comment = getCommentElementFromActionButton(event.target);
+                let commentFeedback;
+                if(comment.parentElement.tagName == 'SECTION')
+                    commentFeedback = new Feedback(comment, "mx-3 mt-4");
+                else
+                    commentFeedback = new Feedback(comment.parentElement.lastElementChild, "mx-3 mt-4");
+                makeRequest(url(`api/comment/${comment.dataset.commentId}`), 'DELETE')
+                .then((res) => {
+                    if (res.response.status != 200) {
+                        commentFeedback.showMesssage(res.content.message, 'danger');
+                    } else {
+                        commentFeedback.showMesssage("Comment(s) deleted successfully!");
+                        comment.remove();
+                    }
+                });
+
+            });
+        }
+    }
+    recipeCommentDeleteButtons = [...newButtons];
+}
+
+refreshCommentDeleteButtons();

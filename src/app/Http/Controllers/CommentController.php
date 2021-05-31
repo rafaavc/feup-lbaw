@@ -129,7 +129,6 @@ class CommentController extends Controller
         if(!empty($newCommentIds))
             $otherIds = $this->fetchCommentIds($newCommentIds);
 
-
         return array_merge($newCommentIds, $otherIds);
     }
 
