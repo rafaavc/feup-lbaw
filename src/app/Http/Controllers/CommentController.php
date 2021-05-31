@@ -113,13 +113,39 @@ class CommentController extends Controller
     }
 
     /**
+     * Calculate recursively the comment Ids to remove.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function fetchCommentIds(array $commentIds): array {
+        $ids = DB::table('tb_answer')->select('id_comment')->whereIn('father_comment', $commentIds)->get();
+        $newCommentIds = $ids->map(function($commentId) {
+            return $commentId->id_comment;
+        });
+        $newCommentIds = $newCommentIds->toArray();
+
+        $otherIds = array();
+        if(!empty($newCommentIds))
+            $otherIds = $this->fetchCommentIds($newCommentIds);
+
+
+        return array_merge($newCommentIds, $otherIds);
+    }
+
+    /**
      * Remove the specified resource from storage.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function remove(Comment $comment)
     {
-        //
+        $commentIds = $this->fetchCommentIds([$comment->id]);
+        array_push($commentIds, $comment->id);
+        Comment::destroy($commentIds);
+
+        return response()->json(['message' => $commentIds]);
     }
+
 }

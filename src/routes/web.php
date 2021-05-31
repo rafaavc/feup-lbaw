@@ -14,7 +14,7 @@
 // ----------------------------------------------------------------
 // Static pages
 // ----------------------------------------------------------------
-Route::view('/', 'pages.index');
+Route::view('/', 'pages.index')->name('homepage');
 Route::get('faq', 'FaqController@view');
 Route::get('about', 'AboutController@view');
 
