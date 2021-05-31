@@ -3,12 +3,21 @@ import { url } from './utils/url.js';
 import { scrollToTargetCustom } from './utils/scrollToTargetCustom.js';
 import { Feedback } from './feedback/Feedback.js';
 
-const createCommentForm = document.querySelector('form[name=createCommentForm]');
-const ratingInput = createCommentForm.querySelector('input[name=rating]');
-const stars = document.querySelectorAll('.rating-input-star');
-const ratingInputCancel = document.querySelector('#ratingInputCancel');
+let createCommentForm;
+let ratingInput;
+let stars;
+let ratingInputCancel;
 
-ratingInputCancel.style.display = 'none';
+const notAdminOrExternalUser = document.body.contains(document.querySelector('form[name=createCommentForm]'));
+
+if(notAdminOrExternalUser) {
+    createCommentForm = document.querySelector('form[name=createCommentForm]');
+    ratingInput = createCommentForm.querySelector('input[name=rating]');
+    stars = document.querySelectorAll('.rating-input-star');
+    ratingInputCancel = document.querySelector('#ratingInputCancel');
+
+    ratingInputCancel.style.display = 'none';
+}
 
 // TODO IF COMMENT WITH RATING IS DELETED, PUT DISPLAY = 'BLOCK' NO .rating-input
 
@@ -47,12 +56,14 @@ const removeRating = () => {
     ratingInputCancel.style.display = 'none';
 }
 
-for (const star of stars) {
-    star.addEventListener('click', starmark);
-    star.addEventListener('mouseover', starmark);
-    star.addEventListener('mouseout', starmark);
+if(notAdminOrExternalUser) {
+    for (const star of stars) {
+        star.addEventListener('click', starmark);
+        star.addEventListener('mouseover', starmark);
+        star.addEventListener('mouseout', starmark);
+    }
+    ratingInputCancel.addEventListener('click', removeRating);
 }
-ratingInputCancel.addEventListener('click', removeRating);
 
 const setErrorMessage = (message) => {
     const errorElements = document.querySelectorAll('.createCommentFormErrors');
@@ -147,8 +158,9 @@ const handleReplyFormSubmit = (event, form, comment) => {
         });
 }
 
-createCommentForm.addEventListener('submit', handleCommentFormSubmit);
-
+if(notAdminOrExternalUser) {
+    createCommentForm.addEventListener('submit', handleCommentFormSubmit);
+}
 
 const removeCreateReplyForm = () => {
     const forms = document.querySelectorAll('.createReplyFormWrapper');
