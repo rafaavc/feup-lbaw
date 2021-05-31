@@ -421,8 +421,9 @@ BEGIN
     FROM tb_recipe
     WHERE id = OLD.id_recipe;
 
+
     UPDATE tb_recipe
-    SET num_rating = num_rating - 1, score = (totalScore - OLD.rating) / (num_rating - 1)
+    SET num_rating = num_rating - 1, score = (totalScore - OLD.rating) / GREATEST((num_rating - 1), 1)
     WHERE tb_recipe.id = OLD.id_recipe;
 
     RETURN OLD;
@@ -489,7 +490,7 @@ BEGIN
     WHERE id = OLD.id_member;
 
     UPDATE tb_member
-    SET num_rating = num_rating - 1, score = (totalScore - OLD.score) / (num_rating - 1)
+    SET num_rating = num_rating - 1, score = (totalScore - OLD.score) / GREATEST((num_rating - 1), 1)
     WHERE tb_member.id = OLD.id_member;
 
     RETURN OLD;

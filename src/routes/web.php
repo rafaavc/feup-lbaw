@@ -27,6 +27,11 @@ Route::get('logout', 'Auth\LoginController@logout')->name('logout');
 Route::get('register', 'Auth\RegisterController@showRegistrationForm')->name('register');
 Route::post('register', 'Auth\RegisterController@register');
 
+Route::get('forgot_password', 'Auth\ForgotPasswordController@viewforgot');
+Route::post('forgot_password', 'Auth\ForgotPasswordController@forgot');
+Route::get('reset_password/{token}', 'Auth\ForgotPasswordController@viewReset');
+Route::post('reset_password', 'Auth\ForgotPasswordController@reset');
+
 // ----------------------------------------------------------------
 // User pages
 // ----------------------------------------------------------------
@@ -37,7 +42,8 @@ Route::get('user/{user}/edit', 'MemberController@update')->middleware('can:updat
 Route::post('user/{user}/edit', 'MemberController@updateAction')->middleware('can:update,user');
 Route::get('user/{user}/delete', 'MemberController@deleteAction')->middleware('can:delete,user');
 Route::get('user/{user}/{any?}', 'MemberController@redirect')->where('any', '.*');
-Route::get('admin/users', 'MemberController@list')->middleware('can:list,App\Models\Member');
+
+Route::get('admin/users', 'MemberController@list')->middleware('IsAdmin');
 
 // ----------------------------------------------------------------
 // Recipe pages
