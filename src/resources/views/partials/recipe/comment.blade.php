@@ -20,11 +20,18 @@
                 </small>
             </p>
         </div>
-        @if(Auth::check())
+        <div class="col">
+        @if(Gate::inspect('create', $comment)->allowed())
             <div class="col-md text-end position-relative">
-                <button class="btn btn-sm btn-outline-secondary p-1 m-1 recipe-comment-reply-button"><i class="fas fa-reply me-1"></i>Reply</button>
+                <button role="a" class="btn btn-sm btn-outline-secondary p-1 m-1 recipe-comment-reply-button"><i class="fas fa-reply me-1"></i>Reply</button>
             </div>
         @endif
+        @if(Gate::inspect('update', $comment)->allowed())
+            <div class="col-md text-end position-relative">
+                <button role="a" class="btn btn-sm btn-outline-secondary p-1 m-1 recipe-comment-edit-button"><i class="fas fa-edit me-1"></i>Edit</button>
+            </div>
+        @endif
+        </div>
     </div>
     @foreach($comment->replies as $idx => $reply)
         @include('partials.recipe.comment', [ 'comment' => $reply, 'depth' => $depth + 1 ])

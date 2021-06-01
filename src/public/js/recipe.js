@@ -1,6 +1,7 @@
 import { makeRequest } from './ajax/methods.js'
 import { url } from './utils/url.js';
 import { scrollToTargetCustom } from './utils/scrollToTargetCustom.js';
+import { Feedback } from './feedback/Feedback.js';
 
 const createCommentForm = document.querySelector('form[name=createCommentForm]');
 const ratingInput = createCommentForm.querySelector('input[name=rating]');
@@ -109,6 +110,7 @@ const handleCommentFormSubmit = (event) => {
                 removeCommentErrorMessage();
                 removeRating();
                 refreshCommentReplyButtons();
+                refreshCommentEditButtons();
             } else {
                 setErrorMessage(result.content.message);
             }
@@ -136,6 +138,7 @@ const handleReplyFormSubmit = (event, form, comment) => {
                 removeCreateReplyForm();
                 removeReplyErrorMessage();
                 refreshCommentReplyButtons();
+                refreshCommentEditButtons();
             } else {
                 setReplyErrorMessage(form, result.content.message);
             }
@@ -161,7 +164,7 @@ const getCreateReplyFormHTML = (parentComment) => {
                 <input type="hidden" name="recipeId" value="${recipeId}" />
                 <input type="hidden" name="parentCommentId" value="${parentCommentId}" />
                 <input type="hidden" name="depth" value="${parentCommentDepth+1}" />
-                <textarea name="content" id="replyContent" class="form-control" placeholder="Leave a comment here" style="height: 6rem"></textarea>
+                <textarea name="content" required max="512" id="replyContent" class="form-control" placeholder="Leave a comment here" style="height: 6rem"></textarea>
                 <label for="replyContent">Your comment</label>
                 <button type="submit" class="btn btn-primary position-absolute py-1 send">
                     <small>
@@ -174,13 +177,19 @@ const getCreateReplyFormHTML = (parentComment) => {
     `;
 }
 
+const getCommentElementFromActionButton = (action) => {
+    let comment;
+    if (action.tagName == 'I') comment = action.parentElement;  // makes element equal to the button
+    else comment = action;
+
+    return comment.parentElement.parentElement.parentElement.parentElement;
+}
+
 const showRecipeReplyForm = (event) => {
     removeCreateReplyForm();
-    let comment;
-    if (event.target.tagName == 'I') comment = event.target.parentElement;  // makes element equal to the button
-    else comment = event.target;
+    removeEditCommentForm();
 
-    comment = comment.parentElement.parentElement.parentElement;
+    const comment = getCommentElementFromActionButton(event.target);
 
 
     comment.insertAdjacentHTML('beforeend', getCreateReplyFormHTML(comment));
@@ -204,3 +213,75 @@ const refreshCommentReplyButtons = () => {
 }
 
 refreshCommentReplyButtons();
+
+const removeEditCommentForm = () => {
+    const forms = document.querySelectorAll(".edit-comment-form");
+    for (const form of forms) {
+        form.previousElementSibling.style.display = 'block';
+        form.remove();
+    }
+}
+
+const getEditContentInput = (preexistingContent) => {
+    return `<form class="edit-comment-form">
+        <textarea name="content" required max="512" id="commentContent" class="form-control" placeholder="Leave a comment here" style="height: 6rem">${preexistingContent}</textarea>
+        <button class="btn btn-sm btn-primary mt-2" type="submit">Edit</button>
+        <button class="btn btn-sm btn-outline-secondary cancel-edit mt-2 ms-2">Cancel</button>
+    </form>`;
+}
+
+const showCommentEditForm = (event) => {
+    removeCreateReplyForm();
+    removeEditCommentForm();
+
+    const comment = getCommentElementFromActionButton(event.target);
+    if (comment.firstElementChild.classList.contains('alert')) comment.firstElementChild.remove();
+
+
+    let commentContent = comment.firstElementChild.firstElementChild.nextElementSibling.firstElementChild.nextElementSibling;
+    if (commentContent.tagName == 'DIV') commentContent = commentContent.nextElementSibling;
+
+    commentContent.style.display = 'none';
+
+    commentContent.insertAdjacentHTML('afterend', getEditContentInput(commentContent.innerText));
+
+    const form = commentContent.nextElementSibling;
+
+    const commentFeedback = new Feedback(comment.firstElementChild, "mx-3 mt-4");
+
+    form.querySelector('.cancel-edit').addEventListener('click', () => {
+        form.remove();
+        commentContent.style.display = 'block';
+    });
+
+    form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const content = form.firstElementChild.value;
+        makeRequest(url(`api/comment/${comment.dataset.commentId}`), 'PUT', { content })
+            .then((res) => {
+                if (res.response.status != 200) {
+                    commentFeedback.showMesssage(res.content.message, 'danger');
+                } else {
+                    form.remove();
+                    commentContent.style.display = 'block';
+                    commentContent.innerText = content;
+                    commentFeedback.showMesssage("Comment edited successfully!");
+                }
+            });
+
+    });
+}
+
+let recipeCommentEditButtons = [];
+
+const refreshCommentEditButtons = () => {
+    const newButtons = document.querySelectorAll('.recipe-comment-edit-button');
+    for (const button of newButtons) {
+        if (!recipeCommentEditButtons.includes(button)) {
+            button.addEventListener('click', showCommentEditForm);
+        }
+    }
+    recipeCommentEditButtons = [...newButtons];
+}
+
+refreshCommentEditButtons();
