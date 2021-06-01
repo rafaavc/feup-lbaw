@@ -1,10 +1,34 @@
 import { makeRequest } from './ajax/methods.js'
 import { url } from './utils/url.js';
 
-let searchQueryInput, searchResultForm, nextButtons, usersTable, tableDiv, paginationNav;
+let searchQueryInput, searchResultForm, nextButtons, usersTable, tableDiv, paginationNav, windowUrl;
 const itemsPerSelection = 7;
 
 let searchQuery = "";
+
+const registerDeleteButtonListeners = () => {
+    let deleteButtons = [...document.querySelectorAll('button.user-action.delete-user')];
+
+    deleteButtons.forEach((deleteBtn) => {
+        deleteBtn.addEventListener('click', () => {
+            let userRow = deleteBtn.closest('tr');
+            let username = userRow.firstElementChild.textContent;
+            console.log(username)
+
+            makeRequest(url('api/user/' + username), 'DELETE')
+                .then((result) => {
+                    if (result.response.status == 200) {
+                        console.log('Deleted profile successfully!');
+                        userRow.remove();
+                        windowUrl = new URL(window.location);
+                        windowUrl.searchParams.set('searchQuery', searchQuery);
+                        window.history.pushState({ html: document.querySelector('.user-search-page').innerHTML }, document.title, windowUrl);
+                    }
+                });
+        });
+    });
+};
+
 
 const registerbanButtonListeners = () => {
     let banButtons = [...document.querySelectorAll('button.user-action.user-ban')];
@@ -30,6 +54,10 @@ const registerbanButtonListeners = () => {
                 banBtn.setAttribute('data-ban', 'true');
                 banBtn.closest('tr').style.backgroundColor = '';
             }
+
+            windowUrl = new URL(window.location);
+            windowUrl.searchParams.set('searchQuery', searchQuery);
+            window.history.pushState({ html: document.querySelector('.user-search-page').innerHTML }, document.title, windowUrl);
         });
     });
 }
@@ -104,6 +132,7 @@ const searchRequest = (requestURL, query, incrementTotalResults) => new Promise(
             }
 
             registerbanButtonListeners();
+            registerDeleteButtonListeners();
             resolve();
         });
 });
@@ -141,9 +170,9 @@ async function handleSearchSubmit(event) {
 
     searchRequest(url('/api/search/people'), data, true)
         .then(() => {
-            const url = new URL(window.location);
-            url.searchParams.set('searchQuery', searchQuery);
-            window.history.pushState({ html: document.querySelector('.user-search-page').innerHTML }, document.title, url);
+            windowUrl = new URL(window.location);
+            windowUrl.searchParams.set('searchQuery', searchQuery);
+            window.history.pushState({ html: document.querySelector('.user-search-page').innerHTML }, document.title, windowUrl);
         })
 }
 
@@ -152,6 +181,7 @@ searchResultForm.addEventListener('submit', handleSearchSubmit);
 handleSearchSubmit();
 
 window.onpopstate = function(e) {
+    console.log(window.history)
     if (e.state){
         document.querySelector('.user-search-page').innerHTML = e.state.html;
         let urlParams = new URLSearchParams(window.location.search);
@@ -161,4 +191,5 @@ window.onpopstate = function(e) {
     registerListeners();
     searchResultForm.addEventListener('submit', handleSearchSubmit);
     registerbanButtonListeners();
+    registerDeleteButtonListeners();
 }
