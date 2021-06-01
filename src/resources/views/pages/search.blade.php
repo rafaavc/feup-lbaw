@@ -49,12 +49,12 @@
                     @include('partials.search.pagination', ['navigationClass' => 'categories-navigation', 'paginationClass' => 'categories-page'])
                 </div>
             </div>
-            {{-- <div class="card shadow-sm p-2 w-auto h-auto search-area searched-recipes p-sm-4 my-5">
+            <div class="card shadow-sm p-2 w-auto h-auto search-area searched-recipes p-sm-4 my-5">
                 <h3 class="section-title ps-2 mb-4 text-center text-md-start">Groups</h3>
                 <div class="row gx-2 gy-5 justify-content-around justify-content-md-between items mx-0 groups-box">
                     @include('partials.search.pagination', ['navigationClass' => 'groups-navigation', 'paginationClass' => 'groups-page'])
                 </div>
-            </div> --}}
+            </div>
         </div>
     </div>
 @endsection

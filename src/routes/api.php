@@ -72,7 +72,7 @@ Route::get('feed', 'FeedController@get');
 Route::get('search/recipes', 'SearchController@getRecipesPaginate');
 Route::get('search/people', 'SearchController@getUsersPaginate');
 Route::get('search/categories', 'SearchController@getCategoriesPaginate');
-// Route::get('search/groups', 'SearchController@getGroupsPaginate');
+Route::get('search/groups', 'SearchController@getGroupsPaginate');
 
 // ----------------------------------------------------------------
 // Chat API
