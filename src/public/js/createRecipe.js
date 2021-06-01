@@ -178,12 +178,15 @@ document.querySelector("a.submit-recipe-form").addEventListener('click', (event)
     if(valid)
         document.querySelector("form.recipe-form").submit();
     else {
-        let alert = document.createElement("div");
-        alert.classList.add("alert");
-        alert.classList.add("alert-danger");
-        alert.setAttribute("role", "danger");
-        alert.innerHTML = "Empty field(s) detected!";
-        document.querySelector("#create-recipe-stepper").prepend(alert, document.querySelector("div.card-body"));
+        if(!document.body.contains(document.querySelector('div.alert.alert-danger[role=danger]'))) {
+            let alert = document.createElement("div");
+            alert.classList.add("alert");
+            alert.classList.add("alert-danger");
+            alert.setAttribute("role", "danger");
+            alert.innerHTML = "Empty field(s) detected!";
+            document.querySelector("#create-recipe-stepper").prepend(alert, document.querySelector("div.card-body"));
+        }
+        document.querySelector('div.alert.alert-danger[role=danger]').parentElement.parentElement.scrollIntoView();
     }
 
 });
