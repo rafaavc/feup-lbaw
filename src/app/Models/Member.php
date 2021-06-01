@@ -88,6 +88,16 @@ class Member extends Authenticatable
         return $this->belongsTo(Country::class, 'id_country');
     }
 
+    public function messagesSent()
+    {
+        return $this->hasMany(Message::class, 'id_sender', 'id');
+    }
+
+    public function messagesReceived()
+    {
+        return $this->hasMany(Message::class, 'id_receiver', 'id');
+    }
+
     public function favourites()
     {
         return $this->belongsToMany(Recipe::class, 'tb_favourite', 'id_member', 'id_recipe');
