@@ -250,7 +250,7 @@ class MemberController extends Controller
     public function deleteAction(Member $user)
     {
         $this->remove($user);
-        return redirect("/login");
+        return response()->json(['message' => 'Succeed!']);
     }
 
     public function list() {
