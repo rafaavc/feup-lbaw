@@ -7,7 +7,7 @@
 @endpush
 
 @push('js')
-    <script src="{{ asset('js/edit_profile.js') }}" defer></script>
+    <script src="{{ asset('js/edit_profile.js') }}" type="module"></script>
 @endpush
 
 <?php
@@ -155,12 +155,10 @@ $role = "member";
                 &nbsp; Change Password
             </button>
 
-
-            <a href="{{url('user/' . $user->username . '/delete')}}" class="btn btn-danger submit-button my-2">
+            <a href="" class="btn btn-danger submit-button my-2 deleteProfile">
                 <i class="fas fa-trash me-3"></i>
                 Delete Profile
             </a>
-
         </div>
     </form>
 
