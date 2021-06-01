@@ -1,7 +1,7 @@
 import { makeRequest } from './ajax/methods.js'
 import { url } from './utils/url.js';
 
-let searchQueryInput, searchResultForm, nextButtons, usersTable, tableDiv, paginationNav, windowUrl;
+let searchQueryInput, searchResultForm, nextButtons, usersTable, tableDiv, paginationNav;
 const itemsPerSelection = 7;
 
 let searchQuery = "";
@@ -20,9 +20,7 @@ const registerDeleteButtonListeners = () => {
                     if (result.response.status == 200) {
                         console.log('Deleted profile successfully!');
                         userRow.remove();
-                        windowUrl = new URL(window.location);
-                        windowUrl.searchParams.set('searchQuery', searchQuery);
-                        window.history.pushState({ html: document.querySelector('.user-search-page').innerHTML }, document.title, windowUrl);
+                        pushWindowState();
                     }
                 });
         });
@@ -55,9 +53,7 @@ const registerbanButtonListeners = () => {
                 banBtn.closest('tr').style.backgroundColor = '';
             }
 
-            windowUrl = new URL(window.location);
-            windowUrl.searchParams.set('searchQuery', searchQuery);
-            window.history.pushState({ html: document.querySelector('.user-search-page').innerHTML }, document.title, windowUrl);
+            pushWindowState();
         });
     });
 }
@@ -170,9 +166,7 @@ async function handleSearchSubmit(event) {
 
     searchRequest(url('/api/search/people'), data, true)
         .then(() => {
-            windowUrl = new URL(window.location);
-            windowUrl.searchParams.set('searchQuery', searchQuery);
-            window.history.pushState({ html: document.querySelector('.user-search-page').innerHTML }, document.title, windowUrl);
+            pushWindowState();
         })
 }
 
@@ -181,8 +175,7 @@ searchResultForm.addEventListener('submit', handleSearchSubmit);
 handleSearchSubmit();
 
 window.onpopstate = function(e) {
-    console.log(window.history)
-    if (e.state){
+    if (e.state) {
         document.querySelector('.user-search-page').innerHTML = e.state.html;
         let urlParams = new URLSearchParams(window.location.search);
         searchQuery = urlParams.get('searchQuery');
@@ -193,3 +186,9 @@ window.onpopstate = function(e) {
     registerbanButtonListeners();
     registerDeleteButtonListeners();
 }
+
+const pushWindowState = () => {
+    let windowUrl = new URL(window.location);
+    windowUrl.searchParams.set('searchQuery', searchQuery);
+    window.history.pushState({ html: document.querySelector('.user-search-page').innerHTML }, document.title, windowUrl);
+};
