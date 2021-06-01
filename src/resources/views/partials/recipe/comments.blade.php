@@ -18,6 +18,6 @@
             @include('partials.ratinginput')
         </form>
     @else
-        <p class="mt-4">To comment, <a href="{{ url("/register") }}">register</a> or <a href="{{ url("/login") }}">log in</a>.</p>
+        <p class="mt-4 ms-3">To comment, <a href="{{ url("/register") }}">register</a> or <a href="{{ url("/login") }}">log in</a>.</p>
     @endif
 </section>

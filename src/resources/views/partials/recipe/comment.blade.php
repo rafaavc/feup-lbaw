@@ -31,6 +31,11 @@
                 <button role="a" class="btn btn-sm btn-outline-secondary p-1 m-1 recipe-comment-edit-button"><i class="fas fa-edit me-1"></i>Edit</button>
             </div>
         @endif
+        @if(Gate::inspect('delete', $comment)->allowed())
+            <div class="col-md text-end position-relative">
+                <button role="a" class="btn btn-sm btn-outline-secondary p-1 m-1 recipe-comment-delete-button"><i class="fas fa-trash-alt"></i> Delete</button>
+            </div>
+        @endif
         </div>
     </div>
     @foreach($comment->replies as $idx => $reply)
