@@ -128,7 +128,7 @@ class SearchController extends Controller
         $recipeQuery = DB::table('recipes_fts_view')
             ->selectRaw('*, search, ts_rank(search, to_tsquery(\'english\', ?)) AS rank, recipe_visibility(recipe_id, ?) as visibility', [$searchStr, Auth::id()])
             ->when($searchStr, function($query, $searchStr) {
-                if (false && Auth::guard('admin')->check()) {  // TODO remove false when admin guard is defined
+                if (Auth::guard('admin')->check()) {
                     $query = $query
                         ->whereRaw('search @@ to_tsquery(\'english\', ?) ', [$searchStr]);
                 } else if (Auth::check()) {
@@ -143,7 +143,7 @@ class SearchController extends Controller
                     ->orderByDesc('rank')
                     ->orderByDesc('recipe_id');
             }, function ($query) {
-                if (false && Auth::guard('admin')->check()) {  // TODO remove false when admin guard is defined
+                if (Auth::guard('admin')->check()) {
                     return $query;
                 } else if (Auth::check()) {
                     $query = $query
