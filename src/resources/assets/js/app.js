@@ -28,9 +28,10 @@ const app = new Vue({
         this.fetchMessages();
         window.Echo.private('TasteBuds')
             .listen('MessageSent', (e) => {
+                console.log(e);
                 this.messages.push({
                     text: e.message.text,
-                    sender: e.sender
+                    sender: e.message.sender
                 });
             });
     },

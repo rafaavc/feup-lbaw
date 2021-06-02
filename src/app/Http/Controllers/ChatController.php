@@ -32,7 +32,7 @@ class ChatController extends Controller
      */
     public function fetchMessages()
     {
-        return Message::with(['sender'])->get();
+        return Message::all();
     }
 
     /**

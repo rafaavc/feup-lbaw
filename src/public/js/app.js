@@ -75,6 +75,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: ['messages', 'user']
 });
@@ -6447,33 +6450,62 @@ var render = function() {
   return _c(
     "div",
     _vm._l(_vm.messages, function(message) {
-      return _c(
-        "div",
-        {
-          staticClass: "row message-line mt-3",
-          staticStyle: { display: "flex", "justify-content": "flex-end" }
-        },
-        [
-          _c(
+      return _vm.user == message.sender
+        ? _c(
             "div",
-            { staticClass: "col-6", staticStyle: { "text-align": "right" } },
+            {
+              staticClass: "row message-line mt-3",
+              staticStyle: { display: "flex", "justify-content": "flex-end" }
+            },
             [
+              _c(
+                "div",
+                {
+                  staticClass: "col-6",
+                  staticStyle: { "text-align": "right" }
+                },
+                [
+                  _c(
+                    "p",
+                    { staticClass: "m-0 bg-secondary message-line-content" },
+                    [
+                      _vm._v(
+                        _vm._s(message.text) + " " + _vm._s(message.sender)
+                      )
+                    ]
+                  )
+                ]
+              ),
+              _vm._v(" "),
+              _vm._m(0, true)
+            ]
+          )
+        : _c("div", { staticClass: "row g-3 message-line mt-3" }, [
+            _vm._m(1),
+            _vm._v(" "),
+            _c("div", { staticClass: "col-6" }, [
               _c(
                 "p",
                 { staticClass: "m-0 bg-secondary message-line-content" },
-                [_vm._v(_vm._s(message.text))]
+                [_vm._v(_vm._s(message.text) + " " + _vm._s(message.sender))]
               )
-            ]
-          ),
-          _vm._v(" "),
-          _vm._m(0, true)
-        ]
-      )
+            ])
+          ])
     }),
     0
   )
 }
 var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      { staticClass: "col-2", staticStyle: { width: "4.5rem" } },
+      [_c("div", { staticClass: "small-profile-photo" })]
+    )
+  },
   function() {
     var _vm = this
     var _h = _vm.$createElement
@@ -18748,9 +18780,11 @@ var app = new Vue({
 
     this.fetchMessages();
     window.Echo["private"]('TasteBuds').listen('MessageSent', function (e) {
+      console.log(e);
+
       _this.messages.push({
         text: e.message.text,
-        sender: e.sender
+        sender: e.message.sender
       });
     });
   },
