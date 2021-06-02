@@ -14,7 +14,7 @@
                 $counter = 0;
             @endphp
             @foreach ($tags as $tag)
-                <a role="button" class="{{'btn btn-sm btn' . (($counter++ > 2) ? '-outline' : '') . '-secondary d-inline-block me-3 mb-3'}}" href="{{ url('/category/' . $tag->id) }}">
+                <a role="button" class="{{'btn btn-sm btn' . (($counter++ > 2) ? '-outline' : '') . '-secondary d-inline-block me-3 mb-3'}}" href="{{ url('/tag/' . $tag->id) }}">
                     {{ $tag->name }}
                 </a>
             @endforeach

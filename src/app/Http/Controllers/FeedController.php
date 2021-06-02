@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\Recipe;
 use App\Models\Tag;
 
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 
@@ -20,10 +19,10 @@ class FeedController extends Controller
                 ->get();
         }
         else {
-            // TODO: pass the authenticated user ID in the recipe_visibility call
+            // TODO: check if the call to the recipe_visibility funcion is correct
             $recipes = Recipe::inRandomOrder()
-                ->whereRaw('recipe_visibility(id, NULL)')
-                ->limit(5)
+                ->whereRaw('recipe_visibility(id, :user_id)', ['user_id' => Auth::user()->id])
+                ->limit(1)
                 ->get();
         }
 
