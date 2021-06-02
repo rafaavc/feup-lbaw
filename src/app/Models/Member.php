@@ -90,12 +90,7 @@ class Member extends Authenticatable
 
     public function messagesSent()
     {
-        return $this->hasMany(Message::class, 'id_sender', 'id');
-    }
-
-    public function messagesReceived()
-    {
-        return $this->hasMany(Message::class, 'id_receiver', 'id');
+        return $this->hasMany(Message::class, 'member', 'id');
     }
 
     public function favourites()

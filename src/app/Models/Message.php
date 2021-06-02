@@ -10,15 +10,10 @@ class Message extends Model
     public $timestamps = false;
     protected $table = "tb_message";
 
-    protected $fillable = ['text'];
+    protected $fillable = ['text', 'sender'];
 
     public function sender()
     {
-        return $this->belongsTo('App\Models\Member', 'id_sender', 'id');
-    }
-
-    public function receiver()
-    {
-        return $this->belongsTo('App\Models\Member', 'id_receiver', 'id');
+        return $this->belongsTo('App\Models\Member', 'sender', 'id');
     }
 }

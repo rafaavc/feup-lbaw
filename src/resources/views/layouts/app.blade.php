@@ -40,7 +40,9 @@
     </head>
     <body data-root-url="{{ url("") }}" data-csrf-token="{{ csrf_token() }}">
         @include('partials.nav')
-        @yield('content')
+        <div id="app">
+            @yield('content')
+        </div>
         @include('partials.footer')
     </body>
 </html>

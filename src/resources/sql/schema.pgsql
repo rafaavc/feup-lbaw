@@ -224,13 +224,10 @@ CREATE TABLE tb_message (
     text text NOT NULL,
     read boolean DEFAULT FALSE NOT NULL,
     timestamp datetime,
-    id_receiver integer NOT NULL,
-    id_sender integer NOT NULL,
+    sender integer NOT NULL,
 
     CONSTRAINT message_PK PRIMARY KEY (id),
-    CONSTRAINT message_receiver_FK FOREIGN KEY (id_receiver) REFERENCES "tb_member" ON DELETE CASCADE ON UPDATE CASCADE,
-    CONSTRAINT message_sender_FK FOREIGN KEY (id_sender) REFERENCES "tb_member" ON DELETE CASCADE ON UPDATE CASCADE,
-    CONSTRAINT message_not_same_user_CK CHECK (id_receiver <> id_sender)
+    CONSTRAINT message_sender_FK FOREIGN KEY (sender) REFERENCES "tb_member" ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 CREATE TABLE tb_comment (
@@ -336,7 +333,7 @@ CREATE INDEX group_recipe_index ON tb_recipe USING hash(id_group);
 
 
 DROP INDEX IF EXISTS message_index;
-CREATE INDEX message_index ON tb_message (id_sender, id_receiver);
+CREATE INDEX message_index ON tb_message (sender);
 
 
 DROP INDEX IF EXISTS rating_index;

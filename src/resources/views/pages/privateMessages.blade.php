@@ -4,6 +4,12 @@
     <link href="{{ asset('css/privateMessages.css') }}" rel="stylesheet" />
 @endpush
 
+@push('js')
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.18/vue.min.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="{{ mix('js/app.js') }}" defer></script>
+@endpush
+
 @section('content')
 
     @include('partials.breadcrumb', ['pages' => ["Private Messages"], 'withoutMargin' => false])
@@ -68,26 +74,24 @@
                     <div class="date-time-display">
                         <small>19 Feb 2021, 16:19</small>
                     </div>
+                    <chat-messages :messages="messages"></chat-messages>
+                    {{-- @include('partials.chat.messageLine', ['message' => 'Hello World!'])
                     @include('partials.chat.messageLine', ['message' => 'Hello World!'])
                     @include('partials.chat.messageLine', ['message' => 'Hello World!'])
                     @include('partials.chat.messageLine', ['message' => 'Hello World!'])
                     @include('partials.chat.messageLine', ['message' => 'Hello World!'])
                     @include('partials.chat.messageLine', ['message' => 'Hello World!'])
                     @include('partials.chat.messageLine', ['message' => 'Hello World!'])
-                    @include('partials.chat.messageLine', ['message' => 'Hello World!'])
-                    @include('partials.chat.messageLine', ['message' => 'Hello World!'])
+                    @include('partials.chat.messageLine', ['message' => 'Hello World!']) --}}
 
                 </div>
-                <div class="form-floating" id="messageTextarea">
-                    <textarea class="form-control" placeholder="Write your message..." id="floatingTextarea2"></textarea>
-                    <label for="floatingTextarea2">Message</label>
-                    <button type="button" class="btn btn-primary position-absolute py-1 send">
-                        <small><i class="fas fa-paper-plane me-2"></i>
-                        Send</small>
-                    </button>
-                </div>
+                <chat-form
+                        v-on:messagesent="addMessage"
+                        :user="{{ Auth::user() }}"
+                ></chat-form>
             </div>
         </div>
     </div>
 
 @endsection
+
