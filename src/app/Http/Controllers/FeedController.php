@@ -22,7 +22,7 @@ class FeedController extends Controller
             // TODO: check if the call to the recipe_visibility funcion is correct
             $recipes = Recipe::inRandomOrder()
                 ->whereRaw('recipe_visibility(id, :user_id)', ['user_id' => Auth::user()->id])
-                ->limit(1)
+                ->limit(5)
                 ->get();
         }
 
