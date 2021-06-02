@@ -26,13 +26,13 @@
             <div class="col-xxl-9 px-0">
                 <a href="{{ url('/recipe') }}" role="button" class="btn btn-primary"><i class="fas fa-plus me-2"></i>Create Recipe</a>
 
-                <div class="m-0 p-0 feed-area">
+                <div class="m-0 p-0 feed-recipes-area">
                     @if($recipes->count() > 0)
                         @foreach($recipes as $recipe)
                             @include('partials.preview.recipe')
                         @endforeach
                     @else
-                        <p>There is no recipes available.</p>
+                        <p>There are no recipes available.</p>
                     @endif
                 </div>
 
