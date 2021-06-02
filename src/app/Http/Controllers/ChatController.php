@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Message;
 use App\Models\Member;
+use App\Events\MessageSent;
+use Exception;
 
 class ChatController extends Controller
 {
@@ -39,13 +41,18 @@ class ChatController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function sendMessage(Request $request, Member $receiver)
+    public function sendMessage(Request $request)
     {
-        Message::create([
-            'text' => $request->input('message'),
-            'user' => Auth::user()->id
+        $user = Auth::user();
+
+        $message = Message::create([
+            'text' => $request->input('text'),
+            'sender' => Auth::user()->id
         ]);
 
+        broadcast(new MessageSent($user, $message))->toOthers();
+
         return response()->json(['message' => 'Succeed!']);
+
     }
 }

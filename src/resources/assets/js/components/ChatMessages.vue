@@ -5,7 +5,7 @@
                 <div class="small-profile-photo" ></div>
             </div>
             <div class="col-6">
-                <p class="m-0 bg-secondary message-line-content">{{ message.text }} </p>
+                <p class="m-0 bg-secondary message-line-content">{{ message.text }}  </p>
             </div>
 
         </div>
@@ -14,6 +14,6 @@
 
 <script>
   export default {
-    props: ['messages']
+    props: ['messages', 'user'],
   };
 </script>

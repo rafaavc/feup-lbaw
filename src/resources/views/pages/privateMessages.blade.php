@@ -74,7 +74,7 @@
                     <div class="date-time-display">
                         <small>19 Feb 2021, 16:19</small>
                     </div>
-                    <chat-messages :messages="messages"></chat-messages>
+                    <chat-messages :messages="messages" :user="{{ Auth::user()->id }}"></chat-messages>
                     {{-- @include('partials.chat.messageLine', ['message' => 'Hello World!'])
                     @include('partials.chat.messageLine', ['message' => 'Hello World!'])
                     @include('partials.chat.messageLine', ['message' => 'Hello World!'])
@@ -87,7 +87,7 @@
                 </div>
                 <chat-form
                         v-on:messagesent="addMessage"
-                        :user="{{ Auth::user() }}"
+                        :user="{{ Auth::user()->id }}"
                 ></chat-form>
             </div>
         </div>
