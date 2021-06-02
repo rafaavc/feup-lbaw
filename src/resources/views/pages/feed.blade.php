@@ -42,8 +42,8 @@
             </div>
 
             <div class="col-xxl-3 ps-0 ps-xxl-4 pe-0 trending-topics-recipes">
-                @include('partials.trending.trending_topics')
-                @include('partials.trending.trending_recipes')
+                @include('partials.trending.trending_topics', ['tags' => $tags])
+                @include('partials.trending.trending_recipes', ['trendingRecipes' => $trendingRecipes])
             </div>
 
         </div>

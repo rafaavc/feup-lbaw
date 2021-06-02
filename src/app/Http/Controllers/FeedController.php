@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Recipe;
+use App\Models\Tag;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -26,29 +27,36 @@ class FeedController extends Controller
                 ->get();
         }
 
+        $tags = Tag::inRandomOrder()
+            ->limit(7)
+            ->get();
+
+        $trendingRecipes = Recipe::inRandomOrder()
+                ->whereRaw('recipe_visibility(id, NULL)')
+                ->limit(6)
+                ->get();
+
         return view('pages.feed', [
-            'recipes' => $recipes
+            'recipes' => $recipes,
+            'tags' => $tags,
+            'trendingRecipes' => $trendingRecipes
         ]);
     }
 
-    public function getMoreRecipes(Request $request) {
+    public function getMoreRecipes() {
         try {
 
-            $html = $request->input('html');
             $recipes = Recipe::inRandomOrder()
                 ->whereRaw('recipe_visibility(id, NULL)')
                 ->limit(5)
                 ->get();
 
-            if ($html) {
-                return response()->json([
-                    'html' => view('partials.preview.recipe', [
-                            'recipe' => $recipes[0],
-                        ])->render(),
-                ], 200);
-            } else return $recipes;
+            return response()->json([
+                'html' => view('partials.preview.recipe', [
+                        'recipe' => $recipes[0],
+                    ])->render(),
+            ], 200);
 
-            return response()->json(['recipes' => $recipes], 200);
         } catch (\Exception $e) {
             return response()->json(['message' => 'Invalid Request!'], 400);
         }

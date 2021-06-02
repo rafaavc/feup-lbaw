@@ -10,27 +10,14 @@
     <div class="card-body">
         <h5 class="card-title mb-4">Trending Categories</h5>
         <div class="container p-0 mb-3">
-            <a role="button" class="btn btn-sm btn-secondary d-inline-block me-3 mb-3" href="{{ url('/category/1') }}">
-                Vegetarian
-            </a>
-            <a role="button" class="btn btn-sm btn-secondary d-inline-block me-3 mb-3" href="{{ url('/category/1') }}">
-                Low carb
-            </a>
-            <a role="button" class="btn btn-sm btn-secondary d-inline-block me-3 mb-3" href="{{ url('/category/1') }}">
-                Keto diet
-            </a>
-            <a role="button" class="btn btn-sm btn-outline-secondary d-inline-block me-3 mb-3" href="{{ url('/category/1') }}">
-                Vegan
-            </a>
-            <a role="button" class="btn btn-sm btn-outline-secondary d-inline-block me-3 mb-3" href="{{ url('/category/1') }}">
-                Traditional Portuguese
-            </a>
-            <a role="button" class="btn btn-sm btn-outline-secondary d-inline-block me-3 mb-3" href="{{ url('/category/1') }}">
-                Italian
-            </a>
-            <a role="button" class="btn btn-sm btn-outline-secondary d-inline-block me-3 mb-3" href="{{ url('/category/1') }}">
-                Ice Cream
-            </a>
+            @php
+                $counter = 0;
+            @endphp
+            @foreach ($tags as $tag)
+                <a role="button" class="{{'btn btn-sm btn' . (($counter++ > 2) ? '-outline' : '') . '-secondary d-inline-block me-3 mb-3'}}" href="{{ url('/category/' . $tag->id) }}">
+                    {{ $tag->name }}
+                </a>
+            @endforeach
         </div>
     </div>
 </div>
