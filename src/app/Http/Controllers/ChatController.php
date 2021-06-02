@@ -32,7 +32,7 @@ class ChatController extends Controller
      */
     public function fetchMessages()
     {
-        return Message::all();
+        return Message::with('sender')->get();
     }
 
     /**
@@ -47,7 +47,8 @@ class ChatController extends Controller
 
         $message = Message::create([
             'text' => $request->input('text'),
-            'sender' => Auth::user()->id
+            'sender' => Auth::user()->id,
+            'username' => Auth::user()->username
         ]);
 
         broadcast(new MessageSent($user, $message))->toOthers();

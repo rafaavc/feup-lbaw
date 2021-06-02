@@ -33,7 +33,10 @@ __webpack_require__.r(__webpack_exports__);
   methods: {
     sendMessage: function sendMessage() {
       this.$emit('messagesent', {
-        sender: this.user,
+        sender: {
+          id: this.user.id,
+          username: this.user.username
+        },
         text: this.newMessage
       });
       this.newMessage = '';
@@ -78,8 +81,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  props: ['messages', 'user', 'rootpath']
+  props: ['messages', 'user', 'storagepath']
 });
 
 /***/ }),
@@ -6450,7 +6457,7 @@ var render = function() {
   return _c(
     "div",
     _vm._l(_vm.messages, function(message) {
-      return _vm.user == message.sender
+      return _vm.user == message.sender.id
         ? _c(
             "div",
             {
@@ -6468,11 +6475,7 @@ var render = function() {
                   _c(
                     "p",
                     { staticClass: "m-0 bg-secondary message-line-content" },
-                    [
-                      _vm._v(
-                        _vm._s(message.text) + " " + _vm._s(message.sender)
-                      )
-                    ]
+                    [_vm._v(_vm._s(message.text))]
                   )
                 ]
               ),
@@ -6481,20 +6484,26 @@ var render = function() {
                 "div",
                 { staticClass: "col-2", staticStyle: { width: "4.5rem" } },
                 [
-                  _c("div", {
-                    staticClass: "small-profile-photo",
-                    style: {
-                      backgroundImage:
-                        "url('" +
-                        _vm.rootpath +
-                        "/people/" +
-                        message.sender +
-                        ".jpeg'), url('" +
-                        _vm.rootpath +
-                        "/people/" +
-                        "no_image.png')"
-                    }
-                  })
+                  _c(
+                    "a",
+                    { attrs: { href: "/user/" + message.sender.username } },
+                    [
+                      _c("div", {
+                        staticClass: "small-profile-photo",
+                        style: {
+                          backgroundImage:
+                            "url('" +
+                            _vm.storagepath +
+                            "/people/" +
+                            message.sender.id +
+                            ".jpeg'), url('" +
+                            _vm.storagepath +
+                            "/people/" +
+                            "no_image.png')"
+                        }
+                      })
+                    ]
+                  )
                 ]
               )
             ]
@@ -6504,20 +6513,26 @@ var render = function() {
               "div",
               { staticClass: "col-2", staticStyle: { width: "4.5rem" } },
               [
-                _c("div", {
-                  staticClass: "small-profile-photo",
-                  style: {
-                    backgroundImage:
-                      "url('" +
-                      _vm.rootpath +
-                      "/people/" +
-                      message.sender +
-                      ".jpeg'), url('" +
-                      _vm.rootpath +
-                      "/people/" +
-                      "no_image.png')"
-                  }
-                })
+                _c(
+                  "a",
+                  { attrs: { href: "/user/" + message.sender.username } },
+                  [
+                    _c("div", {
+                      staticClass: "small-profile-photo",
+                      style: {
+                        backgroundImage:
+                          "url('" +
+                          _vm.storagepath +
+                          "/people/" +
+                          message.sender.id +
+                          ".jpeg'), url('" +
+                          _vm.storagepath +
+                          "/people/" +
+                          "no_image.png')"
+                      }
+                    })
+                  ]
+                )
               ]
             ),
             _vm._v(" "),
@@ -6525,7 +6540,7 @@ var render = function() {
               _c(
                 "p",
                 { staticClass: "m-0 bg-secondary message-line-content" },
-                [_vm._v(_vm._s(message.text) + " " + _vm._s(message.sender))]
+                [_vm._v(_vm._s(message.text))]
               )
             ])
           ])
@@ -18801,7 +18816,10 @@ var app = new Vue({
 
       _this.messages.push({
         text: e.message.text,
-        sender: e.message.sender
+        sender: {
+          id: e.message.sender,
+          username: e.message.username
+        }
       });
     });
   },

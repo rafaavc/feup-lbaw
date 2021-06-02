@@ -31,7 +31,7 @@ const app = new Vue({
                 console.log(e);
                 this.messages.push({
                     text: e.message.text,
-                    sender: e.message.sender
+                    sender: { id: e.message.sender, username: e.message.username },
                 });
             });
     },

@@ -32,11 +32,15 @@
                     {{-- <div class="date-time-display">
                         <small>19 Feb 2021, 16:19</small>
                     </div> --}}
-                    <chat-messages :messages="messages" :user="{{ Auth::user()->id }}" :rootpath="'{{ url(asset('storage/images/')) }}'"></chat-messages>
+                    <chat-messages
+                        :messages="messages"
+                        :user="{{ Auth::user()->id }}"
+                        :storagepath="'{{ url(asset('storage/images/')) }}'">
+                    </chat-messages>
                 </div>
                 <chat-form
                         v-on:messagesent="addMessage"
-                        :user="{{ Auth::user()->id }}"
+                        :user="{{ Auth::user() }}"
                 ></chat-form>
             </div>
         </div>
