@@ -5,13 +5,13 @@
                 <p class="m-0 bg-secondary message-line-content">{{ message.text }} {{ message.sender }}</p>
             </div>
             <div class="col-2" style="width: 4.5rem;">
-                <div class="small-profile-photo" ></div>
+                <div class="small-profile-photo" v-bind:style="{ backgroundImage: 'url(\'' + rootpath + '/people/' + message.sender + '.jpeg\'), url(\'' + rootpath + '/people/' + 'no_image.png\')' }"></div>
             </div>
         </div>
 
         <div class="row g-3 message-line mt-3" v-else>
             <div class="col-2" style="width: 4.5rem;">
-                <div class="small-profile-photo" ></div>
+                <div class="small-profile-photo" v-bind:style="{ backgroundImage: 'url(\'' + rootpath + '/people/' + message.sender + '.jpeg\'), url(\'' + rootpath + '/people/' + 'no_image.png\')' }"></div>
             </div>
             <div class="col-6">
                 <p class="m-0 bg-secondary message-line-content">{{ message.text }} {{ message.sender }}</p>
@@ -24,6 +24,6 @@
 
 <script>
   export default {
-    props: ['messages', 'user'],
+    props: ['messages', 'user', 'rootpath'],
   };
 </script>

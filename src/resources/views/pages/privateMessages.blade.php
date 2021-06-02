@@ -29,19 +29,10 @@
 
             <div class="col p-3 position-relative conversation-area h-100">
                 <div class="row-6 g-0 message-container position-relative overflow-auto">
-                    <div class="date-time-display">
+                    {{-- <div class="date-time-display">
                         <small>19 Feb 2021, 16:19</small>
-                    </div>
-                    <chat-messages :messages="messages" :user="{{ Auth::user()->id }}"></chat-messages>
-                    {{-- @include('partials.chat.messageLine', ['message' => 'Hello World!'])
-                    @include('partials.chat.messageLine', ['message' => 'Hello World!'])
-                    @include('partials.chat.messageLine', ['message' => 'Hello World!'])
-                    @include('partials.chat.messageLine', ['message' => 'Hello World!'])
-                    @include('partials.chat.messageLine', ['message' => 'Hello World!'])
-                    @include('partials.chat.messageLine', ['message' => 'Hello World!'])
-                    @include('partials.chat.messageLine', ['message' => 'Hello World!'])
-                    @include('partials.chat.messageLine', ['message' => 'Hello World!']) --}}
-
+                    </div> --}}
+                    <chat-messages :messages="messages" :user="{{ Auth::user()->id }}" :rootpath="'{{ url(asset('storage/images/')) }}'"></chat-messages>
                 </div>
                 <chat-form
                         v-on:messagesent="addMessage"

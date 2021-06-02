@@ -79,7 +79,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  props: ['messages', 'user']
+  props: ['messages', 'user', 'rootpath']
 });
 
 /***/ }),
@@ -6477,11 +6477,49 @@ var render = function() {
                 ]
               ),
               _vm._v(" "),
-              _vm._m(0, true)
+              _c(
+                "div",
+                { staticClass: "col-2", staticStyle: { width: "4.5rem" } },
+                [
+                  _c("div", {
+                    staticClass: "small-profile-photo",
+                    style: {
+                      backgroundImage:
+                        "url('" +
+                        _vm.rootpath +
+                        "/people/" +
+                        message.sender +
+                        ".jpeg'), url('" +
+                        _vm.rootpath +
+                        "/people/" +
+                        "no_image.png')"
+                    }
+                  })
+                ]
+              )
             ]
           )
         : _c("div", { staticClass: "row g-3 message-line mt-3" }, [
-            _vm._m(1),
+            _c(
+              "div",
+              { staticClass: "col-2", staticStyle: { width: "4.5rem" } },
+              [
+                _c("div", {
+                  staticClass: "small-profile-photo",
+                  style: {
+                    backgroundImage:
+                      "url('" +
+                      _vm.rootpath +
+                      "/people/" +
+                      message.sender +
+                      ".jpeg'), url('" +
+                      _vm.rootpath +
+                      "/people/" +
+                      "no_image.png')"
+                  }
+                })
+              ]
+            ),
             _vm._v(" "),
             _c("div", { staticClass: "col-6" }, [
               _c(
@@ -6495,28 +6533,7 @@ var render = function() {
     0
   )
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      { staticClass: "col-2", staticStyle: { width: "4.5rem" } },
-      [_c("div", { staticClass: "small-profile-photo" })]
-    )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      { staticClass: "col-2", staticStyle: { width: "4.5rem" } },
-      [_c("div", { staticClass: "small-profile-photo" })]
-    )
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
