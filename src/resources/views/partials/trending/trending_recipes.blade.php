@@ -1,11 +1,3 @@
-@push('css')
-    <link href="{{ asset('css/components/trending.css') }}" rel="stylesheet"/>
-@endpush
-
-@push('js')
-    <script src="{{ asset('js/trending.js') }}" defer></script>
-@endpush
-
 <div class="card people-box shadow-sm">
     <div class="card-body">
         <h5 class="card-title mb-4">Trending Recipes</h5>

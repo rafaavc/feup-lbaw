@@ -8,8 +8,8 @@
 @endpush
 
 @push('js')
-{{--     <script src="{{ asset('js/membersFollowingBoxes.js') }}" defer></script>
- --}}
+    <script src="{{ asset('js/feed.js') }}" type="module"> defer</script>
+
 @endpush
 
 @section('content')
@@ -22,19 +22,22 @@
 
         <h1 class="mb-5">Feed</h1>
 
-        <div class="row">
+        <div class="row m-0 p-0">
             <div class="col-xxl-9 px-0">
                 <a href="{{ url('/recipe') }}" role="button" class="btn btn-primary"><i class="fas fa-plus me-2"></i>Create Recipe</a>
 
-                @if($recipes->count() > 0)
-                    @foreach($recipes as $recipe)
-                        @include('partials.preview.recipe')
-                    @endforeach
-                @else
-                    <p>There is no recipes available.</p>
-                @endif
+                <div class="m-0 p-0 feed-area">
+                    @if($recipes->count() > 0)
+                        @foreach($recipes as $recipe)
+                            @include('partials.preview.recipe')
+                        @endforeach
+                    @else
+                        <p>There is no recipes available.</p>
+                    @endif
+                </div>
+
                 <div class="row">
-                    <button type="button" class="btn btn-dark load-more w-25 mt-5 mx-auto"><i class="fas fa-plus me-2"></i> Load More</button>
+                    <button type="button" class="btn btn-dark load-more w-25 my-5 mx-auto load-more-button-feed"><i class="fas fa-plus me-2"></i> Load More</button>
                 </div>
             </div>
 
