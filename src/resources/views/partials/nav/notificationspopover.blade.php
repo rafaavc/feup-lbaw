@@ -8,12 +8,8 @@
     </button>
     <button type="button" id="test" class="btn no-btn nav-link d-block d-lg-none position-relative" data-bs-toggle="collapse" aria-expanded="false" aria-controls="notificationsPopupContent" data-bs-target="#notificationsPopupContent">
         @include('partials.nav.icontext', ['icon' => 'bell', 'text' => 'notifications' ])
-        <div class="notif-quantity-indicator-mobile"><small>3</small></div>
+        <div class="notif-quantity-indicator-mobile"><small> {{ $numNotifications }}</small></div>
     </button>
-    {{-- document.querySelector('.popover').style.minHeight = "5rem";
-        document.querySelector('.popover').style.maxHeight = "30%";
-        document.querySelector('.popover').style.overflow = "auto";
-        document.querySelector('.popover').style.overflowX = "hidden"; --}}
     <div id="notificationsPopupContent" class="collapse p-2 d-lg-none" style="min-height: 5rem; max-height: 20rem; overflow-x: hidden;">
         @if($numNotifications > 0)
             @foreach ($allNotifications as $notification)
@@ -23,8 +19,9 @@
                     @include('partials.nav.notificationInfo', ['recipeId' => $notification['recipeId'], 'type' => $notification['type'], 'username' => $notification['username'], 'id' => $notification['id'], 'recipeName' => $notification['recipeName']])
                 @elseif($notification['type'] == 'commentNotification')
                     @include('partials.nav.notificationInfo', ['rating' => $notification['rating'], 'recipeId' => $notification['recipeId'], 'type' => $notification['type'], 'username' => $notification['username'], 'id' => $notification['id'], 'recipeName' => $notification['recipeName']])
+                @elseif($notification['type'] == 'deleteNotification')
+                    @include('partials.nav.notificationInfo', ['type' => $notification['type'], 'recipeName' => $notification['recipeName']])
                 @endif
-
             @endforeach
         @else
             <b>You don't have any new notifications.</b>

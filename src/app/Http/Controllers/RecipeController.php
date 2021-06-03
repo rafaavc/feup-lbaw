@@ -161,8 +161,7 @@ class RecipeController extends Controller
     {
         $recipeName = $recipe->name;
         $this->delete($recipe);
-        $rndRecipeId = Recipe::limit(1)->get()[0]->id;
-        return redirect('/recipe/' . $rndRecipeId)->with('message', 'Recipe "' . $recipeName . '" successfully deleted!');
+        return redirect('/feed')->with('message', 'Recipe "' . $recipeName . '" successfully deleted!');
     }
 
     /**
@@ -453,6 +452,13 @@ class RecipeController extends Controller
         $this->deleteRecipeStepsImages($recipe->steps);
 
         File::deleteDirectory(storage_path('app/public/images/recipes/' . $recipe->id));
+
+        if(Auth::guard('admin')->check()) {
+            DB::table('tb_delete_notification')->insert([
+                'id_receiver' => $recipe->id_member,
+                'name_recipe' => $recipe->name
+            ]);
+        }
 
         $recipe->delete();
 

@@ -93,7 +93,15 @@
             array_push($commentNotifications, ['type' => 'commentNotification', 'recipeId' => $recipe->id, 'rating' => $comment->rating, 'username' => $userWhoCommented->username, 'id' => $userWhoCommented->id, 'recipeName' => $recipe->name, 'timestamp' => $comment->post_time]);
         }
 
-        $allNotifications = array_merge($followRequests, $favouritesNotifications, $commentNotifications);
+        // Delete recipe
+        $deleteNotifications = array();
+        $userDeleteNotifications = Illuminate\Support\Facades\DB::table('tb_delete_notification')->where('id_receiver', Auth::user()->id)->orderByDesc('timestamp')->get();
+
+        foreach ($userDeleteNotifications as $notification) {
+            array_push($deleteNotifications, ['type' => 'deleteNotification', 'recipeName' => $notification->name_recipe, 'timestamp' => $notification->timestamp]);
+        }
+
+        $allNotifications = array_merge($followRequests, $favouritesNotifications, $commentNotifications, $deleteNotifications);
         $allNotifications = collect($allNotifications)->sortByDesc('timestamp')->all();
         // var_dump($allNotifications);
 
