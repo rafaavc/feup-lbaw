@@ -11,7 +11,6 @@ window.Echo = new Echo({
     forceTLS: true
 });
 
-
 window.Vue = require('vue').default;
 
 Vue.component('chat-messages', require('./components/ChatMessages.vue').default);
@@ -28,7 +27,6 @@ const app = new Vue({
         this.fetchMessages();
         window.Echo.private('TasteBuds')
             .listen('MessageSent', (e) => {
-                console.log(e);
                 this.messages.push({
                     text: e.message.text,
                     sender: { id: e.message.sender, username: e.message.username },
@@ -49,6 +47,6 @@ const app = new Vue({
             axios.post('/message', message).then(response => {
               console.log(response.data);
             });
-        }
+        },
     }
 });

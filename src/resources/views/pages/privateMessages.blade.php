@@ -25,7 +25,7 @@
                 </a>
             </div>
         </div>
-        <div class="row g-0">
+        <div class="row g-0" >
 
             <div class="col p-3 position-relative conversation-area h-100">
                 <div class="row-6 g-0 message-container position-relative overflow-auto">

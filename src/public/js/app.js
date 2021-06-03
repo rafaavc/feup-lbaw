@@ -32,14 +32,16 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     sendMessage: function sendMessage() {
-      this.$emit('messagesent', {
-        sender: {
-          id: this.user.id,
-          username: this.user.username
-        },
-        text: this.newMessage
-      });
-      this.newMessage = '';
+      if (this.newMessage != "") {
+        this.$emit('messagesent', {
+          sender: {
+            id: this.user.id,
+            username: this.user.username
+          },
+          text: this.newMessage
+        });
+        this.newMessage = '';
+      }
     }
   }
 });
@@ -86,7 +88,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  props: ['messages', 'user', 'storagepath']
+  props: ['messages', 'user', 'storagepath'],
+  updated: function updated() {
+    if (document.getElementById('message-chat').childElementCount > 0) document.getElementById('message-chat').lastElementChild.scrollIntoView();
+  }
 });
 
 /***/ }),
@@ -6456,6 +6461,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
+    { attrs: { id: "message-chat" } },
     _vm._l(_vm.messages, function(message) {
       return _vm.user == message.sender.id
         ? _c(
@@ -18812,8 +18818,6 @@ var app = new Vue({
 
     this.fetchMessages();
     window.Echo["private"]('TasteBuds').listen('MessageSent', function (e) {
-      console.log(e);
-
       _this.messages.push({
         text: e.message.text,
         sender: {

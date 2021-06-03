@@ -21,12 +21,14 @@
 
         methods: {
             sendMessage() {
-                this.$emit('messagesent', {
-                    sender: {id: this.user.id, username: this.user.username },
-                    text: this.newMessage
-                });
+                if(this.newMessage != "") {
+                    this.$emit('messagesent', {
+                        sender: {id: this.user.id, username: this.user.username },
+                        text: this.newMessage
+                    });
 
-                this.newMessage = ''
+                    this.newMessage = ''
+                }
             }
         }
     }
