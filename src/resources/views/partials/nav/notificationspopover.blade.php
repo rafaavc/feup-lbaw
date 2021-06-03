@@ -1,5 +1,8 @@
 @php
     $numNotifications = count($allNotifications) > 0 ? count($allNotifications) : 0;
+    $numNotifications -= $numAlreadyFollowedNotifications;
+    $numNotifications -= $numAlreadyReadNotifications;
+
 @endphp
 <li class="nav-item">
     <button id="showPopOver" data-popover-content="#notificationsPopupContent" class="btn btn-primary btn-sm mt-2 me-4 nav-popover position-relative d-none d-lg-block" role="button" data-bs-placement="bottom" data-bs-toggle="popover">
@@ -24,7 +27,9 @@
                 @endif
             @endforeach
         @else
-            <b>You don't have any new notifications.</b>
+            <div style="display: flex; align-items: center; height: 5rem;">
+                <b>You don't have any new notifications.</b>
+            </div>
         @endif
     </div>
 </li>

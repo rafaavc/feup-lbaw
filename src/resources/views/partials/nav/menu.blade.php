@@ -55,9 +55,14 @@
 @elseif(Auth::check())
     @php
         // Follow Requests Notifications
+        $numAlreadyFollowedNotifications = 0;
+        $numAlreadyReadNotifications = 0;
+
         $followRequests = array();
         $userRequests = Illuminate\Support\Facades\DB::table('tb_following')->where('id_followed', Auth::user()->id)->where('state', '!=', 'rejected')->orderByDesc('timestamp')->get();
         foreach ($userRequests as $request) {
+            if($request->state == 'accepted')
+                $numAlreadyFollowedNotifications++;
             $userFollowing = App\Models\Member::find($request->id_following);
             array_push($followRequests, ['type' => 'followRequest', 'username' => $userFollowing->username, 'id' => $userFollowing->id, 'state' => $request->state, 'timestamp' => $request->timestamp]);
         }
@@ -75,6 +80,8 @@
             ->get();
 
         foreach ($favourites as $notification) {
+            if($notification->read)
+                $numAlreadyReadNotifications++;
             $userWhoFavourited = App\Models\Member::find($notification->id_caused_by);
             $recipe = App\Models\Recipe::find($notification->id_recipe);
             array_push($favouritesNotifications, ['type' => 'favouriteNotification', 'recipeId' => $recipe->id, 'username' => $userWhoFavourited->username, 'id' => $userWhoFavourited->id, 'recipeName' => $recipe->name, 'timestamp' => $notification->timestamp]);
@@ -88,6 +95,9 @@
             ->get();
 
         foreach ($userRecipeComments as $comment) {
+            $commentNotification = Illuminate\Support\Facades\DB::table('tb_comment_notification')->where('id_comment', $comment->id)->get(); // Because of inconsistencies with DB
+            if($commentNotification[0]->read)
+                $numAlreadyReadNotifications++;
             $userWhoCommented = App\Models\Member::find($comment->id_member);
             $recipe = App\Models\Recipe::find($comment->id_recipe);
             array_push($commentNotifications, ['type' => 'commentNotification', 'recipeId' => $recipe->id, 'rating' => $comment->rating, 'username' => $userWhoCommented->username, 'id' => $userWhoCommented->id, 'recipeName' => $recipe->name, 'timestamp' => $comment->post_time]);
@@ -98,6 +108,8 @@
         $userDeleteNotifications = Illuminate\Support\Facades\DB::table('tb_delete_notification')->where('id_receiver', Auth::user()->id)->orderByDesc('timestamp')->get();
 
         foreach ($userDeleteNotifications as $notification) {
+            if($notification->read)
+                $numAlreadyReadNotifications++;
             array_push($deleteNotifications, ['type' => 'deleteNotification', 'recipeName' => $notification->name_recipe, 'timestamp' => $notification->timestamp]);
         }
 
@@ -139,7 +151,11 @@
         </li>
     @elseif (key_exists("popover", $attributes))
         @if ($name == "notifications")
-            @include('partials.nav.notificationspopover', ['allNotifications' => $allNotifications])
+            @include('partials.nav.notificationspopover', [
+                'allNotifications' => $allNotifications,
+                'numAlreadyFollowedNotifications' => $numAlreadyFollowedNotifications,
+                'numAlreadyReadNotifications' => $numAlreadyReadNotifications
+            ])
         @elseif ($name == "messages")
             @include('partials.nav.messagespopover')
         @endif
