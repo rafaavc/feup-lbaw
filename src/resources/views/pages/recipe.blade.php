@@ -42,9 +42,13 @@
                                          src="{{ $author->profileImage() }}">
                                 </td>
                                 <td class="align-middle">
-                                    <div class="col-md-5 card-body p-0 m-0 ms-2 text-start">
+                                    <div class="card-body p-0 m-0 ms-2 text-start">
                                         by <a
                                             href="{{ url('/user/'.$author->username) }}">{{ $author->name }}</a>
+                                        <br>
+                                        <small>
+                                        @include('partials.date', ['date' => $recipe->creation_time])
+                                        </small>
                                     </div>
                                 </td>
                             </tr>
