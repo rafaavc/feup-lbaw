@@ -234,3 +234,24 @@ body, html {
     max-height: 60vh;
     overflow-y: auto;
 }
+
+.fileInputImage {
+    height: 8rem;
+    max-width: 100%;
+}
+
+.fileInputImageWrapper {
+    position: relative;
+    display: inline-block;
+    margin-right: 1rem;
+    margin-bottom: 1rem;
+    border-radius: .5rem;
+    border: 1px solid lightgrey;
+    padding: .3rem;
+}
+
+.fileInputRemoveButton {
+    position: absolute;
+    right: .7rem;
+    top: .7rem;
+}

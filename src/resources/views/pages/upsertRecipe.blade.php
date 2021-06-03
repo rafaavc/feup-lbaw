@@ -8,7 +8,7 @@
 
 @push('js')
     <script src="{{ asset('js/progressBar.js') }}" defer></script>
-    <script src="{{ asset('js/createRecipe.js') }}" defer></script>
+    <script src="{{ asset('js/createRecipe.js') }}" type="module"></script>
 @endpush
 
 @section('content')
@@ -126,7 +126,7 @@
                         </div>
 
                         <h6 class="mb-3 d-inline-block">End Product Photos</h6> <span class='form-required'></span>
-                        <input name="images[]" type="file" class="form-control mb-3" multiple>
+                        <div id="end-product-photos-input"></div>
 
                         <button type="button" class="btn btn-primary next-step" style="float: right;">Next</button>
                     </div>

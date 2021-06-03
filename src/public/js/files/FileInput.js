@@ -5,13 +5,14 @@ var ButtonActions;
     ButtonActions[ButtonActions["REMOVE_ALL_FILES"] = 2] = "REMOVE_ALL_FILES";
 })(ButtonActions || (ButtonActions = {}));
 export class FileInput {
-    constructor(containerId, inputName, elementProperties, multiple) {
-        const box = document.querySelector('#' + containerId);
+    constructor(container, inputName, elementProperties, preexistingImages, multiple) {
+        this.fileInputAccept = '.jpeg,.jpg,.gif,.bmp,.png';
+        const box = container instanceof Element ? container : document.querySelector('#' + container);
         this.addPropertiesToElement(box, elementProperties.box);
         if (box == null)
             throw new Error("Couldn't find the specified container!");
         this.box = box;
-        this.multiple = multiple;
+        this.multiple = multiple ? multiple : { maximum: 1 };
         this.elementProperties = elementProperties;
         this.inputName = inputName + (multiple ? '[]' : '');
         this.addButton = this.getButton(ButtonActions.ADD_FILE);
@@ -19,6 +20,9 @@ export class FileInput {
         this.freeInput = null;
         this.imagesWrapper = document.createElement('div');
         this.build();
+        if (preexistingImages != null)
+            for (const image of preexistingImages)
+                this.addPreexistingFile(image);
     }
     /**
      * This builds all the HTML elements necessary
@@ -28,7 +32,21 @@ export class FileInput {
         this.box.appendChild(this.imagesWrapper);
         this.addFreeInput();
     }
-    addFile(image) {
+    addPreexistingFile(preexistingFile) {
+        const input = document.createElement('input');
+        input.type = 'text';
+        input.name = 'preexImg' + preexistingFile.fileName;
+        input.style.display = 'none';
+        input.value = 'true';
+        const file = {
+            removeButton: null,
+            input,
+            img: this.getImage(preexistingFile.url),
+            wrapper: this.getImageWrapper()
+        };
+        this.addFile(file);
+    }
+    addNewFile(image) {
         if (!this.freeInput)
             return;
         const file = {
@@ -37,9 +55,12 @@ export class FileInput {
             img: image,
             wrapper: this.getImageWrapper()
         };
+        this.addFile(file);
+    }
+    addFile(file) {
         file.removeButton = this.getButton(ButtonActions.REMOVE_FILE, file);
         this.files.push(file);
-        if (this.multiple && this.files.length < this.multiple.maximum)
+        if (this.files.length < this.multiple.maximum)
             this.addFreeInput();
         else
             this.addButton.remove();
@@ -58,14 +79,15 @@ export class FileInput {
         const reader = new FileReader();
         reader.onload = ((e) => {
             const image = this.getImage(e.target.result);
-            this.addFile(image);
+            this.addNewFile(image);
         }).bind(this);
         reader.readAsDataURL(file);
     }
     /**
      *
      */
-    onAddFileClick() {
+    onAddFileClick(e) {
+        e.preventDefault();
         console.log("onAddFileClick");
         if (this.freeInput)
             this.freeInput.click();
@@ -78,12 +100,13 @@ export class FileInput {
         if (properties.content)
             element.innerHTML = properties.content;
     }
-    onRemoveFileClick(file) {
+    onRemoveFileClick(e, file) {
+        e.preventDefault();
         file.wrapper.remove();
         file.input.remove();
-        if (this.multiple && this.files.length == this.multiple.maximum)
+        if (this.files.length == this.multiple.maximum)
             this.box.insertBefore(this.addButton, this.box.firstElementChild);
-        this.files.splice(this.files.findIndex((f) => f == file));
+        this.files.splice(this.files.findIndex((f) => f == file), 1);
         // if the add button is hidden, it should reappear when a file is deleted.
     }
     /**
@@ -101,7 +124,7 @@ export class FileInput {
                 break;
             case ButtonActions.REMOVE_FILE:
                 this.addPropertiesToElement(button, this.elementProperties.removeFileButton);
-                button.addEventListener('click', this.onRemoveFileClick.bind(this, file));
+                button.addEventListener('click', (e) => this.onRemoveFileClick.bind(this, e, file)());
                 break;
             case ButtonActions.REMOVE_ALL_FILES:
                 break;
@@ -124,6 +147,7 @@ export class FileInput {
         input.type = 'file';
         input.name = name;
         input.style.display = 'none';
+        input.accept = this.fileInputAccept;
         return input;
     }
 }

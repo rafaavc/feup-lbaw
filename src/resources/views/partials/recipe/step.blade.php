@@ -19,5 +19,5 @@
         <label for="floatingTextarea2">Step Description <span class='form-required'></span></label>
     </div>
     <h6 class="mb-3">Step Photos</h6>
-    <input name="steps[{{ $index - 1 }}][image]" type="file" class="form-control mb-5">
+    <div class="step-photo-input" data-index={{ $index }}></div>
 </div>

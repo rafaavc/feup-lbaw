@@ -1,3 +1,6 @@
+import { defaultProperties } from './files/defaultProperties.js';
+import { FileInput } from './files/FileInput.js'
+
 const addIngredientButton = document.querySelector('#addIngredientButton');
 addIngredientButton.addEventListener('click', () => {
     const elem = document.createElement('template');
@@ -200,3 +203,12 @@ function setInvalidElement(elem) {
     }
     return false;
 }
+
+/** FILE INPUT */
+
+new FileInput('end-product-photos-input', 'images', defaultProperties, [], { maximum: 5 });
+
+const stepPhotoInputs = document.querySelectorAll('.step-photo-input');
+
+for (const input of stepPhotoInputs)
+    new FileInput(input, `steps[${Number(input.dataset.index) - 1}][image]`, defaultProperties, []);

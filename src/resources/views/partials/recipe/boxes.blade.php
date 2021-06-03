@@ -9,7 +9,7 @@
         @if(sizeof($images) > 1)
             <div class="small-img d-flex">
                 @foreach($images as $idx => $image)
-                    @if(idx != 0)
+                    @if($idx != 0)
                         <img class="col-3" src="{{ $image }}">
                     @endif
                 @endforeach
