@@ -6,6 +6,7 @@ use App\Models\Member;
 use App\Models\Category;
 use App\Models\Ingredient;
 use App\Models\Tag;
+use App\Models\Group;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
@@ -102,32 +103,32 @@ class SearchController extends Controller
         ], 200);
     }
 
-    // public function getGroupsPaginate(Request $request) {
-    //     $searchStr = preg_replace("/\s+/", " | ", $request->query('searchQuery'));
-    //     $page = $request->query('page');
-    //     $numResults = 0;
-    //     $groups = $this->getGroups($searchStr, $numResults, $page);
+    public function getGroupsPaginate(Request $request) {
+        $searchStr = preg_replace("/\s+/", " | ", $request->query('searchQuery'));
+        $page = $request->query('page');
+        $numResults = 0;
+        $groups = $this->getGroups($searchStr, $numResults, $page);
 
-    //     $responseGroups = array();
-    //     $counter = 0;
-    //     foreach($groups as $group) {
-    //         $responseGroups[$counter] = view('partials.search.groupCard', [
-    //             'group' => $group])->render();
-    //         $counter++;
-    //     }
+        $responseGroups = array();
+        $counter = 0;
+        foreach($groups as $group) {
+            $responseGroups[$counter] = view('partials.search.groupCard', [
+                'group' => $group])->render();
+            $counter++;
+        }
 
-    //     return response()->json([
-    //         'message' => 'Success!',
-    //         'result' => $responseGroups,
-    //         'numResults' => $numResults
-    //     ], 200);
-    // }
+        return response()->json([
+            'message' => 'Success!',
+            'result' => $responseGroups,
+            'numResults' => $numResults
+        ], 200);
+    }
 
     public function getRecipes(Request $request, $searchStr, &$numResults, $page = 1, $itemsPerPage = 3) {
         $recipeQuery = DB::table('recipes_fts_view')
             ->selectRaw('*, search, ts_rank(search, to_tsquery(\'english\', ?)) AS rank, recipe_visibility(recipe_id, ?) as visibility', [$searchStr, Auth::id()])
             ->when($searchStr, function($query, $searchStr) {
-                if (false && Auth::guard('admin')->check()) {  // TODO remove false when admin guard is defined
+                if (Auth::guard('admin')->check()) {
                     $query = $query
                         ->whereRaw('search @@ to_tsquery(\'english\', ?) ', [$searchStr]);
                 } else if (Auth::check()) {
@@ -142,7 +143,7 @@ class SearchController extends Controller
                     ->orderByDesc('rank')
                     ->orderByDesc('recipe_id');
             }, function ($query) {
-                if (false && Auth::guard('admin')->check()) {  // TODO remove false when admin guard is defined
+                if (Auth::guard('admin')->check()) {
                     return $query;
                 } else if (Auth::check()) {
                     $query = $query
@@ -200,22 +201,22 @@ class SearchController extends Controller
         return $categories;
     }
 
-    // public function getGroups($searchStr, &$numResults, $page = 1, $itemsPerPage = 3) {
-    //     $groupQuery = Group::selectRaw('*, search, ts_rank(search, to_tsquery(\'english\', ?)) AS rank', [$searchStr])
-    //         ->when($searchStr, function($query, $searchStr) {
-    //             return $query
-    //                 ->whereRaw('search @@ to_tsquery(\'english\', ?)', [$searchStr])
-    //                 ->orderByDesc('rank')
-    //                 ->orderByDesc('id');
-    //         }, function($query) {
-    //             return $query
-    //                 ->orderByDesc('id');
-    //         });
+    public function getGroups($searchStr, &$numResults, $page = 1, $itemsPerPage = 3) {
+        $groupQuery = Group::selectRaw('*, search, ts_rank(search, to_tsquery(\'english\', ?)) AS rank', [$searchStr])
+            ->when($searchStr, function($query, $searchStr) {
+                return $query
+                    ->whereRaw('search @@ to_tsquery(\'english\', ?)', [$searchStr])
+                    ->orderByDesc('rank')
+                    ->orderByDesc('id');
+            }, function($query) {
+                return $query
+                    ->orderByDesc('id');
+            });
 
-    //     $numResults += $groupQuery->count();
-    //     $groups = $groupQuery->skip(($page - 1) * $itemsPerPage)->take($itemsPerPage)->get();
+        $numResults += $groupQuery->count();
+        $groups = $groupQuery->skip(($page - 1) * $itemsPerPage)->take($itemsPerPage)->get();
 
-    //     return $groups;
-    // }
+        return $groups;
+    }
 
 }

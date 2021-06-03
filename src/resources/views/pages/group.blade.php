@@ -43,7 +43,7 @@
                     <div class="col-md-4 p-0 pe-md-4 mt-5">
                         @if(Gate::inspect('post', $group)->allowed())
                             <div class="card m-0 mb-4 shadow-sm text-center p-3 personal-info">
-                                <a class="btn btn-primary mt-2" href="{{url('/recipe')}}">Create
+                                <a class="btn btn-primary mt-2" href="{{url("/group/$group->id/recipe")}}">Create
                                     Recipe</a>
                             </div>
                         @endif

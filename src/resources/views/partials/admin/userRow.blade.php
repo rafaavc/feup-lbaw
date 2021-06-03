@@ -14,6 +14,6 @@
         @else
             <button type="button" data-ban="true" class="user-action user-ban btn btn-warning text-white me-2 my-2 has-tooltip" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Ban user"><i class="fas fa-ban"></i></button>
         @endif
-        <button type="button" class="user-action btn btn-danger has-tooltip me-2 my-2" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Delete user permanently"><i class="fas fa-trash"></i></button>
+        <button type="button" class="user-action delete-user btn btn-danger has-tooltip me-2 my-2" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Delete user permanently"><i class="fas fa-trash"></i></button>
     </td>
 </tr>

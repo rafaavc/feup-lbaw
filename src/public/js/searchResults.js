@@ -140,9 +140,9 @@ async function handleSearchSubmit(event) {
     const promises = [
         searchRequest('recipes', url('/api/search/recipes'), data, true),
         searchRequest('people', url('/api/search/people'), data, true),
-        searchRequest('categories', url('/api/search/categories'), data, true)
+        searchRequest('categories', url('/api/search/categories'), data, true),
+        searchRequest('groups', url('/api/search/groups'), data, true)
     ];
-    // searchRequest('groups', url('/api/search/groups'), data, true);
 
     Promise.all(promises)
         .then(() => {
@@ -168,7 +168,6 @@ async function handleSearchSubmit(event) {
                 const store = await tx.objectStore(storeName)
 
                 await store.put({ html: document.querySelector('.search-page').innerHTML, searchQuery: searchQuery }, key)
-                // await store.put(document.querySelector('.search-page').innerHTML, key)
                 await tx.done
             })()
 
