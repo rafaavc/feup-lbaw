@@ -54,16 +54,16 @@ Route::post('recipe/{recipe}/report', 'RecipeController@report');
 // Group API
 // ----------------------------------------------------------------
 Route::post('group', 'GroupController@post')->middleware('can:create,App\Models\Group');
-Route::put('group/{group}', 'GroupController@put')->middleware('can:update,group');
-Route::delete('group/{group}', 'GroupController@remove')->middleware('can:delete,group');
-Route::get('group/{group}', 'GroupController@get');
-Route::post('group/{group}/request', 'GroupController@request')->middleware('can:join,group');
-Route::delete('group/{group}/request', 'GroupController@cancelRequest')->middleware('can:removeRequest,group');
-Route::post('group/{group}/request/{user}', 'GroupController@accept')->middleware('can:update,group');
-Route::delete('group/{group}/request/{user}', 'GroupController@decline')->middleware('can:update,group');
-Route::post('group/{group}/moderator/{user}', 'GroupController@addModerator')->middleware('can:update,group');
-Route::delete('group/{group}/member/{user}', 'GroupController@removeMember')->middleware('can:removeUser,group,user');
-Route::get('group/{group}/members', 'GroupController@getMembers')->middleware('can:view,group');
+Route::put('group/{group}', 'GroupController@put')->middleware('can:update,group')->where('group', '[0-9]+');
+Route::delete('group/{group}', 'GroupController@remove')->middleware('can:delete,group')->where('group', '[0-9]+');
+Route::get('group/{group}', 'GroupController@get')->where('group', '[0-9]+');
+Route::post('group/{group}/request', 'GroupController@request')->middleware('can:join,group')->where('group', '[0-9]+');
+Route::delete('group/{group}/request', 'GroupController@cancelRequest')->middleware('can:removeRequest,group')->where('group', '[0-9]+');
+Route::post('group/{group}/request/{user}', 'GroupController@accept')->middleware('can:update,group')->where('group', '[0-9]+');
+Route::delete('group/{group}/request/{user}', 'GroupController@decline')->middleware('can:update,group')->where('group', '[0-9]+');
+Route::post('group/{group}/moderator/{user}', 'GroupController@addModerator')->middleware('can:update,group')->where('group', '[0-9]+');
+Route::delete('group/{group}/member/{user}', 'GroupController@removeMember')->middleware('can:removeUser,group,user')->where('group', '[0-9]+');
+Route::get('group/{group}/members', 'GroupController@getMembers')->middleware('can:view,group')->where('group', '[0-9]+');
 
 // ----------------------------------------------------------------
 // List API
@@ -86,7 +86,7 @@ Route::get('chats', 'ChatController@index');
 // Report API
 // ----------------------------------------------------------------
 Route::get('reports', 'ReportController@index');
-Route::delete('report/{report}', 'ReportController@delete');
+Route::delete('report/{report}', 'ReportController@delete')->where('report', '[0-9]+');
 
 // ----------------------------------------------------------------
 // Notifications API
@@ -98,9 +98,9 @@ Route::put('notifications', 'NotificationsController@put');
 // Comment API
 // ----------------------------------------------------------------
 Route::post('comment', 'CommentController@insert')->middleware('can:create,App\Models\Comment');
-Route::put('comment/{comment}', 'CommentController@put')->middleware('can:update,comment');
-Route::delete('comment/{comment}', 'CommentController@remove')->middleware('can:delete,comment');
-Route::post('comment/{comment}/report', 'CommentController@report');
+Route::put('comment/{comment}', 'CommentController@put')->middleware('can:update,comment')->where('comment', '[0-9]+');
+Route::delete('comment/{comment}', 'CommentController@remove')->middleware('can:delete,comment')->where('comment', '[0-9]+');
+Route::post('comment/{comment}/report', 'CommentController@report')->where('comment', '[0-9]+');
 
 // ----------------------------------------------------------------
 // Information API
