@@ -61,7 +61,7 @@ document.querySelector('.deleteProfile').addEventListener('click', () => {
     entireURL = entireURL.replace(regex , "$1logout");
     entireURL += "?message=" + encodeURIComponent("Account successfully deleted!");
 
-    makeRequest(url('/user/' + username + '/delete'), 'DELETE')
+    makeRequest(url('api/user/' + username), 'DELETE')
         .then((result) => {
             if (result.response.status == 200) {
                 console.log('Deleted profile successfully!');
