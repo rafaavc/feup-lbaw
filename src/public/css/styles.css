@@ -236,6 +236,13 @@ body, html {
     overflow-y: auto;
 }
 
+.popover {
+    min-height: 5rem;
+    max-height: 40rem;
+    overflow: auto;
+    overflow-x: hidden;
+}
+
 #feedback-div {
     position: fixed;
     top: 6em;
