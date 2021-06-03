@@ -35,6 +35,8 @@ class CommentPolicy
             return true;
         if (!Auth::check())
             return false;
+        if ($comment->recipe->group != null && $comment->recipe->group->moderators->contains($member->id))
+            return true;
         return $member->id == $comment->owner->id;
     }
 }
