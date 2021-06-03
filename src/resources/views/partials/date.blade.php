@@ -1,4 +1,4 @@
-<!-- $date -->
+<span title="{{date($date)}}">
 @php
     $date = new DateTime(date($date));
     $now = new DateTime(date("Y-m-d H:i:s"));
@@ -27,3 +27,4 @@
     else
         echo "just now";
 @endphp
+</span>
