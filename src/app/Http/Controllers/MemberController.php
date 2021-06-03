@@ -140,6 +140,7 @@ class MemberController extends Controller
     public function remove(Member $user)
     {
         Storage::delete("public/images/people/$user->id.jpeg");
+        Storage::delete("public/images/people/cover/$user->id.jpeg");
         $user->delete();
         return response()->json(['message' => 'Success!', 'member_id' => $user->id], 200);
     }

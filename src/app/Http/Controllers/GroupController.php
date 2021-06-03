@@ -24,18 +24,10 @@ class GroupController extends Controller
         'cover_photo' => 'nullable|file|image|mimes:jpeg,png,jpg,gif,bmp'
     ];
 
-    public function deleteGroupProfileImage($group) {
-        File::delete(storage_path("app/public/images/groups/profile/$group->id.jpeg"));
-    }
-
-    public function deleteGroupCoverImage($group) {
-        File::delete(storage_path("app/public/images/groups/cover/" . "$group->id.jpeg"));
-    }
-
     public function deleteGroupImages($group)
     {
-        $this->deleteGroupProfileImage($group);
-        $this->deleteGroupCoverImage($group);
+        File::delete(storage_path("app/public/images/groups/profile/$group->id.jpeg"));
+        File::delete(storage_path("app/public/images/groups/cover/$group->id.jpeg"));
     }
 
     // ----------------------------------------------------------------

@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\File;
 
 class Recipe extends Model
 {
@@ -71,6 +72,22 @@ class Recipe extends Model
     public function group()
     {
         return $this->belongsTo(Group::class, 'id_group');
+    }
+
+    public function getImages()
+    {
+        $paths = File::files(storage_path('app/public/images/recipes/' . $this->id . '/'));
+        $images = array();
+        foreach ($paths as $idx => $path) {
+            array_push($images, asset('storage/images/recipes/' . $this->id . '/' . $path->getBasename()));
+        }
+        return $images;
+    }
+
+    public function getProfileImage()
+    {
+        $images = $this->getImages();
+        return sizeof($images) > 0 ? $images[0] : asset("storage/images/people/no_image.png");
     }
 
     // favouritedNotifications() not useful
