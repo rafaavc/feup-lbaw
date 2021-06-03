@@ -29,6 +29,7 @@
 
                     this.newMessage = ''
                 }
+
             }
         }
     }

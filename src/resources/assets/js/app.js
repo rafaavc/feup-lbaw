@@ -29,7 +29,7 @@ const app = new Vue({
             .listen('MessageSent', (e) => {
                 this.messages.push({
                     text: e.message.text,
-                    sender: { id: e.message.sender, username: e.message.username },
+                    sender: { id: e.message.sender, username: e.user.username },
                 });
             });
     },

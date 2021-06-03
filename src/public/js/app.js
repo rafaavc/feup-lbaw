@@ -18822,7 +18822,7 @@ var app = new Vue({
         text: e.message.text,
         sender: {
           id: e.message.sender,
-          username: e.message.username
+          username: e.user.username
         }
       });
     });
