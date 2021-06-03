@@ -38,8 +38,8 @@ class RecipeController extends Controller
         'additional_time' => 'required|integer|min:0',
         'steps' => 'required|array',
         'steps.*.name' => 'required|string',
-        'steps.*.image' => 'nullable|file|image',
-        'images.*' => 'nullable|file|image'
+        'steps.*.image' => 'nullable|file|image|mimes:jpeg,png,jpg,gif,bmp',
+        'images.*' => 'nullable|file|image|mimes:jpeg,png,jpg,gif,bmp'
     ];
 
     private static $errorMessages = [
@@ -318,20 +318,19 @@ class RecipeController extends Controller
                     'name' => $requestSteps[$i]["name"],
                     'description' => $requestSteps[$i]["description"],
                 ]);
-                $step = $recipe->steps()->save($step);
+                $recipe->steps()->save($step);
+                $step->save();
 
                 // Save step images
-                if ($request->hasFile("steps." . $i)) {
-                    $stepImageFile = $request->file('steps')[$i]['image'];
-                    $stepImageFile->storeAs('public/images/steps/', $step->id . '.' . $stepImageFile->extension());
-                }
+                if ($request->hasFile("steps." . $i))
+                    ImageUploadController::store($request->file('steps')[$i]['image'], 'public/images/steps', $step->id);
             }
 
             // Handle End Product Photos
 
             if ($request->hasFile('images')) {
                 foreach ($request->file('images') as $file)
-                    $file->storeAs('public/images/recipes/' . $recipe->id, date('mdYHis') . uniqid() . '.' . $file->extension());
+                    ImageUploadController::store($file, 'public/images/recipes/'.$recipe->id);
             }
 
             DB::commit();

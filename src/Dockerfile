@@ -4,6 +4,7 @@ FROM ubuntu:20.04
 RUN apt-get update
 RUN apt-get install -y --no-install-recommends composer unzip libpq-dev nginx php7.4-fpm php7.4-mbstring php7.4-xml php7.4-pgsql cron
 
+RUN apt-get install -y --no-install-recommends php7.4-gd
 # Copy project code and install project dependencies
 COPY . /var/www/
 RUN chown -R www-data:www-data /var/www/
