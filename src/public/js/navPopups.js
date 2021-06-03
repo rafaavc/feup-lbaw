@@ -1,4 +1,3 @@
-
 import { makeRequest } from './ajax/methods.js'
 import { url } from './utils/url.js';
 
@@ -32,12 +31,79 @@ let numPopOvers = 0;
 
 let notifications;
 let numNotifications;
+let alreadyRunRead = false;
+
+
+const updateReadNotifications = () => {
+    if(!alreadyRunRead) {
+        alreadyRunRead = true;
+
+        // Delete
+        let deleteIds = [...document.querySelectorAll('[data-notification-type="deleteNotification"]')].map(function (input) {
+            return parseInt(input.dataset.notificationId);
+        });
+
+        if(deleteIds.length > 0) {
+            makeRequest(url('api/notification/deleteNotification'), 'PUT', { notificationIds: deleteIds })
+            .then((result) => {
+                if (result.response.status == 200) {
+                    console.log(result.content.message);
+                }
+            });
+        }
+
+        console.log(deleteIds);
+
+
+        // Favourites
+        let favouriteIds = [...document.querySelectorAll('[data-notification-type="favouriteNotification"]')].map(function (input) {
+            return parseInt(input.dataset.notificationId);
+        });
+
+        if(favouriteIds.length > 0) {
+            makeRequest(url('api/notification/favouriteNotification'), 'PUT', { notificationIds: favouriteIds })
+            .then((result) => {
+                if (result.response.status == 200) {
+                    console.log(result.content.message);
+                }
+            });
+        }
+
+        console.log(favouriteIds);
+
+        // Comment/Review
+        let commentIds = [...document.querySelectorAll('[data-notification-type="commentNotification"]')].map(function (input) {
+            return parseInt(input.dataset.notificationId);
+        });
+
+        if(commentIds.length > 0) {
+            makeRequest(url('api/notification/commentNotification'), 'PUT', { notificationIds: commentIds })
+            .then((result) => {
+                if (result.response.status == 200) {
+                    console.log(result.content.message);
+                }
+            });
+        }
+
+        console.log(commentIds);
+
+        let affectedNotifications = (deleteIds.length + favouriteIds.length + commentIds.length) / 2;
+        if(affectedNotifications > 0) {
+            console.log(affectedNotifications);
+            document.querySelectorAll('.notif-quantity-indicator').forEach((indicator) => {
+                let number = parseInt(indicator.firstElementChild.textContent);
+                indicator.firstElementChild.textContent = number - affectedNotifications;
+            });
+        }
+    }
+};
 
 if(document.body.contains(document.querySelector('#showPopOver'))) {
     notifications = document.querySelector('#notificationsPopupContent');
     numNotifications = document.querySelector('div.notif-quantity-indicator').firstElementChild;
 
     document.querySelector('#showPopOver').addEventListener('shown.bs.popover', (event) => {
+        updateReadNotifications();
         let followRequestBtns = Array.from(document.querySelectorAll('button.follow-request-button'));
         followRequestBtns.forEach((followRequestBtn) => {
             followRequestBtn.addEventListener('mousedown', (event) => {
@@ -82,5 +148,4 @@ if(document.body.contains(document.querySelector('#showPopOver'))) {
         numPopOvers = document.querySelector('#notificationsPopupContent').childElementCount;
     });
 }
-
 

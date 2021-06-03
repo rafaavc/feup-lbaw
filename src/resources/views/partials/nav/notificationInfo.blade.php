@@ -11,6 +11,9 @@
             <div class="col-9 {{ $notification['type'] == 'deleteNotification' ? "ps-0" : "" }} pe-0">
                 <div class="row g-2">
                     <div class="col-11" style="text-align: left; display: flex; justify-content: center; align-items: center; ">
+                        @if(!$read)
+                            <input type="hidden"  data-notification-type="{{ $notification['type'] }}" data-notification-id="{{ $notification['id'] }}">
+                        @endif
                         <p class="m-0">
                             @if($notification['type'] != 'deleteNotification')
                                 <a style="text-decoration: none; font-weight: bold;" href="{{ url('user/' . $username) }} ">{{ $username }}</a>
