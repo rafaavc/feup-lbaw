@@ -28,11 +28,11 @@ class RecipePolicy
         if ($recipe->group !== null) {
             if ($recipe->group->visibility == true)
                 return true;
-            return $recipe->group->members->contains($user->id);
+            return Auth::check() && $recipe->group->members->contains($user->id);
         }
         if ($recipe->author->visibility == true)
             return true;
-        return $recipe->author->followers()->wherePivot('state', 'accepted')->get()->contains($user->id);
+        return Auth::check() && $recipe->author->followers()->wherePivot('state', 'accepted')->get()->contains($user->id);
     }
 
     public function update(?Member $user, Recipe $recipe)
