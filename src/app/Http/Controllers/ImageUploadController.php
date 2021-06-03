@@ -22,7 +22,7 @@ class ImageUploadController {
         $extension = $file->extension();
         $path = $file->path();
 
-        $storageFileName = $name.'.jpg';
+        $storageFileName = $name.'.jpeg';
 
         if (preg_match('/jpg|jpeg/i',$extension))
             $tmp=imagecreatefromjpeg($path);

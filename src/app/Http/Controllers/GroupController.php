@@ -20,8 +20,8 @@ class GroupController extends Controller
         'name' => 'required|string',
         'description' => 'required|string',
         'visibility' => 'required|boolean',
-        'profile_photo' => 'nullable|file|image',
-        'cover_photo' => 'nullable|file|image'
+        'profile_photo' => 'nullable|file|image|mimes:jpeg,png,jpg,gif,bmp',
+        'cover_photo' => 'nullable|file|image|mimes:jpeg,png,jpg,gif,bmp'
     ];
 
     public function deleteGroupProfileImage($group) {

@@ -65,12 +65,26 @@ class Member extends Authenticatable
         return asset($path);
     }
 
+    public function hasProfileImage()
+    {
+        $path = "storage/images/people/$this->id.jpeg";
+        if (file_exists($path)) return asset($path);
+        return false;
+    }
+
     public function coverImage()
     {
         $path = "storage/images/people/cover/$this->id.jpeg";
         if (!file_exists($path))
             return asset("storage/images/people/cover/default.jpg");
         return asset($path);
+    }
+
+    public function hasCoverImage()
+    {
+        $path = "storage/images/people/cover/$this->id.jpeg";
+        if (file_exists($path)) return asset($path);
+        return false;
     }
 
     public function recipes()

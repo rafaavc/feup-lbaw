@@ -27,70 +27,29 @@ $role = "member";
           method="post">
         @csrf
         <div class="row">
-            <div class="col profile-photo-area mx-2">
+            <div class="col profile-photo-area">
                 <div class="row row-with-image">
-                    <div class="col area-title-col">
-                        <h6 class="area-title d-inline-block">Profile Photo</h6> <span class='form-required'></span>
-                    </div>
-                    <div class="col text-end profile-photo-button-col p-0">
-                        <div class="dropdown w-20 ms-auto">
-                            <button type="button" class="btn edit-photo-button btn-no-shadow" data-bs-toggle="dropdown"
-                                    aria-expanded="false">
-                                <i class="fas fa-ellipsis-h"></i>
-                            </button>
-                            <ul class="dropdown-menu w-100">
-                                <li>
-                                    <a class="dropdown-item file-input">
-                                        <i class="fas fa-upload me-2"></i>
-                                        Upload Image
-                                    </a>
-                                    <input type="file" class="d-none myFile" name="profileImage"/>
-                                </li>
-                                <li>
-                                    <a class="dropdown-item file-delete">
-                                        <i class="fas fa-eraser me-2"></i>
-                                        Clear Image
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
+                    <h6 class="area-title d-inline-block">Profile Photo</h6>
                 </div>
-                <img class="rounded-circle z-depth-2 profile-image"
-                     src="{{$user->profileImage()}}">
+                <div id="user-profile-image-input">
+                    @if ($img = $user->hasProfileImage())
+                        <span data-url={{ $img }}></span>
+                    @endif
+                </div>
             </div>
-            <div class="col cover-photo-area mx-2">
+            <div class="col cover-photo-area">
                 <div class="row area-title-row row-with-image">
-                    <div class="col area-title-col">
-                        <h6 class="area-title">Cover Photo</h6>
-                    </div>
-                    <div class="col text-end p-0">
-                        <div class="dropdown w-20 ms-auto">
-                            <button type="button" class="btn edit-photo-button btn-no-shadow" data-bs-toggle="dropdown"
-                                    aria-expanded="false">
-                                <i class="fas fa-ellipsis-h"></i>
-                            </button>
-                            <ul class="dropdown-menu w-100">
-                                <li>
-                                    <a class="dropdown-item file-input"><i class="fas fa-upload me-2"></i>Upload
-                                        Image</a>
-                                    <input type="file" class="d-none myFile" name="coverImage"/>
-                                </li>
-                                <li>
-                                    <a class="dropdown-item file-delete"><i class="fas fa-eraser me-2"></i>Clear
-                                        Image</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
+                    <h6 class="area-title">Cover Photo</h6>
                 </div>
-                <img
-                    src="{{ $user->coverImage() }}"
-                    class="bd-placeholder-img">
+                <div id="user-cover-image-input">
+                    @if ($img = $user->hasCoverImage())
+                        <span data-url={{ $img }}></span>
+                    @endif
+                </div>
             </div>
         </div>
 
-        <h6 class="area-title mt-4">Biography <span class='form-required'></span></h6>
+        <h6 class="area-title mt-4">Biography</h6>
         <div class="form-group">
             <textarea name="biography" class="form-control mb-4 p-3 edit-profile-text-input"
                       rows="3">{{$user->biography}}</textarea>

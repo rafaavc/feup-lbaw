@@ -218,7 +218,7 @@ for (const child of productPhotos.children) {
 
 productPhotos.innerHTML = '';
 
-new FileInput(productPhotos, 'images', defaultProperties, preexistingImages, { maximum: 5 });
+new FileInput(productPhotos, 'images', defaultProperties(), preexistingImages, { maximum: 5 });
 
 const stepPhotoInputs = document.querySelectorAll('.step-photo-input');
 
@@ -236,5 +236,5 @@ for (const input of stepPhotoInputs)
     const stepId = Number(input.dataset.index) - 1;
     input.innerHTML = '';
 
-    new FileInput(input, `steps[${stepId}][image]`, defaultProperties, preexistingImages, null, () => `steps[${stepId}][previousImage]`, (fileName) => fileName);
+    new FileInput(input, `steps[${stepId}][image]`, defaultProperties(), preexistingImages, null, () => `steps[${stepId}][previousImage]`, (fileName) => fileName);
 }

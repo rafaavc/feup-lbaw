@@ -1,4 +1,6 @@
 import { makeRequest } from './ajax/methods.js'
+import { defaultProperties } from './files/defaultProperties.js';
+import { FileInput } from './files/FileInput.js';
 import { url } from './utils/url.js';
 
 // File Upload
@@ -70,4 +72,38 @@ document.querySelector('.deleteProfile').addEventListener('click', () => {
         });
 });
 
+/** FILE UPLOAD */
+
+const preexistingProfileImages = [];
+const profilePictureInput = document.querySelector('#user-profile-image-input');
+
+for (const child of profilePictureInput.children) {
+    preexistingProfileImages.push({
+        url: child.dataset.url,
+        fileName: 'randomName'
+    });
+}
+
+profilePictureInput.innerHTML = '';
+
+const profileProperties = defaultProperties(['rounded-circle', 'z-depth-2', 'profile-image']);
+
+new FileInput(profilePictureInput, 'profileImage', profileProperties, preexistingProfileImages, null, () => 'previousProfileImage');
+
+
+const preexistingCoverImages = [];
+const coverPictureInput = document.querySelector('#user-cover-image-input');
+
+for (const child of coverPictureInput.children) {
+    preexistingCoverImages.push({
+        url: child.dataset.url,
+        fileName: 'randomName'
+    });
+}
+
+coverPictureInput.innerHTML = '';
+
+const coverProperties = defaultProperties(['bg-placeholder-img']);
+
+new FileInput(coverPictureInput, 'coverImage', coverProperties, preexistingCoverImages, null, () => 'previousCoverImage');
 

@@ -1,5 +1,8 @@
 // Upload Profile Picture
 
+import { defaultProperties } from "./files/defaultProperties.js";
+import { FileInput } from "./files/FileInput.js";
+
 fileUploadListeners();
 
 function fileUploadListeners() {
@@ -33,3 +36,6 @@ document.querySelector('#first-step').addEventListener('click', function () {
     document.querySelector('div.progress').parentNode.classList.remove('d-none');
     document.getElementById('error-messages').classList.add('d-none');
 });
+
+
+new FileInput('profile-photo-input', 'profileImage', defaultProperties(['rounded-circle', 'file-input']));
