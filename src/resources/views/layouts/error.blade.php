@@ -1,7 +1,9 @@
 @extends('layouts.app')
 
-<div class="mt-3 text-center"
-     style="position: absolute; left: 50%; top: 50%; transform: translate(-50%, -100%)">
+<div class="mt-5 text-center"
+     style="position: absolute; left: 50%; transform: translate(-50%)">
+    <img src="{{ asset('storage/images/broken-eggs.png') }}" style="width: 13em; height: 10em;">
+
     @yield('header')
 
     <ul class="d-flex mt-3 ps-0" style="list-style-type: none;">
