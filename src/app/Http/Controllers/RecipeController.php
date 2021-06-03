@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Group;
 use App\Models\Category;
 use App\Models\Ingredient;
 use App\Models\Recipe;
@@ -169,10 +170,13 @@ class RecipeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Group $group)
     {
         try {
-            return view('pages.upsertRecipe');
+            if ($group != null)
+                return view('pages.upsertRecipe', ['groupId' => $group->id]);
+            else
+                return view('pages.upsertRecipe');
         } catch (\Exception $e) {
             abort(403, 'Database Exception');
         }
@@ -270,6 +274,12 @@ class RecipeController extends Controller
             // Category
             $category = Category::findOrFail($request->input('category'));
             $recipe->category()->associate($category);
+
+            // Group
+            if ($request->input('group') != '') {
+                $group = Group::findOrFail($request->input('group'));
+                $recipe->group()->associate($group);
+            }
 
             $recipe->save();
 

@@ -88,6 +88,18 @@ a.btn-large {
     width: 13rem;
 }
 
+div.alert-dismissible {
+    position: fixed;
+    z-index: 5;
+    text-align: center;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+button[aria-label="Close"] {
+    outline: 0;
+}
+
 @media (max-width: 991.98px) {
     div.fs-4, strong.fs-1 {
         text-align: center;

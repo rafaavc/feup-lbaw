@@ -4,7 +4,7 @@
     </a>
     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
         @foreach ($submenu as $name => $attributes)
-            @include('partials.nav.item', ['name' => ucwords($name), 'icon' => $attributes["icon"], 'link' => $attributes["href"], 'dropdown' => true])
+            @include('partials.nav.item', ['name' => ucwords($name), 'icon' => $attributes["icon"], 'profileImage' =>  (isset($profileImage) ? $profileImage : ''), 'link' => $attributes["href"], 'dropdown' => true])
         @endforeach
     </ul>
 </li>

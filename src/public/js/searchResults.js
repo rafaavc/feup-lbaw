@@ -1,6 +1,7 @@
 import { makeRequest } from './ajax/methods.js'
 import { getFilterBarForm, getFilterBarData } from './utils/getFilterSortBarData.js';
 import { url } from './utils/url.js';
+import { openDB, deleteDB } from 'https://unpkg.com/idb?module';
 
 const searchQueryInput = document.querySelector('input[name=searchQuery]');
 const searchResultForm = document.querySelector('form.search-result-form');
@@ -139,15 +140,38 @@ async function handleSearchSubmit(event) {
     const promises = [
         searchRequest('recipes', url('/api/search/recipes'), data, true),
         searchRequest('people', url('/api/search/people'), data, true),
-        searchRequest('categories', url('/api/search/categories'), data, true)
+        searchRequest('categories', url('/api/search/categories'), data, true),
+        searchRequest('groups', url('/api/search/groups'), data, true)
     ];
-    // searchRequest('groups', url('/api/search/groups'), data, true);
 
     Promise.all(promises)
         .then(() => {
             const url = new URL(window.location);
             url.searchParams.set('searchQuery', searchQuery);
-            window.history.pushState({ html: document.querySelector('.search-page').innerHTML }, document.title, url);
+            const key =  Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
+
+            (async () => {
+
+                let db;
+                const storeName = 'store0';
+                const dbName = 'dbPages';
+                const version = 1;
+
+
+                db = await openDB(dbName, version, {
+                  upgrade(db, oldVersion, newVersion, transaction) {
+                    db.createObjectStore(storeName)
+                  }
+                });
+
+                const tx = db.transaction(storeName, 'readwrite')
+                const store = await tx.objectStore(storeName)
+
+                await store.put({ html: document.querySelector('.search-page').innerHTML, searchQuery: searchQuery }, key)
+                await tx.done
+            })()
+
+            window.history.pushState({ key: key }, document.title, url);
             stopWaitingForSearch();
         });
 
@@ -201,11 +225,36 @@ const handleFilterBarInputChange = (event) => {
 filterBarForm.addEventListener('submit', handleSearchSubmit);
 filterBarInputs.forEach((input) => input.addEventListener('change', handleFilterBarInputChange));
 
-window.onpopstate = function(e) {
-    if (e.state){
-        document.querySelector('.search-page').innerHTML = e.state.html;
+window.onpopstate = async function(e) {
+    if (e.state && e.state.key) {
+
+        const storeName = 'store0';
+        const dbName = 'dbPages';
+        const version = 1;
+
+        const db = await openDB(dbName, version, {
+            upgrade(db, oldVersion, newVersion, transaction) {
+            const store = db.createObjectStore(storeName)
+            }
+        })
+
+        const pageInfo = await db.transaction(storeName).objectStore(storeName).get(e.state.key);
+        if(pageInfo != undefined) {
+            document.querySelector('.search-page').innerHTML = pageInfo.html;
+            searchQuery = pageInfo.searchQuery;
+        }
+
+        const tx = await db.transaction(storeName, 'readwrite')
+        const store = await tx.objectStore(storeName)
+
+        const key = e.state.key;
+        await store.delete(key)
+        await tx.done
+
     }
     refreshSearchQuery();
     registerListeners();
     refreshSearchAreas();
 }
+
+

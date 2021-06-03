@@ -187,6 +187,13 @@
                     @include('partials.recipe.step', ['index' => 1, 'hasErrors' => false])
                 @endif
 
+                @if(isset($recipe) && $recipe->group != null)
+                    <input name="group" value="{{ $recipe->group }}" class="d-none">
+                @else
+                    <input name="group" value="{{ isset($groupId) ? $groupId : '' }}" class="d-none">
+                @endif
+
+
                 <button type="button" class="btn btn-secondary" id="addStepButton"><i class="fas fa-plus"></i> Add Step</button>
                 <a type="submit" role="button" class="submit-recipe-form btn btn-primary next-step" style="float: right;">{{ isset($recipe) ? "Edit Recipe" : "Create Recipe" }}</a>
                 </div>

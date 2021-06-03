@@ -45,6 +45,8 @@ class RecipePolicy
             return true;
         if (!Auth::check())
             return false;
+        if ($recipe->group != null && $recipe->group->moderators->contains($user->id))
+            return true;
         return $user->id == $recipe->author->id;
     }
 

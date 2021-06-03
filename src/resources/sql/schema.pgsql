@@ -313,6 +313,13 @@ CREATE TABLE tb_recipe_report (
     CONSTRAINT recipe_report_recipe_FK FOREIGN KEY (id_recipe) REFERENCES "tb_recipe" (id) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
+CREATE TABLE password_resets (
+    id SERIAL,
+    email text,
+    token text,
+    created_at datetime
+);
+
 
 -- INDEXES
 
@@ -421,8 +428,9 @@ BEGIN
     FROM tb_recipe
     WHERE id = OLD.id_recipe;
 
+
     UPDATE tb_recipe
-    SET num_rating = num_rating - 1, score = (totalScore - OLD.rating) / (num_rating - 1)
+    SET num_rating = num_rating - 1, score = (totalScore - OLD.rating) / GREATEST((num_rating - 1), 1)
     WHERE tb_recipe.id = OLD.id_recipe;
 
     RETURN OLD;
@@ -489,7 +497,7 @@ BEGIN
     WHERE id = OLD.id_member;
 
     UPDATE tb_member
-    SET num_rating = num_rating - 1, score = (totalScore - OLD.score) / (num_rating - 1)
+    SET num_rating = num_rating - 1, score = (totalScore - OLD.score) / GREATEST((num_rating - 1), 1)
     WHERE tb_member.id = OLD.id_member;
 
     RETURN OLD;
@@ -516,18 +524,18 @@ BEGIN
     JOIN tb_member ON tb_recipe.id_member = tb_member.id
     WHERE tb_recipe.id = id_recipe;
 
-	-- Recipe's author profile visibility if public
-    IF author_visibility = TRUE THEN
-        RETURN TRUE;
-    END IF;
+    -- User is the recipe's creator
+	IF id_author = id_user THEN
+		RETURN TRUE;
+	END IF;
 
     SELECT tb_recipe.id_group INTO _id_group
     FROM tb_recipe
     WHERE tb_recipe.id = id_recipe;
 
-	-- Recipe belongs to a group and the group is public or the user is member of that group
+    -- Recipe belongs to a group and the group is public or the user is member of that group
     IF _id_group IS NOT NULL THEN
-        SELECT visibility INTO group_visibility FROM tb_group;
+        SELECT visibility INTO group_visibility FROM tb_group WHERE id = _id_group;
         IF group_visibility = TRUE THEN
             RETURN TRUE;
         END IF;
@@ -535,7 +543,14 @@ BEGIN
             SELECT * FROM tb_group_member
             WHERE tb_group_member.id_group = _id_group AND tb_group_member.id_member = id_user) THEN
             RETURN TRUE;
+        ELSE
+            RETURN FALSE;
         END IF;
+    END IF;
+
+	-- Recipe's author profile visibility if public
+    IF author_visibility = TRUE THEN
+        RETURN TRUE;
     END IF;
 
     SELECT tb_recipe.id_member INTO id_author
@@ -550,11 +565,6 @@ BEGIN
         AND state = 'accepted') THEN
         RETURN TRUE;
     END IF;
-
-	-- User is the recipe's creator
-	IF id_author = id_user THEN
-		RETURN TRUE;
-	END IF;
 
     RETURN FALSE;
 END;

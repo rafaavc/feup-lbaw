@@ -64,7 +64,7 @@ class MemberPolicy
      * @param \App\Models\Member $argument
      * @return mixed
      */
-    public function delete(Member $member, Member $argument)
+    public function delete(?Member $member, Member $argument)
     {
         if (Auth::guard('admin')->check())
             return true;

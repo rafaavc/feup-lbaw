@@ -14,7 +14,8 @@
 // ----------------------------------------------------------------
 // Static pages
 // ----------------------------------------------------------------
-Route::view('/', 'pages.index');
+
+Route::view('/', 'pages.index')->name('homepage');
 Route::get('faq', 'FaqController@view');
 Route::get('about', 'AboutController@view');
 
@@ -40,7 +41,6 @@ Route::get('user/{user}/favourites', 'MemberController@readFavourites');
 Route::get('user/{user}/reviews', 'MemberController@readReviews');
 Route::get('user/{user}/edit', 'MemberController@update')->middleware('can:update,user');
 Route::post('user/{user}/edit', 'MemberController@updateAction')->middleware('can:update,user');
-Route::get('user/{user}/delete', 'MemberController@deleteAction')->middleware('can:delete,user');
 Route::get('user/{user}/{any?}', 'MemberController@redirect')->where('any', '.*');
 
 Route::get('admin/users', 'MemberController@list')->middleware('IsAdmin');
@@ -64,6 +64,8 @@ Route::post('group/{group}/edit', 'GroupController@updateAction')->middleware('c
 Route::get('group/{group}/delete', 'GroupController@deleteAction')->middleware('can:delete,group');
 Route::get('group', 'GroupController@create')->middleware('can:create,App\Models\Group');
 Route::post('group', 'GroupController@createAction')->middleware('can:create,App\Models\Group');
+
+Route::get('group/{group}/recipe', 'RecipeController@create'); // TODO: add this to the openapi
 
 // ----------------------------------------------------------------
 // List pages
