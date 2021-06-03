@@ -17,14 +17,9 @@
     width: 100%;
 }
 
-#privateMessages .message-container {
-    height: calc(100% - 9rem);
-    width: 100%;
-}
-
 #privateMessages .message-line {
-    min-width: 18rem;
-    max-width: 70%;
+    min-width: 60%;
+    max-width: 100%;
     height: auto;
     align-items: center;
     margin: 0;
@@ -59,7 +54,10 @@
     color: var(--bs-light);
     padding: 0.25rem 1rem 0.25rem 0.7rem;
     border-radius: 0.25rem;
+    min-width: auto;
+    max-width: 50%;
     display: inline-block;
+    text-align: left;
 }
 
 #privateMessages .date-time-display {
@@ -69,6 +67,7 @@
     width: 10rem;
     bottom: 22rem;
     left: calc(50% - 5rem);
+    top: 0rem;
 }
 
 #privateMessages .message-own {
@@ -142,7 +141,6 @@
     display: none;
 }
 
-
 @media (max-width: 1200px) {
     #privateMessages .disappear {
         display: none;
@@ -161,4 +159,3 @@
         margin-left: 5%;
     }
 }
-

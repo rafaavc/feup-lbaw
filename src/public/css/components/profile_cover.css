@@ -55,6 +55,12 @@ header.cover .card {
     object-position: center;
 }
 
+
+.image-container#author-image img {
+    width: 3.5em;
+    height: 3.5em;
+}
+
 @media(max-width: 240px) {
     .image-container img {
         width: 7em;
