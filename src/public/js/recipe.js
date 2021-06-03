@@ -19,6 +19,13 @@ if(notAdminOrExternalUser) {
     ratingInputCancel.style.display = 'none';
 }
 
+const showRatingInputs = () => {
+    const ratingInputs = document.querySelectorAll('.rating-input');
+    for (const input of ratingInputs) {
+        input.style.display = 'block';
+    }
+}
+
 // TODO IF COMMENT WITH RATING IS DELETED, PUT DISPLAY = 'BLOCK' NO .rating-input
 
 const starmark = (event) => {
@@ -322,6 +329,10 @@ const refreshCommentDeleteButtons = () => {
                         commentFeedback.showMesssage(res.content.message, 'danger');
                     } else {
                         commentFeedback.showMesssage("Comment(s) deleted successfully!");
+                        if (comment.dataset.hasReview == "true") {
+                            showRatingInputs();
+                            console.log("Showed rating input");
+                        }
                         comment.remove();
                     }
                 });
