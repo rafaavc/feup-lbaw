@@ -20,9 +20,7 @@ class FeedController extends Controller
             $trendingRecipes = Recipe::inRandomOrder()
                 ->limit(6)
                 ->get();
-        }
-
-        if(!Auth::check()) {
+        }else if(!Auth::check()) {
             $recipes = Recipe::inRandomOrder()
                 ->whereRaw('recipe_visibility(id, NULL)')
                 ->limit(5)

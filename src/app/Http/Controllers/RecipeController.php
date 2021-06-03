@@ -115,13 +115,29 @@ class RecipeController extends Controller
 
         $images = $this->getRecipeImages($recipe->id);
 
-        $suggested = Recipe::inRandomOrder()->where('id', '!=', $recipe->id)->limit(4)->get();
+        if (Auth::guard('admin')->check()) {
+            $suggested = Recipe::inRandomOrder()
+                ->whereRaw('id <> :recipe_id', ['recipe_id' => $recipe->id])
+                ->limit(4)
+                ->get();
+
+        } else if(!Auth::check()) {
+            $suggested = Recipe::inRandomOrder()
+                ->whereRaw('recipe_visibility(id, NULL) and id <> :recipe_id', ['recipe_id' => $recipe->id])
+                ->limit(4)
+                ->get();
+        }
+        else {
+            $suggested = Recipe::inRandomOrder()
+                ->whereRaw('recipe_visibility(id, :user_id) and id <> :recipe_id', ['user_id' => Auth::user()->id, 'recipe_id' => $recipe->id])
+                ->limit(4)
+                ->get();
+        }
+
         foreach ($suggested as $recipeCard) {
             $recipeCard->image = $this->getRecipeImages($recipeCard->id)[0];
             $recipeCard->owner = $recipeCard->author->name;
         }
-
-
 
         $steps = $recipe->steps;
         foreach ($steps as $step) {
