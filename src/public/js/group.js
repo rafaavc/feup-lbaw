@@ -4,7 +4,7 @@ import {instantiateToolTip} from './utils/tooltip.js';
 import {Feedback} from './feedback/Feedback.js';
 
 // ----------------------------------------
-// Join
+// Join and leave
 // ----------------------------------------
 
 const joinButton = document.querySelector('button.group-join');
@@ -17,7 +17,7 @@ if (joinButton !== null) {
         let requestURL = url('/api/group/' + groupId + "/request")
         let method = (joinState == 'Join') ? 'POST' : 'DELETE'
         if (joinState == 'Leave')
-            return
+            requestURL = url('/api/group/' + groupId + "/member/" + document.body.dataset.username);
         console.log("Sending request to API's address: " + requestURL);
         makeRequest(requestURL, method)
             .then((result) => {
