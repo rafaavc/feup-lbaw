@@ -15,7 +15,7 @@
 
 @section('content')
 
-    @include('partials.breadcrumb', ['pages' => ["Sign Up"], 'withoutMargin' => false])
+    @include('partials.breadcrumb', ['pages' => ["Sign Up" => ""], 'withoutMargin' => false])
 
     <div class="container content-general-margin mt-2 margin-to-footer">
         <div class="row">

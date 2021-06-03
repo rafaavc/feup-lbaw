@@ -2,7 +2,7 @@
 
 @section('title', "Frequently Asked Questions")
 
-@include('partials.breadcrumb', ['pages' => ["Frequently Asked Questions"], 'withoutMargin' => false])
+@include('partials.breadcrumb', ['pages' => ["Frequently Asked Questions" => ""], 'withoutMargin' => false])
 
 <h1 class="content-general-margin mb-4">Frequently Asked Questions</h1>
 <div class="accordion content-general-margin margin-to-footer" id="accordionExample">

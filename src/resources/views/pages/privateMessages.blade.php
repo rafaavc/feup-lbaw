@@ -12,7 +12,7 @@
 
 @section('content')
 
-    @include('partials.breadcrumb', ['pages' => ["Private Messages"], 'withoutMargin' => false])
+    @include('partials.breadcrumb', ['pages' => ["Private Messages" => ""], 'withoutMargin' => false])
 
 
     <div class="card content-general-margin margin-to-footer mt-2 mb-0" id="privateMessages">

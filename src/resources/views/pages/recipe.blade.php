@@ -18,7 +18,7 @@
 
 @section('content')
 
-    @include('partials.breadcrumb', ['pages' => ["Recipes", $recipe->category->name, $recipe->name], 'withoutMargin' => false])
+    @include('partials.breadcrumb', ['pages' => ["Recipes" => "", $recipe->category->name => "/category/" . $category->id, $recipe->name => ""], 'withoutMargin' => false])
 
     <main class="row content-general-margin margin-to-footer">
         @if(session()->has('message'))
