@@ -4,7 +4,7 @@
             <div class="col-2" style="text-align: left; display: flex; align-items: center;">
                 @if($notification['type'] != 'deleteNotification')
                     <a style="text-decoration: none;" href="{{ url('user/' . $username) }} ">
-                        <div class="small-profile-photo" style="background-image: url(' {{ asset('storage/images/people/' . $id . '.jpeg') }} '), url(' {{ asset('storage/images/people/no_image.png') }} ')"></div>
+                        <div class="small-profile-photo" style="background-image: url(' {{ asset('storage/images/people/' . $userId . '.jpeg') }} '), url(' {{ asset('storage/images/people/no_image.png') }} ')"></div>
                     </a>
                 @endif
             </div>

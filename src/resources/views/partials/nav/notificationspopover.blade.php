@@ -20,9 +20,9 @@
                 @if($notification['type'] == 'followRequest')
                     @include('partials.nav.followInfo', ['username' => $notification['username'], 'id' => $notification['id'], 'state' => $notification['state']])
                 @elseif($notification['type'] == 'favouriteNotification')
-                    @include('partials.nav.notificationInfo', ['read' => $notification['read'],'recipeId' => $notification['recipeId'], 'type' => $notification['type'], 'username' => $notification['username'], 'id' => $notification['id'], 'recipeName' => $notification['recipeName']])
+                    @include('partials.nav.notificationInfo', ['userId' => $notification['userId'],'read' => $notification['read'],'recipeId' => $notification['recipeId'], 'type' => $notification['type'], 'username' => $notification['username'], 'id' => $notification['id'], 'recipeName' => $notification['recipeName']])
                 @elseif($notification['type'] == 'commentNotification')
-                    @include('partials.nav.notificationInfo', ['read' => $notification['read'], 'rating' => $notification['rating'], 'recipeId' => $notification['recipeId'], 'type' => $notification['type'], 'username' => $notification['username'], 'id' => $notification['id'], 'recipeName' => $notification['recipeName']])
+                    @include('partials.nav.notificationInfo', ['userId' => $notification['userId'], 'read' => $notification['read'], 'rating' => $notification['rating'], 'recipeId' => $notification['recipeId'], 'type' => $notification['type'], 'username' => $notification['username'], 'id' => $notification['id'], 'recipeName' => $notification['recipeName']])
                 @elseif($notification['type'] == 'deleteNotification')
                     @include('partials.nav.notificationInfo', ['read' => $notification['read'], 'type' => $notification['type'], 'recipeName' => $notification['recipeName'], 'id' => $notification['id']])
                 @endif

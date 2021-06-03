@@ -84,7 +84,7 @@
                 $numAlreadyReadNotifications++;
             $userWhoFavourited = App\Models\Member::find($notification->id_caused_by);
             $recipe = App\Models\Recipe::find($notification->id_recipe);
-            array_push($favouritesNotifications, ['read' => $notification->read,'type' => 'favouriteNotification', 'recipeId' => $recipe->id, 'username' => $userWhoFavourited->username, 'id' => $notification->id, 'recipeName' => $recipe->name, 'timestamp' => $notification->timestamp]);
+            array_push($favouritesNotifications, ['userId' => $userWhoFavourited->id, 'read' => $notification->read, 'type' => 'favouriteNotification', 'recipeId' => $recipe->id, 'username' => $userWhoFavourited->username, 'id' => $notification->id, 'recipeName' => $recipe->name, 'timestamp' => $notification->timestamp]);
         }
 
         // Comment/Review
@@ -100,7 +100,7 @@
                 $numAlreadyReadNotifications++;
             $userWhoCommented = App\Models\Member::find($comment->id_member);
             $recipe = App\Models\Recipe::find($comment->id_recipe);
-            array_push($commentNotifications, ['read' => $commentNotification[0]->read, 'type' => 'commentNotification', 'recipeId' => $recipe->id, 'rating' => $comment->rating, 'username' => $userWhoCommented->username, 'id' => $commentNotification[0]->id, 'recipeName' => $recipe->name, 'timestamp' => $comment->post_time]);
+            array_push($commentNotifications, ['userId' => $userWhoCommented->id, 'read' => $commentNotification[0]->read, 'type' => 'commentNotification', 'recipeId' => $recipe->id, 'rating' => $comment->rating, 'username' => $userWhoCommented->username, 'id' => $commentNotification[0]->id, 'recipeName' => $recipe->name, 'timestamp' => $comment->post_time]);
         }
 
         // Delete recipe
