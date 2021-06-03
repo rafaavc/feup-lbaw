@@ -36,7 +36,7 @@
                         <table>
                             <tbody>
                             <tr>
-                                <td class="col-2 col-md-1 image-container">
+                                <td class="col-2 col-md-1 image-container" id="author-image">
                                     <img class="rounded-circle"
                                          src="{{ $author->profileImage() }}">
                                 </td>
