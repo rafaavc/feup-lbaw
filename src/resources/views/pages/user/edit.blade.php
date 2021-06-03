@@ -131,7 +131,7 @@ $role = "member";
                       style="resize: none;">{{$user->username}}</textarea>
         </div>
 
-        <h6 class="area-title">Profile Visibility <span class='form-required'></span></h6>
+        <h6 class="area-title" data-toggle="tooltip" data-placement="top" title="Do you want everyone to see your recipes, or only your friends?">Profile Visibility <span class='form-required'></span></h6>
         <div class="form-check">
             <input class="form-check-input" value="public" type="radio" name="visibility"
                    id="flexRadioDefault1" {{$user->visibility === true ? "checked" : ""}}>
@@ -155,7 +155,7 @@ $role = "member";
                 &nbsp; Change Password
             </button>
 
-            <a href="" class="btn btn-danger submit-button my-2 deleteProfile">
+            <a href="" class="btn btn-danger submit-button my-2 deleteProfile" data-toggle="tooltip" data-placement="top" title="Delete your profile and all of your recipes, comments and groups">
                 <i class="fas fa-trash me-3"></i>
                 Delete Profile
             </a>

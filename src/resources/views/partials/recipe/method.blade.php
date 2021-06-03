@@ -2,7 +2,7 @@
     <h2 class="p-0">Method</h2>
     @foreach ($steps as $idx => $step)
         <section class="instruction d-inline-block col-12 mt-4">
-            <h3 class="btn p-0" data-bs-toggle="collapse" href="#instruction{{ $idx+1 }}" role="button" aria-expanded="false" aria-controls="instruction{{ $idx+1 }}">
+            <h3 class="btn p-0" data-bs-toggle="collapse" href="#instruction{{ $idx+1 }}" role="button" aria-expanded="false" aria-controls="instruction{{ $idx+1 }}" data-toggle="tooltip" data-placement="top" title="Click to hide or show this step">
                 <i class="fas fa-check-circle d-inline-block align-middle"></i>
                 <span class="d-inline-block align-middle">{{ $step->name == '' ? "Step".($idx+1) : $step->name }}</span>
             </h3>

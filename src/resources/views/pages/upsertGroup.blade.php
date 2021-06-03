@@ -110,7 +110,7 @@
                       rows="3">{{ isset($group) ? $group->description : "" }}</textarea>
         </div>
 
-        <h6 class="area-title">Group Visibility <span class='form-required'></span></h6>
+        <h6 class="area-title" data-toggle="tooltip" data-placement="top" title="Do you want everyone to see your group recipes, or only its members?">Group Visibility <span class='form-required'></span></h6>
         <div class="form-check">
             <input class="form-check-input" value="1" type="radio" name="visibility" required
                    id="flexRadioDefault1" {{ isset($group) && $group->visibility ? "checked" : "" }}>
@@ -131,7 +131,7 @@
             <input type="submit" class="btn btn-primary submit-button mt-5" value='{{ isset($group) ? "Edit Group" : "Create Group" }}'>
 
             @if (isset($group))
-                <a href="{{url('group/' . $group->id . '/delete')}}" class="btn btn-danger submit-button mt-5">
+                <a href="{{url('group/' . $group->id . '/delete')}}" class="btn btn-danger submit-button mt-5"  data-toggle="tooltip" data-placement="top" title="Delete group and all its information">
                     <i class="fas fa-trash me-3"></i> Delete Group</a>
             @endif
 

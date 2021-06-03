@@ -95,7 +95,7 @@
                             </button>
                         </div>
                         <span class="d-block text-center mt-3">Already have an account?&nbsp;
-                            <a href="#" class="signUp-a">Sign In</a>
+                            <a href="{{ url('login') }}" class="signUp-a">Sign In</a>
                         </span>
                     </div>
                     <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
