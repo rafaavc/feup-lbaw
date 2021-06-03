@@ -4,7 +4,7 @@ import {instantiateToolTip} from './utils/tooltip.js';
 import {Feedback} from './feedback/Feedback.js';
 
 // ----------------------------------------
-// Join
+// Join and leave
 // ----------------------------------------
 
 const joinButton = document.querySelector('button.group-join');
@@ -17,7 +17,7 @@ if (joinButton !== null) {
         let requestURL = url('/api/group/' + groupId + "/request")
         let method = (joinState == 'Join') ? 'POST' : 'DELETE'
         if (joinState == 'Leave')
-            return
+            requestURL = url('/api/group/' + groupId + "/member/" + document.body.dataset.username);
         console.log("Sending request to API's address: " + requestURL);
         makeRequest(requestURL, method)
             .then((result) => {
@@ -68,7 +68,7 @@ const dealWithMembershipRequest = (event, accept) => {
             } else {
                 console.log('Dealt with membership request successfully!');
 
-                membershipRequestsFeedback.showMesssage(accept ? "The member has joined the group." : "The membership request was rejected.", 'success');
+                membershipRequestsFeedback.showMessage(accept ? "The member has joined the group." : "The membership request was rejected.", 'success');
 
                 const listItem = button.parentElement.parentElement.parentElement.parentElement.parentElement;
                 const unorderedList = listItem.parentElement;
@@ -132,11 +132,11 @@ const removeMember = (button) => {
         .then((res) => {
             if (res.response.status != 200) {
                 console.error("ERROR removing member from group!");
-                removeMemberFeedback.showMesssage('Error ' + res.response.status, 'danger');
+                removeMemberFeedback.showMessage('Error ' + res.response.status, 'danger');
             } else {
                 button.parentElement.parentElement.parentElement.remove();
                 changeMemberAmount(-1);
-                removeMemberFeedback.showMesssage('Member removed successfully.', 'success');
+                removeMemberFeedback.showMessage('Member removed successfully.', 'success');
             }
         })
 }

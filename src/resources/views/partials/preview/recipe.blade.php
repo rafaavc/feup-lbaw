@@ -35,7 +35,7 @@
                         <strong>{{$recipe->author->name}}</strong>
                     </a>
                 </div>
-                <div class="publication-date">{{$recipe->creation_time}}</div>
+                <div class="publication-date">@include('partials.date', ['date' => $recipe->creation_time])</div>
             </div>
         </div>
 

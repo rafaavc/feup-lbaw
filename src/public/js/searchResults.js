@@ -152,23 +152,25 @@ async function handleSearchSubmit(event) {
 
             (async () => {
 
-                let db;
                 const storeName = 'store0';
                 const dbName = 'dbPages';
                 const version = 1;
 
 
-                db = await openDB(dbName, version, {
+                openDB(dbName, version, {
                   upgrade(db, oldVersion, newVersion, transaction) {
                     db.createObjectStore(storeName)
                   }
+                }).then(async (db) => {
+                    const tx = db.transaction(storeName, 'readwrite')
+                    const store = await tx.objectStore(storeName)
+
+                    await store.put({ html: document.querySelector('.search-page').innerHTML, searchQuery: searchQuery }, key)
+                    await tx.done;
+                }).catch((error) => {
+                    console.error("Can't use IndexedDB in private mode!");
                 });
 
-                const tx = db.transaction(storeName, 'readwrite')
-                const store = await tx.objectStore(storeName)
-
-                await store.put({ html: document.querySelector('.search-page').innerHTML, searchQuery: searchQuery }, key)
-                await tx.done
             })()
 
             window.history.pushState({ key: key }, document.title, url);
@@ -232,24 +234,28 @@ window.onpopstate = async function(e) {
         const dbName = 'dbPages';
         const version = 1;
 
-        const db = await openDB(dbName, version, {
+        await openDB(dbName, version, {
             upgrade(db, oldVersion, newVersion, transaction) {
             const store = db.createObjectStore(storeName)
             }
+        }).then(async (db) => {
+            const pageInfo = await db.transaction(storeName).objectStore(storeName).get(e.state.key);
+            if(pageInfo != undefined) {
+                document.querySelector('.search-page').innerHTML = pageInfo.html;
+                searchQuery = pageInfo.searchQuery;
+            }
+
+            const tx = await db.transaction(storeName, 'readwrite')
+            const store = await tx.objectStore(storeName)
+
+            const key = e.state.key;
+            await store.delete(key)
+            await tx.done
+        }).catch((error) => {
+            console.error("Can't use IndexedDB in private mode!");
         })
 
-        const pageInfo = await db.transaction(storeName).objectStore(storeName).get(e.state.key);
-        if(pageInfo != undefined) {
-            document.querySelector('.search-page').innerHTML = pageInfo.html;
-            searchQuery = pageInfo.searchQuery;
-        }
 
-        const tx = await db.transaction(storeName, 'readwrite')
-        const store = await tx.objectStore(storeName)
-
-        const key = e.state.key;
-        await store.delete(key)
-        await tx.done
 
     }
     refreshSearchQuery();

@@ -11,13 +11,14 @@
 @endpush
 
 @push('js')
+    <script src="{{ asset('js/clipboard.js') }}" type="module"></script>
     <script src="{{ asset('js/progressBar.js') }}" defer></script>
     <script src="{{ asset('js/recipe.js') }}" type="module"></script>
 @endpush
 
 @section('content')
 
-    @include('partials.breadcrumb', ['pages' => ["Recipes", $recipe->category->name, $recipe->name], 'withoutMargin' => false])
+    @include('partials.breadcrumb', ['pages' => ["Recipes" => "", $recipe->category->name => "/category/" . $category->id, $recipe->name => ""], 'withoutMargin' => false])
 
     <main class="row content-general-margin margin-to-footer">
         @if(session()->has('message'))
@@ -41,9 +42,13 @@
                                          src="{{ $author->profileImage() }}">
                                 </td>
                                 <td class="align-middle">
-                                    <div class="col-md-5 card-body p-0 m-0 ms-2 text-start">
+                                    <div class="card-body p-0 m-0 ms-2 text-start">
                                         by <a
                                             href="{{ url('/user/'.$author->username) }}">{{ $author->name }}</a>
+                                        <br>
+                                        <small>
+                                        @include('partials.date', ['date' => $recipe->creation_time])
+                                        </small>
                                     </div>
                                 </td>
                             </tr>
@@ -57,7 +62,7 @@
                     <span class="d-inline-block me-3">Tags: </span>
 
                     <a role="button" class="btn btn-sm btn-primary d-inline-block me-2 mb-2"
-                        href="/category/{{ $category->id }}">
+                       href="/category/{{ $category->id }}">
                         {{ $category->name }}
                     </a>
                     @foreach($tags as $idx => $tag)
@@ -76,12 +81,12 @@
                         </li>
                     @endif
                     <li class="list-group-item">
-                        <a href="#">
+                        <a href="#" data-toggle="tooltip" data-placement="top" title="Generate a PDF of the recipe page">
                             <span class="legend">Print</span><i class="fas fa-print"></i>
                         </a>
                     </li>
                     <li class="list-group-item">
-                        <a href="#">
+                        <a class="copy-link-button" href="javascript:void(null)" data-toggle="tooltip" data-placement="top" title="Copy the link of this recipe">
                             <span class="legend">Share</span><i class="fas fa-share-alt"></i>
                         </a>
                     </li>
@@ -89,7 +94,8 @@
                         <li class="list-group-item">
                             <button role="a" class="add-to-favourites-recipe-button"
                                     data-favourite-state="{{ $isFavourited ? "true" : "false" }}"
-                                    data-recipe-id="{{ $recipe->id }}">
+                                    data-recipe-id="{{ $recipe->id }}"
+                                    data-toggle="tooltip" data-placement="top" title="Add this recipe to your favourites">
                                 <span class="legend">Favourite</span><i class="fas fa-heart"></i>
                                 </a>
                         </li>

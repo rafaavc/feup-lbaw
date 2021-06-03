@@ -2,7 +2,7 @@
 
 :root {
     --content-width: 75vw;
-    --content-margin: calc((100vw - var(--content-width))/2);
+    --content-margin: calc((100vw - var(--content-width)) / 2);
 
     --margin-from-nav: 3rem;
     --margin-to-footer: 6rem;
@@ -209,6 +209,7 @@ button[role=a]:active:focus {
 .btn.btn-no-shadow {
     box-shadow: none !important;
 }
+
 .btn.btn-no-shadow:focus {
     color: gray;
 }
@@ -254,4 +255,27 @@ body, html {
     position: absolute;
     right: .7rem;
     top: .7rem;
+}
+
+.popover {
+    min-height: 5rem;
+    max-height: 40rem;
+    overflow: auto;
+    overflow-x: hidden;
+}
+
+#feedback-div {
+    position: fixed;
+    top: 6em;
+    width: 30%;
+    right: 50%;
+    transform: translate(50%);
+    z-index: 9000;
+}
+
+#feedback-div * {
+    opacity: 1;
+    -webkit-transition: opacity 400ms linear;
+    transition: opacity 400ms linear;
+    user-select: none;
 }

@@ -77,7 +77,9 @@ Route::get('search', 'SearchController@view');
 // ----------------------------------------------------------------
 // Chat pages
 // ----------------------------------------------------------------
-Route::get('chat/{user}', 'ChatController@view');
+Route::get('chat', 'ChatController@view');
+Route::get('message', 'ChatController@fetchMessages');
+Route::post('message', 'ChatController@sendMessage');
 
 // ----------------------------------------------------------------
 // Report pages

@@ -6,7 +6,7 @@
     <link href="{{ asset('css/about.css') }}" rel="stylesheet"/>
 @endpush
 
-@include('partials.breadcrumb', ['pages' => ["About Us"], 'withoutMargin' => false])
+@include('partials.breadcrumb', ['pages' => ["About Us" => ""], 'withoutMargin' => false])
 
 <h1 class="content-general-margin mt-3">About Us</h1>
 <div class="card shadow p-4 my-4 bg-body rounded content-general-margin edit-content-text overflow-auto">

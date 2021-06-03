@@ -15,7 +15,7 @@
 
 @section('content')
 
-    @include('partials.breadcrumb', ['pages' => ["Sign Up"], 'withoutMargin' => false])
+    @include('partials.breadcrumb', ['pages' => ["Sign Up" => ""], 'withoutMargin' => false])
 
     <div class="container content-general-margin mt-2 margin-to-footer">
         <div class="row">
@@ -95,7 +95,7 @@
                             </button>
                         </div>
                         <span class="d-block text-center mt-3">Already have an account?&nbsp;
-                            <a href="#" class="signUp-a">Sign In</a>
+                            <a href="{{ url('login') }}" class="signUp-a">Sign In</a>
                         </span>
                     </div>
                     <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">

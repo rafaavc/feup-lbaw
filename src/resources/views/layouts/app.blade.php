@@ -38,9 +38,12 @@
             // See: http://stackoverflow.com/questions/18943276/html-5-autofocus-messes-up-css-loading/18945951#18945951
         </script>
     </head>
-    <body data-root-url="{{ url("") }}" data-csrf-token="{{ csrf_token() }}">
+    <body data-root-url="{{ url("") }}" data-csrf-token="{{ csrf_token() }}" data-username="{{ auth()->user() !== null ? auth()->user()->username : "" }}">
         @include('partials.nav')
-        @yield('content')
+        <div id="app">
+            @yield('content')
+        </div>
         @include('partials.footer')
+        <div id="feedback-div"></div>
     </body>
 </html>

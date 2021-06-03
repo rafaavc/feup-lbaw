@@ -281,12 +281,12 @@ const showCommentEditForm = (event) => {
         makeRequest(url(`api/comment/${comment.dataset.commentId}`), 'PUT', { content })
             .then((res) => {
                 if (res.response.status != 200) {
-                    commentFeedback.showMesssage(res.content.message, 'danger');
+                    commentFeedback.showMessage(res.content.message, 'danger');
                 } else {
                     form.remove();
                     commentContent.style.display = 'block';
                     commentContent.innerText = content;
-                    commentFeedback.showMesssage("Comment edited successfully!");
+                    commentFeedback.showMessage("Comment edited successfully!");
                 }
             });
 

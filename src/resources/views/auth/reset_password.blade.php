@@ -9,7 +9,7 @@
 
 @section('content')
 
-    @include('partials.breadcrumb', ['pages' => ["Reset Password"], 'withoutMargin' => false])
+    @include('partials.breadcrumb', ['pages' => ["Reset Password" => ""], 'withoutMargin' => false])
 
     <div class="content-general-margin mt-2 margin-to-footer">
         <div class="row">
@@ -38,12 +38,13 @@
                     <span class='d-block mt-4'>Username <span class='form-required'></span></span>
                     @include('partials.inputIcon', ['icon' => 'user', 'name' => 'username', 'required' => true])
                     <span class='d-block mt-4'>Email Address <span class='form-required'></span></span>
-                        @include('partials.inputIcon', ['icon' => 'envelope', 'name' => 'email', 'required' => true, 'type' => 'email', 'value' => request()->get('username')])
+                    @include('partials.inputIcon', ['icon' => 'envelope', 'name' => 'email', 'required' => true, 'type' => 'email', 'value' => request()->get('username')])
                     <span class='d-block mt-4'>Password <span class='form-required'></span></span>
                     @include('partials.inputIcon', ['icon' => 'lock', 'name' => 'password', 'required' => true, 'type' => 'password'])
                     <span class='d-block mt-4'>Repeat Password <span class='form-required'></span></span>
                     @include('partials.inputIcon', ['icon' => 'lock', 'name' => 'repeat-password', 'required' => true, 'type' => 'password'])
-                    <input hidden name="token" placeholder="token" value="{{request()->segment(count(request()->segments()))}}">
+                    <input hidden name="token" placeholder="token"
+                           value="{{request()->segment(count(request()->segments()))}}">
                     <div class="d-grid gap-2 col-6 mx-auto">
                         <button type="submit" class="btn btn-primary d-block">
                             Reset Password

@@ -54,3 +54,7 @@ button.btn.no-btn:focus {
     display: inline-block;
     margin-left: 0.3rem;
 }
+
+.nav-item.logged-in-icon:first-of-type {
+    padding-right: 1em;
+}

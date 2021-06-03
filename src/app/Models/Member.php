@@ -102,6 +102,11 @@ class Member extends Authenticatable
         return $this->belongsTo(Country::class, 'id_country');
     }
 
+    public function messagesSent()
+    {
+        return $this->hasMany(Message::class, 'member', 'id');
+    }
+
     public function favourites()
     {
         return $this->belongsToMany(Recipe::class, 'tb_favourite', 'id_member', 'id_recipe');
