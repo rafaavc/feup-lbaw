@@ -1,8 +1,11 @@
 FROM ubuntu:20.04
 
 # Install dependencies
-RUN apt-get update
-RUN apt-get install -y --no-install-recommends composer unzip libpq-dev nginx php7.4-fpm php7.4-mbstring php7.4-xml php7.4-pgsql cron
+
+RUN apt-get update && \
+      apt-get -y install sudo
+RUN sudo apt-get remove --purge apache2 apache2-utils
+RUN apt-get install -y --no-install-recommends composer npm curl unzip libpq-dev nginx php7.4-fpm php7.4-mbstring php7.4-xml php7.4-pgsql php7.4-curl cron
 
 # Copy project code and install project dependencies
 COPY . /var/www/
@@ -17,6 +20,7 @@ COPY docker_run.sh /docker_run.sh
 
 WORKDIR /var/www
 RUN composer install
+RUN npm install
 WORKDIR /
 
 RUN echo "* * * * * root php /var/www/artisan schedule:run >> /var/log/cron.log 2>&1" >> /etc/crontab
