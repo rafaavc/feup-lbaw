@@ -524,18 +524,18 @@ BEGIN
     JOIN tb_member ON tb_recipe.id_member = tb_member.id
     WHERE tb_recipe.id = id_recipe;
 
-	-- Recipe's author profile visibility if public
-    IF author_visibility = TRUE THEN
-        RETURN TRUE;
-    END IF;
+    -- User is the recipe's creator
+	IF id_author = id_user THEN
+		RETURN TRUE;
+	END IF;
 
     SELECT tb_recipe.id_group INTO _id_group
     FROM tb_recipe
     WHERE tb_recipe.id = id_recipe;
 
-	-- Recipe belongs to a group and the group is public or the user is member of that group
+    -- Recipe belongs to a group and the group is public or the user is member of that group
     IF _id_group IS NOT NULL THEN
-        SELECT visibility INTO group_visibility FROM tb_group;
+        SELECT visibility INTO group_visibility FROM tb_group WHERE id = _id_group;
         IF group_visibility = TRUE THEN
             RETURN TRUE;
         END IF;
@@ -543,7 +543,14 @@ BEGIN
             SELECT * FROM tb_group_member
             WHERE tb_group_member.id_group = _id_group AND tb_group_member.id_member = id_user) THEN
             RETURN TRUE;
+        ELSE
+            RETURN FALSE;
         END IF;
+    END IF;
+
+	-- Recipe's author profile visibility if public
+    IF author_visibility = TRUE THEN
+        RETURN TRUE;
     END IF;
 
     SELECT tb_recipe.id_member INTO id_author
@@ -558,11 +565,6 @@ BEGIN
         AND state = 'accepted') THEN
         RETURN TRUE;
     END IF;
-
-	-- User is the recipe's creator
-	IF id_author = id_user THEN
-		RETURN TRUE;
-	END IF;
 
     RETURN FALSE;
 END;

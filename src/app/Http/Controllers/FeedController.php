@@ -12,28 +12,42 @@ class FeedController extends Controller
 {
     public function view() {
 
-        if(!Auth::check() || Auth::guard('admin')->check()) {
+        if (Auth::guard('admin')->check()) {
+            $recipes = Recipe::inRandomOrder()
+                ->limit(5)
+                ->get();
+
+            $trendingRecipes = Recipe::inRandomOrder()
+                ->limit(6)
+                ->get();
+        }
+
+        if(!Auth::check()) {
             $recipes = Recipe::inRandomOrder()
                 ->whereRaw('recipe_visibility(id, NULL)')
                 ->limit(5)
                 ->get();
+
+            $trendingRecipes = Recipe::inRandomOrder()
+                ->whereRaw('recipe_visibility(id, NULL)')
+                ->limit(6)
+                ->get();
         }
         else {
-            // TODO: check if the call to the recipe_visibility funcion is correct
             $recipes = Recipe::inRandomOrder()
                 ->whereRaw('recipe_visibility(id, :user_id)', ['user_id' => Auth::user()->id])
                 ->limit(5)
+                ->get();
+
+            $trendingRecipes = Recipe::inRandomOrder()
+                ->whereRaw('recipe_visibility(id, :user_id)', ['user_id' => Auth::user()->id])
+                ->limit(6)
                 ->get();
         }
 
         $tags = Tag::inRandomOrder()
             ->limit(7)
             ->get();
-
-        $trendingRecipes = Recipe::inRandomOrder()
-                ->whereRaw('recipe_visibility(id, NULL)')
-                ->limit(6)
-                ->get();
 
         return view('pages.feed', [
             'recipes' => $recipes,
