@@ -86,3 +86,9 @@ Route::post('message', 'ChatController@sendMessage');
 // ----------------------------------------------------------------
 Route::get('admin/reports', 'ReportController@list');
 
+// ----------------------------------------------------------------
+// Fallback
+// ----------------------------------------------------------------
+Route::fallback(function () {
+    return view('errors.404');
+});
