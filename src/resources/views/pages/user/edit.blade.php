@@ -13,7 +13,7 @@
 <?php
 $role = "member";
 ?>
-@include('partials.breadcrumb', ['pages' => ["Users", $user->name, "Edit Profile"], 'withoutMargin' => false])
+@include('partials.breadcrumb', ['pages' => ["Users" => "/user/" . $user->username, $user->name => "/user/" . $user->username, "Edit Profile" => ""], 'withoutMargin' => false])
 <div class="container content-general-margin margin-to-footer">
     <h1 class="mt-5">Edit Profile</h1>
     @if($errors->any())

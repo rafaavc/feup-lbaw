@@ -36,7 +36,9 @@
                     </a>
                     <span class="review-text">wrote a review</span>
                 </div>
-                <div class="publication-date">{{$comment->post_time}}</div>
+                <div class="publication-date">
+                    @include('partials.date', ['date' => $comment->post_time])
+                </div>
             </div>
         </div>
         <div class="mt-4">

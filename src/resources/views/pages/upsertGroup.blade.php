@@ -14,7 +14,10 @@
 
 @php
     $hasErrors = $errors->any();
-    $breadcrumbPages = ["Groups", isset($group) ? $group->name : "Create Group"];
+    if(isset($group))
+        $breadcrumbPages = ["Groups" => "/group/" . $group->id, $group->name => "/group/" . $group->id, "Edit Group" => ""];
+    else
+        $breadcrumbPages = ["Groups" => "", "Create Group" => ""];
 @endphp
 
 @include('partials.breadcrumb', ['pages' => $breadcrumbPages, 'withoutMargin' => false])

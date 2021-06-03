@@ -16,10 +16,11 @@
 @php
     $hasErrors = $errors->any();
     $old = ($hasErrors) ? \Illuminate\Support\Facades\Request::old() : '';
-    $breadcrumbPages = ["Recipes", isset($recipe) ? $recipe->category->name : "Create Recipe"];
-    if (isset($recipe)) {
-        array_push($breadcrumbPages, $recipe->name);
-    }
+
+    if (isset($recipe))
+        $breadcrumbPages = ["Recipes" => "/recipe/" . $recipe->id, $recipe->category->name => "/category/" . $recipe->category->id, $recipe->name => "/recipe/" . $recipe->id, "Edit Recipe" => ""];
+    else
+        $breadcrumbPages = ["Recipes" => "", "Create Recipe" => ""];
 @endphp
 
 @include('partials.breadcrumb', ['pages' => $breadcrumbPages, 'withoutMargin' => false])

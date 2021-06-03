@@ -9,10 +9,9 @@
 
 <nav style="--bs-breadcrumb-divider: '>';" class="{{ $navClass }} margin-from-nav" aria-label="breadcrumb">
     <ol class="breadcrumb p-2">
-        <li class="breadcrumb-item"><i class="fas fa-home"></i><a href="">Home</a></li>
-        @for($i = 0; $i < count($pages) - 1; $i++)
-            <li class="breadcrumb-item"><a href="">{{ $pages[$i] }}</a></li>
-        @endfor
-        <li class="breadcrumb-item last-breadcrumb" aria-current="page"><a href="">{{ end($pages) }}</a></li>
+        <li class="breadcrumb-item"><i class="fas fa-home"></i><a href="/">Home</a></li>
+        @foreach($pages as $page => $link)
+            <li class="breadcrumb-item"><a href="{{$link}}">{{ $page }}</a></li>
+        @endforeach
     </ol>
 </nav>

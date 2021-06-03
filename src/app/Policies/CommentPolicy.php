@@ -11,6 +11,11 @@ class CommentPolicy
 {
     use HandlesAuthorization;
 
+    public function view(?Member $member)
+    {
+        return true;
+    }
+
     public function create(?Member $member)
     {
         if (Auth::guard('admin')->check())

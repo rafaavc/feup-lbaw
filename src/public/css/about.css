@@ -1,5 +1,5 @@
 
-img:not(.logo) {
+.user-profiles img {
     height: 10vw !important;
     width: 10vw !important;
     object-fit: cover;

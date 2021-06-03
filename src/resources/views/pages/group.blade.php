@@ -21,7 +21,7 @@
                 {{ session()->get('message') }}
             </div>
         @endif
-        @include('partials.breadcrumb', ['pages' => ["Groups", $group->name], 'withoutMargin' => true])
+        @include('partials.breadcrumb', ['pages' => ["Groups" => "", $group->name => ""], 'withoutMargin' => true])
         <div>
             @include('partials.profile.cover', [
                                                     'name' => $group->name,

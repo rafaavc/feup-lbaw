@@ -29,7 +29,7 @@
                 @endforeach
             </div>
         @endif
-        @include('partials.breadcrumb', ['pages' => ["Users", $user->name], 'withoutMargin' => true])
+        @include('partials.breadcrumb', ['pages' => ["Users" => "/user/" . $user->username, $user->name => "/user/" . $user->username], 'withoutMargin' => true])
         <div>
             @include('partials.profile.cover', [
                                             'name' => $user->name,
@@ -56,13 +56,13 @@
                         @include('partials.profile.peopleBox', ['name' => 'Followers', 'people' => $user->followers()->wherePivot('state', 'accepted')->get()])
                         @include('partials.profile.groupBox', ['name'=> 'Groups', 'groups' => $user->groups])
                     </div>
-                <div class="col-md-8 posts-area ps-md-4 mt-5">
-                @else
-                    <div class="posts-area ps-md-4 mt-5 w100">
-                @endif
-                    @yield('body')
-                </div>
+                    <div class="col-md-8 posts-area ps-md-4 mt-5">
+                        @else
+                            <div class="posts-area ps-md-4 mt-5 w100">
+                                @endif
+                                @yield('body')
+                            </div>
+                    </div>
             </div>
-        </div>
     </main>
 @endsection

@@ -3,8 +3,8 @@
 @section('title', "Search Results" )
 
 @push('css')
-    <link href="{{ asset('css/search.css') }}" rel="stylesheet" />
-    <link href="{{ asset('css/components/search_results_cards.css') }}" rel="stylesheet" />
+    <link href="{{ asset('css/search.css') }}" rel="stylesheet"/>
+    <link href="{{ asset('css/components/search_results_cards.css') }}" rel="stylesheet"/>
 @endpush
 
 @push('js')
@@ -19,7 +19,7 @@
         ($hasSearch) ? array_push($breadcrumbArgs, "Recipe", $searchStr) : array_push($breadcrumbArgs, "Recipe");
     @endphp
 
-    @include('partials.breadcrumb', ['pages' => $breadcrumbArgs, 'withoutMargin' => false])
+    @include('partials.breadcrumb', ['pages' => array_fill_keys($breadcrumbArgs, ""), 'withoutMargin' => false])
 
     <div class="container search-page content-general-margin mt-5 margin-to-footer">
         <div class="search-header">
