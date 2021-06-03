@@ -110,3 +110,8 @@ Route::get('categories', 'CategoryController@index');
 Route::get('tags', 'TagController@index');
 Route::get('ingredients', 'IngredientController@index');
 Route::get('units', 'UnitController@index');
+
+// ----------------------------------------------------------------
+// Notifications API
+// ----------------------------------------------------------------
+Route::put('notification/{type}', 'NotificationController@updateReadState');
