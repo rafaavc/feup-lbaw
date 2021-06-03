@@ -47,7 +47,8 @@
             ],
             Auth::guard('admin')->user()->username => [
                 "icon" => "user-circle",
-                "drop" => $adminDropdown
+                "drop" => $adminDropdown,
+                "profileImage" => ""
             ]
         ];
     @endphp
@@ -71,7 +72,7 @@
             Auth::user()->name => [
                 "icon" => "user-circle",
                 "drop" => $dropdown,
-                "profileImage" => Auth::user()->profileImage()
+                "profileImage" => (!Auth::guard('admin')->check() ? Auth::user()->profileImage() : '')
             ]
         ];
     @endphp
