@@ -61,6 +61,10 @@
             array_push($followRequests, ['username' => $userFollowing->username, 'id' => $userFollowing->id, 'state' => $request->state]);
         }
         $menu = [
+            "Feed" => [
+                "icon" => "comments",
+                "href" => url("/feed")
+            ],
             "notifications" => [
                 "icon" => "bell",
                 "popover" => $followRequests
