@@ -7,6 +7,7 @@ RUN apt-get update && \
 RUN sudo apt-get remove --purge apache2 apache2-utils
 RUN apt-get install -y --no-install-recommends composer npm curl unzip libpq-dev nginx php7.4-fpm php7.4-mbstring php7.4-xml php7.4-pgsql php7.4-curl cron
 
+RUN apt-get install -y --no-install-recommends php7.4-gd
 # Copy project code and install project dependencies
 COPY . /var/www/
 RUN chown -R www-data:www-data /var/www/

@@ -42,7 +42,7 @@
         <a type="button" href="{{url("recipe/$recipe->id")}}" class="btn card p-2 shadow-sm recipe-preview mt-4">
             <div class="row px-3">
                 <div class="col-md post-image"
-                     style="background-image: url('{{asset('storage/images/recipes/' . $recipe->id . '/1.jpg')}}')">
+                     style="background-image: url('{{ $recipe->getProfileImage() }}')">
                 </div>
                 <div class="col-md w-50 text-recipe pt-4 pt-md-2 px-0 ps-md-4">
                     <div class="text-recipe">

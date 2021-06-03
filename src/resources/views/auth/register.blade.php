@@ -10,7 +10,7 @@
 
 @push('js')
     <script src="{{ asset('js/progressBar.js') }}" defer></script>
-    <script src="{{ asset('js/signUp.js') }}" defer></script>
+    <script src="{{ asset('js/signUp.js') }}" type="module"></script>
 @endpush
 
 @section('content')
@@ -115,10 +115,8 @@
                         </div>
                         <span class='d-block mt-4'>City</span>
                         @include('partials.inputIcon', ['icon' => 'map-marker-alt', 'name' => 'city'])
-                        <span class='d-block mt-4'>Profile Photo (jpeg)<span class='form-required'></span></span>
-                        <img src="{{ asset('storage/images/people/no_image.png') }}"
-                             class="rounded-circle mx-auto d-block file-input" alt="...">
-                        <input type="file" name="profileImage" class="d-none" accept=".jpeg,.jpg"/>
+                        <span class='d-block mt-4'>Profile Photo</span>
+                        <div id="profile-photo-input"></div>
                         <div class="d-grid gap-2 col-6 mx-auto my-2">
                             <button type="button" class="btn btn-primary d-block mt-3 next-step">Next</button>
                         </div>

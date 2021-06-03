@@ -1,3 +1,6 @@
+import { defaultProperties } from './files/defaultProperties.js';
+import { FileInput } from './files/FileInput.js'
+
 const addIngredientButton = document.querySelector('#addIngredientButton');
 addIngredientButton.addEventListener('click', () => {
     const elem = document.createElement('template');
@@ -199,4 +202,39 @@ function setInvalidElement(elem) {
             return true;
     }
     return false;
+}
+
+/** FILE INPUT */
+
+const productPhotos = document.querySelector('#end-product-photos-input');
+
+const preexistingImages = [];
+for (const child of productPhotos.children) {
+    preexistingImages.push({
+        url: child.dataset.url,
+        fileName: child.dataset.name
+    })
+}
+
+productPhotos.innerHTML = '';
+
+new FileInput(productPhotos, 'images', defaultProperties(), preexistingImages, { maximum: 5 });
+
+const stepPhotoInputs = document.querySelectorAll('.step-photo-input');
+
+for (const input of stepPhotoInputs)
+{
+    const preexistingImages = [];
+    for (const child of input.children) {
+        preexistingImages.push({
+            url: child.dataset.url,
+            fileName: child.dataset.name
+        });
+    }
+    console.log("Found these preexisting images:", preexistingImages);
+
+    const stepId = Number(input.dataset.index) - 1;
+    input.innerHTML = '';
+
+    new FileInput(input, `steps[${stepId}][image]`, defaultProperties(), preexistingImages, null, () => `steps[${stepId}][previousImage]`, (fileName) => fileName);
 }

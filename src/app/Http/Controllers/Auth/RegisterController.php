@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Models\Member;
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\ImageUploadController;
 use http\Env\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -55,7 +56,7 @@ class RegisterController extends Controller
             'name' => 'required|string',
             'countryId' => 'required|integer|exists:App\Models\Country,id',
             'city' => 'nullable|string',
-            'profileImage' => 'required|file|image|mimes:jpeg'
+            'profileImage' => 'nullable|file|image|mimes:jpeg,png,jpg,gif,bmp'
         ]);
     }
 
@@ -79,8 +80,10 @@ class RegisterController extends Controller
 
         $member->save();
 
-        $file = $request['profileImage'];
-        $file->storeAs('public/images/people/', $member->id . ".jpeg");
+        if (isset($request['profileImage'])) {
+            $file = $request['profileImage'];
+            ImageUploadController::store($file, 'public/images/people', $member->id);
+        }
 
         return $member;
     }

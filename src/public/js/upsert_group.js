@@ -1,46 +1,38 @@
-// File Upload
+import { FileInput } from './files/FileInput.js';
+import { defaultProperties } from './files/defaultProperties.js';
 
-fileUploadListeners();
+/** FILE UPLOAD */
 
-function fileUploadListeners() {
-    let fileUploads = document.querySelectorAll('a.file-input');
-    fileUploads.forEach((fileUpload) => {
-        fileUpload.addEventListener('click', fileUploadHandler);
-    });
+const preexistingProfileImages = [];
+const profilePictureInput = document.querySelector('#group-profile-image-input');
 
-    let fileInputs = document.querySelectorAll("input.myFile");
-    fileInputs.forEach((fileInput) => {
-        fileInput.addEventListener('change', fileInputHandler);
-    })
-}
-
-function fileUploadHandler(event) {
-    let target = event.target;
-    target.nextElementSibling.click();
-}
-
-function fileInputHandler(event) {
-    let target = event.target;
-    let img = target.closest('div.row.row-with-image').nextElementSibling;
-    img.src = URL.createObjectURL(target.files[0]);
-    img.onload = () => {
-        URL.revokeObjectURL(img.src);
-    }
-}
-
-// Clear Image
-
-clearImageListeners();
-
-function clearImageListeners() {
-    let fileDeletes = document.querySelectorAll('a.file-delete');
-    fileDeletes.forEach((fileDelete) => {
-        fileDelete.addEventListener('click', fileDeleteHandler);
+for (const child of profilePictureInput.children) {
+    preexistingProfileImages.push({
+        url: child.dataset.url,
+        fileName: 'randomName'
     });
 }
 
-function fileDeleteHandler(event) {
-    let target = event.target;
-    let img = target.closest('div.row.row-with-image').nextElementSibling;
-    img.src = "storage/images/people/no_image.png";
+profilePictureInput.innerHTML = '';
+
+const profileProperties = defaultProperties(['rounded-circle', 'z-depth-2', 'profile-image']);
+
+new FileInput(profilePictureInput, 'profileImage', profileProperties, preexistingProfileImages, null, () => 'previousProfileImage');
+
+
+const preexistingCoverImages = [];
+const coverPictureInput = document.querySelector('#group-cover-image-input');
+
+for (const child of coverPictureInput.children) {
+    preexistingCoverImages.push({
+        url: child.dataset.url,
+        fileName: 'randomName'
+    });
 }
+
+coverPictureInput.innerHTML = '';
+
+const coverProperties = defaultProperties(['bg-placeholder-img']);
+
+new FileInput(coverPictureInput, 'coverImage', coverProperties, preexistingCoverImages, null, () => 'previousCoverImage');
+

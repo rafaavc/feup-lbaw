@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\File;
 
 class MemberController extends Controller
 {
@@ -26,10 +27,10 @@ class MemberController extends Controller
             'email' => 'required|string|email',
             'city' => 'nullable|string',
             'country' => 'required|integer|exists:App\Models\Country,id',
-            'biography' => 'required|string',
+            'biography' => 'nullable|string',
             'visibility' => 'required|string|in:public,private',
-            'profileImage' => 'nullable|file|image|mimes:jpeg,jpg',
-            'coverImage' => 'nullable|file|image|mimes:jpeg,jpg',
+            'profileImage' => 'nullable|file|image|mimes:jpeg,png,jpg,gif,bmp',
+            'coverImage' => 'nullable|file|image|mimes:jpeg,png,jpg,gif,bmp',
         ]
     ];
 
@@ -109,19 +110,25 @@ class MemberController extends Controller
             $user->bio = $request->input('biography');
             $user->visibility = $request->input('visibility') == "public";
             $user->country()->associate($request->input('country'));
-            $user->password = bcrypt($request->input('password'));
+
+            if ($request->input('password'))
+                $user->password = bcrypt($request->input('password'));
+
+            $user->save();
 
             if ($request->hasFile('profileImage')) {
                 $file = $request->file('profileImage');
-                $file->storeAs("public/images/people/", "$user->id.jpeg");
+                ImageUploadController::store($file, 'public/images/people', $user->id);
             }
+            else if (!$request->input('previousProfileImage') && $user->hasProfileImage())
+                File::delete(storage_path('app/public/images/people/'.$user->id.".jpeg"));
 
             if ($request->hasFile('coverImage')) {
                 $file = $request->file('coverImage');
-                $file->storeAs("public/images/people/cover", "$user->id.jpeg");
+                ImageUploadController::store($file, 'public/images/people/cover', $user->id);
             }
-
-            $user->save();
+            else if (!$request->input('previousCoverImage') && $user->hasCoverImage())
+                File::delete(storage_path('app/public/images/people/cover/'.$user->id.".jpeg"));
 
             return response()->json(['message' => 'Success!', 'member_id' => $user->id], 200);
         } catch (Exception $e) {
@@ -133,6 +140,7 @@ class MemberController extends Controller
     public function remove(Member $user)
     {
         Storage::delete("public/images/people/$user->id.jpeg");
+        Storage::delete("public/images/people/cover/$user->id.jpeg");
         $user->delete();
         return response()->json(['message' => 'Success!', 'member_id' => $user->id], 200);
     }

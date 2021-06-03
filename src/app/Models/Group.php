@@ -38,18 +38,32 @@ class Group extends Model
 
     public function profileImage()
     {
-        $path = "storage/images/groups/profile/$this->id.jpg";
+        $path = "storage/images/groups/profile/$this->id.jpeg";
         if (!file_exists($path))
             return asset("storage/images/groups/no_image.jpg");
         return asset($path);
     }
 
+    public function hasProfileImage()
+    {
+        $path = "storage/images/groups/profile/$this->id.jpeg";
+        if (file_exists($path)) return asset($path);
+        return false;
+    }
+
     public function coverPhoto()
     {
-        $path = "storage/images/groups/cover/$this->id.jpg";
+        $path = "storage/images/groups/cover/$this->id.jpeg";
         if (!file_exists($path))
             return asset("storage/images/groups/no_image.jpg");
         return asset($path);
+    }
+
+    public function hasCoverPhoto()
+    {
+        $path = "storage/images/groups/cover/$this->id.jpeg";
+        if (file_exists($path)) return asset($path);
+        return false;
     }
 
     public function getNumberOfRecipesAttribute()

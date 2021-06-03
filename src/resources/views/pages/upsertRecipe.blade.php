@@ -8,7 +8,7 @@
 
 @push('js')
     <script src="{{ asset('js/progressBar.js') }}" defer></script>
-    <script src="{{ asset('js/createRecipe.js') }}" defer></script>
+    <script src="{{ asset('js/createRecipe.js') }}" type="module"></script>
 @endpush
 
 @section('content')
@@ -127,7 +127,13 @@
                         </div>
 
                         <h6 class="mb-3 d-inline-block">End Product Photos</h6> <span class='form-required'></span>
-                        <input name="images[]" type="file" class="form-control mb-3" multiple>
+                        <div id="end-product-photos-input">
+                            @if(isset($images))
+                                @foreach($images as $img)
+                                    <span data-url="{{ $img['url'] }}" data-name="{{ $img['name'] }}"></span>
+                                @endforeach
+                            @endif
+                        </div>
 
                         <button type="button" class="btn btn-primary next-step" style="float: right;">Next</button>
                     </div>
@@ -177,9 +183,9 @@
                 <h4 class="mt-5 mb-4">Steps</h4>
 
                 @if($hasErrors && isset($old['steps']))
-                    @foreach(old('steps') as $step)
-                        @include('partials.recipe.step', ['step' => $step, 'index' => $loop->index + 1, 'hasErrors' => true])
-                    @endforeach
+                    @for($i = 0; $i < sizeof(old('steps')); $i++)
+                        @include('partials.recipe.step', [ 'oldStep' => old('steps')[$i], 'step' => $steps[$i], 'index' => $i + 1, 'hasErrors' => true ])
+                    @endfor
                 @elseif(isset($recipe))
                     @foreach ($steps as $step)
                         @include('partials.recipe.step', ['step' => $step, 'index' => $loop->index + 1, 'hasErrors' => false])

@@ -20,32 +20,14 @@ class GroupController extends Controller
         'name' => 'required|string',
         'description' => 'required|string',
         'visibility' => 'required|boolean',
-        'profile_photo' => 'nullable|file|image',
-        'cover_photo' => 'nullable|file|image'
+        'profile_photo' => 'nullable|file|image|mimes:jpeg,png,jpg,gif,bmp',
+        'cover_photo' => 'nullable|file|image|mimes:jpeg,png,jpg,gif,bmp'
     ];
-
-    public function deleteGroupProfileImage($group) {
-        $groupProfileImagePath = "public/images/groups/profile/" . "$group->id.jpg";
-        $hasProfileImage = File::delete(storage_path("app/public/images/groups/profile/" . "$group->id.jpg"));
-        if (!$hasProfileImage)
-            $groupProfileImagePath = null;
-        if ($groupProfileImagePath != null)
-            File::delete(storage_path($groupProfileImagePath));
-    }
-
-    public function deleteGroupCoverImage($group) {
-        $groupCoverImagePath = "public/images/groups/cover/" . "$group->id.jpg";
-        $hasCoverImage = File::delete(storage_path("app/public/images/groups/cover/" . "$group->id.jpg"));
-        if (!$hasCoverImage)
-            $groupCoverImagePath = null;
-        if ($groupCoverImagePath != null)
-            File::delete(storage_path($groupCoverImagePath));
-    }
 
     public function deleteGroupImages($group)
     {
-        $this->deleteGroupProfileImage($group);
-        $this->deleteGroupCoverImage($group);
+        File::delete(storage_path("app/public/images/groups/profile/$group->id.jpeg"));
+        File::delete(storage_path("app/public/images/groups/cover/$group->id.jpeg"));
     }
 
     // ----------------------------------------------------------------
@@ -73,12 +55,12 @@ class GroupController extends Controller
 
             if ($request->hasFile('profileImage')) {
                 $file = $request->file('profileImage');
-                $file->storeAs("public/images/groups/profile/","$group->id.jpg");
+                ImageUploadController::store($file, 'public/images/groups/profile', $group->id);
             }
 
             if ($request->hasFile('coverImage')) {
                 $file = $request->file('coverImage');
-                $file->storeAs("public/images/groups/cover/", "$group->id.jpg");
+                ImageUploadController::store($file, 'public/images/groups/cover', $group->id);
             }
 
             DB::commit();
@@ -105,13 +87,18 @@ class GroupController extends Controller
 
             if ($request->hasFile('profileImage')) {
                 $file = $request->file('profileImage');
-                $file->storeAs("public/images/groups/profile/","$group->id.jpg");
+                ImageUploadController::store($file, 'public/images/groups/profile', $group->id);
             }
+            else if (!$request->input('previousProfileImage') && $group->hasProfileImage())
+                File::delete(storage_path('app/public/images/groups/profile/'.$group->id.".jpeg"));
 
             if ($request->hasFile('coverImage')) {
                 $file = $request->file('coverImage');
-                $file->storeAs("public/images/groups/cover/", "$group->id.jpg");
+                ImageUploadController::store($file, 'public/images/groups/cover', $group->id);
             }
+            else if (!$request->input('previousCoverImage') && $group->hasCoverPhoto())
+                File::delete(storage_path('app/public/images/groups/cover/'.$group->id.".jpeg"));
+
 
             DB::commit();
             return response()->json(['message' => 'Succeed!', 'group_id' => $group->id], 200);
