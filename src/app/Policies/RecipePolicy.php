@@ -25,8 +25,11 @@ class RecipePolicy
             return true;
         if (Auth::check() && $user->id === $recipe->author->id)
             return true;
-        if ($recipe->group !== null)
-            return $recipe->group->visibility;
+        if ($recipe->group !== null) {
+            if ($recipe->group->visibility == true)
+                return true;
+            return $recipe->group->members->contains($user->id);
+        }
         return $recipe->author->visibility;
     }
 
