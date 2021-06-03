@@ -126,7 +126,10 @@ if(document.body.contains(document.querySelector('#showPopOver'))) {
                         notificationPopOver.config.content = notifications.innerHTML;
 
                         if(numPopOvers == 0) {
-                            notificationPopOver.config.content = '<b>You don\'t have any new notifications.</b>';
+                            notificationPopOver.config.content = `
+                                <div style=\"display: flex; align-items: center; height: 5rem;\">
+                                    <b>You don\'t have any notifications.</b>
+                                </div>`;
                             notificationPopOver.hide();
                         } else
                             notificationBox.classList.add('d-none');
