@@ -54,12 +54,49 @@
     @endphp
 @elseif(Auth::check())
     @php
+        // Follow Requests Notifications
         $followRequests = array();
         $userRequests = Illuminate\Support\Facades\DB::table('tb_following')->where('id_followed', Auth::user()->id)->where('state', '!=', 'rejected')->orderByDesc('timestamp')->get();
         foreach ($userRequests as $request) {
             $userFollowing = App\Models\Member::find($request->id_following);
-            array_push($followRequests, ['username' => $userFollowing->username, 'id' => $userFollowing->id, 'state' => $request->state]);
+            array_push($followRequests, ['type' => 'followRequest', 'username' => $userFollowing->username, 'id' => $userFollowing->id, 'state' => $request->state, 'timestamp' => $request->timestamp]);
         }
+
+        // Favourites Notifications
+        $favouritesNotifications = array();
+        $userRecipeIds = Auth::user()->recipes()->get(['id'])->map(function($model) {
+            return $model->id;
+        })->toArray();
+
+        $favourites = Illuminate\Support\Facades\DB::table('tb_favourite_notification')
+            ->whereIn('id_recipe', $userRecipeIds)
+            ->where('id_caused_by', '!=', Auth::user()->id)
+            ->orderByDesc('timestamp')
+            ->get();
+
+        foreach ($favourites as $notification) {
+            $userWhoFavourited = App\Models\Member::find($notification->id_caused_by);
+            $recipe = App\Models\Recipe::find($notification->id_recipe);
+            array_push($favouritesNotifications, ['type' => 'favouriteNotification', 'recipeId' => $recipe->id, 'username' => $userWhoFavourited->username, 'id' => $userWhoFavourited->id, 'recipeName' => $recipe->name, 'timestamp' => $notification->timestamp]);
+        }
+
+        // Comment/Review
+        $commentNotifications = array();
+        $userRecipeComments = App\Models\Comment::whereIn('id_recipe', $userRecipeIds)
+            ->where('id_member', '!=', Auth::user()->id)
+            ->orderByDesc('post_time')
+            ->get();
+
+        foreach ($userRecipeComments as $comment) {
+            $userWhoCommented = App\Models\Member::find($comment->id_member);
+            $recipe = App\Models\Recipe::find($comment->id_recipe);
+            array_push($commentNotifications, ['type' => 'commentNotification', 'recipeId' => $recipe->id, 'rating' => $comment->rating, 'username' => $userWhoCommented->username, 'id' => $userWhoCommented->id, 'recipeName' => $recipe->name, 'timestamp' => $comment->post_time]);
+        }
+
+        $allNotifications = array_merge($followRequests, $favouritesNotifications, $commentNotifications);
+        $allNotifications = collect($allNotifications)->sortByDesc('timestamp')->all();
+        // var_dump($allNotifications);
+
         $menu = [
             "notifications" => [
                 "icon" => "bell",
@@ -90,7 +127,7 @@
         </li>
     @elseif (key_exists("popover", $attributes))
         @if ($name == "notifications")
-            @include('partials.nav.notificationspopover', ['followRequests' => $followRequests])
+            @include('partials.nav.notificationspopover', ['allNotifications' => $allNotifications])
         @elseif ($name == "messages")
             @include('partials.nav.messagespopover')
         @endif
