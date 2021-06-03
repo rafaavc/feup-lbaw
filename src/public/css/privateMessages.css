@@ -141,7 +141,6 @@
     display: none;
 }
 
-
 @media (max-width: 1200px) {
     #privateMessages .disappear {
         display: none;
@@ -160,4 +159,3 @@
         margin-left: 5%;
     }
 }
-

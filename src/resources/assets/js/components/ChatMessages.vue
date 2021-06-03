@@ -2,7 +2,7 @@
     <div id="message-chat">
         <div class="row message-line mt-3" v-for="message in messages" style="display: flex; justify-content: flex-end" v-if="user == message.sender.id">
             <div class="col-6" style="text-align: right;">
-                <p class="m-0 bg-secondary message-line-content">{{ message.text }}</p>
+                <p class="m-0 bg-success message-line-content">{{ message.text }}</p>
             </div>
             <div class="col-2" style="width: 4.5rem;" >
                 <a v-bind:href="'/user/' + message.sender.username">
