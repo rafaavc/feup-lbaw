@@ -10,7 +10,7 @@
         <i class="fas fa-bell"></i>
         <div class="notif-quantity-indicator"><small>{{ $numNotifications }}</small></div>
     </button>
-    <button type="button" id="test" class="btn no-btn nav-link d-block d-lg-none position-relative" data-bs-toggle="collapse" aria-expanded="false" aria-controls="notificationsPopupContent" data-bs-target="#notificationsPopupContent">
+    <button type="button" id="mobile-notificationPopUp" class="btn no-btn nav-link d-block d-lg-none position-relative" data-bs-toggle="collapse" aria-expanded="false" aria-controls="notificationsPopupContent" data-bs-target="#notificationsPopupContent">
         @include('partials.nav.icontext', ['icon' => 'bell', 'text' => 'notifications' ])
         <div class="notif-quantity-indicator-mobile"><small> {{ $numNotifications }}</small></div>
     </button>
