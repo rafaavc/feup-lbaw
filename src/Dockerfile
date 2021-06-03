@@ -20,8 +20,7 @@ COPY docker_run.sh /docker_run.sh
 
 WORKDIR /var/www
 RUN composer install
-RUN composer require pusher/pusher-php-server
-RUN npm install --save laravel-echo pusher-js
+RUN npm install
 WORKDIR /
 
 RUN echo "* * * * * root php /var/www/artisan schedule:run >> /var/log/cron.log 2>&1" >> /etc/crontab
