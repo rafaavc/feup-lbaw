@@ -11,6 +11,7 @@
 @endpush
 
 @push('js')
+    <script src="{{ asset('js/clipboard.js') }}" type="module"></script>
     <script src="{{ asset('js/progressBar.js') }}" defer></script>
     <script src="{{ asset('js/recipe.js') }}" type="module"></script>
 @endpush
@@ -57,7 +58,7 @@
                     <span class="d-inline-block me-3">Tags: </span>
 
                     <a role="button" class="btn btn-sm btn-primary d-inline-block me-2 mb-2"
-                        href="/category/{{ $category->id }}">
+                       href="/category/{{ $category->id }}">
                         {{ $category->name }}
                     </a>
                     @foreach($tags as $idx => $tag)
@@ -81,7 +82,7 @@
                         </a>
                     </li>
                     <li class="list-group-item">
-                        <a href="#">
+                        <a class="copy-link-button" href="javascript:void(null)">
                             <span class="legend">Share</span><i class="fas fa-share-alt"></i>
                         </a>
                     </li>

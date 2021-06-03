@@ -52,8 +52,8 @@
                 @if(!isset($private))
                     <div class="col-md-4 p-0 pe-md-4 mt-5">
                         @include('partials.profile.personalInfo')
-                        @include('partials.profile.peopleBox', ['name' => 'Following', 'people' => $user->following])
-                        @include('partials.profile.peopleBox', ['name' => 'Followers', 'people' => $user->followers])
+                        @include('partials.profile.peopleBox', ['name' => 'Following', 'people' => $user->following()->wherePivot('state', 'accepted')->get()])
+                        @include('partials.profile.peopleBox', ['name' => 'Followers', 'people' => $user->followers()->wherePivot('state', 'accepted')->get()])
                         @include('partials.profile.groupBox', ['name'=> 'Groups', 'groups' => $user->groups])
                     </div>
                 <div class="col-md-8 posts-area ps-md-4 mt-5">

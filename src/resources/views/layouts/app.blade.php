@@ -44,5 +44,6 @@
             @yield('content')
         </div>
         @include('partials.footer')
+        <div id="feedback-div"></div>
     </body>
 </html>

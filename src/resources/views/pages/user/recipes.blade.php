@@ -5,11 +5,14 @@
 @section('body')
     <div class="row first-recipe-mt">
         <h3>Recipes</h3>
-        @if($recipes->count() > 0)
-            @foreach($recipes as $recipe)
+        @php($no_items = true)
+        @foreach($recipes as $recipe)
+            @if(Gate::inspect('select', $recipe)->allowed())
                 @include('partials.preview.recipe')
-            @endforeach
-        @else
+                @php($no_items = false)
+            @endif
+        @endforeach
+        @if($no_items)
             <p>This user did not post any recipes.</p>
         @endif
     </div>

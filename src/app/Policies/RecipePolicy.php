@@ -25,9 +25,14 @@ class RecipePolicy
             return true;
         if (Auth::check() && $user->id === $recipe->author->id)
             return true;
-        if ($recipe->group !== null)
-            return $recipe->group->visibility;
-        return $recipe->author->visibility;
+        if ($recipe->group !== null) {
+            if ($recipe->group->visibility == true)
+                return true;
+            return Auth::check() && $recipe->group->members->contains($user->id);
+        }
+        if ($recipe->author->visibility == true)
+            return true;
+        return Auth::check() && $recipe->author->followers()->wherePivot('state', 'accepted')->get()->contains($user->id);
     }
 
     public function update(?Member $user, Recipe $recipe)
