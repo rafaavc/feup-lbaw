@@ -47,7 +47,8 @@
             ],
             Auth::guard('admin')->user()->username => [
                 "icon" => "user-circle",
-                "drop" => $adminDropdown
+                "drop" => $adminDropdown,
+                "profileImage" => ""
             ]
         ];
     @endphp
@@ -70,7 +71,8 @@
             ],
             Auth::user()->name => [
                 "icon" => "user-circle",
-                "drop" => $dropdown
+                "drop" => $dropdown,
+                "profileImage" => Auth::user()->profileImage()
             ]
         ];
     @endphp
@@ -93,7 +95,7 @@
             @include('partials.nav.messagespopover')
         @endif
     @elseif (key_exists("drop", $attributes))
-        @include('partials.nav.dropdown', ['name' => ucwords($name), 'icon' => $attributes["icon"], 'submenu' => $attributes["drop"]])
+        @include('partials.nav.dropdown', ['name' => ucwords($name), 'icon' => $attributes["icon"], 'profileImage' => $attributes["profileImage"], 'submenu' => $attributes["drop"]])
     @else
         @include('partials.nav.item', ['name' => ucwords($name), 'icon' => $attributes["icon"], 'link' => $attributes["href"], 'dropdown' => false])
     @endif

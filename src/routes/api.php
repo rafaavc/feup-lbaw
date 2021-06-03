@@ -24,7 +24,7 @@ Route::middleware('auth:api')->get('user', 'Auth\LoginController@getUser');
 // ----------------------------------------------------------------
 Route::post('user', 'MemberController@post')->middleware('can:create,user');
 Route::put('user/{user}', 'MemberController@put')->middleware('can:update,user');
-Route::delete('user/{user}', 'MemberController@remove')->middleware('can:delete,user');
+Route::delete('user/{user}', 'MemberController@deleteAction')->middleware('can:delete,user');
 Route::get('user/{user}', 'MemberController@get');
 Route::get('user/{user}/recipes', 'MemberController@getRecipes')->middleware('can:view,user');
 Route::get('user/{user}/reviews', 'MemberController@getReviews')->middleware('can:view,user');
@@ -69,6 +69,7 @@ Route::get('group/{group}/members', 'GroupController@getMembers')->middleware('c
 // List API
 // ----------------------------------------------------------------
 Route::get('feed', 'FeedController@get');
+Route::get('feed/load_more', 'FeedController@getMoreRecipes');
 Route::get('search/recipes', 'SearchController@getRecipesPaginate');
 Route::get('search/people', 'SearchController@getUsersPaginate');
 Route::get('search/categories', 'SearchController@getCategoriesPaginate');

@@ -25,7 +25,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/recipe/1'; // TODO: change to feed
+    protected $redirectTo = '/feed';
 
     private $isAdmin = false;
 
