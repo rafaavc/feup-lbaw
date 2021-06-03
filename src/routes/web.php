@@ -66,6 +66,8 @@ Route::get('group/{group}/delete', 'GroupController@deleteAction')->middleware('
 Route::get('group', 'GroupController@create')->middleware('can:create,App\Models\Group');
 Route::post('group', 'GroupController@createAction')->middleware('can:create,App\Models\Group');
 
+Route::get('group/{group}/recipe', 'RecipeController@create'); // TODO: add this to the openapi
+
 // ----------------------------------------------------------------
 // List pages
 // ----------------------------------------------------------------
