@@ -13,7 +13,7 @@
             </button>
         </li>
         <li class="col-6">
-            <a class="btn btn-secondary" href="{{ Auth::guard('admin')->check() ? "/admin/users" : "/feed" }}">
+            <a class="btn btn-secondary" href="{{ Auth::guard('admin') ? "/admin/users" : "/feed" }}">
                 Homepage
             </a>
         </li>
