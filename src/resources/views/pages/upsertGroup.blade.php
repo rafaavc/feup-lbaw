@@ -7,7 +7,7 @@
 @endpush
 
 @push('js')
-    <script src="{{ asset('js/upsert_group.js') }}" defer></script>
+    <script src="{{ asset('js/upsert_group.js') }}" type="module"></script>
 @endpush
 
 @section('content')
@@ -32,66 +32,25 @@
           method="post" action="{{ url('/group/' . (isset($group) ? ($group->id . '/edit') : '')) }}">
         {{ csrf_field() }}
         <div class="row">
-            <div class="col profile-photo-area mx-2">
+            <div class="col profile-photo-area">
                 <div class="row row-with-image">
-                    <div class="col area-title-col">
-                        <h6 class="area-title d-inline-block">Profile Photo</h6> <span class='form-required'></span>
-                    </div>
-                    <div class="col text-end profile-photo-button-col p-0">
-                        <div class="dropdown w-20 ms-auto">
-                            <button type="button" class="btn edit-photo-button btn-no-shadow" data-bs-toggle="dropdown"
-                                    aria-expanded="false">
-                                <i class="fas fa-ellipsis-h"></i>
-                            </button>
-                            <ul class="dropdown-menu w-100">
-                                <li>
-                                    <a class="dropdown-item file-input">
-                                        <i class="fas fa-upload me-2"></i>
-                                        Upload Image
-                                    </a>
-                                    <input type="file" class="d-none myFile" name="profileImage"/>
-                                </li>
-                                <li>
-                                    <a class="dropdown-item file-delete">
-                                        <i class="fas fa-eraser me-2"></i>
-                                        Clear Image
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
+                    <h6 class="area-title d-inline-block">Group Photo</h6>
                 </div>
-                <img class="rounded-circle z-depth-2 profile-image"
-                     src='{{isset($group) ? $group->profileImage() : asset('storage/images/people/no_image.png')}}'>
+                <div id="group-profile-image-input">
+                    @if (isset($group) && $img = $group->hasProfileImage())
+                        <span data-url={{ $img }}></span>
+                    @endif
+                </div>
             </div>
-            <div class="col cover-photo-area mx-2">
+            <div class="col cover-photo-area">
                 <div class="row area-title-row row-with-image">
-                    <div class="col area-title-col">
-                        <h6 class="area-title">Cover Photo</h6>
-                    </div>
-                    <div class="col text-end p-0">
-                        <div class="dropdown w-20 ms-auto">
-                            <button type="button" class="btn edit-photo-button btn-no-shadow" data-bs-toggle="dropdown"
-                                    aria-expanded="false">
-                                <i class="fas fa-ellipsis-h"></i>
-                            </button>
-                            <ul class="dropdown-menu w-100">
-                                <li>
-                                    <a class="dropdown-item file-input"><i class="fas fa-upload me-2"></i>Upload
-                                        Image</a>
-                                    <input type="file" class="d-none myFile" name="coverImage"/>
-                                </li>
-                                <li>
-                                    <a class="dropdown-item file-delete"><i class="fas fa-eraser me-2"></i>Clear
-                                        Image</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
+                    <h6 class="area-title">Cover Photo</h6>
                 </div>
-                <img
-                    src='{{ isset($group) ? $group->coverPhoto() : asset('storage/images/people/no_image.png') }}'
-                    class="bd-placeholder-img">
+                <div id="group-cover-image-input">
+                    @if (isset($group) && $img = $group->hasCoverPhoto())
+                        <span data-url={{ $img }}></span>
+                    @endif
+                </div>
             </div>
         </div>
 

@@ -93,7 +93,6 @@ class RecipeController extends Controller
         $allStepImages = Storage::files('public/images/steps');
         foreach ($steps as $step) {
             $imgPath = $this->getStepImage($step->id, $allStepImages);
-            var_dump($imgPath);
 
             if ($imgPath != null) File::delete(storage_path('app/' . $imgPath));
         }
@@ -437,8 +436,6 @@ class RecipeController extends Controller
 
             $stepImages = $this->getImagesUrlName($this->getStepImages($recipe), true);  // previous step images
 
-            var_dump($stepImages);
-
             $recipe->steps()->forceDelete();
 
             for ($i = 0; $i < $numUserSteps; $i++) {
@@ -450,8 +447,6 @@ class RecipeController extends Controller
 
                 $step->save();
 
-                echo "New step id = " . $step->id . "<br/>";
-
 
                 // Save step images
                 if ($request->hasFile("steps." . $i)) {
@@ -460,20 +455,15 @@ class RecipeController extends Controller
                 }
                 else if (isset($requestSteps[$i]['previousImage'])) {
                     $imageStepId = (int) $requestSteps[$i]['previousImage'];
-                    echo "Image step id = {$imageStepId}<br/>";
                     if (array_key_exists($imageStepId, $stepImages)) {
                         File::move(storage_path('app/public/images/steps/'.$imageStepId.'.jpg'), storage_path('app/public/images/steps/'.$step->id.'.jpg'));
                         unset($stepImages[$imageStepId]);
-                        echo "Moved image<br/>";
-                    } else
-                        echo "Didn't exist in the array<br/>";
+                    }
                 }
             }
 
-            foreach($stepImages as $image) {
-                echo "deleting " . print_r($image) . "<br/>";
+            foreach($stepImages as $image)
                 File::delete(storage_path('app/public/images/steps/'.$image['name'].'.jpg'));
-            }
 
             // Handle End Product Photos
             $beforeUpdateRecipeImages = $this->getRecipeImages($recipe->id);
@@ -491,12 +481,9 @@ class RecipeController extends Controller
 
             DB::commit();
 
-            // exit(1);
             return response()->json(['message' => 'Succeed!'], 200);
         } catch (\Exception $e) {
             DB::rollback();
-            echo $e->getMessage();
-            // exit(1);
             return response()->json(['error' => 'Invalid Request!'], 400);
         }
     }
