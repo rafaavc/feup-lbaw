@@ -12,6 +12,10 @@
                 Go back
             </button>
         </li>
-        <li class="col-6"><a class="btn btn-secondary" href="/">Homepage</a></li>
+        <li class="col-6">
+            <a class="btn btn-secondary" href="{{ Auth::guard('admin')->check() ? "/admin/users" : "/feed" }}">
+                Homepage
+            </a>
+        </li>
     </ul>
 </div>
