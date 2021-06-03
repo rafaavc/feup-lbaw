@@ -327,7 +327,8 @@ class RecipeController extends Controller
             }
 
             // Handle End Product Photos
-
+            $path = storage_path('app/public/images/recipes/' . $recipe->id);
+            File::ensureDirectoryExists($path);
             if ($request->hasFile('images')) {
                 foreach ($request->file('images') as $file)
                     $file->storeAs('public/images/recipes/' . $recipe->id, date('mdYHis') . uniqid() . '.' . $file->extension());

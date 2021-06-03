@@ -106,6 +106,10 @@
         // var_dump($allNotifications);
 
         $menu = [
+            "Feed" => [
+                "icon" => "comments",
+                "href" => url("/feed")
+            ],
             "notifications" => [
                 "icon" => "bell",
                 "popover" => $followRequests

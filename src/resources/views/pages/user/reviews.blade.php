@@ -5,11 +5,14 @@
 @section('body')
     <div class="row first-recipe-mt">
         <h3>Reviews</h3>
-        @if(sizeof($reviews) > 0)
-            @foreach($reviews as $comment)
+        @php($no_items = true)
+        @foreach($reviews as $comment)
+            @if(Gate::inspect('select', $comment->recipe()->get())->allowed())
                 @include('partials.preview.comment')
-            @endforeach
-        @else
+                @php($no_items = false)
+            @endif
+        @endforeach
+        @if($no_items)
             <p>This user has not made any reviews.</p>
         @endif
     </div>
