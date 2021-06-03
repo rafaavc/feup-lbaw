@@ -29,7 +29,7 @@
                 @endforeach
             </div>
         @endif
-        @include('partials.breadcrumb', ['pages' => ["Users" => "", $user->name => ""], 'withoutMargin' => true])
+        @include('partials.breadcrumb', ['pages' => ["Users" => "/user/" . $user->username, $user->name => "/user/" . $user->username], 'withoutMargin' => true])
         <div>
             @include('partials.profile.cover', [
                                             'name' => $user->name,
