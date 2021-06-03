@@ -3,7 +3,7 @@
     <div class="form-floating mb-3">
         @if($hasErrors)
             <input name="steps[{{ $index - 1 }}][name]" type="text" class="form-control" id="stepName" placeholder="Preparation Time"
-                value="{{ $step['name'] }}">
+                value="{{ $oldStep['name'] }}">
         @else
             <input name="steps[{{ $index - 1 }}][name]" type="text" class="form-control" id="stepName" placeholder="Preparation Time"
                 value="{{ isset($step->name) ? $step->name : "" }}">
@@ -19,5 +19,9 @@
         <label for="floatingTextarea2">Step Description <span class='form-required'></span></label>
     </div>
     <h6 class="mb-3">Step Photos</h6>
-    <div class="step-photo-input" data-index={{ $index }}></div>
+    <div class="step-photo-input" data-index={{ $index }}>
+        @if (isset($stepImages) && array_key_exists($step->id, $stepImages))
+            <span data-url="{{ $stepImages[$step->id]['url'] }}" data-name="{{ $stepImages[$step->id]['name'] }}"></span>
+        @endif
+    </div>
 </div>

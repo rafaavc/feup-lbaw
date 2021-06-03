@@ -5,7 +5,9 @@ var ButtonActions;
     ButtonActions[ButtonActions["REMOVE_ALL_FILES"] = 2] = "REMOVE_ALL_FILES";
 })(ButtonActions || (ButtonActions = {}));
 export class FileInput {
-    constructor(container, inputName, elementProperties, preexistingImages, multiple) {
+    constructor(container, inputName, elementProperties, preexistingImages, multiple, preexistingInputNameCalculator, valueCalculator) {
+        this.preexistingInputNameCalculator = (name) => 'preex' + this.originalInputName + name;
+        this.valueCalculator = (name) => name;
         this.fileInputAccept = '.jpeg,.jpg,.gif,.bmp,.png';
         const box = container instanceof Element ? container : document.querySelector('#' + container);
         this.addPropertiesToElement(box, elementProperties.box);
@@ -14,12 +16,17 @@ export class FileInput {
         this.box = box;
         this.multiple = multiple ? multiple : { maximum: 1 };
         this.elementProperties = elementProperties;
-        this.inputName = inputName + (multiple ? '[]' : '');
+        this.inputName = inputName + (this.multiple.maximum > 1 ? '[]' : '');
+        this.originalInputName = inputName;
         this.addButton = this.getButton(ButtonActions.ADD_FILE);
         this.files = [];
         this.freeInput = null;
         this.imagesWrapper = document.createElement('div');
-        this.build();
+        if (preexistingInputNameCalculator != null)
+            this.preexistingInputNameCalculator = preexistingInputNameCalculator;
+        if (valueCalculator != null)
+            this.valueCalculator = valueCalculator;
+        this.build(preexistingImages == null || preexistingImages.length < this.multiple.maximum);
         if (preexistingImages != null)
             for (const image of preexistingImages)
                 this.addPreexistingFile(image);
@@ -27,17 +34,19 @@ export class FileInput {
     /**
      * This builds all the HTML elements necessary
      */
-    build() {
+    build(addFreeInput) {
         this.box.appendChild(this.addButton);
         this.box.appendChild(this.imagesWrapper);
-        this.addFreeInput();
+        if (addFreeInput)
+            this.addFreeInput();
     }
     addPreexistingFile(preexistingFile) {
         const input = document.createElement('input');
         input.type = 'text';
-        input.name = 'preexImg' + preexistingFile.fileName;
+        input.name = this.preexistingInputNameCalculator(preexistingFile.fileName);
         input.style.display = 'none';
-        input.value = 'true';
+        input.value = this.valueCalculator(preexistingFile.fileName);
+        this.box.appendChild(input);
         const file = {
             removeButton: null,
             input,
@@ -62,7 +71,7 @@ export class FileInput {
         this.files.push(file);
         if (this.files.length < this.multiple.maximum)
             this.addFreeInput();
-        else
+        else if (this.files.length >= this.multiple.maximum)
             this.addButton.remove();
         file.wrapper.appendChild(file.removeButton);
         file.wrapper.appendChild(file.img);
@@ -104,8 +113,10 @@ export class FileInput {
         e.preventDefault();
         file.wrapper.remove();
         file.input.remove();
-        if (this.files.length == this.multiple.maximum)
+        if (this.files.length == this.multiple.maximum) {
+            this.addFreeInput();
             this.box.insertBefore(this.addButton, this.box.firstElementChild);
+        }
         this.files.splice(this.files.findIndex((f) => f == file), 1);
         // if the add button is hidden, it should reappear when a file is deleted.
     }

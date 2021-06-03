@@ -206,9 +206,35 @@ function setInvalidElement(elem) {
 
 /** FILE INPUT */
 
-new FileInput('end-product-photos-input', 'images', defaultProperties, [], { maximum: 5 });
+const productPhotos = document.querySelector('#end-product-photos-input');
+
+const preexistingImages = [];
+for (const child of productPhotos.children) {
+    preexistingImages.push({
+        url: child.dataset.url,
+        fileName: child.dataset.name
+    })
+}
+
+productPhotos.innerHTML = '';
+
+new FileInput(productPhotos, 'images', defaultProperties, preexistingImages, { maximum: 5 });
 
 const stepPhotoInputs = document.querySelectorAll('.step-photo-input');
 
 for (const input of stepPhotoInputs)
-    new FileInput(input, `steps[${Number(input.dataset.index) - 1}][image]`, defaultProperties, []);
+{
+    const preexistingImages = [];
+    for (const child of input.children) {
+        preexistingImages.push({
+            url: child.dataset.url,
+            fileName: child.dataset.name
+        });
+    }
+    console.log("Found these preexisting images:", preexistingImages);
+
+    const stepId = Number(input.dataset.index) - 1;
+    input.innerHTML = '';
+
+    new FileInput(input, `steps[${stepId}][image]`, defaultProperties, preexistingImages, null, () => `steps[${stepId}][previousImage]`, (fileName) => fileName);
+}

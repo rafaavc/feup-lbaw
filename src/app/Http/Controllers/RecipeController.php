@@ -76,6 +76,18 @@ class RecipeController extends Controller
         return null;
     }
 
+    public function getStepImages(Recipe $recipe)
+    {
+        $images = array();
+
+        foreach($recipe->steps as $step) {
+            if (File::exists(storage_path('app/public/images/steps/'.$step->id.'.jpg')))
+                array_push($images, asset('storage/images/steps/'.$step->id.'.jpg'));
+        }
+
+        return $images;
+    }
+
     public function deleteRecipeStepsImages($steps)
     {
         $allStepImages = Storage::files('public/images/steps');
@@ -203,6 +215,19 @@ class RecipeController extends Controller
         }
     }
 
+    public function getImagesUrlName($imagesUrls, $nameAsKey=false) {
+        $images = array();
+        foreach($imagesUrls as $img) {
+            $val = array(
+                'url' => $img,
+                'name' => pathinfo(basename($img), PATHINFO_FILENAME)
+            );
+            if ($nameAsKey) $images[(int) $val['name']] = $val;
+            else array_push($images, $val);
+        }
+        return $images;
+    }
+
     /**
      * RX: /recipe/{recipeId}/edit
      *
@@ -212,10 +237,14 @@ class RecipeController extends Controller
     public function edit(Recipe $recipe)
     {
         try {
-            $units = Unit::all();
+
+            $images = $this->getImagesUrlName($this->getRecipeImages($recipe->id));
+            $stepImages = $this->getImagesUrlName($this->getStepImages($recipe), true);
 
             return view('pages.upsertRecipe', [
                 'recipe' => $recipe,
+                'images' => $images,
+                'stepImages' => $stepImages,
                 'ingredients' => $recipe->ingredients,
                 'tags' => $recipe->tags,
                 'author' => $recipe->author,
@@ -406,8 +435,9 @@ class RecipeController extends Controller
             $numUserSteps = count($requestSteps);
 
 
-            // Delete Step Images
-            $this->deleteRecipeStepsImages($recipe->steps);
+            $stepImages = $this->getImagesUrlName($this->getStepImages($recipe), true);  // previous step images
+
+            var_dump($stepImages);
 
             $recipe->steps()->forceDelete();
 
@@ -416,27 +446,57 @@ class RecipeController extends Controller
                     'name' => $requestSteps[$i]["name"],
                     'description' => $requestSteps[$i]["description"],
                 ]);
-                $step = $recipe->steps()->save($step);
+                $recipe->steps()->save($step);
+
+                $step->save();
+
+                echo "New step id = " . $step->id . "<br/>";
+
 
                 // Save step images
                 if ($request->hasFile("steps." . $i)) {
                     $stepImageFile = $request->file('steps')[$i]['image'];
-                    $stepImageFile->storeAs('public/images/steps/', $step->id . '.' . $stepImageFile->extension());
+                    ImageUploadController::store($stepImageFile, 'public/images/steps', $step->id);
+                }
+                else if (isset($requestSteps[$i]['previousImage'])) {
+                    $imageStepId = (int) $requestSteps[$i]['previousImage'];
+                    echo "Image step id = {$imageStepId}<br/>";
+                    if (array_key_exists($imageStepId, $stepImages)) {
+                        File::move(storage_path('app/public/images/steps/'.$imageStepId.'.jpg'), storage_path('app/public/images/steps/'.$step->id.'.jpg'));
+                        unset($stepImages[$imageStepId]);
+                        echo "Moved image<br/>";
+                    } else
+                        echo "Didn't exist in the array<br/>";
                 }
             }
 
+            foreach($stepImages as $image) {
+                echo "deleting " . print_r($image) . "<br/>";
+                File::delete(storage_path('app/public/images/steps/'.$image['name'].'.jpg'));
+            }
+
             // Handle End Product Photos
-            File::cleanDirectory(storage_path('app/public/images/recipes/' . $recipe->id));
+            $beforeUpdateRecipeImages = $this->getRecipeImages($recipe->id);
+            foreach($beforeUpdateRecipeImages as $image) {
+                $name = pathinfo(basename($image), PATHINFO_FILENAME);
+                if ($request->input('preeximages'.$name) == null)
+                    File::delete(storage_path('app/public/images/recipes/'.$recipe->id.'/'.basename($image)));
+            }
+
             if ($request->hasFile('images')) {
                 foreach ($request->file('images') as $file)
-                    $file->storeAs('public/images/recipes/' . $recipe->id, date('mdYHis') . uniqid() . '.' . $file->extension());
+                    ImageUploadController::store($file, 'public/images/recipes/'.$recipe->id);
             }
             $recipe->save();
 
             DB::commit();
+
+            // exit(1);
             return response()->json(['message' => 'Succeed!'], 200);
         } catch (\Exception $e) {
             DB::rollback();
+            echo $e->getMessage();
+            // exit(1);
             return response()->json(['error' => 'Invalid Request!'], 400);
         }
     }
