@@ -110,7 +110,9 @@ class MemberController extends Controller
             $user->bio = $request->input('biography');
             $user->visibility = $request->input('visibility') == "public";
             $user->country()->associate($request->input('country'));
-            $user->password = bcrypt($request->input('password'));
+
+            if ($request->input('password'))
+                $user->password = bcrypt($request->input('password'));
 
             $user->save();
 
