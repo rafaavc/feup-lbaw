@@ -313,6 +313,8 @@ class RecipeController extends Controller
 
             $recipe->steps()->forceDelete();
 
+
+
             for ($i = 0; $i < $numUserSteps; $i++) {
                 $step = new Step([
                     'name' => $requestSteps[$i]["name"],
@@ -328,13 +330,15 @@ class RecipeController extends Controller
             }
 
             // Handle End Product Photos
-
+            $path = storage_path('app/public/images/recipes/' . $recipe->id);
+            File::ensureDirectoryExists($path);
             if ($request->hasFile('images')) {
                 foreach ($request->file('images') as $file)
                     $file->storeAs('public/images/recipes/' . $recipe->id, date('mdYHis') . uniqid() . '.' . $file->extension());
             }
 
             DB::commit();
+
             return response()->json(['message' => 'Succeed!', 'recipe_id' => $recipe->id], 200);
         } catch (\Exception $e) {
             DB::rollback();
