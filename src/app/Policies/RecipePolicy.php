@@ -30,7 +30,9 @@ class RecipePolicy
                 return true;
             return $recipe->group->members->contains($user->id);
         }
-        return $recipe->author->visibility;
+        if ($recipe->author->visibility == true)
+            return true;
+        return $recipe->author->followers()->wherePivot('state', 'accepted')->get()->contains($user->id);
     }
 
     public function update(?Member $user, Recipe $recipe)
