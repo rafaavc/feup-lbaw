@@ -319,9 +319,9 @@ const refreshCommentDeleteButtons = () => {
                 makeRequest(url(`api/comment/${comment.dataset.commentId}`), 'DELETE')
                 .then((res) => {
                     if (res.response.status != 200) {
-                        commentFeedback.showMesssage(res.content.message, 'danger');
+                        commentFeedback.showMessage(res.content.message, 'danger');
                     } else {
-                        commentFeedback.showMesssage("Comment(s) deleted successfully!");
+                        commentFeedback.showMessage("Comment(s) deleted successfully!");
                         comment.remove();
                     }
                 });
