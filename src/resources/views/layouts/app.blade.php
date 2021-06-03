@@ -42,5 +42,6 @@
         @include('partials.nav')
         @yield('content')
         @include('partials.footer')
+        <div id="feedback-div"></div>
     </body>
 </html>
