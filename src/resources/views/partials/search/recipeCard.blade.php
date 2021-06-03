@@ -1,6 +1,10 @@
 <div class="search-card">
     <a type="button" href="{{ url('/recipe/' . $recipe->recipe_id) }}" class="btn card shadow-sm p-2 mx-auto h-100">
-        <img class="card-img-top" src="{{ asset('storage/images/recipes/' . $recipe->recipe_id . '/1.jpg') }}">
+        @if (file_exists(storage_path('app/public/images/recipes/' . $recipe->recipe_id . '/1.jpg')))
+            <img class="card-img-top" src="{{ asset('storage/images/recipes/' . $recipe->recipe_id . '/1.jpg') }}">
+        @else
+            <img class="card-img-top" src="{{ asset('storage/images/no_image.jpg') }}">
+        @endif
         <h5 class="card-title">{{ $recipe->recipe_name }}</h5>
         @php
             $score = \App\Models\Recipe::find($recipe->recipe_id)->score;
