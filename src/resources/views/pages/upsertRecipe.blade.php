@@ -44,14 +44,14 @@
                         <h3 class="mb-4">Recipe Information</h3>
                         <div class="row g-3 mb-3">
                             <div class="col-lg">
-                                <div class="form-floating">
+                                <div class="form-floating" data-toggle="tooltip" data-placement="top" title="Give your recipe a nice name">
                                     <input name="name" type="text" class="form-control" id="floatingInput" placeholder="Baked Potatoes"
                                         value="{{ (!$hasErrors) ? ((isset($recipe)) ? $recipe->name : "") : ((isset($old['name'])) ? old('name') : '') }}">
                                     <label for="floatingInput">Recipe title <span class='form-required'></span></label>
                                 </div>
                             </div>
                             <div class="col-md">
-                                <div class="form-floating">
+                                <div class="form-floating" data-toggle="tooltip" data-placement="top" title="Choose the category of your recipe">
                                     <select name="category" class="form-select" id="floatingSelectGrid" aria-label="Main category">
                                         @foreach (\App\Models\Category::all() as $category)
                                             @if((!$hasErrors && isset($recipe) && $recipe->category->id == $category->id) ||
@@ -66,13 +66,13 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="form-floating mb-3">
+                        <div class="form-floating mb-3" data-toggle="tooltip" data-placement="top" title="Give a nice description to your recipe, so that people can have a better understanding of it">
                             <textarea name="description" class="form-control" placeholder="Your awesome description here..." id="floatingTextarea2" style="height: 7rem">{{ (!$hasErrors) ? ((isset($recipe)) ? $recipe->description : "") : ((isset($old['description'])) ? old('description') : '') }}</textarea>
                             <label for="floatingTextarea2"> Description <span class='form-required'></span></label>
                         </div>
                         <div class="row g-3 mb-4">
                             <div class="col-sm">
-                                <div class="form-floating">
+                                <div class="form-floating" data-placement="top" title="How difficult to prepare is your recipe?">
                                     <select name="difficulty" class="form-select" id="floatingSelectGrid" aria-label="Difficulty">
                                         <option name="difficulty" value="easy" {{ ((isset($recipe) && $recipe->difficulty === "easy") || ( $hasErrors && isset($old['difficulty']) && old('difficulty') === "easy")) ? "selected" : "" }}>Easy</option>
                                         <option name="difficulty" value="medium" {{ ((isset($recipe) && $recipe->difficulty === "medium") || ($hasErrors && isset($old['difficulty']) && old('difficulty') === "medium")) ? "selected" : "" }}>Medium</option>
@@ -83,13 +83,13 @@
                                 </div>
                             </div>
                             <div class="col-lg">
-                                <div class="form-floating">
+                                <div class="form-floating" data-toggle="tooltip" data-placement="top" title="How many servings does your recipe have? It needs to be at least 1">
                                     <input name="servings" type="number" class="form-control" id="floatingInput" placeholder="Baked Potatoes" value="{{ (!$hasErrors) ? ((isset($recipe)) ? $recipe->servings : 0) : ((isset($old['servings'])) ? old('servings') : '') }}">
                                     <label for="floatingInput">Number of servings <span class='form-required'></span></label>
                                 </div>
                             </div>
                             <div class="col-lg">
-                                <div class="form-floating">
+                                <div class="form-floating" data-toggle="tooltip" data-placement="top" title="Enter some subcategories so that people can find your recipe easily">
                                     <select class="form-select" id="tagSelect" aria-label="Quantity unit">
                                         <option></option>
                                     </select>
@@ -145,7 +145,7 @@
                             @include('partials.recipe.recipeIngredientRow', ['units' => \App\Models\Unit::all(), 'totalIngredients' => \App\Models\Ingredient::all(), 'index' => 0, 'hasErrors' => false])
                         @endif
 
-                        <button type="button" class="btn btn-secondary" id="addIngredientButton"><i class="fas fa-plus"></i> Add Ingredient</button>
+                        <button type="button" class="btn btn-secondary" id="addIngredientButton" data-toggle="tooltip" data-placement="top" title="Click here if you want to add another ingredient"><i class="fas fa-plus"></i> Add Ingredient</button>
                         <button type="button" class="btn btn-primary next-step" style="float: right;">Next</button>
                     </div>
                 <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
@@ -154,19 +154,19 @@
                 <span class="d-block mb-3"><h5 class="d-inline">Duration</h6> <small>(in minutes)</small></span>
                 <div class="row g-3">
                     <div class="col-lg">
-                        <div class="form-floating">
+                        <div class="form-floating" data-toggle="tooltip" data-placement="top" title="How many minutes does it take to prepare your recipe?">
                             <input name="preparation_time" type="number" class="form-control" id="preparationTime" placeholder="Preparation Time" value="{{ isset($recipe) ? $recipe->preparation_time : 0}}">
                             <label for="preparationTime">Preparation <span class='form-required'></span></label>
                         </div>
                     </div>
                     <div class="col-lg">
-                        <div class="form-floating">
+                        <div class="form-floating" data-toggle="tooltip" data-placement="top" title="How many minutes does your recipe need to be in the oven?">
                             <input name="cooking_time" type="number" class="form-control" id="cookingTime" placeholder="Cooking Time" value="{{ isset($recipe) ?  $recipe->cooking_time : 0 }}">
                             <label for="cookingTime">Cooking <span class='form-required'></span></label>
                         </div>
                     </div>
                     <div class="col-lg">
-                        <div class="form-floating">
+                        <div class="form-floating" data-toggle="tooltip" data-placement="top" title="How many minutes does it take to make the final adjustments in the recipe preparation?">
                             <input name="additional_time" type="number" class="form-control" id="additionalTime" placeholder="Additional Time" value="{{ isset($recipe) ? $recipe->additional_time : 0 }}">
                             <label for="additionalTime">Additional</label>
                         </div>
@@ -194,7 +194,7 @@
                 @endif
 
 
-                <button type="button" class="btn btn-secondary" id="addStepButton"><i class="fas fa-plus"></i> Add Step</button>
+                <button type="button" class="btn btn-secondary" id="addStepButton" data-toggle="tooltip" data-placement="top" title="Click here to add another step"><i class="fas fa-plus"></i> Add Step</button>
                 <a type="submit" role="button" class="submit-recipe-form btn btn-primary next-step" style="float: right;">{{ isset($recipe) ? "Edit Recipe" : "Create Recipe" }}</a>
                 </div>
             </div>

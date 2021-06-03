@@ -46,23 +46,43 @@
                                 class="fas fa-edit"></i>Edit</a>
                     @elseif(isset($group))
                         @if(Gate::inspect('removeRequest', $group)->allowed())
-                            <button type="button" class="btn shadow-none btn-outline-dark group-join">
+                            <button type="button" class="btn shadow-none btn-outline-dark group-join"
+                                data-toggle="tooltip" data-placement="top"
+                                title="Cancel your membership request"
+                            >
                                 <i class="fas fa-user-times"></i>
                                 Cancel Request
                             </button>
                         @elseif(Gate::inspect('join', $group)->allowed())
-                            <button type="button" class="btn shadow-none btn-outline-dark group-join">
+                            <button type="button" class="btn shadow-none btn-outline-dark group-join"
+                                data-toggle="tooltip" data-placement="top"
+                                title="Join this group to see all its contents"
+                            >
                                 <i class="fas fa-user-plus"></i>
                                 Join
                             </button>
                         @elseif(Gate::inspect('leave', $group)->allowed())
-                            <button type="button" class="btn shadow-none btn-outline-dark group-join">
+                            <button type="button" class="btn shadow-none btn-outline-dark group-join"
+                                data-toggle="tooltip" data-placement="top"
+                                title="Leave this group. Don\'t worry, no one will be notified :)"
+                            >
                                 <i class="fas fa-user-times"></i>
                                 Leave
                             </button>
                         @endif
                     @elseif($followState != 'External')
-                        <button type="button" class="btn shadow-none btn-outline-dark user-follow">
+                        <button type="button" class="btn shadow-none btn-outline-dark user-follow"
+                            data-toggle="tooltip" data-placement="top"
+                            title="
+                                @if ($followState == 'pending')
+                                    {{ 'The following request is pending.' }}
+                                @elseif ($followState == 'accepted')
+                                    {{ 'Unfollow this member. Don\'t worry, the member will not be notified :)' }}
+                                @else
+                                    {{ 'Follow this member to see all his/her content!' }}
+                                @endif
+                            "
+                        >
                             <i class="fas fa-user-times {{ ($followState != 'accepted') ? 'd-none' : '' }}"></i>
                             <i class="fas fa-user-plus {{ ($followState == 'rejected' || $followState == 'Follow' || $followState == null) ? '' : 'd-none' }}"></i>
                             @if ($followState == 'pending')
@@ -73,7 +93,7 @@
                                 {{ "Follow" }}
                             @endif
                         </button>
-                        <a href="{{ url("/chat/$user->username") }}" type="button" class="btn btn-outline-dark"><i
+                        <a href="{{ url("/chat") }}" type="button" class="btn btn-outline-dark" data-toggle="tooltip" data-placement="top" title="Send a message to this member"><i
                                 class="fas fa-comments"></i>Chat</a>
                     @endif
                 </div>

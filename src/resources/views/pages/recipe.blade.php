@@ -77,12 +77,12 @@
                         </li>
                     @endif
                     <li class="list-group-item">
-                        <a href="#">
+                        <a href="#" data-toggle="tooltip" data-placement="top" title="Generate a PDF of the recipe page">
                             <span class="legend">Print</span><i class="fas fa-print"></i>
                         </a>
                     </li>
                     <li class="list-group-item">
-                        <a class="copy-link-button" href="javascript:void(null)">
+                        <a class="copy-link-button" href="javascript:void(null)" data-toggle="tooltip" data-placement="top" title="Copy the link of this recipe">
                             <span class="legend">Share</span><i class="fas fa-share-alt"></i>
                         </a>
                     </li>
@@ -90,7 +90,8 @@
                         <li class="list-group-item">
                             <button role="a" class="add-to-favourites-recipe-button"
                                     data-favourite-state="{{ $isFavourited ? "true" : "false" }}"
-                                    data-recipe-id="{{ $recipe->id }}">
+                                    data-recipe-id="{{ $recipe->id }}"
+                                    data-toggle="tooltip" data-placement="top" title="Add this recipe to your favourites">
                                 <span class="legend">Favourite</span><i class="fas fa-heart"></i>
                                 </a>
                         </li>

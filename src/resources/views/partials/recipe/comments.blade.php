@@ -9,7 +9,7 @@
             <input type="hidden" name="recipeId" value="{{ $recipe->id }}" />
             <textarea required name="content" id="commentContent" class="form-control" placeholder="Leave a comment here" style="height: 6rem"></textarea>
             <label for="commentContent">Your comment</label>
-            <button type="submit" class="btn btn-primary position-absolute py-1 send">
+            <button type="submit" class="btn btn-primary position-absolute py-1 send" data-toggle="tooltip" data-placement="top" title="Post your comment">
                 <small>
                     <i class="fas fa-paper-plane me-2"></i>
                     Comment
