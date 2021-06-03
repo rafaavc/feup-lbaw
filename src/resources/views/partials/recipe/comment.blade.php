@@ -16,7 +16,7 @@
             <p class="card-text mt-3">{{ $comment->text }}</p>
             <p class="card-text mt-3">
                 <small class="text-muted">
-                    {{ $comment->post_time }}
+                    @include('partials.date', ['date' => $comment->post_time])
                 </small>
             </p>
         </div>

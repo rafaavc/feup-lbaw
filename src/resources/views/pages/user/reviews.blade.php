@@ -7,7 +7,7 @@
         <h3>Reviews</h3>
         @php($no_items = true)
         @foreach($reviews as $comment)
-            @if(Gate::inspect('select', $comment->recipe()->get())->allowed())
+            @if(Gate::inspect('select', $comment->recipe)->allowed())
                 @include('partials.preview.comment')
                 @php($no_items = false)
             @endif
