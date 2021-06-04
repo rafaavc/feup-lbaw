@@ -43,6 +43,24 @@ button[role=a]:active:focus {
     box-shadow: none !important;
 }
 
+a.btn {
+    padding: .25rem .5rem;
+    padding-right: 1rem;
+    transition: background-color .2s, color .2s, border .2s;
+}
+
+a.btn:hover {
+    background-color: rgb(241, 241, 241);
+    border: 1px solid rgb(235, 235, 235);
+}
+
+a.btn:focus,
+a.btn.active:focus,
+a:active:focus {
+    color: var(--accent-color);
+    box-shadow: none !important;
+}
+
 .margin-from-nav {
     margin-top: var(--margin-from-nav);
 }
@@ -279,3 +297,5 @@ body, html {
     transition: opacity 400ms linear;
     user-select: none;
 }
+
+
