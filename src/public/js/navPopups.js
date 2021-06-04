@@ -167,3 +167,6 @@ function acceptDeclineFollowRequest(updateRead) {
 
         numPopOvers = document.querySelector('#notificationsPopupContent').childElementCount;
 }
+
+if (window.location.pathname.split("/").pop() === 'feed')
+    document.querySelector('.nav-item:first-of-type').firstElementChild.firstElementChild.style.color = "black";
