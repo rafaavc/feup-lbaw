@@ -23,7 +23,7 @@ $role = "member";
             @endforeach
         </div>
     @endif
-    <form enctype="multipart/form-data" class="card shadow-sm p-2 w-auto h-auto p-5 mt-4 edit-profile-card"
+    <form enctype="multipart/form-data" id="edit-profile-form" class="card shadow-sm p-2 w-auto h-auto p-5 mt-4 edit-profile-card"
           method="post">
         @csrf
         <div class="row">
@@ -90,6 +90,16 @@ $role = "member";
                       style="resize: none;">{{$user->username}}</textarea>
         </div>
 
+        <h6 class="area-title">Change Password</h6>
+        <div class="form-group">
+            <input type="password" name="currentPassword" class="form-control mb-3 p-2 edit-profile-text-input" placeholder="Current Password" rows="1"
+                      style="resize: none;"></textarea>
+            <input type="password" name="newPassword" class="form-control mb-3 p-2 edit-profile-text-input" placeholder="New Password" rows="1"
+                    style="resize: none;"></textarea>
+            <input type="password" name="repeatNewPassword" class="form-control mb-5 p-2 edit-profile-text-input" placeholder="Repeat New Password"  rows="1"
+                        style="resize: none;"></textarea>
+        </div>
+
         <h6 class="area-title" data-toggle="tooltip" data-placement="top" title="Do you want everyone to see your recipes, or only your friends?">Profile Visibility <span class='form-required'></span></h6>
         <div class="form-check">
             <input class="form-check-input" value="public" type="radio" name="visibility"
@@ -108,11 +118,6 @@ $role = "member";
         <div class="row d-flex justify-content-around justify-content-md-between my-5">
 
             <input type="submit" class="btn btn-primary submit-button my-2" value="Submit">
-
-            <button class="btn btn-secondary submit-button my-2">
-                <i class="far fa-edit"></i>
-                &nbsp; Change Password
-            </button>
 
             <button data-bs-toggle="modal" data-bs-target="#profileDeleteConfirmationModal" class="btn btn-danger submit-button my-2 deleteProfile" data-toggle="tooltip" data-placement="top" title="Delete your profile and all of your recipes, comments and groups">
                 <i class="fas fa-trash me-3"></i>

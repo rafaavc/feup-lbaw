@@ -104,15 +104,21 @@ class MemberController extends Controller
 
         try {
             $user->name = $request->input('name');
-            $user->username = $request->input('username');
             $user->email = $request->input('email');
             $user->city = $request->input('city');
             $user->bio = $request->input('biography');
             $user->visibility = $request->input('visibility') == "public";
             $user->country()->associate($request->input('country'));
 
-            if ($request->input('password'))
-                $user->password = bcrypt($request->input('password'));
+            $newPassword = $request->input('newPassword');
+            $currentPassword = $request->input('currentPassword');
+            if ($newPassword && $currentPassword && Auth::attempt(array('username' => $user->username, 'password' => $currentPassword))) {
+                $user->password = bcrypt($newPassword);
+            } else if ($newPassword && $currentPassword || $newPassword && !$currentPassword) {
+                throw new Exception("The current password is incorrect!");
+            }
+
+            $user->username = $request->input('username');
 
             $user->save();
 
