@@ -1,6 +1,6 @@
 <h5 class="mb-3 step-number">Step {{ $index }}</h5>
 <div>
-    <div class="form-floating mb-3" data-toggle="tooltip" data-placement="top" title="Enter a name to this step">
+    <div class="form-floating mb-3 has-tooltip" title="Enter a name to this step">
         @if($hasErrors)
             <input name="steps[{{ $index - 1 }}][name]" type="text" class="form-control" id="stepName" placeholder="Preparation Time"
                 value="{{ $oldStep['name'] }}">
@@ -10,7 +10,7 @@
         @endif
         <label for="stepName">Step Name <span class='form-required'></span></label>
     </div>
-    <div class="form-floating mb-4" data-toggle="tooltip" data-placement="top" title="Enter a nice step description">
+    <div class="form-floating mb-4 has-tooltip" title="Enter a nice step description">
         @if($hasErrors)
             <textarea name="steps[{{ $index - 1 }}][description]" class="form-control" placeholder="Your awesome description here..." id="floatingTextarea2" style="height: 5rem">{{ $step['description'] }}</textarea>
         @else
