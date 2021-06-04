@@ -62,14 +62,12 @@
         </a>
 
         <div class="container mt-4 p-0 ">
-            <a role="button"
-               class="btn btn-sm btn-secondary d-inline-block me-3 mb-2"
+            <a class="btn btn-sm btn-secondary d-inline-block me-3 mb-2"
                href='{{url("category/" . $recipe->category->id)}}'>
                 {{$recipe->category->name}}
             </a>
             @foreach ($recipe->tags as $tag)
-                <a role="button"
-                   class="btn btn-sm btn-outline-secondary d-inline-block me-3 mb-2"
+                <a class="btn btn-sm btn-outline-secondary d-inline-block me-3 mb-2"
                    href="{{url("search/tag=" . $tag->id)}}">
                     {{$tag->name}}
                 </a>

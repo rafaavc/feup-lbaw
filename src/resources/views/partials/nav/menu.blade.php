@@ -145,7 +145,7 @@
 @foreach($menu as $name => $attributes)
     @if (key_exists("special", $attributes))
         <li class="nav-item">
-            <a role="button" href="{{ $attributes['href'] }}" class="btn btn-primary btn-sm mt-1 ms-2"><i
+            <a data-role="button" href="{{ $attributes['href'] }}" class="btn btn-primary btn-sm mt-1 ms-2"><i
                     class="fas me-2 fa-{{ $attributes['icon'] }}"></i> {{ ucwords($name) }}</a>
         </li>
     @elseif (key_exists("popover", $attributes))

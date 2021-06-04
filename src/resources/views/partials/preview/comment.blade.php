@@ -15,7 +15,7 @@
                         <li><a class="dropdown-item" href="#">Edit Review</a></li>
                     @endif --}}
                     {{-- @if(Gate::inspect('delete', $comment)->allowed()) --}}
-                        <li><button role="a" data-bs-toggle="modal" data-bs-target="#reviewDeleteConfirmationModal{{ $comment->id }}" class="dropdown-item ms-3" href="">Delete Review</button></li>
+                        <li><button data-role="a" data-bs-toggle="modal" data-bs-target="#reviewDeleteConfirmationModal{{ $comment->id }}" class="dropdown-item ms-3" href="">Delete Review</button></li>
                     {{-- @else
                         <li><a class="dropdown-item" href="#">Report Review</a></li>
                     @endif --}}
