@@ -63,12 +63,12 @@
                     <span class="d-inline-block me-3">Tags: </span>
 
                     <a role="button" class="btn btn-sm btn-primary d-inline-block me-2 mb-2"
-                       href="/category/{{ $category->id }}">
+                       href="/search?searchQuery={{ $category->name }}">
                         {{ $category->name }}
                     </a>
                     @foreach($tags as $idx => $tag)
                         <a role="button" class="btn btn-sm btn-secondary d-inline-block me-2 mb-2"
-                           href="/category/{{ $tag->id }}">
+                           href="/search?searchQuery={{ $tag->name }}">
                             {{ $tag->name }}
                         </a>
                     @endforeach
