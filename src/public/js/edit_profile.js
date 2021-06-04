@@ -2,6 +2,7 @@ import { makeRequest } from './ajax/methods.js'
 import { defaultProperties } from './files/defaultProperties.js';
 import { FileInput } from './files/FileInput.js';
 import { url } from './utils/url.js';
+import { Feedback } from './feedback/Feedback.js';
 
 
 // Delete Profile
@@ -59,4 +60,34 @@ coverPictureInput.innerHTML = '';
 const coverProperties = defaultProperties(['bg-placeholder-img']);
 
 new FileInput(coverPictureInput, 'coverImage', coverProperties, preexistingCoverImages, null, () => 'previousCoverImage');
+
+
+const form = document.querySelector('#edit-profile-form');
+const newPassword = form.querySelector('input[name=newPassword]');
+const repeatNewPassword = form.querySelector('input[name=repeatNewPassword]');
+const currentPassword = form.querySelector('input[name=currentPassword]');
+const repeatNewPasswordFeedback = new Feedback(repeatNewPassword, "danger", 3000);
+const currentPasswordFeedback = new Feedback(currentPassword, "danger", 3000);
+
+const validate = (checkRepeat) => {
+    let submit = true;
+    if (newPassword.value != '') {
+        if (repeatNewPassword.value != newPassword.value) {
+            repeatNewPasswordFeedback.showMessage("The repeated password doesn't match!", "danger");
+            submit = false;
+        }
+        if (currentPassword.value == '') {
+            currentPasswordFeedback.showMessage("If you want to change the password, you must insert your current password!", "danger");
+            submit = false;
+        }
+    }
+    return submit;
+}
+
+repeatNewPassword.addEventListener('change', validate);
+newPassword.addEventListener('change', validate);
+
+form.addEventListener('submit', (e) => {
+    if (!validate()) e.preventDefault();
+})
 
