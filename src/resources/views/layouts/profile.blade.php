@@ -1,5 +1,10 @@
 @extends('layouts.app')
 
+
+@section('title', $user->name)
+@section('description', $user->biography)
+@section('thumbnail', $user->profileImage())
+
 @push('css')
     <link href="{{ asset('css/navPopups.css') }}" type="text/css"/>
     <link href="{{ asset('css/profile_cover.css') }}" type="text/css"/>

@@ -3,19 +3,18 @@
 }
 
 h2 {
-    padding: 1rem;
-    padding-top: 0;
+    padding: 0 1rem 1rem;
 }
 
 h1 {
     padding-left: 1rem;
 }
 
-
 .createCommentFormErrors {
     margin: 0 1rem;
     text-align: left;
 }
+
 .createReplyFormErrors {
     margin: 0 1rem;
     text-align: left;
@@ -24,17 +23,16 @@ h1 {
 /* Box with icon at the top component */
 .icon-box {
     margin-top: 0.5em;
-    padding: 0px;
-    padding-top: -0.5em;
+    padding: 0;
     line-height: 1em;
     text-align: center;
     border: 1px solid rgba(0, 0, 0, .125);
     border-radius: .25rem;
 }
 
-.icon-box>i {
+.icon-box > i {
     font-size: 2em;
-    margin: 0px;
+    margin: 0;
     position: relative;
     top: -0.5em;
     display: inline-block;
@@ -42,8 +40,8 @@ h1 {
     padding: 0 0.2em;
 }
 
-.instruction h3 {
-    font-size: 1.5em;
+.instruction h3 a {
+    font-size: 1.5rem;
     margin-bottom: 0;
     transition: color .2s;
 }
@@ -66,7 +64,6 @@ h1 {
 }
 
 #recipe > header {
-    margin-top: 0;
     border: 1px solid rgba(0, 0, 0, .125);
     border-radius: .25rem;
     max-width: 100%;
@@ -74,9 +71,9 @@ h1 {
 }
 
 #comments .card {
-    border: 0px;
+    border: 0;
     text-align: left;
-    border-radius: 0px;
+    border-radius: 0;
 }
 
 #comments .checked {
@@ -217,6 +214,7 @@ aside .search-card {
     margin-right: .5rem;
     transition: color .15s;
 }
+
 #ratingInputCancel:hover {
     color: grey;
 }

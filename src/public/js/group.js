@@ -18,7 +18,6 @@ if (joinButton !== null) {
         let method = (joinState == 'Join') ? 'POST' : 'DELETE'
         if (joinState == 'Leave')
             requestURL = url('/api/group/' + groupId + "/member/" + document.body.dataset.username);
-        console.log("Sending request to API's address: " + requestURL);
         makeRequest(requestURL, method)
             .then((result) => {
                 if (result.response.status == 200)
@@ -66,7 +65,6 @@ const dealWithMembershipRequest = (event, accept) => {
                 console.error('Error dealing with membership request:', res.content.message);
                 membershipRequestsFeedback.showMessage('Error ' + res.response.status, 'danger');
             } else {
-                console.log('Dealt with membership request successfully!');
 
                 membershipRequestsFeedback.showMessage(accept ? "The member has joined the group." : "The membership request was rejected.", 'success');
 

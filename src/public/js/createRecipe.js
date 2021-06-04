@@ -60,10 +60,7 @@ addStepButton.addEventListener('click', () => {
 
     const elem = addStepButton.previousElementSibling;
 
-    console.log(elem);
-
     const photoInput = elem.querySelector('.step-photo-input');
-    console.log(photoInput);
     createStepPhotoInput(photoInput, []);
 })
 
@@ -211,7 +208,7 @@ document.querySelector("a.submit-recipe-form").addEventListener('click', (event)
     }
 
     Array.from(document.querySelectorAll("[name^='steps']")).forEach((elem) => {
-        if(!elem.getAttribute("name").includes("image"))
+        if(!elem.getAttribute("name").includes("image") && !elem.getAttribute("name").includes("name"))
             valid &= setInvalidElement(elem);
     });
     Array.from(document.querySelectorAll("[name^='ingredients']")).forEach((elem) => {
@@ -234,10 +231,17 @@ document.querySelector("a.submit-recipe-form").addEventListener('click', (event)
 
 });
 
+const removeInvalid = (elem) => elem.classList.remove('invalid');
+
 function setInvalidElement(elem) {
     if(elem != null) {
-        if(elem.value == "")
-            elem.style.borderColor = "red";
+        elem.removeEventListener('blur', () => removeInvalid(elem));
+        elem.addEventListener('blur', () => removeInvalid(elem));
+        if(elem.value == "") {
+            elem.focus();
+            elem.classList.add('invalid');
+            // elem.style.borderColor = "red";
+        }
         else
             return true;
     }
@@ -271,10 +275,63 @@ for (const input of stepPhotoInputs)
             fileName: child.dataset.name
         });
     }
-    console.log("Found these preexisting images:", preexistingImages);
 
     currentStepId = Number(input.dataset.index) - 1;
     input.innerHTML = '';
 
     createStepPhotoInput(input, preexistingImages);
 }
+
+const createRecipeForm = document.querySelector('.recipe-form');
+
+const secondStepSubmit = document.querySelector('#second-step-submit');
+const firstStepSubmit = document.querySelector('#first-step-submit');
+
+const nameInput = createRecipeForm.querySelector('input[name=name]');
+const categoryInput = createRecipeForm.querySelector('select[name=category]');
+const descriptionInput = createRecipeForm.querySelector('textarea[name=description]');
+const difficultyInput = createRecipeForm.querySelector('select[name=difficulty]');
+const servingsInput = createRecipeForm.querySelector('input[name=servings]');
+
+
+firstStepSubmit.addEventListener('click', (e) => {
+    let valid = true;
+
+    valid &= nameInput.reportValidity();
+    valid &= categoryInput.reportValidity();
+    valid &= descriptionInput.reportValidity();
+    valid &= difficultyInput.reportValidity();
+    valid &= servingsInput.reportValidity();
+
+    if(!setInvalidElement(document.querySelector("[name='tags[]']"))) {
+        setInvalidElement(document.querySelector("#tagSelect"));
+        valid = false;
+    }
+
+    if (!valid) {
+        e.preventDefault();
+        e.stopImmediatePropagation();
+    }
+});
+
+
+
+secondStepSubmit.addEventListener('click', (e) => {
+    const ingredientQuantityInputs = document.querySelectorAll('.ingredient-quantity');
+
+    let valid = true;
+
+    for (const input of ingredientQuantityInputs)
+        valid &= input.reportValidity();
+
+    Array.from(document.querySelectorAll("[name^='ingredients']")).forEach((elem) => {
+        valid &= setInvalidElement(elem);
+    });
+
+    if (!valid) {
+        e.preventDefault();
+        e.stopImmediatePropagation();
+    }
+});
+
+

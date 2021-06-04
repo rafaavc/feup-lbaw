@@ -12,6 +12,10 @@
     --accent-color-lighter: #a8d6c0;
 }
 
+body {
+    line-height: 1.4;
+}
+
 .accordion-button:not(.collapsed)::after {
     background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23009245'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e")
 }
@@ -43,6 +47,11 @@ button[data-role=a]:active:focus {
     color: var(--accent-color-lighter);
     box-shadow: none !important;
     background-color: transparent !important;
+}
+
+select.invalid:focus, input.invalid:focus {
+    box-shadow: 0 0 0 0.25rem rgb(255, 170, 170) !important;
+    border: 1px solid red;
 }
 
 .btn.group-box-link {

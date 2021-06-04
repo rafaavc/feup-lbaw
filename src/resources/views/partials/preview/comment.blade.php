@@ -28,7 +28,8 @@
         <div class="row user-info">
             <div class="col avatar-image mb-2">
                 <img class="rounded-circle z-depth-2"
-                     src="{{$comment->owner->profileImage()}}">
+                     src="{{$comment->owner->profileImage()}}"
+                     alt="profile picture of {{$comment->owner->name}}, the author of the comment">
             </div>
             <div class="col col-sm name-and-date ms-4">
                 <div>
@@ -56,7 +57,8 @@
             <div class="row">
                 <div class="col-md-4">
                     <img src="{{asset('storage/images/recipes/' . $comment->recipe->id . '/1.jpg')}}"
-                         class="bd-placeholder-img recipe-image" width="100%">
+                         class="bd-placeholder-img recipe-image" width="100%"
+                         alt="main image of the recipe">
                 </div>
                 <div class="col-md-8 p-3">
                     <h4 class="m-0 p-0 card-title">{{$comment->recipe->name}}</h4>

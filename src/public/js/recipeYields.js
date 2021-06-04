@@ -11,7 +11,6 @@ for (const cell of ingredientsNumbers) {
 }
 
 function calculateQuantities(factor = 1) {
-    console.log(ingredientsNumbers)
     for (let i = 0; i < ingredientsNumbers.length; i++) {
         ingredientsNumbers[i].innerHTML = Math.round((defaultQuantities[i] * factor + Number.EPSILON) * 100) / 100
     }

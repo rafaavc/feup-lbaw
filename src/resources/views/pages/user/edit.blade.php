@@ -23,7 +23,7 @@ $role = "member";
             @endforeach
         </div>
     @endif
-    <form enctype="multipart/form-data" class="card shadow-sm p-2 w-auto h-auto p-5 mt-4 edit-profile-card"
+    <form enctype="multipart/form-data" id="edit-profile-form" class="card shadow-sm p-2 w-auto h-auto p-5 mt-4 edit-profile-card"
           method="post">
         @csrf
         <div class="row">
@@ -52,18 +52,18 @@ $role = "member";
         <h6 class="area-title mt-4">Biography</h6>
         <div class="form-group">
             <textarea name="biography" class="form-control mb-4 p-3 edit-profile-text-input"
-                      rows="3">{{$user->biography}}</textarea>
+                      rows="3" maxlength="512">{{$user->biography}}</textarea>
         </div>
 
         <h6 class="area-title">Name <span class='form-required'></span></h6>
         <div class="form-group">
-            <textarea name="name" class="form-control mb-4 p-3 edit-profile-text-input" rows="1"
-                      style="resize: none;">{{$user->name}}</textarea>
+            <input type="text" required name="name" class="form-control mb-4 p-3 edit-profile-text-input" rows="1"
+                      style="resize: none;" minlength="4" maxlength="60" value="{{$user->name}}"></input>
         </div>
 
         <h6 class="area-title">Country <span class='form-required'></span></h6>
         <div class="form-group">
-            <select name="country" id="country"
+            <select required name="country" id="country"
                     class="form-select form-control me-2 form-control mb-4 p-3 edit-profile-text-input">
                 @foreach(App\Models\Country::all() as $country)
                     <option
@@ -74,20 +74,33 @@ $role = "member";
 
         <h6 class="area-title">City</h6>
         <div class="form-group">
-            <textarea name="city" class="form-control mb-4 p-3 edit-profile-text-input" rows="1"
-                      style="resize: none;">{{$user->city}}</textarea>
+            <input type="text" maxlength="60" name="city" class="form-control mb-4 p-3 edit-profile-text-input" rows="1"
+                      style="resize: none;" value="{{$user->city}}"></input>
         </div>
 
-        <h6 class="area-title">Email</h6>
+        <h6 class="area-title">Email <span class='form-required'></span></h6>
         <div class="form-group">
-            <textarea name="email" class="form-control mb-4 p-3 edit-profile-text-input" rows="1"
-                      style="resize: none;">{{$user->email}}</textarea>
+            <input type="text" required maxlength="100" minlength="5" name="email" class="form-control mb-4 p-3 edit-profile-text-input" rows="1"
+                      style="resize: none;" value="{{$user->email}}"></input>
         </div>
 
-        <h6 class="area-title">Username</h6>
+        <h6 class="area-title">Username <span class='form-required'></span></h6>
         <div class="form-group">
-            <textarea name="username" class="form-control mb-5 p-3 edit-profile-text-input" rows="1"
-                      style="resize: none;">{{$user->username}}</textarea>
+            <input type="text" name="username" class="form-control mb-5 p-3 edit-profile-text-input" rows="1"
+                    minlength="4" maxlength="20"
+                    pattern="^[a-zA-Z0-9]+((_|\.)[a-zA-Z0-9]+)*$"
+                    title="Must contain only letters numbers, '_' and '.', but the last two can only appear surrounded by letters or numbers"
+                    style="resize: none;" value="{{$user->username}}" required></input>
+        </div>
+
+        <h6 class="area-title">Change Password</h6>
+        <div class="form-group">
+            <input type="password" name="currentPassword" minlength="5" class="form-control mb-3 p-2 edit-profile-text-input" placeholder="Current Password" rows="1"
+                      style="resize: none;"></textarea>
+            <input type="password" name="newPassword" minlength="5" class="form-control mb-3 p-2 edit-profile-text-input" placeholder="New Password" rows="1"
+                    style="resize: none;"></textarea>
+            <input type="password" name="repeatNewPassword" minlength="5" class="form-control mb-5 p-2 edit-profile-text-input" placeholder="Repeat New Password"  rows="1"
+                        style="resize: none;"></textarea>
         </div>
 
         <h6 class="area-title">Profile Visibility <span class='form-required'></span></h6>
@@ -108,11 +121,6 @@ $role = "member";
         <div class="row d-flex justify-content-around justify-content-md-between my-5">
 
             <input type="submit" class="btn btn-primary submit-button my-2" value="Submit">
-
-            <button class="btn btn-secondary submit-button my-2">
-                <i class="far fa-edit"></i>
-                &nbsp; Change Password
-            </button>
 
             <button data-bs-toggle="modal" data-bs-target="#profileDeleteConfirmationModal" class="btn btn-danger submit-button my-2 deleteProfile has-tooltip" title="Delete your profile and all of your recipes, comments and groups">
                 <i class="fas fa-trash me-3"></i>

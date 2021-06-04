@@ -22,9 +22,9 @@ class RecipeController extends Controller
     protected $table = "tb_recipe";
 
     private static $validation = [
-        'name' => 'required|string',
+        'name' => 'required|string|min:5|max:100',
         'category' => 'required|integer|exists:App\Models\Category,id',
-        'description' => 'required|string',
+        'description' => 'required|string|min:10|max:1024',
         'difficulty' => 'required|string|in:easy,medium,hard,very hard',
         'servings' => 'required|integer|min:1',
         'tags' => 'required|array',
@@ -37,7 +37,8 @@ class RecipeController extends Controller
         'cooking_time' => 'required|integer|min:0',
         'additional_time' => 'required|integer|min:0',
         'steps' => 'required|array',
-        'steps.*.name' => 'required|string',
+        'steps.*.name' => 'nullable|string|max:30',
+        'steps.*.description' => 'required|string|max:512|min:10',
         'steps.*.image' => 'nullable|file|image|mimes:jpeg,png,jpg,gif,bmp',
         'images.*' => 'nullable|file|image|mimes:jpeg,png,jpg,gif,bmp'
     ];
@@ -137,7 +138,7 @@ class RecipeController extends Controller
             'recipe' => $recipe,
             'ingredients' => $recipe->ingredients,
             'tags' => $recipe->tags,
-            'comments' => $recipe->comments()->whereNotIn('id', $commentsWithFathersIds)->get(),
+            'comments' => $recipe->comments()->whereNotIn('id', $commentsWithFathersIds)->orderBy('post_time', 'asc')->get(),
             'author' => $recipe->author,
             'steps' => $recipe->steps,
             'category' => $recipe->category,
@@ -327,7 +328,7 @@ class RecipeController extends Controller
 
             for ($i = 0; $i < $numUserSteps; $i++) {
                 $step = new Step([
-                    'name' => $requestSteps[$i]["name"],
+                    'name' => $requestSteps[$i]["name"] ? $requestSteps[$i]["name"] : '',
                     'description' => $requestSteps[$i]["description"],
                 ]);
                 $recipe->steps()->save($step);
@@ -425,7 +426,7 @@ class RecipeController extends Controller
 
             for ($i = 0; $i < $numUserSteps; $i++) {
                 $step = new Step([
-                    'name' => $requestSteps[$i]["name"],
+                    'name' => $requestSteps[$i]["name"] ? $requestSteps[$i]["name"] : '',
                     'description' => $requestSteps[$i]["description"],
                 ]);
                 $recipe->steps()->save($step);

@@ -32,7 +32,7 @@
 .home-slide > a {
     float: right;
     margin-top: 1rem;
-    transition: background-color color border-color .2s;
+    transition: background-color .2s, border-color .2s;
 }
 
 .home-slide > a:hover {

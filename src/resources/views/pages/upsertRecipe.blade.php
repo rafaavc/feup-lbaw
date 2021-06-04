@@ -7,8 +7,8 @@
 @endpush
 
 @push('js')
+<script src="{{ asset('js/createRecipe.js') }}" type="module"></script>
     <script src="{{ asset('js/progressBar.js') }}" defer></script>
-    <script src="{{ asset('js/createRecipe.js') }}" type="module"></script>
 @endpush
 
 @section('content')
@@ -46,14 +46,14 @@
                         <div class="row g-3 mb-3">
                             <div class="col-lg">
                                 <div class="form-floating" title="Give your recipe a nice name">
-                                    <input name="name" type="text" class="form-control" id="floatingInput" placeholder="Baked Potatoes"
+                                    <input required name="name" minlength="5" maxlength="100" type="text" class="form-control" id="floatingInput" placeholder="Baked Potatoes"
                                         value="{{ (!$hasErrors) ? ((isset($recipe)) ? $recipe->name : "") : ((isset($old['name'])) ? old('name') : '') }}">
                                     <label for="floatingInputName">Recipe title <span class='form-required'></span></label>
                                 </div>
                             </div>
                             <div class="col-md">
                                 <div class="form-floating" title="Choose the category of your recipe">
-                                    <select name="category" class="form-select" id="floatingSelectGrid" aria-label="Main category">
+                                    <select required name="category" class="form-select" id="floatingSelectGrid" aria-label="Main category">
                                         @foreach (\App\Models\Category::all() as $category)
                                             @if((!$hasErrors && isset($recipe) && $recipe->category->id == $category->id) ||
                                                 ($hasErrors && isset($old['category']) && old('category') == $category->id))
@@ -68,13 +68,13 @@
                             </div>
                         </div>
                         <div class="form-floating mb-3" title="Give a nice description to your recipe, so that people can have a better understanding of it">
-                            <textarea name="description" class="form-control" placeholder="Your awesome description here..." id="floatingTextarea2" style="height: 7rem">{{ (!$hasErrors) ? ((isset($recipe)) ? $recipe->description : "") : ((isset($old['description'])) ? old('description') : '') }}</textarea>
+                            <textarea name="description" required class="form-control" minlength="10" maxlength="1024" placeholder="Your awesome description here..." id="floatingTextarea2" style="height: 7rem">{{ (!$hasErrors) ? ((isset($recipe)) ? $recipe->description : "") : ((isset($old['description'])) ? old('description') : '') }}</textarea>
                             <label for="floatingTextarea2"> Description <span class='form-required'></span></label>
                         </div>
                         <div class="row g-3 mb-4">
                             <div class="col-sm">
                                 <div class="form-floating" title="How difficult to prepare is your recipe?">
-                                    <select name="difficulty" class="form-select" id="floatingSelectGrid" aria-label="Difficulty">
+                                    <select required name="difficulty" class="form-select" id="floatingSelectGrid" aria-label="Difficulty">
                                         <option name="difficulty" value="easy" {{ ((isset($recipe) && $recipe->difficulty === "easy") || ( $hasErrors && isset($old['difficulty']) && old('difficulty') === "easy")) ? "selected" : "" }}>Easy</option>
                                         <option name="difficulty" value="medium" {{ ((isset($recipe) && $recipe->difficulty === "medium") || ($hasErrors && isset($old['difficulty']) && old('difficulty') === "medium")) ? "selected" : "" }}>Medium</option>
                                         <option name="difficulty" value="hard" {{ ((isset($recipe) && $recipe->difficulty === "hard") || ($hasErrors && isset($old['difficulty']) && old('difficulty') === "hard")) ? "selected" : "" }}>Hard</option>
@@ -85,7 +85,7 @@
                             </div>
                             <div class="col-lg">
                                 <div class="form-floating" title="How many servings does your recipe have? It needs to be at least 1">
-                                    <input name="servings" type="number" class="form-control" id="floatingInputServings" placeholder="Baked Potatoes" value="{{ (!$hasErrors) ? ((isset($recipe)) ? $recipe->servings : 0) : ((isset($old['servings'])) ? old('servings') : '') }}">
+                                    <input name="servings" required type="number" class="form-control" min="1" id="floatingInputServings" placeholder="Baked Potatoes" value="{{ (!$hasErrors) ? ((isset($recipe)) ? $recipe->servings : 1) : ((isset($old['servings'])) ? old('servings') : '') }}">
                                     <label for="floatingInputServings">Number of servings <span class='form-required'></span></label>
                                 </div>
                             </div>
@@ -94,7 +94,7 @@
                                     <select class="form-select" id="tagSelect" aria-label="Quantity unit">
                                         <option></option>
                                     </select>
-                                    <label>Tags<span class='form-required'></span></label>
+                                    <label>Tags <span class='form-required'></span></label>
                                 </div>
                             </div>
                             <div class="search-div collapse navbar-collapse justify-content-center flex-grow-1 normalize mt-0" id="navbarSearch" data-bs-parent="#navbarContainer">
@@ -126,7 +126,7 @@
                             </ul>
                         </div>
 
-                        <h6 class="mb-3 d-inline-block">End Product Photos</h6> <span class='form-required'></span>
+                        <h6 class="mb-3 d-inline-block">End Product Photos</h6>
                         <div id="end-product-photos-input">
                             @if(isset($images))
                                 @foreach($images as $img)
@@ -135,7 +135,7 @@
                             @endif
                         </div>
 
-                        <button type="button" class="btn btn-primary next-step" style="float: right;">Next</button>
+                        <button type="button" id="first-step-submit" class="btn btn-primary next-step" style="float: right;">Next</button>
                     </div>
                     <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
                         <h3 class="mb-4">Ingredients</h3>
@@ -153,7 +153,7 @@
                         @endif
 
                         <button type="button" class="btn btn-secondary" id="addIngredientButton" title="Click here if you want to add another ingredient"><i class="fas fa-plus"></i> Add Ingredient</button>
-                        <button type="button" class="btn btn-primary next-step" style="float: right;">Next</button>
+                        <button type="button"  id="second-step-submit" class="btn btn-primary next-step" style="float: right;">Next</button>
                     </div>
                 <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
                 <h3 class="mb-4">Method</h3>
@@ -162,20 +162,20 @@
                 <div class="row g-3">
                     <div class="col-lg">
                         <div class="form-floating" title="How many minutes does it take to prepare your recipe?">
-                            <input name="preparation_time" type="number" class="form-control" id="preparationTime" placeholder="Preparation Time" value="{{ isset($recipe) ? $recipe->preparation_time : 0}}">
+                            <input name="preparation_time" required min="0" type="number" class="form-control" id="preparationTime" placeholder="Preparation Time" value="{{ isset($recipe) ? $recipe->preparation_time : 0}}">
                             <label for="preparationTime">Preparation <span class='form-required'></span></label>
                         </div>
                     </div>
                     <div class="col-lg">
                         <div class="form-floating" title="How many minutes does your recipe need to be in the oven?">
-                            <input name="cooking_time" type="number" class="form-control" id="cookingTime" placeholder="Cooking Time" value="{{ isset($recipe) ?  $recipe->cooking_time : 0 }}">
+                            <input name="cooking_time" required min="0" type="number" class="form-control" id="cookingTime" placeholder="Cooking Time" value="{{ isset($recipe) ?  $recipe->cooking_time : 0 }}">
                             <label for="cookingTime">Cooking <span class='form-required'></span></label>
                         </div>
                     </div>
                     <div class="col-lg">
                         <div class="form-floating" title="How many minutes does it take to make the final adjustments in the recipe preparation?">
-                            <input name="additional_time" type="number" class="form-control" id="additionalTime" placeholder="Additional Time" value="{{ isset($recipe) ? $recipe->additional_time : 0 }}">
-                            <label for="additionalTime">Additional</label>
+                            <input name="additional_time" required min="0" type="number" class="form-control" id="additionalTime" placeholder="Additional Time" value="{{ isset($recipe) ? $recipe->additional_time : 0 }}">
+                            <label for="additionalTime">Additional <span class='form-required'></label>
                         </div>
                     </div>
                 </div>

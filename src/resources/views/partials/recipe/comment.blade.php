@@ -2,7 +2,7 @@
 
     <div class="row g-0 p-3">
         <div class="col">
-            <img class="d-inline-block rounded-circle" src="{{ $comment->owner->profileImage() }}">
+            <img class="d-inline-block rounded-circle" src="{{ $comment->owner->profileImage() }}" alt="profile picture of {{$comment->owner->name}}, the author of the comment">
         </div>
         <div class="col-5 card-body">
             <h6 class="card-title"><a href="{{ url('/user/'.$comment->owner->username) }}">{{ $comment->owner->name }}</a> {{ isset($comment->rating) ? "reviewed" : "commented" }}:</h6>
@@ -38,7 +38,7 @@
         @endif
         </div>
     </div>
-    @foreach($comment->replies as $idx => $reply)
+    @foreach($comment->replies()->orderBy('post_time', 'asc')->get() as $idx => $reply)
         @include('partials.recipe.comment', [ 'comment' => $reply, 'depth' => $depth + 1 ])
     @endforeach
 </div>

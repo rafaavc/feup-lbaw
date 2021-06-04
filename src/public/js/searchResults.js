@@ -57,7 +57,7 @@ const registerListeners = () => {
                 ...getFilterBarData()
             };
 
-            console.log("Sending search:", data);
+
             let requestURL = url('/api/search/' + typeSearch);
             searchRequest(typeSearch, requestURL, data);
         }
@@ -116,7 +116,6 @@ const searchRequest = (typeSearch, requestURL, query, incrementTotalResults) => 
                 document.querySelector('strong.total-results').textContent = totalResults;
                 resolve();
             } else {
-                console.log(result.error);
                 reject();
             }
         });

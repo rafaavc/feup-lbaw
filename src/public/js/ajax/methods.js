@@ -11,8 +11,6 @@ export const makeRequest = (requestUrl, method, body, query) => new Promise((res
     if (method == 'GET') urlParams = {...body, ...query};
     else urlParams = {...query};
 
-    console.log("url params = ", urlParams)
-
     fetch(requestUrl + (Object.keys(urlParams).length ? '?' + encodeForAjax(urlParams) : ''), {
         method,
         headers: {
@@ -26,11 +24,9 @@ export const makeRequest = (requestUrl, method, body, query) => new Promise((res
             return {response, content};
         })
         .then((result) => {
-            console.log(`Received result of ${method} to ${requestUrl}:`, result.content);
             resolve(result);
         })
         .catch((error) => {
-            console.error(`Received error of ${method} to ${requestUrl}:`, error);
             reject(error);
         })
 })

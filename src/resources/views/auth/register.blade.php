@@ -9,8 +9,8 @@
 @endpush
 
 @push('js')
-    <script src="{{ asset('js/progressBar.js') }}" defer></script>
     <script src="{{ asset('js/signUp.js') }}" type="module"></script>
+    <script src="{{ asset('js/progressBar.js') }}" defer></script>
 @endpush
 
 @section('content')
@@ -82,11 +82,11 @@
                         <h3>Please enter your account details.</h3>
 
                         <span class='d-block mt-4'>Username <span class='form-required'></span></span>
-                        @include('partials.inputIcon', ['icon' => 'user', 'name' => 'username', 'required' => true])
+                        @include('partials.inputIcon', ['pattern' => '^[a-zA-Z0-9]+((_|\.)[a-zA-Z0-9]+)*$', 'minlength' => "4", 'maxlength' => "20", 'title' => "Must contain only letters numbers, '_' and '.', but the last two can only appear surrounded by letters or numbers", 'icon' => 'user', 'name' => 'username', 'required' => true])
                         <span class='d-block mt-4'>Email Address <span class='form-required'></span></span>
-                        @include('partials.inputIcon', ['icon' => 'envelope', 'name' => 'email', 'required' => true, 'type' => 'text'])
+                        @include('partials.inputIcon', ['icon' => 'envelope', 'name' => 'email', 'minlength' => "5", 'maxlength' => "100", 'required' => true, 'type' => 'email'])
                         <span class='d-block mt-4'>Password <span class='form-required'></span></span>
-                        @include('partials.inputIcon', ['icon' => 'lock', 'name' => 'password', 'required' => true, 'type' => 'password'])
+                        @include('partials.inputIcon', ['icon' => 'lock', 'name' => 'password', 'minlength' => "5", 'required' => true, 'type' => 'password'])
                         <span class='d-block mt-4'>Repeat Password <span class='form-required'></span></span>
                         @include('partials.inputIcon', ['icon' => 'lock', 'name' => 'repeat-password', 'required' => true, 'type' => 'password'])
 
@@ -102,11 +102,11 @@
                         <h1>Sign Up</h1>
                         <h3>Please enter your personal details.</h3>
                         <span class='d-block mt-4'>Name <span class='form-required'></span></span>
-                        @include('partials.inputIcon', ['icon' => 'user', 'name' => 'name', 'required' => true])
+                        @include('partials.inputIcon', ['icon' => 'user', 'minlength' => "4", 'maxlength' => "60", 'name' => 'name', 'required' => true])
                         <span class='d-block mt-4'>Country <span class='form-required'></span></span>
                         <!--include('partials.inputIcon', ['icon' => 'flag', 'name' => 'country', 'required' => true])-->
                         <div class="d-flex mb-3">
-                            <select name="countryId" id="country" class="form-select form-control me-2">
+                            <select name="countryId" id="country" required class="form-select form-control me-2">
                                 @foreach(App\Models\Country::all() as $country)
                                     <option
                                         value="{{$country->id}}" {{$country->name == "Portugal" ? "selected" : ""}}>{{$country->name}}</option>
@@ -114,18 +114,19 @@
                             </select>
                         </div>
                         <span class='d-block mt-4'>City</span>
-                        @include('partials.inputIcon', ['icon' => 'map-marker-alt', 'name' => 'city'])
+                        @include('partials.inputIcon', ['icon' => 'map-marker-alt', 'maxlength' => 60, 'name' => 'city'])
                         <span class='d-block mt-4'>Profile Photo</span>
                         <div id="profile-photo-input"></div>
                         <div class="d-grid gap-2 col-6 mx-auto my-2">
-                            <button type="button" class="btn btn-primary d-block mt-3 next-step">Next</button>
+                            <button type="button" id="second-step" class="btn btn-primary d-block mt-3 next-step">Next</button>
                         </div>
                     </div>
                     <div class="tab-pane fade pt-5" id="pills-contact" role="tabpanel"
                          aria-labelledby="pills-contact-tab">
                         <div class="text-center">
                             <p class="mb-5"><strong class="finish-msg">YOU'RE IN!</strong></p>
-                            <img src="https://thumbs.gfycat.com/ShyCautiousAfricanpiedkingfisher-max-1mb.gif">
+                            <img src="https://thumbs.gfycat.com/ShyCautiousAfricanpiedkingfisher-max-1mb.gif"
+                                 alt="image representing that the registration was successful">
                             <div class="d-grid gap-2 col-6 mx-auto mt-5">
                                 <input type="submit" class="btn btn-primary d-block" name="Finish"></input>
                             </div>

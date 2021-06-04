@@ -13,12 +13,10 @@ const registerDeleteButtonListeners = () => {
         deleteBtn.addEventListener('click', () => {
             let userRow = deleteBtn.closest('tr');
             let username = userRow.firstElementChild.textContent;
-            console.log(username)
 
             makeRequest(url('api/user/' + username), 'DELETE')
                 .then((result) => {
                     if (result.response.status == 200) {
-                        console.log('Deleted profile successfully!');
                         userRow.remove();
                         pushWindowState();
                     }
@@ -90,7 +88,6 @@ const registerListeners = () => {
                 'isAdmin': true
             };
 
-            console.log("Sending search:", data);
             let requestURL = url('/api/search/people');
             searchRequest(requestURL, data, false);
         }
