@@ -36,3 +36,5 @@ const coverProperties = defaultProperties(['bg-placeholder-img']);
 
 new FileInput(coverPictureInput, 'coverImage', coverProperties, preexistingCoverImages, null, () => 'previousCoverImage');
 
+
+document.querySelector('.delete-group-button').addEventListener('click', (e) => e.preventDefault());

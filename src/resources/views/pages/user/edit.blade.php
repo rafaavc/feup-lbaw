@@ -114,7 +114,7 @@ $role = "member";
                 &nbsp; Change Password
             </button>
 
-            <a href="" class="btn btn-danger submit-button my-2 deleteProfile" data-toggle="tooltip" data-placement="top" title="Delete your profile and all of your recipes, comments and groups">
+            <button data-bs-toggle="modal" data-bs-target="#profileDeleteConfirmationModal" class="btn btn-danger submit-button my-2 deleteProfile" data-toggle="tooltip" data-placement="top" title="Delete your profile and all of your recipes, comments and groups">
                 <i class="fas fa-trash me-3"></i>
                 Delete Profile
             </a>
@@ -122,3 +122,11 @@ $role = "member";
     </form>
 
 </div>
+@include('partials.confirmation', [
+    'modalId' => 'profileDeleteConfirmationModal',
+    'modalTitle' => 'Delete your account',
+    'modalMessage' => 'Do you really want to delete your profile? This action is irreversible!<br/><br/>We\'re sad to see you go.',
+    'modalYesId' => 'confirmAccountDeletion',
+    'modalYesText' => 'Yes',
+    'modalNoText' => 'No'
+])

@@ -5,8 +5,9 @@ import { url } from './utils/url.js';
 
 
 // Delete Profile
+document.querySelector('.deleteProfile').addEventListener('click', (e) => e.preventDefault())
 
-document.querySelector('.deleteProfile').addEventListener('click', () => {
+document.querySelector('#confirmAccountDeletion').addEventListener('click', () => {
     event.preventDefault();
     const urlPath = new URL(window.location.href).pathname;
     const username = /\/.*\/(.*)\/.*/.exec(urlPath)[1];

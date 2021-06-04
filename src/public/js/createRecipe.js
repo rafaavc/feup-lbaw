@@ -1,11 +1,26 @@
 import { defaultProperties } from './files/defaultProperties.js';
-import { FileInput } from './files/FileInput.js'
+import { FileInput } from './files/FileInput.js';
+import { getStepRow } from './templates/StepRow.js';
+
+
+const alreadyHaveListeners = {
+    ingredientSelects: [],
+    ingredientAnchors: [],
+    searchBoxTexts: [],
+    tagAnchors: [],
+    tagSelect: []
+}
 
 const addIngredientButton = document.querySelector('#addIngredientButton');
 addIngredientButton.addEventListener('click', () => {
+    // const elem = getIngredientRow();
     const elem = document.createElement('template');
     elem.innerHTML = addIngredientButton.previousElementSibling.outerHTML;
-    addIngredientButton.parentNode.insertBefore(elem.content.firstElementChild, addIngredientButton);
+    const el = elem.content.firstElementChild;
+    const innerHtml = el.innerHTML;
+    const id = innerHtml.match(/ingredients\[([0-9]+)\]/)[1];
+    el.innerHTML = innerHtml.replace(/ingredients\[[0-9]+\]/g, `ingredients[${Number(id) + 1}]`);
+    addIngredientButton.parentNode.insertBefore(el, addIngredientButton);
     registerEventListeners();
 
     // JS's bug...
@@ -23,11 +38,17 @@ let stepCounter = steps[steps.length - 1].textContent.slice(-1);
 registerEventListeners();
 removeTagListeners();
 
+
+let currentStepId = 0;
+
+const createStepPhotoInput = (input, preexistingImages) => {
+    new FileInput(input, `steps[${currentStepId}][image]`, defaultProperties(), preexistingImages, null, () => `steps[${currentStepId}][previousImage]`, (fileName) => fileName);
+    currentStepId++;
+}
+
 const addStepButton = document.querySelector('#addStepButton');
 addStepButton.addEventListener('click', () => {
 
-    const elem = document.createElement('template');
-    elem.innerHTML = addStepButton.previousElementSibling.outerHTML;
 
     const header = document.createElement('h5');
     header.classList.add('mb-3');
@@ -35,13 +56,23 @@ addStepButton.addEventListener('click', () => {
     header.innerText = 'Step ' + stepCounter;
 
     addStepButton.parentNode.insertBefore(header, addStepButton);
-    addStepButton.parentNode.insertBefore(elem.content.firstElementChild, addStepButton);
+    addStepButton.insertAdjacentHTML('beforebegin', getStepRow(currentStepId));
+
+    const elem = addStepButton.previousElementSibling;
+
+    console.log(elem);
+
+    const photoInput = elem.querySelector('.step-photo-input');
+    console.log(photoInput);
+    createStepPhotoInput(photoInput, []);
 })
 
 function registerEventListeners() {
-    const ingredientSelects = Array.from(document.querySelectorAll("select#ingredientSelect"));
+    const ingredientSelects = Array.from(document.querySelectorAll("select.ingredientSelect"));
 
     ingredientSelects.forEach(ingredientSelect => {
+        if (alreadyHaveListeners.ingredientSelects.includes(ingredientSelect)) return;
+        alreadyHaveListeners.ingredientSelects.push(ingredientSelect);
         ingredientSelect.addEventListener('mousedown', (event) => {
             event.preventDefault();
             let target = event.target;
@@ -52,11 +83,15 @@ function registerEventListeners() {
 
     const ingredientAnchors = Array.from(document.querySelectorAll("a.ingredient"));
     ingredientAnchors.forEach(ingredient => {
+        if (alreadyHaveListeners.ingredientAnchors.includes(ingredient)) return;
+        alreadyHaveListeners.ingredientAnchors.push(ingredient);
         ingredient.addEventListener('click', ingredientSelected);
     });
 
     const searchBoxTexts = Array.from(document.querySelectorAll("input.searchBox-text"));
     searchBoxTexts.forEach(searchBox => {
+        if (alreadyHaveListeners.searchBoxTexts.includes(searchBox)) return;
+        alreadyHaveListeners.searchBoxTexts.push(searchBox);
         searchBox.addEventListener('keyup', (event) => {
             updateSearchItems(event.target);
         });
@@ -64,10 +99,14 @@ function registerEventListeners() {
 
     const tagAnchors = Array.from(document.querySelectorAll("a.tag"));
     tagAnchors.forEach(ingredient => {
+        if (alreadyHaveListeners.tagAnchors.includes(ingredient)) return;
+        alreadyHaveListeners.tagAnchors.push(ingredient);
         ingredient.addEventListener('click', tagSelected);
     });
 
     const tagSelect = document.querySelector("select#tagSelect");
+    if (alreadyHaveListeners.tagSelect.includes(tagSelect)) return;
+    alreadyHaveListeners.tagSelect.push(tagSelect);
     tagSelect.addEventListener('mousedown', (event) => {
         event.preventDefault();
         let target = event.target;
@@ -233,8 +272,8 @@ for (const input of stepPhotoInputs)
     }
     console.log("Found these preexisting images:", preexistingImages);
 
-    const stepId = Number(input.dataset.index) - 1;
+    currentStepId = Number(input.dataset.index) - 1;
     input.innerHTML = '';
 
-    new FileInput(input, `steps[${stepId}][image]`, defaultProperties(), preexistingImages, null, () => `steps[${stepId}][previousImage]`, (fileName) => fileName);
+    createStepPhotoInput(input, preexistingImages);
 }

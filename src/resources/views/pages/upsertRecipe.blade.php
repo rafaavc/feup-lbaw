@@ -182,9 +182,15 @@
 
                 <h4 class="mt-5 mb-4">Steps</h4>
 
+                @if(isset($recipe) && $recipe->group != null)
+                    <input name="group" value="{{ $recipe->group }}" class="d-none">
+                @else
+                    <input name="group" value="{{ isset($groupId) ? $groupId : '' }}" class="d-none">
+                @endif
+
                 @if($hasErrors && isset($old['steps']))
                     @for($i = 0; $i < sizeof(old('steps')); $i++)
-                        @include('partials.recipe.step', [ 'oldStep' => old('steps')[$i], 'step' => $steps[$i], 'index' => $i + 1, 'hasErrors' => true ])
+                        @include('partials.recipe.step', [ 'oldStep' => old('steps')[$i], 'step' => isset($steps) ? $steps[$i] : undefined, 'index' => $i + 1, 'hasErrors' => true ])
                     @endfor
                 @elseif(isset($recipe))
                     @foreach ($steps as $step)
@@ -192,12 +198,6 @@
                     @endforeach
                 @else
                     @include('partials.recipe.step', ['index' => 1, 'hasErrors' => false])
-                @endif
-
-                @if(isset($recipe) && $recipe->group != null)
-                    <input name="group" value="{{ $recipe->group }}" class="d-none">
-                @else
-                    <input name="group" value="{{ isset($groupId) ? $groupId : '' }}" class="d-none">
                 @endif
 
 

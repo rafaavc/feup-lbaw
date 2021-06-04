@@ -30,6 +30,7 @@ button[role=a] {
 a, button[role=a] {
     color: var(--accent-color);
     transition: color .2s;
+    background-color: transparent;
 }
 
 a:hover, button[role=a]:hover {
@@ -40,6 +41,25 @@ button[role=a]:focus,
 button[role=a].active:focus,
 button[role=a]:active:focus {
     color: var(--accent-color-lighter);
+    box-shadow: none !important;
+    background-color: transparent !important;
+}
+
+a.btn.group-box-link {
+    padding: .25rem .5rem;
+    padding-right: 1rem;
+    transition: background-color .2s, color .2s, border .2s;
+}
+
+a.btn.group-box-link:hover {
+    background-color: rgb(241, 241, 241);
+    border: 1px solid rgb(235, 235, 235);
+}
+
+a.btn.group-box-link:focus,
+a.btn.group-box-link.active:focus,
+a.btn.group-box-link:active:focus {
+    color: var(--accent-color);
     box-shadow: none !important;
 }
 
@@ -279,3 +299,5 @@ body, html {
     transition: opacity 400ms linear;
     user-select: none;
 }
+
+

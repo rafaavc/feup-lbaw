@@ -3,24 +3,26 @@
 @endpush
 
 <div class="card shadow-sm recipe-post mt-5">
-    <div class="col-sm post-options">
-        <div class="dropdown">
-            <button type="button" class="btn edit-photo-button float-end me-2 mt-2 btn-no-shadow"
-                    data-bs-toggle="dropdown" aria-expanded="false">
-                <i class="fas fa-ellipsis-h"></i>
-            </button>
-            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton1">
-                @if(Gate::inspect('update', $recipe)->allowed())
-                    <li><a class="dropdown-item" href="#">Edit Post</a></li>
-                @endif
-                @if(Gate::inspect('delete', $recipe)->allowed())
-                    <li><a class="dropdown-item" href="#">Delete Post</a></li>
-                @else
-                    <li><a class="dropdown-item" href="#">Report Post</a></li>
-                @endif
-            </ul>
+    @if(Gate::inspect('update', $recipe)->allowed() || Gate::inspect('delete', $recipe)->allowed())
+        <div class="col-sm post-options">
+            <div class="dropdown">
+                <button type="button" class="btn edit-photo-button float-end me-2 mt-2 btn-no-shadow"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                    <i class="fas fa-ellipsis-h"></i>
+                </button>
+                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton1">
+                    @if(Gate::inspect('update', $recipe)->allowed())
+                        <li><button class="dropdown-item ms-3 has-link" role="a" data-href="{{ url("recipe/$recipe->id/edit") }}">Edit Post</button></li>
+                    @endif
+                    @if(Gate::inspect('delete', $recipe)->allowed())
+                        <li><button class="dropdown-item ms-3" role="a" data-bs-toggle="modal" data-bs-target="#recipeDeleteConfirmationModal{{ $recipe->id }}">Delete Post</button></li>
+                    @endif
+                        {{-- <li><a class="dropdown-item" href="#">Report Post</a></li>
+                    @endif --}}
+                </ul>
+            </div>
         </div>
-    </div>
+    @endif
 
     <div class="card-body">
 
@@ -49,9 +51,8 @@
                         <h4 class="card-title">{{$recipe->name}}</h4>
                         <p class="card-text post-description">{{$recipe->description}}</p>
                         <p>
-                            <small class="text-muted">{{$recipe->score}}
-                                @include('partials.stars', ['rating' => $recipe->score])
-                                | {{$recipe->reviews()->count()}} reviews
+                            <small class="text-muted">
+                                @include('partials.rating', [ 'score' => $recipe->score, 'num_rating' => $recipe->num_rating ])
                             </small>
                         </p>
                     </div>
@@ -76,9 +77,11 @@
     </div>
     <div class="btn-group col-sm d-flex justify-content-center text-center">
         @if(Auth::user() != null)
-            <button type="button" class="btn post-button add-to-favourites-button">
-                <i class="fas fa-heart me-2 {{$recipe->membersWhoFavourited()->where('id_member', '=', Auth::user()->id)->count() == 1 ? "added" : "" }}"></i>
-                <span class="button-caption">Add to Favourites</span>
+            <button type="button" class="btn post-button add-to-favourites-recipe-button"
+            data-favourite-state="{{ $recipe->isFavourited() ? "true" : "false" }}"
+            data-recipe-id="{{ $recipe->id }}" data-complete-text="1">
+                <i class="fas fa-heart me-2"></i>
+                <span class="button-caption">{{ $recipe->isFavourited() ? "Remove from Favourites" : "Add to Favourites" }}</span>
             </button>
         @endif
         <a type="button" href="{{url("recipe/$recipe->id")}}" class="btn post-button">
@@ -91,3 +94,12 @@
         </button>
     </div>
 </div>
+@include('partials.confirmation', [
+    'modalId' => 'recipeDeleteConfirmationModal'.$recipe->id,
+    'modalTitle' => 'Delete recipe "'.$recipe->name.'"',
+    'modalMessage' => 'Do you really want to delete this recipe? This action is irreversible!',
+    'modalYesClass' => 'deleteRecipePreviewButton',
+    'modalYesData' => $recipe->id,
+    'modalYesText' => 'Yes',
+    'modalNoText' => 'No'
+])

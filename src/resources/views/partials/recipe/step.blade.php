@@ -19,7 +19,7 @@
         <label for="floatingTextarea2">Step Description <span class='form-required'></span></label>
     </div>
     <h6 class="mb-3">Step Photos</h6>
-    <div class="step-photo-input" data-index={{ $index }}>
+    <div class="step-photo-input" data-index="{{ $index }}">
         @if (isset($stepImages) && array_key_exists($step->id, $stepImages))
             <span data-url="{{ $stepImages[$step->id]['url'] }}" data-name="{{ $stepImages[$step->id]['name'] }}"></span>
         @endif
