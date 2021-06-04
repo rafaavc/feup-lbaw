@@ -60,10 +60,7 @@ addStepButton.addEventListener('click', () => {
 
     const elem = addStepButton.previousElementSibling;
 
-    console.log(elem);
-
     const photoInput = elem.querySelector('.step-photo-input');
-    console.log(photoInput);
     createStepPhotoInput(photoInput, []);
 })
 
@@ -271,7 +268,6 @@ for (const input of stepPhotoInputs)
             fileName: child.dataset.name
         });
     }
-    console.log("Found these preexisting images:", preexistingImages);
 
     currentStepId = Number(input.dataset.index) - 1;
     input.innerHTML = '';

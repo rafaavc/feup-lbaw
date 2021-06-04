@@ -54,7 +54,6 @@ const signUpValidation = () => {
 
     emailInput.addEventListener('blur', (event) => {
         const email = emailInput.value;
-        console.log(email);
 
         makeRequest(url(`api/validation/email`), 'GET', { email: email })
         .then(res => {
@@ -72,7 +71,6 @@ const signUpValidation = () => {
 
     usernameInput.addEventListener('blur', (event) => {
         const username = usernameInput.value;
-        console.log(username);
 
         makeRequest(url(`api/validation/username`), 'GET', { username: username })
         .then(res => {

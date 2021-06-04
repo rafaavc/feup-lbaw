@@ -45,12 +45,7 @@ const updateReadNotifications = () => {
         deleteIds = [... new Set(deleteIds)];
 
         if(deleteIds.length > 0) {
-            makeRequest(url('api/notification/deleteNotification'), 'PUT', { notificationIds: deleteIds })
-            .then((result) => {
-                if (result.response.status == 200) {
-                    console.log(result.content.message);
-                }
-            });
+            makeRequest(url('api/notification/deleteNotification'), 'PUT', { notificationIds: deleteIds });
         }
 
 
@@ -61,12 +56,7 @@ const updateReadNotifications = () => {
         favouriteIds = [... new Set(favouriteIds)];
 
         if(favouriteIds.length > 0) {
-            makeRequest(url('api/notification/favouriteNotification'), 'PUT', { notificationIds: favouriteIds })
-            .then((result) => {
-                if (result.response.status == 200) {
-                    console.log(result.content.message);
-                }
-            });
+            makeRequest(url('api/notification/favouriteNotification'), 'PUT', { notificationIds: favouriteIds });
         }
 
         // Comment/Review
@@ -76,12 +66,7 @@ const updateReadNotifications = () => {
         commentIds = [... new Set(commentIds)];
 
         if(commentIds.length > 0) {
-            makeRequest(url('api/notification/commentNotification'), 'PUT', { notificationIds: commentIds })
-            .then((result) => {
-                if (result.response.status == 200) {
-                    console.log(result.content.message);
-                }
-            });
+            makeRequest(url('api/notification/commentNotification'), 'PUT', { notificationIds: commentIds });
         }
 
         let affectedNotifications = deleteIds.length + favouriteIds.length + commentIds.length;

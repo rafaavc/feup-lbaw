@@ -118,7 +118,6 @@ const handleCommentFormSubmit = (event) => {
         body.rating = rating;
         hasRating = true;
     }
-    console.log("Sending comment", body);
     makeRequest(url('/api/comment'), 'POST', body)
         .then((result) => {
             if (result.response.status == 200) {
@@ -149,7 +148,6 @@ const handleReplyFormSubmit = (event, form, comment) => {
         depth
     };
 
-    console.log("Sending comment", body);
     makeRequest(url('/api/comment'), 'POST', body)
         .then((result) => {
             if (result.response.status == 200) {
@@ -331,7 +329,6 @@ const refreshCommentDeleteButtons = () => {
                         commentFeedback.showMessage("Comment(s) deleted successfully!");
                         if (comment.dataset.hasReview == "true") {
                             showRatingInputs();
-                            console.log("Showed rating input");
                         }
                         comment.remove();
                     }

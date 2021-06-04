@@ -137,7 +137,7 @@ class RecipeController extends Controller
             'recipe' => $recipe,
             'ingredients' => $recipe->ingredients,
             'tags' => $recipe->tags,
-            'comments' => $recipe->comments()->whereNotIn('id', $commentsWithFathersIds)->get(),
+            'comments' => $recipe->comments()->whereNotIn('id', $commentsWithFathersIds)->orderBy('post_time', 'asc')->get(),
             'author' => $recipe->author,
             'steps' => $recipe->steps,
             'category' => $recipe->category,

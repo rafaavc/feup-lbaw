@@ -19,7 +19,6 @@ document.querySelector('#confirmAccountDeletion').addEventListener('click', () =
     makeRequest(url('api/user/' + username), 'DELETE')
         .then((result) => {
             if (result.response.status == 200) {
-                console.log('Deleted profile successfully!');
                 window.location.href = entireURL;
             }
         });

@@ -83,7 +83,6 @@ export class FileInput {
         this.freeInput.addEventListener('change', this.onFreeInputChange.bind(this, this.freeInput));
     }
     onFreeInputChange(input) {
-        console.log("onFreeInputChange");
         const file = input.files[0];
         const reader = new FileReader();
         reader.onload = ((e) => {
@@ -97,7 +96,6 @@ export class FileInput {
      */
     onAddFileClick(e) {
         e.preventDefault();
-        console.log("onAddFileClick");
         if (this.freeInput)
             this.freeInput.click();
     }

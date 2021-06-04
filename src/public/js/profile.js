@@ -17,7 +17,6 @@ if(document.body.contains(document.querySelector('button.user-follow'))) {
 
     const followBtnHandler = (event) => {
         let requestURL = url('/api/user/' + profileName + "/request");
-        console.log(requestURL);
         makeRequest(requestURL, (followState == 'Follow') ? 'POST' : 'DELETE')
             .then((result) => {
                 if(result.response.status == 200) {

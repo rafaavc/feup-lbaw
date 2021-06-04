@@ -26,7 +26,6 @@ const interval = setInterval(() => {
     }
     last = Number.parseFloat(newHeight);
     document.body.style.paddingTop = newHeight;
-    console.log(`Updated body top padding (${last}).`);
     if (calculationCounter > 2) clearInterval(interval);
 }, 200);  // sometimes there were problems in the calculation
 
@@ -74,7 +73,6 @@ dropdownMenus.forEach(menu => menu.addEventListener('click', event => event.stop
 const buttonLinks = document.querySelectorAll('button[role=a].has-link');
 
 for (const link of buttonLinks) {
-    console.log(link)
     link.addEventListener('click', () => window.open(link.dataset.href, '_self'));
 }
 

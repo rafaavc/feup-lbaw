@@ -38,7 +38,7 @@
         @endif
         </div>
     </div>
-    @foreach($comment->replies as $idx => $reply)
+    @foreach($comment->replies()->orderBy('post_time', 'asc')->get() as $idx => $reply)
         @include('partials.recipe.comment', [ 'comment' => $reply, 'depth' => $depth + 1 ])
     @endforeach
 </div>
