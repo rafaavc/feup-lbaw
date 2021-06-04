@@ -18,7 +18,4 @@
             <p>This user has not made any reviews.</p>
         @endif
     </div>
-    <!--<div class="row">
-       <button type="button" class="btn btn-dark load-more w-25 mt-5 mx-auto">Load More</button>
-   </div>-->
 @endsection

@@ -104,7 +104,6 @@
                         <span class='d-block mt-4'>Name <span class='form-required'></span></span>
                         @include('partials.inputIcon', ['icon' => 'user', 'minlength' => "4", 'maxlength' => "60", 'name' => 'name', 'required' => true])
                         <span class='d-block mt-4'>Country <span class='form-required'></span></span>
-                        <!--include('partials.inputIcon', ['icon' => 'flag', 'name' => 'country', 'required' => true])-->
                         <div class="d-flex mb-3">
                             <select name="countryId" id="country" required class="form-select form-control me-2">
                                 @foreach(App\Models\Country::all() as $country)
