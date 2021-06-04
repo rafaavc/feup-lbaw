@@ -48,29 +48,29 @@ Route::get('admin/users', 'MemberController@list')->middleware('IsAdmin');
 // ----------------------------------------------------------------
 // Recipe pages
 // ----------------------------------------------------------------
-Route::get('/recipe/{recipe}', 'RecipeController@view')->middleware('can:select,recipe');
-Route::post('/recipe/{recipe}/delete', 'RecipeController@deleteAction')->middleware('can:delete,recipe');
-Route::get('/recipe/{recipe}/edit', 'RecipeController@edit')->middleware('can:update,recipe');
-Route::post('/recipe/{recipe}/edit', 'RecipeController@editPost')->middleware('can:update,recipe');
+Route::get('/recipe/{recipe}', 'RecipeController@view')->middleware('can:select,recipe')->where('recipe', '[0-9]+');
+Route::post('/recipe/{recipe}/delete', 'RecipeController@deleteAction')->middleware('can:delete,recipe')->where('recipe', '[0-9]+');
+Route::get('/recipe/{recipe}/edit', 'RecipeController@edit')->middleware('can:update,recipe')->where('recipe', '[0-9]+');
+Route::post('/recipe/{recipe}/edit', 'RecipeController@editPost')->middleware('can:update,recipe')->where('recipe', '[0-9]+');
 Route::get('/recipe', 'RecipeController@create')->middleware('can:insert,App\Models\Recipe');
 Route::post('/recipe', 'RecipeController@createRecipe')->middleware('can:insert,App\Models\Recipe');
 
 // ----------------------------------------------------------------
 // Group pages
 // ----------------------------------------------------------------
-Route::get('group/{group}', 'GroupController@view');
-Route::get('group/{group}/edit', 'GroupController@update')->middleware('can:update,group');
-Route::post('group/{group}/edit', 'GroupController@updateAction')->middleware('can:update,group');
-Route::get('group/{group}/delete', 'GroupController@deleteAction')->middleware('can:delete,group');
+Route::get('group/{group}', 'GroupController@view')->where('group', '[0-9]+');
+Route::get('group/{group}/edit', 'GroupController@update')->middleware('can:update,group')->where('group', '[0-9]+');
+Route::post('group/{group}/edit', 'GroupController@updateAction')->middleware('can:update,group')->where('group', '[0-9]+');
+Route::get('group/{group}/delete', 'GroupController@deleteAction')->middleware('can:delete,group')->where('group', '[0-9]+');
 Route::get('group', 'GroupController@create')->middleware('can:create,App\Models\Group');
 Route::post('group', 'GroupController@createAction')->middleware('can:create,App\Models\Group');
 
-Route::get('group/{group}/recipe', 'RecipeController@create'); // TODO: add this to the openapi
+Route::get('group/{group}/recipe', 'RecipeController@create')->where('group', '[0-9]+'); // TODO: add this to the openapi
 
 // ----------------------------------------------------------------
 // List pages
 // ----------------------------------------------------------------
-Route::get('category/{category}', 'CategoryController@view');
+Route::get('category/{category}', 'CategoryController@view')->where('category', '[0-9]+');
 Route::get('feed', 'FeedController@view');
 Route::get('search', 'SearchController@view');
 
@@ -86,3 +86,9 @@ Route::post('message', 'ChatController@sendMessage');
 // ----------------------------------------------------------------
 Route::get('admin/reports', 'ReportController@list');
 
+// ----------------------------------------------------------------
+// Fallback
+// ----------------------------------------------------------------
+Route::fallback(function () {
+    return view('errors.404');
+});
