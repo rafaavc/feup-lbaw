@@ -38,7 +38,7 @@
                     <table class="table table-borderless mb-0">
                         <tr>
                             <td>
-                                <label for="yieldsInput" class="form-label">Yields</label>
+                                <label class="form-label">Yields</label>
                             </td>
                             <td>
                                 <span class="number">{{ $recipe->servings }}</span> servings
