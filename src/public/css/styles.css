@@ -91,7 +91,7 @@ select.invalid:focus, input.invalid:focus {
 }
 
 .fa-star.active {
-    color: var(--accent-color); /* #f19b08 */
+    color: var(--accent-color);
 }
 
 @media (max-width: 1500px) {

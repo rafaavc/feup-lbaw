@@ -13,7 +13,6 @@ const alreadyHaveListeners = {
 
 const addIngredientButton = document.querySelector('#addIngredientButton');
 addIngredientButton.addEventListener('click', () => {
-    // const elem = getIngredientRow();
     const elem = document.createElement('template');
     elem.innerHTML = addIngredientButton.previousElementSibling.outerHTML;
     const el = elem.content.firstElementChild;
@@ -147,7 +146,6 @@ function tagSelected(event) {
     let tagList = event.target.closest(".row").nextElementSibling.querySelector(".tag-list");
     if(checkNotRepeatedTag(event.target.dataset.value, tagList)) {
         let li = document.createElement("li");
-        // li.value = event.target.getAttribute("value");
         li.textContent = event.target.textContent;
         let span = document.createElement("span");
         span.classList.add("close");
@@ -156,7 +154,6 @@ function tagSelected(event) {
         tagList.append(li);
         let hiddenInput = document.createElement("input");
         hiddenInput.classList.add("d-none");
-        // hiddenInput.setAttribute("value", event.target.getAttribute("value"));
         hiddenInput.setAttribute("value", event.target.dataset.value);
         hiddenInput.setAttribute("name", "tags[]");
         tagList.appendChild(hiddenInput);
@@ -240,7 +237,6 @@ function setInvalidElement(elem) {
         if(elem.value == "") {
             elem.focus();
             elem.classList.add('invalid');
-            // elem.style.borderColor = "red";
         }
         else
             return true;

@@ -68,6 +68,5 @@ button.btn.no-btn:focus {
 }
 
 .nav-item button {
-    /*position: relative;*/
     bottom: 0.25em;
 }

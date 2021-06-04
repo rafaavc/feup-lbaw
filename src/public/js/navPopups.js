@@ -1,9 +1,6 @@
 import { makeRequest } from './ajax/methods.js'
 import { url } from './utils/url.js';
 
-// const messagesPopupButton = document.querySelector('#messagesPopupButton');
-// messagesPopupButton.dataset.bsContent = ;
-
 const popoverButtons = document.querySelectorAll('.nav-popover');
 let notificationPopOver;
 

@@ -2,9 +2,7 @@
     --input-spacing: 1em;
 }
 
-/*
-    textarea with button
-*/
+/* textarea with button */
 .text-area-with-button input[type="submit"] {
     float: right;
     position: relative;
