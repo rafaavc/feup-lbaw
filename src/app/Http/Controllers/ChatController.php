@@ -13,6 +13,7 @@ class ChatController extends Controller
 {
     public function __construct()
     {
+        parent::__construct(); // since PHP5
         $this->middleware('auth');
     }
     /**
