@@ -74,7 +74,7 @@
                         </li>
                     </ul>
                 </div>
-                <form class="tab-content" id="pills-tabContent" method="post" enctype="multipart/form-data">
+                <form class="tab-content register-tb" id="pills-tabContent" method="post" enctype="multipart/form-data">
                     @csrf
                     <div class="tab-pane fade show active" id="pills-home" role="tabpanel"
                          aria-labelledby="pills-home-tab">
