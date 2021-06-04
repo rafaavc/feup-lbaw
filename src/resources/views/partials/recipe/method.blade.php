@@ -12,7 +12,7 @@
                         {{ $step->description }}
                     </div>
                     <?php if (isset($step['image'])) { ?>
-                        <img class="col-12 col-md-3 d-inline-block mt-3 mt-md-0 ms-md-3" src="{{ $step['image'] }}">
+                        <img class="col-12 col-md-3 d-inline-block mt-3 mt-md-0 ms-md-3" src="{{ $step['image'] }}" alt="image of step {{$step->name}}">
                     <?php } ?>
                 </div>
             </div>

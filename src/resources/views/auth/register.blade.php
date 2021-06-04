@@ -125,7 +125,8 @@
                          aria-labelledby="pills-contact-tab">
                         <div class="text-center">
                             <p class="mb-5"><strong class="finish-msg">YOU'RE IN!</strong></p>
-                            <img src="https://thumbs.gfycat.com/ShyCautiousAfricanpiedkingfisher-max-1mb.gif">
+                            <img src="https://thumbs.gfycat.com/ShyCautiousAfricanpiedkingfisher-max-1mb.gif"
+                                 alt="image representing that the registration was successful">
                             <div class="d-grid gap-2 col-6 mx-auto mt-5">
                                 <input type="submit" class="btn btn-primary d-block" name="Finish"></input>
                             </div>
