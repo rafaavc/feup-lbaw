@@ -17,8 +17,8 @@ class GroupController extends Controller
     protected $table = "tb_group";
 
     private static $validation = [
-        'name' => 'required|string',
-        'description' => 'required|string',
+        'name' => 'required|string|min:5|max:60',
+        'description' => 'required|string|min:10|max:1024',
         'visibility' => 'required|boolean',
         'profile_photo' => 'nullable|file|image|mimes:jpeg,png,jpg,gif,bmp',
         'cover_photo' => 'nullable|file|image|mimes:jpeg,png,jpg,gif,bmp'

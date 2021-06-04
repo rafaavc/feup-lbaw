@@ -59,13 +59,13 @@
 
         <h6 class="area-title mt-4" title="Give a name to this group">Group Name <span class='form-required'></span></h6>
         <div class="form-group">
-            <textarea name="name" class="form-control mb-4 p-3 edit-profile-text-input" rows="1" required
-                      style="resize: none;">{{ isset($group) ? $group->name : "" }}</textarea>
+            <input required type="text" minlength="5" maxlength="60" name="name" class="form-control mb-4 p-3 edit-profile-text-input" rows="1" required
+                      style="resize: none;" value="{{ isset($group) ? $group->name : "" }}"></input>
         </div>
 
         <h6 class="area-title" title="Give a nice description to this group">Group Description <span class='form-required'></span></h6>
         <div class="form-group">
-            <textarea name="description" class="form-control mb-4 p-3 edit-profile-text-input" required
+            <textarea required minlength="10" maxlength="1024" name="description" class="form-control mb-4 p-3 edit-profile-text-input" required
                       rows="3">{{ isset($group) ? $group->description : "" }}</textarea>
         </div>
 
