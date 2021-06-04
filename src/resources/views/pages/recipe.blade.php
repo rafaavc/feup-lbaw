@@ -40,7 +40,8 @@
                             <tr>
                                 <td class="col-2 col-md-1 image-container" id="author-image">
                                     <img class="rounded-circle"
-                                         src="{{ $author->profileImage() }}">
+                                         src="{{ $author->profileImage() }}"
+                                         alt="Profile picture of {{ $author->name }}, the author of the recipe">
                                 </td>
                                 <td class="align-middle">
                                     <div class="card-body p-0 m-0 ms-2 text-start">
@@ -48,7 +49,7 @@
                                             href="{{ url('/user/'.$author->username) }}">{{ $author->name }}</a>
                                         <br>
                                         <small>
-                                        @include('partials.date', ['date' => $recipe->creation_time])
+                                            @include('partials.date', ['date' => $recipe->creation_time])
                                         </small>
                                     </div>
                                 </td>
@@ -82,12 +83,14 @@
                         </li>
                     @endif
                     <li class="list-group-item">
-                        <a href="#" onclick="window.print();return false;" class="has-tooltip" title="Generate a PDF of the recipe page or print it direcly if you have a printer">
+                        <a href="#" onclick="window.print();return false;" class="has-tooltip"
+                           title="Generate a PDF of the recipe page or print it direcly if you have a printer">
                             <span class="legend">Print</span><i class="fas fa-print"></i>
                         </a>
                     </li>
                     <li class="list-group-item">
-                        <a class="copy-link-button has-tooltip" href="javascript:void(null)" title="Copy the link of this recipe">
+                        <a class="copy-link-button has-tooltip" href="javascript:void(null)"
+                           title="Copy the link of this recipe">
                             <span class="legend">Share</span><i class="fas fa-share-alt"></i>
                         </a>
                     </li>
@@ -98,7 +101,7 @@
                                     data-recipe-id="{{ $recipe->id }}"
                                     title="Add this recipe to your favourites">
                                 <span class="legend">Favourite</span><i class="fas fa-heart"></i>
-                                </a>
+                            </button>
                         </li>
                     @endif
                     @if(Gate::inspect('delete', $recipe)->allowed())
@@ -107,7 +110,8 @@
                                   action="{{ url("/recipe/".$recipe->id."/delete") }}">
                                 {{ csrf_field() }}
                             </form>
-                            <button data-role="a" data-bs-toggle="modal" data-bs-target="#recipeDeleteConfirmationModal">
+                            <button data-role="a" data-bs-toggle="modal"
+                                    data-bs-target="#recipeDeleteConfirmationModal">
                                 <span class="legend">Delete</span><i class="fas fa-trash"></i>
                             </button>
                         </li>
