@@ -10,7 +10,7 @@
                         data-bs-toggle="dropdown" aria-expanded="false">
                     <i class="fas fa-ellipsis-h"></i>
                 </button>
-                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton1">
+                <ul class="dropdown-menu dropdown-menu-end">
                     {{-- @if(Gate::inspect('update', $comment)->allowed())
                         <li><a class="dropdown-item" href="#">Edit Review</a></li>
                     @endif --}}

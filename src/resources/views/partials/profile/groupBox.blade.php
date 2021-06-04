@@ -3,11 +3,12 @@
         <h5 class="card-title mb-4">Groups</h5>
         <div class="g-5 mb-5">
             @foreach($groups as $group)
-                <a href="{{url("group/$group->id")}}" class="btn group-box-link">
+                <div class="btn group-box-link" onclick="window.location='{{url("group/$group->id")}}'">
                     <button style="background-image: url({{$group->profileImage()}})"
-                            class="btn small-profile-photo small-group-photo d-inline"></button>
+                            class="btn small-profile-photo small-group-photo d-inline">
+                    </button>
                     <span class="name">{{$group->name}}</span>
-                </a>
+                </div>
             @endforeach
         </div>
         <!--<button type="button" class="btn btn-outline-secondary">

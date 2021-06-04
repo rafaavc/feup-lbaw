@@ -10,12 +10,12 @@
                         data-bs-toggle="dropdown" aria-expanded="false">
                     <i class="fas fa-ellipsis-h"></i>
                 </button>
-                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton1">
+                <ul class="dropdown-menu dropdown-menu-end">
                     @if(Gate::inspect('update', $recipe)->allowed())
-                        <li><button class="dropdown-item ms-3 has-link" role="a" data-href="{{ url("recipe/$recipe->id/edit") }}">Edit Post</button></li>
+                        <li><button class="dropdown-item ms-3 has-link" data-role="a" data-href="{{ url("recipe/$recipe->id/edit") }}">Edit Post</button></li>
                     @endif
                     @if(Gate::inspect('delete', $recipe)->allowed())
-                        <li><button class="dropdown-item ms-3" role="a" data-bs-toggle="modal" data-bs-target="#recipeDeleteConfirmationModal{{ $recipe->id }}">Delete Post</button></li>
+                        <li><button class="dropdown-item ms-3" data-role="a" data-bs-toggle="modal" data-bs-target="#recipeDeleteConfirmationModal{{ $recipe->id }}">Delete Post</button></li>
                     @endif
                         {{-- <li><a class="dropdown-item" href="#">Report Post</a></li>
                     @endif --}}
@@ -29,7 +29,8 @@
         <div class="row user-info">
             <div class="col avatar-image">
                 <img class="rounded-circle z-depth-2"
-                     src="{{$recipe->author->profileImage()}}">
+                     src="{{$recipe->author->profileImage()}}"
+                     alt="profile picture of {{$recipe->author->name}}, the author of the recipe">
             </div>
             <div class="col name-and-date ms-4">
                 <div>
@@ -41,7 +42,7 @@
             </div>
         </div>
 
-        <a type="button" href="{{url("recipe/$recipe->id")}}" class="btn card p-2 shadow-sm recipe-preview mt-4">
+        <a href="{{url("recipe/$recipe->id")}}" class="btn card p-2 shadow-sm recipe-preview mt-4">
             <div class="row px-3">
                 <div class="col-md post-image"
                      style="background-image: url('{{ $recipe->getProfileImage() }}')">
@@ -84,11 +85,11 @@
                 <span class="button-caption">{{ $recipe->isFavourited() ? "Remove from Favourites" : "Add to Favourites" }}</span>
             </button>
         @endif
-        <a type="button" href="{{url("recipe/$recipe->id")}}" class="btn post-button">
+        <a href="{{url("recipe/$recipe->id")}}" class="btn post-button">
             <i class="fas fa-eye me-2"></i>
             <span class="button-caption">View Recipe</span>
         </a>
-        <button type="button" class="btn post-button">
+        <button class="btn post-button">
             <i class="fas fa-share-alt me-2"></i>
             <span class="button-caption">Share</span>
         </button>
