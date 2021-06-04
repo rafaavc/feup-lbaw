@@ -1,5 +1,7 @@
 <section class="icon-box mt-5 shadow-sm text-start" id="comments">
     <i class="fas fa-comments"></i>
+    <h4 class="d-none">Comments</h4>
+    <h5 class="d-none">User Comments</h5>
     @foreach ($comments as $i => $comment)
         @include('partials.recipe.comment', [ 'comment' => $comment, 'depth' => 0 ])
     @endforeach

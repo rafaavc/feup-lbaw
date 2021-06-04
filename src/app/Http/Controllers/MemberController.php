@@ -22,12 +22,12 @@ class MemberController extends Controller
     // ----------------------------------------------------------------
     private static $validation = [
         'put' => [
-            'name' => 'required|string',
-            'username' => 'required|string',
-            'email' => 'required|string|email',
-            'city' => 'nullable|string',
+            'name' => 'required|string|min:4|max:60',
+            'username' => ['required','string','regex:/^[a-zA-Z0-9]+((_|\.)[a-zA-Z0-9]+)*$/i','min:4','max:20'],
+            'email' => 'required|string|email|min:5|max:100',
+            'city' => 'nullable|string|max:60',
             'country' => 'required|integer|exists:App\Models\Country,id',
-            'biography' => 'nullable|string',
+            'biography' => 'nullable|string|max:512',
             'visibility' => 'required|string|in:public,private',
             'profileImage' => 'nullable|file|image|mimes:jpeg,png,jpg,gif,bmp',
             'coverImage' => 'nullable|file|image|mimes:jpeg,png,jpg,gif,bmp',
@@ -104,15 +104,21 @@ class MemberController extends Controller
 
         try {
             $user->name = $request->input('name');
-            $user->username = $request->input('username');
             $user->email = $request->input('email');
             $user->city = $request->input('city');
             $user->bio = $request->input('biography');
             $user->visibility = $request->input('visibility') == "public";
             $user->country()->associate($request->input('country'));
 
-            if ($request->input('password'))
-                $user->password = bcrypt($request->input('password'));
+            $newPassword = $request->input('newPassword');
+            $currentPassword = $request->input('currentPassword');
+            if ($newPassword && $currentPassword && Auth::attempt(array('username' => $user->username, 'password' => $currentPassword))) {
+                $user->password = bcrypt($newPassword);
+            } else if ($newPassword && $currentPassword || $newPassword && !$currentPassword) {
+                throw new Exception("The current password is incorrect!");
+            }
+
+            $user->username = $request->input('username');
 
             $user->save();
 
@@ -247,7 +253,7 @@ class MemberController extends Controller
 
     public function updateAction(Request $request, Member $user)
     {
-        $this->validate($request, MemberController::$validation, MemberController::$errorMessages);
+        $this->validate($request, MemberController::$validation['put'], MemberController::$errorMessages);
         $apiReponse = $this->put($request, $user);
         if ($apiReponse->status() == 200)
             return redirect("/user/$user->username")->with('message', 'User updated successfully!');

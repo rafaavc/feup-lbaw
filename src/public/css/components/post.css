@@ -75,7 +75,7 @@
     border: none;
     border-top: 1px solid rgba(0,0,0,0.125);
     padding: 0.5em;
-    transition: background-color outline .2s;
+    transition: background-color .2s, outline .2s;
 }
 
 .post-button:focus {
@@ -95,7 +95,7 @@
 }
 
 .post-image {
-    width: 45% !important;  
+    width: 45% !important;
     min-height: 100%;
     background-position: 50%;
     background-size: cover;
@@ -135,7 +135,7 @@
 .recipe-post-review {
     max-width: 50rem;
     cursor: pointer;
-    transition: background-color outline .2s;
+    transition: background-color .2s, outline .2s;
     text-align: left;
 }
 
@@ -145,7 +145,7 @@
 
 .recipe-preview {
     cursor: pointer;
-    transition: background-color outline .2s;
+    transition: background-color .2s, outline .2s;
     text-align: left;
 }
 

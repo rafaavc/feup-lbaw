@@ -16,17 +16,14 @@ export class Feedback {
 
     removeElement() {
         if (this.element != null) {
-            this.element.style.opacity = '0';
-            setTimeout(() => {
-                this.element.remove();
+            this.element.remove();
 
-                if (this.timeoutObj != null) {
-                    clearTimeout(this.timeoutObj);
-                    this.timeoutObj = null;
-                }
+            if (this.timeoutObj != null) {
+                clearTimeout(this.timeoutObj);
+                this.timeoutObj = null;
+            }
 
-                this.element = null;
-            }, 400);
+            this.element = null;
         }
     }
 

@@ -1,4 +1,4 @@
-<span title="{{date($date)}}">
+<span class="has-tooltip" title="{{date($date)}}">
 @php
     $date = new DateTime(date($date));
     $now = new DateTime(date("Y-m-d H:i:s"));
