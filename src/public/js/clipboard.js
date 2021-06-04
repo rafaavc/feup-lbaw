@@ -1,9 +1,12 @@
 import {Feedback} from "./feedback/Feedback.js";
 
-function copyLinkToClipboard() {
-    let main = document.body.getElementsByTagName("main")[0];
-    let inputc = main.parentElement.insertBefore(document.createElement("input"), main);
-    inputc.value = window.location.href;
+function copyLinkToClipboard(event) {
+    let footer = document.body.getElementsByTagName("footer")[0];
+    let inputc = footer.parentElement.insertBefore(document.createElement("input"), footer);
+    let target = event.target;
+    if (target.tagName === 'I' || target.tagName === 'SPAN')
+        target = target.parentElement;
+    inputc.value = target.dataset.link;
     inputc.focus();
     inputc.select();
     document.execCommand('copy');
@@ -13,7 +16,9 @@ function copyLinkToClipboard() {
     message.showMessage("Copied link to clipboard");
 }
 
-let buttons = Array.prototype.slice.call(document.body.getElementsByClassName("copy-link-button"));
+let buttons = Array.prototype.slice.call(document.getElementsByClassName("copy-link-button"));
 for (let button of buttons) {
-    button.addEventListener("click", copyLinkToClipboard);
+    button.addEventListener("click", (event) => {
+        copyLinkToClipboard(event);
+    });
 }

@@ -87,7 +87,7 @@
                         </a>
                     </li>
                     <li class="list-group-item">
-                        <a class="copy-link-button has-tooltip" href="javascript:void(null)" title="Copy the link of this recipe">
+                        <a class="copy-link-button has-tooltip" href="javascript:void(null)" title="Copy the link of this recipe" data-link='{{ url('/recipe/' . $recipe->id) }}'>
                             <span class="legend">Share</span><i class="fas fa-share-alt"></i>
                         </a>
                     </li>

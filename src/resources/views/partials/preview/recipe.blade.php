@@ -2,6 +2,10 @@
     <link href="{{ asset('css/components/post.css') }}" rel="stylesheet"/>
 @endpush
 
+@push('js')
+    <script src="{{ asset('js/clipboard.js') }}" type="module"></script>
+@endpush
+
 <div class="card shadow-sm recipe-post mt-5">
     @if(Gate::inspect('update', $recipe)->allowed() || Gate::inspect('delete', $recipe)->allowed())
         <div class="col-sm post-options">
@@ -87,7 +91,7 @@
             <i class="fas fa-eye me-2"></i>
             <span class="button-caption">View Recipe</span>
         </a>
-        <button class="btn post-button">
+        <button class="btn post-button copy-link-button" data-link='{{ url('/recipe/' . $recipe->id) }}'>
             <i class="fas fa-share-alt me-2"></i>
             <span class="button-caption">Share</span>
         </button>
