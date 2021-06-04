@@ -37,10 +37,6 @@
 @if(Auth::guard('admin')->check())
     @php
         $menu = [
-            "reports" => [
-                "icon" => "exclamation-triangle",
-                "href" => url("/admin/reports")
-            ],
             "users" => [
                 "icon" => "users",
                 "href" => url("/admin/users")
