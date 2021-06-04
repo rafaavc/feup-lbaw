@@ -328,7 +328,7 @@ const refreshCommentDeleteButtons = () => {
                     if (res.response.status != 200) {
                         commentFeedback.showMessage(res.content.message, 'danger');
                     } else {
-                        commentFeedback.showMesssage("Comment(s) deleted successfully!");
+                        commentFeedback.showMessage("Comment(s) deleted successfully!");
                         if (comment.dataset.hasReview == "true") {
                             showRatingInputs();
                             console.log("Showed rating input");

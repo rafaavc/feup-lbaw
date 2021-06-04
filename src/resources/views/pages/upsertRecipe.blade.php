@@ -190,7 +190,7 @@
 
                 @if($hasErrors && isset($old['steps']))
                     @for($i = 0; $i < sizeof(old('steps')); $i++)
-                        @include('partials.recipe.step', [ 'oldStep' => old('steps')[$i], 'step' => $steps ? $steps[$i] : undefined, 'index' => $i + 1, 'hasErrors' => true ])
+                        @include('partials.recipe.step', [ 'oldStep' => old('steps')[$i], 'step' => isset($steps) ? $steps[$i] : undefined, 'index' => $i + 1, 'hasErrors' => true ])
                     @endfor
                 @elseif(isset($recipe))
                     @foreach ($steps as $step)

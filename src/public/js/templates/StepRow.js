@@ -1,5 +1,5 @@
 
-export const getStepStructure = (stepId) => {
+export const getStepRow = (stepId) => {
     const index = stepId + 1;
     return `<div>
     <div class="form-floating mb-3" data-toggle="tooltip" data-placement="top" title="Enter a name for this step">

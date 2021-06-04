@@ -31,7 +31,7 @@
     </div>
     <div class="col-lg">
         <div class="form-floating" data-toggle="tooltip" data-placement="top" title="Choose an ingredient from our database">
-            <select name="ingredients[{{ $index }}][id]" class="form-select" id="ingredientSelect" aria-label="Quantity unit" required>
+            <select name="ingredients[{{ $index }}][id]" class="form-select ingredientSelect" aria-label="Quantity unit" required>
                 @if($hasErrors && \App\Models\Ingredient::where('id', $ingredient['id'])->exists())
                     <option value="{{ $ingredient['id'] }}">{{ \App\Models\Ingredient::find($ingredient['id'])->name }}</option>
                 @else
