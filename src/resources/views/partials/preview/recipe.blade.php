@@ -49,9 +49,8 @@
                         <h4 class="card-title">{{$recipe->name}}</h4>
                         <p class="card-text post-description">{{$recipe->description}}</p>
                         <p>
-                            <small class="text-muted">{{$recipe->score}}
-                                @include('partials.stars', ['rating' => $recipe->score])
-                                | {{$recipe->reviews()->count()}} reviews
+                            <small class="text-muted">
+                                @include('partials.rating', [ 'score' => $recipe->score, 'num_rating' => $recipe->num_rating ])
                             </small>
                         </p>
                     </div>

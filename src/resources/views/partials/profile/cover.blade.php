@@ -104,8 +104,7 @@
                 <div class="rating-box col-md-3 order-md-2 text-center mb-3 mb-md-0">
                     <span class="small d-block">Average rating</span>
                     <div class="rating">
-                        <span class="value me-1">{{$user->score}}</span>
-                        @include('partials.stars', ['rating' => $user->score])
+                        @include('partials.rating', [ 'score' => $user->score, 'num_rating' => $user->num_rating ])
                     </div>
                 </div>
                 <ul class="nav nav-tabs col-md-9 ps-md-3">
