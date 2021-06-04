@@ -18,7 +18,7 @@
     </div>
     <div class="row mt-5">
         <div class="col-sm-6">
-            <section class="icon-box mb-4 mt-md-0">
+            <div class="icon-box mb-4 mt-md-0">
                 <i class="fas fa-clock"></i>
                 @php
                     $duration = $recipe->preparation_time + $recipe->cooking_time + $recipe->additional_time;
@@ -29,10 +29,10 @@
                     "Cooking" => ($recipe->cooking_time != null ? $recipe->cooking_time." mins" : "-"),
                     "Additional" => ($recipe->additional_time != null ? $recipe->additional_time." mins" : "-")
                 ]])
-            </section>
+            </div>
         </div>
         <div class="col-sm-6">
-            <section class="icon-box mt-md-0 p-2">
+            <div class="icon-box mt-md-0 p-2">
                 <i class="fas fa-chart-bar"></i>
                 <form>
                     <table class="table table-borderless mb-0">
@@ -46,7 +46,7 @@
                         </tr>
                     </table>
                 </form>
-            </section>
+            </div>
         </div>
     </div>
 </div>
