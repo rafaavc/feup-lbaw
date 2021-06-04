@@ -1,6 +1,8 @@
 @extends('layouts.app')
 
 @section('title', $group->name)
+@section('description', $group->description)
+@section('thumbnail', $group->profileImage())
 
 @push('css')
     <link href="{{ asset('css/components/membersFollowingBoxes.css') }}" rel="stylesheet"/>

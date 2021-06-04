@@ -2,6 +2,7 @@
 
 @section('title', $recipe->name)
 @section('description', $recipe->description)
+@section('thumbnail', $recipe->getProfileImage())
 
 @push('css')
     <link href="{{ asset('css/recipe.css') }}" rel="stylesheet"/>

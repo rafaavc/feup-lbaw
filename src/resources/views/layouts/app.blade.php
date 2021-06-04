@@ -28,6 +28,7 @@
         @if (View::hasSection('thumbnail'))
             <meta property="og:image" content="@yield('thumbnail')"/>
         @endif
+        <meta property="og:url" content="{{ $_SERVER['REQUEST_URI'] }}"/>
 
         <!-- Bootstrap -->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
