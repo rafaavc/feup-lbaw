@@ -137,7 +137,7 @@
     @include('partials.confirmation', [
         'modalId' => 'recipeDeleteConfirmationModal',
         'modalTitle' => 'Delete recipe "'.$recipe->name.'"',
-        'modalMessage' => 'Do you really want to delete this recipe?',
+        'modalMessage' => 'Do you really want to delete this recipe? This action is irreversible!',
         'modalYesFunction' => 'document.querySelector("#deleteRecipeForm").submit()',
         'modalYesText' => 'Yes',
         'modalNoText' => 'No'

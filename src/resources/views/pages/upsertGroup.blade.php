@@ -90,8 +90,9 @@
             <input type="submit" class="btn btn-primary submit-button mt-5" value='{{ isset($group) ? "Edit Group" : "Create Group" }}'>
 
             @if (isset($group))
-                <a href="{{url('group/' . $group->id . '/delete')}}" class="btn btn-danger submit-button mt-5"  data-toggle="tooltip" data-placement="top" title="Delete group and all its information">
-                    <i class="fas fa-trash me-3"></i> Delete Group</a>
+                <button class="btn btn-danger submit-button delete-group-button mt-5" data-bs-toggle="modal" data-bs-target="#groupDeleteConfirmationModal" data-toggle="tooltip" data-placement="top" title="Delete group and all its information">
+                    <i class="fas fa-trash me-3"></i> Delete Group
+                </button>
             @endif
 
         </div>
@@ -101,5 +102,17 @@
     </form>
 
 </div>
+<form id="deleteGroupForm" method="GET"
+        action="{{ url('group/' . $group->id . '/delete') }}">
+    {{ csrf_field() }}
+</form>
 
+@include('partials.confirmation', [
+    'modalId' => 'groupDeleteConfirmationModal',
+    'modalTitle' => 'Delete group "'.$group->name.'"',
+    'modalMessage' => 'Do you really want to delete this group? This action is irreversible!',
+    'modalYesFunction' => 'document.querySelector("#deleteGroupForm").submit()',
+    'modalYesText' => 'Yes',
+    'modalNoText' => 'No'
+])
 @endsection
