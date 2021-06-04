@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('title', $recipe->name)
+@section('description', $recipe->description)
 
 @push('css')
     <link href="{{ asset('css/recipe.css') }}" rel="stylesheet"/>

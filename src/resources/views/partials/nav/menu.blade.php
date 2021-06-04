@@ -117,15 +117,15 @@
         $allNotifications = collect($allNotifications)->sortByDesc('timestamp')->all();
 
         $menu = [
-            "Feed" => [
-                "icon" => "comments",
+            "feed" => [
+                "icon" => "home",
                 "href" => url("/feed")
             ],
-            "notifications" => [
+            "Notifications" => [
                 "icon" => "bell",
                 "popover" => $followRequests
             ],
-            "messages" => [
+            "Messages" => [
                 "icon" => "comments",
                 "popover" => "This is the content of the second popover"
             ],
@@ -149,13 +149,13 @@
                     class="fas me-2 fa-{{ $attributes['icon'] }}"></i> {{ ucwords($name) }}</a>
         </li>
     @elseif (key_exists("popover", $attributes))
-        @if ($name == "notifications")
+        @if ($name == "Notifications")
             @include('partials.nav.notificationspopover', [
                 'allNotifications' => $allNotifications,
                 'numAlreadyFollowedNotifications' => $numAlreadyFollowedNotifications,
                 'numAlreadyReadNotifications' => $numAlreadyReadNotifications
             ])
-        @elseif ($name == "messages")
+        @elseif ($name == "Messages")
             @include('partials.nav.messagespopover')
         @endif
     @elseif (key_exists("drop", $attributes))

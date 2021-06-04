@@ -6,13 +6,13 @@
 
 @endphp
 <li class="nav-item">
-    <button id="showPopOver" data-popover-content="#notificationsPopupContent" class="btn btn-primary btn-sm mt-2 me-4 nav-popover position-relative d-none d-lg-block" role="button" data-bs-placement="bottom" data-bs-toggle="popover">
+    <button id="showPopOver" data-popover-content="#notificationsPopupContent" class="btn btn-primary btn-sm mt-2 me-4 nav-popover position-relative d-none d-lg-block" data-bs-placement="bottom" data-bs-toggle="popover">
         <i class="fas fa-bell"></i>
-        <div class="notif-quantity-indicator"><small>{{ $numNotifications }}</small></div>
+        <span class="notif-quantity-indicator"><small>{{ $numNotifications }}</small></span>
     </button>
     <button type="button" id="mobile-notificationPopUp" class="btn no-btn nav-link d-block d-lg-none position-relative" data-bs-toggle="collapse" aria-expanded="false" aria-controls="notificationsPopupContent" data-bs-target="#notificationsPopupContent">
-        @include('partials.nav.icontext', ['icon' => 'bell', 'text' => 'notifications' ])
-        <div class="notif-quantity-indicator-mobile"><small> {{ $numNotifications }}</small></div>
+        @include('partials.nav.icontext', ['icon' => 'bell', 'text' => 'Notifications' ])
+        <span class="notif-quantity-indicator-mobile"><small> {{ $numNotifications }}</small></span>
     </button>
     <div id="notificationsPopupContent" class="collapse p-2 d-lg-none" style="min-height: 5rem; max-height: 20rem; overflow-x: hidden;">
         @if($firstNumberNotifications > 0)

@@ -1,6 +1,6 @@
 <li class="nav-item">
     <a href="{{ url('/chat') }}">
-        <button class="btn btn-primary btn-sm mt-2 nav-popover position-relative d-none d-lg-block" role="button">
+        <button class="btn btn-primary btn-sm mt-2 nav-popover position-relative d-none d-lg-block">
             <i class="fas fa-envelope"></i>
         </button>
     </a>

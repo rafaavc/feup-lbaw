@@ -2,7 +2,7 @@ import {Feedback} from "./feedback/Feedback.js";
 
 function copyLinkToClipboard() {
     let main = document.body.getElementsByTagName("main")[0];
-    let inputc = document.body.insertBefore(document.createElement("input"), main);
+    let inputc = main.parentElement.insertBefore(document.createElement("input"), main);
     inputc.value = window.location.href;
     inputc.focus();
     inputc.select();
