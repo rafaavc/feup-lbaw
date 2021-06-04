@@ -27,15 +27,17 @@
             <div class="card-body table-responsive">
                 <table class="table align-middle table-striped table-hover users-table">
                     <thead>
-                        <th style="padding: 0; padding-bottom: 0.5em;">Username</th>
-                        <th style="padding: 0; padding-bottom: 0.5em;">Name</th>
-                        <th style="padding: 0; padding-bottom: 0.5em;">E-Mail</th>
-                        <th style="padding: 0; padding-bottom: 0.5em;">Country</th>
-                        <th style="padding: 0; padding-bottom: 0.5em;">City</th>
-                        <th style="padding: 0; padding-bottom: 0.5em; padding-right: 1em;">N<sup>er</sup> of posts</th>
-                        <th style="padding: 0; padding-bottom: 0.5em; padding-right: 1em;">N<sup>er</sup> of Cmts.</th>
-                        <th style="padding: 0; padding-bottom: 0.5em; padding-right: 1em;">N<sup>er</sup> of reports</th>
-                        <th style="padding: 0; padding-bottom: 0.5em;" class="text-center">Actions</th>
+                        <tr>
+                            <th style="padding: 0; padding-bottom: 0.5em;">Username</th>
+                            <th style="padding: 0; padding-bottom: 0.5em;">Name</th>
+                            <th style="padding: 0; padding-bottom: 0.5em;">E-Mail</th>
+                            <th style="padding: 0; padding-bottom: 0.5em;">Country</th>
+                            <th style="padding: 0; padding-bottom: 0.5em;">City</th>
+                            <th style="padding: 0; padding-bottom: 0.5em; padding-right: 1em;">N<sup>er</sup> of posts</th>
+                            <th style="padding: 0; padding-bottom: 0.5em; padding-right: 1em;">N<sup>er</sup> of Cmts.</th>
+                            <th style="padding: 0; padding-bottom: 0.5em; padding-right: 1em;">N<sup>er</sup> of reports</th>
+                            <th style="padding: 0; padding-bottom: 0.5em;" class="text-center">Actions</th>
+                        </tr>
                     </thead>
                     <tbody>
 

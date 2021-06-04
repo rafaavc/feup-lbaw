@@ -93,7 +93,7 @@
                     </li>
                     @if(Auth::check())
                         <li class="list-group-item">
-                            <button role="a" class="add-to-favourites-recipe-button has-tooltip"
+                            <button data-role="a" class="add-to-favourites-recipe-button has-tooltip"
                                     data-favourite-state="{{ $isFavourited ? "true" : "false" }}"
                                     data-recipe-id="{{ $recipe->id }}"
                                     title="Add this recipe to your favourites">
@@ -107,7 +107,7 @@
                                   action="{{ url("/recipe/".$recipe->id."/delete") }}">
                                 {{ csrf_field() }}
                             </form>
-                            <button role="a" data-bs-toggle="modal" data-bs-target="#recipeDeleteConfirmationModal">
+                            <button data-role="a" data-bs-toggle="modal" data-bs-target="#recipeDeleteConfirmationModal">
                                 <span class="legend">Delete</span><i class="fas fa-trash"></i>
                             </button>
                         </li>

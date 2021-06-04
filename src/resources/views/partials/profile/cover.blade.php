@@ -15,7 +15,7 @@
 <header class="cover">
     <img
         src="{{isset($coverPhoto) ? $coverPhoto : 'https://images-prod.healthline.com/hlcmsresource/images/AN_images/vegetarian-diet-plan-1296x728-feature.jpg'}}"
-        class="cover-image">
+        class="cover-image" alt="cover image of {{isset($group) ? $group->name : $user->name}}">
     <div class="card shadow-sm px-3">
         <div class="row g-0 p-3 text-center text-md-start" style="">
             <div class="col-md-2 image-container ">
@@ -89,7 +89,7 @@
                                 {{ "Follow" }}
                             @endif
                         </button>
-                        <a href="{{ url("/chat") }}" type="button" class="btn btn-outline-dark has-tooltip" title="Send a message to this member"><i
+                        <a href="{{ url("/chat") }}" class="btn btn-outline-dark has-tooltip" title="Send a message to this member"><i
                                 class="fas fa-comments"></i>Chat</a>
                     @endif
                 </div>

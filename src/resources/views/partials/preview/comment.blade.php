@@ -10,12 +10,12 @@
                         data-bs-toggle="dropdown" aria-expanded="false">
                     <i class="fas fa-ellipsis-h"></i>
                 </button>
-                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton1">
+                <ul class="dropdown-menu dropdown-menu-end">
                     {{-- @if(Gate::inspect('update', $comment)->allowed())
                         <li><a class="dropdown-item" href="#">Edit Review</a></li>
                     @endif --}}
                     {{-- @if(Gate::inspect('delete', $comment)->allowed()) --}}
-                        <li><button role="a" data-bs-toggle="modal" data-bs-target="#reviewDeleteConfirmationModal{{ $comment->id }}" class="dropdown-item ms-3" href="">Delete Review</button></li>
+                        <li><button data-role="a" data-bs-toggle="modal" data-bs-target="#reviewDeleteConfirmationModal{{ $comment->id }}" class="dropdown-item ms-3" href="">Delete Review</button></li>
                     {{-- @else
                         <li><a class="dropdown-item" href="#">Report Review</a></li>
                     @endif --}}

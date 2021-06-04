@@ -23,7 +23,7 @@
                     <div class="welcome-msg">
                         <h1><strong>Welcome Back,</strong></h1>
                         <h3>Sign in to continue</h3>
-                        <a href="{{ url('/') }}" role="button" class="btn btn-dark w-100 mx-auto mt-4">Go Home</a>
+                        <a href="{{ url('/') }}" data-role="button" class="btn btn-dark w-100 mx-auto mt-4">Go Home</a>
                     </div>
                 </div>
             </div>

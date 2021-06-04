@@ -19,7 +19,7 @@
         <div class="row g-0">
             <div class="col p-3">
                 <strong class="d-inline-block mt-1">{{ Auth::user()->name }}'s Chat</strong>
-                <a role="button" href="{{ url('/user/' . Auth::user()->username ) }}" class="btn btn-outline-secondary float-end py-1">
+                <a data-role="button" href="{{ url('/user/' . Auth::user()->username ) }}" class="btn btn-outline-secondary float-end py-1">
                     <small><i class="fas fa-user me-2"></i>
                     My Profile</small>
                 </a>

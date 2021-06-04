@@ -117,7 +117,7 @@ $role = "member";
             <button data-bs-toggle="modal" data-bs-target="#profileDeleteConfirmationModal" class="btn btn-danger submit-button my-2 deleteProfile has-tooltip" title="Delete your profile and all of your recipes, comments and groups">
                 <i class="fas fa-trash me-3"></i>
                 Delete Profile
-            </a>
+            </button>
         </div>
     </form>
 

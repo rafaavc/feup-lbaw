@@ -6,7 +6,7 @@
                 $counter = 0;
             @endphp
             @foreach ($trendingRecipes as $trendingRecipe)
-                <a role="button" class="{{'text-start btn btn-sm btn' . (($counter++ > 2) ? '-outline' : '') . '-secondary d-block mb-3'}}" href="{{ url('/recipe/' . $trendingRecipe->id) }}">
+                <a class="{{'text-start btn btn-sm btn' . (($counter++ > 2) ? '-outline' : '') . '-secondary d-block mb-3'}}" href="{{ url('/recipe/' . $trendingRecipe->id) }}">
                     {{ $trendingRecipe->name }}
                 </a>
             @endforeach
