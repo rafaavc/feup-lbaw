@@ -8,7 +8,9 @@
         @php($no_items = true)
         @foreach($recipes as $recipe)
             @if(Gate::inspect('select', $recipe)->allowed())
+                <div>
                 @include('partials.preview.recipe')
+                </div>
                 @php($no_items = false)
             @endif
         @endforeach

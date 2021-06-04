@@ -18,7 +18,7 @@
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{ $modalNoText }}</button>
                 @if(isset($modalYesText))
-                    <button type="button" id="{{ $modalYesId ?? "" }}" class="btn btn-primary" onClick="{{ $modalYesFunction ?? "" }}">{{ $modalYesText }}</button>
+                    <button type="button" id="{{ $modalYesId ?? "" }}" data-bs-dismiss="modal" class="btn btn-primary {{ $modalYesClass ?? "" }}" data-data={{$modalYesData}} onClick="{{ $modalYesFunction ?? "" }}">{{ $modalYesText }}</button>
                 @endif
             </div>
         </div>

@@ -8,7 +8,9 @@
         @php($no_items = true)
         @foreach($reviews as $comment)
             @if($comment->rating !== null && Gate::inspect('select', $comment->recipe)->allowed())
-                @include('partials.preview.comment')
+                <div>
+                    @include('partials.preview.comment')
+                </div>
                 @php($no_items = false)
             @endif
         @endforeach

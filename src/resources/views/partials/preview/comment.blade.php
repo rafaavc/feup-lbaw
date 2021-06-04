@@ -3,24 +3,26 @@
 @endpush
 
 <div class="card shadow-sm recipe-post mt-5">
-    <div class="col-sm post-options">
-        <div class="dropdown">
-            <button type="button" class="btn edit-photo-button float-end me-2 mt-2 btn-no-shadow"
-                    data-bs-toggle="dropdown" aria-expanded="false">
-                <i class="fas fa-ellipsis-h"></i>
-            </button>
-            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton1">
-                @if(Gate::inspect('update', $comment)->allowed())
-                    <li><a class="dropdown-item" href="#">Edit Review</a></li>
-                @endif
-                @if(Gate::inspect('delete', $comment)->allowed())
-                    <li><a class="dropdown-item" href="#">Delete Review</a></li>
-                @else
-                    <li><a class="dropdown-item" href="#">Report Review</a></li>
-                @endif
-            </ul>
+    @if(Gate::inspect('delete', $comment)->allowed())
+        <div class="col-sm post-options">
+            <div class="dropdown">
+                <button type="button" class="btn edit-photo-button float-end me-2 mt-2 btn-no-shadow"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                    <i class="fas fa-ellipsis-h"></i>
+                </button>
+                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton1">
+                    {{-- @if(Gate::inspect('update', $comment)->allowed())
+                        <li><a class="dropdown-item" href="#">Edit Review</a></li>
+                    @endif --}}
+                    {{-- @if(Gate::inspect('delete', $comment)->allowed()) --}}
+                        <li><button role="a" data-bs-toggle="modal" data-bs-target="#reviewDeleteConfirmationModal{{ $comment->id }}" class="dropdown-item ms-3" href="">Delete Review</button></li>
+                    {{-- @else
+                        <li><a class="dropdown-item" href="#">Report Review</a></li>
+                    @endif --}}
+                </ul>
+            </div>
         </div>
-    </div>
+    @endif
 
     <div class="card-body">
         <div class="row user-info">
@@ -78,3 +80,12 @@
         </button>
     </div>
 </div>
+@include('partials.confirmation', [
+    'modalId' => 'reviewDeleteConfirmationModal'.$comment->id,
+    'modalTitle' => 'Delete review',
+    'modalMessage' => 'Do you really want to delete this review? This action is irreversible!',
+    'modalYesClass' => 'deleteReviewPreviewButton',
+    'modalYesData' => $comment->id,
+    'modalYesText' => 'Yes',
+    'modalNoText' => 'No'
+])

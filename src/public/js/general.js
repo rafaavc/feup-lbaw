@@ -1,5 +1,6 @@
 import { makeRequest } from "./ajax/methods.js";
 import { instantiateToolTip } from "./utils/tooltip.js";
+import { url } from "./utils/url.js";
 
 document.body.style.minHeight = window.innerHeight + "px";
 
@@ -68,3 +69,36 @@ for (const button of favouriteButtons) {
 const dropdownMenus = document.querySelectorAll('.dropdown-menu');
 
 dropdownMenus.forEach(menu => menu.addEventListener('click', event => event.stopPropagation()));  // clicks inside the dropdown menu don't cause it to close
+
+
+const buttonLinks = document.querySelectorAll('button[role=a].has-link');
+
+for (const link of buttonLinks) {
+    console.log(link)
+    link.addEventListener('click', () => window.open(link.dataset.href, '_self'));
+}
+
+const deleteRecipeButtons = document.querySelectorAll('.deleteRecipePreviewButton');
+for (const button of deleteRecipeButtons) {
+    button.addEventListener('click', () => {
+        makeRequest(url(`api/recipe/${button.dataset.data}`), 'DELETE')
+            .then((res) => {
+                if (res.response.status != 200) return;
+                const card = button.parentElement.parentElement.parentElement.parentElement.parentElement;
+                card.remove();
+            })
+    })
+}
+
+
+const deleteReviewButtons = document.querySelectorAll('.deleteReviewPreviewButton');
+for (const button of deleteReviewButtons) {
+    button.addEventListener('click', () => {
+        makeRequest(url(`api/comment/${button.dataset.data}`), 'DELETE')
+            .then((res) => {
+                if (res.response.status != 200) return;
+                const card = button.parentElement.parentElement.parentElement.parentElement.parentElement;
+                card.remove();
+            })
+    })
+}
