@@ -1,6 +1,5 @@
 header.cover .card {
     backdrop-filter: blur(15px);
-    -moz-backdrop-filter: blur(15px);
     margin-top: -4rem;
 }
 
