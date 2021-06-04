@@ -9,7 +9,6 @@ table.users-table {
     user-select: none;
 }
 
-
 @media (max-width: 1700px) {
     button.user-action {
         display: block !important;

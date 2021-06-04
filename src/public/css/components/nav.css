@@ -2,7 +2,7 @@
 
 @media (min-width: 992px) {
     .navbar .normalize {
-        flex-basis: 0px;
+        flex-basis: 0;
     }
 }
 
@@ -23,7 +23,7 @@ a.dropdown-toggle::after {
 
 button.no-btn {
     outline: none;
-    background-color: none;
+    background-color: transparent;
     box-shadow: none;
 }
 
