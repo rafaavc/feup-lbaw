@@ -94,6 +94,7 @@
                                     <select class="form-select" id="tagSelect" aria-label="Quantity unit">
                                         <option></option>
                                     </select>
+                                    <label>Tags<span class='form-required'></span></label>
                                 </div>
                             </div>
                             <div class="search-div collapse navbar-collapse justify-content-center flex-grow-1 normalize mt-0" id="navbarSearch" data-bs-parent="#navbarContainer">
