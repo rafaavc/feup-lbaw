@@ -108,8 +108,8 @@ if(document.body.contains(document.querySelector('#showPopOver'))) {
 
 function acceptDeclineFollowRequest(updateRead) {
     notifications = document.querySelector('#notificationsPopupContent');
-    numNotifications = document.querySelector('div.notif-quantity-indicator');
-    numNotificationsMobile = document.querySelector('div.notif-quantity-indicator-mobile');
+    numNotifications = document.querySelector('span.notif-quantity-indicator');
+    numNotificationsMobile = document.querySelector('span.notif-quantity-indicator-mobile');
 
     if(updateRead)
         updateReadNotifications();
@@ -167,3 +167,6 @@ function acceptDeclineFollowRequest(updateRead) {
 
         numPopOvers = document.querySelector('#notificationsPopupContent').childElementCount;
 }
+
+if (window.location.pathname.split("/").pop() === 'feed')
+    document.querySelector('.nav-item:first-of-type').firstElementChild.firstElementChild.style.color = "black";
