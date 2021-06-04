@@ -9,7 +9,7 @@
 
 <nav style="--bs-breadcrumb-divider: '>';" class="{{ $navClass }} margin-from-nav" aria-label="breadcrumb">
     <ol class="breadcrumb p-2">
-        <li class="breadcrumb-item"><i class="fas fa-home"></i><a href="/">Home</a></li>
+        <li class="breadcrumb-item"><i class="fas fa-home"></i><a href="{{ Auth::guard('admin')->check() ? '/admin/users' : '/feed' }}">Home</a></li>
 
         @php
             $keys = array_keys($pages);
