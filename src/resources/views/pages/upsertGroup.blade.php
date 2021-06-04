@@ -57,13 +57,13 @@
             </div>
         </div>
 
-        <h6 class="area-title mt-4 has-tooltip" title="Give a name to this group">Group Name <span class='form-required'></span></h6>
+        <h6 class="area-title mt-4" title="Give a name to this group">Group Name <span class='form-required'></span></h6>
         <div class="form-group">
             <textarea name="name" class="form-control mb-4 p-3 edit-profile-text-input" rows="1" required
                       style="resize: none;">{{ isset($group) ? $group->name : "" }}</textarea>
         </div>
 
-        <h6 class="area-title has-tooltip" title="Give a nice description to this group">Group Description <span class='form-required'></span></h6>
+        <h6 class="area-title" title="Give a nice description to this group">Group Description <span class='form-required'></span></h6>
         <div class="form-group">
             <textarea name="description" class="form-control mb-4 p-3 edit-profile-text-input" required
                       rows="3">{{ isset($group) ? $group->description : "" }}</textarea>
