@@ -1,5 +1,6 @@
 import { defaultProperties } from './files/defaultProperties.js';
-import { FileInput } from './files/FileInput.js'
+import { FileInput } from './files/FileInput.js';
+import {getStepStructure} from './templates/Step.js';
 
 const addIngredientButton = document.querySelector('#addIngredientButton');
 addIngredientButton.addEventListener('click', () => {
@@ -23,11 +24,17 @@ let stepCounter = steps[steps.length - 1].textContent.slice(-1);
 registerEventListeners();
 removeTagListeners();
 
+
+let currentStepId = 0;
+
+const createStepPhotoInput = (input, preexistingImages) => {
+    new FileInput(input, `steps[${currentStepId}][image]`, defaultProperties(), preexistingImages, null, () => `steps[${currentStepId}][previousImage]`, (fileName) => fileName);
+    currentStepId++;
+}
+
 const addStepButton = document.querySelector('#addStepButton');
 addStepButton.addEventListener('click', () => {
 
-    const elem = document.createElement('template');
-    elem.innerHTML = addStepButton.previousElementSibling.outerHTML;
 
     const header = document.createElement('h5');
     header.classList.add('mb-3');
@@ -35,7 +42,15 @@ addStepButton.addEventListener('click', () => {
     header.innerText = 'Step ' + stepCounter;
 
     addStepButton.parentNode.insertBefore(header, addStepButton);
-    addStepButton.parentNode.insertBefore(elem.content.firstElementChild, addStepButton);
+    addStepButton.insertAdjacentHTML('beforebegin', getStepStructure(currentStepId));
+
+    const elem = addStepButton.previousElementSibling;
+
+    console.log(elem);
+
+    const photoInput = elem.querySelector('.step-photo-input');
+    console.log(photoInput);
+    createStepPhotoInput(photoInput, []);
 })
 
 function registerEventListeners() {
@@ -233,8 +248,8 @@ for (const input of stepPhotoInputs)
     }
     console.log("Found these preexisting images:", preexistingImages);
 
-    const stepId = Number(input.dataset.index) - 1;
+    currentStepId = Number(input.dataset.index) - 1;
     input.innerHTML = '';
 
-    new FileInput(input, `steps[${stepId}][image]`, defaultProperties(), preexistingImages, null, () => `steps[${stepId}][previousImage]`, (fileName) => fileName);
+    createStepPhotoInput(input, preexistingImages);
 }
