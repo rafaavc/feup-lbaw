@@ -136,7 +136,7 @@ function ingredientSelected(event) {
 function updateBox(target) {
     let parent = target.closest("div.search-div").previousElementSibling;
     let ingredientOption = parent.querySelector("select.form-select option");
-    ingredientOption.value = target.getAttribute("value")
+    ingredientOption.value = target.dataset.value;
     ingredientOption.innerHTML = target.innerHTML;
     target.closest("div.search-div").classList.toggle("show-searchBox");
     let searchInput = target.parentElement.previousElementSibling.firstElementChild;
@@ -148,7 +148,7 @@ function tagSelected(event) {
     let searchInput = updateBox(event.target);
     updateSearchItems(searchInput);
     let tagList = event.target.closest(".row").nextElementSibling.querySelector(".tag-list");
-    if(checkNotRepeatedTag(event.target.getAttribute("value"), tagList)) {
+    if(checkNotRepeatedTag(event.target.dataset.value, tagList)) {
         let li = document.createElement("li");
         // li.value = event.target.getAttribute("value");
         li.textContent = event.target.textContent;
@@ -159,7 +159,8 @@ function tagSelected(event) {
         tagList.append(li);
         let hiddenInput = document.createElement("input");
         hiddenInput.classList.add("d-none");
-        hiddenInput.setAttribute("value", event.target.getAttribute("value"));
+        // hiddenInput.setAttribute("value", event.target.getAttribute("value"));
+        hiddenInput.setAttribute("value", event.target.dataset.value);
         hiddenInput.setAttribute("name", "tags[]");
         tagList.appendChild(hiddenInput);
 

@@ -103,18 +103,18 @@ $role = "member";
                         style="resize: none;"></textarea>
         </div>
 
-        <h6 class="area-title" data-toggle="tooltip" data-placement="top" title="Do you want everyone to see your recipes, or only your friends?">Profile Visibility <span class='form-required'></span></h6>
+        <h6 class="area-title">Profile Visibility <span class='form-required'></span></h6>
         <div class="form-check">
             <input class="form-check-input" value="public" type="radio" name="visibility"
                    id="flexRadioDefault1" {{$user->visibility === true ? "checked" : ""}}>
-            <label class="form-check-label" for="flexRadioDefault1">
+            <label class="form-check-label has-tooltip" for="flexRadioDefault1" title="If you select this option, everyone will see your recipes">
                 Public
             </label>
         </div>
         <div class="form-check mt-2">
             <input class="form-check-input" value="private" type="radio" name="visibility"
                    id="flexRadioDefault2" {{$user->visibility === false ? "checked" : ""}}>
-            <label class="form-check-label" for="flexRadioDefault2">
+            <label class="form-check-label has-tooltip" for="flexRadioDefault2" title="If you select this option, only your followers will see your recipes">
                 Private
             </label>
         </div>
@@ -122,10 +122,10 @@ $role = "member";
 
             <input type="submit" class="btn btn-primary submit-button my-2" value="Submit">
 
-            <button data-bs-toggle="modal" data-bs-target="#profileDeleteConfirmationModal" class="btn btn-danger submit-button my-2 deleteProfile" data-toggle="tooltip" data-placement="top" title="Delete your profile and all of your recipes, comments and groups">
+            <button data-bs-toggle="modal" data-bs-target="#profileDeleteConfirmationModal" class="btn btn-danger submit-button my-2 deleteProfile has-tooltip" title="Delete your profile and all of your recipes, comments and groups">
                 <i class="fas fa-trash me-3"></i>
                 Delete Profile
-            </a>
+            </button>
         </div>
     </form>
 

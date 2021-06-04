@@ -1,12 +1,12 @@
 @extends('layouts.app')
 
 @push('css')
-    <link href="{{ asset('css/navPopups.css') }}" rel="stylesheet"/>
-    <link href="{{ asset('css/profile_cover.css') }}" rel="stylesheet"/>
-    <link href="{{ asset('css/post.css') }}" rel="stylesheet"/>
-    <link href="{{ asset('css/membersFollowingBoxes.css') }}" rel="stylesheet"/>
-    <link href="{{ asset('css/breadcrumb.css') }}" rel="stylesheet"/>
-    <link href="{{ asset('css/group.css') }}" rel="stylesheet"/>
+    <link href="{{ asset('css/navPopups.css') }}" type="text/css"/>
+    <link href="{{ asset('css/profile_cover.css') }}" type="text/css"/>
+    <link href="{{ asset('css/post.css') }}" type="text/css"/>
+    <link href="{{ asset('css/membersFollowingBoxes.css') }}" type="text/css"/>
+    <link href="{{ asset('css/breadcrumb.css') }}" type="text/css"/>
+    <link href="{{ asset('css/group.css') }}" type="text/css"/>
 @endpush
 
 @push('js')

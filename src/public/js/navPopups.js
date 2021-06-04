@@ -53,8 +53,6 @@ const updateReadNotifications = () => {
             });
         }
 
-        console.log(deleteIds);
-
 
         // Favourites
         let favouriteIds = [...document.querySelectorAll('[data-notification-type="favouriteNotification"]')].map(function (input) {
@@ -71,8 +69,6 @@ const updateReadNotifications = () => {
             });
         }
 
-        console.log(favouriteIds);
-
         // Comment/Review
         let commentIds = [...document.querySelectorAll('[data-notification-type="commentNotification"]')].map(function (input) {
             return parseInt(input.dataset.notificationId);
@@ -88,12 +84,8 @@ const updateReadNotifications = () => {
             });
         }
 
-        console.log(commentIds);
-
         let affectedNotifications = deleteIds.length + favouriteIds.length + commentIds.length;
         if(affectedNotifications > 0) {
-            console.log(affectedNotifications);
-
             if(numNotifications)
                 numNotifications.firstElementChild.textContent = parseInt(numNotifications.firstElementChild.textContent) - affectedNotifications;
             if(numNotificationsMobile)
@@ -116,8 +108,8 @@ if(document.body.contains(document.querySelector('#showPopOver'))) {
 
 function acceptDeclineFollowRequest(updateRead) {
     notifications = document.querySelector('#notificationsPopupContent');
-    numNotifications = document.querySelector('div.notif-quantity-indicator');
-    numNotificationsMobile = document.querySelector('div.notif-quantity-indicator-mobile');
+    numNotifications = document.querySelector('span.notif-quantity-indicator');
+    numNotificationsMobile = document.querySelector('span.notif-quantity-indicator-mobile');
 
     if(updateRead)
         updateReadNotifications();
@@ -175,3 +167,6 @@ function acceptDeclineFollowRequest(updateRead) {
 
         numPopOvers = document.querySelector('#notificationsPopupContent').childElementCount;
 }
+
+if (window.location.pathname.split("/").pop() === 'feed')
+    document.querySelector('.nav-item:first-of-type').firstElementChild.firstElementChild.style.color = "black";

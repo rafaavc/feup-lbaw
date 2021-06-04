@@ -95,7 +95,7 @@
                 </div>
             </div>
             <div class="col-lg-6 content-align p-5">
-                <a href="{{ url('/signup') }}" role="button" class="btn btn-light btn-lg btn-large d-inline-block">Let's do it!</a>
+                <a href="{{ url('/register') }}" role="button" class="btn btn-light btn-lg btn-large d-inline-block">Let's do it!</a>
             </div>
         </div>
         <div class="row cards-homepage content-general-margin">

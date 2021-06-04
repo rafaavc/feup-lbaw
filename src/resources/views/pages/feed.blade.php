@@ -23,10 +23,10 @@
         <h1 class="mb-5">Feed</h1>
 
         <div class="row m-0 p-0">
-            <div class="col-xxl-9 px-0">
-                <a href="{{ url('/recipe') }}" role="button" class="btn btn-primary"><i class="fas fa-plus me-2"></i>Create Recipe</a>
+            <div class="col-lg-9 px-0">
+                <a href="{{ url('/recipe') }}" class="btn btn-primary"><i class="fas fa-plus me-2"></i>Create Recipe</a>
 
-                <div class="m-0 p-0 feed-recipes-area">
+                <div class="m-0 p-0 feed-recipes-area pe-5">
                     @if($recipes->count() > 0)
                         @foreach($recipes as $recipe)
                             @include('partials.preview.recipe')
@@ -41,7 +41,7 @@
                 </div>
             </div>
 
-            <div class="col-xxl-3 ps-0 ps-xxl-4 pe-0 trending-topics-recipes">
+            <div class="col-lg-3 ps-0 ps-xxl-4 pe-0 trending-topics-recipes">
                 @include('partials.trending.trending_topics', ['tags' => $tags])
                 @include('partials.trending.trending_recipes', ['trendingRecipes' => $trendingRecipes])
             </div>

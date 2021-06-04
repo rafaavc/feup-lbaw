@@ -3,7 +3,7 @@
     <table class="table table-striped p-3">
         @foreach ($ingredients as $idx => $ingredient)
             <tr>
-                <td class="quantity">{{$ingredient->pivot->quantity}}</td>
+                <td class="quantity">{{$ingredient->pivot->quantity}} {{ strtolower(\App\Models\Unit::find($ingredient->pivot->id_unit)->name) }}</td>
                 <td>{{$ingredient->name}}</td>
             </tr>
         @endforeach

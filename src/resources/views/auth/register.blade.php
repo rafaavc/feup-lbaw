@@ -44,7 +44,7 @@
                     </div>
                     <ul class="nav nav-pills" id="pills-tab" role="tablist">
                         <li class="nav-item position-absolute top-0 start-0 translate-middle" role="presentation">
-                            <button active class="btn btn-primary active rounded-pill" data-bs-toggle="pill"
+                            <button class="btn btn-primary active rounded-pill" data-bs-toggle="pill"
                                     data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home"
                                     aria-selected="true">1
                             </button>
@@ -74,7 +74,7 @@
                         </li>
                     </ul>
                 </div>
-                <form class="tab-content" id="pills-tabContent" method="post" enctype="multipart/form-data">
+                <form class="tab-content register-tb" id="pills-tabContent" method="post" enctype="multipart/form-data">
                     @csrf
                     <div class="tab-pane fade show active" id="pills-home" role="tabpanel"
                          aria-labelledby="pills-home-tab">
