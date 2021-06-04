@@ -49,7 +49,7 @@
         </div>
         <div class="searchBox-ingredient">
             @foreach ($totalIngredients as $tIngredient)
-                <a class="list-group-item list-group-item-action ingredient" value="{{ $tIngredient->id }}">{{ $tIngredient->name }}</a>
+                <a class="list-group-item list-group-item-action ingredient" data-value="{{ $tIngredient->id }}">{{ $tIngredient->name }}</a>
             @endforeach
         </div>
     </div>

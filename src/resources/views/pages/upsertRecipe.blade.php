@@ -46,14 +46,14 @@
                         <div class="row g-3 mb-3">
                             <div class="col-lg">
                                 <div class="form-floating" data-toggle="tooltip" data-placement="top" title="Give your recipe a nice name">
-                                    <input name="name" type="text" class="form-control" id="floatingInput" placeholder="Baked Potatoes"
+                                    <input name="name" type="text" class="form-control" id="floatingInputName" placeholder="Baked Potatoes"
                                         value="{{ (!$hasErrors) ? ((isset($recipe)) ? $recipe->name : "") : ((isset($old['name'])) ? old('name') : '') }}">
-                                    <label for="floatingInput">Recipe title <span class='form-required'></span></label>
+                                    <label for="floatingInputName">Recipe title <span class='form-required'></span></label>
                                 </div>
                             </div>
                             <div class="col-md">
                                 <div class="form-floating" data-toggle="tooltip" data-placement="top" title="Choose the category of your recipe">
-                                    <select name="category" class="form-select" id="floatingSelectGrid" aria-label="Main category">
+                                    <select name="category" class="form-select" id="floatingSelectGridCategory" aria-label="Main category">
                                         @foreach (\App\Models\Category::all() as $category)
                                             @if((!$hasErrors && isset($recipe) && $recipe->category->id == $category->id) ||
                                                 ($hasErrors && isset($old['category']) && old('category') == $category->id))
@@ -63,7 +63,7 @@
                                             @endif
                                         @endforeach
                                     </select>
-                                    <label for="floatingSelectGrid">Main category <span class='form-required'></span></label>
+                                    <label for="floatingSelectGridCategory">Main category <span class='form-required'></span></label>
                                 </div>
                             </div>
                         </div>
@@ -74,19 +74,19 @@
                         <div class="row g-3 mb-4">
                             <div class="col-sm">
                                 <div class="form-floating" data-placement="top" title="How difficult to prepare is your recipe?">
-                                    <select name="difficulty" class="form-select" id="floatingSelectGrid" aria-label="Difficulty">
-                                        <option name="difficulty" value="easy" {{ ((isset($recipe) && $recipe->difficulty === "easy") || ( $hasErrors && isset($old['difficulty']) && old('difficulty') === "easy")) ? "selected" : "" }}>Easy</option>
-                                        <option name="difficulty" value="medium" {{ ((isset($recipe) && $recipe->difficulty === "medium") || ($hasErrors && isset($old['difficulty']) && old('difficulty') === "medium")) ? "selected" : "" }}>Medium</option>
-                                        <option name="difficulty" value="hard" {{ ((isset($recipe) && $recipe->difficulty === "hard") || ($hasErrors && isset($old['difficulty']) && old('difficulty') === "hard")) ? "selected" : "" }}>Hard</option>
-                                        <option name="difficulty" value="very hard" {{ ((isset($recipe) && $recipe->difficulty === "very hard") || ($hasErrors && isset($old['difficulty']) && old('difficulty') === "very hard")) ? "selected" : "" }}>Very Hard</option>
+                                    <select name="difficulty" class="form-select" id="floatingSelectGridDifficulty" aria-label="Difficulty">
+                                        <option value="easy" {{ ((isset($recipe) && $recipe->difficulty === "easy") || ( $hasErrors && isset($old['difficulty']) && old('difficulty') === "easy")) ? "selected" : "" }}>Easy</option>
+                                        <option value="medium" {{ ((isset($recipe) && $recipe->difficulty === "medium") || ($hasErrors && isset($old['difficulty']) && old('difficulty') === "medium")) ? "selected" : "" }}>Medium</option>
+                                        <option value="hard" {{ ((isset($recipe) && $recipe->difficulty === "hard") || ($hasErrors && isset($old['difficulty']) && old('difficulty') === "hard")) ? "selected" : "" }}>Hard</option>
+                                        <option value="very hard" {{ ((isset($recipe) && $recipe->difficulty === "very hard") || ($hasErrors && isset($old['difficulty']) && old('difficulty') === "very hard")) ? "selected" : "" }}>Very Hard</option>
                                     </select>
-                                    <label for="floatingSelectGrid">Difficulty <span class='form-required'></span></label>
+                                    <label for="floatingSelectGridDifficulty">Difficulty <span class='form-required'></span></label>
                                 </div>
                             </div>
                             <div class="col-lg">
                                 <div class="form-floating" data-toggle="tooltip" data-placement="top" title="How many servings does your recipe have? It needs to be at least 1">
-                                    <input name="servings" type="number" class="form-control" id="floatingInput" placeholder="Baked Potatoes" value="{{ (!$hasErrors) ? ((isset($recipe)) ? $recipe->servings : 0) : ((isset($old['servings'])) ? old('servings') : '') }}">
-                                    <label for="floatingInput">Number of servings <span class='form-required'></span></label>
+                                    <input name="servings" type="number" class="form-control" id="floatingInputServings" placeholder="Baked Potatoes" value="{{ (!$hasErrors) ? ((isset($recipe)) ? $recipe->servings : 0) : ((isset($old['servings'])) ? old('servings') : '') }}">
+                                    <label for="floatingInputServings">Number of servings <span class='form-required'></span></label>
                                 </div>
                             </div>
                             <div class="col-lg">
@@ -94,7 +94,6 @@
                                     <select class="form-select" id="tagSelect" aria-label="Quantity unit">
                                         <option></option>
                                     </select>
-                                    <label for="floatingInput">Tags<span class='form-required'></span></label>
                                 </div>
                             </div>
                             <div class="search-div collapse navbar-collapse justify-content-center flex-grow-1 normalize mt-0" id="navbarSearch" data-bs-parent="#navbarContainer">
@@ -103,7 +102,7 @@
                                 </div>
                                 <div class="searchBox-tag">
                                     @foreach (\App\Models\Tag::all() as $tTag)
-                                        <a class="list-group-item list-group-item-action tag" value="{{ $tTag->id }}">{{ $tTag->name }}</a>
+                                        <a class="list-group-item list-group-item-action tag" data-value="{{ $tTag->id }}">{{ $tTag->name }}</a>
                                     @endforeach
                                 </div>
                             </div>
