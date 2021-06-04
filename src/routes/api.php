@@ -115,3 +115,9 @@ Route::get('units', 'UnitController@index');
 // Notifications API
 // ----------------------------------------------------------------
 Route::put('notification/{type}', 'NotificationController@updateReadState');
+
+// ----------------------------------------------------------------
+// Validations API
+// ----------------------------------------------------------------
+Route::get('validation/username', 'ValidationController@checkRepeatedUsername');
+Route::get('validation/email', 'ValidationController@checkRepeatedEmail');
