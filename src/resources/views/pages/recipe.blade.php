@@ -81,7 +81,7 @@
                         </li>
                     @endif
                     <li class="list-group-item">
-                        <a href="#" data-toggle="tooltip" data-placement="top" title="Generate a PDF of the recipe page">
+                        <a href="#" onclick="window.print();return false;" data-toggle="tooltip" data-placement="top" title="Generate a PDF of the recipe page">
                             <span class="legend">Print</span><i class="fas fa-print"></i>
                         </a>
                     </li>
