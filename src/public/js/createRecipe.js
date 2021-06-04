@@ -212,9 +212,10 @@ document.querySelector("a.submit-recipe-form").addEventListener('click', (event)
         valid &= setInvalidElement(elem);
     });
 
-    if(valid)
-        document.querySelector("form.recipe-form").submit();
-    else {
+    const textareas = document.querySelectorAll(".step-textarea");
+
+
+    if (!valid) {
         if(!document.body.contains(document.querySelector('div.alert.alert-danger[role=danger]'))) {
             let alert = document.createElement("div");
             alert.classList.add("alert");
@@ -224,6 +225,22 @@ document.querySelector("a.submit-recipe-form").addEventListener('click', (event)
             document.querySelector("#create-recipe-stepper").prepend(alert, document.querySelector("div.card-body"));
         }
         document.querySelector('div.alert.alert-danger[role=danger]').parentElement.parentElement.scrollIntoView();
+    }
+
+
+    for (const textarea of textareas) {
+        const textareaValid = textarea.reportValidity();
+        valid &= textareaValid;
+        if (!textareaValid) {
+            textarea.removeEventListener('blur', () => removeInvalid(textarea));
+            textarea.addEventListener('blur', () => removeInvalid(textarea));
+            textarea.focus();
+            textarea.classList.add('invalid');
+        }
+    }
+
+    if(valid) {
+        document.querySelector("form.recipe-form").submit();
     }
 
 });

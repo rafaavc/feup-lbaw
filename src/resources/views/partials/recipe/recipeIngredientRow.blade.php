@@ -39,7 +39,6 @@
                 @endif
             </select>
 
-            {{-- <input type="text" class="form-control" id="floatingInput" placeholder="Tomato" value="{{ isset($ingredient->name) ? $ingredient->name : "" }}"> --}}
             <label for="floatingInput">Ingredient Name <span class='form-required'></span></label>
         </div>
     </div>

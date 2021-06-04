@@ -21,8 +21,6 @@
                     @if(Gate::inspect('delete', $recipe)->allowed())
                         <li><button class="dropdown-item ms-3" data-role="a" data-bs-toggle="modal" data-bs-target="#recipeDeleteConfirmationModal{{ $recipe->id }}">Delete Post</button></li>
                     @endif
-                        {{-- <li><a class="dropdown-item" href="#">Report Post</a></li>
-                    @endif --}}
                 </ul>
             </div>
         </div>
