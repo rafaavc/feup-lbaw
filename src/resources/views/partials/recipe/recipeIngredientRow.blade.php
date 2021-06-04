@@ -2,7 +2,7 @@
     <div class="col-lg">
         <div class="row g-3">
             <div class="col-sm">
-                <div class="form-floating has-tooltip" title="Ingredient quantity">
+                <div class="form-floating" title="Ingredient quantity">
                     @if($hasErrors)
                         <input name="ingredients[{{ $index }}][quantity]" type="number" class="form-control" placeholder="0" aria-label="Quantity" id="quantityInput" step="0.1"
                         value="{{ $ingredient['quantity'] }}">
@@ -14,7 +14,7 @@
                 </div>
             </div>
             <div class="col-sm">
-                <div class="form-floating has-tooltip" title="Choose the unit of measure of the ingredient">
+                <div class="form-floating" title="Choose the unit of measure of the ingredient">
                     <select name="ingredients[{{ $index }}][id_unit]" class="form-select" id="quantityUnitSelect" aria-label="Quantity unit">
                         @foreach ($units as $unit)
                             @if((!$hasErrors && isset($ingredient) && $ingredient->pivot->id_unit === $unit->id) || ($hasErrors && $ingredient['id_unit'] == $unit->id))
@@ -30,7 +30,7 @@
         </div>
     </div>
     <div class="col-lg">
-        <div class="form-floating has-tooltip" title="Choose an ingredient from our database">
+        <div class="form-floating" title="Choose an ingredient from our database">
             <select name="ingredients[{{ $index }}][id]" class="form-select ingredientSelect" aria-label="Quantity unit" required>
                 @if($hasErrors && \App\Models\Ingredient::where('id', $ingredient['id'])->exists())
                     <option value="{{ $ingredient['id'] }}">{{ \App\Models\Ingredient::find($ingredient['id'])->name }}</option>
