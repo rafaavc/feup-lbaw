@@ -4,10 +4,10 @@
             <div class="col-sm">
                 <div class="form-floating has-tooltip" title="Ingredient quantity">
                     @if($hasErrors)
-                        <input name="ingredients[{{ $index }}][quantity]" type="number" class="form-control" placeholder="0" aria-label="Quantity" id="quantityInput" step="0.1"
+                        <input name="ingredients[{{ $index }}][quantity]" required min="0" type="number" class="form-control ingredient-quantity" placeholder="0" aria-label="Quantity" id="quantityInput" step="0.1"
                         value="{{ $ingredient['quantity'] }}">
                     @else
-                        <input name="ingredients[{{ $index }}][quantity]" type="number" class="form-control" placeholder="0" aria-label="Quantity" id="quantityInput" step="0.1"
+                        <input name="ingredients[{{ $index }}][quantity]" required min="0" type="number" class="form-control ingredient-quantity" placeholder="0" aria-label="Quantity" id="quantityInput" step="0.1"
                             value="{{ (isset($ingredient->pivot->quantity)) ? $ingredient->pivot->quantity : "" }}">
                     @endif
                     <label for="quantityInput">Quantity <span class='form-required'></span></label>
@@ -15,7 +15,7 @@
             </div>
             <div class="col-sm">
                 <div class="form-floating has-tooltip" title="Choose the unit of measure of the ingredient">
-                    <select name="ingredients[{{ $index }}][id_unit]" class="form-select" id="quantityUnitSelect" aria-label="Quantity unit">
+                    <select required name="ingredients[{{ $index }}][id_unit]" class="form-select" id="quantityUnitSelect" aria-label="Quantity unit">
                         @foreach ($units as $unit)
                             @if((!$hasErrors && isset($ingredient) && $ingredient->pivot->id_unit === $unit->id) || ($hasErrors && $ingredient['id_unit'] == $unit->id))
                                 <option value="{{ $unit->id }}" selected>{{ $unit->name }}</option>
@@ -24,7 +24,7 @@
                             @endif
                         @endforeach
                     </select>
-                    <label for="quantityUnitSelect">Unit</label>
+                    <label for="quantityUnitSelect">Unit <span class='form-required'></span></label>
                 </div>
             </div>
         </div>
@@ -40,7 +40,7 @@
             </select>
 
             {{-- <input type="text" class="form-control" id="floatingInput" placeholder="Tomato" value="{{ isset($ingredient->name) ? $ingredient->name : "" }}"> --}}
-            <label for="floatingInput">Ingredient Name<span class='form-required'></span></label>
+            <label for="floatingInput">Ingredient Name <span class='form-required'></span></label>
         </div>
     </div>
     <div class="search-div collapse navbar-collapse justify-content-center flex-grow-1 normalize mt-0" id="navbarSearch" data-bs-parent="#navbarContainer">
