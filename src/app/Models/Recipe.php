@@ -98,6 +98,4 @@ class Recipe extends Model
         $membersWhoFavourited = $this->membersWhoFavourited()->where('id_member', '=', Auth::user()->id)->get();
         return sizeof($membersWhoFavourited) != 0;
     }
-
-    // favouritedNotifications() not useful
 }
