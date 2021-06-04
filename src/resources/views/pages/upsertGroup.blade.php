@@ -102,17 +102,21 @@
     </form>
 
 </div>
-<form id="deleteGroupForm" method="GET"
-        action="{{ url('group/' . $group->id . '/delete') }}">
-    {{ csrf_field() }}
-</form>
+@if(isset($group))
+    <form id="deleteGroupForm" method="GET"
+            action="{{ url('group/' . $group->id . '/delete') }}">
+        {{ csrf_field() }}
+    </form>
+@endif
 
-@include('partials.confirmation', [
-    'modalId' => 'groupDeleteConfirmationModal',
-    'modalTitle' => 'Delete group "'.$group->name.'"',
-    'modalMessage' => 'Do you really want to delete this group? This action is irreversible!',
-    'modalYesFunction' => 'document.querySelector("#deleteGroupForm").submit()',
-    'modalYesText' => 'Yes',
-    'modalNoText' => 'No'
-])
+@if(isset($group))
+    @include('partials.confirmation', [
+        'modalId' => 'groupDeleteConfirmationModal',
+        'modalTitle' => 'Delete group "'.$group->name.'"',
+        'modalMessage' => 'Do you really want to delete this group? This action is irreversible!',
+        'modalYesFunction' => 'document.querySelector("#deleteGroupForm").submit()',
+        'modalYesText' => 'Yes',
+        'modalNoText' => 'No'
+    ])
+@endif
 @endsection
