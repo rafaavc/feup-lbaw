@@ -82,21 +82,21 @@
                         </li>
                     @endif
                     <li class="list-group-item">
-                        <a href="#" data-toggle="tooltip" data-placement="top" title="Generate a PDF of the recipe page">
+                        <a href="#" onclick="window.print();return false;" class="has-tooltip" title="Generate a PDF of the recipe page or print it direcly if you have a printer">
                             <span class="legend">Print</span><i class="fas fa-print"></i>
                         </a>
                     </li>
                     <li class="list-group-item">
-                        <a class="copy-link-button" href="javascript:void(null)" data-toggle="tooltip" data-placement="top" title="Copy the link of this recipe">
+                        <a class="copy-link-button has-tooltip" href="javascript:void(null)" title="Copy the link of this recipe">
                             <span class="legend">Share</span><i class="fas fa-share-alt"></i>
                         </a>
                     </li>
                     @if(Auth::check())
                         <li class="list-group-item">
-                            <button data-role="a" class="add-to-favourites-recipe-button"
+                            <button data-role="a" class="add-to-favourites-recipe-button has-tooltip"
                                     data-favourite-state="{{ $isFavourited ? "true" : "false" }}"
                                     data-recipe-id="{{ $recipe->id }}"
-                                    data-toggle="tooltip" data-placement="top" title="Add this recipe to your favourites">
+                                    title="Add this recipe to your favourites">
                                 <span class="legend">Favourite</span><i class="fas fa-heart"></i>
                                 </a>
                         </li>

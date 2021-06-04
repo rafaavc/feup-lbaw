@@ -57,30 +57,30 @@
             </div>
         </div>
 
-        <h6 class="area-title mt-4">Group Name <span class='form-required'></span></h6>
+        <h6 class="area-title mt-4 has-tooltip" title="Give a name to this group">Group Name <span class='form-required'></span></h6>
         <div class="form-group">
             <textarea name="name" class="form-control mb-4 p-3 edit-profile-text-input" rows="1" required
                       style="resize: none;">{{ isset($group) ? $group->name : "" }}</textarea>
         </div>
 
-        <h6 class="area-title">Group Description <span class='form-required'></span></h6>
+        <h6 class="area-title has-tooltip" title="Give a nice description to this group">Group Description <span class='form-required'></span></h6>
         <div class="form-group">
             <textarea name="description" class="form-control mb-4 p-3 edit-profile-text-input" required
                       rows="3">{{ isset($group) ? $group->description : "" }}</textarea>
         </div>
 
-        <h6 class="area-title" data-toggle="tooltip" data-placement="top" title="Do you want everyone to see your group recipes, or only its members?">Group Visibility <span class='form-required'></span></h6>
+        <h6 class="area-title">Group Visibility <span class='form-required'></span></h6>
         <div class="form-check">
             <input class="form-check-input" value="1" type="radio" name="visibility" required
                    id="flexRadioDefault1" {{ isset($group) && $group->visibility ? "checked" : "" }}>
-            <label class="form-check-label" for="flexRadioDefault1">
+            <label class="form-check-label has-tooltip" for="flexRadioDefault1" title="If you select this option, everyone will see the recipes of this group">
                 Public
             </label>
         </div>
         <div class="form-check mt-2">
             <input class="form-check-input" value="0" type="radio" name="visibility" required
                    id="flexRadioDefault2" {{ isset($group) && !$group->visibility ? "checked" : "" }}>
-            <label class="form-check-label" for="flexRadioDefault2">
+            <label class="form-check-label has-tooltip" for="flexRadioDefault2" title="If you select this option, only the members of this group will see its recipes">
                 Private
             </label>
         </div>
@@ -90,7 +90,7 @@
             <input type="submit" class="btn btn-primary submit-button mt-5" value='{{ isset($group) ? "Edit Group" : "Create Group" }}'>
 
             @if (isset($group))
-                <button class="btn btn-danger submit-button delete-group-button mt-5" data-bs-toggle="modal" data-bs-target="#groupDeleteConfirmationModal" data-toggle="tooltip" data-placement="top" title="Delete group and all its information">
+                <button class="btn btn-danger submit-button delete-group-button mt-5 has-tooltip" data-bs-toggle="modal" data-bs-target="#groupDeleteConfirmationModal" title="Delete group and all its information">
                     <i class="fas fa-trash me-3"></i> Delete Group
                 </button>
             @endif
