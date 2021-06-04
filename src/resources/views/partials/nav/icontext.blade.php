@@ -1,4 +1,4 @@
-@if(isset($profileImage) && $profileImage !== '' && Auth::user()->name === $text)
+@if(isset($profileImage) && $profileImage !== '' && strtolower(Auth::user()->name) == strtolower($text))
     <img class="rounded-circle" src="{{$profileImage}}" width="30px" height="30px">
 @else
     <i class="fas fa-{{ $icon }} mx-2"></i>

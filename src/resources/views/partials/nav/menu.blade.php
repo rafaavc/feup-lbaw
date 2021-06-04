@@ -52,7 +52,7 @@
             ]
         ];
     @endphp
-@elseif(Auth::check())
+@elseif (Auth::check())
     @php
         // Follow Requests Notifications
         $numAlreadyFollowedNotifications = 0;
