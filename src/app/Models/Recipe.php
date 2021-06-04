@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Auth;
 
 class Recipe extends Model
 {
@@ -88,6 +89,14 @@ class Recipe extends Model
     {
         $images = $this->getImages();
         return sizeof($images) > 0 ? $images[0] : asset("storage/images/people/no_image.png");
+    }
+
+    public function isFavourited()
+    {
+        if (!Auth::check()) return false;
+
+        $membersWhoFavourited = $this->membersWhoFavourited()->where('id_member', '=', Auth::user()->id)->get();
+        return sizeof($membersWhoFavourited) != 0;
     }
 
     // favouritedNotifications() not useful

@@ -54,6 +54,11 @@ for (const button of favouriteButtons) {
                 }
                 change(event.target.parentElement);
                 change(event.target);
+
+                if (button.dataset.completeText) {
+                    const span = button.querySelector('span');
+                    if (span) span.innerText = !favouriteState ? "Remove from Favourites" : "Add to Favourites";
+                }
             });
     });
 
