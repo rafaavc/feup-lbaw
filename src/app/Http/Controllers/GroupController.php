@@ -290,7 +290,7 @@ class GroupController extends Controller
         $groupName = $group->name;
         $this->delete($group);
         $memberUsername = Auth::user()->username;
-        return redirect('/user/' . $memberUsername)->with('message', 'Group "' . $groupName . '" successfully deleted!');
+        return redirect('/feed')->with('message', 'Group "' . $groupName . '" successfully deleted!');
     }
 
     public function view(Group $group)
