@@ -8,12 +8,26 @@
         <!-- CSRF Token -->
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
+        <!-- Title -->
         <title>
             @if (View::hasSection('title'))
                 @yield('title') |
             @endif
             {{ config('app.name', 'Laravel') }}
         </title>
+
+        <!-- Meta tags -->
+        @if (View::hasSection('title'))
+            <meta name="title" content="@yield('title')">
+            <meta property="og:title" content="@yield('title')"/>
+        @endif
+        @if (View::hasSection('description'))
+            <meta name="description" content="@yield('description')">
+            <meta property="og:description" content="@yield('description')"/>
+        @endif
+        @if (View::hasSection('thumbnail'))
+            <meta property="og:image" content="@yield('thumbnail')"/>
+        @endif
 
         <!-- Bootstrap -->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
