@@ -1,4 +1,4 @@
-# TasteBuds project's components
+# TasteBuds project components
 
 TasteBuds helps people build a community of diverse, healthy and tasty eating habits.
 
