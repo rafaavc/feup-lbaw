@@ -1,6 +1,6 @@
 # TasteBuds project components
 
-TasteBuds helps people build a community of diverse, healthy and tasty eating habits.
+TasteBuds helps people build a community of diverse, healthy and tasty eating habits. Visit the project's documentation <a href="https://github.com/rafaavc/feup-lbaw/wiki">here</a>.
 
 ### LBAW2135 - Group Members
 
